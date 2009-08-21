@@ -14,7 +14,7 @@ ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/gmailnoti
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="net-im/psi[plugins]"
