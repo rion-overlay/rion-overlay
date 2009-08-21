@@ -15,7 +15,7 @@ SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND=">=dev-libs/nss-3.11.4
