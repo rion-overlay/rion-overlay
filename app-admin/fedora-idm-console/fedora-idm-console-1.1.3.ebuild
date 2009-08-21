@@ -11,7 +11,7 @@ HOMEPAGE="http://directory.fedoraproject.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEP="=dev-java/jss-4*
