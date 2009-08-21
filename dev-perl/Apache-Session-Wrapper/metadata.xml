@@ -3,10 +3,11 @@
 <pkgmetadata>
 <herd>rion-overlay</herd>
 <maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
+  <email>spamslepnopga@inbox.ru</email>
+ <description>This module provides a simple wrapper for Apache::Session</description> 
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
+ <longdescription>This module provides a simple wrapper for Apache::Session that
+ manages the session id for you. </longdescription> 
 <use>
 </use>
 </pkgmetadata>
