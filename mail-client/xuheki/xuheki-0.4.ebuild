@@ -19,15 +19,18 @@ KEYWORDS=""
 IUSE="mta"
 
 RDEPEND="${DEPEND}"
-DEPEND="=virtual/mysql-5*
-		www-servers/apache:2
-		<dev-lang/perl-6
-		www-apache/mod_perl:1
-		mta? ( virtual/mta )"
-
+DEPEND=">=virtual/mysql-5
+		www-servers/apache
+		dev-lang/perl
+		www-apache/mod_perl
+		mta? ( virtual/mta )
+		dev-perl/Apache-Session-Wrapper
+		dev-perl/DBIx-OO
+		dev-perl/Net-IMAP-Client
+		dev-perl/Regexp-Common-Email-Address
+		dev-perl/Template-Alloy"
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
-
 
 src_install() {
 
@@ -35,65 +38,16 @@ src_install() {
 	
 	dodir /var/log/"${MY_PN}"
 	for i in captcha-cache sites-enabled ; do
-
 			dodir /var/lib/"${MY_PN}"/"${i}"
 	done
 	
 	dosym /var/log/"${MY_PN}" /var/log/"${MY_PN}"/logs
 	doinitd "${FILESDIR}"/xuheki-0.4
-
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 msg_1() {
-
 		einfo "Xuheki can run under a certain URL so there's no need to dedicate the"
 		einfo "to it, but we still need to know the domain name."
 		ebeep 5
 		epause 5
 }
-
-
-
-
-
-
-
-
