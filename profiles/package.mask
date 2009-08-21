@@ -6,7 +6,6 @@ net-p2p/gnunet-qt
 # 21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for  bad depend, not in main tree and rion 
 # ovrlay
-net-im/psi-gmailnotify
 games-rpg/openOutcast
 games-rpg/crystalcore
 # 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
