@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/openca/${P}.tar.gz"
 RESTRICT="mirror"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc"
 
 DEPEND="app-arch/gzip"
