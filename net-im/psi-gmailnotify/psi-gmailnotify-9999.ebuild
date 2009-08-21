@@ -4,13 +4,13 @@
 
 EAPI=2
 
-inherit qt4
+inherit qt4 subversion
 
 MY_PN="gmailnotifyplugin"
 
 DESCRIPTION="Gmail notify plugin for psi"
 HOMEPAGE="http://vampirus.ru/projects/psi/"
-SRC_URI="http://vampirus.ru/projects/psi/gmailnotifyplugin/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
+ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/gmailnotifyplugin"
 
 LICENSE="GPL-2"
 SLOT="0"
