@@ -1,0 +1,5 @@
+# Set user for xuheki daemon (default apache)
+#
+# user="nobody"
+# Set group for xuheki daemon (default apache)
+# group="nobody"
