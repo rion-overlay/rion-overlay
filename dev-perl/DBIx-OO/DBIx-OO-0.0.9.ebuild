@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# 
+# $Header: $
 
 EAPI=2
 
@@ -18,3 +18,7 @@ DEPEND="dev-perl/SQL-Abstract
 	dev-perl/Class-Data-Inheritable
 	dev-perl/DBI
 	virtual/perl-Module-Load"
+
+RDEPEND=""
+#  virtual/perl-ExtUtils-MakeMaker
+# I`s install depend
