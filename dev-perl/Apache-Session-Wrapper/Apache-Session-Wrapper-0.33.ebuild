@@ -7,14 +7,14 @@ EAPI=2
 MODULE_AUTHOR=DROLSKY
 inherit perl-module
 
-S=${WORKDIR}/Apache-Session-Wrapper-0.33-hc59Rw
-
 DESCRIPTION="A simple wrapper around Apache::Session"
-IUSE=""
+IUSE="test"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
 RDEPEND="dev-perl/Exception-Class
 	>=dev-perl/Params-Validate-0.91
 	>=dev-perl/Apache-Session-1.88
-	dev-perl/Class-Container"
+	dev-perl/Class-Container
+	test? ( dev-perl/Test-Pod )"
+SRC_TEST="do"
