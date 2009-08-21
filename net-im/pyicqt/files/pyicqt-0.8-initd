@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	need net
+	use jabber-server
+}
+
+start() {
+	ebegin "Starting ICQ Jabber Transport"
+	start-stop-daemon --start --pidfile /var/run/jabber/pyicq-t.pid --chuid jabber:jabber \
+		--exec /usr/bin/python INSPATH/pyicqt.py -- \
+		-b -c /etc/jabber/pyicqt.xml -l /var/log/jabber/pyicqt.log
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ICQ Jabber Transport"
+	start-stop-daemon --stop --quiet --pidfile /var/run/jabber/pyicqt.pid
+	eend $?
+}

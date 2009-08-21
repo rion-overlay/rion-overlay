@@ -1,0 +1,18 @@
+--- omnibook-2.20080627/laptop.h.orig	2009-02-08 19:13:11.000000000 +0300
++++ omnibook-2.20080627/laptop.h	2009-02-08 19:18:55.000000000 +0300
+@@ -637,6 +637,15 @@
+ 	},
+ 	{
+ 		.callback = dmi_matched,
++		.ident = "Toshiba Sattelite A300",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "TOSHIBA"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "Satellite A300"),
++		},
++		.driver_data = (void*) TSM70
++	},
++	{
++		.callback = dmi_matched,
+ 		.ident = "Toshiba Satellite P100",
+ 		.matches = {
+ 			DMI_MATCH(DMI_SYS_VENDOR, "TOSHIBA"),
