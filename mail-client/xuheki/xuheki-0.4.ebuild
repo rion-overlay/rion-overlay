@@ -56,12 +56,12 @@ S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 src_install() {
 
 	webapp_src_preinst
-	
+
 	dodir /var/log/"${MY_PN}"
 	for i in captcha-cache sites-enabled ; do
 			dodir /var/lib/"${MY_PN}"/"${i}"
 	done
-	
+
 	dosym /var/log/"${MY_PN}" /var/log/"${MY_PN}"/logs
 	doinitd "${FILESDIR}"/xuheki-0.4
 	  einfo "Installing web files"
