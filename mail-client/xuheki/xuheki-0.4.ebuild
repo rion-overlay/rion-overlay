@@ -36,11 +36,20 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Regexp-Common-Email-Address
 		dev-perl/POE[libwww]
 		>=dev-perl/Data-FormValidator-4.63
-		dev-perl/GD [ gif, jpeg, png, truetype]
 		dev-perl/GD-SecurityImage
 		dev-perl/Log-Log4perl
 		dev-perl/Crypt-Rijndael
-		dev-perl/Email-MIME-Encodings"
+		dev-perl/Email-MIME-Encodings
+		dev-perl/HTML-Format
+		dev-perl/JSON-XS
+		dev-perl/MIME-tools
+		dev-perl/MIME-Lite
+		virtual/perl-Module-Load
+		dev-perl/String-Random
+		dev-perl/Text-Quoted
+		perl-core/Time-HiRes
+		virtual/perl-Time-Piece
+		"
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
