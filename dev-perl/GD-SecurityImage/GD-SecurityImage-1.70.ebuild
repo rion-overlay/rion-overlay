@@ -11,12 +11,11 @@ DESCRIPTION="Security image (captcha) generator"
 SRC_URI="mirror://cpan/authors/id/B/BU/BURAK/"${P}".tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="test imagemagick"
 
-DEPEND="perl-core/Test-Simple
-		imagemagick? ( media-gfx/imagemagick[perl] )
+RDEPEND="perl-core/Test-Simple
+		imagemagick? ( dev-perl/Image-Magick )
 		test? ( dev-perl/Test-Pod )"
-RDEPEND="perl-core/Test-Simple"
 
 SRC_TEST="do"

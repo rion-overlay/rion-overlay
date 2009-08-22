@@ -3,10 +3,12 @@
 <pkgmetadata>
 <herd>rion-overlay</herd>
 <maintainer>
-  <email>@gmail.com</email>
+  <email>spamslepnoga@inbox.ru</email>
  <description>Description of the maintainership</description> 
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
+ <longdescription>Security image (captcha) generator</longdescription> 
 <use>
+<flag name='imagemagick'>Use <pkg>media-gfx/imagemagick</pkg> for image generations</flag>
+
 </use>
 </pkgmetadata>
