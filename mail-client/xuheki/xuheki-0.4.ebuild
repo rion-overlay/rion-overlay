@@ -14,7 +14,6 @@ SRC_URI="http://www.xuheki.com/download/"${PV}"/"${MY_PN}"-"${PV}".tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
-SLOT="0"
 KEYWORDS=""
 IUSE="mta"
 
@@ -29,7 +28,19 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/DBIx-OO
 		dev-perl/Net-IMAP-Client
 		dev-perl/Regexp-Common-Email-Address
-		dev-perl/Template-Alloy"
+		dev-perl/Template-Alloy
+		dev-perl/Apache-Session-Wrapperi
+		dev-perl/libwww-perl[ssl]
+		dev-perl/IO-Socket-SSL
+		dev-perl/DateTime-Format-Mail
+		dev-perl/Regexp-Common-Email-Address
+		dev-perl/POE[libwww]
+		>=dev-perl/Data-FormValidator-4.63
+		dev-perl/GD [ gif, jpeg, png, truetype]
+		dev-perl/GD-SecurityImage
+		dev-perl/Log-Log4perl
+		dev-perl/Crypt-Rijndael
+		dev-perl/Email-MIME-Encodings"
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
@@ -44,6 +55,16 @@ src_install() {
 	
 	dosym /var/log/"${MY_PN}" /var/log/"${MY_PN}"/logs
 	doinitd "${FILESDIR}"/xuheki-0.4
+	  einfo "Installing web files"
+	      cd "${S}"/docroot
+		      cp -R . "${D}"/"${MY_HTDOCSDIR}"
+
+}
+
+
+
+pkg_setup() {
+webapp_pkg_setup
 }
 
 msg_1() {
