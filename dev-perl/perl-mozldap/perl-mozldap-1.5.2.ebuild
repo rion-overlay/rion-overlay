@@ -20,7 +20,7 @@ DEPEND=">=dev-libs/nspr-4.0.1
 
 RDEPEND="${DEPEND}"
 
-PATCHES="${FILESDIR}"/"gentoo.patch"
+PATCHES=( "${FILESDIR}"/"gentoo.patch" )
 
 src_prepare () {
 	mv Makefile.PL.rpm Makefile.PL || die
