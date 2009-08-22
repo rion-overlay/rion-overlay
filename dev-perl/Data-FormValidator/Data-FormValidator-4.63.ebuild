@@ -23,3 +23,4 @@ DEPEND="
 	dev-perl/Email-Valid
 "
 RDEPEND="${DEPEND}"
+SRC_TEST="do"
