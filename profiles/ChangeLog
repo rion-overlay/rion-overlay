@@ -3,6 +3,10 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+
+ 22 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>>packages.mask:
+ mask dev-perl/DBIx-OO,bad depend
+ 
  21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>>packages.mask:
  mask  net-p2p/gnunet/gnunet
  net-p2p/gnunet-gtk
