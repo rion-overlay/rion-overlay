@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Database to Perl objects abstraction"
 SRC_URI="mirror://cpan/authors/id/M/MI/${MODULE_AUTOR}/${P}.tar.gz"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-perl/SQL-Abstract
@@ -22,3 +22,4 @@ DEPEND="dev-perl/SQL-Abstract
 RDEPEND=""
 #  virtual/perl-ExtUtils-MakeMaker
 # I`s install depend
+SRC_TEST="do"

@@ -1,3 +1,6 @@
+# 22 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for bad install depend, test package fail
+dev-perl/DBIx-OO
 # 21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # Bad keywors
 net-p2p/gnunet
@@ -9,7 +12,7 @@ net-p2p/gnunet-qt
 games-rpg/openOutcast
 games-rpg/crystalcore
 # 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-# mask mail-client/xuheki, not complete
+# mask mail-client/xuheki, not complete,bad depend
 mail-client/xuheki
 
 # 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
