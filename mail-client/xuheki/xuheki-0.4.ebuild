@@ -52,27 +52,45 @@ DEPEND=">=virtual/mysql-5
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
+need_apache2_2
+
 
 src_install() {
 
 	webapp_src_preinst
-
+	
+	# create log directory
 	dodir /var/log/"${MY_PN}"
-	for i in captcha-cache sites-enabled ; do
+	# create daemon work directory
+	for i in captcha-cache sites-enabled ; 
+	do
 			dodir /var/lib/"${MY_PN}"/"${i}"
 	done
-
+	# linking log directory
 	dosym /var/log/"${MY_PN}" /var/log/"${MY_PN}"
+	
+	# install init script
 	doinitd "${FILESDIR}"/xuheki-0.4
+	
+	# install conf file
+	webapp_server_configfile "${FILESDIR}"/vhost.conf.template vhost.conf
 
+	
+	# install web files
 	  einfo "Installing web files"
 	      cd "${S}"/docroot
 		  cp -R . "${D}"/"${MY_HTDOCSDIR}"
 
-	dodir /etc/apache2/vhost.d
-	insinto /etc/apache2/vhost.d
+	
+	# install apache perl handler
+	dodir "${APACHE_VHOSTS_CONFDIR}"
+	
+#	insinto /etc/apache2/vhost.d
+	
 	
 
+	# install Perl modules
+	dodir /usr/$(get_libdir)/perl
 
 
 	webapp_src_install
@@ -83,6 +101,11 @@ src_install() {
 
 pkg_setup() {
 webapp_pkg_setup
+
+need_httpd_fcgi
+has_apache_threads
+need_apache2_2
+
 }
 
 msg_1() {
