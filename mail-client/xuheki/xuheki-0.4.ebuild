@@ -14,7 +14,7 @@ SRC_URI="http://www.xuheki.com/download/"${PV}"/"${MY_PN}"-"${PV}".tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="mta"
 
 RDEPEND="${DEPEND}"
@@ -29,13 +29,13 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Net-IMAP-Client
 		dev-perl/Regexp-Common-Email-Address
 		dev-perl/Template-Alloy
-		dev-perl/Apache-Session-Wrapperi
 		dev-perl/libwww-perl[ssl]
 		dev-perl/IO-Socket-SSL
 		dev-perl/DateTime-Format-Mail
 		dev-perl/Regexp-Common-Email-Address
 		dev-perl/POE[libwww]
 		>=dev-perl/Data-FormValidator-4.63
+		media-libs/gd[fontconfig,jpeg,png,truetype]
 		dev-perl/GD-SecurityImage
 		dev-perl/Log-Log4perl
 		dev-perl/Crypt-Rijndael
