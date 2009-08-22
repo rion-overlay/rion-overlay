@@ -1,0 +1,10 @@
+--- lib/install-static.old	2005-03-27 17:53:50.000000000 +0200
++++ lib/install-static	2005-03-27 19:18:26.000000000 +0200
+@@ -54,7 +56,6 @@
+ # create logfiles with write permissions
+ 
+ touch "$RBR$TPPATH_LOG/turboprint.log"
+-touch "$RBR$TPPATH_LOG/turboprint_lpr.log"
+ touch "$RBR$TPPATH_LOG/turboprint_cups.log"
+ 
+ # copy executable files, make executable

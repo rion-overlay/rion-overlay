@@ -1,0 +1,80 @@
+# ChangeLog for net-print/turboprint
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Id: ChangeLog 962 2008-01-23 22:09:03Z casta $
+
+  23 Jan 2008; Guillaume Castagnino <casta@xwing.info>
+  turboprint-1.96-r3.ebuild:
+  keywording amd64
+
+  12 Jan 2008; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.96-r3.ebuild:
+  version bump. Tarball currently only available for x86. amd64 will be added
+  when it will be available
+
+  25 Nov 2007; Guillaume Castagnino <casta@xwing.info>
+  -files/fix-cupsfilters-path.patch, -turboprint-1.96.ebuild,
+  -turboprint-1.96-r1.ebuild:
+  cleanup old ebuilds
+
+  25 Nov 2007; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.96-r2.ebuild:
+  use sed instead of patch to unify x86 and amd64 patch
+
+  31 Oct 2007; Guillaume Castagnino <casta@xwing.info>
+  turboprint-1.96.ebuild, turboprint-1.96-r1.ebuild:
+  some repoman inprovement : quoting vars
+
+  31 Oct 2007; Guillaume Castagnino <casta@xwing.info> ChangeLog:
+  fix changelog concistency thanks to Christian Hoffmann again :)
+
+  30 Oct 2007; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.96-r1.ebuild:
+  Version bump to 1.96-3 and add amd64 support : thanks to Christian Hoffmann
+
+  04 Aug 2007; Guillaume Castagnino <casta@xwing.info>
+  -turboprint-1.94-r4.ebuild, -turboprint-1.95-r1.ebuild,
+  -turboprint-1.95-r2.ebuild, +turboprint-1.96.ebuild:
+  version bump and cleanup
+
+  29 jan 2007; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.95-r3.ebuild:
+  Bump to 1.95-2
+
+  1 jan 2007; Guillaume Castagnino <casta@xwing.info>:
+  Reorganise and add more comments/einfo in ebuild
+
+  27 dec 2006; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.95-r2.ebuild:
+  LD_PRELOAD hack is back because it's a far better
+  way to have a clean install. I just found why LD_PRELOAD hack does
+  not worked anymore since 1.92-2 ;)
+  Currently, there is NO MORE sanbox hack in anyway !
+
+  19 Dec 2006; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.95-r1.ebuild:
+  do not use install-post anymore. Some cleanup
+
+  17 Dec 2006; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.95.ebuild:
+  bump turboprint to 1.95 version
+
+  20 Aug 2006; Guillaume Castagnino <casta@xwing.info>:
+  fix new cups 1.2 filters path and use symlinks instead of copy for the ppds
+  
+  13 Jan 2006; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.94.ebuild :
+  version bump
+  
+  30 Sep 2005; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.93.ebuild:
+  Simply a revision bump
+  
+  28 Sep 2005; Guillaume Castagnino <casta@xwing.info>:
+  Use SANDBOX_ON=0/1 instead of dirty hack with LD_PRELOAD, since the breakage
+  of sandbox is not dangerous for the system
+  
+  10 Aug 2005; Guillaume Castagnino <casta@xwing.info>
+  +turboprint-1.92-r2.ebuild:
+  Bump to 1.92-2. Need some work more to solve sandbox violation issue due to
+  LD_PRELOAD not working anymore
+

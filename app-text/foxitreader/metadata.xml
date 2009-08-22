@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>mantainer-wanted@gentoo.org</email>
+ <description></description> 
+</maintainer>
+ <longdescription>Foxit Reader is a free PDF document viewer for the Linux
+ platform, with a new streamlined interface, user-customized toolbar, incredibly
+ small size, breezing-fast launch speed and rich features. Fork Windows versoin</longdescription> 
+<use>
+</use>
+</pkgmetadata>

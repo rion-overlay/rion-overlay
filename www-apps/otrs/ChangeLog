@@ -1,0 +1,10 @@
+# ChangeLog for www-apps/otrs
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*otrs-2.4.1 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +files/apache2.patch,
+  +otrs-2.4.1.ebuild, +files/dbi_finish.patch, +metadata.xml:
+  initial commit,rewrite official ebuild,recommit my overlay  
+
