@@ -11,7 +11,7 @@ DESCRIPTION="Security image (captcha) generator"
 SRC_URI="mirror://cpan/authors/id/B/BU/BURAK/"${P}".tar.gz"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="test imagemagick"
 
 RDEPEND="perl-core/Test-Simple
