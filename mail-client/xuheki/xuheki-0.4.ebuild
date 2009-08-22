@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit eutils webapp depend.apache multilib
+inherit eutils webapp depend.apache multilib 
 
 MY_PN="Xuheki"
 
@@ -15,7 +15,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64"
-IUSE="mta"
+IUSE="+mta"
 
 RDEPEND="${DEPEND}"
 DEPEND=">=virtual/mysql-5
@@ -52,6 +52,7 @@ DEPEND=">=virtual/mysql-5
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
+
 src_install() {
 
 	webapp_src_preinst
@@ -61,11 +62,20 @@ src_install() {
 			dodir /var/lib/"${MY_PN}"/"${i}"
 	done
 
-	dosym /var/log/"${MY_PN}" /var/log/"${MY_PN}"/logs
+	dosym /var/log/"${MY_PN}" /var/log/"${MY_PN}"
 	doinitd "${FILESDIR}"/xuheki-0.4
+
 	  einfo "Installing web files"
 	      cd "${S}"/docroot
-		      cp -R . "${D}"/"${MY_HTDOCSDIR}"
+		  cp -R . "${D}"/"${MY_HTDOCSDIR}"
+
+	dodir /etc/apache2/vhost.d
+	insinto /etc/apache2/vhost.d
+	
+
+
+
+	webapp_src_install
 
 }
 
