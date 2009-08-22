@@ -20,8 +20,9 @@ IUSE="mta"
 
 RDEPEND="${DEPEND}"
 DEPEND=">=virtual/mysql-5
+		dev-lang/perl[ithreads]
 		www-servers/apache
-		dev-lang/perl
+		www-apache/libapreq2
 		www-apache/mod_perl
 		mta? ( virtual/mta )
 		dev-perl/Apache-Session-Wrapper
