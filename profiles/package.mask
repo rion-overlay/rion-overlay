@@ -1,6 +1,6 @@
 # 22 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for bad install depend, test package fail
-dev-perl/DBIx-OO
+# dev-perl/DBIx-OO
 # 21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # Bad keywors
 net-p2p/gnunet
