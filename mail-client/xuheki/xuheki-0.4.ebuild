@@ -35,7 +35,6 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Regexp-Common-Email-Address
 		dev-perl/POE[libwww]
 		>=dev-perl/Data-FormValidator-4.63
-		media-libs/gd[fontconfig,jpeg,png,truetype]
 		dev-perl/GD-SecurityImage
 		dev-perl/Log-Log4perl
 		dev-perl/Crypt-Rijndael
@@ -49,7 +48,7 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Text-Quoted
 		perl-core/Time-HiRes
 		virtual/perl-Time-Piece
-		"
+		dev-perl/GD-SecurityImage"
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
