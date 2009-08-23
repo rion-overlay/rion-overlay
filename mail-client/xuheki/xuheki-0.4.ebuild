@@ -41,6 +41,7 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Crypt-Rijndael
 		dev-perl/Email-MIME-Encodings
 		dev-perl/HTML-Format
+		dev-perl/JSON
 		dev-perl/JSON-XS
 		dev-perl/MIME-tools
 		dev-perl/MIME-Lite
