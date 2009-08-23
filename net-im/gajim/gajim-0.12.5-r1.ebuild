@@ -13,7 +13,7 @@ SRC_URI="http://www.gajim.org/downloads/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="avahi dbus gnome idle libnotify nls spell srv trayicon X xhtml"
+IUSE="avahi dbus gnome idle libnotify notify-osd nls spell srv trayicon X xhtml"
 
 DEPEND="|| (
 		( <dev-lang/python-2.5 dev-python/pysqlite )
@@ -26,6 +26,7 @@ DEPEND="|| (
 
 RDEPEND="dbus? ( dev-python/dbus-python dev-libs/dbus-glib )
 	libnotify? ( x11-libs/libnotify )
+	notify-osd? ( x11-misc/notify-osd )
 	xhtml? ( dev-python/docutils )
 	srv? ( net-dns/bind-tools )
 	idle? ( x11-libs/libXScrnSaver )
@@ -40,6 +41,8 @@ src_prepare() {
 	epatch "${FILESDIR}/0.12.1_autotools_install_pyfiles_in_pkglibdir.patch"
 	# sound paths:
 	epatch "${FILESDIR}/0.12.1-sound-path-fix.patch"
+	# notify-osd patch:
+	use notify-osd && epatch "${FILESDIR}/${PN}-notify-osd.patch" 
 
 	# fix datadir path (trunk use an env var for config this)
 	sed -i "s|'DATA',.*|'DATA', '/usr/share/gajim/data')|" \
