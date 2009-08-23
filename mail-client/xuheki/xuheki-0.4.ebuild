@@ -17,7 +17,7 @@ LICENSE="GPL-3"
 KEYWORDS="~amd64"
 IUSE="+mta"
 
-RDEPEND="${DEPEND}"
+RDEPEND=""
 DEPEND=">=virtual/mysql-5
 		dev-lang/perl[ithreads]
 		www-servers/apache
