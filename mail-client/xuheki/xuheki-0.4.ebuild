@@ -28,6 +28,7 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/DBIx-OO
 		dev-perl/Net-IMAP-Client
 		dev-perl/Regexp-Common-Email-Address
+		dev-perl/Template-Toolkit[gd,mysql,xml]
 		dev-perl/Template-Alloy
 		dev-perl/libwww-perl[ssl]
 		dev-perl/IO-Socket-SSL
@@ -63,19 +64,27 @@ src_install() {
 	  cd "${S}"/docroot
 	  cp -R . "${D}"/"${MY_HTDOCSDIR}"
 	
-
+	webapp_hook_script "${FILESDIR}"/reconfig-2
+	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
 	webapp_src_install
+	
+	# install perl modules
+	dodir /usr/$(get_libdir)/perl5/vendor_perl
+	insinto /usr/$(get_libdir)/perl5/vendor_perl
+	doins -r  "${S}"/perl/Dynarch  "${S}"/perl/XHK
+	
+	# install bin files
+	#dodir /usr/
+
+
 
 }
 
 
 
 pkg_setup() {
-webapp_pkg_setup
 
-need_httpd_fcgi
-has_apache_threads
-need_apache2_2
+webapp_pkg_setup
 
 }
 
