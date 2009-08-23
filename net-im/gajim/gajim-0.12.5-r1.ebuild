@@ -42,7 +42,7 @@ src_prepare() {
 	# sound paths:
 	epatch "${FILESDIR}/0.12.1-sound-path-fix.patch"
 	# notify-osd patch:
-	use notify-osd && epatch "${FILESDIR}/${P}-notify-osd.patch" 
+	use notify-osd && epatch "${FILESDIR}/${PN}-notify-osd.patch" 
 
 	# fix datadir path (trunk use an env var for config this)
 	sed -i "s|'DATA',.*|'DATA', '/usr/share/gajim/data')|" \
