@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: turboprint-1.96-r2.ebuild 950 2008-01-04 14:46:53Z casta $
+# $Header turboprint-1.96-r2.ebuild 950 2008-01-04 14:46:53Z casta $
 
 inherit eutils
 
