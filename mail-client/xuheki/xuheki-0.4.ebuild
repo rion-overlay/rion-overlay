@@ -50,7 +50,9 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Text-Quoted
 		perl-core/Time-HiRes
 		virtual/perl-Time-Piece
-		dev-perl/GD-SecurityImage"
+		dev-perl/GD-SecurityImage
+		dev-perl/Dynarch
+		dev-perl/XHK"
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
@@ -70,9 +72,9 @@ src_install() {
 	webapp_src_install
 	
 	# install perl modules
-	dodir /usr/$(get_libdir)/perl5/vendor_perl
-	insinto /usr/$(get_libdir)/perl5/vendor_perl
-	doins -r  "${S}"/perl/Dynarch  "${S}"/perl/XHK
+#	dodir /usr/$(get_libdir)/perl5/vendor_perl
+#	insinto /usr/$(get_libdir)/perl5/vendor_perl
+#	doins -r  "${S}"/perl/Dynarch  "${S}"/perl/XHK
 	
 	# install bin files
 	#dodir /usr/
