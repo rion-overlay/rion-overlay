@@ -10,7 +10,7 @@ DESCRIPTION="Simple program which makes everything well"
 HOMEPAGE="http://www.qt-apps.org/content/show.php/Zaebis?content=102362"
 SRC_URI="http://www.qt-apps.org/CONTENT/content-files/102362-good.tar.gz"
 
-LICENSE="GPL"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
@@ -19,8 +19,8 @@ DEPEND="x11-libs/qt-gui:4"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
-	mkdir ${S}
-	cd ${S}
+	mkdir "${S}"
+	cd "${S}"
 	unpack ${A}
 }
 
