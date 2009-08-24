@@ -14,9 +14,14 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="net-libs/gnutls
-	sys-fs/fuse"
-RDEPEND="${DEPEND}"
+RDEPEND="app-pda/libplist
+	dev-libs/glib:2
+	dev-libs/libgcrypt
+	net-libs/gnutls
+	sys-fs/fuse
+	virtual/libusb:0"
+DEPEND="dev-util/pkgconfig
+	${RDEPEND}"
 
 src_unpack() {
 	git_src_unpack
