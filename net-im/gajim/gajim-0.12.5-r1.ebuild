@@ -12,7 +12,7 @@ SRC_URI="http://www.gajim.org/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="avahi dbus gnome idle libnotify notify-osd nls spell srv trayicon X xhtml"
 
 DEPEND="|| (
@@ -24,7 +24,8 @@ DEPEND="|| (
 	dev-util/intltool
 	dev-util/pkgconfig"
 
-RDEPEND="dbus? ( dev-python/dbus-python dev-libs/dbus-glib )
+RDEPEND="${DEPEND}
+	dbus? ( dev-python/dbus-python dev-libs/dbus-glib )
 	libnotify? ( x11-libs/libnotify )
 	notify-osd? ( x11-misc/notify-osd )
 	xhtml? ( dev-python/docutils )
