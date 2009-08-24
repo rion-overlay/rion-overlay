@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
-
 inherit git autotools
 
 DESCRIPTION="fuse module for access to iphone and ipod touch without jailbreak"
@@ -11,15 +9,16 @@ HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
 EGIT_REPO_URI="git://github.com/MattColyer/ifuse.git"
 EGIT_PROJECT="ifuse"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND="app-pda/libiphone
-	>=sys-fs/fuse-2.7.0
+RDEPEND="app-pda/libplist
+	app-pda/libiphone
+	sys-fs/fuse
 	dev-libs/glib:2"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	git_src_unpack
@@ -29,3 +28,11 @@ src_unpack() {
 src_install() {
 	emake DESTDIR="${D}" install || die "install failed"
 }
+
+pkg_postinst() {
+	ewarn "Only use this filesystem driver to create backups of your data."
+	ewarn "The music database is hashed, and attempting to add files will "
+	ewarn "cause the iPod/iPhone to consider your database unauthorised."
+	ewarn "It will respond by wiping all media files, requiring a restore "
+	ewarn "through iTunes. You have been warned."
+}					
