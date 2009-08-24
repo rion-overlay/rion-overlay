@@ -72,23 +72,45 @@ src_install() {
 	webapp_hook_script "${FILESDIR}"/reconfig-2
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
 	webapp_postinst_txt ru "${FILESDIR}"/postinstall-ru-2.txt
-	
-	
-	
-	# create requred dirs; start install script :)
-	dodir /var/lib/Xuheki/captcha-cache
-	dodir /var/lib/Xuheki/sites-enabled
 
 	#install SQl script and create database
 	webapp_sqlscript mysql "${FILESDIR}"/template.sql
 
 	# install apache vhost.conf
 	webapp_server_configfile apache "${S}"/templates/vhost.conf
+	webapp_server_configfile apache "${S}"/perl/apache-startup.pl
+	# end simple install, web part is installed
+
+	
+	# create requred dirs; start install script :)
+	# Install server side files
+
+	# create daemon data/work dirs.
+	dodir /var/lib/Xuheki/captcha-cache
+	dodir /var/lib/Xuheki/sites-enabled
+
+	#install binares
+	insinto /var/lib/Xuheki
+	dosbin "${S}"/bin/*.pl
+
+	#create log dir
+	dodir /var/log/Xuheki
+	# and linking them
+	dosym /var/log/Xuheki /var/lib/Xuheki/log
 
 	# install templates file
 	dodir /usr/share/"${P}"
+	
 	# more doint files
 	
+	# install cron script 
+	if use cron ; then
+		insinto /etc/cron.hourly
+		newbin "${S}"/cron/clear-captcha-cache xuheki-clear-captcha
+	fi
+
+
+
 	# install init script and conf file
 	newinitd "${FILESDIR}"/xuheki-"${PV}".init xuheki
 	
