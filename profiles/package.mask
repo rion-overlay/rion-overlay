@@ -9,18 +9,9 @@ net-p2p/gnunet
 net-p2p/gnunet-gtk
 net-p2p/gnunet-qt
 
-# 21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-# mask for  bad depend, not in main tree and rion 
-# ovrlay
-
-games-rpg/openOutcast
-
-games-rpg/crystalcore
-
-
 # 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask mail-client/xuheki, not complete,bad depend
-# mail-client/xuheki
+mail-client/xuheki
 
 # 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask app-crypt/openca-base, not complete
