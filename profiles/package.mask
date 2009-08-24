@@ -1,3 +1,7 @@
+# 24 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for additional testing and ebuild rewrite requireq
+games-simulation/vegastrike
+
 # 22 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for bad install depend, test package fail
 # dev-perl/DBIx-OO
