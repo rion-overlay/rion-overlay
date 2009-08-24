@@ -11,5 +11,6 @@
  anywhere to read your email.</longdescription> 
 <use>
  <flag name='mta'>install <pkg>virtual/mta</pkg> package</flag>
+ <flag name='cron'>Install cron script for Capcha regenerate</flag>
 </use>
 </pkgmetadata>
