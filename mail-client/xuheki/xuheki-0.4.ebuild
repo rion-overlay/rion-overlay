@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit eutils webapp depend.apache multilib 
+inherit eutils webapp depend.apache
 
 MY_PN="Xuheki"
 
@@ -14,8 +14,8 @@ SRC_URI="http://www.xuheki.com/download/"${PV}"/"${MY_PN}"-"${PV}".tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64"
-IUSE="+mta cron"
+KEYWORDS=""
+IUSE="+mta +cron"
 
 RDEPEND=""
 DEPEND=">=virtual/mysql-5
@@ -38,6 +38,7 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Regexp-Common-Email-Address
 		dev-perl/POE[libwww]
 		>=dev-perl/Data-FormValidator-4.63
+		dev-perl/Encode-Detect
 		dev-perl/GD-SecurityImage
 		dev-perl/Log-Log4perl
 		dev-perl/Crypt-Rijndael
@@ -68,7 +69,7 @@ src_install() {
 	  einfo "Installing web files"
 	  cd "${S}"/docroot
 	  cp -R . "${D}"/"${MY_HTDOCSDIR}"
-	
+
 	webapp_hook_script "${FILESDIR}"/reconfig-2
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
 	webapp_postinst_txt ru "${FILESDIR}"/postinstall-ru-2.txt
@@ -81,17 +82,17 @@ src_install() {
 	webapp_server_configfile apache "${S}"/perl/apache-startup.pl
 	# end simple install, web part is installed
 
-	
+
 	# create requred dirs; start install script :)
 	# Install server side files
 
 	# create daemon data/work dirs.
 	dodir /var/lib/Xuheki/captcha-cache
 	dodir /var/lib/Xuheki/sites-enabled
+	dodir /var/lib/Xuheki/bin
 
 	#install binares
-	insinto /var/lib/Xuheki
-	dosbin "${S}"/bin/*.pl
+	mv "${S}"/bin/*.pl "${D}"/var/lib/Xuheki/bin || die
 
 	#create log dir
 	dodir /var/log/Xuheki
@@ -100,9 +101,9 @@ src_install() {
 
 	# install templates file
 	dodir /usr/share/"${P}"
-	
+
 	# more doint files
-	
+
 	# install cron script 
 	if use cron ; then
 		insinto /etc/cron.hourly
@@ -113,7 +114,7 @@ src_install() {
 
 	# install init script and conf file
 	newinitd "${FILESDIR}"/xuheki-"${PV}".init xuheki
-	
+
 	newconfd "${FILESDIR}"/xuheki.conf xuheki
 
 	# install
