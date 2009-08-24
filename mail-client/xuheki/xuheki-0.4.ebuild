@@ -53,9 +53,9 @@ DEPEND=">=virtual/mysql-5
 		dev-perl/Text-Quoted
 		perl-core/Time-HiRes
 		virtual/perl-Time-Piece
-		dev-perl/GD-SecurityImage
-		dev-perl/Dynarch
-		dev-perl/XHK"
+		dev-perl/GD-SecurityImage"
+#		dev-perl/Dynarch
+#		dev-perl/XHK"
 
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
@@ -87,9 +87,13 @@ src_install() {
 	# Install server side files
 
 	# create daemon data/work dirs.
+	# and keep 
 	dodir /var/lib/Xuheki/captcha-cache
 	dodir /var/lib/Xuheki/sites-enabled
 	dodir /var/lib/Xuheki/bin
+	keepdir /var/lib/Xuheki/captcha-cache
+	keepdir /var/lib/Xuheki/sites-enabled
+	keepdir /var/lib/Xuheki/bin
 
 	#install binares
 	mv "${S}"/bin/*.pl "${D}"/var/lib/Xuheki/bin || die
@@ -108,6 +112,7 @@ src_install() {
 	if use cron ; then
 		insinto /etc/cron.hourly
 		newbin "${S}"/cron/clear-captcha-cache xuheki-clear-captcha
+		keepdir /etc/cron.hourly
 	fi
 
 
