@@ -18,6 +18,7 @@ DEPEND="${RDEPEND}"
 
 src_unpack() {
 	git_src_unpack || die "unpack failed"
+	cd ${S}
 	eautoreconf || die "reconf failed"
 }
 
