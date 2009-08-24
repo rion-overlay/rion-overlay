@@ -1,0 +1,12 @@
+# ChangeLog for dev-lisp/cl-sasl
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> -cl-sasl-0.3.ebuild:
+  remove old revision ebuild
+
+*cl-sasl-0.3-r1 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +cl-sasl-0.3-r1.ebuild:
+  fix
+
