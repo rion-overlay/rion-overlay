@@ -2,17 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:
 
-EAPI=2
 inherit cmake-utils eutils multilib python git
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
 EGIT_REPO_URI="git://github.com/JonathanBeck/libplist.git"
-EGIT_PROJECT="${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="dev-libs/glib:2

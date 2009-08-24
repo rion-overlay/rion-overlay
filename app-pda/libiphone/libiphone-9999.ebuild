@@ -7,9 +7,8 @@ inherit git autotools
 DESCRIPTION="Library for access to a iphone and ipod touch without a jailbreak"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
 EGIT_REPO_URI="git://github.com/MattColyer/libiphone.git"
-EGIT_PROJECT="libiphone"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
