@@ -15,6 +15,7 @@ KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="app-pda/libplist
+	app-pda/usbmuxd
 	dev-libs/glib:2
 	dev-libs/libgcrypt
 	net-libs/gnutls
@@ -26,7 +27,6 @@ DEPEND="dev-util/pkgconfig
 src_unpack() {
 	git_src_unpack
 	cd "${S}"
-	epatch "${FILESDIR}/${PN}-gnutls.patch"
 	eautoreconf
 }
 
