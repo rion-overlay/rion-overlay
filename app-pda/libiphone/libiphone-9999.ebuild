@@ -2,27 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
-
 inherit git autotools
 
-DESCRIPTION="fuse module for access to iphone and ipod touch without jailbreak"
+DESCRIPTION="Library for access to a iphone and ipod touch without a jailbreak"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
-EGIT_REPO_URI="http://git.matt.colyer.name/2008/ifuse/"
-EGIT_PROJECT="ifuse"
+EGIT_REPO_URI="git://github.com/MattColyer/libiphone.git"
+EGIT_PROJECT="libiphone"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="media-libs/libiphone
-	>=sys-fs/fuse-2.7.0
-	dev-libs/glib:2"
+DEPEND="net-libs/gnutls
+	sys-fs/fuse"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
 	git_src_unpack
+	cd "${S}"
+	epatch "${FILESDIR}/${PN}-gnutls.patch"
 	eautoreconf
 }
 
