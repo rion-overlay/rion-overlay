@@ -15,7 +15,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64"
-IUSE="+mta"
+IUSE="+mta cron"
 
 RDEPEND=""
 DEPEND=">=virtual/mysql-5
@@ -24,9 +24,11 @@ DEPEND=">=virtual/mysql-5
 		www-apache/libapreq2
 		www-apache/mod_perl
 		mta? ( virtual/mta )
+		cron? ( virtual/cron )
 		dev-perl/Apache-Session-Wrapper
 		dev-perl/DBIx-OO
 		dev-perl/Net-IMAP-Client
+		>=dev-perl/Crypt-Rijndael-1.07
 		dev-perl/Regexp-Common-Email-Address
 		dev-perl/Template-Toolkit[gd,mysql,xml]
 		dev-perl/Template-Alloy
@@ -57,7 +59,7 @@ DEPEND=">=virtual/mysql-5
 S="${WORKDIR}"/"${MY_PN}"-"${PV}"
 
 need_apache2_2
-
+need_httpd_fastcgi
 
 src_install() {
 
@@ -69,18 +71,35 @@ src_install() {
 	
 	webapp_hook_script "${FILESDIR}"/reconfig-2
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
+	webapp_postinst_txt ru "${FILESDIR}"/postinstall-ru-2.txt
+	
+	
+	
+	# create requred dirs; start install script :)
+	dodir /var/lib/Xuheki/captcha-cache
+	dodir /var/lib/Xuheki/sites-enabled
+
+	#install SQl script and create database
+	webapp_sqlscript mysql "${FILESDIR}"/template.sql
+
+	# install apache vhost.conf
+	webapp_server_configfile apache "${S}"/templates/vhost.conf
+
+	# install templates file
+	dodir /usr/share/"${P}"
+	# more doint files
+	
+	# install init script and conf file
+	newinitd "${FILESDIR}"/xuheki-"${PV}".init xuheki
+	
+	newconfd "${FILESDIR}"/xuheki.conf xuheki
+
+	# install
+
+
+
+
 	webapp_src_install
-	
-	# install perl modules
-#	dodir /usr/$(get_libdir)/perl5/vendor_perl
-#	insinto /usr/$(get_libdir)/perl5/vendor_perl
-#	doins -r  "${S}"/perl/Dynarch  "${S}"/perl/XHK
-	
-	# install bin files
-	#dodir /usr/
-
-
-
 }
 
 
