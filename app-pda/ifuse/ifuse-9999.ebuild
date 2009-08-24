@@ -7,11 +7,10 @@ inherit git autotools
 DESCRIPTION="fuse module for access to iphone and ipod touch without jailbreak"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
 EGIT_REPO_URI="git://github.com/MattColyer/ifuse.git"
-EGIT_PROJECT="ifuse"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="app-pda/libplist
@@ -22,6 +21,7 @@ DEPEND="${RDEPEND}"
 
 src_unpack() {
 	git_src_unpack
+	cd ${S}
 	eautoreconf
 }
 
