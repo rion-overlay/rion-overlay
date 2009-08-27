@@ -11,7 +11,7 @@ DESCRIPTION="Graphical front end for GNUnet."
 HOMEPAGE="http://gnunet.org/"
 SRC_URI="http://gnunet.org/download/${PN}-${MY_PV}.tar.bz2"
 
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
