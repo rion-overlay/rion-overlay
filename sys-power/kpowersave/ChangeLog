@@ -1,0 +1,106 @@
+# ChangeLog for sys-power/kpowersave
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/kpowersave/ChangeLog,v 1.23 2008/11/12 04:07:54 josejx Exp $
+
+  12 Nov 2008; Joseph Jezak <josejx@gentoo.org> kpowersave-0.7.3.ebuild:
+  Marked ~ppc for bug #200266.
+
+  11 Aug 2008; Raúl Porcel <armin76@gentoo.org> kpowersave-0.6.2.ebuild,
+  kpowersave-0.7.3.ebuild:
+  Add missing kdelibs dep,bug #204695
+
+  09 May 2008; Markus Meier <maekke@gentoo.org> kpowersave-0.7.3.ebuild:
+  amd64 stable, bug #214389
+
+  19 Nov 2007; Stefan Schweizer <genstef@gentoo.org>
+  kpowersave-0.7.3.ebuild:
+  Make sure the config directory is readable for every user, bug 198969 thanks
+  to Gabriel Devenyi <ace@staticwave.ca>
+
+  12 Nov 2007; Stefan Schweizer <genstef@gentoo.org>
+  -kpowersave-0.7.2.ebuild:
+  old
+
+  18 Oct 2007; Stefan Schweizer <genstef@gentoo.org>
+  kpowersave-0.7.3.ebuild:
+  add kdelibs depend thanks flameeyes in bug 196266
+
+*kpowersave-0.7.3 (30 Sep 2007)
+
+  30 Sep 2007; Stefan Schweizer <genstef@gentoo.org>
+  +kpowersave-0.7.3.ebuild:
+  version bump
+
+  14 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  kpowersave-0.6.2.ebuild:
+  Depend on scrnsaverproto thanks flameeyes in bug 178574
+
+  18 Mar 2007; Steve Dibb <beandog@gentoo.org> kpowersave-0.6.2.ebuild:
+  amd64 stable, bug 132621
+
+  06 Mar 2007; <genstef@gentoo.org> -kpowersave-0.6.2.ebuild,
+  kpowersave-0.7.2.ebuild:
+  Do not depend on unsermake
+
+  20 Feb 2007; Raúl Porcel <armin76@gentoo.org> kpowersave-0.7.2.ebuild:
+  back to ~arch, bug 167596
+
+*kpowersave-0.7.2 (20 Feb 2007)
+
+  20 Feb 2007; <genstef@gentoo.org> +kpowersave-0.7.2.ebuild:
+  version bump thanks to Luca Botti <luca.botti.gentoo@gmail.com> in bug 167596
+
+  03 Feb 2007; Raúl Porcel <armin76@gentoo.org> kpowersave-0.6.2.ebuild:
+  x86 stable wrt bug 132621
+
+  16 Dec 2006; Stefan Schweizer <genstef@gentoo.org>
+  kpowersave-0.6.2.ebuild:
+  According to flameeyes, depend on dbus-qt3-old only and thus force a new dbus
+
+  16 Dec 2006; Stefan Schweizer <genstef@gentoo.org>
+  kpowersave-0.6.2.ebuild:
+  unsermake DEPENED only, thanks flameeyes
+
+  30 Sep 2006; Stefan Schweizer <genstef@gentoo.org>
+  -kpowersave-0.6.1.ebuild, kpowersave-0.6.2.ebuild:
+  correct depends thanks to Juergen Nagel <juergen@nagel.homeip.net> and
+  flameeyes in bug 149572
+
+  08 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kpowersave-0.6.2.ebuild:
+  Accept dbus-qt3-old aside from dbus proper, and don't do the useflag check
+  for that case.
+
+*kpowersave-0.6.2 (03 Jul 2006)
+
+  03 Jul 2006; Stefan Schweizer <genstef@gentoo.org>
+  +kpowersave-0.6.2.ebuild:
+  version bump
+
+  24 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kpowersave-0.6.1.ebuild:
+  Add ~amd64 keyword.
+
+  24 Jun 2006; Stefan Schweizer <genstef@gentoo.org>
+  -kpowersave-0.6.0.ebuild, kpowersave-0.6.1.ebuild:
+  built_with_use sys-apps/dbus qt -> qt3
+
+*kpowersave-0.6.1 (14 May 2006)
+
+  14 May 2006; Stefan Schweizer <genstef@gentoo.org>
+  +kpowersave-0.6.1.ebuild:
+  Version bump thanks to Matt Whitlock <mwhitlock@whitsoftdev.com> in bug 133324
+
+  09 May 2006; Stefan Schweizer <genstef@gentoo.org>
+  kpowersave-0.6.0.ebuild:
+  Add sys-apps/dbus qt support thanks to Mathy Vanvoorden <matje@lanzone.be>
+  in bug 132790
+
+*kpowersave-0.6.0 (07 May 2006)
+
+  07 May 2006; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +kpowersave-0.6.0.ebuild:
+  New ebuild thanks to Jiri Tyr <jiri.tyr@e-learning.vslib.cz>, Matt Whitlock
+  <mwhitlock@whitsoftdev.com> and Stefan Scheler <sts@synflood.de> in bug
+  122278
+

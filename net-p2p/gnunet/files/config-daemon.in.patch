@@ -1,0 +1,10 @@
+--- config-daemon.in	2005-12-23 23:24:48.000000000 +0100
++++ /usr/share/GNUnet/config-daemon.in	2006-03-17 21:06:06.000000000 +0100
+@@ -883,7 +883,6 @@
+ 
+ 	endmenu
+ 	
+-    endif
+ 	
+     if Meta::EXPERIMENTAL && Meta::RARE && Meta::ADVANCED
+ 	

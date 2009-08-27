@@ -1,0 +1,30 @@
+Index: ldapserver/ldap/admin/src/scripts/DSCreate.pm.in
+===================================================================
+RCS file: /cvs/dirsec/ldapserver/ldap/admin/src/scripts/DSCreate.pm.in,v
+retrieving revision 1.11
+diff -u -8 -r1.11 DSCreate.pm.in
+--- ldapserver/ldap/admin/src/scripts/DSCreate.pm.in	16 May 2008 16:25:54 -0000	1.11
++++ ldapserver/ldap/admin/src/scripts/DSCreate.pm.in	14 Jul 2008 16:28:33 -0000
+@@ -462,18 +462,21 @@
+     my $inf = shift;
+     my $istempldif = 0;
+     # If the user has specified an LDIF file to use to initialize the database,
+     # load it now
+     my $ldiffile = $inf->{slapd}->{InstallLdifFile};
+     if ($ldiffile =~ /none/i) {
+         debug(1, "No ldif file or org entries specified - no initial database will be created\n");
+         return ();
+-    } elsif ($ldiffile && -f $ldiffile) {
++    } elsif ($ldiffile && ($ldiffile !~ /suggest/i)) {
+         debug(1, "Loading initial ldif file $ldiffile\n");
++        if (! -r $ldiffile) {
++            return ('error_opening_init_ldif', $ldiffile);
++        }
+     } elsif (($inf->{slapd}->{Suffix} =~ /^(.*?)=/) && $suffixTable{$1}) {
+         my @errs;
+         my $template = $inf->{General}->{prefix} . $suffixTable{$1};
+         my $mapper = new Inf("$inf->{General}->{prefix}@infdir@/dsorgentries.map");
+         my $dsinf = new Inf("$inf->{General}->{prefix}@infdir@/slapd.inf");
+         my @rdns = ldap_explode_dn($inf->{slapd}->{Suffix}, 1);
+         $inf->{slapd}->{naming_value} = $rdns[0];
+         $mapper = process_maptbl($mapper, \@errs, $inf, $dsinf);
