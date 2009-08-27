@@ -21,7 +21,7 @@ RDEPEND="x11-libs/qt-core
 		dbus? ( x11-libs/qt-dbus )
 		dev-libs/glib:2"
 DEPEND="${RDEPEND}"
-PROVIDE="virtual/stardict"
+PROVIDE="virtual/stardict:0"
 
 src_prepare() {
 	find "${WORKDIR}" -name '*pr?' -exec sed "s:/lib:/$(get_libdir):" -i '{}' \;
