@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit git autotools
 
 DESCRIPTION="fuse module for access to iphone and ipod touch without jailbreak"
@@ -21,7 +23,7 @@ DEPEND="${RDEPEND}"
 
 src_unpack() {
 	git_src_unpack
-	cd ${S}
+	cd "${S}"
 	eautoreconf
 }
 
@@ -35,4 +37,4 @@ pkg_postinst() {
 	ewarn "cause the iPod/iPhone to consider your database unauthorised."
 	ewarn "It will respond by wiping all media files, requiring a restore "
 	ewarn "through iTunes. You have been warned."
-}					
+}
