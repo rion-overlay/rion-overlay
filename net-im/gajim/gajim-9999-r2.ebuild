@@ -39,7 +39,7 @@ RDEPEND="dev-python/dbus-python
 	dev-python/pycrypto"
 
 src_configure() {
-	cd ${WORKDIR}/${PN}
+	cd "${WORKDIR}"/"${PN}"
 		./autogen.sh
 
 	local myconf
@@ -56,7 +56,7 @@ src_configure() {
 }
 
 src_install() {
-	cd ${WORKDIR}/${PN}
+	cd "${WORKDIR}"/"${PN}" # ??? slepnoga
 	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS NEWS README
 }

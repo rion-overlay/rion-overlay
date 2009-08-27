@@ -8,10 +8,5 @@
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
 <use>
-<flag name='idle'>no description</flag>
-<flag name='notify-osd'>no description</flag>
-<flag name='srv'>no description</flag>
-<flag name='trayicon'>no description</flag>
-<flag name='xhtml'>no description</flag>
 </use>
 </pkgmetadata>
