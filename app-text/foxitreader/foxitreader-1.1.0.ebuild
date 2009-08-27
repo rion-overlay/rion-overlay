@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror strip"
 DEPEND=""
-RDEPEND="x11-base/xorg-x11
+RDEPEND="x11-base/xorg-server
+		>net-print/cups-1.3
 		amd64? ( app-emulation/emul-linux-x86-xlibs
 				app-emulation/emul-linux-x86-gtklibs )"
 
