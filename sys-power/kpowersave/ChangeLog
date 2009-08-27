@@ -1,6 +1,14 @@
 # ChangeLog for sys-power/kpowersave
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-power/kpowersave/ChangeLog,v 1.23 2008/11/12 04:07:54 josejx Exp $
+
+  27 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -kpowersave-0.7.3-r1.ebuild, +kpowersave-0.7.3-r2.ebuild, metadata.xml:
+  drop ppc keyword
+
+  27 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -kpowersave-0.7.3-r1.ebuild, +kpowersave-0.7.3-r2.ebuild:
+  revision bump
 
   12 Nov 2008; Joseph Jezak <josejx@gentoo.org> kpowersave-0.7.3.ebuild:
   Marked ~ppc for bug #200266.
