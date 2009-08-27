@@ -57,6 +57,6 @@ src_install() {
 	dogamesbin "${T}/oolite"
 	prepgamesdirs "${GNUSTEP_LOCAL_ROOT}/Applications"
 	fperms ug+x "${GNUSTEP_LOCAL_ROOT}/Applications/oolite.app/oolite"
-	doicon FreeDesktop/oolite-icon.png 
+	doicon FreeDesktop/oolite-icon.png
 	domenu FreeDesktop/oolite.desktop
 }

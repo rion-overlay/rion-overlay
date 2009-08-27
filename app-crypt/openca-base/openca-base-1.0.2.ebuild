@@ -16,7 +16,7 @@ RESTRICT="mirror"
 
 LICENSE="OpenCA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86"
 IUSE="dbm mysql +postgres ldap vhosts sasl ca-only ra-only node-only scep
 full-install db2"
 DEPEND="
@@ -47,7 +47,7 @@ DEPEND="
 	 	dev-perl/XML-Twig
 	 	dev-perl/CGI-Session
 	 	dev-perl/net-server
-	 	dev-perl/Convert-ASN1i"
+	 	dev-perl/Convert-ASN1"
 #	 	virtual/perl-OpenCA "
 RDEPEND="${DEPEND}"
 src_configure() {
@@ -122,7 +122,7 @@ myconf=" \
 #Disable Perl Module Build ; Use system module
 
 	cp "${FILESDIR}"/Makefile.perl-disable-1.0.2 "${S}"/src/ext-modules/Makefile || die
-	
+
 	cp "${FILESDIR}"/Makefile.perl-disable-1.0.2 "${S}"/src/modules/Makefile || die
 }
 src_compile(){
@@ -158,9 +158,9 @@ src_install () {
 # Not work , upstaream bug
 # 	make   DEST_DIR="${D}" install-doc ||die "install failed"
 
-	
+
 	doman docs/man3/base.3
-	dodoc CHANGES HISTORY I18N INSTALL README  
+	dodoc CHANGES HISTORY I18N INSTALL README
 	dodoc README RELEASE-NOTES STATUS THANKS
 	dodoc VERSION
 #	dodir "${MY_HOSTROOTDIR}"/${PF}

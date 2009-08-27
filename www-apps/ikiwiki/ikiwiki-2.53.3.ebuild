@@ -45,5 +45,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "Install failed"
-	rm ${D}/usr/lib/perl5/*/*/perllocal.pod
+	rm "${D}"/usr/lib/perl5/*/*/perllocal.pod
 }
