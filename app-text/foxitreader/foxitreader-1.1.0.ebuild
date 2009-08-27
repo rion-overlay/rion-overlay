@@ -16,7 +16,7 @@ IUSE=""
 RESTRICT="mirror strip"
 DEPEND=""
 RDEPEND="x11-base/xorg-server
-		>net-print/cups-1.3
+		>=net-print/cups-1.3
 		=x11-libs/gtk+-2*[X,cups,jpeg]
 		x11-libs/pango
 		x11-libs/cairo[X,opengl,xcb,svg]
