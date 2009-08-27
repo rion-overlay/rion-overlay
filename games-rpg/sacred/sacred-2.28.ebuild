@@ -48,12 +48,12 @@ pkg_setup() {
 	ewarn ""
 	# Dirty hack with sed :(
 	(check_reqs | sed -e "s/\${T}/your\ system/g") || die "Checking of requirements is failed."
-        enewgroup games 35
+	enewgroup games 35
 }
 
 src_install() {
 	dodir /opt/${PN}
-	cd $S
+	cd "${S}"
 	chown -R games:games ./*
 	cp -R . "${D}"/opt/${PN}
 	dodir /usr/games/bin

@@ -41,7 +41,7 @@ src_unpack() {
 
 	# patch breaks booting for some people #111885
 	rm "${WORKDIR}"/patch/400_*
-	
+
 	# copy suse patches and remove useless splash patch
 	rm "${WORKDIR}"/patch/001_*
 	for i in `ls -1 "${FILESDIR}/suse"`; do

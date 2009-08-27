@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.gnu.org/gnu/${PN}/${PN}-${MY_PV}.tar.gz"
 RESTRICT="mirror"
 
 IUSE=""
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="LGPL-2"
 SLOT="0"
 
@@ -24,7 +24,7 @@ S="${WORKDIR}"/"${PN}"-"${MY_PV}"
 
 src_compile() {
 	econf || die "econf failed"
-	emake -j1 || die "emake failed"
+	make || die "emake failed"
 }
 
 src_install() {
