@@ -1,7 +1,8 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:
+# $Header: $
 
+EAPI="1"
 inherit cmake-utils eutils multilib python git
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
