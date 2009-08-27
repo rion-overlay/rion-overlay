@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-2.0.5-r2.ebuild,v 1.2 2009/05/20 22:39:08 caleb Exp $
+# $Header: $
 
 inherit eutils multilib subversion
 
@@ -17,7 +17,7 @@ HOMEPAGE="http://www.ejabberd.im/"
 ESVN_REPO_URI="http://svn.process-one.net/ejabberd/trunk"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="debug mod_irc mod_muc mod_pubsub ldap odbc pam ssl web zlib"
 
 DEPEND=">=net-im/jabber-base-0.01

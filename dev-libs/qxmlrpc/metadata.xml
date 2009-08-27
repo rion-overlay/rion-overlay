@@ -8,7 +8,5 @@
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
 <use>
-<flag name='id3'>for ID3, Vorbis, FLAC and APE</flag>
-<flag name='gsf'>add support for OLE, OLE2 and ODF</flag>
 </use>
 </pkgmetadata>

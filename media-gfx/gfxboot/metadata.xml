@@ -8,5 +8,10 @@
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
 <use>
+<flag name='themes'> </flag>
+<flag name='animate'> </flag>
+<flag name='speech'> </flag>
+<flag name='beep'> </flag>
+<flag name='preview'> </flag>
 </use>
 </pkgmetadata>
