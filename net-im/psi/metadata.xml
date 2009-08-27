@@ -9,5 +9,6 @@
 <use>
   <flag name="powersave">Disables some timers like animation and some other not
   critical timers what make Psi require much less CPU time.</flag>
+  <flag name='plugins'> add plugin support</flag>
 </use>
 </pkgmetadata>

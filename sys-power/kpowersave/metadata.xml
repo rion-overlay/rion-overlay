@@ -6,4 +6,7 @@
     <email>genstef@gentoo.org</email>
     <name>Stefan Schweizer</name>
   </maintainer>
+ <use>
+ <flag name='icons'> add adittional icon set</flag>
+ </use>
 </pkgmetadata>

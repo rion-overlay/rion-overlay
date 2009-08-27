@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/sys-power/kpowersave/kpowersave-0.7.3-r1.ebuild,v 1.1 2009/03/23 21:54:05 AntiCrust Exp $
 
+EAPI="1"
+
 inherit kde eutils
 
 PATCH_LEVEL=3
@@ -14,14 +16,14 @@ SRC_URI="mirror://sourceforge/powersave/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=sys-apps/hal-0.5.4
 	dev-libs/dbus-qt3-old
 	x11-libs/libXScrnSaver
 	x11-libs/libXext
 	x11-libs/libXtst
-	>=kde-base/kdelibs-3"
+	kde-base/kdelibs:3.5"
 DEPEND="${RDEPEND}"
 IUSE="icons"
 need-kde 3.5.7
@@ -35,7 +37,7 @@ src_unpack() {
 	if use icons; then
 		cd ${P}
 		epatch "${FILESDIR}/${P}-icons.patch"
-	fi	
+	fi
 }
 
 pkg_postinst() {
