@@ -5,7 +5,7 @@
 # support ebuild: rion issue
 EAPI=2
 
-inherit eutils rpm
+inherit eutils rpm multilib
 DESCRIPTION="FOREX trading and technical analis terminal"
 HOMEPAGE="http://www.fxclub.org/tools_soft_rumus2"
 SRC_URI="http://download.fxclub.org/"${PN}"/FxClub/"${PN}".rpm -> "${P}.rpm""
@@ -18,13 +18,24 @@ IUSE="doc"
 
 DEPEND=""
 RDEPEND="virtual/opengl
-		x11-libs/qt:3"
+		x11-libs/qt:3
+	 "
 
 # This is binary qt package
 
 S="${WORKDIR}"/usr/local
 
+
+# Сделано по быстрому,
+# TODO: desctop icons, DE menu file
+
+src_unpack () {
+default
+}
+
 src_install() {
+	
+	
 	
 	dodir /opt/"${P}"
 	dodir /opt/"${P}"/bin
@@ -32,15 +43,17 @@ src_install() {
 	doexe  "${S}"/bin/rumus
 
 
+	dodir /usr/share/apps/rumus2
+	insinto //usr/share/apps/rumus2
+	doins -r "${S}"/share/apps/rumus2/strategy
 
-	insinto /opt/"${P}"
-	doins -r "${S}"/lib
-	doins -r "${S}"/share
-
+	dodir /lib/
+	dolib -r "${S}"/lib/
 	if use doc; then
 		insinto /opt/"${P}"
 		doins -r "${S}"/help.tar.gz
 	fi
+	dodir /etc
 
 	make_wrapper Rumus2 /opt/"${P}"/bin/rumus  /opt/"${P}"/lib
 
