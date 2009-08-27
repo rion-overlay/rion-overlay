@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/fftv/${P}.tar.bz2"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="tcron zlib mmx v4l vorbis oss lirc mp3"
+IUSE="zlib mmx v4l vorbis oss lirc mp3"
 
 DEPEND=">=x11-libs/gtk+-2
 	lirc? ( app-misc/lirc )"
@@ -63,7 +63,3 @@ src_install() {
 	dohtml -r doc/*.html
 }
 
-pkg_postinst() {
-	einfo "If you plan to use fftv with shedule options enabled you must reinstall fftv"
-	einfo "package with tcron use flag and add /etc/init.d/tcron to your default init level."
-}

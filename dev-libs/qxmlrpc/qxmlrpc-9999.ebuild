@@ -10,7 +10,7 @@ DESCRIPTION="XML-RPC library written with Qt in mind"
 HOMEPAGE="http://code.google.com/p/qxmlrpc/"
 ESVN_REPO_URI="http://backharddi.ideseneca.es/svn/tags/unstable/backharddi-net/monitor/qxmlrpc/"
 
-LICENSE="LGPL"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
