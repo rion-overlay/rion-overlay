@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="1"
 inherit git autotools
 
 DESCRIPTION="Support library to communicate with iPhone/iPod touch"
@@ -18,12 +19,12 @@ DEPEND="${RDEPEND}"
 
 src_unpack() {
 	git_src_unpack || die "unpack failed"
-	cd ${S}
+	cd "${S}"
 	eautoreconf || die "reconf failed"
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS COPYING README
+	dodoc AUTHORS README
 }
 

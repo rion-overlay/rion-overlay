@@ -24,7 +24,12 @@ DEPEND="|| (
 	dev-util/intltool
 	dev-util/pkgconfig"
 
-RDEPEND="${DEPEND}
+RDEPEND="|| (
+			 ( <dev-lang/python-2.5 dev-python/pysqlite )
+			 >=dev-lang/python-2.5[sqlite]
+		)
+	dev-python/pygtk
+	sys-devel/gettext
 	dbus? ( dev-python/dbus-python dev-libs/dbus-glib )
 	libnotify? ( x11-libs/libnotify )
 	notify-osd? ( x11-misc/notify-osd )
@@ -43,7 +48,7 @@ src_prepare() {
 	# sound paths:
 	epatch "${FILESDIR}/0.12.1-sound-path-fix.patch"
 	# notify-osd patch:
-	use notify-osd && epatch "${FILESDIR}/${PN}-notify-osd.patch" 
+	use notify-osd && epatch "${FILESDIR}/${PN}-notify-osd.patch"
 
 	# fix datadir path (trunk use an env var for config this)
 	sed -i "s|'DATA',.*|'DATA', '/usr/share/gajim/data')|" \
