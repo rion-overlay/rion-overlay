@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-
+EAPI="2"
 MY_PN="FoxitReader"
 
 DESCRIPTION="Foxit Reader is a small,fast PDF viewer (Linux version)"
@@ -17,6 +17,13 @@ RESTRICT="mirror strip"
 DEPEND=""
 RDEPEND="x11-base/xorg-server
 		>net-print/cups-1.3
+		=x11-libs/gtk+-2*[X,cups,jpeg]
+		x11-libs/pango
+		x11-libs/cairo[X,opengl,xcb,svg]
+		media-libs/freetype:2[X]
+		net-libs/gnutls
+		dev-libs/libgcrypt
+		dev-libs/libgpg-error
 		amd64? ( app-emulation/emul-linux-x86-xlibs
 				app-emulation/emul-linux-x86-gtklibs )"
 
