@@ -6,4 +6,8 @@
   <email>troll@gentoo.org</email>
 </maintainer>
   <longdescription>Psi is a very good jabber client that uses QT</longdescription>
+<use>
+  <flag name="powersave">Disables some timers like animation and some other not
+  critical timers what make Psi require much less CPU time.</flag>
+</use>
 </pkgmetadata>
