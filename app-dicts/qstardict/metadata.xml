@@ -7,4 +7,8 @@
 		<email>rion4ik@gmail.com</email>
 	</maintainer>
 	<longdescription>Cool stardict clone written with Qt</longdescription>
+<use>
+<flag name='plugin_stardict'>no DESCRIPTION</flag>
+<flag name='plugin_web'>no DESCRIPTION</flag>
+</use>
 </pkgmetadata>
