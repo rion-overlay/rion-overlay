@@ -10,7 +10,7 @@ DESCRIPTION="Small xml-rpc demo app"
 HOMEPAGE="http://code.google.com/p/rion-pg"
 ESVN_REPO_URI="http://rion-pg.googlecode.com/svn/trunk/trunk/daemon"
 
-LICENSE="GPL-333"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
