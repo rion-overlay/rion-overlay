@@ -16,14 +16,7 @@ IUSE=""
 RESTRICT="mirror strip"
 DEPEND=""
 RDEPEND="x11-base/xorg-server
-		>=net-print/cups-1.3
-		=x11-libs/gtk+-2*[X,cups,jpeg]
-		x11-libs/pango
-		x11-libs/cairo[X,opengl,xcb,svg]
-		media-libs/freetype:2[X]
-		net-libs/gnutls
-		dev-libs/libgcrypt
-		dev-libs/libgpg-error
+		=x11-libs/gtk+-2*[X,cups]
 		amd64? ( app-emulation/emul-linux-x86-xlibs
 				app-emulation/emul-linux-x86-gtklibs )"
 
@@ -37,6 +30,4 @@ src_install() {
 	cp "${S}"/fum.fhd	"${D}"/opt/"${MY_PN}" || die
 	mv "${S}"/po	"${D}"/opt/"${MY_PN}"  || die
 	dodoc "${S}"/Readme.txt
-
-
 }
