@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>no-herd</herd>
+  <maintainer>
+    <email>rion4ik@gmail.com</email>
+    <name>Il'inykh Sergey</name>
+  </maintainer>
+  <longdescription lang="en">
+   Small XML-RPC daemon which was done as test task to one job.
+   Daemon downloads some http data and put it into database each
+   30 secs. User can send XML-RPC message to the daemon to get
+   last dowloaded data or force update.
+  </longdescription>
+</pkgmetadata>

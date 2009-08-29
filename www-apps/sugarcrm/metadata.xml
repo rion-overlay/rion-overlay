@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+ <description>Open Source CRM</description>
+</maintainer>
+<use>
+<flag name='json'>Add JSON (JavaScript Object Notation) support</flag>
+</use>
+
+</pkgmetadata>
