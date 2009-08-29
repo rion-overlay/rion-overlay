@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>rion-overlay</herd>
+<maintainer>
+  <email>@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <longdescription>Long description of the package</longdescription> 
+<use>
+<flag name='idle'>no description</flag>
+<flag name='notify-osd'>no description</flag>
+<flag name='srv'>no description</flag>
+<flag name='trayicon'>no description</flag>
+<flag name='xhtml'>no description</flag>
+</use>
+</pkgmetadata>
