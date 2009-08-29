@@ -16,8 +16,7 @@ IUSE="addition debug fastcgi flv imap ipv6 pcre perl random-index securelink ssl
 DEPEND="dev-lang/perl
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	ssl? ( dev-libs/openssl )
-	zlib? ( sys-libs/zlib )
-	perl? ( >=dev-lang/perl-5.8 )"
+	zlib? ( sys-libs/zlib )"
 
 pkg_setup() {
 	ebegin "Creating nginx user and group"
