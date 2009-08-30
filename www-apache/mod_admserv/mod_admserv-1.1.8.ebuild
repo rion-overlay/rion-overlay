@@ -2,7 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit apache-module ssl-cert eutils
+EAPI="1"
+
+inherit apache-module ssl-cert eutils autotools
+
 
 KEYWORDS="~amd64 ~x86"
 
@@ -17,7 +20,8 @@ DEPEND=">=dev-libs/mozldap-6.0.2
 	>=dev-libs/389-adminutil-1.1.3
 	>=dev-libs/nss-3.11.4
 	>=dev-libs/nspr-4.6.4
-	>=dev-libs/icu-3.4"
+	>=dev-libs/icu-3.4
+	>=dev-libs/apr-util-1.3.9-r100[mozldap,ldap]"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/389-admin-${PV}/${PN}"
@@ -51,6 +55,12 @@ pkg_setup() {
 		eerror ""
 		die "ldap USE-flag enabled while not supported in dev-libs/apr-util"
 	fi
+}
+
+src_unpack() {
+	unpack "${A}"
+	cd "${S}"
+	 eautoreconf
 }
 
 src_compile() {
