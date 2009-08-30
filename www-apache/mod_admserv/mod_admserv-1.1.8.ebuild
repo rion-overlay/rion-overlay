@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
+EAPI="2"
 
 inherit apache-module ssl-cert eutils autotools
 
@@ -33,33 +33,8 @@ DOCFILES="LICENSE README"
 
 need_apache2
 
-pkg_setup() {
-	if ! built_with_use 'dev-libs/apr-util' mozldap ; then
-		eerror "dev-libs/apr-util is missing Mozilla LDAP support. For apache to have"
-		eerror "mozldap support, apr-util must be built with the mozldap USE-flag"
-		eerror "enabled."
-		eerror ""
-		eerror "plz remerge dev-libs/apr-util and www-server/apache with mozldap useflag"
-		eerror "enabled."
-		eerror ""
-		die "mozldap USE-flag enabled while not supported in apr-util"
-	fi
 
-	if ! built_with_use 'dev-libs/apr-util' ldap ; then
-		eerror "dev-libs/apr-util is missing LDAP support. For apache to have"
-		eerror "ldap support, dev-libs/apr-util & www-server/apache must be built"
-		eerror "with the ldap USE-flag enabled."
-		eerror ""
-		eerror "plz remerge dev-libs/apr-util & www-server/apache with ldap useflag"
-		eerror "enabled."
-		eerror ""
-		die "ldap USE-flag enabled while not supported in dev-libs/apr-util"
-	fi
-}
-
-src_unpack() {
-	unpack "${A}"
-	cd "${S}"
+src_prepare() {
 	 eautoreconf
 }
 
