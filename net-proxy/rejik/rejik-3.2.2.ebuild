@@ -17,7 +17,7 @@ RESTRICT="mirror"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="+banlis +dbl"
+IUSE="+banlist +dbl"
 # TODO errorwww
 DEPEND="dev-libs/libpcre:3"
 RDEPEND="net-proxy/squid

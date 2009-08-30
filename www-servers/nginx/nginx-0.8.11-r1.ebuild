@@ -17,6 +17,7 @@ DEPEND="dev-lang/perl
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	ssl? ( dev-libs/openssl )
 	zlib? ( sys-libs/zlib )"
+RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	ebegin "Creating nginx user and group"
@@ -32,8 +33,8 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}.1-memcached-fix.patch
+	cd "${S}"
+	epatch "${FILESDIR}"/"${P}".1-memcached-fix.patch
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die
 }
 
