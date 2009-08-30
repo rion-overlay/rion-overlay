@@ -8,15 +8,20 @@ MY_V=1.1.3
 
 DESCRIPTION="A Java based remote management console used for Managing Fedora Administration / Directory Server."
 HOMEPAGE="http://directory.fedoraproject.org/"
-SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
+SRC_URI="http://port389.org/sources/fedora-idm-console-${PV}.tar.bz2
+	http://ftp.mars.arge.at/389-ds/1.1.x/fedora-idm-console-${PV}.tar.bz2
+	http://www.nongnu.org/smc/docs/smc-presentation2/pix/fedora.png"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+S=${WORKDIR}/fedora-idm-console-${PV}
+
 COMMON_DEP="=dev-java/jss-4*
 	>=dev-java/ldapsdk-4.0
-	>=dev-java/idm-console-framework-1.1"
+	>=dev-java/idm-console-framework-1.1
+	!app-admin/fedora-idm-console"
 RDEPEND="=virtual/jre-1.5*
 	${COMMON_DEP}"
 DEPEND=">=virtual/jdk-1.5
@@ -39,11 +44,11 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_newjar "${S}"/build/fedora-idm-console-${MY_V}_en.jar fedora-idm-console_en.jar
+	java-pkg_newjar "${S}"/build/fedora-idm-console-${MY_V}_en.jar 389-idm-console_en.jar
 	java-pkg_dolauncher ${PN} --main com.netscape.management.client.console.Console \
-				--pwd "/usr/share/dirsrv/java/" \
+				--pwd "/usr/share/dirsrv/html/java/" \
 				--pkg_args "-Djava.util.prefs.systemRoot=\"\$HOME/.${PN}\" -Djava.util.prefs.userRoot=\"\$HOME/.${PN}\""
 
-	newicon "${S}"/com/netscape/management/client/theme/images/logo32.gif fedora.gif
-	make_desktop_entry ${PN} "Fedora Management Console" fedora.gif Network
+	doicon "${DISTDIR}"/fedora.png
+	make_desktop_entry ${PN} "Port389 Management Console" fedora.png Network
 }
