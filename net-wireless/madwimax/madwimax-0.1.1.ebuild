@@ -23,7 +23,7 @@ src_configure() {
 
 src_compile() {
 	emake || die "emake failed"
-	cd ${S}/man
+	cd "${S}"/man
 	txt2man madwimax.8.txt > madwimax.8
 }
 

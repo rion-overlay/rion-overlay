@@ -9,7 +9,6 @@
  <longdescription>Light SQUID redirector/policy server</longdescription> 
 <use>
   <flag name='banlist'>Description of how USE='flag' affects this package</flag>
-  <flag name='errorwww'>Description of how USE='flag' affects this package</flag>
   <flag name='dbl'>Description of how USE='flag' affects this package</flag>
 </use>
 </pkgmetadata>

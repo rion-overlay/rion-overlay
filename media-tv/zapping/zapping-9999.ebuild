@@ -14,7 +14,7 @@ HOMEPAGE="http://zapping.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="arts esd lirc nls pam vdr zvbi X"
 
 DEPEND=">=gnome-base/libgnomeui-2.0
