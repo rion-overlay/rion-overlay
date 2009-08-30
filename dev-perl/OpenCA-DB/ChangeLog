@@ -1,0 +1,13 @@
+# ChangeLog for dev-perl/OpenCA-DB
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> OpenCA-DB-2.0.5.ebuild:
+  stable in x86
+
+*OpenCA-DB-2.0.5 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +OpenCA-DB-2.0.5.ebuild, +metadata.xml:
+  Initial recommit in my-dev overlay
+

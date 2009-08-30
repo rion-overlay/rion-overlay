@@ -1,0 +1,87 @@
+Submitted By: Mario Fetka (mario dot fetka at gmail dot com)
+Date: 2008-11-06
+Initial Package Version: 1.2.10
+Origin: me
+Upstream Status: #43172
+Description: make apr-util find mozldap 6.x and use it
+ 
+diff -Naur apr-util-1.3.4.orig/build/apu-conf.m4 apr-util-1.3.4/build/apu-conf.m4
+--- apr-util-1.3.4.orig/build/apu-conf.m4	2008-07-08 22:31:59.000000000 +0000
++++ apr-util-1.3.4/build/apu-conf.m4	2008-11-06 21:24:11.025003993 +0000
+@@ -205,6 +205,25 @@
+ ])
+ 
+ 
++dnl 
++dnl Find a particular LBER library
++dnl
++AC_DEFUN([APU_FIND_LBERLIB], [
++  if test ${apu_has_lber} != "1"; then
++    lberlib=$1
++    extralib=$2
++    unset ac_cv_lib_${lberlib}_ber_init
++    unset ac_cv_lib_${lberlib}___ber_init
++    AC_CHECK_LIB(${lberlib}, ber_init, 
++      [
++        APR_ADDTO(APRUTIL_EXPORT_LIBS,[-l${lberlib} ${extralib}])
++        APR_ADDTO(APRUTIL_LIBS,[-l${lberlib} ${extralib}])
++        apu_has_lber="1";
++      ], , ${extralib})
++  fi
++])
++
++
+ dnl
+ dnl APU_FIND_LDAP: figure out where LDAP is located
+ dnl
+@@ -213,6 +232,7 @@
+ echo $ac_n "${nl}checking for ldap support..."
+ 
+ apu_has_ldap="0";
++apu_has_lber="0";
+ apu_has_ldapssl_client_init="0"
+ apu_has_ldapssl_client_deinit="0"
+ apu_has_ldapssl_add_trusted_cert="0"
+@@ -250,6 +270,7 @@
+     LIBLDAP="$withval"
+     if test "$LIBLDAP" = "yes"; then
+ dnl The iPlanet C SDK 5.0 is as yet untested... 
++      APU_FIND_LDAPLIB("ldap60", "-liutil60 -llber60 -lldif60 -lprldap60 -lssldap60")
+       APU_FIND_LDAPLIB("ldap50", "-lnspr4 -lplc4 -lplds4 -liutil50 -llber50 -lldif50 -lnss3 -lprldap50 -lssl3 -lssldap50")
+       APU_FIND_LDAPLIB("ldapssl41", "-lnspr3 -lplc3 -lplds3")
+       APU_FIND_LDAPLIB("ldapssl40")
+@@ -269,7 +290,11 @@
+     fi
+ 
+     test ${apu_has_ldap} != "1" && AC_MSG_ERROR(could not find an LDAP library)
+-    AC_CHECK_LIB(lber, ber_init)
++    
++    echo $ac_n "${nl}checking for lber support..."
++
++    APU_FIND_LBERLIB("ldap60", "-liutil60 -llber60 -lldif60 -lprldap60 -lssldap60")
++    APU_FIND_LBERLIB("lber")
+ 
+     AC_CHECK_HEADERS(lber.h, lber_h=["#include <lber.h>"])
+ 
+@@ -288,7 +313,20 @@
+       AC_DEFINE([HAVE_LDAP_H], 1, [Defined if ldap.h is present])
+     fi
+ 
+-    AC_CHECK_HEADERS(ldap_ssl.h, ldap_ssl_h=["#include <ldap_ssl.h>"])
++    # Mozilla has a problem in <ldap_ssl.h> which prevents it from
++    # being included by itself.  Check for <ldap_ssl.h> manually,
++    # including ldap.h first.
++    AC_CACHE_CHECK([for ldap_ssl.h], [apr_cv_hdr_ldap_ssl_h],
++    [AC_TRY_CPP(
++    [#ifdef HAVE_LDAP_H
++    #include <ldap.h>
++    #endif
++    #include <ldap_ssl.h>
++    ], [apr_cv_hdr_ldap_ssl_h=yes], [apr_cv_hdr_ldap_ssl_h=no])])
++    if test "$apr_cv_hdr_ldap_ssl_h" = "yes"; then
++      ldap_ssl_h=["#include <ldap_ssl.h>"]
++      AC_DEFINE([HAVE_LDAP_SSL_H], 1, [Defined if ldap_ssl.h is present])
++    fi
+ 
+     if test "$apr_cv_hdr_ldap_h" = "yes"; then
+       AC_CACHE_CHECK([for LDAP toolkit],
