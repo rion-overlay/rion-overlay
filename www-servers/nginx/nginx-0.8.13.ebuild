@@ -34,7 +34,7 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/"${P}".1-memcached-fix.patch
+	[ -f "${FILESDIR}/${P}.1.patch" ] && epatch "${FILESDIR}"/"${P}".1.patch
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die
 }
 
