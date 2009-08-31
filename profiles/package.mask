@@ -1,3 +1,7 @@
+ipa-admintools
+net-nds/ipa-clien
+net-nds/ipa-server
+
 # 24 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for additional testing and ebuild rewrite requireq
 games-simulation/vegastrike
