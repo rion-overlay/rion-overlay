@@ -4,6 +4,7 @@
 
 EAPI=2
 
+NEED_PYTHON="2.5"
 inherit autotools python
 
 DESCRIPTION="Free-IPA server"
@@ -22,7 +23,6 @@ DEPEND="dev-libs/popt
 		dev-libs/svrcore
 		dev-libs/cyrus-sasl
 		dev-libs/mozldap
-		dev-lang/python
 		dev-python/turbogears
 	openldap? ( net-nds/openldap )
 	net-nds/389-ds-base
@@ -30,6 +30,8 @@ DEPEND="dev-libs/popt
 
 RDEPEND="${DEPEND}"
 S="${WORKDIR}"/"freeipa-${PV}/${PN}"
+
+python_need_rebuild
 
 src_prepare(){
 	# Set version
@@ -44,17 +46,6 @@ src_prepare(){
 src_configure() {
 	
 	econf $(use_with  openldap ) || die "econf failure"
-
-	# remowe redhat style init script and install
-	# Gentoo init 
-	#doinitd "${D}"etc/rc.d/init.d/ipa_kpasswd
-	#doinitd "${D}"etc/rc.d/init.d/ipa_webgui
-	#rm -fr "${D}"/etc/rc.d	|| die
-	
-	# keep dirs
-	keepdir var/lib/cache/ipa/kpasswd
-	keepdir var/lib/cache/ipa/sessions
-	keepdir var/lib/lib/ipa/sysrestore/
 }
 
 src_install() {
@@ -62,9 +53,11 @@ src_install() {
 
 	# remowe redhat style init script and install
 	# Gentoo init
-	doinitd "${D}"etc/rc.d/init.d/ipa_kpasswd
-	doinitd "${D}"etc/rc.d/init.d/ipa_webgui
-	rm -fr "${D}"/etc/rc.d || die
+
+	rm -fr "${D}"/etc/
+	dodir /etc/init.d
+	doinitd "${FILESDIR}"/ipa_kpasswd
+	doinitd "${FILESDIR}"/ipa_webgui
 
 	# keep dirs
 	keepdir var/lib/cache/ipa/kpasswd
@@ -75,6 +68,6 @@ src_install() {
 }
 pkg_postrm() {
 
-	python_mod_cleanup /usr/share/ipa/ipagui
+	python_mod_cleanup /usr/share/ipa/ipagui/
 }
 
