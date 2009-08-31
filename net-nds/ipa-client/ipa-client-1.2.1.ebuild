@@ -48,6 +48,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install  || die "emake failed"
+
 }
 
 pkg_postrm() {
