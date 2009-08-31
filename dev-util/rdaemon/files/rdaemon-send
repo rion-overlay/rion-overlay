@@ -1,0 +1,9 @@
+#!/bin/bash
+
+xml="<?xml version=\"1.0\"?>
+<methodCall>
+  <methodName>${@}</methodName>
+  <params/>
+</methodCall>"
+
+wget http://localhost:8080/RPC2 -O - --quiet --post-data="${xml}"
