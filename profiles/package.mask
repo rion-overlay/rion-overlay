@@ -1,4 +1,4 @@
-ipa-admintools
+app-admin/ipa-admintools
 net-nds/ipa-clien
 net-nds/ipa-server
 
