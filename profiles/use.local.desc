@@ -1,0 +1,15 @@
+# Copyright 1999-2008 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+# This file contains descriptions of local USE flags, and the ebuilds which
+# contain them.
+
+app-dicts/qstardict:plugin_stardict - Enables support for stardict dictionaries
+app-dicts/qstardict:plugin_web - Enables support for varios WEB dictionaries
+media-gfx/gfxboot:animate - Make animated penguins
+media-gfx/gfxboot:preview - Make it possible to preview themes
+media-gfx/gfxboot:speech - Add speech support
+media-gfx/gfxboot:themes - Install standard SuSE themes
+net-im/psi:onewindow - Make roster and chat windows in one
+net-im/psi:powersave - Disablessome internal timers which eats CPU
+sys-power/kpowersave:icons - Enable support for beauty icons for each 10% of charge

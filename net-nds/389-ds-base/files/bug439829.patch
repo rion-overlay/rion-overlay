@@ -1,0 +1,299 @@
+Index: ldap/servers/slapd/detach.c
+===================================================================
+RCS file: /cvs/dirsec/ldapserver/ldap/servers/slapd/detach.c,v
+retrieving revision 1.6
+diff -u -8 -r1.6 detach.c
+--- ldap/servers/slapd/detach.c	10 Nov 2006 23:45:40 -0000	1.6
++++ ldap/servers/slapd/detach.c	2 Apr 2008 23:32:27 -0000
+@@ -71,17 +71,18 @@
+ #include "slap.h"
+ #include "fe.h"
+ 
+ #if defined(USE_SYSCONF) || defined(LINUX)
+ #include <unistd.h>
+ #endif /* USE_SYSCONF */
+ 
+ void
+-detach()
++detach( int slapd_exemode, int importexport_encrypt,
++        int s_port, daemon_ports_t *ports_info )
+ {
+ #ifndef _WIN32
+ 	int		i, sd;
+ 	char *workingdir = 0;
+ 	char *errorlog = 0;
+ 	char *ptr = 0;
+ 	char errorbuf[BUFSIZ];
+ 	extern char *config_get_errorlog(void);
+@@ -103,16 +104,22 @@
+ 				break;
+ 
+ 			default:
+ 				_exit( 0 );
+ 			}
+ 			break;
+ 		}
+ 
++		/* call this right after the fork, but before closing stdin */
++		if (slapd_do_all_nss_ssl_init(slapd_exemode, importexport_encrypt,
++									  s_port, ports_info)) {
++			exit(1);
++		}
++
+ 		workingdir = config_get_workingdir();
+ 		if ( NULL == workingdir ) {
+ 			errorlog = config_get_errorlog();
+ 			if ( NULL == errorlog ) {
+ 				(void) chdir( "/" );
+ 			} else {
+ 				if ((ptr = strrchr(errorlog, '/')) ||
+ 					(ptr = strrchr(errorlog, '\\'))) {
+@@ -145,17 +152,22 @@
+ #else /* USE_SETSID */
+ 		if ( (sd = open( "/dev/tty", O_RDWR )) != -1 ) {
+ 			(void) ioctl( sd, TIOCNOTTY, NULL );
+ 			(void) close( sd );
+ 		}
+ #endif /* USE_SETSID */
+ 
+ 		g_set_detached(1);
+-	} 
++	} else { /* not detaching - call nss/ssl init */
++		if (slapd_do_all_nss_ssl_init(slapd_exemode, importexport_encrypt,
++									  s_port, ports_info)) {
++			exit(1);
++		}
++	}
+ 
+ 	(void) SIGNAL( SIGPIPE, SIG_IGN );
+ #endif /* _WIN32 */
+ }
+ 
+ 
+ #ifndef _WIN32
+ /*
+Index: ldap/servers/slapd/main.c
+===================================================================
+RCS file: /cvs/dirsec/ldapserver/ldap/servers/slapd/main.c,v
+retrieving revision 1.22
+diff -u -8 -r1.22 main.c
+--- ldap/servers/slapd/main.c	18 Oct 2007 00:08:34 -0000	1.22
++++ ldap/servers/slapd/main.c	2 Apr 2008 23:32:28 -0000
+@@ -896,58 +896,24 @@
+ 	return_value = main_setuid(slapdFrontendConfig->localuser);
+ 	if (0 != return_value) {
+ 		LDAPDebug( LDAP_DEBUG_ANY, "Failed to change user and group identity to that of %s\n",
+ 				   slapdFrontendConfig->localuser, 0, 0 );
+ 		exit(1);
+ 	}
+ #endif
+ 
+-	/*
+-	 * Initialise NSS once for the whole slapd process, whether SSL
+-	 * is enabled or not. We use NSS for random number generation and
+-	 * other things even if we are not going to accept SSL connections.
+-	 * We also need NSS for attribute encryption/decryption on import and export.
+-	 */
+-	init_ssl = ( (slapd_exemode == SLAPD_EXEMODE_SLAPD) || importexport_encrypt) 
+-				&& config_get_security()
+-				&& (0 != s_port) && (s_port <= LDAP_PORT_MAX);
+-	/* As of DS 6.1, always do a full initialization so that other
+-	 * modules can assume NSS is available
+-	 */
+-	if ( slapd_nss_init((slapd_exemode == SLAPD_EXEMODE_SLAPD),
+-			(slapd_exemode != SLAPD_EXEMODE_REFERRAL) /* have config? */ )) {
+-		 LDAPDebug(LDAP_DEBUG_ANY,
+-					"ERROR: NSS Initialization Failed.\n", 0, 0, 0);
+-		 exit (1);
+-	}
+-
+-	if (slapd_exemode == SLAPD_EXEMODE_SLAPD) {
+-		client_auth_init();
+-	}
+-
+-	if ( init_ssl && ( 0 != slapd_ssl_init())) {
+-		LDAPDebug(LDAP_DEBUG_ANY,
+-					"ERROR: SSL Initialization Failed.\n", 0, 0, 0 );
+-		exit( 1 );
+-	}
+-
+-	if ((slapd_exemode == SLAPD_EXEMODE_SLAPD) ||
+-		(slapd_exemode == SLAPD_EXEMODE_REFERRAL)) {
+-		if ( init_ssl ) {
+-			PRFileDesc **sock;
+-			for (sock = ports_info.s_socket; sock && *sock; sock++) {
+-				if ( 0 != slapd_ssl_init2(sock, 0) ) {
+-					LDAPDebug(LDAP_DEBUG_ANY,
+-					  "ERROR: SSL Initialization phase 2 Failed.\n", 0, 0, 0 );
+-					exit( 1 );
+-				}
+-			}
+-		}
+-	}
++    /* Do NSS and/or SSL init for those modes other than listening modes */
++    if ((slapd_exemode != SLAPD_EXEMODE_REFERRAL) &&
++        (slapd_exemode != SLAPD_EXEMODE_SLAPD)) {
++        if (slapd_do_all_nss_ssl_init(slapd_exemode, importexport_encrypt,
++                                      s_port, &ports_info)) {
++            return 1;
++        }
++    }
+ 
+ 	/*
+ 	 * if we were called upon to do special database stuff, do it and be
+ 	 * done.
+ 	 */
+ 	switch ( slapd_exemode ) {
+ 	case SLAPD_EXEMODE_LDIF2DB:
+ 		return slapd_exemode_ldif2db();
+@@ -997,17 +963,18 @@
+ 
+ 	/*
+ 	 * Detach ourselves from the terminal (unless running in debug mode).
+ 	 * We must detach before we start any threads since detach forks() on
+ 	 * UNIX.
+ 	 * Have to detach after ssl_init - the user may be prompted for the PIN
+ 	 * on the terminal, so it must be open.
+ 	 */
+-	detach();
++	detach(slapd_exemode, importexport_encrypt,
++           s_port, &ports_info);
+ 
+   /*
+    * Now write our PID to the startup PID file.
+    * This is used by the start up script to determine our PID quickly
+    * after we fork, without needing to wait for the 'real' pid file to be
+    * written. That could take minutes. And the start script will wait
+    * that long looking for it. With this new 'early pid' file, it can avoid
+    * doing that, by detecting the pid and watching for the process exiting.
+@@ -2880,8 +2847,72 @@
+ 				"values with a + character, e.g., all of the following"
+ 				" have the same effect:\n"
+ 				"    -d connections+filters\n"
+ 				"    -d 8+32\n"
+ 				"    -d 40\n" );
+ }
+ #endif /* LDAP_DEBUG */
+ 
++/*
++  This function does all NSS and SSL related initialization
++  required during startup.  We use this function rather
++  than just call this code from main because we must perform
++  all of this initialization after the fork() but before
++  we detach from the controlling terminal.  This is because
++  the NSS softokn requires that NSS_Init is called after the
++  fork - this was always the case, but it is a hard error in
++  NSS 3.11.99 and later.  We also have to call NSS_Init before
++  doing the detach because NSS may prompt the user for the
++  token (h/w or softokn) password on stdin.  So we use this
++  function that we can call from detach() if running in 
++  regular slapd exemode or from main() if running in other
++  modes (or just not detaching).
++*/
++int
++slapd_do_all_nss_ssl_init(int slapd_exemode, int importexport_encrypt,
++                          int s_port, daemon_ports_t *ports_info)
++{
++	/*
++	 * Initialise NSS once for the whole slapd process, whether SSL
++	 * is enabled or not. We use NSS for random number generation and
++	 * other things even if we are not going to accept SSL connections.
++	 * We also need NSS for attribute encryption/decryption on import and export.
++	 */
++	int init_ssl = ( (slapd_exemode == SLAPD_EXEMODE_SLAPD) || importexport_encrypt) 
++        && config_get_security()
++        && (0 != s_port) && (s_port <= LDAP_PORT_MAX);
++	/* As of DS 6.1, always do a full initialization so that other
++	 * modules can assume NSS is available
++	 */
++	if ( slapd_nss_init((slapd_exemode == SLAPD_EXEMODE_SLAPD),
++                        (slapd_exemode != SLAPD_EXEMODE_REFERRAL) /* have config? */ )) {
++        LDAPDebug(LDAP_DEBUG_ANY,
++                  "ERROR: NSS Initialization Failed.\n", 0, 0, 0);
++        exit (1);
++	}
++
++	if (slapd_exemode == SLAPD_EXEMODE_SLAPD) {
++        client_auth_init();
++	}
++
++	if ( init_ssl && ( 0 != slapd_ssl_init())) {
++		LDAPDebug(LDAP_DEBUG_ANY,
++                  "ERROR: SSL Initialization Failed.\n", 0, 0, 0 );
++		exit( 1 );
++	}
++
++	if ((slapd_exemode == SLAPD_EXEMODE_SLAPD) ||
++		(slapd_exemode == SLAPD_EXEMODE_REFERRAL)) {
++		if ( init_ssl ) {
++			PRFileDesc **sock;
++			for (sock = ports_info->s_socket; sock && *sock; sock++) {
++				if ( 0 != slapd_ssl_init2(sock, 0) ) {
++					LDAPDebug(LDAP_DEBUG_ANY,
++                              "ERROR: SSL Initialization phase 2 Failed.\n", 0, 0, 0 );
++					exit( 1 );
++				}
++			}
++		}
++	}
++
++    return 0;
++}
+Index: ldap/servers/slapd/proto-slap.h
+===================================================================
+RCS file: /cvs/dirsec/ldapserver/ldap/servers/slapd/proto-slap.h,v
+retrieving revision 1.31
+diff -u -8 -r1.31 proto-slap.h
+--- ldap/servers/slapd/proto-slap.h	18 Oct 2007 01:22:29 -0000	1.31
++++ ldap/servers/slapd/proto-slap.h	2 Apr 2008 23:32:28 -0000
+@@ -478,17 +478,18 @@
+  * delete.c
+  */
+ void do_delete( Slapi_PBlock *pb );
+ 
+ 
+ /*
+  * detach.c
+  */
+-void detach( void );
++void detach( int slapd_exemode, int importexport_encrypt,
++             int s_port, daemon_ports_t *ports_info );
+ #ifndef _WIN32
+ void close_all_files( void );
+ #endif
+ void raise_process_limits( void );
+ 
+ 
+ /*
+  * dn.c
+@@ -874,17 +875,16 @@
+ int slapd_sasl_ext_client_bind( LDAP* ld, int **msgid);
+ int slapd_nss_init(int init_ssl, int config_available);
+ int slapd_ssl_init();
+ int slapd_ssl_init2(PRFileDesc **fd, int startTLS);
+ int slapd_security_library_is_initialized();
+ int slapd_ssl_listener_is_initialized();
+ int sasl_io_cleanup(Connection *c);
+ 
+-
+ /*
+  * security_wrappers.c
+  */
+ int slapd_ssl_handshakeCallback(PRFileDesc *fd, void * callback, void * client_data);
+ int slapd_ssl_badCertHook(PRFileDesc *fd, void * callback, void * client_data);
+ CERTCertificate * slapd_ssl_peerCertificate(PRFileDesc *fd);
+ SECStatus slapd_ssl_getChannelInfo(PRFileDesc *fd, SSLChannelInfo *sinfo, PRUintn len);
+ SECStatus slapd_ssl_getCipherSuiteInfo(PRUint16 ciphersuite, SSLCipherSuiteInfo *cinfo, PRUintn len);
+@@ -1272,9 +1272,12 @@
+ #endif
+ 
+ /*
+  * main.c
+  */
+ #if ( defined( hpux ) || defined( irix ))
+ void signal2sigaction( int s, void *a );
+ #endif
++int slapd_do_all_nss_ssl_init(int slapd_exemode, int importexport_encrypt,
++                              int s_port, daemon_ports_t *ports_info);
++
+ #endif /* _PROTO_SLAP */
