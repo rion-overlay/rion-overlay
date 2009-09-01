@@ -15,6 +15,7 @@ IUSE=""
 
 DEPEND=">=app-arch/bzip2-1.0.2
 	>=dev-libs/libxml2-2.4.22"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	subversion_src_unpack
