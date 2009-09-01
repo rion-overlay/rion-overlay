@@ -14,7 +14,7 @@ LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="debug doc examples"
-RESTRICT="test"
+RESTRICT="test strip"
 
 DEPEND="
 	|| ( x11-libs/qt-core:4
