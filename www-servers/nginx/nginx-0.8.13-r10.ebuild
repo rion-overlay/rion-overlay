@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/nginx-0.8.10.ebuild,v 1.1 2009/08/24 13:58:06 voxus Exp $
+# $Header: $
 
 
 EAPI="2"
@@ -9,12 +9,12 @@ inherit eutils ssl-cert toolchain-funcs
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 
-HOMEPAGE="http://nginx.net/"
+HOMEPAGE="http://sysoev.ru/nginx/" # Именно =:)
 SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="aio perftool addition debug geoip fastcgi flv mail  ipv6 \
+IUSE="+aio perftool addition debug geoip fastcgi flv mail  ipv6 \
 		image-resize pcre cpp perl +rt-signal random-index \
 		securelink ssl status sub webdav xslt zlib"
 
