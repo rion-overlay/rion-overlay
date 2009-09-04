@@ -14,7 +14,7 @@ SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="+aio perftool addition debug geoip fastcgi flv mail  ipv6 \
+IUSE="+aio debug perftool addition debug geoip fastcgi flv mail  ipv6 \
 		image-resize pcre cpp perl +rt-signal random-index \
 		securelink ssl status sub webdav xslt zlib"
 
@@ -82,7 +82,7 @@ src_configure() {
 	use sub		&& myconf="${myconf} --with-http_sub_module"
 	use random-index	&& myconf="${myconf} --with-http_random_index_module"
 	use securelink && myconf="${myconf} --with-http_secure_link_module"
-
+	use debug		&& myconf="${myconf} --with-debug"
 	tc-export CC
 	./configure \
 		--prefix=/usr \
