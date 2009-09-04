@@ -22,5 +22,6 @@
 	<flag name='webdav'>Enables webdav support</flag>
 	<flag name='debug'>Enable the debugging logging</flag>
 	<flag name='cpp'>Enables experimental modiles written in C++</flag>
+	<flag name='mp4'>Add srd party module for MP4 stream</flag>
 </use>
 </pkgmetadata>

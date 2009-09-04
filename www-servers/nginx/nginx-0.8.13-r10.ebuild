@@ -12,12 +12,19 @@ DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://sysoev.ru/nginx/" # Именно =:)
 SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 		pam? (
-		http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )"
+				http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
+		mp4? (
+				http://i.6.cn/nginx_mp4_streaming_public_20081229.tar.bz2 )"
+
+
 LICENSE="BSD 
-		pam? ( as-is )"
+		pam? ( as-is )
+		mp4? ( CCPL-Attribution-NonCommercial-NoDerivs-2.5 )"
+
+
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="+aio debug perftool addition debug geoip fastcgi flv mail  ipv6 \
+IUSE="+aio debug perftool addition debug geoip fastcgi flv mail mp4 ipv6 \
 		image-resize pcre cpp perl pam +rt-signal random-index \
 		securelink ssl status sub webdav xslt zlib"
 
@@ -43,9 +50,10 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${P}.tar.gz
-	if use pam; then
-		 unpack "ngx_http_auth_pam_module-1.1.tar.gz"
-	fi
+
+	use pam && unpack "ngx_http_auth_pam_module-1.1.tar.gz"
+	
+	use mp4 && unpack "nginx_mp4_streaming_public_20081229.tar.bz2"
 }
 src_prepare() {
 	
@@ -54,19 +62,17 @@ src_prepare() {
 
 src_configure() {
 	local myconf=""
-#	if use kernel_linux ; then
-
-		use rt-signal 	&& myconf="${myconf} --with-rtsig_module "
-		use aio			&& myconf="${myconf} --with-file-aio "
-#	else
-#		eerror "Your platform not supported rt_signal() syscall"
-#	fi
+	
+	use rt-signal 	&& myconf="${myconf} --with-rtsig_module "
+	use aio			&& myconf="${myconf} --with-file-aio "
 	
 	use cpp 		&& myconf="${myconf} --with-cpp_test_module"
 	use perftool	&& myconf="${myconf}  --with-google_perftools_module"
+	
 	use xslt		 && myconf="${myconf}  --with-http_xslt_module"
 	use image-resize  && myconf="${myconf}  --with-http_image_filter_module"
 	use geoip		&& myconf="${myconf}  --with-http_geoip_module "
+	
 	use ssl     	&& myconf="${myconf} --with-http_ssl_module"
 	use addition && myconf="${myconf} --with-http_addition_module"
 	use ipv6	&& myconf="${myconf} --with-ipv6"
@@ -88,10 +94,13 @@ src_configure() {
 	use sub		&& myconf="${myconf} --with-http_sub_module"
 	use random-index	&& myconf="${myconf} --with-http_random_index_module"
 	use securelink && myconf="${myconf} --with-http_secure_link_module"
+	
 	use debug		&& myconf="${myconf} --with-debug"
+	
+	# 3rd party module
 	use pam	&& myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
-	
-	
+	use mp4 &&	myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
+
 	tc-export CC
 	./configure \
 		--prefix=/usr \
@@ -105,6 +114,7 @@ src_configure() {
 		--with-md5-asm --with-md5=/usr/include \
 		--with-sha1-asm --with-sha1=/usr/include \
 		${myconf} || die "configure failed"
+
 }
 src_compile() {
 	tc-export CC
