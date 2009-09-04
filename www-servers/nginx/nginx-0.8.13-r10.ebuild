@@ -10,12 +10,15 @@ inherit eutils ssl-cert toolchain-funcs
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 
 HOMEPAGE="http://sysoev.ru/nginx/" # Именно =:)
-SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz"
-LICENSE="BSD"
+SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
+		pam? (
+		http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )"
+LICENSE="BSD 
+		pam? ( as-is )"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE="+aio debug perftool addition debug geoip fastcgi flv mail  ipv6 \
-		image-resize pcre cpp perl +rt-signal random-index \
+		image-resize pcre cpp perl pam +rt-signal random-index \
 		securelink ssl status sub webdav xslt zlib"
 
 DEPEND="dev-lang/perl
@@ -39,7 +42,10 @@ pkg_setup() {
 }
 
 src_unpack() {
-	default
+	unpack ${P}.tar.gz
+	if use pam; then
+		 unpack "ngx_http_auth_pam_module-1.1.tar.gz"
+	fi
 }
 src_prepare() {
 	
@@ -83,6 +89,9 @@ src_configure() {
 	use random-index	&& myconf="${myconf} --with-http_random_index_module"
 	use securelink && myconf="${myconf} --with-http_secure_link_module"
 	use debug		&& myconf="${myconf} --with-debug"
+	use pam	&& myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
+	
+	
 	tc-export CC
 	./configure \
 		--prefix=/usr \
@@ -122,6 +131,7 @@ src_install() {
 		cd "${S}"/objs/src/http/modules/perl/
 		einstall DESTDIR="${D}"|| die "failed to install perl stuff"
 	}
+	use pam && newdoc "${WORKDIR}"/ngx_http_auth_pam_module-1.1/README README.pam
 }
 
 pkg_postinst() {
