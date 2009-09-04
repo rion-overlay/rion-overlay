@@ -20,6 +20,7 @@
 	<flag name='rt-signal'>Enable rt_singnal()  support;Linux kernel only</flag>
 	<flag name='xslt'>Enable xml/xslt module support</flag>
 	<flag name='webdav'>Enables webdav support</flag>
+	<flag name='debug'>Enable the debugging logging</flag>
 	<flag name='cpp'>Enables experimental modiles written in C++</flag>
 </use>
 </pkgmetadata>
