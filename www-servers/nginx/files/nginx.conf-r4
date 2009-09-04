@@ -4,7 +4,7 @@ worker_processes 1;
 error_log /var/log/nginx/error_log info;
 
 events {
-	worker_connections  8192;
+	worker_connections  1024;
 	use epoll;
 }
 
@@ -34,6 +34,10 @@ http {
 
 	output_buffers	1 32k;
 	postpone_output	1460;
+	
+	# aio on;
+	# directio 512;
+	# directio 4k; # If use XFS =:)
 
 	sendfile	on;
 	tcp_nopush	on;
