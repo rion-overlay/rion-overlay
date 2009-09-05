@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit autotools
+inherit
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="http://code.google.com/p/google-perftools/"
@@ -12,7 +12,7 @@ SRC_URI="http://google-perftools.googlecode.com/files/"${PN}"-"${PV}".tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="minimal"
 
