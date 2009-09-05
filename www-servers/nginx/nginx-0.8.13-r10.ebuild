@@ -14,22 +14,25 @@ SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 		pam? (
 				http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
 		mp4? (
-				http://i.6.cn/nginx_mp4_streaming_public_20081229.tar.bz2 )"
+				http://i.6.cn/nginx_mp4_streaming_public_20081229.tar.bz2 )
+		rrd? (
+				http://wiki.nginx.org/images/a/a6/Ngx_rrd_graph-0.1.tar.gz  )"
 
 
-LICENSE="BSD 
+LICENSE="BSD
 		pam? ( as-is )
 		mp4? ( CCPL-Attribution-NonCommercial-NoDerivs-2.5 )"
 
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+aio debug perftool addition debug geoip fastcgi flv mail mp4 ipv6 \
-		image-resize pcre cpp perl pam +rt-signal random-index \
+		image-resize pcre cpp perl pam +rt-signal random-index rrd \
 		securelink ssl status sub webdav xslt zlib"
 
 DEPEND="dev-lang/perl
 	geoip? ( dev-libs/geoip )
+	rrd? ( >=net-analyzer/rrdtool-1.3.8 )
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	ssl? ( dev-libs/openssl )
 	perftool? ( dev-libs/google-perftools )
@@ -52,27 +55,29 @@ src_unpack() {
 	unpack ${P}.tar.gz
 
 	use pam && unpack "ngx_http_auth_pam_module-1.1.tar.gz"
-	
+
 	use mp4 && unpack "nginx_mp4_streaming_public_20081229.tar.bz2"
+
+	use rrd && unpack "Ngx_rrd_graph-0.1.tar.gz"
 }
 src_prepare() {
-	
+
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die
 }
 
 src_configure() {
 	local myconf=""
-	
+
 	use rt-signal 	&& myconf="${myconf} --with-rtsig_module "
 	use aio			&& myconf="${myconf} --with-file-aio "
-	
+
 	use cpp 		&& myconf="${myconf} --with-cpp_test_module"
 	use perftool	&& myconf="${myconf}  --with-google_perftools_module"
-	
+
 	use xslt		 && myconf="${myconf}  --with-http_xslt_module"
 	use image-resize  && myconf="${myconf}  --with-http_image_filter_module"
 	use geoip		&& myconf="${myconf}  --with-http_geoip_module "
-	
+
 	use ssl     	&& myconf="${myconf} --with-http_ssl_module"
 	use addition && myconf="${myconf} --with-http_addition_module"
 	use ipv6	&& myconf="${myconf} --with-ipv6"
@@ -94,12 +99,16 @@ src_configure() {
 	use sub		&& myconf="${myconf} --with-http_sub_module"
 	use random-index	&& myconf="${myconf} --with-http_random_index_module"
 	use securelink && myconf="${myconf} --with-http_secure_link_module"
-	
+
 	use debug		&& myconf="${myconf} --with-debug"
-	
+
 	# 3rd party module
 	use pam	&& myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
 	use mp4 &&	myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
+	use rrd && { myconf="${myconf} --add-module="${WORKDIR}"/ngx_rrd_graph-0.1"
+				myconf="${myconf} --with-cc-opt=-I/usr/include/ "
+				myconf="${myconf} --with-ld-opt=-L/usr/lib/ "
+				}
 
 	tc-export CC
 	./configure \
