@@ -3,6 +3,7 @@
 # $Header: $
 
 EAPI="2"
+inherit eutils
 
 DESCRIPTION="A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip."
 HOMEPAGE="http://code.google.com/p/madwimax/"
@@ -18,6 +19,7 @@ RDEPEND="${DEPEND}
 		app-text/txt2man"
 
 src_configure() {
+	epatch ${FILESDIR}/${P}-led.patch
 	econf --without-man-pages
 }
 
