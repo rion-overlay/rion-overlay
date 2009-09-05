@@ -25,8 +25,8 @@ src_compile()
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)
-	doins lib*
+	mkdir -p ${D}/usr/$(get_libdir)
+	cp -P lib* ${D}/usr/$(get_libdir)/
 
 	insinto /usr/include/qxmlrpc
 	doins xmlrpc/*.h
