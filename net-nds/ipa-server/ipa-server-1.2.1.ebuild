@@ -44,7 +44,7 @@ src_prepare(){
 }
 
 src_configure() {
-	
+
 	econf $(use_with  openldap ) || die "econf failure"
 }
 
@@ -63,8 +63,6 @@ src_install() {
 	keepdir var/lib/cache/ipa/kpasswd
 	keepdir var/lib/cache/ipa/sessions
 	keepdir var/lib/lib/ipa/sysrestore/
-
-	
 }
 pkg_postrm() {
 
