@@ -23,9 +23,9 @@ RDEPEND="dev-lang/python
 S="${WORKDIR}"/"freeipa-${PV}/${PN}"
 
 src_install() {
-	
+
 	rm "${S}"/ipa-admintools.spec.in # :)
-	
+
 	dodir /usr/sbin
 	insinto /usr/share
 	dosbin  "${S}"/ipa-*
