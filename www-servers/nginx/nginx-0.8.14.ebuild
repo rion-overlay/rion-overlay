@@ -1,22 +1,47 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/nginx-0.8.10.ebuild,v 1.1 2009/08/24 13:58:06 voxus Exp $
+# $Header: $
+
+
+EAPI="2"
 
 inherit eutils ssl-cert toolchain-funcs
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 
-HOMEPAGE="http://nginx.net/"
-SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz"
-LICENSE="BSD"
+HOMEPAGE="http://sysoev.ru/nginx/" # Именно =:)
+SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
+		pam? (
+				http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
+		mp4? (
+				http://i.6.cn/nginx_mp4_streaming_public_20081229.tar.bz2 )
+		rrd? (
+				http://wiki.nginx.org/images/a/a6/Ngx_rrd_graph-0.1.tar.gz  )"
+
+
+LICENSE="BSD
+		pam? ( as-is )
+		mp4? ( CCPL-Attribution-NonCommercial-NoDerivs-2.5 )"
+
+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="addition debug fastcgi flv imap ipv6 pcre perl random-index securelink ssl status sub webdav zlib"
+IUSE="+aio debug perftool addition debug geoip fastcgi flv mail mp4 ipv6 \
+		image-resize pcre cpp perl pam +rt-signal random-index rrd \
+		securelink ssl status sub webdav xslt zlib"
 
 DEPEND="dev-lang/perl
+	geoip? ( dev-libs/geoip )
+	rrd? ( >=net-analyzer/rrdtool-1.3.8 )
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	ssl? ( dev-libs/openssl )
+	perftool? ( dev-libs/google-perftools )
+	xslt? (
+			dev-libs/libxslt
+			dev-libs/libxml2 )
+	image-resize? ( media-libs/gd )
 	zlib? ( sys-libs/zlib )"
+
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
@@ -24,33 +49,36 @@ pkg_setup() {
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 -1 ${PN}
 	eend ${?}
-	if use ipv6; then
-		ewarn "Note that ipv6 support in nginx is still experimental."
-		ewarn "Be sure to read comments on gentoo bug #274614"
-		ewarn "http://bugs.gentoo.org/show_bug.cgi?id=274614"
-	fi
 }
 
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	[ -f "${FILESDIR}/${P}.1.patch" ] && epatch "${FILESDIR}"/"${P}".1.patch
+	unpack ${P}.tar.gz
+
+	use pam && unpack "ngx_http_auth_pam_module-1.1.tar.gz"
+
+	use mp4 && unpack "nginx_mp4_streaming_public_20081229.tar.bz2"
+
+	use rrd && unpack "Ngx_rrd_graph-0.1.tar.gz"
+}
+src_prepare() {
+
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die
 }
 
-src_compile() {
-	local myconf
+src_configure() {
+	local myconf=""
 
-	# threads support is broken atm.
-	#
-	# if use threads; then
-	# 	einfo
-	# 	ewarn "threads support is experimental at the moment"
-	# 	ewarn "do not use it on production systems - you've been warned"
-	# 	einfo
-	# 	myconf="${myconf} --with-threads"
-	# fi
+	use rt-signal 	&& myconf="${myconf} --with-rtsig_module "
+	use aio			&& myconf="${myconf} --with-file-aio "
 
+	use cpp 		&& myconf="${myconf} --with-cpp_test_module"
+	use perftool	&& myconf="${myconf}  --with-google_perftools_module"
+
+	use xslt		 && myconf="${myconf}  --with-http_xslt_module"
+	use image-resize  && myconf="${myconf}  --with-http_image_filter_module"
+	use geoip		&& myconf="${myconf}  --with-http_geoip_module "
+
+	use ssl     	&& myconf="${myconf} --with-http_ssl_module"
 	use addition && myconf="${myconf} --with-http_addition_module"
 	use ipv6	&& myconf="${myconf} --with-ipv6"
 	use fastcgi	|| myconf="${myconf} --without-http_fastcgi_module"
@@ -61,14 +89,26 @@ src_compile() {
 		myconf="${myconf} --without-pcre --without-http_rewrite_module"
 	}
 	use debug	&& myconf="${myconf} --with-debug"
-	use ssl		&& myconf="${myconf} --with-http_ssl_module"
-	use imap	&& myconf="${myconf} --with-imap" # pop3/imap4 proxy support
+	use mail	&& myconf="${myconf} --with-mail" # pop3/imap4/smtp  proxy support
+	if use mail && use ssl; then
+		 myconf="${myconf} --with-mail_ssl_module"
+	fi
 	use perl	&& myconf="${myconf} --with-http_perl_module"
 	use status	&& myconf="${myconf} --with-http_stub_status_module"
 	use webdav	&& myconf="${myconf} --with-http_dav_module"
 	use sub		&& myconf="${myconf} --with-http_sub_module"
 	use random-index	&& myconf="${myconf} --with-http_random_index_module"
 	use securelink && myconf="${myconf} --with-http_secure_link_module"
+
+	use debug		&& myconf="${myconf} --with-debug"
+
+	# 3rd party module
+	use pam	&& myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
+	use mp4 &&	myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
+	use rrd && { myconf="${myconf} --add-module="${WORKDIR}"/ngx_rrd_graph-0.1"
+				myconf="${myconf} --with-cc-opt=-I/usr/include/ "
+				myconf="${myconf} --with-ld-opt=-L/usr/lib/ "
+				}
 
 	tc-export CC
 	./configure \
@@ -83,6 +123,10 @@ src_compile() {
 		--with-md5-asm --with-md5=/usr/include \
 		--with-sha1-asm --with-sha1=/usr/include \
 		${myconf} || die "configure failed"
+
+}
+src_compile() {
+	tc-export CC
 
 	emake LINK="${CC} ${LDFLAGS}" OTHERLDFLAGS="${LDFLAGS}" || die "failed to compile"
 }
@@ -106,6 +150,7 @@ src_install() {
 		cd "${S}"/objs/src/http/modules/perl/
 		einstall DESTDIR="${D}"|| die "failed to install perl stuff"
 	}
+	use pam && newdoc "${WORKDIR}"/ngx_http_auth_pam_module-1.1/README README.pam
 }
 
 pkg_postinst() {
