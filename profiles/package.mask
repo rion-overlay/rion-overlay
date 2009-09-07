@@ -1,3 +1,9 @@
+# 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# bad depend, new version not work
+app-office/openoffice-infra-bin
+
+# 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not comlete
 app-admin/ipa-admintools
 net-nds/ipa-clien
 net-nds/ipa-server

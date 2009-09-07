@@ -29,7 +29,7 @@ HOMEPAGE="http://i-rs.ru/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="!app-office/openoffice
 	x11-libs/libXaw
