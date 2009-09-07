@@ -1,0 +1,8 @@
+# ChangeLog for sci-geosciences/qgis
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  07 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> +qgis-1.2.0.ebuild,
+  +files/disabe-default-cmake.patch, +metadata.xml:
+  initial commit
+
