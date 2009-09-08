@@ -30,15 +30,15 @@ IUSE="+aio debug perftool addition debug geoip fastcgi flv mail mp4 ipv6 \
 		image-resize pcre cpp perl pam +rt-signal random-index rrd \
 		securelink ssl status sub webdav xslt zlib"
 
-DEPEND="dev-lang/perl
-	geoip? ( dev-libs/geoip )
+DEPEND=">=dev-lang/perl-5.8.7
+	geoip? ( >=dev-libs/geoip-1.4 )
 	rrd? ( >=net-analyzer/rrdtool-1.3.8 )
 	pcre? ( >=dev-libs/libpcre-4.2 )
-	ssl? ( dev-libs/openssl )
-	perftool? ( dev-libs/google-perftools )
+	ssl? ( >=dev-libs/openssl-0.9.7 )
+	perftool? ( ~dev-libs/google-perftools-1.3 )
 	xslt? (
-			dev-libs/libxslt
-			dev-libs/libxml2 )
+			>=dev-libs/libxslt-1.1.24
+			>dev-libs/libxml2-2.7 )
 	image-resize? ( media-libs/gd )
 	zlib? ( sys-libs/zlib )"
 
