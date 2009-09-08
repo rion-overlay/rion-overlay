@@ -55,7 +55,7 @@ src_unpack() {
 
 src_prepare() {
 	cd ${S}
-	[ -f "${FILESDIR}/${P}.${PR}.patch" ] && epatch "${FILESDIR}/${P}.${PR}.patch"
+	[ -f "${FILESDIR}/${PF}.patch" ] && epatch "${FILESDIR}/${PF}.patch"
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die
 }
 
