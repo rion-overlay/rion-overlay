@@ -24,4 +24,3 @@ RDEPEND="${DEPEND}
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 }
-
