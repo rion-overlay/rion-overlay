@@ -1,0 +1,47 @@
+# 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# bad depend, new version not work
+app-office/openoffice-infra-bin
+
+# 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not comlete
+app-admin/ipa-admintools
+net-nds/ipa-clien
+net-nds/ipa-server
+
+# 24 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for additional testing and ebuild rewrite requireq
+games-simulation/vegastrike
+
+# 22 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for bad install depend, test package fail
+# dev-perl/DBIx-OO
+
+# 21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# Bad keywors
+
+#net-p2p/gnunet
+#net-p2p/gnunet-gtk
+#net-p2p/gnunet-qt
+
+# 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask mail-client/xuheki, not complete,bad depend
+mail-client/xuheki
+
+# 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask app-crypt/openca-base, not complete
+
+app-crypt/openca-base
+
+# app-crypt/openca
+
+# 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask www-apache/mod_admserv : bad depend
+# www-apache/mod_admserv 
+
+# 07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing ; initial commit
+# app-crypt/openca
+
+# 06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing ; initial commit
+dev-perl/DBD-Oracle 
