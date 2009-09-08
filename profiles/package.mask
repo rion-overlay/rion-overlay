@@ -1,6 +1,6 @@
 # 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # bad depend, new version not work
-app-office/openoffice-infra-bin
+>=app-office/openoffice-infra-bin-3.1.1
 
 # 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # not comlete
