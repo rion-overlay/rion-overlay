@@ -12,7 +12,7 @@ ESVN_REPO_URI="https://delta.affinix.com/svn/trunk/psimedia"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="sys-devel/qconf"
