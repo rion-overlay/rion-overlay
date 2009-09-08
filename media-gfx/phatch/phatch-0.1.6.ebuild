@@ -32,4 +32,3 @@ pkg_postinst()
 	fdo-mime_mime_database_update
 	fdo-mime_desktop_database_update
 }
-

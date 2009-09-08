@@ -23,4 +23,3 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed."
 }
-

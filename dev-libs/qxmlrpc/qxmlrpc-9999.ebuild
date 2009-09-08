@@ -12,7 +12,7 @@ ESVN_REPO_URI="http://backharddi.ideseneca.es/svn/tags/unstable/backharddi-net/m
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="x11-libs/qt-core"
@@ -25,8 +25,8 @@ src_compile()
 }
 
 src_install() {
-	mkdir -p ${D}/usr/$(get_libdir)
-	cp -P lib* ${D}/usr/$(get_libdir)/
+	mkdir -p "${D}"/usr/$(get_libdir)
+	cp -P lib* "${D}"/usr/$(get_libdir)/
 
 	insinto /usr/include/qxmlrpc
 	doins xmlrpc/*.h

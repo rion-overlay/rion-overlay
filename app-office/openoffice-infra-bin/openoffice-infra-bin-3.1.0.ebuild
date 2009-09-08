@@ -36,11 +36,12 @@ RDEPEND="!app-office/openoffice
 	>=dev-lang/perl-5.0
 	app-arch/zip
 	app-arch/unzip
-	>=media-libs/freetype-2.1.10-r2
-	java? ( >=virtual/jre-1.5 )"
+	>=media-libs/freetype-2.1.10-r2"
 
 DEPEND="${RDEPEND}
 	sys-apps/findutils"
+
+PDEPEND="java? ( >=virtual/jre-1.5 )"
 
 PROVIDE="virtual/ooo"
 RESTRICT="strip"

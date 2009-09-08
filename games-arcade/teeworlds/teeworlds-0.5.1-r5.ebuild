@@ -99,4 +99,3 @@ src_install() {
 	prepgamesdirs
 	newinitd "${FILESDIR}"/teeworlds_init teeworlds
 }
-
