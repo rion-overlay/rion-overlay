@@ -23,4 +23,3 @@ src_install() {
 	cd "${WORKDIR}/${PN}"
 	make DESTDIR="${D}" install || die "make install failed"
 }
-

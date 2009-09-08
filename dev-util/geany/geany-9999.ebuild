@@ -12,7 +12,7 @@ unset SRC_URI
 
 LICENSE="GPL-2 Scintilla"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE="+vte"
 
 RDEPEND=">=x11-libs/gtk+-2.10:2

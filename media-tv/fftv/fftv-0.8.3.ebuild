@@ -62,4 +62,3 @@ src_install() {
 	doman doc/*.1
 	dohtml -r doc/*.html
 }
-

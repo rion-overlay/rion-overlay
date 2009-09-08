@@ -28,4 +28,3 @@ src_compile() {
 	eqmake4 "${MY_PN}".pro DESTDIR="${D}/usr/$(get_libdir)/psi/plugins"
 	emake || die "Make failed"
 }
-
