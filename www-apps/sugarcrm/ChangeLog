@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +sugarcrm-5.5.0_beta2.ebuild:
+  add beta2 ebuild
+
   05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
   Add metadata.xml
 
