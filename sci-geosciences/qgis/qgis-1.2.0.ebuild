@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit qt4 cmake-utils
+inherit cmake-utils
 
 
 DESCRIPTION="Quantum GIS (QGIS) is a Geographic Information System (GIS)"
@@ -14,8 +14,8 @@ SRC_URI="http://download.osgeo.org/"${PN}"/src/"${PN}"_"${PV}".tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
-IUSE="debug gps +grass gsl +postgres +python samples test"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug gps +grass gsl +postgres +python samples"
 
 DEPEND=">=sci-libs/gdal-1.3.1
 		x11-libs/qt-core:4[qt3support]
@@ -33,22 +33,21 @@ DEPEND=">=sci-libs/gdal-1.3.1
 		gsl? ( sci-libs/gsl )"
 
 RDEPEND="${DEPEND}
-		sys-devel/bison
-		sys-devel/flex
 		python? ( >=dev-lang/python-2.5
 			>=dev-python/PyQt4-4.1
 			>=dev-python/sip-4.7 )
-		gps? ( sci-geosciences/gpsbabel )
-		test? ( x11-libs/qt-test:4 )"
+		gps? ( sci-geosciences/gpsbabel )"
 
 src_unpack() {
 	unpack ""${PN}"_"${PV}".tar.gz"
-	use samples && unpack ""${PN}"_sample_data.tar.gz"
+	if use samples; then
+		unpack ""${PN}"_sample_data.tar.gz"
+	fi
 }
 src_prepare() {
-		
+
 		epatch "${FILESDIR}"/gentofy-cmake.patch
-	
+
 	if use python; then
 		epatch "${FILESDIR}"/gentofy-py-cmake.patch
 	fi
@@ -62,8 +61,7 @@ src_configure() {
 		$(cmake-utils_use_with grass GRASS) \
 		$(cmake-utils_use_with gps EXPAT) \
 		$(cmake-utils_use_with gsl GSL) \
-		$(cmake-utils_use_with python BINDINGS) \
-		$(cmake-utils_use_with test TEST) "
+		$(cmake-utils_use_with python BINDINGS)"
 
 	if use grass; then
 		GRASS_ENVD="/etc/env.d/99grass /etc/env.d/99grass-6 /etc/env.d/99grass-cvs";
@@ -88,13 +86,12 @@ src_install() {
 		insinto /usr/share/doc/${PF}/sample_data
 		doins -r qgis_sample_data/* || die "Unable to install sample data"
 	fi
-	use python &&  python_need_rebuild
-		
+	if use python ;then
+		python_need_rebuild
+	fi
+
 }
 
-src_test() {
-	use test && cmake-utils_src_test
-}
 pkg_postinst() {
 	if use samples; then
 		einfo "You can find sample data to use with qgis in"
@@ -102,5 +99,7 @@ pkg_postinst() {
 	fi
 }
 pkg_postrm() {
-	use python && python_mod_cleanup
+	if use python ;then
+		python_mod_cleanup
+	fi
 }

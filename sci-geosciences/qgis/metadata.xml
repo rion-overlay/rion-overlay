@@ -8,5 +8,7 @@
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
 <use>
+ <flag name='grass'>use <pkg>sci-geosciences/grass</pkg>as plugin </flag>
+ <flag name='samples'>Install additional samples</flag>
 </use>
 </pkgmetadata>
