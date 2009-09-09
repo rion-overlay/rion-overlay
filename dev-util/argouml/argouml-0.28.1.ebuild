@@ -32,4 +32,8 @@ src_install() {
 	java-pkg_dolauncher ${PN} --main org.argouml.application.Main
 
 	dodoc ${P}/README.txt
+
+	insinto /usr/share/pixmaps
+	doins "${FILESDIR}"/argologo.png
+	make_desktop_entry argouml "ArgoUML" argologo.png "Graphics"
 }
