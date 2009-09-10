@@ -1,0 +1,24 @@
+Index: src/http/ngx_http_upstream.c
+===================================================================
+--- src/http/ngx_http_upstream.c	(revision 2430)
++++ src/http/ngx_http_upstream.c	(working copy)
+@@ -363,6 +363,7 @@
+     u = r->upstream;
+ 
+     if (u && u->cleanup) {
++        r->main->count++;
+         ngx_http_upstream_cleanup(r);
+         *u->cleanup = NULL;
+     }
+Index: src/http/modules/perl/ngx_http_perl_module.c
+===================================================================
+--- src/http/modules/perl/ngx_http_perl_module.c	(revision 2430)
++++ src/http/modules/perl/ngx_http_perl_module.c	(working copy)
+@@ -262,6 +262,7 @@
+ 
+     if (uri.len) {
+         ngx_http_internal_redirect(r, &uri, &args);
++        ngx_http_finalize_request(r, NGX_DONE);
+         return;
+     }
+ 
