@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# Source: http://bugs.gentoo.org/show_bug.cgi?id=76213
-# Submitted-By: Nathaniel Copa
-# Reviewed-By: rl03 2005-12-11
-
 DESCRIPTION="HTML And Shell Embedded Report Language"
 HOMEPAGE="http://haserl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -19,9 +15,8 @@ RDEPEND="lua? ( dev-lang/lua )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-
 src_compile() {
-	econf --prefix=/usr $(use_with lua)
+	econf $(use_with lua)
 	emake || die "emake failed"
 }
 
