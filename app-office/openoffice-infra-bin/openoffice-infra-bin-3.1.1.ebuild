@@ -6,8 +6,8 @@ inherit eutils fdo-mime rpm multilib
 
 IUSE="gnome java kde"
 
-BUILDID="9399"
-UREVER="1.5.0"
+BUILDID="9420"
+UREVER="1.5.1"
 MY_PV3="${PV}-${BUILDID}"
 BASIS="ooobasis3.1"
 MST="OOO310_m11"
@@ -21,14 +21,14 @@ fi
 S="${WORKDIR}/ru/RPMS"
 DESCRIPTION="OpenOffice productivity suite. Russian Professional Edition"
 
-SRC_URI="amd64? ( http://download.i-rs.ru/pub/openoffice/devel/${PV}_infra/OOo_${PV}_LinuxX86-64_install_ru_infra.tar.gz )
-	x86? ( http://download.i-rs.ru/pub/openoffice/devel/${PV}_infra/OOo_${PV}_LinuxIntel_install_ru_infra.tar.gz )"
+SRC_URI="amd64? ( http://download.i-rs.ru/pub/openoffice/${PV}/ru/OOo_${PV}_LinuxX86-64_install_ru_infra.tar.gz )
+	x86? ( http://download.i-rs.ru/pub/openoffice/${PV}/ru/OOo_${PV}_LinuxIntel_install_ru_infra.tar.gz )"
 
 HOMEPAGE="http://i-rs.ru/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="!app-office/openoffice
 	x11-libs/libXaw
@@ -36,11 +36,12 @@ RDEPEND="!app-office/openoffice
 	>=dev-lang/perl-5.0
 	app-arch/zip
 	app-arch/unzip
-	>=media-libs/freetype-2.1.10-r2
-	java? ( >=virtual/jre-1.5 )"
+	>=media-libs/freetype-2.1.10-r2"
 
 DEPEND="${RDEPEND}
 	sys-apps/findutils"
+
+PDEPEND="java? ( >=virtual/jre-1.5 )"
 
 PROVIDE="virtual/ooo"
 RESTRICT="strip"
