@@ -7,7 +7,7 @@ EAPI="2"
 MY_PV="${PV/_beta/B}"
 DESCRIPTION="iod Suite theme for gnome and emerald"
 HOMEPAGE="http://scnd101.deviantart.com/art/iod-Suite-1-0-BETA-104263022"
-SRC_URI="http://fc41.deviantart.com/fs39/f/2008/327/3/c/iod_Suite_1_0_BETA_by_Scnd101.gz -> iod-${MY_PV}.tar.gz"
+SRC_URI="http://fc01.deviantart.com/fs39/f/2008/327/3/c/iod_Suite_1_0_BETA_by_Scnd101.gz -> iod-${MY_PV}.tar.gz"
 S="${WORKDIR}/iod-${MY_PV}"
 
 LICENSE="deviantART"
