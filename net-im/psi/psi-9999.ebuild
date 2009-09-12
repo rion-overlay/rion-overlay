@@ -82,7 +82,9 @@ src_prepare() {
 	S="${WORKDIR}/${P}"
 	cd "${S}"
 
-	epatch "${WORKDIR}/patches"/*.diff
+	for i in "${WORKDIR}/patches"/*.diff; do
+		epatch "$i"
+	done
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 
 	subversion_wc_info
