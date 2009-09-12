@@ -2,6 +2,10 @@
 
 find . -iname '*.ebuild' | \
 while read f; do
-	[[ $@ ]] && echo $f | egrep -v $@ || echo $f
+	if [[ $@ ]]; then
+		echo $f | egrep -v $@
+	else
+		echo $f
+	fi
 done | \
 xargs -I{} ebuild {} digest
