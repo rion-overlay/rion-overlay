@@ -9,7 +9,7 @@ inherit eutils ssl-cert toolchain-funcs
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 
-HOMEPAGE="http://sysoev.ru/nginx/" # Именно =:)
+HOMEPAGE="http://sysoev.ru/nginx/"
 SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 		pam? ( http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
 		mp4? ( http://i.6.cn/nginx_mp4_streaming_public_20081229.tar.bz2 )
