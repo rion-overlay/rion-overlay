@@ -6,7 +6,6 @@ EAPI="2"
 
 MY_PN="SugarCE"
 S="${WORKDIR}"/"${MY_PN}"-"Full-5.5.0beta2"
-WEBAPP_NO_AUTO_INSTALL="yes"
 
 inherit webapp depend.php
 
@@ -17,7 +16,6 @@ SRC_URI="http://dl.sugarforge.org/sugarcrm/1SugarCE5.5Beta/SugarCE5.5Beta/SugarC
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86 ~ppc64 ~sparc ~x86-fbsd"
 IUSE="+curl imap +json +zlib +mysql freetds ldap mssql"
-
 RESTRICT="mirror"
 DEPEND="app-arch/unzip"
 RDEPEND=">=dev-lang/php-5.2[mysql=,ssl,soap,unicode,xml,curl=,imap=,json=,zlib=,ldap=,mssql=,session]
@@ -29,7 +27,6 @@ RDEPEND=">=dev-lang/php-5.2[mysql=,ssl,soap,unicode,xml,curl=,imap=,json=,zlib=,
 					mssql? ( >=dev-db/freetds-0.64[mssql] ) )
 		mysql? ( >=dev-db/mysql-5.0.70 )
 		"
-
 need_php5_httpd
 src_install () {
 	webapp_src_preinst
