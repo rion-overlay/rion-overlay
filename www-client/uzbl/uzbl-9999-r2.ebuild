@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit git
+inherit git toolchain-funcs
 
 EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
 
@@ -24,11 +24,20 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_compile() {
-	emake || die "emake failed"
+	$(tc-getCC) $CFLAGS $LDFLAGS \
+		$(pkg-config --libs gtk+-2.0 webkit-1.0) \
+		$(pkg-config --cflags gtk+-2.0 webkit-1.0) \
+		-DARCH="\"$(uname -m)\"" \
+		-DCOMMIT="\"${P}\"" \
+		uzbl.c \
+		-o uzbl || die "compile failed"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc AUTHORS README
+	dobin uzbl || die "install failed"
+	dodoc docs/* config.h AUTHORS README
+	insinto /usr/share/${PN}
+	doins -r examples
+#	emake DESTDIR="${D}" install || die "install failed"
 }
 
