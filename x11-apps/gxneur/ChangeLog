@@ -1,0 +1,8 @@
+# ChangeLog for x11-apps/gxneur
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  19 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> gxneur-0.9.5.ebuild,
+  metadata.xml:
+  fix description in metadata
+
