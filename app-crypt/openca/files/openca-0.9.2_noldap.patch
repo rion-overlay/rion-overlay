@@ -1,0 +1,24 @@
+--- src/common/lib/functions/initServer	2005-01-19 14:33:20.780398440 +0100
++++ src/common/lib/functions/initServer	2005-01-19 14:33:51.348751344 +0100
+@@ -80,8 +80,8 @@
+ setPerformancePoint ("rbac-utils loaded");
+ require "$common_libs/mail-utils.lib";
+ setPerformancePoint ("mail-utils loaded");
+-require "$common_libs/ldap-utils.lib";
+-setPerformancePoint ("ldap-utils loaded");
++#require "$common_libs/ldap-utils.lib";
++#setPerformancePoint ("ldap-utils loaded");
+ require "$common_libs/export-import.lib";
+ setPerformancePoint ("export-import loaded");
+ 
+@@ -119,8 +119,8 @@
+ initAccessControl();
+ $ui_html = $debug_ui_html;
+ 
+-require "$common_libs/initLDAP";
+-setPerformancePoint ("ldap ready");
++#require "$common_libs/initLDAP";
++#setPerformancePoint ("ldap ready");
+ 
+ ## 5. load version and init debugging
+ 
