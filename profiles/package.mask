@@ -1,12 +1,13 @@
+# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
+# mask for testing; не собирается, епта
+www-apps/ikiwiki
+
+
 # 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-# not comlete
+# not complete
 app-admin/ipa-admintools
 net-nds/ipa-clien
 net-nds/ipa-server
-
-# 24 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-# mask for additional testing and ebuild rewrite requireq
-games-simulation/vegastrike
 
 # 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask mail-client/xuheki, not complete,bad depend
@@ -16,10 +17,3 @@ mail-client/xuheki
 # mask app-crypt/openca-base, not complete
 app-crypt/openca-base
 
-# 06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-# mask for testing ; initial commit
-dev-perl/DBD-Oracle 
-
-# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
-# mask for testing; не собирается, епта
-www-apps/ikiwiki
