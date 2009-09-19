@@ -12,7 +12,7 @@ if [[ "${PV}" = 9999 ]] ; then
 	inherit subversion
 	SRC_URI=""
 	KEYWORDS=""
-	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}"
+	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk"
 else
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 KEYWORDS="~x86 ~amd64"
