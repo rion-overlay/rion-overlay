@@ -10,7 +10,7 @@ SRC_URI="http://opendpi.googlecode.com/files/OpenDPI_1.0.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="net-libs/libpcap"
