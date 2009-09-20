@@ -30,6 +30,7 @@ src_configure() {
 	econf 	--disable-rpath \
 			--disable-socks \
 			--disable-warnings \
+			 --disable-xmltest \
 		$(use_enable debug) \
 		$(use_enable ssl) || die "emake failed"
 }
