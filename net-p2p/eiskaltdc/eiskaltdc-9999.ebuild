@@ -2,24 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: AntiXpucT$
 
-#net-p2p/eiskaltdc/eiskaltdc-0.5.ebuild
-
 EAPI=2
-inherit autotools qt4
+
+inherit autotools qt4 subversion
+
 DESCRIPTION="Qt based client for DirectConnect, fork of Valknut"
 HOMEPAGE="https://sourceforge.net/projects/eiskaltdc/"
-if [[ "${PV}" = 9999 ]] ; then
-	inherit subversion
-	SRC_URI=""
-	KEYWORDS=""
-	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}"
-else
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-KEYWORDS="~x86 ~amd64"
-fi;
+SRC_URI=""
+KEYWORDS=""
+ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}"
 
 LICENSE="GPL-3"
-
 SLOT="0"
 IUSE=""
 
@@ -31,11 +24,7 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
 		subversion_src_unpack
-	else
-		default
-	fi;
 }
 src_prepare() {
 		eautoreconf
