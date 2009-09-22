@@ -1,0 +1,32 @@
+diff -uNr svrcore-4.0.4.orig/src/Makefile.am svrcore-4.0.4/src/Makefile.am
+--- svrcore-4.0.4.orig/src/Makefile.am	2006-12-14 18:07:32.000000000 +0100
++++ svrcore-4.0.4/src/Makefile.am	2007-08-06 17:37:17.000000000 +0200
+@@ -4,8 +4,8 @@
+ 	     Makefile.win \
+ 	     ntgetpin.rc
+ 
+-lib_LTLIBRARIES = libsvrcore.la
+-include_HEADERS = svrcore.h
++pkglib_LTLIBRARIES = libsvrcore.la
++pkginclude_HEADERS = svrcore.h
+ libsvrcore_la_SOURCES =	alt.c \
+ 		      	cache.c \
+ 		      	errors.c \
+diff -uNr svrcore-4.0.4.orig/svrcore.pc.in svrcore-4.0.4/svrcore.pc.in
+--- svrcore-4.0.4.orig/svrcore.pc.in	2006-12-14 18:07:32.000000000 +0100
++++ svrcore-4.0.4/svrcore.pc.in	2007-08-06 17:38:12.000000000 +0200
+@@ -1,11 +1,11 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
++libdir=@libdir@/@PACKAGE@
++includedir=@includedir@/@PACKAGE@
+ 
+ Name: svrcore
+ Description: Svrcore - Secure PIN handling using NSS crypto
+ Version: @VERSION@
+ Requires: @NSPR_NAME@ >= @NSPR_MIN_VER@ , @NSS_NAME@ >= @NSS_MIN_VER@
+-Libs: -lsvrcore
++Libs: -L${libdir} -lsvrcore
+ Cflags: -I${includedir}
