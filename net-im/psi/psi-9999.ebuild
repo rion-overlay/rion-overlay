@@ -13,7 +13,7 @@ DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
 SRC_URI="
 	linguas_ru? ( http://psi-ru.googlecode.com/files/Psi_ru_${RU_LANGPACK_VER}.zip )
-	!linguas_ru? ( mirror://gentoo/${PN}-langs-${LANGPACK_VER}.tar.bz2 )
+	!linguas_ru? ( mirror://gentoo/psi-0.13-20090817_langpack_for_packagers.zip )
 	http://psi-dev.googlecode.com/svn/trunk/iconsets/moods/silk.jisp"
 EGIT_REPO_URI="git://git.psi-im.org/psi.git"
 EGIT_PROJECT="psi"
@@ -26,7 +26,7 @@ ESVN_PROJECT=psiplus
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc jingle spell ssl xscreensaver powersave plugins"
+IUSE="crypt dbus debug doc jingle spell ssl xscreensaver powersave plugins enchant"
 RESTRICT="test"
 
 LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
@@ -37,7 +37,9 @@ done
 RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
 		>=app-crypt/qca-2.0.2:2
 		whiteboarding? ( >=x11-libs/qt-svg-4.4:4 )
-		spell? ( app-text/aspell )
+		spell? ( enchant? ( app-text/enchant )
+			!enchant? ( app-text/aspell )
+		)
 		xscreensaver? ( x11-libs/libXScrnSaver )"
 
 DEPEND="${RDEPEND}
@@ -82,9 +84,7 @@ src_prepare() {
 	S="${WORKDIR}/${P}"
 	cd "${S}"
 
-	for i in "${WORKDIR}/patches"/*.diff; do
-		epatch "$i"
-	done
+	epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 
 	subversion_wc_info
@@ -119,7 +119,8 @@ src_configure() {
 			--disable-growl
 			$(use dbus || echo '--disable-qdbus')
 			$(use debug && echo '--enable-debug')
-			$(use spell || echo '--disable-aspell')
+			$(use spell && ( use enchant && echo '--disable-aspell' || \
+				echo '--disable-enchant' ) || echo '--disable-spell')
 			$(use xscreensaver || echo '--disable-xss')
 			$(use plugins && echo '--enable-plugins')"
 
