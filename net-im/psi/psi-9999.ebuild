@@ -26,7 +26,8 @@ ESVN_PROJECT=psiplus
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc jingle spell ssl xscreensaver powersave plugins enchant"
+IUSE="crypt dbus debug doc jingle spell ssl xscreensaver powersave plugins
+enchant whiteboarding"
 RESTRICT="test"
 
 LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
