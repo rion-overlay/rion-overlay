@@ -38,8 +38,12 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/"${PN}"-1.3.8-mozldap60-6.patch
+
+	epatch "${FILESDIR}/${P}-support_berkeley_db-4.8.patch"
+	use mozldap && epatch "${FILESDIR}/${P}-mozldap60-6.patch"
+
 	eautoreconf
+	elibtoolize
 }
 
 src_configure() {
