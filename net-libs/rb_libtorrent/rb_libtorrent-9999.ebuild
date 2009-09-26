@@ -16,7 +16,7 @@ HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 
 IUSE="debug examples test +crypt geoip +resolvecountries log verbose"
 
