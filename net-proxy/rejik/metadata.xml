@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>mantainer-wanted@gentoo.org</email>
+<!--  <description>Description of the maintainership</description> -->
+</maintainer>
+ <longdescription>Light SQUID redirector/policy server</longdescription> 
+<use>
+  <flag name='banlist'>Description of how USE='flag' affects this package</flag>
+  <flag name='dbl'>Description of how USE='flag' affects this package</flag>
+</use>
+</pkgmetadata>
