@@ -14,7 +14,7 @@ HOMEPAGE="http://leechcraft.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE="+browser +torrent rss +dbus lyrics history
 	mediaplayer networkmonitor +opensearch debug"
 
