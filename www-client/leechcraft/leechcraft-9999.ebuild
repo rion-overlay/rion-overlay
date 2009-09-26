@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="+browser +torrent rss +dbus lyrics history
-	mediaplayer irc +networkmonitor +opensearch debug ftp directconnect
+	mediaplayer irc +networkmonitor +opensearch debug ftp -directconnect
 	sitedownloader"
 
 DEPEND=">=dev-libs/boost-1.37
