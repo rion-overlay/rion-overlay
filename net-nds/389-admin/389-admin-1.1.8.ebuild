@@ -40,7 +40,7 @@ DEPEND=">=dev-libs/nss-3.11.4
 
 RDEPEND="${DEPEND}"
 need_apache2
-has_apache_threads_in worker
+# has_apache_threads_in worker
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
