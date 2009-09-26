@@ -16,10 +16,11 @@ IUSE=""
 EHG_REPO_URI="https://gentoo-ru-fortunes.slepnoga.googlecode.com/hg"
 RDEPEND="games-misc/fortune-mod"
 
-S=${WORKDIR}
+S="${WORKDIR}"
+
 src_compile() {
 
-	mv gentoo-ru-9999 gentoo-ru
+	mv hg/gentoo-ru-9999 gentoo-ru
 	/usr/bin/strfile gentoo-ru || die
 }
 
