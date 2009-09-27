@@ -10,7 +10,7 @@ depend() {
 
 start() {
 	ebegin "Starting ICQ Jabber Transport"
-	start-stop-daemon --start --pidfile /var/run/jabber/pyicq-t.pid --chuid jabber:jabber \
+	start-stop-daemon --start --pidfile /var/run/jabber/pyicqt.pid --chuid jabber:jabber \
 		--exec /usr/bin/python INSPATH/pyicqt.py -- \
 		-b -c /etc/jabber/pyicqt.xml -l /var/log/jabber/pyicqt.log
 	eend $?
