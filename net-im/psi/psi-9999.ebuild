@@ -121,7 +121,7 @@ src_configure() {
 			$(use dbus || echo '--disable-qdbus')
 			$(use debug && echo '--enable-debug')
 			$(use spell && ( use enchant && echo '--disable-aspell' || \
-				echo '--disable-enchant' ) || echo '--disable-spell')
+				echo '--disable-enchant' ) || echo '--disable-aspell --disable-enchant')
 			$(use xscreensaver || echo '--disable-xss')
 			$(use plugins && echo '--enable-plugins')"
 
