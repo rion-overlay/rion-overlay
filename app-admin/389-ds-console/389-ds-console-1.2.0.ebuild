@@ -12,7 +12,7 @@ DESCRIPTION="A Java based remote management console used for Managing 389 Admini
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
-SLOT="1.1"
+SLOT="1.2"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc source"
 
