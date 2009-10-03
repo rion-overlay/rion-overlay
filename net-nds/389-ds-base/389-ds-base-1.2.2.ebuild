@@ -2,22 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# Честно стырил по известному адресу
-# Oh, QA не проходит, буду клепать.
-
 EAPI=2
 
 inherit eutils multilib flag-o-matic autotools
 
-DESCRIPTION="389 Directory Server (base)"
+DESCRIPTION="389 Directory Server (core files and daemons)"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="debug"
+
 RESTRICT="mirrors"
+
 DEPEND=">=dev-libs/nss-3.11.4
 	>=dev-libs/nspr-4.6.4
 	>=dev-libs/svrcore-4.0.3
@@ -34,6 +33,7 @@ DEPEND=">=dev-libs/nss-3.11.4
 	sys-libs/zlib
 	dev-perl/perl-mozldap
 	app-crypt/mit-krb5
+	dev-libs/libpcre
 	!net-nds/fedora-ds-base"
 
 

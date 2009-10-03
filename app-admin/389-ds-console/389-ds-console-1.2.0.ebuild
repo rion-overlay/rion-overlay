@@ -18,8 +18,8 @@ IUSE="doc source"
 
 COMMON_DEP="=dev-java/jss-4*
 	>=dev-java/ldapsdk-4.0
-	>=dev-java/idm-console-framework-1.1
-	!app-admin/fedora-ds-console"
+	>=dev-java/idm-console-framework-1.1"
+
 RDEPEND=">=virtual/jre-1.5
 	${COMMON_DEP}"
 DEPEND=">=virtual/jdk-1.5
