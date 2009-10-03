@@ -1,0 +1,25 @@
+# 26 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not build witch db-4.8
+# reporter: Rion4ik
+#=dev-libs/apr-util-1.3.9-r100
+
+
+# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
+# mask for testing; не собирается, епта
+www-apps/ikiwiki
+
+
+# 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not complete
+app-admin/ipa-admintools
+net-nds/ipa-clien
+net-nds/ipa-server
+
+# 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask mail-client/xuheki, not complete,bad depend
+mail-client/xuheki
+
+# 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask app-crypt/openca-base, not complete
+app-crypt/openca-base
+

@@ -1,0 +1,71 @@
+# ChangeLog for app-admin/389-ds-console
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  15 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> ChangeLog:
+  recommit in rion
+
+*389-ds-console-1.2.0 (21 May 2009)
+
+  21 May 2009; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-ds-console-1.1.1.ebuild, -fedora-ds-console-1.1.2.ebuild,
+  -fedora-ds-console-1.2.0.ebuild, +389-ds-console-1.2.0.ebuild:
+  rename package
+
+  07 Apr 2009; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-console-1.2.0.ebuild:
+  Bump upstream
+
+  15 Sep 2008; Mario Fetka <mario.fetka@gmail.com>
+  fedora-ds-console-1.1.2.ebuild:
+  correct version
+
+  15 Sep 2008; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-console-1.1.2.ebuild:
+  bump
+
+  21 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  -files/fedora-ds-console-1.1.1-add_missing_files-1.patch:
+  Remove patch adding missed files on the first release of the 1.1.1 version
+  corrected in the new 1.1.1 release
+
+  20 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  fedora-ds-console-1.1.1.ebuild:
+  Correct digest
+
+  01 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  fedora-ds-console-1.1.1.ebuild:
+  repoman cleanup & create versioned symlinks
+
+  19 Jan 2008; Mario Fetka <mario-fetka@gmx.at>
+  +files/fedora-ds-console-1.1.1-add_missing_files-1.patch,
+  fedora-ds-console-1.1.1.ebuild:
+  add missing files patch
+
+  19 Jan 2008; Mario Fetka <mario-fetka@gmx.at>
+  fedora-ds-console-1.1.1.ebuild:
+  correct oversight
+
+  19 Jan 2008; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-console-1.1.0_pre20071111.ebuild:
+  Initial 1.1 FDS
+
+  11 Nov 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-console-1.1.0_pre20071017.ebuild:
+  bump
+
+  17 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-console-1.1.0_pre20071014.ebuild:
+  Bump to latest snapshot
+
+  14 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-console-1.1.0_pre20071009.ebuild:
+  Bump to latest snapshot
+
+  09 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-console-1.1.0_pre20071006.ebuild:
+  Bump to snapshot 20071009
+
+  07 Oct 2007; Mario Fetka <mario-fetka@gmx.at> +metadata.xml:
+  first version
+

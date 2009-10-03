@@ -1,0 +1,17 @@
+# ChangeLog for dev-libs/mozldap
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  02 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> -mozldap-6.0.5.ebuild:
+  del old version
+
+  20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> mozldap-6.0.6.ebuild:
+  add keyword ~amd64
+
+*mozldap-6.0.6 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/mozldap-6.0.4-pkgconfig.patch, +mozldap-6.0.6.ebuild,
+  +metadata.xml:
+  new ebuild, alfa release, only for testing
+
