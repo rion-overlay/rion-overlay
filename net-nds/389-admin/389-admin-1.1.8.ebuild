@@ -31,7 +31,6 @@ DEPEND=">=dev-libs/nss-3.11.4
 	sys-libs/pam
 	sys-libs/zlib
 	app-misc/mime-types
-	>=www-servers/apache-2.0
 	www-apache/mod_restartd
 	www-apache/mod_nss
 	www-apache/mod_admserv
@@ -41,7 +40,7 @@ DEPEND=">=dev-libs/nss-3.11.4
 
 RDEPEND="${DEPEND}"
 need_apache2
-
+# has_apache_threads_in worker
 src_unpack() {
 	unpack ${A}
 	cd "${S}"

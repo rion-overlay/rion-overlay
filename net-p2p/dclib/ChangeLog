@@ -2,6 +2,15 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-p2p/dclib/ChangeLog,v 1.108 2009/06/08 18:39:23 armin76 Exp $
 
+  20 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> -dclib-0.3.9999.ebuild,
+  +dclib-9999.ebuild:
+  move 0.3.9999 version to 9999 rewrite code and add use flag ssl ,debug
+  see #285661
+
+  20 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -dclib-0.3.23_p3101.ebuild, +dclib-0.3.23_p3101-r1.ebuild:
+  revision bump, code clean. #285661
+
   01 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> dclib-0.3.9999.ebuild:
   fix bad RDEPEND
 

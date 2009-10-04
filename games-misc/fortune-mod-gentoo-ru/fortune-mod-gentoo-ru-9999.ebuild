@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit subversion
+inherit mercurial
 
 DESCRIPTION="Fortune database of quotes from gentoo.ru forum and gentoo@conference.gentoo.ru"
 HOMEPAGE="http://marsoft.dyndns.info/fortunes-gentoo-ru/"
@@ -13,13 +13,14 @@ SRC_URI=""
 LICENSE="as-is"
 SLOT="0"
 IUSE=""
-ESVN_REPO_URI="http://slepnoga.googlecode.com/svn/fortunes/"
+EHG_REPO_URI="https://gentoo-ru-fortunes.slepnoga.googlecode.com/hg"
 RDEPEND="games-misc/fortune-mod"
 
-S=${WORKDIR}
+S="${WORKDIR}"
+
 src_compile() {
-	/bin/gunzip gentoo-ru-9999.gz
-	mv gentoo-ru-9999 gentoo-ru
+
+	mv hg/gentoo-ru-9999 gentoo-ru
 	/usr/bin/strfile gentoo-ru || die
 }
 
