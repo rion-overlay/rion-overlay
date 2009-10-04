@@ -1,3 +1,8 @@
+# 4 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not build, upsteam bug;
+# nss version mistmatch
+www-apache/mod_revocator
+
 # 26 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # not build witch db-4.8
 # reporter: Rion4ik
@@ -10,16 +15,20 @@ www-apps/ikiwiki
 
 
 # 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-# not complete
+# not complete,require dog-tag pki server and more
+# patches: SysV init system is hardcoded
 app-admin/ipa-admintools
 net-nds/ipa-clien
 net-nds/ipa-server
 
 # 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask mail-client/xuheki, not complete,bad depend
+# I`dont incorporate this package in Gentoo layout
+# Idea welcomed
 mail-client/xuheki
 
 # 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask app-crypt/openca-base, not complete
+# very old,not mantained,depend mismatch
 app-crypt/openca-base
 
