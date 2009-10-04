@@ -99,8 +99,9 @@ src_prepare() {
 		sed 's/#CONFIG += whiteboarding/CONFIG += whiteboarding/' \
 			-i src/src.pro
 		# fix undefined qdebug
-		sed '/qDebug/d' -i src/sxe/sxeedit.cpp
-		sed '/qDebug/d' -i src/sxe/sxerecord.cpp
+#		sed '/qDebug/d' -i src/sxe/sxeedit.cpp
+#		sed '/qDebug/d' -i src/sxe/sxerecord.cpp
+		epatch "${WORKDIR}/patches/dev/psi-wb.diff"
 
 		ewarn "whiteboarding is very unstable thing.";
 		ewarn "don't post bug reports about it";
