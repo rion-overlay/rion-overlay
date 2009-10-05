@@ -1,8 +1,0 @@
-# ChangeLog for net-im/psi
-# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*nautilus-dropbox-0.6.1 (14 Aug 2009)
-
-  14 Dec 2009; Rion <rion4ik@gmail.com> +nautilus-dropbox-0.6.1.ebuild:
-  New ebuild
