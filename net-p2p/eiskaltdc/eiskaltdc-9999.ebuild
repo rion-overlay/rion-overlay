@@ -8,9 +8,21 @@ inherit autotools qt4 subversion
 
 DESCRIPTION="Qt based client for DirectConnect, fork of Valknut"
 HOMEPAGE="https://sourceforge.net/projects/eiskaltdc/"
+<<<<<<< local
 SRC_URI=""
 KEYWORDS=""
 ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk"
+=======
+if [[ "${PV}" = 9999 ]] ; then
+	inherit subversion
+	SRC_URI=""
+	KEYWORDS=""
+	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk"
+else
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+KEYWORDS="~x86 ~amd64"
+fi;
+>>>>>>> other
 
 LICENSE="GPL-3"
 SLOT="0"
