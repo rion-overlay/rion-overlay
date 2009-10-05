@@ -23,8 +23,8 @@ net-nds/ipa-server
 
 # 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask mail-client/xuheki, not complete,bad depend
-# I`dont incorporate this package in Gentoo layout
-# Idea welcomed
+# I was not able to include this package in Gentoo layout 
+# Idea`s  welcomed
 mail-client/xuheki
 
 # 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
