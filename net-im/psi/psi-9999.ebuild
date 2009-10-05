@@ -6,7 +6,6 @@ EAPI="2"
 
 inherit eutils qt4 multilib git subversion
 
-LANGPACK_VER="20090217"
 RU_LANGPACK_VER="05_Jul_2009"
 
 DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
@@ -53,7 +52,7 @@ PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
 
 src_unpack() {
 	use linguas_ru && unpack "Psi_ru_${RU_LANGPACK_VER}.zip"
-	! use linguas_ru && unpack "${PN}-langs-${LANGPACK_VER}.tar.bz2"
+	! use linguas_ru && unpack "psi-0.13-20090817_langpack_for_packagers.zip"
 
 	git_src_unpack
 

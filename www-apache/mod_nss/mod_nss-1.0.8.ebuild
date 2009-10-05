@@ -31,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	mv -f ".libs/libmodnss.so" ".libs/${PN}.so"
+	mv -f .libs/libmodnss.so .libs/"${PN}".so
 
 	dosbin gencert nss_pcache
 	dohtml docs/mod_nss.html

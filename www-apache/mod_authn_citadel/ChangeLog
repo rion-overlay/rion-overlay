@@ -1,8 +1,0 @@
-# ChangeLog for www-apache/mod_authn_citadel
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  21 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-  +files/95_mod_citadel.conf, +mod_authn_citadel-0.99_beta2.ebuild:
-  initial commit
-
