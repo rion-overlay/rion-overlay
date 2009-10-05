@@ -10,34 +10,35 @@ DESCRIPTION="389 Directory Server (core files and daemons)"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
+
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="debug"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug +pam-passthru +dna +bitwise presence kerberos"
 
-RESTRICT="mirrors"
-
-DEPEND=">=dev-libs/nss-3.11.4
-	>=dev-libs/nspr-4.6.4
-	>=dev-libs/svrcore-4.0.3
-	>=dev-libs/mozldap-6.0.2
+ALL_DEPEND="dev-libs/nss
+		dev-libs/nspr
+		dev-libs/svrcore
+		dev-libs/mozldap
 	>=dev-libs/cyrus-sasl-2.1.19
 	>=dev-libs/icu-3.4
-	>=sys-libs/db-4.2.52
+	>=sys-libs/db-4.5
 	>=net-analyzer/net-snmp-5.1.2
-	sys-apps/lm_sensors
-	app-arch/bzip2
 	dev-libs/openssl
 	sys-apps/tcp-wrappers
 	sys-libs/pam
 	sys-libs/zlib
 	dev-perl/perl-mozldap
-	app-crypt/mit-krb5
 	dev-libs/libpcre
-	!net-nds/fedora-ds-base"
+	kerberos? ( app-crypt/mit-krb5 )"
 
+DEPEND="${ALL_DEPEND}
+		dev-util/pkgconfig
+		sys-devel/libtool:1.5"
 
-RDEPEND="${DEPEND}"
+RDEPEND="${ALL_DEPEND}
+		virtual/perl-Time-Local
+		"
 
 pkg_setup() {
 	enewgroup dirsrv
@@ -45,14 +46,25 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e 's/nobody/dirsrv/g' configure.ac
+	epatch "${FILESDIR}/configure.ac.patch"
 	eautoreconf
 }
 
 src_configure() {
-	append-flags -D_GNU_SOURCE
 	econf $(use_enable debug) \
-	--with-fhs || die "econf failed"
+		$(use_enable pam-passthru) \
+		$(use_enable dna) \
+		$(use_enable bitwise) \
+		$(use_enable presence) \
+		$(use_with kerberos) \
+		--with-pic \
+		--with-fhs || die "econf failed"
+}
+
+src_compile() {
+	append-lfs-flags
+
+	emake || die "compile failed"
 }
 
 src_install () {
@@ -81,12 +93,10 @@ src_install () {
 	dodir /etc/env.d
 	echo "LDPATH=/usr/$(get_libdir)/dirsrv" > "${D}"/etc/env.d/08dirsrv
 
+	# create the directory where our log file and database
+	diropts -m 0750 -o dirsrv -g dirsrv
+
 	keepdir /var/lock/dirsrv
 	keepdir /var/lib/dirsrv
 
-}
-
-pkg_postinst() {
-	chown dirsrv:dirsrv "${ROOT}"/var/lock/dirsrv
-	chown dirsrv:dirsrv "${ROOT}"/var/lib/dirsrv
 }
