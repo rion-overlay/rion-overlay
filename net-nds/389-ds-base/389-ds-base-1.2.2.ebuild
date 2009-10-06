@@ -46,7 +46,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/configure.ac.patch"
+	
+	epatch "${FILESDIR}"/configure.ac.patch
+
 	eautoreconf
 }
 
@@ -83,8 +85,8 @@ src_install () {
 	done
 
 	# remove redhat style init script and install gentoo style
-	rm -rf "${D}"/etc/rc.d
-	rm -rf "${D}"/etc/default
+	rm -rf "${D}"/etc/rc.d || die
+	rm -rf "${D}"/etc/default || die
 
 	newinitd "${FILESDIR}"/dirsrv.initd dirsrv
 	newconfd "${FILESDIR}"/dirsrv.confd dirsrv
