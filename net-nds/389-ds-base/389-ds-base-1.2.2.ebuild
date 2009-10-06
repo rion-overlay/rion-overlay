@@ -38,7 +38,7 @@ DEPEND="${ALL_DEPEND}
 
 RDEPEND="${ALL_DEPEND}
 		virtual/perl-Time-Local
-		"
+		virtual/perl-MIME-Base64"
 
 pkg_setup() {
 	enewgroup dirsrv
@@ -100,5 +100,11 @@ src_install () {
 
 	keepdir /var/lock/dirsrv
 	keepdir /var/lib/dirsrv
+	
+	# add perms.
+	fowners -r root:root /usr/sbin/*
+	fperms -r 774 /usr/sbin/*
+
+	fowners -r root:dirsvr /usr/bin/*
 
 }
