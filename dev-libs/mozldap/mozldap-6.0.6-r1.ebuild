@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v${PV}/s
 
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="ipv6 debug +sasl"
 
 DEPEND=">=dev-libs/nss-3.11.4
