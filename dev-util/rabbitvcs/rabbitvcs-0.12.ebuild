@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit gnome2-utils subversion distutils
+inherit gnome2-utils distutils
 
-DESCRIPTION="Python subversion extension for Nautilus. TortoiseSVN clone"
-HOMEPAGE="http://code.google.com/p/nautilussvn/"
-ESVN_REPO_URI="http://nautilussvn.googlecode.com/svn/trunk"
+DESCRIPTION="Integrated version control support for Nautilus"
+HOMEPAGE="http://rabbitvcs.org"
+SRC_URI="http://rabbitvcs.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="diff"
 
 DEPEND=""
@@ -23,8 +23,7 @@ RDEPEND="dev-python/nautilus-python
 		diff? ( dev-util/meld )"
 
 src_unpack() {
-	subversion_src_unpack
-	has ${EAPI:-0} 0 1 && distutils_src_prepare
+	distutils_src_unpack
 
 	# we should not do gtk-update-icon-cache from setup script
 	# we prefer portage for that
@@ -41,7 +40,10 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 
 	elog "You should restart nautilus to changes take effect:"
-	elog "$ nautilus -q && nautilus &"
+	elog "\$ nautilus -q && nautilus &"
+	elog ""
+	elog "Also you should really look at known issues page:"
+	elog "http://wiki.rabbitvcs.org/wiki/support/known-issues"
 }
 
 pkg_postrm() {
