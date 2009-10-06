@@ -20,22 +20,26 @@ IUSE="ipv6 debug +sasl"
 DEPEND=">=dev-libs/nss-3.11.4
 	>=dev-libs/nspr-4.0.1
 	>=dev-libs/svrcore-4.0.0
-	sasl? ( dev-libs/cyrus-sasl )"
+	sasl? ( dev-libs/cyrus-sasl )
+	dev-util/pkgconfig"
 
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-libs/nss-3.11.4
+		>=dev-libs/nspr-4.0.1
+		sasl? ( dev-libs/cyrus-sasl )"
 
 S="${WORKDIR}"/"${P}"/"mozilla/directory/c-sdk"
 
 src_prepare() {
-	
+
 	epatch "${FILESDIR}"/${PN}-6.0.4-pkgconfig.patch
-	epatch "${FILESDIR}"/configure.in.patch 
-	
+	epatch "${FILESDIR}"/configure.in.patch
+	epatch "${FILESDIR}"/nss-m4.patch
+	epatch "${FILESDIR}"/nspr-m4.patch
 	eautoreconf
 }
 
 src_configure() {
-	
+
 	local myconf=""
 
 	myconf="${myconf} --libdir=/usr/$(get_libdir)/mozldap"
@@ -52,7 +56,7 @@ src_configure() {
 }
 
 src_install () {
-	
+
 	# Their build system is royally fucked, as usual
 	cd "${S}"
 	sed -e "s,%libdir%,\$\{exec_prefix\}/$(get_libdir)/${PN},g" \
@@ -69,10 +73,10 @@ src_install () {
 	    -e "s,%SVRCORE_VERSION%,$(pkg-config --modversion svrcore),g" \
 	    -e "s,%MOZLDAP_VERSION%,${PV},g" \
 	   "${S}"/"${PN}".pc.in > "${S}"/"${PN}".pc || die "sed in install failed"
-	
+
 	emake  install || die "make failed"
 	local MY_S="${WORKDIR}"/"${P}"/mozilla/dist/
-	
+
 	rm -rf "${MY_S}/bin/"lib*.so
 	rm -rf "${MY_S}/public/ldap-private"
 
@@ -80,19 +84,19 @@ src_install () {
 	doexe "${MY_S}"/lib/*so*
 	doexe "${MY_S}"/lib/*.a
 	doexe "${MY_S}"/bin/*
-	
+
 	# move the headers around
 	insinto /usr/include/mozldap
 	doins "${MY_S}/public/ldap/"*.h
-	
+
 	# add sample config
 	insinto /usr/share/mozldap
 	doins "${MY_S}"/etc/*.conf
-	
+
 	#and while at it move them to files with versions-ending
 	#and link them back :)
 	cd "${D}"/usr/$(get_libdir)/mozldap
-	
+
 	#create compatibility Link
 	ln -sf libldap$(get_major_version ${PV})$(get_version_component_range 2 ${PV}).so liblber$(get_major_version ${PV})$(get_version_component_range 2 ${PV}).so
 	#so lets move
@@ -101,7 +105,7 @@ src_install () {
 		ln -s ${file}.$(get_major_version ${PV}).$(get_version_component_range 2 ${PV}) ${file}
 		ln -s ${file}.$(get_major_version ${PV}).$(get_version_component_range 2 ${PV}) ${file}.$(get_major_version ${PV})
 	done
-	
+
 	# cope with libraries being in /usr/lib/mozldap
 	dodir /etc/env.d
 	echo "LDPATH=/usr/$(get_libdir)/mozldap" > "${D}"/etc/env.d/08mozldap
