@@ -2,6 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  files/mozldap-6.0.4-pkgconfig.patch, +mozldap-6.0.6-r1.ebuild,
+  +files/configure.in.patch:
+  revision bump - clean code
+
   02 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> -mozldap-6.0.5.ebuild:
   del old version
 
