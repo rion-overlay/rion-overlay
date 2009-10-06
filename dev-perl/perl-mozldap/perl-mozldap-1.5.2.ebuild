@@ -3,9 +3,10 @@
 # $Header: $
 
 EAPI=2
+
 inherit perl-module
 
-DESCRIPTION=" Mozilla PerLDAP"
+DESCRIPTION="Mozilla PerLDAP"
 HOMEPAGE="http://www.mozilla.org/directory/perldap.html"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/directory/perldap/releases/${PV}/src/${P}.tar.gz"
 
@@ -27,3 +28,4 @@ src_prepare () {
 
 	perl-module_src_prepare
 }
+SRC_TEST="do parallel"
