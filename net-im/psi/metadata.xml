@@ -10,5 +10,7 @@
   <flag name="powersave">Disables some timers like animation and some other not
   critical timers what make Psi require much less CPU time.</flag>
   <flag name='plugins'> add plugin support</flag>
+  <flag name='enchant'>Use enchant spell engine instead of aspell</flag>
+  <flag name='whiteboarding'>Inreractive SVG drawing</flag>
 </use>
 </pkgmetadata>
