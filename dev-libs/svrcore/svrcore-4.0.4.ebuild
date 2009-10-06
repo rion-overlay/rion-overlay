@@ -25,9 +25,16 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf  --with-pic || die
+}
+
 src_install () {
 	einstall  || die "emake failed"
+
 	# cope with libraries being in /usr/lib/svrcore
 	dodir /etc/env.d
 	echo "LDPATH=/usr/$(get_libdir)/svrcore" > "${D}"/etc/env.d/08svrcore
+
+	dodoc ChangeLog INSTALL NEWS TODO README AUTHORS
 }
