@@ -1,5 +1,5 @@
---- configure.in.orig	2009-10-06 02:17:04.711485235 +0300
-+++ configure.in	2009-10-06 02:33:46.271482867 +0300
+--- configure.in.orig	2009-10-06 11:33:02.647424284 +0300
++++ configure.in	2009-10-06 11:34:57.870924457 +0300
 @@ -42,7 +42,7 @@
  AC_PREREQ(2.12)
  AC_INIT(ldap/include/ldap.h)
@@ -90,7 +90,18 @@
  
  dnl first, see if user has specified explicit NSPR include and lib paths,
  dnl of if the user has explicitly disabled the use of nss
-@@ -390,48 +337,6 @@
+@@ -308,10 +255,6 @@
+ if test -n "$USE_NSS" -a -z "$NSS_CFLAGS" -a -z "$NSS_LIBS" ; then
+ dnl nss requires nspr
+    no_nspr=no
+-   if test -z "$_SYSTEM_NSS" -o "$_SYSTEM_NSS" = "no" ; then
+-dnl see if we are being built in the same build tree as nss
+-      AM_PATH_INTREE_NSS(../../dist)
+-   fi
+ dnl failing that, see if we can find nss-config or pkg-config nss
+    if test -z "$NSS_CFLAGS" -a "$_SYSTEM_NSS" != "no" ; then
+       AM_PATH_NSS(3.9.0, [MOZ_NATIVE_NSS=1], [MOZ_NATIVE_NSS=])
+@@ -390,48 +333,6 @@
  dnl than in cygwin-wrapper
  dnl ========================================================
  
@@ -139,7 +150,7 @@
  
  dnl ========================================================
  dnl =
-@@ -1489,9 +1394,7 @@
+@@ -1489,9 +1390,7 @@
      ;;
  
  *-linux*)
