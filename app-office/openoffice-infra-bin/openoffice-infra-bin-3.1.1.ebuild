@@ -56,33 +56,34 @@ src_unpack() {
 
 	unpack ${A}
 
+	rp="./ru/RPMS"
 	for i in base binfilter calc core01 core02 core03 core04 core05 core06 core07 draw graphicfilter images impress math ooofonts ooolinguistic pyuno testtool writer xsltfilter ; do
-		rpm_unpack "${S}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "${rp}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
 	done
 
 	for j in base calc draw impress math writer; do
-		rpm_unpack "${S}/openoffice.org3-${j}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "${rp}/openoffice.org3-${j}-${MY_PV3}.${OOARCH}.rpm"
 	done
 
-	rpm_unpack "${S}/openoffice.org3-${MY_PV3}.${OOARCH}.rpm"
-	rpm_unpack "${S}/openoffice.org-ure-${UREVER}-${BUILDID}.${OOARCH}.rpm"
+	rpm_unpack "${rp}/openoffice.org3-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "${rp}/openoffice.org-ure-${UREVER}-${BUILDID}.${OOARCH}.rpm"
 
-	rpm_unpack "${S}/desktop-integration/openoffice.org3.1-freedesktop-menus-3.1-${BUILDID}.noarch.rpm"
+	rpm_unpack "${rp}/desktop-integration/openoffice.org3.1-freedesktop-menus-3.1-${BUILDID}.noarch.rpm"
 
 	# Lang files
-	rpm_unpack "${S}/${BASIS}-ru-${MY_PV3}.${OOARCH}.rpm"
-	rpm_unpack "${S}/openoffice.org3-ru-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "${rp}/${BASIS}-ru-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "${rp}/openoffice.org3-ru-${MY_PV3}.${OOARCH}.rpm"
 	for j in base binfilter calc draw help impress math res writer; do
-		rpm_unpack "${S}/${BASIS}-ru-${j}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "${rp}/${BASIS}-ru-${j}-${MY_PV3}.${OOARCH}.rpm"
 	done
 
 	for l in ${LINGUAS}; do
-		rpm_unpack "${S}/openoffice.org3-dict-${l}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "${rp}/openoffice.org3-dict-${l}-${MY_PV3}.${OOARCH}.rpm"
 	done
 
-	use gnome && rpm_unpack "${S}/${BASIS}-gnome-integration-${MY_PV3}.${OOARCH}.rpm"
-	use kde && rpm_unpack "${S}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
-	use java && rpm_unpack "${S}/${BASIS}-javafilter-${MY_PV3}.${OOARCH}.rpm"
+	use gnome && rpm_unpack "${rp}/${BASIS}-gnome-integration-${MY_PV3}.${OOARCH}.rpm"
+	use kde && rpm_unpack "${rp}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
+	use java && rpm_unpack "${rp}/${BASIS}-javafilter-${MY_PV3}.${OOARCH}.rpm"
 
 }
 
