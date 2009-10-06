@@ -1,0 +1,118 @@
+# ChangeLog for net-nds/389-admin
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Aug 2009; Mario Fetka <mario.fetka@gmail.com>
+  -files/389-adminutil.patch, -389-admin-1.1.7.ebuild,
+  -files/389-admin-1.1.7-389-adminutil-1.patch, 389-admin-1.1.8.ebuild,
+  -files/fedora-ds-admin-cvs.sh:
+  add my mirror for the package
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com>
+  files/389-adminutil.patch:
+  correct patch 2nd try
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com>
+  +files/389-adminutil.patch, 389-admin-1.1.8.ebuild:
+  correct patch
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com> 389-admin-1.1.8.ebuild:
+  correct config flag
+
+*389-admin-1.1.8 (23 Jul 2009)
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com> +389-admin-1.1.8.ebuild:
+  Bump
+
+*389-admin-1.1.7 (21 May 2009)
+
+  21 May 2009; Mario Fetka <mario.fetka@gmail.com> +389-admin-1.1.7.ebuild,
+  -fedora-ds-admin-1.1.7-r1.ebuild,
+  +files/389-admin-1.1.7-389-adminutil-1.patch:
+  rename package
+
+*fedora-ds-admin-1.1.7-r1 (21 May 2009)
+
+  21 May 2009; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-ds-admin-1.1.5-r2.ebuild, -fedora-ds-admin-1.1.6.ebuild,
+  -fedora-ds-admin-1.1.6-r1.ebuild, -fedora-ds-admin-1.1.7.ebuild,
+  +fedora-ds-admin-1.1.7-r1.ebuild:
+  correct dependencies & wait for correct download
+
+  07 Apr 2009; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-admin-1.1.7.ebuild:
+  Bump upstream
+
+  13 Feb 2009; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-admin-1.1.6-r1.ebuild:
+  Bump
+
+  13 Feb 2009; Mario Fetka <mario.fetka@gmail.com> files/dirsrv-admin.initd:
+  correct output of init script
+
+  13 Feb 2009; Mario Fetka <mario.fetka@gmail.com> +files/restart-ds-admin,
+  +files/start-ds-admin, +files/stop-ds-admin, fedora-ds-admin-1.1.6.ebuild:
+  add *-ds-admin wrapper for init script
+
+  15 Sep 2008; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-admin-1.1.6.ebuild:
+  bump
+
+  30 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  +files/fedora-ds-admin-1.1.5-cfgstuff-1.patch,
+  fedora-ds-admin-1.1.5-r2.ebuild:
+  correct cfg stuff
+
+  30 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-ds-admin-1.1.5-r1.ebuild, +fedora-ds-admin-1.1.5-r2.ebuild:
+  depend on java part of admin server
+
+  22 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  fedora-ds-admin-1.1.5-r1.ebuild:
+  add missing depend
+
+  20 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-ds-admin-1.1.2.ebuild, -fedora-ds-admin-1.1.4.ebuild,
+  -fedora-ds-admin-1.1.5.ebuild, fedora-ds-admin-1.1.5-r1.ebuild:
+  Repoman Cleanup
+
+  18 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  +files/dirsrv-admin.confd, +files/dirsrv-admin.initd,
+  fedora-ds-admin-1.1.5.ebuild, +fedora-ds-admin-1.1.5-r1.ebuild:
+  remove USE for now as the m4 macros aren't really usable for a system like
+  gentoo ebuild fedora-ds-admin-1.1.5-r1.ebuild digest
+
+  27 Jun 2008; Mario Fetka <mario-fetka@gmx.at> ChangeLog:
+  Bump
+
+  27 Jun 2008; Mario Fetka <mario-fetka@gmx.at>
+  +fedora-ds-admin-1.1.5.ebuild:
+  Bump
+
+  21 May 2008; Mario Fetka <mario-fetka@gmx.at>
+  +fedora-ds-admin-1.1.4.ebuild:
+  bump
+
+  27 Jan 2008; Mario Fetka <mario-fetka@gmx.at> ChangeLog:
+  bump
+
+  11 Nov 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071017.ebuild:
+  bump
+
+  17 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071014.ebuild:
+  Bump to latest snapshot
+
+  14 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071009.ebuild:
+  Bump to latest snapshot
+
+  09 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071006.ebuild:
+  Bump to snapshot 20071009
+
+  06 Oct 2007; Mario Fetka <mario-fetka@gmx.at> +metadata.xml,
+  +fedora-ds-admin-1.1.0_pre20071006.ebuild:
+  first version
+
