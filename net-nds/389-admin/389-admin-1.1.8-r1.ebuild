@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
 
 inherit eutils multilib autotools depend.apache
 
@@ -39,15 +40,17 @@ DEPEND=">=dev-libs/nss-3.11.4
 	!net-nds/fedora-ds-admin"
 
 RDEPEND="${DEPEND}"
-need_apache2
+#need_apache2
 # has_apache_threads_in worker
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
+	
 	epatch "${FILESDIR}"/fedora-ds-admin-1.1.5-cfgstuff-1.patch
+	
 	sed -e "s!SUBDIRS!# SUBDIRS!g" -i Makefile.am
 	sed -e "s!nobody!apache!g" -i configure.ac
-	rm -rf mod_*
+	rm -rf "${S}"/mod_* || die
+	
+
 	eautoreconf
 }
 

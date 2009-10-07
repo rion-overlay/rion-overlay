@@ -38,7 +38,7 @@ DEPEND="${ALL_DEPEND}
 
 RDEPEND="${ALL_DEPEND}
 		virtual/perl-Time-Local
-		"
+		virtual/perl-MIME-Base64"
 
 pkg_setup() {
 	enewgroup dirsrv
@@ -46,7 +46,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/configure.ac.patch"
+	
+	epatch "${FILESDIR}"/configure.ac.patch
+
 	eautoreconf
 }
 
@@ -83,8 +85,8 @@ src_install () {
 	done
 
 	# remove redhat style init script and install gentoo style
-	rm -rf "${D}"/etc/rc.d
-	rm -rf "${D}"/etc/default
+	rm -rf "${D}"/etc/rc.d || die
+	rm -rf "${D}"/etc/default || die
 
 	newinitd "${FILESDIR}"/dirsrv.initd dirsrv
 	newconfd "${FILESDIR}"/dirsrv.confd dirsrv
@@ -98,5 +100,11 @@ src_install () {
 
 	keepdir /var/lock/dirsrv
 	keepdir /var/lib/dirsrv
+	
+	# add perms.
+	fowners -r root:root /usr/sbin/*
+	fperms -r 774 /usr/sbin/*
+
+	fowners -r root:dirsvr /usr/bin/*
 
 }
