@@ -16,40 +16,35 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ipv6 debug"
 
-DEPEND=">=dev-libs/nss-3.11.4
-	>=dev-libs/nspr-4.6.4
-	>=dev-libs/svrcore-4.0.3
-	>=dev-libs/mozldap-6.0.2
-	>=dev-libs/389-adminutil-1.1.5
-	>=dev-libs/cyrus-sasl-2.1.19
-	>=dev-libs/icu-3.4
-	>=sys-libs/db-4.2.52
-	>=net-analyzer/net-snmp-5.1.2
-	sys-apps/lm_sensors
-	app-arch/bzip2
-	dev-libs/openssl
-	sys-apps/tcp-wrappers
-	sys-libs/pam
-	sys-libs/zlib
-	app-misc/mime-types
-	www-apache/mod_restartd
-	www-apache/mod_nss
-	www-apache/mod_admserv
-	>=app-admin/389-admin-console-1.1.0
-	>=app-admin/389-ds-console-1.1.0
-	!net-nds/fedora-ds-admin"
+DEPEND="dev-libs/nss[utils]
+		dev-libs/nspr
+		dev-libs/svrcore
+		dev-libs/mozldap
+		dev-libs/389-adminutil
+		dev-libs/cyrus-sasl
+		dev-libs/icu
+		>=sys-libs/db-4.2.52
+		net-analyzer/net-snmp
+		sys-apps/tcp-wrappers
+		sys-libs/pam
+		app-misc/mime-types
+		www-apache/mod_restartd
+		www-apache/mod_nss
+		www-apache/mod_admserv
+		>=app-admin/389-admin-console-1.1.0
+		>=app-admin/389-ds-console-1.1.0"
 
 RDEPEND="${DEPEND}"
-#need_apache2
-# has_apache_threads_in worker
+
+need_apache2_2
+
 src_prepare() {
-	
+
 	epatch "${FILESDIR}"/fedora-ds-admin-1.1.5-cfgstuff-1.patch
-	
+
 	sed -e "s!SUBDIRS!# SUBDIRS!g" -i Makefile.am
 	sed -e "s!nobody!apache!g" -i configure.ac
 	rm -rf "${S}"/mod_* || die
-	
 
 	eautoreconf
 }
@@ -64,12 +59,14 @@ src_compile() {
 }
 
 src_install () {
+	
 	emake DESTDIR="${D}" install || die "emake failed"
 	keepdir /var/log/dirsrv/admin-serv
 
 	# remove redhat style init script.
 	rm -rf "${D}"/etc/rc.d
 	rm -rf "${D}"/etc/default
+	
 	# install gentoo style init script.
 	newinitd "${FILESDIR}"/dirsrv-admin.initd dirsrv-admin
 	newconfd "${FILESDIR}"/dirsrv-admin.confd dirsrv-admin
