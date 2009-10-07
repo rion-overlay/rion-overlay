@@ -13,13 +13,12 @@ HOMEPAGE="http://leechcraft.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+browser +torrent rss +dbus lyrics history
-	mediaplayer irc +networkmonitor +opensearch debug ftp -directconnect
+IUSE="+anhero +browser +torrent rss +dbus lyrics history
+	mediaplayer irc +networkmonitor +newlife +opensearch debug ftp -directconnect
 	sitedownloader"
 
 DEPEND=">=dev-libs/boost-1.37
 		>=x11-libs/qt-gui-4.5.1
-		>=x11-libs/qt-core-4.5.1
 		>=x11-libs/qt-sql-4.5.1
 		>=x11-libs/qt-script-4.5.1
 		>=x11-libs/qt-svg-4.5.1
@@ -52,7 +51,9 @@ src_configure() {
 				$(cmake-utils_use_enable irc CHATTER)
 				$(cmake-utils_use_enable ftp FTP)
 				$(cmake-utils_use_enable directconnect DCMINATOR)
-				$(cmake-utils_use_enable sitedownloader YASD)"
+				$(cmake-utils_use_enable sitedownloader YASD)
+				$(cmake-utils_use_enable anhero ANHERO)
+				$(cmake-utils_use_enable newlife NEWLIFE)"
 	S="${WORKDIR}/${P}/src"
 	cmake-utils_src_configure
 }
