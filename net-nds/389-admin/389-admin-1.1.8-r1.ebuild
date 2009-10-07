@@ -59,14 +59,14 @@ src_compile() {
 }
 
 src_install () {
-	
+
 	emake DESTDIR="${D}" install || die "emake failed"
 	keepdir /var/log/dirsrv/admin-serv
 
 	# remove redhat style init script.
 	rm -rf "${D}"/etc/rc.d
 	rm -rf "${D}"/etc/default
-	
+
 	# install gentoo style init script.
 	newinitd "${FILESDIR}"/dirsrv-admin.initd dirsrv-admin
 	newconfd "${FILESDIR}"/dirsrv-admin.confd dirsrv-admin
