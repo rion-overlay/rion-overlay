@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +pam-passthru +dna +bitwise presence kerberos"
 
-ALL_DEPEND="dev-libs/nss
+ALL_DEPEND="dev-libs/nss[utils]
 		dev-libs/nspr
 		dev-libs/svrcore
 		dev-libs/mozldap
@@ -46,7 +46,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	
+
 	epatch "${FILESDIR}"/configure.ac.patch
 
 	eautoreconf
@@ -100,7 +100,7 @@ src_install () {
 
 	keepdir /var/lock/dirsrv
 	keepdir /var/lib/dirsrv
-	
+
 	# add perms.
 	fowners -r root:root /usr/sbin/*
 	fperms -r 774 /usr/sbin/*
