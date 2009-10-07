@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  389-admin-1.1.8-r1.ebuild:
+  clean depend version
+
   24 Aug 2009; Mario Fetka <mario.fetka@gmail.com>
   -files/389-adminutil.patch, -389-admin-1.1.7.ebuild,
   -files/389-admin-1.1.7-389-adminutil-1.patch, 389-admin-1.1.8.ebuild,
