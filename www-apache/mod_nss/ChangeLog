@@ -1,0 +1,13 @@
+# ChangeLog for www-apache/mod_nss
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> mod_nss-1.0.8.ebuild:
+  add ~amd64
+
+*mod_nss-1.0.8 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +files/47_mod_nss.conf,
+  +mod_nss-1.0.8.ebuild, +metadata.xml:
+  new ebuld
+

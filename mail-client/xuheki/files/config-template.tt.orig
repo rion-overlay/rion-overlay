@@ -1,0 +1,10 @@
+{
+    PASSWORD            => '[% xuheki_password %]',
+    XUHEKI_PORT         => [% xuheki_port %],
+    DBI                 => [ 'dbi:mysql:[% xuheki_db %]', '[% xuheki_dbuser %]', '[% xuheki_dbpass %]' ],
+
+    uri_prefix          => '[% uri_prefix %]',
+    cookie_domain       => '.[% webdomain %]',
+    basedir             => '[% installdir %]',
+    webdomain           => '[% webdomain %]',
+};
