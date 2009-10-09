@@ -24,3 +24,7 @@ DEPEND="dev-lang/perl
 	mp4? ( media-video/gpac )
 	x264? ( media-video/mplayer[x264] )"
 RDEPEND=${DEPEND}
+
+S="${WORKDIR}"/"${PN}"
+SRC_TEST="do"
+
