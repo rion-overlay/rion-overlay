@@ -1,0 +1,7 @@
+# ChangeLog for media-video/ripwrap
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  09 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> ripwrap-0.26.ebuild:
+  add S variable
+
