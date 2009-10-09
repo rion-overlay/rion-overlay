@@ -1,3 +1,9 @@
+# 9  Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# ebuld not complete ,not work and 
+# possible unmantained,
+# removal in 20.10.09
+media-video/ripwrap
+
 # 7 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for force testing cmake build system
 =net-p2p/eiskaltdc-9999
