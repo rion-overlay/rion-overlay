@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit eutils qt4 multilib git subversion
 
-RU_LANGPACK_VER="05_Jul_2009"
+RU_LANGPACK_VER="10_Oct_2009"
 
 DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
