@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +sugarcrm-5.5.0_beta2-r1.ebuild:
+  fix depend logic
+
   18 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   -sugarcrm-5.5.0_beta1-r2.ebuild, sugarcrm-5.5.0_beta2.ebuild:
   delete beta1 ebuild
