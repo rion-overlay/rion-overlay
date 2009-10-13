@@ -13,7 +13,7 @@ IUSE=""
 
 DEPEND=">=dev-lang/python-2.5"
 RDEPEND="${DEPEND}
-	>=dev-python/pyxdg-0.17
+	>=dev-python/pyxdg-0.17-r2
 	dev-python/pycairo
 	dev-python/python-xlib
 	gnome-extra/deskbar-applet
