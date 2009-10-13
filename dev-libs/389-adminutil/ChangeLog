@@ -1,0 +1,15 @@
+# ChangeLog for dev-libs/389-adminutil
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  06 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-adminutil-1.1.8-r1.ebuild:
+  rewrite to EAPI 2
+
+*389-adminutil-1.1.8 (20 Aug 2009)
+
+  20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-adminutil-1.1.8.ebuild, +files/389-adminutil-1.1.8-no_icu_pc.patch,
+  +metadata.xml:
+  initial commit
+
