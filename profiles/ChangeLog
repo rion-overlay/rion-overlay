@@ -3,6 +3,10 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+ 13 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
+ mask stub ebuild 
+ =app-emulation/cedega-000133
+
   7 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
   mask for force testing cmake build system
   =net-p2p/eiskaltdc-9999
