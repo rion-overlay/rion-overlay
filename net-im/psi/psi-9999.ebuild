@@ -26,7 +26,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="crypt dbus debug doc jingle spell ssl xscreensaver powersave plugins
-enchant whiteboarding"
+enchant whiteboarding webkit"
 RESTRICT="test"
 
 LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
@@ -40,7 +40,8 @@ RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
 		spell? ( enchant? ( app-text/enchant )
 			!enchant? ( app-text/aspell )
 		)
-		xscreensaver? ( x11-libs/libXScrnSaver )"
+		xscreensaver? ( x11-libs/libXScrnSaver )
+		webkit? ( x11-libs/qt-webkit )"
 
 DEPEND="${RDEPEND}
 		sys-devel/qconf
@@ -100,7 +101,7 @@ src_prepare() {
 		# fix undefined qdebug
 #		sed '/qDebug/d' -i src/sxe/sxeedit.cpp
 #		sed '/qDebug/d' -i src/sxe/sxerecord.cpp
-		epatch "${WORKDIR}/patches/dev/psi-wb.diff"
+		epatch "${WORKDIR}/patches/dev/psi-wb.patch"
 
 		ewarn "whiteboarding is very unstable thing.";
 		ewarn "don't post bug reports about it";
@@ -123,7 +124,8 @@ src_configure() {
 			$(use spell && ( use enchant && echo '--disable-aspell' || \
 				echo '--disable-enchant' ) || echo '--disable-aspell --disable-enchant')
 			$(use xscreensaver || echo '--disable-xss')
-			$(use plugins && echo '--enable-plugins')"
+			$(use plugins && echo '--enable-plugins')
+			$(use webkit && echo '--enable-qtwebkit')"
 
 	echo ${confcmd}
 	${confcmd} || die "configure failed"
