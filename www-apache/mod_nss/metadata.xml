@@ -2,4 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>rion</herd>
+<use>
+	<flag name='ecc'>enable Elliptical Curve Cyptography</flag>
+</use>
+
 </pkgmetadata>
