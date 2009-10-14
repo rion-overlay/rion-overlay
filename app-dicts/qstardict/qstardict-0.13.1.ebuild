@@ -26,7 +26,7 @@ src_prepare() {
 	find "${WORKDIR}" -name '*pr?' -exec sed "s:/lib:/$(get_libdir):" -i '{}' \;
 
 	# fix gcc-4.4.1 compatibility
-	sed 's/def Q_OS_WIN32/defined(Q_OS_WIN32)/' -i plugins/stardict/dictziplib.cpp
+	sed 's/def Q_OS_WIN32/ defined(Q_OS_WIN32)/' -i plugins/stardict/dictziplib.cpp
 }
 
 src_compile() {
