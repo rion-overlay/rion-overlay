@@ -3,6 +3,9 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+ 15 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
+ mask dev-lang/kumir
+
  13 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
  mask stub ebuild 
  =app-emulation/cedega-000133
