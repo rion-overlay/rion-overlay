@@ -5,7 +5,7 @@
  
      # use default if no filename given
 +    if not filename:
-+        prefix = "XDG_MENU_PREFIX" in os.environ and os.environ["XDG_MENU_PREFIX"] or ""
++        prefix = os.environ.get('XDG_MENU_PREFIX', '')
 +        filename = __getFileName(prefix + "applications.menu")
 +
      if not filename:
