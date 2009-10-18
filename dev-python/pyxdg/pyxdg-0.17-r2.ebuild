@@ -12,12 +12,12 @@ HOMEPAGE="http://pyxdg.freedesktop.org/"
 LICENSE="LGPL-2"
 KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 SLOT="0"
-IUSE="gnome"
+IUSE=""
 
 src_unpack() {
 	distutils_src_unpack
 	epatch "${FILESDIR}/${PN}-subprocess.patch"
-	use gnome && epatch "${FILESDIR}/gnome-2.26.patch"
+	epatch "${FILESDIR}/${PN}-prefix.patch"
 }
 
 src_install () {
