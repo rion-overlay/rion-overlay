@@ -1,0 +1,2 @@
+#!/bin/sh 
+chown -R :squid /opt/rejik
