@@ -16,5 +16,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND=">=x11-drivers/xf86-input-synaptics-1.1.3"
+DEPEND=">=x11-drivers/xf86-input-synaptics-1.0.0
+		>=x11-proto/inputproto-2.0"
 RDEPEND="${DEPEND}"
