@@ -7,7 +7,7 @@ EAPI="2"
 inherit kde4-base git
 
 DESCRIPTION="Synaptics driver based touchpads kcontrol module.KSynaptic analog for KDE-4"
-HOMEPAGE="http://github.com/mishaaq/kcm_touchpad"
+HOMEPAGE="http://kde-apps.org/content/show.php/kcm_touchpad?content=113335"
 SRC_URI=""
 
 EGIT_REPO_URI="git://github.com/mishaaq/kcm_touchpad.git"
