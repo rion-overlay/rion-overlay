@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit qt4 eutils
+inherit qt4 eutils fdo-mime
 
 DESCRIPTION="NetEmul is a program for simulating computer networks"
 HOMEPAGE="http://www.sourceforge.net/project/netemul/"
@@ -43,4 +43,8 @@ src_install() {
 
 	domenu "${FILESDIR}/netemul.desktop"
 
+}
+
+pkg_postinst() {
+	fdo-mime_desktop_database_update
 }
