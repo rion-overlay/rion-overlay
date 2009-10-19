@@ -2,6 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*otrs-2.4.5.ebuild
+  
+  19 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.4.5.ebuild:
+  add new version
+
 *otrs-2.4.1 (08 Aug 2009)
 
   08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +files/apache2.patch,
