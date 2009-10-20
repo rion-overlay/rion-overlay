@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdemud/files/cdemud.init.d-1.1.0,v 1.3 2009/03/30 16:54:54 dev-zero Exp $
+
+depend() {
+	need dbus
+	[ "${CDEMUD_AUDIO_DRIVER}" == alsa ] && need alsasound
+}
+
+start() {
+	ebegin "Loading CDemu userspace daemon"
+
+	start-stop-daemon --quiet --start \
+		--exec /usr/bin/cdemud -- \
+		-d -c /dev/vhba_ctl -n ${CDEMUD_DEVICES} -a ${CDEMUD_AUDIO_DRIVER}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping CDemu userspace daemon"
+	/usr/bin/cdemud -k
+	eend $?
+}
