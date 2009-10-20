@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils fdo-mime gnome2-utils
+inherit eutils fdo-mime
 
 DESCRIPTION="Cisco's Packet Tracer"
 HOMEPAGE="https://www.cisco.com/web/learning/netacad/course_catalog/PacketTracer.html"
@@ -26,14 +26,6 @@ RDEPEND="doc? ( www-plugins/adobe-flash  )
 		amd64? ( >=app-emulation/emul-linux-x86-qtlibs-20080316 )
 		x11-base/xorg-x11
 		!<app-emulation/packettracer-52"
-#This is qt-static paskages
-
-
-#  not support if license file in PORTDIR_OVERLAY ?
-#pkg_preinst () {
-#check_license
-#}
-
 
 pkg_nofetch () {
 	ewarn "For fetch this file,you have cisco account"
@@ -87,7 +79,6 @@ make_desktop_entry "packettracer"  "PacketTracer" "app" "Network;Emulator"
 pkg_postinst(){
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
-	gnome2_icon_cache_update
 if use doc ; then
 		einfo " You have doc USE flag"
 	    einfo " For use documentaion , please"
@@ -106,7 +97,6 @@ fi
 pkg_postrm() {
 fdo-mime_desktop_database_update
 fdo-mime_mime_database_update
-gnome2_icon_cache_update
 }
 
 
