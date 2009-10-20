@@ -67,7 +67,7 @@ src_install () {
 	cd "${D}${PKT_HOME}/${MY_NAME}"
 	doicon "./art/"{app,pka,pkt,pkz}.{ico,png}
 make_wrapper packettracer "./bin/PacketTracer5" "${PKT_HOME}${MY_NAME}" "${PKT_HOME}${MY_NAME}/lib"
-make_desktop_entry "packettracer"  "PacketTracer" "app" "Network;Emulator"
+make_desktop_entry "packettracer"  "PacketTracer" "app" "Education;Emulator"
 	insinto /usr/share/mime/applications
 	doins "${D}${PKT_HOME}/${MY_NAME}"/bin/*.xml
 	rm -f "${D}${PKT_HOME}/${MY_NAME}"/bin/*.xml
