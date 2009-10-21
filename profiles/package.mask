@@ -30,9 +30,12 @@ www-apps/ikiwiki
 # 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # not complete,require dog-tag pki server and more
 # patches: SysV init system is hardcoded
+# 21 Okt 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask before new version
 app-admin/ipa-admintools
-net-nds/ipa-clien
+net-nds/ipa-client
 net-nds/ipa-server
+dev-python/ipa-python
 
 # 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask mail-client/xuheki, not complete,bad depend
