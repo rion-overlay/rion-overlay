@@ -1,0 +1,38 @@
+--- netemul.pro.orig	2009-10-14 21:14:19.361479652 +0300
++++ netemul.pro	2009-10-14 21:19:12.629477244 +0300
+@@ -82,9 +82,7 @@
+     CONFIG += debug
+     
+     # Prefix: base instalation directory
+-    isEmpty( PREFIX ):PREFIX = /usr/local
+-    DEB_BUILD = $$system(echo \$DEB_BUILD_OPTIONS)
+-    contains(DEB_BUILD, nostrip):QMAKE_STRIP = :
++    PREFIX = /usr
+     DEFINES += PREFIX=\\\"$${PREFIX}\\\"
+     target.path = $${PREFIX}/bin
+     INSTALLS = target
+@@ -99,21 +97,12 @@
+         ../translation/netemul_ru.qm
+     INSTALLS += translations
+ 
+-    # Icons
+-    icons.path = $${PREFIX}/share/netemul/pixmap/
+-    icons.files = ../images/NetEmul.png
+-    INSTALLS += icons
+ 
+-    # Desktop
+-    desktop.path = /usr/share/applications/
+-    desktop.files = ./netemul.desktop
+-    INSTALLS += desktop
+-
+-    # Docs$${PREFIX}/share/netemul/
+-    docs.path = $${PREFIX}/share/netemul/
++    # Docs$${PREFIX}/share/doc/netemul/
++    docs.path = $${PREFIX}/share/doc/netemul/
+     docs.files = ../doc
+     INSTALLS += docs
+-    DOC_PATH = $${PREFIX}/share/netemul/doc/
++    DOC_PATH = $${PREFIX}/share/doc/netemul
+ 
+     #Scripts
+     SCRIPT_PATH = $${PREFIX}/share/netemul/
