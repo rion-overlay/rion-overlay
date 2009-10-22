@@ -39,7 +39,7 @@ src_prepare(){
 	# Set version
 	cd "${S}"
 	sed -e s/__VERSION__/"${PV}"/ version.m4.in  > version.m4 || die "sed failed"
-
+	epatch "${FILESDIR}/${PV}"/*.patch
 	epatch "${FILESDIR}"/gentoo-configure-ac.patch
 
 	eautoreconf

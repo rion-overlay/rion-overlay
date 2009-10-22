@@ -37,15 +37,11 @@ S="${WORKDIR}"/"freeipa-${PV}/${PN}"
 python_enable_pyc
 python_need_rebuild
 
-src_unpack(){
-	eapi2_src_unpack
-}
-
 src_prepare(){
 # Set version
 sed -e s/__VERSION__/1.2.2/ version.m4.in  > version.m4 || die
 	mv version.m4.in version.m4 || die
-
+	epatch "${FILESDIR}/${PV}"/*.patch
 	eautoreconf
 }
 
