@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 #BUILD_PARAMS=""
 
 pkg_setup() {
-	if kernel_is it 2 6 28
+	if kernel_is lt 2 6 28
 	then
 		ewarn "You need  enable CONFIG_USB_IP_COMMON and use stging drivers "
 #	else
