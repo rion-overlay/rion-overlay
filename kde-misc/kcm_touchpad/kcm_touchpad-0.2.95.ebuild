@@ -4,12 +4,12 @@
 
 EAPI="2"
 
-GIT_HASH="mishaaq-${PN}-2bb4e58"
+GIT_HASH="mishaaq-${PN}-504052d"
 inherit kde4-base
 
 DESCRIPTION="Synaptics driver based touchpads kcontrol module.KSynaptic analog for KDE-4"
 HOMEPAGE="http://kde-apps.org/content/show.php/kcm_touchpad?content=113335"
-SRC_URI="http://github.com/mishaaq/${PN}/tarball/${P} -> kcm_touchpad-0.2.1.tar.gz"
+SRC_URI="http://github.com/mishaaq/${PN}/tarball/${P} -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
