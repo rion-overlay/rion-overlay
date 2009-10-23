@@ -3,10 +3,15 @@
 # $Header: $
 
   23 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +mit-krb5-1.7-r101.ebuild:
+  recommit in main tree - add ldap bakend support
+
+  23 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/1.6-MITKRB5-SA-2008-001.patch, +files/mit-krb5-lazyldflags.patch,
   +files/mit-krb5kdc.confd, +mit-krb5-1.6.3-r116.ebuild,
   +files/MITKRB5-SA-2008-002.patch, +files/mit-krb5kadmind.initd,
   +files/mit-krb5kdc.initd, +files/CVE-2009-0844+CVE-2009-0847.patch,
   +files/CVE-2009-0846.patch, +metadata.xml:
-  recommit in main tree
+  recommit in main tree - add ldap bakend support
+
 
