@@ -3,6 +3,10 @@
 # $Header: $
 
   23 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +mit-krb5-1.7-r102.ebuild:
+  revrite to autoconf eclass
+
+  23 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +mit-krb5-1.7-r101.ebuild:
   recommit in main tree - add ldap bakend support
 
