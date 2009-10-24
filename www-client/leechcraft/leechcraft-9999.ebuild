@@ -22,7 +22,7 @@ DEPEND=">=dev-libs/boost-1.37
 		>=x11-libs/qt-sql-4.5.1
 		>=x11-libs/qt-script-4.5.1
 		>=x11-libs/qt-svg-4.5.1
-		torrent? ( =net-libs/rb_libtorrent-9999[crypt] )
+		torrent? ( >=net-libs/rb_libtorrent-9999[crypt] )
 		mediaplayer? ( media-sound/phonon )
 		browser? ( >=x11-libs/qt-webkit-4.5.1 )"
 RDEPEND="${DEPEND}"
@@ -53,6 +53,7 @@ src_configure() {
 				$(cmake-utils_use_enable directconnect DCMINATOR)
 				$(cmake-utils_use_enable sitedownloader YASD)
 				$(cmake-utils_use_enable anhero ANHERO)
+				$(cmake-utils_use_enable vgrabber VGRABBER)
 				$(cmake-utils_use_enable newlife NEWLIFE)"
 	S="${WORKDIR}/${P}/src"
 	cmake-utils_src_configure
