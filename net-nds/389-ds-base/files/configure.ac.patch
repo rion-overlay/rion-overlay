@@ -56,7 +56,7 @@
 -defaultuser=nobody
 -defaultgroup=nobody
 +defaultuser=dirsrv
-+defaultgroup=dirsrv/y
++defaultgroup=dirsrv
  
  AC_SUBST(configdir)
  AC_SUBST(sampledatadir)
