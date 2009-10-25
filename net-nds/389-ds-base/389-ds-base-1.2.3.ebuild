@@ -53,6 +53,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-ldflags -Wl,--as-needed 
+	
 	econf $(use_enable debug) \
 		$(use_enable pam-passthru) \
 		$(use_enable dna) \
