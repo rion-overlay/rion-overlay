@@ -47,7 +47,7 @@ pkg_setup() {
 
 src_prepare() {
 
-	epatch "${FILESDIR}"/configure.ac.patch
+	epatch "${FILESDIR}/${PN}/"*.patch
 
 	eautoreconf
 }
