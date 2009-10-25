@@ -31,6 +31,9 @@ DOCFILES="NOTICE README "
 need_apache2
 
 src_prepare() {
+	# add gentoo naming
+	sed -i -e 's/certutil/nsscertutil/' gencert.in || die "sed failed"
+
 	eautoreconf
 }
 
@@ -50,6 +53,7 @@ src_install() {
 
 	dosbin gencert nss_pcache
 	dohtml docs/mod_nss.html
+	dodir /etc/apache2/nss
 
 	apache-module_src_install
 }
@@ -61,6 +65,16 @@ pkg_postinst() {
 	elog "net-dns/bind-tools packages and"
 	elog "use gencert script"
 	elog ""
-	elog "For intro NSS read READMI files and web page:"
+	elog "For intro NSS library read READMI files and web page:"
 	elog "http://www.mozilla.org/projects/security/pki/nss/"
+	elog ""
+	elog "For intro mod_nss read READMI files and web page:"
+	elog "http://directory.fedoraproject.org/docs/mod_nss.html"
 }
+
+#TODO generating self-signed certs.
+#pkg_config() {
+
+#: ;
+# gencert /etc/apache2/nss
+#}
