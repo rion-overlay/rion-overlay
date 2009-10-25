@@ -3,6 +3,10 @@
 # $Header: $
 
   25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-adminutil-1.1.8.ebuild:
+  drop old
+
+  25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/1.1.8/0001-no_icu_pc.patch, 389-adminutil-1.1.8-r1.ebuild,
   -files/389-adminutil-1.1.8-no_icu_pc.patch:
   move patch to PV dir
