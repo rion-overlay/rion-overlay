@@ -3,6 +3,11 @@
 # $Header: $
 
   25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/1.1.9/0001-gentoo-apache-names.patch, 389-admin-1.1.9.ebuild,
+  +files/1.1.9/0002-gentoo-brand-name.patch:
+  add more patches
+
+  25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   -files/fedora-ds-admin-1.1.5-cfgstuff-1.patch, 389-admin-1.1.9.ebuild:
   remove old patch
 
