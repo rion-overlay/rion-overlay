@@ -29,7 +29,7 @@ ALL_DEPEND="dev-libs/nss[utils]
 	sys-libs/pam
 	sys-libs/zlib
 	dev-perl/perl-mozldap
-	dev-libs/libpcre
+	dev-libs/libpcre:3
 	kerberos? ( app-crypt/mit-krb5 )"
 
 DEPEND="${ALL_DEPEND}
@@ -47,7 +47,7 @@ pkg_setup() {
 
 src_prepare() {
 
-	epatch "${FILESDIR}"/configure.ac.patch
+#	epatch "${FILESDIR}"/configure.ac.patch
 
 	eautoreconf
 }
@@ -59,7 +59,10 @@ src_configure() {
 		$(use_enable bitwise) \
 		$(use_enable presence) \
 		$(use_with kerberos) \
-		--with-pic \
+		--enable-maintainer-mode \
+		--enable-ldapi \
+		--enable-autobind \
+		--enable-auto-dn-suffix \
 		--with-fhs || die "econf failed"
 }
 
