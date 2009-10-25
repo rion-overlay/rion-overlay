@@ -27,15 +27,14 @@ DEPEND=">=dev-libs/nss-3.11.4
 
 RDEPEND="${DEPEND}"
 src_prepare() {
-	epatch "${FILESDIR}"/389-adminutil-1.1.8-no_icu_pc.patch
+	epatch "${FILESDIR}/${PV}"/*.patch
 
 	eautoreconf
 }
 
 src_configure() {
 	econf $(use_enable debug) \
-	    --with-fhs \
-		--with-pic ||die "econf failed"
+	    --with-fhs ||die "econf failed"
 }
 
 src_install () {
