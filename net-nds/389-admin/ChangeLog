@@ -3,6 +3,10 @@
 # $Header: $
 
   25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/fedora-ds-admin-1.1.5-cfgstuff-1.patch, 389-admin-1.1.9.ebuild:
+  remove old patch
+
+  25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +389-admin-1.1.9.ebuild:
   version bump
 
