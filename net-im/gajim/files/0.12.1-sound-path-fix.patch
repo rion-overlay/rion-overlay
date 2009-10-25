@@ -1,0 +1,50 @@
+diff -r 955cd2eb2893 data/defs.py.in
+--- a/data/defs.py.in	Tue Feb 03 21:39:50 2009 +0100
++++ b/data/defs.py.in	Mon Feb 16 02:05:18 2009 +0100
+@@ -2,7 +2,7 @@
+ # do not edit it!
+ docdir = "@DOCDIR@"
+ 
+-datadir = "@DATADIR@"
++datadir = "@DATADIR@/gajim"
+ 
+ localedir = "@LOCALEDIR@"
+ 
+diff -r 955cd2eb2893 src/common/config.py
+--- a/src/common/config.py	Tue Feb 03 21:39:50 2009 +0100
++++ b/src/common/config.py	Mon Feb 16 02:05:18 2009 +0100
+@@ -447,15 +447,15 @@
+ 	}
+ 
+ 	soundevents_default = {
+-		'first_message_received': [ True, '../data/sounds/message1.wav' ],
+-		'next_message_received_focused': [ True, '../data/sounds/message2.wav' ],
+-		'next_message_received_unfocused': [ True, '../data/sounds/message2.wav' ],
+-		'contact_connected': [ True, '../data/sounds/connected.wav' ],
+-		'contact_disconnected': [ True, '../data/sounds/disconnected.wav' ],
+-		'message_sent': [ True, '../data/sounds/sent.wav' ],
+-		'muc_message_highlight': [ True, '../data/sounds/gc_message1.wav', _('Sound to play when a group chat message contains one of the words in muc_highlight_words, or when a group chat message contains your nickname.')],
+-		'muc_message_received': [ False, '../data/sounds/gc_message2.wav', _('Sound to play when any MUC message arrives.') ],
+-		'gmail_received': [ False, '../data/sounds/message1.wav' ],
++		'first_message_received': [ True, 'message1.wav' ],
++		'next_message_received_focused': [ True, 'message2.wav' ],
++		'next_message_received_unfocused': [ True, 'message2.wav' ],
++		'contact_connected': [ True, 'connected.wav' ],
++		'contact_disconnected': [ True, 'disconnected.wav' ],
++		'message_sent': [ True, 'sent.wav' ],
++		'muc_message_highlight': [ True, 'gc_message1.wav', _('Sound to play when a group chat message contains one of the words in muc_highlight_words, or when a group chat message contains your nickname.')],
++		'muc_message_received': [ False, 'gc_message2.wav', _('Sound to play when any MUC message arrives.') ],
++		'gmail_received': [ False, 'message1.wav' ],
+ 	}
+ 
+ 	themes_default = {
+@@ -696,7 +696,8 @@
+ 			default = self.soundevents_default[event]
+ 			self.add_per('soundevents', event)
+ 			self.set_per('soundevents', event, 'enabled', default[0])
+-			self.set_per('soundevents', event, 'path', default[1])
++			self.set_per('soundevents', event, 'path', '%s/data/sounds/%s' %
++															(defs.datadir, default[1]))
+ 
+ 		for status in self.defaultstatusmsg_default:
+ 			default = self.defaultstatusmsg_default[status]

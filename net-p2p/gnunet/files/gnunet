@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2
+# description:  Gnunet is an anonymous distributed secure network
+#               this server is required to connect to the network,
+#               it will open a TCP port to communicate with the
+#               GUI and an UDP port to communicate with the world.
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting GNUnet"
+	# -u username, -c path to gnunet.conf file
+	start-stop-daemon --start --quiet --background --exec /usr/bin/gnunetd \
+		-- -u gnunet -c /var/lib/GNUnet/gnunet.conf
+	eend $? "Failed to start GNUnet"
+}
+
+stop() {
+	ebegin "Stopping GNUnet"
+	killall gnunetd
+	eend $? "Failed to stop GNUnet"
+}
+
+restart() {
+        svc_stop
+        sleep 3
+        svc_start
+}
