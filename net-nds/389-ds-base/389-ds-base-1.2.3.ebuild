@@ -78,6 +78,7 @@ src_install () {
 	# install not installed header
 	insinto /usr/include/dirsrv
 	doins ldap/servers/slapd/slapi-plugin.h
+	# for build free-ipa require winsync-plugin
 	doins ldap/servers/plugins/replication/winsync-plugin.h
 
 	# make sure perl scripts have a proper shebang
