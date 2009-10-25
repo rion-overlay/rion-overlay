@@ -14,7 +14,7 @@ SRC_URI="http://port389.org/sources/${P}.tar.bz2
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="debug fortitude"
 
 DEPEND="dev-libs/nss[utils]
 		dev-libs/nspr
@@ -32,7 +32,8 @@ DEPEND="dev-libs/nss[utils]
 		www-apache/mod_nss
 		www-apache/mod_admserv
 		>=app-admin/389-admin-console-1.1.0
-		>=app-admin/389-ds-console-1.1.0"
+		>=app-admin/389-ds-console-1.1.0
+		www-servers/apache:2[apache2_mpms_event]"
 
 RDEPEND="${DEPEND}"
 
@@ -40,7 +41,7 @@ need_apache2_2
 
 src_prepare() {
 
-	epatch "${FILESDIR}"/fedora-ds-admin-1.1.5-cfgstuff-1.patch
+	epatch "${FILESDIR}/${PV}/"*.patch
 
 	sed -e "s!SUBDIRS!# SUBDIRS!g" -i Makefile.am
 	sed -e "s!nobody!apache!g" -i configure.ac
@@ -49,9 +50,11 @@ src_prepare() {
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	econf $(use_enable debug) \
 	--with-fhs \
+	--with-apr-config \
+	--with-apxs=${APXS} \
 	--with-httpd=${APACHE_BIN} \
 	|| die "econf failed"
 
