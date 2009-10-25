@@ -1,0 +1,36 @@
+# ChangeLog for www-apps/haserl
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+ 05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+ mass repoman fix
+
+*haserl-0.9.25.ebuild
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  mass repoman fix
+
+*haserl-0.9.23.ebuild
+
+  04 Mar 2008; Jakub Moc <jakub@gentoo.org> -haserl-0.9.21.ebuild,
+  +haserl-0.9.22.ebuild:
+  Version bump, remove old.
+
+  25 Nov 2007; Jakub Moc <jakub@gentoo.org> -haserl-0.9.18.ebuild,
+  +haserl-0.9.21.ebuild:
+  Version bump, remove old
+
+  07 Sep 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  -haserl-0.9.4.ebuild, -haserl-0.9.13.ebuild, +haserl-0.9.18.ebuild:
+  Version bump, nuke old. Remove bogus tdb dependency. Add lua use flag. Use
+  econf and emake instead of configure and make. Install docs.
+
+  03 Dec 2006; Emanuele Gentili <bathym@0x656d67.org> +haserl-0.9.13.ebuild:
+  Version bump
+
+  21 Mar 2006; Lares Moreau <lares.moreau@gmail.com> ChangeLog:
+  Added ~amd64 keyword;  web-apps Ticket #20
+
+  11 Dec 2005; Renat Lumpau <rl03@gentoo.org> ChangeLog:
+  Initial ebuild wrt bug #76213.
+

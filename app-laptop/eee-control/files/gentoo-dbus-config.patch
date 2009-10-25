@@ -1,0 +1,13 @@
+--- ./data/eee-control-daemon.conf	2008-11-10 10:09:57.000000000 +0100
++++ ./data/eee-control-daemon.conf	2008-11-10 10:11:07.000000000 +0100
+@@ -8,6 +8,10 @@
+                 <allow send_destination="org.eee.Eee"/>
+                 <allow send_interface="org.eee.Eee"/>
+         </policy>
++        <policy group="plugdev">
++                <allow send_destination="org.eee.Eee"/>
++                <allow send_interface="org.eee.Eee"/>
++        </policy>
+         <policy at_console="true">
+                 <allow send_destination="org.eee.Eee"/>
+                 <allow send_interface="org.eee.Eee"/>
