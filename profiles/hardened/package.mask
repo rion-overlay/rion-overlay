@@ -1,0 +1,3 @@
+# 25 Okt 2009;Andreis Vinogradovs <spamslepnoga@inbox.ru>
+# not work - missing link
+net-nds/389-ds-base
