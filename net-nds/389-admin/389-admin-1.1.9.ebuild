@@ -33,7 +33,7 @@ DEPEND="dev-libs/nss[utils]
 		www-apache/mod_admserv
 		>=app-admin/389-admin-console-1.1.0
 		>=app-admin/389-ds-console-1.1.0
-		www-servers/apache:2[apache2_mpms_event]"
+		www-servers/apache:2[apache2_mpms_worker]"
 
 RDEPEND="${DEPEND}"
 
