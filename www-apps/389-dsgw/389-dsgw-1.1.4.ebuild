@@ -14,7 +14,7 @@ SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug +adminserver"
 
 DEPEND="adminserv? ( net-nds/389-admin )
