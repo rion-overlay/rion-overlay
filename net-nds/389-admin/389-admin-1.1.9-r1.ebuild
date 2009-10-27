@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+WANT_AUTOMAKE="1.9"
+
 inherit eutils multilib autotools depend.apache
 
 DESCRIPTION="389 Directory Server (admin)"
@@ -14,7 +16,7 @@ SRC_URI="http://port389.org/sources/${P}.tar.bz2
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug ipv6 fortitude"
+IUSE="debug ipv6"
 
 # USE selinux dropped - gentoo specific
 # I`m not selinux man
@@ -79,4 +81,9 @@ src_install () {
 	# and install gentoo scripts.
 	rm -rf "${D}"/usr/sbin/*-ds-admin
 	dosbin "${FILESDIR}"/*-ds-admin
+
+	# Patch httpd.conf 
+	# Source in httpd.conf is patch hell,imho
+	cd "${D}"/etc
+	epatch "${FILESDIR}/${PV}"-apache2-httpd.conf.patch || die
 }
