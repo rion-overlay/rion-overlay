@@ -60,8 +60,6 @@ src_configure() {
 	--with-apxs=${APXS} \
 	--with-httpd=${APACHE_BIN} \
 	|| die "econf failed"
-
-	emake || die "emake failed"
 }
 
 src_install () {

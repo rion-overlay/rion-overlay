@@ -58,7 +58,6 @@ src_configure() {
 	--with-httpd=${APACHE_BIN} \
 	|| die "econf failed"
 
-	emake || die "emake failed"
 }
 
 src_install () {
