@@ -1,5 +1,5 @@
-# Copyright 1999-2008 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
@@ -14,10 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="chm doc exif +gsf id3 pdf python"
 
-DEPEND="app-text/gnome-doc-utils
+ALL_DEPEND="app-text/gnome-doc-utils
 	dev-libs/glib:2
-	dev-util/intltool
-	dev-util/pkgconfig
 	gnome-base/gnome-vfs
 	gnome-base/libgnome
 	gnome-base/libgnomeui
@@ -29,7 +27,10 @@ DEPEND="app-text/gnome-doc-utils
 	pdf? ( virtual/poppler )
 	python? ( =dev-lang/python-2* )
 	taglib? ( media-libs/taglib )"
-RDEPEND="${DEPEND}"
+DEPEND="${ALL_DEPEND}
+		dev-util/intltool
+		dev-util/pkgconfig"
+RDEPEND="${ALL_DEPEND}"
 
 DOCS="AUTHORS BUGS ChangeLog NEWS README TODO"
 
