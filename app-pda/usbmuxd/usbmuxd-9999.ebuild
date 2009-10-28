@@ -3,7 +3,8 @@
 # $Header: $
 
 EAPI="2"
-inherit autotools
+
+inherit cmake-utils
 if [[ "${PV}" == 9999* ]]; then
 	inherit git
 	EGIT_REPO_URI="http://git.marcansoft.com/repos/usbmuxd.git"
@@ -33,13 +34,16 @@ src_unpack() {
 	fi
 }
 
-src_prepare() {
-	cd "${S}"
-	eautoreconf || die "reconf failed"
+src_configure() {
+	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_compile
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	cmake-utils_src_install
 	dodoc AUTHORS README
 }
 
