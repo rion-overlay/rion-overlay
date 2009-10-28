@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>net-im</herd>
+<maintainer>
+  <email>troll@gentoo.org</email>
+</maintainer>
+  <longdescription>Psi is a very good jabber client that uses QT</longdescription>
+<use>
+  <flag name="powersave">Disables some timers like animation and some other not
+  critical timers what make Psi require much less CPU time.</flag>
+  <flag name='plugins'> add plugin support</flag>
+  <flag name='enchant'>Use enchant spell engine instead of aspell</flag>
+  <flag name='whiteboarding'>Inreractive SVG drawing</flag>
+  <flag name='webkit'>Add animated smail support, use Qt webkit</flag>
+</use>
+</pkgmetadata>
