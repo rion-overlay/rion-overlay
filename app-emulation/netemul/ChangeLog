@@ -1,0 +1,11 @@
+# ChangeLog for app-emulation/netemul
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> netemul-0.9.8.ebuild:
+  update desktop database dupport
+
+  14 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +netemul-0.9.8.ebuild,
+  +files/netemul.desktop, +files/netemul-pro.patch:
+  initial commit
+

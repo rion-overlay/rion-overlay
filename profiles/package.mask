@@ -1,0 +1,52 @@
+# 15  Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# QA issue
+dev-lang/kumir
+
+# 13 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask stub ebuild
+=app-emulation/cedega-000133
+
+
+# 7 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for force testing cmake build system
+=net-p2p/eiskaltdc-9999
+
+# 4 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not build, upsteam bug;
+# nss version mistmatch
+www-apache/mod_revocator
+
+# 26 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not build witch db-4.8
+# reporter: Rion4ik
+#=dev-libs/apr-util-1.3.9-r100
+
+
+# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
+# mask for testing; не собирается, епта
+www-apps/ikiwiki
+
+
+# 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not complete,require dog-tag pki server and more
+# patches: SysV init system is hardcoded
+# 21 Okt 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask before new version
+app-admin/ipa-admintools
+net-nds/ipa-client
+net-nds/ipa-server
+dev-python/ipa-python
+app-admin/ipa-radius-admintools
+net-dialup/ipa-radius-server
+
+# 20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask mail-client/xuheki, not complete,bad depend
+# I was not able to include this package in Gentoo layout 
+# Idea`s  welcomed
+mail-client/xuheki
+
+# 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask app-crypt/openca-base, not complete
+# very old,not mantained,depend mismatch
+app-crypt/openca-base
+
