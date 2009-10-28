@@ -13,7 +13,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-DEPEND="dev-lang/perl"
+DEPEND="dev-lang/perl
+		pki-dev/pki-setup"
+
 RDEPEND="${DEPEND}"
 
 src_install() {
