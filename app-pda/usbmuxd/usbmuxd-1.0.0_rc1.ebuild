@@ -2,12 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
-inherit versionator
+EAPI="2"
+
+inherit cmake-utils
+if [[ "${PV}" == 9999* ]]; then
+	inherit git
+	EGIT_REPO_URI="http://git.marcansoft.com/repos/usbmuxd.git"
+else
+	inherit versionator
+	MY_P="${PN}-$(replace_version_separator 3 '-')"
+	SRC_URI="http://marcansoft.com/uploads/usbmuxd/${MY_P}.tar.bz2"
+	S="${WORKDIR}/${MY_P}"
+fi
 
 DESCRIPTION="Support library to communicate with iPhone/iPod touch"
-MY_P="${PN}-$(replace_version_separator 3 '-')"
-SRC_URI="http://marcansoft.com/uploads/usbmuxd/${MY_P}.tar.bz2"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
 
 LICENSE="GPL-2"
@@ -18,15 +26,24 @@ IUSE=""
 RDEPEND="virtual/libusb:0"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
 src_unpack() {
-	ewarn "$MY_P"
-	unpack "${A}"
+	if [[ "${PV}" == 9999* ]]; then
+		git_src_unpack || die "unpack failed"
+	else
+		unpack "${A}"
+	fi
+}
+
+src_configure() {
+	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_compile
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	cmake-utils_src_install
 	dodoc AUTHORS README
 }
 
