@@ -1,0 +1,11 @@
+--- fdupes.c.orig	2009-09-12 07:03:12.469653457 +0400
++++ fdupes.c	2009-09-12 07:04:44.417415867 +0400
+@@ -409,7 +409,7 @@
+     exit(1);
+   }
+ 
+-  sprintf(command, "%s %s", EXTERNAL_MD5, filename);
++  sprintf(command, "%s '%s'", EXTERNAL_MD5, filename);
+ 
+   result = popen(command, "r");
+   if (result == NULL) {
