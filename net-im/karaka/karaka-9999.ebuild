@@ -28,7 +28,7 @@ src_install() {
 	newins master.py karaka-master.py
 	newins register.py karaka-register.py
 	newins slave.py karaka-slave.py
-	doinitd ${FILESDIR}/{karaka-master,karaka-register,karaka-slave}
+	doinitd "${FILESDIR}"/{karaka-master,karaka-register,karaka-slave}
 	dosed 's/-u karaka/-u jabber/' /etc/init.d/{karaka-master,karaka-register,karaka-slave}
 	dosed "s:INSPATH:$(python_get_sitedir):" /etc/init.d/{karaka-master,karaka-register,karaka-slave}
 	dosed "s|/tmp/karaka_master.log|/var/log/jabber/karaka-master.log|" \

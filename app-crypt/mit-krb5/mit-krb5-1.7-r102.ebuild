@@ -40,7 +40,7 @@ src_prepare() {
 	einfo "Regenerating configure scripts (be patient)"
 	eautoconf
 	eautoheader
-	eautomake 
+	eautomake
 	elibtoolize
 
 	#./util/reconf --force

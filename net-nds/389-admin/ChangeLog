@@ -2,6 +2,14 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/1.1.9-apache2-httpd.conf.patch, 389-admin-1.1.9-r1.ebuild:
+  add httpd.conf patch
+
+  26 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> 389-admin-1.1.9.ebuild,
+  +389-admin-1.1.9-r1.ebuild:
+  add ipv6 use,version bump
+
   25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/1.1.9/0001-gentoo-apache-names.patch, 389-admin-1.1.9.ebuild,
   +files/1.1.9/0002-gentoo-brand-name.patch:

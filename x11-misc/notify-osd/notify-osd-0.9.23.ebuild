@@ -20,7 +20,8 @@ RDEPEND=">=dev-libs/dbus-glib-0.76
 	gnome-base/gconf:2
 	>=x11-libs/gtk+-2.6
 	x11-libs/libwnck
-	!x11-misc/notification-daemon"
+	!x11-misc/notification-daemon
+	x11-libs/libnotify"
 DEPEND="${RDEPEND}"
 
 src_configure() {

@@ -1,3 +1,7 @@
+# 28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# depend hrdmasked
+app-mobilephone/phonetooth
+
 # 15  Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # QA issue
 dev-lang/kumir

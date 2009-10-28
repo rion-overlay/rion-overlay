@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+WANT_AUTOMAKE="1.9"
+
 inherit eutils multilib autotools depend.apache
 
 DESCRIPTION="389 Directory Server (admin)"
@@ -14,18 +16,21 @@ SRC_URI="http://port389.org/sources/${P}.tar.bz2
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="debug ipv6"
+
+# USE selinux dropped - gentoo specific
+# I`m not selinux man
 
 DEPEND="dev-libs/nss[utils]
-		dev-libs/nspr
+		dev-libs/nspr[ipv6?]
 		dev-libs/svrcore
 		dev-libs/mozldap
 		dev-libs/389-adminutil
 		dev-libs/cyrus-sasl
 		dev-libs/icu
 		>=sys-libs/db-4.2.52
-		net-analyzer/net-snmp
-		sys-apps/tcp-wrappers
+		net-analyzer/net-snmp[ipv6?]
+		sys-apps/tcp-wrappers[ipv6?]
 		sys-libs/pam
 		app-misc/mime-types
 		www-apache/mod_restartd
@@ -33,7 +38,7 @@ DEPEND="dev-libs/nss[utils]
 		www-apache/mod_admserv
 		>=app-admin/389-admin-console-1.1.0
 		>=app-admin/389-ds-console-1.1.0
-		www-servers/apache:2[apache2_mpms_worker]"
+		www-servers/apache:2[apache2_mpms_worker,sni,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]"
 
 RDEPEND="${DEPEND}"
 
@@ -57,7 +62,6 @@ src_configure() {
 	--with-apxs=${APXS} \
 	--with-httpd=${APACHE_BIN} \
 	|| die "econf failed"
-
 }
 
 src_install () {
@@ -77,4 +81,9 @@ src_install () {
 	# and install gentoo scripts.
 	rm -rf "${D}"/usr/sbin/*-ds-admin
 	dosbin "${FILESDIR}"/*-ds-admin
+
+	# Patch httpd.conf 
+	# Source in httpd.conf is patch hell,imho
+	cd "${D}"/etc
+	epatch "${FILESDIR}/${PV}"-apache2-httpd.conf.patch || die
 }
