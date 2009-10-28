@@ -1,20 +1,3 @@
 # ChangeLog for app-pda/libplist
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/libplist/ChangeLog,v 1.3 2009/07/18 23:37:26 chainsaw Exp $
-
-*libplist-0.13 (18 Jul 2009)
-
-  18 Jul 2009; <chainsaw@gentoo.org> +libplist-0.13.ebuild:
-  Version bump, adds support for deep copy & setters.
-
-  09 Jun 2009; Tomas Chvatal <scarabeus@gentoo.org> libplist-0.12.ebuild,
-  -files/libplist-0.12-rpath.patch:
-  Clean up the build to use cmake features directly.
-
-*libplist-0.12 (08 Jun 2009)
-
-  08 Jun 2009; <chainsaw@gentoo.org> +libplist-0.12.ebuild,
-  +files/libplist-0.12-rpath.patch, +metadata.xml:
-  Initial commit. Ebuild greatly enhanced by Samuli Suominen
-  <ssuominen@gentoo.org>, with thanks.
-
+# $Header: $
