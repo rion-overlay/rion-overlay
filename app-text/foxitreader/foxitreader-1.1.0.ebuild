@@ -16,7 +16,7 @@ IUSE=""
 RESTRICT="mirror strip"
 DEPEND=""
 RDEPEND="x11-base/xorg-server
-		=x11-libs/gtk+-2*[X,cups]
+		=x11-libs/gtk+-2*[cups]
 		amd64? ( app-emulation/emul-linux-x86-xlibs
 				app-emulation/emul-linux-x86-gtklibs )"
 

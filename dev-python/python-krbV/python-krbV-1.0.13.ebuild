@@ -8,7 +8,7 @@ inherit rpm distutils
 
 DESCRIPTION="python-krbV allows python programs to use Kerberos 5 authentication/security"
 HOMEPAGE="http://people.redhat.com/mikeb/python-krbV"
-SRC_URI="http://mirror.fraunhofer.de/download.fedora.redhat.com/fedora/linux/development/source/SRPMS/python-krbV-1.0.13-10.fc12.src.rpm"
+SRC_URI="mirror://fedora-dev/development/source/SRPMS/python-krbV-1.0.13-10.fc12.src.rpm"
 
 LICENSE="LGPL-2"
 SLOT="0"

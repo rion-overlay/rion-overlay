@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}
 		app-text/txt2man"
 
 src_configure() {
-	epatch ${FILESDIR}/${P}-led.patch
+	epatch "${FILESDIR}/${P}"-led.patch
 	econf --without-man-pages
 }
 
