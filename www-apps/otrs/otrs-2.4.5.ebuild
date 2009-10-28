@@ -11,7 +11,7 @@ HOMEPAGE="http://otrs.org/"
 SRC_URI="ftp://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
 LICENSE="AGPL-3"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="mysql postgres fastcgi ldap gd"
 # add oracle/mssql/DB2 DB support 
 RDEPEND="${DEPEND}

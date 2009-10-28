@@ -8,7 +8,7 @@ inherit ruby
 
 DESCRIPTION="Ruby binding to Apache Qpid, Open Source AMQP Messaging"
 HOMEPAGE="http://qpid.apache.org/"
-SRC_URI="http://www.apache.org/dist/qpid/${PV}/qpid-ruby-${PV}.tar.gz"
+SRC_URI="mirror://apache/qpid/${PV}/qpid-ruby-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

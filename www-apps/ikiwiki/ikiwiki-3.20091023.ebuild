@@ -6,7 +6,7 @@ inherit perl-app
 
 DESCRIPTION="Wiki compiler which converts wiki pages of different format into static HTML pages"
 HOMEPAGE="http://ikiwiki.info"
-SRC_URI="ftp://ftp.de.debian.org/debian/pool/main/i/ikiwiki/${PN}_${PV}.tar.gz"
+SRC_URI="mirror://debian/pool/main/i/ikiwiki/${PN}_${PV}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-2"

@@ -10,5 +10,6 @@
 <use>
 <flag name='id3'>for ID3, Vorbis, FLAC and APE</flag>
 <flag name='gsf'>add support for OLE, OLE2 and ODF</flag>
+<flag name='chm'>add support for chm, MS Windows help files format</flag>
 </use>
 </pkgmetadata>

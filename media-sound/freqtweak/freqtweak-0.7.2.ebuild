@@ -18,7 +18,7 @@ DEPEND="=x11-libs/wxGTK-2.6*
 	=dev-libs/libsigc++-1.2*
 	dev-libs/libxml2
 	media-sound/jack-audio-connection-kit"
-
+RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}"
 
 src_unpack() {

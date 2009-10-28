@@ -14,7 +14,7 @@ SRC_URI="http://port389.org/sources/${P}.tar.bz2
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug fortitude"
+IUSE="debug"
 
 DEPEND="dev-libs/nss[utils]
 		dev-libs/nspr
@@ -58,7 +58,6 @@ src_configure() {
 	--with-httpd=${APACHE_BIN} \
 	|| die "econf failed"
 
-	emake || die "emake failed"
 }
 
 src_install () {
