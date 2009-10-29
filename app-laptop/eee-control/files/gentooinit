@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: $
+
+depend() {
+	need dbus acpid 
+	after alsasound
+}
+
+start() {
+	ebegin "Starting eee-control daemon"
+	start-stop-daemon --start -q --exec /usr/bin/eee-control-daemon
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping eee-control daemon"
+	start-stop-daemon --stop -q --pidfile /var/run/eee-control-daemon.pid
+	eend $?
+}
