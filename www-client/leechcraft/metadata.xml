@@ -20,5 +20,7 @@
 	 <flag name='newlife'>Add newlife plugin</flag>
 	 <flag name='directconnect'>Add directconnect plugin</flag>
 	 <flag name='sitedownloader'>Add sitedownloader plugin</flag>
+	 <flag name='vgrabber'>Add vgrabber plugin</flag>
+
 </use>
 </pkgmetadata>
