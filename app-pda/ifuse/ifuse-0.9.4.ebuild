@@ -31,7 +31,8 @@ src_unpack() {
 	if [[ "${PV}" == 9999* ]]; then
 		git_src_unpack
 	else
-		unpack "${A}"
+		unpack ${A}
+		# for ebuild autor - read pms,plz and not! quoted A wariable
 	fi
 }
 
