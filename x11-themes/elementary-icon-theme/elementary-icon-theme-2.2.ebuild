@@ -8,7 +8,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Elementary gnome icon theme"
 HOMEPAGE="http://danrabbit.deviantart.com/art/Elementary-Icons-65437279"
-SRC_URI="http://fc06.deviantart.com/fs46/f/2009/187/1/b/elementary_Icons_by_DanRabbit.zip -> ${P}.zip"
+SRC_URI="http://fc05.deviantart.com/fs50/f/2009/275/d/f/elementary_Icons_by_DanRabbit.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,7 +28,7 @@ src_unpack() {
 
 src_install() {
 	insinto /usr/share/icons
-	doins -r elementary
+	doins -r elementary_${PV}
 }
 
 pkg_postinst() {
