@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Coraid Ethernet Console"
 HOMEPAGE="http://sourceforge.net/projects/aoetools/"
-SRC_URI="mirror://sourceforge/aoetools/"${PN}"/11/"${PN}"-11.tgz"
+SRC_URI="mirror://sourceforge/aoetools/${PN}/${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-S="${WORKDIR}"/"cec-11"
+S="${WORKDIR}/cec-11"
 
 src_install() {
 
