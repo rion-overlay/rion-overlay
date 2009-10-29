@@ -1,6 +1,10 @@
-# ChangeLog for net-libs/cec
+# ChangeLog for sys-block/cec
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  29 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> -cec-0.11.ebuild,
+  +cec-11.ebuild:
+  move 0.11 to 11 version
 
   10 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> +cec-0.11.ebuild,
   +metadata.xml:
