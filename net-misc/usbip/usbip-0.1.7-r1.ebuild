@@ -29,7 +29,7 @@ S="${WORKDIR}/${P}/src"
 pkg_config() {
 	if $(gcc-version) < 4;then
 		eerror "You gcc verision is old"
-		eerror "This package onlu gcc 4 style"
+		eerror "This package only gcc 4 style"
 		eerror "Please install >gcc-4* "
 	fi
 }
