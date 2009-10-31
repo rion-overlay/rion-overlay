@@ -24,7 +24,7 @@ SRC_URI="mirror://sourceforge/openca/openca-base-1.0.2.tar.gz"
 RESTRICT="mirror"
 SLOT=0
 
-# @FUNCTION: openca-perl_src_unpack
+# @FUNCTION: openca-perl_set_s
 # @DESCRIPTION:
 # Call this function if you have set custom ${S} variable
 # to buld embeded OpenCA modules
