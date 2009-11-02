@@ -5,11 +5,11 @@
 EAPI="2"
 
 WANT_AUTOMAKE="1.9"
-inherit rpm autotools
+inherit autotools
 
 DESCRIPTION="Dog-Tag Certificate System: Native Command Line Utilities"
 HOMEPAGE="http://pki.fedoraproject.org/wiki/PKI_Documentation"
-SRC_URI="http://pki.fedoraproject.org/pki/download/pki/1.2.0/fc11/SRPMS/pki-native-tools-1.2.0-2.fc11.src.rpm"
+SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
