@@ -5,18 +5,14 @@
 EAPI="2"
 
 WANT_AUTOMAKE="1.9"
-inherit autotools
+
+inherit autotools  pki-dogtag
 
 DESCRIPTION="Dog-Tag Certificate System: Native Command Line Utilities"
-HOMEPAGE="http://pki.fedoraproject.org/wiki/PKI_Documentation"
 SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.gz"
-
-LICENSE="GPL-2-with-exceptions"
-SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE="debug"
-
 DEPEND="dev-libs/cyrus-sasl
 		dev-libs/mozldap
 		dev-libs/nspr

@@ -5,17 +5,17 @@
 EAPI="2"
 
 RPM_REV="-1"
-inherit pki-dogtag
 
-DESCRIPTION="Perl scripts intended for management of warios subsystem Dog-Tag CA"
+inherit pki-dogtag
+DESCRIPTION="PKI Common Framework User Interface"
 
 KEYWORDS="~amd64"
 IUSE=""
-DEPEND="dev-lang/perl
-		pki-dev/pki-setup"
 
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_install() {
-	dobin "${S}"/pki{common,create,host,remove}
+	insinto  /usr/share/pki/common-ui/admin/console/
+	doins -r "${S}"/shared/admin/console/*
 }
