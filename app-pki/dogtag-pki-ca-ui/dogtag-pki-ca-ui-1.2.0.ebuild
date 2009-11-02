@@ -7,7 +7,7 @@ EAPI="2"
 RPM_REV="-1"
 inherit pki-dogtag
 
-DESCRIPTION=""
+DESCRIPTION="This package contains the GUI for the Dog Tag PKI"
 KEYWORDS="~amd64"
 IUSE=""
 
