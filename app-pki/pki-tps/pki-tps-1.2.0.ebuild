@@ -6,15 +6,11 @@ EAPI="2"
 
 WANT_AUTOMAKE="1.10"
 WANT_AUTOCONF="2.5"
+RPM_REV="-3"
 
-inherit rpm autotools depend.apache eutils
+inherit  autotools depend.apache eutils pki-dogtag
 
-DESCRIPTION="Token Processing System for Smartcards"
-HOMEPAGE="http://pki.fedoraproject.org"
-SRC_URI="http://pki.fedoraproject.org/pki/download/pki/1.2.0/fc11/SRPMS/pki-tps-1.2.0-3.fc11.src.rpm"
-
-LICENSE="GPL-2"
-SLOT="0"
+DESCRIPTION="Token Processing System for Smartcards - Dog Tag system"
 KEYWORDS="~amd64"
 IUSE="debug"
 
