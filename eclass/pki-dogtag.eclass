@@ -26,7 +26,8 @@ esac
 # @ECLASS-VARIABLE: LICENSE
 # @DESCRIPTION:
 # If not define, use default GPL-2-with-exceptions license
-LICENSE="${LICENSE:-|| ( GPL-2-with-exceptions license )}"
+LICENSE="${LICENSE:-|| ( GPL-2-with-exceptions  )}"
+
 
 
 # @ECLASS-VARIABLE: HOMEPAGE
