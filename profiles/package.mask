@@ -1,6 +1,7 @@
 # 28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # QA issue: install all files in /usr
 app-pki/pki-tps
+app-admin/pki-console
 
 # 28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # depend hrdmasked
