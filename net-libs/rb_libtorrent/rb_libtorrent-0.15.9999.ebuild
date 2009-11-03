@@ -48,6 +48,8 @@ src_configure() {
 				$(cmake-utils_use geoip geoip)
 				$(cmake-utils_use log logging)
 				$(cmake-utils_use verbose verbose-logging)"
+	[ "$(get_libdir)" = "lib64" ] && mycmakeargs="${mycmakeargs}
+		-DRESPECTLIB64=True"
 	cmake-utils_src_configure
 }
 
