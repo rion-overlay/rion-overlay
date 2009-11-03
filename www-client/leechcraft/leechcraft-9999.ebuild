@@ -55,6 +55,8 @@ src_configure() {
 				$(cmake-utils_use_enable anhero ANHERO)
 				$(cmake-utils_use_enable vgrabber VGRABBER)
 				$(cmake-utils_use_enable newlife NEWLIFE)"
+	[ "$(get_libdir)" = "lib64" ] && mycmakeargs="${mycmakeargs}
+				-DRESPECTLIB64=True"
 	S="${WORKDIR}/${P}/src"
 	cmake-utils_src_configure
 }
