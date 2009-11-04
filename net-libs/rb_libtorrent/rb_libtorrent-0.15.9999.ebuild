@@ -25,10 +25,6 @@ DEPEND="sys-libs/zlib
 		( ~dev-libs/boost-1.34.1 dev-cpp/asio ) )"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	subversion_src_unpack
-}
-
 src_configure() {
 	if use debug ; then
 		CMAKE_BUILD_TYPE="RelWithDebInfo"
