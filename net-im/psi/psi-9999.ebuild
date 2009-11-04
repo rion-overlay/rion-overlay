@@ -164,9 +164,9 @@ src_install() {
 		doins psi_ru.qm
 		doins qt_ru.qm
 	else
-		cd "${WORKDIR}/${PN}-langs"
 		for LNG in ${LANGS}; do
 			if use linguas_${LNG}; then
+				cd "${WORKDIR}/${LNG}"
 				doins ${PN}_${LNG/ur_PK/ur_pk}.qm || die
 			fi
 		done
