@@ -1,0 +1,20 @@
+# ChangeLog for dev-perl/OpenCA-OpenSSL
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-OpenSSL-0.9.91.ebuild:
+  stable in x86
+
+*OpenCA-OpenSSL-1.13 (09 Aug 2009)
+
+  09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +OpenCA-OpenSSL-1.13.ebuild:
+  add new revision
+
+*OpenCA-OpenSSL-0.9.91 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +OpenCA-OpenSSL-0.9.91.ebuild, +metadata.xml:
+  Initial commit in rion overlay
+
