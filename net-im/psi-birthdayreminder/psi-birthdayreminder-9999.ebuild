@@ -8,7 +8,7 @@ inherit qt4 subversion
 
 MY_PN="birthdayreminderplugin"
 
-DESCRIPTION="Psi plugin for spam blocking"
+DESCRIPTION="Psi plugin to remind contact's birthdays"
 HOMEPAGE="http://psi-dev.googlecode.com"
 ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/birthdayreminderplugin"
 
