@@ -8,7 +8,7 @@ inherit qt4 subversion
 
 MY_PN="conferenceloggerplugin"
 
-DESCRIPTION="Psi plugin for spam blocking"
+DESCRIPTION="Psi plugin which saves logs of conferences"
 HOMEPAGE="http://psi-dev.googlecode.com"
 ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/conferenceloggerplugin"
 

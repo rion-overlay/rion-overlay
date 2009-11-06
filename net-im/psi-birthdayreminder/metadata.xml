@@ -6,7 +6,8 @@
 		<email>rion4ik@gmail.com</email>
 		<name>Il'nykh Sergey</name>
 	</maintainer>
-	<longdescription lang="en">Psi plugin to block not-in-list contacts
-		until they answer some question. In other words block spammers.
+	<longdescription lang="en">Psi plugin allows check how many days
+		left to birthday of your contacts. It shows plain window with
+		nicks,jids,and amount of days when requested
 	</longdescription>
 </pkgmetadata>
