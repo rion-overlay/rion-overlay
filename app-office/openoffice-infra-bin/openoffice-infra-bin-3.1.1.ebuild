@@ -36,6 +36,7 @@ RDEPEND="!app-office/openoffice
 	>=dev-lang/perl-5.0
 	app-arch/zip
 	app-arch/unzip
+	x11-libs/libXinerama
 	>=media-libs/freetype-2.1.10-r2"
 
 DEPEND="${RDEPEND}
