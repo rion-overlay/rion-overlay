@@ -1,8 +1,0 @@
-# ChangeLog for dev-perl/CDB_File
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  18 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> +CDB_File-0.96.ebuild,
-  +metadata.xml:
-  initial commit new dev-perl/CDB_File ebuild
-
