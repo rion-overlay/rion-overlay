@@ -1,8 +1,0 @@
-# ChangeLog for app-pki/dogtag-pki-ra-ui
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  02 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-  +dogtag-pki-ra-ui-1.2.0.ebuild, +metadata.xml:
-  initial commit
-
