@@ -38,7 +38,7 @@ DEPEND="dev-libs/nss[utils]
 		www-apache/mod_admserv
 		>=app-admin/389-admin-console-1.1.0
 		>=app-admin/389-ds-console-1.1.0
-		www-servers/apache:2[apache2_mpms_worker,sni,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]"
+		www-servers/apache:2[apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]"
 
 RDEPEND="${DEPEND}"
 

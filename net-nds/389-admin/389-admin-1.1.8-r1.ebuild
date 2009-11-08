@@ -49,7 +49,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	econf $(use_enable debug) \
 	--with-fhs \
 	--with-httpd=${APACHE_BIN} \
