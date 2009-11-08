@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-
 EAPI="2"
 
 inherit eutils ssl-cert toolchain-funcs
@@ -54,7 +53,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	cd "${S}"
 	[ -f "${FILESDIR}/${PF}.patch" ] && epatch "${FILESDIR}/${PF}.patch"
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die
 }
@@ -91,7 +89,7 @@ src_configure() {
 	# 3rd party module
 	use pam			&& myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
 	use mp4			&& myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
-	if [ use rrd ]; then
+	if  use rrd ; then
 		myconf="${myconf} --add-module="${WORKDIR}"/ngx_rrd_graph-0.1"
 		myconf="${myconf} --with-cc-opt=-I/usr/include/"
 		myconf="${myconf} --with-ld-opt=-L/usr/lib/"
@@ -121,8 +119,7 @@ src_install() {
 	keepdir /var/log/${PN} /var/tmp/${PN}/{client,proxy,fastcgi}
 
 	dosbin objs/nginx
-	cp "${FILESDIR}"/nginx-r1 "${T}"/nginx
-	doinitd "${T}"/nginx
+	newinitd "${FILESDIR}"/nginx-r1 nginx
 
 	cp "${FILESDIR}"/nginx.conf-r4 conf/nginx.conf
 
@@ -132,7 +129,7 @@ src_install() {
 
 	dodoc CHANGES{,.ru} README
 
-	if [ use perl ]; then
+	if  use perl ; then
 		cd "${S}"/objs/src/http/modules/perl/
 		einstall DESTDIR="${D}"|| die "failed to install perl stuff"
 	fi
@@ -140,7 +137,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ use ssl ]; then
+	if  use ssl ; then
 		if [ ! -f "${ROOT}"/etc/ssl/${PN}/${PN}.key ]; then
 			install_cert /etc/ssl/${PN}/${PN}
 			chown ${PN}:${PN} "${ROOT}"/etc/ssl/${PN}/${PN}.{crt,csr,key,pem}
