@@ -1,2 +1,0 @@
-#!/bin/sh 
-su  -c "echo \"http://sex.ru 127.0.0.1/- - GET\" | /opt/rejik/redirector /opt/rejik/redirector.conf;"
