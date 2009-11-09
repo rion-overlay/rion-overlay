@@ -1,0 +1,332 @@
+# ChangeLog for net-p2p/qbittorrent
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/qbittorrent/ChangeLog,v 1.60 2009/09/30 22:49:40 yngwin Exp $
+
+*qbittorrent-1.5.3 (30 Sep 2009)
+
+  30 Sep 2009; Ben de Groot <yngwin@gentoo.org> +qbittorrent-1.5.3.ebuild:
+  Version bump
+
+*qbittorrent-1.4.0 (15 Aug 2009)
+
+  15 Aug 2009; Ben de Groot <yngwin@gentoo.org> qbittorrent-1.0.0.ebuild,
+  -qbittorrent-1.2.1.ebuild, -qbittorrent-1.3.2.ebuild,
+  -qbittorrent-1.3.3.ebuild, qbittorrent-1.3.3-r1.ebuild,
+  +qbittorrent-1.4.0.ebuild:
+  Remove old. Version bump. Patch applied upstream. Add zziplib dependency.
+
+*qbittorrent-1.3.3-r1 (10 Jul 2009)
+
+  10 Jul 2009; Markos Chandras <hwoarang@gentoo.org>
+  +qbittorrent-1.3.3-r1.ebuild, +files/qbittorrent-1.3.3-no-strip.patch:
+  Fix Pre-stripped files issue ( bug 265209 )
+
+  27 Jun 2009; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Add qt herd as co-maintainer
+
+  13 Jun 2009; Raúl Porcel <armin76@gentoo.org> metadata.xml:
+  Remove me as maintainer, adding net-p2p, feel free to maintain this
+  package
+
+*qbittorrent-1.3.3 (08 Apr 2009)
+
+  08 Apr 2009; Raúl Porcel <armin76@gentoo.org> +qbittorrent-1.3.3.ebuild:
+  Version bump
+
+*qbittorrent-1.3.2 (09 Mar 2009)
+
+  09 Mar 2009; Raúl Porcel <armin76@gentoo.org> -qbittorrent-1.3.1.ebuild,
+  +qbittorrent-1.3.2.ebuild:
+  Version bump
+
+  07 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  qbittorrent-1.0.0.ebuild, qbittorrent-1.2.1.ebuild,
+  qbittorrent-1.3.1.ebuild:
+  Depend on a newer boost so that we always have threads support.
+
+  07 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  -qbittorrent-1.1.4.ebuild:
+  Remove old version.
+
+*qbittorrent-1.3.1 (04 Mar 2009)
+
+  04 Mar 2009; Raúl Porcel <armin76@gentoo.org> -qbittorrent-1.3.0.ebuild,
+  +qbittorrent-1.3.1.ebuild:
+  Version bump
+
+*qbittorrent-1.3.0 (10 Jan 2009)
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.3.0_rc3.ebuild, +qbittorrent-1.3.0.ebuild:
+  Version bump
+
+*qbittorrent-1.3.0_rc3 (29 Dec 2008)
+
+  29 Dec 2008; Raúl Porcel <armin76@gentoo.org> -qbittorrent-1.2.0.ebuild,
+  +qbittorrent-1.3.0_rc3.ebuild:
+  Version bump
+
+*qbittorrent-1.2.1 (10 Nov 2008)
+
+  10 Nov 2008; Raúl Porcel <armin76@gentoo.org> +qbittorrent-1.2.1.ebuild:
+  Version bump
+
+*qbittorrent-1.2.0 (30 Oct 2008)
+
+  30 Oct 2008; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.2.0_rc3.ebuild, +qbittorrent-1.2.0.ebuild:
+  Version bump
+
+*qbittorrent-1.2.0_rc3 (04 Oct 2008)
+
+  04 Oct 2008; Raúl Porcel <armin76@gentoo.org> -qbittorrent-1.1.3.ebuild,
+  -qbittorrent-1.2.0_beta6.ebuild, +qbittorrent-1.2.0_rc3.ebuild:
+  Version bump
+
+*qbittorrent-1.2.0_beta6 (15 Sep 2008)
+*qbittorrent-1.1.4 (15 Sep 2008)
+
+  15 Sep 2008; Raúl Porcel <armin76@gentoo.org> +qbittorrent-1.1.4.ebuild,
+  -qbittorrent-1.2.0_beta5.ebuild, +qbittorrent-1.2.0_beta6.ebuild:
+  Version bump
+
+*qbittorrent-1.2.0_beta5 (26 Aug 2008)
+*qbittorrent-1.1.3 (26 Aug 2008)
+
+  26 Aug 2008; Raúl Porcel <armin76@gentoo.org> -qbittorrent-1.1.1.ebuild,
+  -qbittorrent-1.1.2.ebuild, +qbittorrent-1.1.3.ebuild,
+  -qbittorrent-1.2.0_beta4.ebuild, +qbittorrent-1.2.0_beta5.ebuild:
+  Version bump
+
+*qbittorrent-1.2.0_beta4 (25 Aug 2008)
+*qbittorrent-1.1.2 (25 Aug 2008)
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org> +qbittorrent-1.1.2.ebuild,
+  -qbittorrent-1.2.0_beta1.ebuild, +qbittorrent-1.2.0_beta4.ebuild:
+  Version bump
+
+  05 Aug 2008; Raúl Porcel <armin76@gentoo.org> -qbittorrent-0.9.3.ebuild,
+  qbittorrent-1.0.0.ebuild:
+  x86 stable
+
+*qbittorrent-1.2.0_beta1 (01 Aug 2008)
+*qbittorrent-1.1.1 (01 Aug 2008)
+
+  01 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.1.0_rc2.ebuild, +qbittorrent-1.1.1.ebuild,
+  +qbittorrent-1.2.0_beta1.ebuild:
+  Version bump
+
+  28 Jul 2008; Carsten Lohrke <carlo@gentoo.org> qbittorrent-0.9.3.ebuild:
+  QA: Get rid of deprecated qt4_min_version().
+
+*qbittorrent-1.1.0_rc2 (28 Jul 2008)
+
+  28 Jul 2008; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.1.0_beta1.ebuild, -qbittorrent-1.1.0_beta3.ebuild,
+  +qbittorrent-1.1.0_rc2.ebuild:
+  Version bump
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> qbittorrent-1.0.0.ebuild,
+  qbittorrent-1.1.0_beta1.ebuild, qbittorrent-1.1.0_beta3.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+*qbittorrent-1.1.0_beta3 (12 Jul 2008)
+
+  12 Jul 2008; Raúl Porcel <armin76@gentoo.org>
+  +qbittorrent-1.1.0_beta3.ebuild:
+  Version bump
+
+*qbittorrent-1.1.0_beta1 (03 Jun 2008)
+
+  03 Jun 2008; Raúl Porcel <armin76@gentoo.org> qbittorrent-1.0.0.ebuild,
+  +qbittorrent-1.1.0_beta1.ebuild:
+  Version bump, fix qt4 split dependencies, bug #217181
+
+  19 Apr 2008; Raúl Porcel <armin76@gentoo.org> qbittorrent-0.9.3.ebuild,
+  qbittorrent-1.0.0.ebuild:
+  Some tweaks
+
+*qbittorrent-1.0.0 (12 Apr 2008)
+
+  12 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc11-r1.ebuild, +qbittorrent-1.0.0.ebuild:
+  Version bump
+
+  04 Feb 2008; Raúl Porcel <armin76@gentoo.org> qbittorrent-0.9.3.ebuild:
+  Fix DEPEND on rb_libtorrent
+
+*qbittorrent-1.0.0_rc11-r1 (09 Jan 2008)
+
+  09 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc11.ebuild, +qbittorrent-1.0.0_rc11-r1.ebuild:
+  Revision bump to use newer rb_libtorrent
+
+  03 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  qbittorrent-1.0.0_rc11.ebuild:
+  Move python to RDEPEND, thanks to ishanarora
+
+*qbittorrent-1.0.0_rc11 (31 Dec 2007)
+
+  31 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc10.ebuild, +qbittorrent-1.0.0_rc11.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_rc10 (09 Dec 2007)
+
+  09 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc9-r1.ebuild, +qbittorrent-1.0.0_rc10.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_rc9-r1 (04 Dec 2007)
+
+  04 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc9.ebuild, +qbittorrent-1.0.0_rc9-r1.ebuild:
+  Revision bump to raise rb_libtorrent dependency
+
+*qbittorrent-1.0.0_rc9 (24 Nov 2007)
+
+  24 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc8.ebuild, +qbittorrent-1.0.0_rc9.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_rc8 (15 Nov 2007)
+
+  15 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc7.ebuild, +qbittorrent-1.0.0_rc8.ebuild:
+  Version bump
+
+  06 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  qbittorrent-1.0.0_rc7.ebuild:
+  Fix DEPEND
+
+*qbittorrent-1.0.0_rc7 (03 Nov 2007)
+
+  03 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc6.ebuild, +qbittorrent-1.0.0_rc7.ebuild:
+  Version bump
+
+  02 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  qbittorrent-1.0.0_rc6.ebuild:
+  Fix DEPEND
+
+*qbittorrent-1.0.0_rc6 (22 Oct 2007)
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc4.ebuild, +qbittorrent-1.0.0_rc6.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_rc4 (08 Oct 2007)
+
+  08 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc3.ebuild, +qbittorrent-1.0.0_rc4.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_rc3 (01 Oct 2007)
+
+  01 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc2.ebuild, +qbittorrent-1.0.0_rc3.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_rc2 (28 Sep 2007)
+
+  28 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_rc1.ebuild, +qbittorrent-1.0.0_rc2.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_rc1 (25 Sep 2007)
+
+  25 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_beta7.ebuild, +qbittorrent-1.0.0_rc1.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_beta7 (19 Sep 2007)
+
+  19 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_beta6.ebuild, +qbittorrent-1.0.0_beta7.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_beta6 (02 Sep 2007)
+
+  02 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_beta5.ebuild, +qbittorrent-1.0.0_beta6.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_beta5 (24 Aug 2007)
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_beta4.ebuild, +qbittorrent-1.0.0_beta5.ebuild:
+  Version bump
+
+*qbittorrent-1.0.0_beta4 (05 Aug 2007)
+
+  05 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  +qbittorrent-1.0.0_beta4.ebuild, -qbittorrent-1.0.0_beta3_p1149.ebuild:
+  Version bump, drop old
+
+*qbittorrent-1.0.0_beta3_p1149 (01 Aug 2007)
+
+  01 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_beta2.ebuild, +qbittorrent-1.0.0_beta3_p1149.ebuild:
+  Version bump, old
+
+*qbittorrent-1.0.0_beta2 (26 Jul 2007)
+
+  26 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  -qbittorrent-1.0.0_beta1.ebuild, +qbittorrent-1.0.0_beta2.ebuild:
+  Version bump
+
+  19 Jul 2007; Raúl Porcel <armin76@gentoo.org> qbittorrent-0.9.3.ebuild:
+  Fix 0.9.3 dep on rb_libtorrent
+
+*qbittorrent-1.0.0_beta1 (19 Jul 2007)
+
+  19 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  +qbittorrent-1.0.0_beta1.ebuild:
+  Version bump
+
+  08 Jun 2007; Raúl Porcel <armin76@gentoo.org> -qbittorrent-0.8.0.ebuild,
+  -qbittorrent-0.9.2.ebuild, qbittorrent-0.9.3.ebuild:
+  x86 stable and remove old
+
+  30 May 2007; Raúl Porcel <armin76@gentoo.org> qbittorrent-0.8.0.ebuild,
+  qbittorrent-0.9.2.ebuild, qbittorrent-0.9.3.ebuild:
+  Re-fix threads use-flag check if >boost-1.33, bug 180322
+
+*qbittorrent-0.9.3 (08 May 2007)
+
+  08 May 2007; Raúl Porcel <armin76@gentoo.org> +qbittorrent-0.9.3.ebuild:
+  Version bump
+
+  20 Apr 2007; Raúl Porcel <armin76@gentoo.org> qbittorrent-0.8.0.ebuild,
+  qbittorrent-0.9.2.ebuild:
+  Fix threads USE-flag check if boost >1.33, bug 174714
+
+*qbittorrent-0.9.2 (13 Apr 2007)
+
+  13 Apr 2007; Raúl Porcel <armin76@gentoo.org> -qbittorrent-0.9.1.ebuild,
+  +qbittorrent-0.9.2.ebuild:
+  Version bump, drop old
+
+*qbittorrent-0.9.1 (04 Apr 2007)
+
+  04 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  -files/0.9.0-libtorrent-includepatch.patch, -qbittorrent-0.9.0.ebuild,
+  +qbittorrent-0.9.1.ebuild:
+  Version bump, upstream fixed the issue wrt the configure script
+
+*qbittorrent-0.9.0 (03 Apr 2007)
+
+  03 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  +files/0.9.0-libtorrent-includepatch.patch, +qbittorrent-0.9.0.ebuild:
+  Version bump
+
+  13 Feb 2007; Raúl Porcel <armin76@gentoo.org> qbittorrent-0.8.0.ebuild:
+  x86 stable
+
+*qbittorrent-0.8.0 (08 Jan 2007)
+
+  08 Jan 2007; Raúl Porcel (armin76) <armin76@gentoo.org>
+  +qbittorrent-0.8.0.ebuild:
+  New ebuild for bug 148696
+

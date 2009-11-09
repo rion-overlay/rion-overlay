@@ -1,0 +1,2 @@
+# Set the NEED_LDAP environment variable to 1 if you use the LDAP backend:
+# NEED_LDAP=1

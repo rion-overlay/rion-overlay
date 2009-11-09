@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>rion</herd>
+	<maintainer>
+		<email>spamslepnoga@inbox.ru</email>
+	</maintainer>
+<use>
+<flag name='mozldap'>Add support for Mozilla LDAP via 
+	<pkg>dev-libs/mozldap</pkg></flag>
+</use>
+</pkgmetadata>
