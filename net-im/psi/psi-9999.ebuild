@@ -120,7 +120,7 @@ src_configure() {
 			--disable-bundled-qca
 			--disable-growl
 			$(use dbus || echo '--disable-qdbus')
-			$(use debug && echo '--enable-debug')
+			$(use debug && echo '--debug')
 			$(use spell && ( use enchant && echo '--disable-aspell' || \
 				echo '--disable-enchant' ) || echo '--disable-aspell --disable-enchant')
 			$(use xscreensaver || echo '--disable-xss')
