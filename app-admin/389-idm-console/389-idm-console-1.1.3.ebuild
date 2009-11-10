@@ -6,10 +6,9 @@ inherit java-pkg-2 eutils java-ant-2
 
 MY_V=1.1.3
 
-DESCRIPTION="A Java based remote management console used for Managing Fedora Administration / Directory Server."
+DESCRIPTION="A Java based console for remote management 389 server."
 HOMEPAGE="http://directory.fedoraproject.org/"
 SRC_URI="http://port389.org/sources/fedora-idm-console-${PV}.tar.bz2
-	http://ftp.mars.arge.at/389-ds/1.1.x/fedora-idm-console-${PV}.tar.bz2
 	http://www.nongnu.org/smc/docs/smc-presentation2/pix/fedora.png"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
@@ -21,6 +20,7 @@ S=${WORKDIR}/fedora-idm-console-${PV}
 COMMON_DEP="=dev-java/jss-4*
 	>=dev-java/ldapsdk-4.0
 	>=dev-java/idm-console-framework-1.1
+	app-admin/389-admin-console
 	!app-admin/fedora-idm-console"
 RDEPEND="=virtual/jre-1.5*
 	${COMMON_DEP}"
