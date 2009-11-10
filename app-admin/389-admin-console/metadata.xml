@@ -4,9 +4,9 @@
 <herd>rion-overlay</herd>
 <maintainer>
   <email>spamslepnoga@inbox.ru</email>
- <description></description> 
+ <description>389 Server Management Console</description> 
 </maintainer>
- <longdescription>389 Admin Server Management Console</longdescription> 
+ <longdescription>389 Server Management Console - shared and help files</longdescription> 
 <use>
 </use>
 </pkgmetadata>

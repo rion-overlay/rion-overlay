@@ -8,7 +8,7 @@ inherit java-pkg-2 eutils java-ant-2
 MY_V=1.1.4
 MY_MV=1.1
 
-DESCRIPTION="389 Admin Server Management Console"
+DESCRIPTION="389 Server Management Console (share and help files)"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://port389.org/sources/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
