@@ -50,6 +50,7 @@ pkg_setup() {
 src_prepare() {
 
 	epatch "${FILESDIR}/${PV}/"*.patch
+	sed -i -e 's/nobody/dirsrv/g' configure.ac
 
 	eautoreconf
 }
