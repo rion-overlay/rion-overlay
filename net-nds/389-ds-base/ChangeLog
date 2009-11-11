@@ -3,6 +3,10 @@
 # $Header: $
 
   11 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-ds-base-1.2.1-r2.ebuild:
+  revision bump
+
+  11 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   389-ds-base-1.2.4.ebuild:
   syntax fix
 
