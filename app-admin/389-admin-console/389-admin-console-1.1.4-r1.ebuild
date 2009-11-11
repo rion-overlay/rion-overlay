@@ -36,9 +36,9 @@ src_prepare() {
 	# so sed away the version indicator '-'
 	sed -e "s!-\*!\*!g" -i build.xml
 
-	java-pkg_jarfrom ldapsdk-4.1 ldapjdk.jar
-	java-pkg_jarfrom jss-3.4 xpclass.jar jss4.jar
-	java-pkg_jarfrom idm-console-framework-1.1
+	java-pkg_jar-from ldapsdk-4.1 ldapjdk.jar
+	java-pkg_jar-from jss-3.4 xpclass.jar jss4.jar
+	java-pkg_jar-from idm-console-framework-1.1
 }
 
 src_compile() {
