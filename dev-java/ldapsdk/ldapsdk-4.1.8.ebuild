@@ -19,7 +19,7 @@ SRC_URI="http://rion-overlay.googlecode.com/files/"${P}".tar.bz2"
 
 LICENSE="MPL-1.1"
 SLOT="4.1"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=virtual/jre-1.5
