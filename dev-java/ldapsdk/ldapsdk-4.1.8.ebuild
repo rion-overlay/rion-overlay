@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:  $
 
-EAPI=1
+EAPI="1"
 
 JAVA_PKG_IUSE="doc source"
 
@@ -23,9 +23,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=virtual/jre-1.5
-	dev-java/jss:3.4"
-# use naitive java regesp dev-java/jakarta-oro:2.0"
+		dev-java/jss:3.4"
+
 DEPEND=">=virtual/jdk-1.5
+		app-arch/zip
 	${RDEPEND}"
 
 src_unpack() {
@@ -34,7 +35,6 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}"/*.patch
 
-#	echo "ororegexp.jar=$(java-pkg_getjars jakarta-oro-2.0)" > build.properties
 	echo "jss.jar=$(java-pkg_getjars jss-3.4)" >> build.properties
 
 	cd "${S}"/ldapjdk/lib
