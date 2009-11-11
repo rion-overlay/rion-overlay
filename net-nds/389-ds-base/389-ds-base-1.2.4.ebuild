@@ -4,12 +4,13 @@
 
 EAPI=2
 
+WANT_AUTOMKE="1.9"
+
 inherit eutils multilib flag-o-matic autotools
 
-DESCRIPTION="389 Directory Server (core files and daemons)"
+DESCRIPTION="389 Directory Server (core librares  and daemons )"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
-
 
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
@@ -17,28 +18,29 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug +pam-passthru +dna +bitwise presence kerberos selinux"
 
 ALL_DEPEND="dev-libs/nss[utils]
-		dev-libs/nspr
-		dev-libs/svrcore
-		dev-libs/mozldap
-	>=dev-libs/cyrus-sasl-2.1.19
-	>=dev-libs/icu-3.4
-	>=sys-libs/db-4.5
-	>=net-analyzer/net-snmp-5.1.2
-	dev-libs/openssl
-	sys-apps/tcp-wrappers
-	sys-libs/pam
-	sys-libs/zlib
-	dev-perl/perl-mozldap
-	dev-libs/libpcre:3
-	kerberos? ( app-crypt/mit-krb5 )"
+			dev-libs/nspr
+			dev-libs/svrcore
+			dev-libs/mozldap
+			>=dev-libs/cyrus-sasl-2.1.19
+			>=dev-libs/icu-3.4
+			>=sys-libs/db-4.5
+			>=net-analyzer/net-snmp-5.1.2
+			dev-libs/openssl
+			sys-apps/tcp-wrappers
+			sys-libs/pam
+			sys-libs/zlib
+			dev-perl/perl-mozldap
+			dev-libs/libpcre:3
+			kerberos? ( net-nds/openldap
+					>=app-crypt/mit-krb5-1.7-r100[ldap] )"
 
 DEPEND="${ALL_DEPEND}
-		dev-util/pkgconfig
-		sys-devel/libtool:1.5"
+			dev-util/pkgconfig
+			sys-devel/libtool:1.5"
 
 RDEPEND="${ALL_DEPEND}
-		virtual/perl-Time-Local
-		virtual/perl-MIME-Base64"
+			virtual/perl-Time-Local
+			virtual/perl-MIME-Base64"
 
 pkg_setup() {
 	enewgroup dirsrv
@@ -55,18 +57,20 @@ src_prepare() {
 src_configure() {
 	append-ldflags -Wl,--as-needed
 
-	econf $(use_enable debug) \
-		$(use_enable pam-passthru) \
-		$(use_enable dna) \
-		$(use_enable bitwise) \
-		$(use_enable presence) \
-		$(use_with kerberos) \
-		--enable-maintainer-mode \
-		--enable-ldapi \
-		--enable-autobind \
-		--with-fhs || die "econf failed"
+	econf \
+			$(use_enable debug) \
+			$(use_enable pam-passthru) \
+			$(use_enable dna) \
+			$(use_enable bitwise) \
+			$(use_enable presence) \
+			$(use_with kerberos) \
+			--enable-maintainer-mode \
+			--enable-ldapi \
+			--enable-autobind \
+			--with-fhs \
+						|| die "econf failed"
 
-#      $(use_with selinux) disabel due bug in
+# $(use_with selinux) disable due bug in
 # configure
 }
 
@@ -82,6 +86,7 @@ src_install () {
 	# install not installed header
 	insinto /usr/include/dirsrv
 	doins ldap/servers/slapd/slapi-plugin.h
+
 	# for build free-ipa require winsync-plugin
 	doins ldap/servers/plugins/replication/winsync-plugin.h
 
@@ -92,10 +97,11 @@ src_install () {
 		sed -i -e 's/#{{PERL-EXEC}}/#\!\/usr\/bin\/perl/' $i || die
 	done
 
-	# remove redhat style init script and install gentoo style
+	# remove redhat style init script
 	rm -rf "${D}"/etc/rc.d || die
 	rm -rf "${D}"/etc/default || die
 
+	# and install gentoo style init script
 	newinitd "${FILESDIR}"/dirsrv.initd dirsrv
 	newconfd "${FILESDIR}"/dirsrv.confd dirsrv
 
@@ -105,7 +111,6 @@ src_install () {
 
 	# create the directory where our log file and database
 	diropts -m 0750 -o dirsrv -g dirsrv
-
 	keepdir /var/lock/dirsrv
 	keepdir /var/lib/dirsrv
 
