@@ -8,10 +8,16 @@
 </maintainer>
  <longdescription>The enterprise-class Open Source LDAP server for Linux</longdescription> 
  <use>
-	<flag name='pam-passthru'>enable pam-passthru plugin</flag>
-    <flag name='dna'>enable dna plugin</flag>
-	<flag name='presence'>enable presence plugin</flag>
-	<flag name='bitwise'>enable bitwise plugin</flag>
+	<flag name='pam-passthru'>enable pam-passthru plugin - for simple and fast system services used in ldap</flag>
+	
+	<flag name='dna'>enable dna (distributed numeric assignment ) plugin -  to
+		automatically assign unique uid numbers to new user entries as they are created.</flag>
+	
+	<flag name='presence'>enable presence plugin - non-stabdart syntax
+		validation</flag>
+	
+	<flag name='bitwise'>enable bitwise plugin - supported data in raw/bitwise
+		format</flag>
 
 </use>
 </pkgmetadata>
