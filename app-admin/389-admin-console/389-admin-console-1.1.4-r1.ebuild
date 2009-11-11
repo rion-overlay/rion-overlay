@@ -17,12 +17,12 @@ SRC_URI="http://port389.org/sources/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc source"
+IUSE=""
 
-COMMON_DEP="=dev-java/jss-4*
-	>=dev-java/ldapsdk-4.0
-	>=dev-java/idm-console-framework-1.1
-	!app-admin/fedora-ds-admin-console"
+COMMON_DEP="dev-java/jss:3.4
+			dev-java/ldapsdk:4.1
+			>=dev-java/idm-console-framework-1.1
+			!app-admin/fedora-ds-admin-console"
 
 RDEPEND=">=virtual/jre-1.5
 	app-arch/zip
