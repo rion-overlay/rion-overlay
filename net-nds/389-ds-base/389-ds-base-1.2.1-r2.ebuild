@@ -15,7 +15,7 @@ SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="debug +pam-passthru +dna +bitwise presence kerberos"
 
 DEPEND=">=dev-libs/nss-3.11.4
 		>=dev-libs/nspr-4.6.4
@@ -49,8 +49,22 @@ src_prepare() {
 
 src_configure() {
 	append-flags -D_GNU_SOURCE
-	econf $(use_enable debug) \
-	--with-fhs || die "econf failed"
+
+	econf \
+		$(use_enable debug) \
+		$(use_enable pam-passthru) \
+		$(use_enable dna) \
+		$(use_enable presence) \
+		$(use_with kerberos) \
+		--enable-ldapi \
+		--enable-autobind \
+		--with-fhs  || die "econf failed"
+}
+
+src_compile() {
+		append-lfs-flags
+
+	    emake || die "compile failed"
 }
 
 src_install () {

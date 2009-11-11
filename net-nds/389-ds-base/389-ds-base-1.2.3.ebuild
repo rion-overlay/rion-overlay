@@ -10,7 +10,6 @@ DESCRIPTION="389 Directory Server (core files and daemons)"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
-
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
