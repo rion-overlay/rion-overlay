@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# Честно стырил по известному адресу
-# Oh, QA не проходит, буду клепать.
-
 EAPI=2
+
+WANT_AUTOMAKE="1.9"
 
 inherit eutils multilib flag-o-matic autotools
 
@@ -19,23 +18,22 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND=">=dev-libs/nss-3.11.4
-	>=dev-libs/nspr-4.6.4
-	>=dev-libs/svrcore-4.0.3
-	>=dev-libs/mozldap-6.0.2
-	>=dev-libs/cyrus-sasl-2.1.19
-	>=dev-libs/icu-3.4
-	>=sys-libs/db-4.2.52
-	>=net-analyzer/net-snmp-5.1.2
-	sys-apps/lm_sensors
-	app-arch/bzip2
-	dev-libs/openssl
-	sys-apps/tcp-wrappers
-	sys-libs/pam
-	sys-libs/zlib
-	dev-perl/perl-mozldap
-	app-crypt/mit-krb5
-	!net-nds/fedora-ds-base"
-
+		>=dev-libs/nspr-4.6.4
+		>=dev-libs/svrcore-4.0.3
+		>=dev-libs/mozldap-6.0.2
+		>=dev-libs/cyrus-sasl-2.1.19
+		>=dev-libs/icu-3.4
+		>=sys-libs/db-4.2.52
+		>=net-analyzer/net-snmp-5.1.2
+		sys-apps/lm_sensors
+		app-arch/bzip2
+		dev-libs/openssl
+		sys-apps/tcp-wrappers
+		sys-libs/pam
+		sys-libs/zlib
+		dev-perl/perl-mozldap
+		app-crypt/mit-krb5
+		!net-nds/fedora-ds-base"
 
 RDEPEND="${DEPEND}"
 
