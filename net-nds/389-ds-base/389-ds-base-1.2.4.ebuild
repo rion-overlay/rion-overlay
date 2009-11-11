@@ -4,7 +4,7 @@
 
 EAPI=2
 
-WANT_AUTOMKE="1.9"
+WANT_AUTOMAKE="1.9"
 
 inherit eutils multilib flag-o-matic autotools
 
