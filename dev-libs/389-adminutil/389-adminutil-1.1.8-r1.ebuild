@@ -39,4 +39,8 @@ src_configure() {
 
 src_install () {
 	emake DESTDIR="${D}" install || die "emake failed"
+
+	# install test suite - for use read readmi.txt
+	insinto /usr/share/doc/
+	doins -r "${S}"/tests
 }
