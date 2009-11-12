@@ -32,17 +32,18 @@ RDEPEND="|| (
 		)
 	dev-python/pygtk
 	sys-devel/gettext
-	dbus? ( dev-python/dbus-python dev-libs/dbus-glib )
 	libnotify? ( x11-libs/libnotify )
 	notify-osd? ( x11-misc/notify-osd )
 	xhtml? ( dev-python/docutils )
 	srv? ( net-dns/bind-tools )
 	idle? ( x11-libs/libXScrnSaver )
-	spell? ( app-text/gtkspell )
 	avahi? ( net-dns/avahi[dbus,gtk,python] )
 	dev-python/pyopenssl
 	dev-python/sexy-python
 	dev-python/pycrypto"
+
+PDEPEND="spell? ( app-text/gtkspell )
+	dbus? ( dev-python/dbus-python dev-libs/dbus-glib )"
 
 src_prepare() {
 	# not upstream:
@@ -68,8 +69,6 @@ src_configure() {
 	fi
 
 	econf $(use_enable nls) \
-		$(use_enable spell gtkspell) \
-		$(use_enable dbus remote) \
 		$(use_with X x) \
 		--docdir="/usr/share/doc/${PF}" \
 		--libdir="$(python_get_sitedir)" \
