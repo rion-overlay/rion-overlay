@@ -5,20 +5,20 @@
 EAPI="2"
 
 MY_PN="SugarCE"
-S="${WORKDIR}"/"${MY_PN}"-"Full-5.5.0beta2"
+S="${WORKDIR}"/"${MY_PN}"-"Full-5.5.0RC4"
 
 inherit webapp depend.php
 
 DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
 HOMEPAGE="http://www.sugarforge.org/"
-SRC_URI="http://dl.sugarforge.org/sugarcrm/1SugarCE5.5Beta/SugarCE5.5Beta/SugarCE-5.5.0beta2.zip"
+SRC_URI="http://dl.sugarforge.org/sugarcrm/1SugarCE5.5RC4/SugarCE5.5RC4/SugarCE-5.5.0RC4.zip"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="+curl imap +json +zlib +mysql freetds ldap mssql"
 RESTRICT="mirror"
 DEPEND="app-arch/unzip"
-RDEPEND=">=dev-lang/php-5.2[mysql?,ssl,soap,unicode,xml,curl?,imap?,json?,zlib?,ldap?,mssql?,session]
+RDEPEND=">=dev-lang/php-5.2[ssl,soap,unicode,xml,session]
 		dev-php/PEAR-DB
 		dev-php/PEAR-Cache_Lite
 		dev-php/PEAR-Mail_Mime
