@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>no-herd</herd>
+  <maintainer>
+    <email>rion4ik@gmail.com</email>
+    <name>Sergey</name>
+  </maintainer>
+  <longdescription lang="en">
+		Various plugins for Geany editor, such us version control,
+		file tree, project. html chars and much more.
+	</longdescription>
+  <use>
+    <flag name="lua">Enable lua plugin</flag>
+	<flag name="gtkspell">Enable gtkspell for GeanyVC plugin</flag>
+	<flag name="spell">Enable spellchecker plugin</flag>
+  </use>
+</pkgmetadata>
