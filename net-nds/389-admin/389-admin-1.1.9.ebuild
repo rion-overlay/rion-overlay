@@ -41,6 +41,7 @@ need_apache2_2
 
 src_prepare() {
 
+	epatch "${FILESDIR}"/fedora-ds-admin-1.1.5-cfgstuff-1.patch
 	epatch "${FILESDIR}/${PV}/"*.patch
 
 	sed -e "s!SUBDIRS!# SUBDIRS!g" -i Makefile.am
