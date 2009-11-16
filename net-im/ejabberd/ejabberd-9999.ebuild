@@ -23,6 +23,7 @@ IUSE="debug mod_irc mod_muc mod_pubsub ldap odbc pam ssl web zlib"
 DEPEND=">=net-im/jabber-base-0.01
 	>=dev-libs/expat-1.95
 	>=dev-lang/erlang-11.2.5
+	net-im/exmpp
 	odbc? ( dev-db/unixODBC )
 	ldap? ( =net-nds/openldap-2* )
 	ssl? ( >=dev-libs/openssl-0.9.8e )
