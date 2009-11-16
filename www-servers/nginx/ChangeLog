@@ -1,0 +1,27 @@
+# ChangeLog for www-servers/nginx
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header:
+
+  10 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.22-r50.ebuild:
+  version bump
+
+  08 Nov 2009; <slep@gentoo.org> -nginx-0.8.20-r50.ebuild:
+  remove old version
+
+  8 Noj 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+   nginx-0.8.21-r50.ebuild:
+   fix more bug
+
+  29 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.21-r50.ebuild:
+  version bump
+
+  20 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.20-r50.ebuild:
+  add new version
+
+  05 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> nginx-0.8.13.ebuild,
+  nginx-0.8.13-r10.ebuild:
+  drop untested keywords
+
