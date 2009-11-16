@@ -8,7 +8,6 @@
 </maintainer>
 <longdescription> Free and Open Source distributed fault-tolerant Jabber server. It's mostly written in Erlang, and works on many platforms.</longdescription>
 <use>
-	<flag name='mod_irc'>Irc support in ejabberd</flag>
 	<flag name='mod_muc'>Multi user chat support in ejabberd</flag>
 	<flag name='mod_pubsub'>Pubsub support in ejabberd</flag>
 	<flag name='web'>Web support in ejabberd</flag>
