@@ -93,7 +93,7 @@ src_install() {
 
 	webapp_configfile "${MY_HOSTROOTDIR}"/${PF}/Kernel/Config.pm
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
-	webapp_hook_script "${FILESDIR}"/reconfig-2
+	webapp_hook_script "${FILESDIR}"/reconfig-3
 	webapp_src_install
 }
 
