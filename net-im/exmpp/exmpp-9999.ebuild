@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="examples doc"
 
+# requires masked autoconf since previous stable one has broken erlang support
+# see README for details
 DEPEND=">=sys-devel/autoconf-2.64
 	dev-lang/erlang
 	dev-libs/expat
@@ -36,4 +38,5 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || "install failed"
+	dodoc README EPLICENCE
 }
