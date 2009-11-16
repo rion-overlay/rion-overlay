@@ -1,0 +1,26 @@
+--- src/Makefile.in	2009-09-23 02:08:36.000000000 +0600
++++ src/Makefile.in	2009-10-20 13:14:11.670426228 +0600
+@@ -513,6 +513,10 @@
+ 	plugin_manager.cc utils.h utils.cc widget-factory.h \
+ 	$(am__append_1)
+ gnome_commander_LDADD = \
++	$(top_builddir)/libgcmd/libgcmd.la \
++	dialogs/libgcmd-dialogs.a \
++	tags/libgcmd-tags.a \
++	intviewer/libgviewer.a \
+ 	$(GNOMEUI_LIBS) \
+ 	$(GNOMEVFS_LIBS) \
+ 	$(EXIV2_LIBS) \
+@@ -521,11 +525,7 @@
+ 	$(GSF_LIBS) \
+ 	$(POPPLER_LIBS) \
+ 	$(PYTHON_LIBS) \
+-	$(PYTHON_EXTRA_LIBS) \
+-	$(top_builddir)/libgcmd/libgcmd.la \
+-	dialogs/libgcmd-dialogs.a \
+-	tags/libgcmd-tags.a \
+-	intviewer/libgviewer.a
++	$(PYTHON_EXTRA_LIBS)
+ 
+ gnome_commander_LDFLAGS = \
+ 	$(GNOMEUI_LIBS) \

@@ -1,0 +1,52 @@
+# ChangeLog for www-apps/sugarcrm
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  sugarcrm-5.5.0_rc4.ebuild:
+  fix slot definition
+
+  14 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -sugarcrm-5.5.0_beta2.ebuild, -sugarcrm-5.5.0_beta2-r1.ebuild,
+  +sugarcrm-5.5.0_rc4.ebuild:
+  RC4 version
+
+  14 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -sugarcrm-5.5.0_beta2.ebuild, -sugarcrm-5.5.0_beta2-r1.ebuild:
+  del old beta version
+
+  11 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +sugarcrm-5.5.0_beta2-r1.ebuild:
+  fix depend logic
+
+  18 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -sugarcrm-5.5.0_beta1-r2.ebuild, sugarcrm-5.5.0_beta2.ebuild:
+  delete beta1 ebuild
+
+  18 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  sugarcrm-5.5.0_beta1-r2.ebuild, sugarcrm-5.5.0_beta2.ebuild:
+  fix slot
+
+  09 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +sugarcrm-5.5.0_beta2.ebuild:
+  add beta2 ebuild
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
+  Add metadata.xml
+
+  24 Jul 2009;A.Vinogradov  <spamslepnoga@inbox.ru>
+    Syntax & code error clean,version bump,
+    add mysqli USE depend on php mysqli 
+    drivers:
+    +sugarcrm-5.5.0_beta1-r2.ebuild
+
+ 24 Jul 2009;A.Vinogradov  <spamslepnoga@inbox.ru>
+ stable x86: added keyword
+ 
+ 24 Jul 2009;A.Vinogradov  <spamslepnoga@inbox.ru>
+ stable amd64:added keyword
+
+ 24 Jul 2009;A.Vinogradov  <spamslepnoga@inbox.ru>
+ added for testing: ~ppc64 ~sparc ~x86-fbsd
+
+*sugarcrm-5.5.0_beta1-r2 (24 Jul 2009)
