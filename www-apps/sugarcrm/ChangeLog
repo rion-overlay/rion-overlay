@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  sugarcrm-5.5.0_rc4.ebuild:
+  add include dit to serverowned
+
   16 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   sugarcrm-5.5.0_rc4.ebuild:
   fix slot definition

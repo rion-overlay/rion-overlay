@@ -62,7 +62,7 @@ src_prepare() {
 	done
 
 	cd "${S}"/scripts
-	rm -rf auto_* redhat* suse*
+	rm -rf auto_* redhat* suse* *.spec
 
 	if use fastcgi; then
 		epatch "${FILESDIR}"/apache2.patch
@@ -78,7 +78,9 @@ src_install() {
 	dodoc CHANGES CREDITS INSTALL README* TODO UPGRADING \
 		doc/otrs-database.dia doc/test-* doc/X-OTRS-Headers.txt \
 		.fetchmailrc.dist .mailfilter.dist .procmailrc.dist
-	dohtml doc/manual/{en,de}/html/*
+	# manual in pdf format, use online pdf/html manual
+	# Really, you have install Xorg&&pdf in web server ? :)
+	#dohtml doc/manual/{en,de}/html/*
 
 	insinto "${MY_HOSTROOTDIR}"/${PF}
 	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE Kernel bin scripts var
