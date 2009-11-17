@@ -39,7 +39,7 @@ src_install () {
 	webapp_configfile "${MY_HTDOCSDIR}"/"config.php"
 	webapp_configfile "${MY_HTDOCSDIR}"/".htaccess"
 
-	for foo in cache custom data modules ; do
+	for foo in cache custom data modules include ; do
 		webapp_serverowned -R "${MY_HTDOCSDIR}"/"${foo}"  || die
 
 	done
