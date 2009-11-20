@@ -1,0 +1,10 @@
+# ChangeLog for www-apps/webgui
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  20 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> +files/pydoc-3.1,
+  +webgui-7.7.26.ebuild
+  webgui-7.7.26.ebuild:
+  initial commit - testing,~amd64 only keyword
+
+*webgui-7.7.26
