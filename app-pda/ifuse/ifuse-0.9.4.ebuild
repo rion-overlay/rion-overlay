@@ -37,7 +37,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	cd "${S}"
 	eautoreconf
 }
 
@@ -52,4 +51,3 @@ pkg_postinst() {
 	ewarn "It will respond by wiping all media files, requiring a restore "
 	ewarn "through iTunes. You have been warned."
 }
-

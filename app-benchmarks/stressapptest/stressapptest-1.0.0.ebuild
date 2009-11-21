@@ -4,7 +4,6 @@
 
 EAPI="2"
 
-
 inherit autotools
 
 DESCRIPTION="Stressful Application Test, used at Google for some time"

@@ -24,8 +24,6 @@ RDEPEND="dev-libs/nspr
 S="${WORKDIR}"
 
 src_prepare() {
-
-
 	cd "${S}"/mozilla/security/coreconf
 
 	# modify install path

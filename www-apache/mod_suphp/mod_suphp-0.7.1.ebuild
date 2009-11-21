@@ -3,9 +3,7 @@
 # $Header:  $
 
 EAPI="2"
-
 inherit apache-module autotools eutils
-
 MY_P="${P/mod_/}"
 
 SETIDMODES="mode-force mode-owner mode-paranoid"
@@ -117,4 +115,3 @@ pkg_setup() {
 #	elog
 	einfo "If you have .ht^ file support, plz install pecl-htscanner package"
 }
-

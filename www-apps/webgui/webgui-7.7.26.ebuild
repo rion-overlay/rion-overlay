@@ -102,7 +102,7 @@ src_install() {
 
 	doinitd "${FILESDIR}"/spectre
 	dodoc  "${S}"/docs/*
-	
+
 	dodir "${D}/${MY_HTDOCSDIR}"/public
 	cd  "${S}"/www
 

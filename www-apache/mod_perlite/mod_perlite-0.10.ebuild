@@ -16,21 +16,17 @@ IUSE=""
 SLOT="0"
 
 DEPEND="dev-perl/File-Which"
-
 RDEPEND=""
 
 S="${WORKDIR}"/sodabrew-mod_perlite-080fe20
 
-# See apache-module.eclass for more information.
 APACHE2_MOD_CONF="75_${PN}"
 APACHE2_MOD_DEFINE="PERLITE"
 APACHE2_MOD_FILE="${S}/mod_perlite.so"
 
-# Perl specific
 SRC_TEST="do"
 DOCFILES="README TODO Changes"
 need_apache2
-
 
 src_prepare() {
 	perl-module_src_prep
@@ -48,4 +44,3 @@ src_install() {
 	doins -r "${S}"/blib/lib/*
 
 }
-

@@ -8,7 +8,7 @@ DESCRIPTION="Plugins for Geany"
 HOMEPAGE="http://plugins.geany.org/geany-plugins/"
 SRC_URI="http://plugins.geany.org/geany-plugins/${P}.tar.bz2"
 
-LICENSE="GPL"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="lua gtkspell spell"

@@ -6,7 +6,6 @@ EAPI="2"
 
 inherit cmake-utils
 
-
 DESCRIPTION="Quantum GIS (QGIS) is a Geographic Information System (GIS)"
 HOMEPAGE="http://www.qgis.org/"
 SRC_URI="http://download.osgeo.org/"${PN}"/src/"${PN}"_"${PV}".tar.gz

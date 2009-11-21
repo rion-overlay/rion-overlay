@@ -46,4 +46,3 @@ src_install()
 
 	elog "Panel backgrounds installed to /usr/share/pixmaps/${PN}"
 }
-

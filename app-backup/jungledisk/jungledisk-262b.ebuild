@@ -3,12 +3,10 @@
 # $Header: $
 EAPI="2"
 
-
 DESCRIPTION="Jungle Disk is Amazon c3 cloud disk interface"
 HOMEPAGE="https://www.jungledisk.com/"
 SRC_URI="amd64? ( http://downloads."${PN}".com/"${PN}"/"${PN}"64-"${PV}".tar.gz )
 			x86? ( http://downloads."${PN}".com/"${PN}"/"${PN}""${PV}".tar.gz )"
-
 
 LICENSE="JUNGLE_DISK"
 SLOT="0"

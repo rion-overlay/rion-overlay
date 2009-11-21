@@ -5,15 +5,11 @@
 # bugs #128106 (bugs.gentoo.org) :)
 # rion overlay
 
-
 SNAPSHSOT="current"
 EAPI=2
-
 inherit webapp depend.php
-
 DESCRIPTION="LDAP web front-end written on PHP"
 HOMEPAGE="http://www.phamm.org/"
-
 SRC_URI="http://open.rhx.it/phamm/daily/phamm05-"${SNAPSHSOT}".tar.gz"
 
 LICENSE="GPL-2
@@ -25,12 +21,7 @@ LICENSE="GPL-2
 		samba? ( GPL-3 )"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
-
-RESTRICT="mirror"
-
-
 DEPEND=""
-
 RDEPEND="virtual/mta"
 
 pkg_setup() {

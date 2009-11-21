@@ -30,4 +30,3 @@ src_install() {
 	dodoc ChangeLog  ChangeLog-ru
 
 }
-

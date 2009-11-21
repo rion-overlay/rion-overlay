@@ -108,7 +108,6 @@ src_install() {
 	insinto /etc/openldap/schema
 	use ldap && doins "${S}"/plugins/kdb/ldap/libkdb_ldap/kerberos.schema
 
-
 }
 
 pkg_postinst() {

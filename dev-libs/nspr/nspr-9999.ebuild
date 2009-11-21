@@ -26,9 +26,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}"
 
 src_prepare() {
-	cd "${S}"
 	mkdir build inst
-
 	# Respect LDFLAGS
 	sed -i -e 's/\$(MKSHLIB) \$(OBJS)/\$(MKSHLIB) \$(LDFLAGS) \$(OBJS)/g' \
 		mozilla/nsprpub/config/rules.mk
@@ -40,7 +38,6 @@ src_configure() {
 
 src_compile() {
 	cd "${S}"/build
-
 	echo > "${T}"/test.c
 	$(tc-getCC) -c "${T}"/test.c -o "${T}"/test.o
 	case $(file "${T}"/test.o) in
