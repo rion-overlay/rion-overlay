@@ -93,17 +93,23 @@ need_apache2_2
 
 src_install() {
 	webapp_src_preinst
+	dodir /var/log/
 	touch  "${D}"/var/log/webgui.log
 	fowners apache:apache "${D}"/var/log/webgui.log
 
 	insinto "${D}/${PN}"
 	doins -r "${S}"/etc/*
 
-#	newinitd "${FILESDIR}"/initd spectre
-
+	doinitd "${FILESDIR}"/spectre
+	dodoc  "${S}"/docs/*
+	
 	dodir "${D}/${MY_HTDOCSDIR}"/public
-	cd cd "${S}"/www
-	cp -R . "${D}/${MY_HTDOCSDIR}"/public
+	cd  "${S}"/www
 
+	cp -R . "${D}/${MY_HTDOCSDIR}"/public
+	cd "${S}"
+	cp -R lib sbin "${D}/${MY_HOSTROOTDIR}"
+
+	webapp_hook_script "${FILESDIR}"/reconfig
 	webapp_src_install
 }
