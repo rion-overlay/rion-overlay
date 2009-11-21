@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="defines RGB values for common color names"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-perl/Test-Exception

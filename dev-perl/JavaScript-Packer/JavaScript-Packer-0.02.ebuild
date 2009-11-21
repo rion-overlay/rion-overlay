@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Perl version of Dean Edwards' Packer.js"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
