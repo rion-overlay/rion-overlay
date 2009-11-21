@@ -15,7 +15,7 @@ SRC_URI="http://update.webgui.org/7.x.x/webgui-7.7.26-stable.tar.gz"
 #SRC_URI="mirror://sourceforge/project/pbwebgui/${MY_APP}%20Source/${PN}%20%28${REL}%29/${P}-${REL}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="${DEPEND}"
 DEPEND=">=dev-lang/perl-5.8.8-r5
