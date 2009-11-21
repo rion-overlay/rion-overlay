@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Easy-to-use date/time formatting"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="perl-core/Test-Simple

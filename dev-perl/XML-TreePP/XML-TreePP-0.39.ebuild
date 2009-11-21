@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Pure Perl implementation for parsing/writing XML documents"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="test? (

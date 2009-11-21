@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Single interface to deal with file archives"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/perl-Archive-Tar

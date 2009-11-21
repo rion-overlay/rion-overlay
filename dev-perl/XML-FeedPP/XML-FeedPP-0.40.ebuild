@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Parse/write/merge/edit RSS/RDF/Atom syndication feeds"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=dev-perl/XML-TreePP-0.38"

@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="WWW color names and equivalent RGB values"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-perl/Graphics-ColorNames"

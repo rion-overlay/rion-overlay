@@ -12,7 +12,7 @@ DESCRIPTION="A module to highlight words or patterns in HTML documents"
 
 #LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

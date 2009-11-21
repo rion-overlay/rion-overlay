@@ -11,7 +11,7 @@ HOMEPAGE="http://backpan.perl.org/"
 SRC_URI="http://backpan.perl.org/authors/id/S/SR/SRI/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

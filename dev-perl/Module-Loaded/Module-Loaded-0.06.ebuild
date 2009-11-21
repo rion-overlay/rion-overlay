@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Mark modules as loaded or unloaded"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

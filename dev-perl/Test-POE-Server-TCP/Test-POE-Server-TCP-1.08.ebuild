@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="A POE Component providing TCP server services for test cases"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=dev-perl/POE-1.004"
