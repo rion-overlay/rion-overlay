@@ -22,7 +22,6 @@ RDEPEND="x11-base/xorg-server
 
 S="${WORKDIR}"/1.1-release
 
-
 src_install() {
 	dodir /opt/"${MY_PN}"
 	cp "${S}"/FoxitReader "${D}"/opt/"${MY_PN}" || die

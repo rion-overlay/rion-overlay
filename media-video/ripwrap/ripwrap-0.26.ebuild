@@ -24,4 +24,3 @@ RDEPEND=${DEPEND}
 
 S="${WORKDIR}"/"${PN}"
 SRC_TEST="do"
-

@@ -14,7 +14,6 @@ MY_NAME="${MY_PN}""${PV}"
 
 S="${WORKDIR}"/"${MY_NAME}"
 
-
 RESTRICT="fetch mirror strip"
 #PROPERTIES="interactive"
 LICENSE="Cisco_EULA"
@@ -39,7 +38,7 @@ pkg_nofetch () {
 	einfo "(tar.gz) file"
 }
 src_prepare(){
-	cd "${S}"
+#	cd "${S}"
 	rm -rf install set_ptenv.sh tpl.linguist  \
 				tpl.packettracer extensions/ptaplayer || die "Not remove files"
 # Disable automatic update :)
@@ -98,5 +97,3 @@ pkg_postrm() {
 fdo-mime_desktop_database_update
 fdo-mime_mime_database_update
 }
-
-

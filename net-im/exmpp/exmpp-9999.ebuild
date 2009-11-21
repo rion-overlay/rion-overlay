@@ -23,7 +23,11 @@ DEPEND=">=sys-devel/autoconf-2.64
 	dev-libs/libxml2
 	dev-libs/openssl
 	sys-libs/zlib"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-lang/erlang
+		dev-libs/expat
+		dev-libs/libxml2
+		dev-libs/openssl
+		sys-libs/zlib"
 
 src_prepare() {
 	eautoreconf

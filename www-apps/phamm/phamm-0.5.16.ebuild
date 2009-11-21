@@ -5,7 +5,6 @@
 # bugs #128106 (bugs.gentoo.org) :)
 # rion overlay
 
-
 EAPI=2
 
 inherit webapp depend.php
@@ -31,10 +30,6 @@ LICENSE="GPL-2
 		samba? ( GPL-3 )"
 KEYWORDS="~x86 ~amd64"
 IUSE="+minimal isp-schema amavis-schema dns-schema ftp-schema radius samba"
-
-RESTRICT="mirror"
-
-
 DEPEND=""
 
 RDEPEND="virtual/mta"

@@ -35,4 +35,3 @@ src_install() {
 	einstall || die
 	dodoc ChangeLog README AUTHORS
 }
-

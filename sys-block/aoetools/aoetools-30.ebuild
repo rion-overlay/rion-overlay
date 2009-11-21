@@ -14,7 +14,6 @@ RDEPEND="${DEPEND}
 	sys-apps/util-linux"
 
 src_prepare() {
-	cd "${S}"
 	sed -i -e 's,^CFLAGS.*,CFLAGS += -Wall,g' Makefile || die "Failed to clean up makefile"
 }
 

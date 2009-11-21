@@ -19,7 +19,6 @@ IUSE="minimal"
 DEPEND="sys-devel/libtool"
 RDEPEND=""
 
-
 src_configure() {
 	econf \
 		$(use_enable minimal ) || die
