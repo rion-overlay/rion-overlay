@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="${DEPEND}"
 DEPEND=">=dev-lang/perl-5.8.8-r5
+		perl-core/Module-Load
 		>=dev-perl/libwww-perl-5.824
 		>=virtual/perl-Test-Harness-2.64
 		>=dev-perl/Test-MockObject-1.02
