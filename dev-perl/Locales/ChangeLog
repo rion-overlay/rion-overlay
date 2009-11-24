@@ -2,6 +2,9 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> +Locales-0.10.ebuild:
+  initial commit
+
   24 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> +Locales-0.13.ebuild,
   +metadata.xml:
   initial commit
