@@ -11,14 +11,14 @@ inherit  depend.apache webapp
 
 DESCRIPTION="CMS in Perl"
 HOMEPAGE="http://www.webgui.org/"
-SRC_URI="http://update.webgui.org/7.x.x/webgui-7.7.26-stable.tar.gz"
-#SRC_URI="mirror://sourceforge/project/pbwebgui/${MY_APP}%20Source/${PN}%20%28${REL}%29/${P}-${REL}.tar.gz"
+SRC_URI="mirror://sourceforge/project/pbwebgui/${MY_APP}%20Source/${PN}%20%28${REL}%29/${P}-${REL}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 RDEPEND="${DEPEND}"
 DEPEND=">=dev-lang/perl-5.8.8-r5
+		dev-perl/Template-Toolkit[gd,mysql,xml]
 		perl-core/Module-Load
 		>=dev-perl/libwww-perl-5.824
 		>=virtual/perl-Test-Harness-2.64
@@ -56,7 +56,6 @@ DEPEND=">=dev-lang/perl-5.8.8-r5
 		dev-perl/Net-Subnets
 		dev-perl/Finance-Quote
 		>=dev-perl/POE-1.005
-		>=dev-perl/POE-1.005[libwww]
 		>=dev-perl/POE-Component-IKC-0.2001
 		dev-perl/POE-Component-Client-HTTP
 		www-apache/libapreq2:2
@@ -92,7 +91,9 @@ S="${WORKDIR}/${MY_APP}"
 
 need_apache2_2
 
-src_install() {
+# onlu depend work in so time.
+
+src_install_test() {
 	webapp_src_preinst
 	dodir /var/log/
 	touch  "${D}"/var/log/webgui.log
