@@ -92,7 +92,7 @@ src_prepare() {
 	sed "s/.xxx/.${ESVN_WC_REVISION}/" -i src/applicationinfo.cpp
 
 	# enable plugins if disabled
-	sed 's/<!--\(.*plugins.*\)-->/\1/' -i psi.qc
+	sed '/<!--\(.*plugins.*\)-->/a<dep type="plugins"><disabled/></dep>' -i psi.qc
 
 	# enable whiteboarding
 	use whiteboarding && {
