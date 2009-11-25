@@ -1,0 +1,34 @@
+# 21 Noj 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for development/testig/incomplit
+www-apps/webgui
+
+# 28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# QA issue: install all files in /usr
+app-pki/pki-tps
+app-admin/pki-console
+
+# 28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# depend hrdmasked
+app-mobilephone/phonetooth
+
+# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
+# mask for testing; не собирается, епта
+www-apps/ikiwiki
+
+# 8 Sen 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# not complete,require dog-tag pki server and more
+# patches: SysV init system is hardcoded
+# 21 Okt 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask before new version
+app-admin/ipa-admintools
+net-nds/ipa-client
+net-nds/ipa-server
+dev-python/ipa-python
+app-admin/ipa-radius-admintools
+net-dialup/ipa-radius-server
+
+# 09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask app-crypt/openca-base, not complete
+# very old,not mantained,depend mismatch
+app-crypt/openca-base
+
