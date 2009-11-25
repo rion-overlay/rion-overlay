@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.09.ebuild:
+  version bump
+
   24 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +fortune-mod-gentoo-ru-0.08.ebuild:
   version bump
