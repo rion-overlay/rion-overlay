@@ -1,0 +1,17 @@
+# ChangeLog for sci-geosciences/qgis
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  21 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> -qgis-1.2.0.ebuild:
+
+
+  deleted: qgis-1.2.0.ebuild
+
+
+  21 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +qgis-1.3.0.ebuild:
+  version bump
+
+  09 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> +qgis-1.2.0.ebuild,
+  +files/gentofy-cmake.patch, +files/gentofy-py-cmake.patch, +metadata.xml:
+  initial commit
+
