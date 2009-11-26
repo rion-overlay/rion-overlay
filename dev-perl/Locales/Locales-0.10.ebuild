@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Methods for getting localized CLDR language/territory names"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="test? ( dev-perl/Test-Pod-Coverage
