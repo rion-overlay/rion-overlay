@@ -17,14 +17,14 @@ IUSE="+anhero +browser +torrent +rss +dbus lyrics history
 	mediaplayer irc +networkmonitor +newlife +opensearch debug +ftp -directconnect
 	+sitedownloader +vgrabber"
 
-DEPEND=">=dev-libs/boost-1.37
-		>=x11-libs/qt-gui-4.5.1
-		>=x11-libs/qt-sql-4.5.1
-		>=x11-libs/qt-script-4.5.1
-		>=x11-libs/qt-svg-4.5.1
+DEPEND=">=dev-libs/boost-1.39
+		>=x11-libs/qt-gui-4.6
+		>=x11-libs/qt-sql-4.6
+		>=x11-libs/qt-script-4.6
+		>=x11-libs/qt-svg-4.6
 		torrent? ( =net-libs/rb_libtorrent-0.15*[crypt] )
 		mediaplayer? ( media-sound/phonon )
-		browser? ( >=x11-libs/qt-webkit-4.5.1 )"
+		browser? ( >=x11-libs/qt-webkit-4.6 )"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
