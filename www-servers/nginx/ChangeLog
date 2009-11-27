@@ -3,6 +3,10 @@
 # $Header:
 
   27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -nginx-0.8.22-r50.ebuild:
+  delete nginx-0.8.22-r50.ebuild renegotiation vulnerability in SSL protocol
+
+  27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   -nginx-0.8.21-r50.ebuild:
   delete old version
 
