@@ -1,6 +1,9 @@
-# ChangeLog for net-misc/dhcdrop
+# ChangeLog for net-analyzer/dhcdrop
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> -dhcdrop-0.4-r2.ebuild:
+  delete old version
 
   20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> dhcdrop-9999.ebuild:
   fix install phase
