@@ -30,4 +30,3 @@ src_install() {
 	einstall || die "make install failed"
 	dodoc AUTHORS INSTALL  NEWS   README
 }
-
