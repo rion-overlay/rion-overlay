@@ -41,22 +41,23 @@ src_prepare() {
 	default
 	sed '/oolite_LIB_DIRS/d' -i GNUmakefile
 	sed "s|/usr/share/GNUstep/Makefiles|${GNUSTEP_MAKEFILES}|" -i Makefile
+	sed "/strip/d" -i GNUmakefile.postamble # do not strip in any case
 }
 
 src_compile() {
 	cd deps/Cross-platform-deps/SpiderMonkey/js/src
-	BUILD_OPT=1 make -f Makefile.ref
+	BUILD_OPT=1 make -f Makefile.ref || die "make failed"
 	cd "${S}"
-	make debug=no
+	make debug=no || die "make failed"
 }
 
 src_install() {
 	insinto "${GNUSTEP_LOCAL_ROOT}/Applications"
-	doins -r oolite.app
+	doins -r oolite.app || die "install failed"
 	echo "openapp oolite" > "${T}/oolite"
 	dogamesbin "${T}/oolite"
 	prepgamesdirs "${GNUSTEP_LOCAL_ROOT}/Applications"
 	fperms ug+x "${GNUSTEP_LOCAL_ROOT}/Applications/oolite.app/oolite"
-	doicon FreeDesktop/oolite-icon.png
-	domenu FreeDesktop/oolite.desktop
+	doicon installers/FreeDesktop/oolite-icon.png
+	domenu installers/FreeDesktop/oolite.desktop
 }
