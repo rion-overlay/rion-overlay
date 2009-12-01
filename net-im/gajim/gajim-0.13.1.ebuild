@@ -8,7 +8,7 @@ inherit multilib python eutils autotools
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="http://www.gajim.org/"
-SRC_URI="http://www.gajim.org/downloads/${PV/_*/}/${PN}-${PV/_/-}.tar.bz2"
+SRC_URI="http://www.gajim.org/downloads/0.13/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
