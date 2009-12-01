@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header:
 
+  01 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.29-r50.ebuild:
+  version bump
+
   27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   -nginx-0.8.22-r50.ebuild:
   delete nginx-0.8.22-r50.ebuild renegotiation vulnerability in SSL protocol
