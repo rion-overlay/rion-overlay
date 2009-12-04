@@ -12,6 +12,6 @@
   <flag name='plugins'> add plugin support</flag>
   <flag name='enchant'>Use enchant spell engine instead of aspell</flag>
   <flag name='whiteboarding'>Inreractive SVG drawing</flag>
-  <flag name='webkit'>Add animated smail support, use Qt webkit</flag>
+  <flag name='webkit'>Enable chatlog rendering using webkit</flag>
 </use>
 </pkgmetadata>
