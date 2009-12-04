@@ -4,7 +4,7 @@
 
 DESCRIPTION="Consolidated menu for gnome"
 HOMEPAGE="https://launchpad.net/gnomenu"
-SRC_URI="http://launchpad.net/gnomenu/trunk/2.0/+download/${P}.tar.gz"
+SRC_URI="http://launchpad.net/gnomenu/trunk/2.1/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
