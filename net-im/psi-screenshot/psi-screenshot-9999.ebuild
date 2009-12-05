@@ -10,7 +10,7 @@ MY_PN="screenshotplugin"
 
 DESCRIPTION="Psi plugin to quickly make screenshots"
 HOMEPAGE="http://psi-dev.googlecode.com"
-ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/screenshot"
+ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/${MY_PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
