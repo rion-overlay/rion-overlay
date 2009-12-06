@@ -6,24 +6,22 @@ EAPI="2"
 
 inherit qt4 subversion
 
-DESCRIPTION="Qt configure generation util"
+DESCRIPTION="Qt ./configure generation util"
 HOMEPAGE="http://delta.affinix.com/qconf/"
 ESVN_REPO_URI="https://delta.affinix.com/svn/trunk/qconf"
 
-LICENSE="LGPL-2"
-SLOT="2"
+LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS=""
 IUSE=""
 RESTRICT="test strip"
 
-DEPEND="x11-libs/qt-core:4"
+DEPEND="x11-libs/qt-core"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	./configure \
-		--prefix=/usr \
-		--qtdir=/usr \
-		|| die "configure failed"
+		--prefix=/usr || die "configure failed"
 }
 
 src_install() {
