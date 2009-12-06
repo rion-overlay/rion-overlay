@@ -6,30 +6,29 @@ EAPI="2"
 
 MY_PN="SugarCE"
 
-inherit webapp depend.php eutils
+inherit webapp  eutils
 
 DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
 HOMEPAGE="http://www.sugarforge.org/"
 SRC_URI="mirror://sourceforge/${PN}/1%20-%20${MY_PN}%20${PV}/SugarCommunityEdition-${PV}/${MY_PN}-${PV}.zip"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="+curl imap +json +zlib +mysql freetds ldap mssql"
+KEYWORDS="~amd64 ~x86"
+IUSE="curl imap +json +zlib +mysqli freetds ldap mssql"
 
 # TODO Oracle/DB2/.... support ?
 
-DEPEND="app-arch/unzip"
-
-RDEPEND="dev-lang/php:5[ssl,soap,unicode,xml,session]
+DEPEND=">=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,ldap?,mssql?,mysqli?,zlib?,curl?,imap?,json?]
 		dev-php/PEAR-DB
 		dev-php/PEAR-Cache_Lite
 		dev-php/PEAR-Mail_Mime
 		virtual/httpd-cgi
 		freetds? ( >=dev-db/freetds-0.64
 					mssql? ( >=dev-db/freetds-0.64[mssql] ) )
-		mysql? ( >=dev-db/mysql-5.0.70 )"
+		mysql? ( >=dev-db/mysql-5.0.70 )
+		app-arch/unzip"
 
-need_php5_httpd
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
