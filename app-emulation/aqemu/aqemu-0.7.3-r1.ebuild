@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit qt4 flag-o-matic fdo-mime
+inherit qt4 flag-o-matic fdo-mime eutils
 
 DESCRIPTION="Graphical interface for QEMU emulator. Using Qt4."
 HOMEPAGE="http://sourceforge.net/projects/aqemu/"
@@ -17,14 +17,10 @@ IUSE="kvm linguas_ru vnc"
 
 DEPEND="${RDEPEND}"
 
-RDEPEND="kvm? ( app-emulation/kvm )
+RDEPEND="kvm? ( app-emulation/qemu-kvm )
 		!kvm? ( >=app-emulation/qemu-0.9.0 )
 		 vnc? ( net-libs/libvncserver )
 		 x11-libs/qt-gui:4"
-
-RESTRICT="mirror"
-
-#S="${WORKDIR}/AQEMU-0.7.3-Alpha2"
 
 src_configure() {
 
