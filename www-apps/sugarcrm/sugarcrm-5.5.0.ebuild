@@ -1,23 +1,25 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: slepnoga v1.0-no_additions $
 
 EAPI="2"
 
 MY_PN="SugarCE"
-S="${WORKDIR}"/"${MY_PN}"-"Full-5.5.0RC4"
-WEBAPP_MANUAL_SLOT="yes"
-inherit webapp depend.php
+
+inherit webapp depend.php eutils
 
 DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
 HOMEPAGE="http://www.sugarforge.org/"
-SRC_URI="http://dl.sugarforge.org/sugarcrm/1SugarCE5.5RC4/SugarCE5.5RC4/SugarCE-5.5.0RC4.zip"
-SLOT="${PV}"
+SRC_URI="mirror://sourceforge/${PN}/1%20-%20${MY_PN}%20${PV}/SugarCommunityEdition-${PV}/${MY_PN}-${PV}.zip"
+
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="+curl imap +json +zlib +mysql freetds ldap mssql"
-RESTRICT="mirror"
+
+# TODO Oracle/DB2/.... support ?
+
 DEPEND="app-arch/unzip"
+
 RDEPEND="dev-lang/php:5[ssl,soap,unicode,xml,session]
 		dev-php/PEAR-DB
 		dev-php/PEAR-Cache_Lite
@@ -25,11 +27,16 @@ RDEPEND="dev-lang/php:5[ssl,soap,unicode,xml,session]
 		virtual/httpd-cgi
 		freetds? ( >=dev-db/freetds-0.64
 					mssql? ( >=dev-db/freetds-0.64[mssql] ) )
-		mysql? ( >=dev-db/mysql-5.0.70 )
-		"
+		mysql? ( >=dev-db/mysql-5.0.70 )"
+
 need_php5_httpd
+
+S="${WORKDIR}/${MY_PN}-${PV}"
+
 src_install () {
+
 	webapp_src_preinst
+
 	cd "${S}"
 	einfo "Installing main files"
 	cp -R . "${D}"/"${MY_HTDOCSDIR}"
@@ -43,10 +50,13 @@ src_install () {
 		webapp_serverowned -R "${MY_HTDOCSDIR}"/"${foo}"  || die
 
 	done
+
 	webapp_serverowned "${MY_HTDOCSDIR}"/"config.php"
-	einfo "Please make adjustment of your php.ini or .htaccess file"
-	einfo "Change value "seesion.path = "  according to your desire"
-	einfo "Files of sessions are stored in this directory"
-	einfo "For more info  see http://developers.sugarcrm.com/documentation.php "
+
+	elog "Please make adjustment of your php.ini or .htaccess file"
+	elog "Change value "seesion.path = "  according to your desire"
+	elog "Files of sessions are stored in this directory"
+	elog "For more info  see http://developers.sugarcrm.com/documentation.php "
+
 	webapp_src_install
 }
