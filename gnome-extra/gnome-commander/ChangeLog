@@ -1,0 +1,12 @@
+# ChangeLog for gnome-extra/gnome-commander
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  gnome-commander-1.2.8.2.ebuild, metadata.xml:
+  fix depend
+
+  27 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  gnome-commander-1.2.8.ebuild, metadata.xml:
+  drop not supported keywords
+
