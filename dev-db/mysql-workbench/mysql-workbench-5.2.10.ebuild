@@ -5,7 +5,7 @@
 EAPI="2"
 GCONF_DEBUG="no"
 
-inherit gnome2 eutils flag-o-matic autotools
+inherit gnome2 eutils flag-o-matic autotools eutils
 
 MY_P="${PN}-oss-${PV}"
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://mysql/Downloads/MySQLGUITools/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls python readline"
 
 RDEPEND=">=x11-libs/gtk+-2.6
@@ -38,6 +38,7 @@ RDEPEND=">=x11-libs/gtk+-2.6
 	dev-python/pexpect
 	dev-python/paramiko
 	readline? ( sys-libs/readline )"
+
 DEPEND="${RDEPEND}
 	>=dev-cpp/ctemplate-0.95
 	dev-util/pkgconfig"
@@ -54,6 +55,5 @@ src_configure() {
 		$(use_enable nls i18n) \
 		$(use_enable python python-modules) \
 		$(use_enable readline readline) \
-		--with-system-ctemplate
+		--with-system-ctemplate || die "econf fajled"
 }
-
