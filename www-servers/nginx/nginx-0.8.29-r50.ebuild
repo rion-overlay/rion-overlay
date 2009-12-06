@@ -29,7 +29,7 @@ DEPEND=">=dev-lang/perl-5.8.7
 	rrd? ( >=net-analyzer/rrdtool-1.3.8 )
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	ssl? ( >=dev-libs/openssl-0.9.7 )
-	perftool? ( >=dev-libs/google-perftools-1.3 )
+	perftool? ( dev-util/google-perftools )
 	xslt? (
 			>=dev-libs/libxslt-1.1.24
 			>dev-libs/libxml2-2.7 )
