@@ -18,7 +18,7 @@ IUSE="curl imap +json +zlib +mysql +mysqli freetds ldap mssql"
 
 # TODO Oracle/DB2/.... support ?
 
-DEPEND=">=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,ldap?,mssql?,mysql?,mysqli?,zlib?,curl?,imap?,json?]
+DEPEND=">=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,tokenizer,ldap?,mssql?,mysql?,mysqli?,zlib?,curl?,imap?,json?]
 		dev-php/PEAR-DB
 		dev-php/PEAR-Cache_Lite
 		dev-php/PEAR-Mail_Mime

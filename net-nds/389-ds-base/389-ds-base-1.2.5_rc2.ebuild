@@ -7,7 +7,7 @@ EAPI=2
 WANT_AUTOMAKE="1.9"
 
 inherit eutils multilib flag-o-matic autotools
-MY_PV="1.2.5.rc1"
+MY_PV="1.2.5.rc2"
 DESCRIPTION="389 Directory Server (core librares  and daemons )"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${PN}-${MY_PV}.tar.bz2"

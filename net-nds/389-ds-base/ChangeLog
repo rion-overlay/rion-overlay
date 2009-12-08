@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-ds-base-1.2.5_rc1.ebuild, +389-ds-base-1.2.5_rc2.ebuild:
+  add/remove release candidat. ebuild
+
   02 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +389-ds-base-1.2.5_rc1.ebuild:
   new version add - only for tesnig
