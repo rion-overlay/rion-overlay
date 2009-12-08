@@ -14,18 +14,17 @@ SRC_URI="mirror://sourceforge/${PN}/1%20-%20${MY_PN}%20${PV}/SugarCommunityEditi
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="curl imap +json +zlib +mysqli freetds ldap mssql"
+IUSE="curl imap +json +zlib +mysql +mysqli freetds ldap mssql"
 
 # TODO Oracle/DB2/.... support ?
 
-DEPEND=">=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,ldap?,mssql?,mysqli?,zlib?,curl?,imap?,json?]
+DEPEND=">=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,ldap?,mssql?,mysql?,mysqli?,zlib?,curl?,imap?,json?]
 		dev-php/PEAR-DB
 		dev-php/PEAR-Cache_Lite
 		dev-php/PEAR-Mail_Mime
 		virtual/httpd-cgi
 		freetds? ( >=dev-db/freetds-0.64
 					mssql? ( >=dev-db/freetds-0.64[mssql] ) )
-		mysql? ( >=dev-db/mysql-5.0.70 )
 		app-arch/unzip"
 
 RDEPEND="${DEPEND}"
