@@ -21,8 +21,8 @@ fi
 S="${WORKDIR}/ru/RPMS"
 DESCRIPTION="OpenOffice productivity suite. Russian Professional Edition"
 
-SRC_URI="amd64? ( http://download.i-rs.ru/pub/openoffice/${PV}/ru/OOo_${PV}_LinuxX86-64_install_ru_infra.tar.gz )
-	x86? ( http://download.i-rs.ru/pub/openoffice/${PV}/ru/OOo_${PV}_LinuxIntel_install_ru_infra.tar.gz )"
+SRC_URI="amd64? ( http://ftp.chg.ru/pub/OpenOffice-RU/${PV}/ru/OOo_${PV}_LinuxX86-64_install_ru_infra.tar.gz )
+	x86? ( http://ftp.chg.ru/pub/OpenOffice-RU/${PV}/ru/OOo_${PV}_LinuxIntel_install_ru_infra.tar.gz )"
 
 HOMEPAGE="http://i-rs.ru/"
 
