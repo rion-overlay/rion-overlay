@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: slepnoga v1.0-no_additions $
+# $Header: slepnoga v1.2-no_additions $
 
 EAPI="2"
 
@@ -29,7 +29,7 @@ DEPEND=">=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,ldap?,mssql?,mysql?,m
 
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/${MY_PN}-Full-${PV}"
 
 src_install () {
 
@@ -37,24 +37,24 @@ src_install () {
 
 	cd "${S}"
 	einfo "Installing main files"
-	cp -R . "${D}"/"${MY_HTDOCSDIR}"
+	cp -R . "${D}/${MY_HTDOCSDIR}"
 
-	webapp_postinst_txt en "${FILESDIR}"/"postinstall-en.txt"
-
-	webapp_configfile "${MY_HTDOCSDIR}"/"config.php"
-	webapp_configfile "${MY_HTDOCSDIR}"/".htaccess"
+	webapp_configfile "${MY_HTDOCSDIR}"/config.php
+	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
 
 	for foo in cache custom data modules include ; do
 		webapp_serverowned -R "${MY_HTDOCSDIR}"/"${foo}"  || die
 
 	done
 
-	webapp_serverowned "${MY_HTDOCSDIR}"/"config.php"
+	webapp_serverowned "${MY_HTDOCSDIR}"/config.php
 
 	elog "Please make adjustment of your php.ini or .htaccess file"
-	elog "Change value "seesion.path = "  according to your desire"
+	elog "Change value "session.path = "  according to your desire"
 	elog "Files of sessions are stored in this directory"
-	elog "For more info  see http://developers.sugarcrm.com/documentation.php "
+	elog "For more info  see http://developers.sugarcrm.com/documentation.php"
+
+	webapp_postinst_txt en "${FILESDIR}/"postinstall-en.txt
 
 	webapp_src_install
 }
