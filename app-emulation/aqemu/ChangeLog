@@ -1,0 +1,11 @@
+# ChangeLog for app-emulation/aqemu
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  06 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.7.3.ebuild,
+  +aqemu-0.7.3-r1.ebuild:
+  fix bad depend on app-emulation/kvm - replace to app-emulation/qemu-kvm
+
+  13 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +aqemu-0.7.3.ebuild:
+  recommit in my personal overlay
+
