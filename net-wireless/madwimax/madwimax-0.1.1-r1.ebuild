@@ -3,7 +3,10 @@
 # $Header: $
 
 EAPI="2"
-inherit eutils
+
+WANT_AUTOMAKE="1.10"
+WANT_AUTOCONF="2.5"
+inherit eutils autotools
 
 DESCRIPTION="A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip."
 HOMEPAGE="http://code.google.com/p/madwimax/"
@@ -11,16 +14,20 @@ SRC_URI="http://madwimax.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/libusb:1"
-RDEPEND="${DEPEND}
-		app-text/txt2man"
+DEPEND="virtual/libusb:1
+		app-text/txt2man
+		dev-util/pkgconfig"
+RDEPEND="virtual/libusb:1"
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}"-led.patch || die "epatch failed" 
+	eautoreconf
+}
 src_configure() {
-	epatch "${FILESDIR}/${P}"-led.patch
-	econf --without-man-pages
+	econf --without-man-pages || die "econf failed"
 }
 
 src_compile() {
