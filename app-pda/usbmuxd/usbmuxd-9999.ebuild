@@ -4,22 +4,14 @@
 
 EAPI="2"
 
-inherit cmake-utils
-if [[ "${PV}" == 9999* ]]; then
-	inherit git
-	EGIT_REPO_URI="http://git.marcansoft.com/repos/usbmuxd.git"
-else
-	inherit versionator
-	MY_P="${PN}-$(replace_version_separator 3 '-')"
-	SRC_URI="http://marcansoft.com/uploads/usbmuxd/${MY_P}.tar.bz2"
-	S="${WORKDIR}/${MY_P}"
-fi
+inherit cmake-utils git
+EGIT_REPO_URI="http://git.marcansoft.com/repos/usbmuxd.git"
 
 DESCRIPTION="Support library to communicate with iPhone/iPod touch"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS=""
 SLOT="0"
 IUSE=""
 
@@ -27,11 +19,7 @@ RDEPEND="virtual/libusb:0"
 DEPEND="${RDEPEND}"
 
 src_unpack() {
-	if [[ "${PV}" == 9999* ]]; then
-		git_src_unpack || die "unpack failed"
-	else
-		unpack ${A}
-	fi
+	git_src_unpack
 }
 
 src_configure() {
