@@ -24,5 +24,6 @@
 	<flag name='cpp'>Enables experimental modiles written in C++</flag>
 	<flag name='mp4'>Add 3rd party module for MP4 stream</flag>
 	<flag name='rrd'>Enadle 3rd party rrd module</flag>
+	<flag name='chunk'>Enadle 3rd party chunk module</flag>
 </use>
 </pkgmetadata>
