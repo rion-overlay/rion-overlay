@@ -91,7 +91,7 @@ src_configure() {
 	# 3rd party module
 	use pam			&& myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
 	use mp4			&& myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
-	use mod_chunk   && myconf="${myconf} \
+	use chunk		&& myconf="${myconf} \
 						--add-module="${WORKDIR}"/agentzh-chunkin-nginx-module-f9d3f9e"
 
 	if  use rrd ; then
