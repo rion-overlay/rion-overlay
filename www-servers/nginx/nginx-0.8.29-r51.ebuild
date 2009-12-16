@@ -139,7 +139,7 @@ src_install() {
 		einstall DESTDIR="${D}"|| die "failed to install perl stuff"
 	fi
 	use pam 		&& newdoc "${WORKDIR}"/ngx_http_auth_pam_module-1.1/README README.pam
-	use mod_chunk   && newdoc "${WORKDIR}/agentzh-chunkin-nginx-module-f9d3f9e"/README README.chunkin
+	use chunk   && newdoc "${WORKDIR}/agentzh-chunkin-nginx-module-f9d3f9e"/README README.chunkin
 }
 
 pkg_postinst() {
