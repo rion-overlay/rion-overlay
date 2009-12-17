@@ -1,12 +1,12 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/apr-util/apr-util-1.3.9.ebuild,v 1.9 2009/08/23 08:23:40 nixnut Exp $
+# $Header: $
 
 EAPI="2"
 
 # Usually apr-util has the same PV as apr, but in case of security fixes, this may change.
-#APR_PV=${PV}
-APR_PV="1.3.8"
+APR_PV="${PV}"
+#APR_PV="1.3.8"
 
 inherit db-use autotools multilib
 
@@ -18,24 +18,26 @@ LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="~amd64 ~x86"
 IUSE="berkdb doc freetds gdbm ldap mozldap mysql odbc postgres sqlite sqlite3"
+
 RESTRICT="test"
 
 RDEPEND="dev-libs/expat
-	>=dev-libs/apr-${APR_PV}:1
-	berkdb? ( =sys-libs/db-4* )
-	freetds? ( dev-db/freetds )
-	gdbm? ( sys-libs/gdbm )
-	ldap? ( =net-nds/openldap-2* )
-	mozldap? ( =dev-libs/mozldap-6*
-		  =dev-libs/nspr-4*
-		  =dev-libs/nss-3* )
-	mysql? ( =virtual/mysql-5* )
-	odbc? ( dev-db/unixODBC )
-	postgres? ( virtual/postgresql-base )
-	sqlite? ( dev-db/sqlite:0 )
-	sqlite3? ( dev-db/sqlite:3 )"
+		>=dev-libs/apr-${APR_PV}:1
+		berkdb? ( =sys-libs/db-4* )
+		freetds? ( dev-db/freetds )
+		gdbm? ( sys-libs/gdbm )
+		ldap? ( =net-nds/openldap-2* )
+		mozldap? (	 =dev-libs/mozldap-6*
+					  =dev-libs/nspr-4*
+					  =dev-libs/nss-3* )
+		mysql? ( =virtual/mysql-5* )
+		odbc? ( dev-db/unixODBC )
+		postgres? ( virtual/postgresql-base )
+		sqlite? ( dev-db/sqlite:0 )
+		sqlite3? ( dev-db/sqlite:3 )"
+
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+		doc? ( app-doc/doxygen )"
 
 src_prepare() {
 
@@ -47,26 +49,30 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=""
 
-	use ldap && myconf+=" --with-ldap"
+	use ldap && myconf="${myconf} --with-ldap"
 
 	use mozldap && myconf="${myconf} --with-ldap \
-					 --with-lber=lber60
-					 --with-ldap-include=/usr/include/mozldap/ \
-					 --with-ldap-lib=/usr/$(get_libdir)/mozldap/ "
+					 		--with-lber=lber60
+					 		--with-ldap-include=/usr/include/mozldap/ \
+					 		--with-ldap-lib=/usr/$(get_libdir)/mozldap/ "
 
 	if use berkdb; then
+
 		local db_version
 		db_version="$(db_findver sys-libs/db)" || die "Unable to find db version"
 		db_version="$(db_ver_to_slot "${db_version}")"
 		db_version="${db_version/\./}"
-		myconf+=" --with-dbm=db${db_version} --with-berkeley-db=$(db_includedir):/usr/$(get_libdir)"
+		myconf="${myconf}  --with-dbm=db${db_version} --with-berkeley-db=$(db_includedir):/usr/$(get_libdir)"
+
 	else
-		myconf+=" --without-berkeley-db"
+
+		myconf=" --without-berkeley-db"
 	fi
 
-	econf --datadir=/usr/share/apr-util-1 \
+	econf \
+		--datadir=/usr/share/apr-util-1 \
 		--with-apr=/usr \
 		--with-expat=/usr \
 		$(use_with freetds) \
@@ -76,7 +82,7 @@ src_configure() {
 		$(use_with postgres pgsql) \
 		$(use_with sqlite sqlite2) \
 		$(use_with sqlite3) \
-		${myconf}
+		${myconf} || die "econf failed"
 }
 
 src_compile() {
