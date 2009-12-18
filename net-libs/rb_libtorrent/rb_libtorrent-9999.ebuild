@@ -4,13 +4,13 @@
 
 EAPI="2"
 
-ESVN_REPO_URI="https://libtorrent.svn.sourceforge.net/svnroot/libtorrent/trunk"
-
-inherit eutils cmake-utils subversion
-
+WANT_AUTOMAKE="1.11"
+WANT_AUTOCONF="2.5"
+DISTUTILS_DISABLE_PYTHON_DEPENDENCY="yes"
 MY_P="libtorrent-rasterbar"
-S=${WORKDIR}/${MY_P}
+inherit eutils  subversion distutils autotools libtool
 
+ESVN_REPO_URI="https://libtorrent.svn.sourceforge.net/svnroot/libtorrent/trunk"
 DESCRIPTION="BitTorrent library written in C++ for *nix."
 HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
 
@@ -18,40 +18,82 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="debug examples test +crypt geoip +resolvecountries log verbose"
+IUSE="log debug dht doc crypt pool-allocators statistics disk-stats geoip examples test python-binding zlib"
 
-DEPEND="sys-libs/zlib
-	|| ( >=dev-libs/boost-1.35
-		( ~dev-libs/boost-1.34.1 dev-cpp/asio ) )"
-RDEPEND="${DEPEND}"
+COMMON_DEPEND=">=dev-libs/boost-1.36
+				encryption? ( dev-libs/openssl )
+				geoip? ( dev-libs/geoip )
+				zlib? ( sys-libs/zlib )
+				python-binding?
+					( =dev-lang/python-2*
+					  >=dev-libs/boost-1.36[python] )"
+
+DEPEND=">=sys-devel/libtool-2.2.6
+		dev-util/pkgconfig
+		${COMMON_DEPEND}"
+
+RDEPEND="${COMMON_DEPEND}"
+
+S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	subversion_src_unpack
 }
 
-src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
+src_prepare(){
 
-	mycmakeargs="${mycmakeargs}
-				-Dbuild_examples=OFF
-				-Dbuild_tests=OFF
-				-Dresolve-countries=OFF
-				-Dencryption=OFF
-				$(cmake-utils_use examples build_examples)
-				$(cmake-utils_use test build_tests)
-				$(cmake-utils_use resolvecountries resolve-countries)
-				$(cmake-utils_use crypt encryption)
-				$(cmake-utils_use geoip geoip)
-				$(cmake-utils_use log logging)
-				$(cmake-utils_use verbose verbose-logging)"
-	cmake-utils_src_configure
+	elibtoolize
+	eautoreconf
+
+	if use python-binding;then
+		cd "${S}"/bindings/python
+		distutils_src_prepare
+	fi
+}
+
+src_configure() {
+	local myconf
+
+	use geoip && myconf="--with-libgeoip"
+
+	econf \
+			--enable-largefile \
+	        $(use_enable log logging) \
+			$(use_enable debug) \
+			$(use_enable dht) \
+			$(use_enable crypt encryption) \
+			$(use_enable pool-allocators) \
+			$(use_enable statistics) \
+			$(use_enable disk-stats) \
+			$(use_enable geoip) \
+			$(use_enable examples) \
+			$(use_enable test tests) \
+			$(use_enable python-binding ) \
+			$(use_with zlib) \
+			${myconf} || die "econf failed"
+}
+
+src_compile() {
+	emake || die "emake failed"
+
+	if use python-binding; then
+		cd "${S}"/bindings/python
+		distutils_src_compile
+	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	emake DESTDIR="${D}" install || die "emake install failed"
+
 	dodoc ChangeLog AUTHORS NEWS README
+
+	if use doc; then
+		insinto /usr/share/doc/${P}/html
+		doins -r "${S}"/docs/
+	fi
+
+	if use python-binding;then
+		cd "${S}"/bindings/python
+		distutils_src_install
+	fi
 }
