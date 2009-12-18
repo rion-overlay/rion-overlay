@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="+anhero +browser +torrent +rss +dbus lyrics history
-	mediaplayer irc +networkmonitor +newlife +opensearch debug +ftp -directconnect
+	mediaplayer irc +networkmonitor +newlife +opensearch debug +ftp directconnect
 	+sitedownloader +vgrabber"
 
 DEPEND=">=dev-libs/boost-1.39
@@ -22,6 +22,7 @@ DEPEND=">=dev-libs/boost-1.39
 		>=x11-libs/qt-sql-4.6
 		>=x11-libs/qt-script-4.6
 		>=x11-libs/qt-svg-4.6
+		net-misc/curl
 		torrent? ( =net-libs/rb_libtorrent-0.15*[crypt] )
 		mediaplayer? ( media-sound/phonon )
 		browser? ( >=x11-libs/qt-webkit-4.6 )"
