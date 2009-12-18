@@ -1,0 +1,11 @@
+# ChangeLog for dev-util/nautilussvn
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  Add in metadata missing flag "diff"
+
+   06 Jun 2009; rion4ik <rion4ik@gmail.com> nautilussvn-0.12_beta1-r2.ebuild:
+   Initial commit
+
+*nautilussvn-0.12

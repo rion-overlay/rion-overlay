@@ -1,0 +1,11 @@
+# ChangeLog for app-text/makedict
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  makedict-0.3.1_beta1.ebuild, +metadata.xml:
+  repoman fix
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> Manifest:
+  repoman fix
+
