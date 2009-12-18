@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-admin-1.1.10_alpha2.ebuild:
+  bump
+
   27 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/1.1.9-apache2-httpd.conf.patch, 389-admin-1.1.9-r1.ebuild:
   add httpd.conf patch
