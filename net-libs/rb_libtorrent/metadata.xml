@@ -8,8 +8,12 @@
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
  <use>
-	 <flag name='resolvecountries'> </flag>
-	 <flag name='log'> </flag>
-	 <flag name='verbose'> </flag>
+	 <flag name='dht'>Add DHT support </flag>
+	 <flag name='pool-allocators'>Enable pool-allocators - not
+		 recommended</flag>
+	 <flag name='statistics'>Verbose statistic</flag>
+	 <flag name='disk-stats'> </flag>
+	 <flag name='python-binding'>Build Pyton bindings</flag>
+	<flag name='log'>Create log </flag>
 </use>
 </pkgmetadata>
