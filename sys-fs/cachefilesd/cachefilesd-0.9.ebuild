@@ -5,8 +5,8 @@
 EAPI=2
 
 inherit eutils
-DESCRIPTION="CacheFiles is a caching directory on an already mounted filesystem"
 
+DESCRIPTION="CacheFiles is a caching directory on an already mounted filesystem"
 HOMEPAGE="http://people.redhat.com/~dhowells/fscache/"
 SRC_URI="http://people.redhat.com/~dhowells/fscache/${P}.tar.bz2
 		doc? ( http://people.redhat.com/~dhowells/fscache/FS-Cache.pdf )"
@@ -19,12 +19,17 @@ KEYWORDS="~x86 ~amd64"
 src_unpack() {
 	unpack ${P}.tar.bz2
 }
+
 src_install() {
 	emake DESTDIR="${D}"  install || die "install failed"
+
 	dodoc README howto.txt move-cache.txt
+
 	newconfd "${FILESDIR}"/cachefilesd.conf cachefilesd
 	newinitd "${FILESDIR}"/cachefilesd.init cachefilesd
+
 	keepdir /var/cache/cachefilesd
+
 	if use doc; then
 		dodir /usr/share/doc/${P}/pdf
 		insinto /usr/share/doc/${P}/pdf
@@ -42,6 +47,3 @@ pkg_postinst() {
 	elog "Once that is taken care of, start the daemon, add -o ...,fsc"
 	elog "to the mount options of your network mounts, and let it fly!"
 }
-#1. emerge sys-fs/cachefilesd
-#2. mkdir /var/fscache; /etc/init.d/cachefilesd start
-#3. mount -t nfs -o fsc server:/export /mnt/path
