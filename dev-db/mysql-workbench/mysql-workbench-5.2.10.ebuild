@@ -4,6 +4,7 @@
 
 EAPI="2"
 GCONF_DEBUG="no"
+WANT_AUTOMAKE="1.10"
 
 inherit gnome2 eutils flag-o-matic autotools eutils
 
@@ -43,7 +44,7 @@ DEPEND="${RDEPEND}
 	>=dev-cpp/ctemplate-0.95
 	dev-util/pkgconfig"
 
-S="${WORKDIR}"/"${MY_P}"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/configure.in.pythonlib.patch"
