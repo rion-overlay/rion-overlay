@@ -18,6 +18,10 @@
   +nginx-0.8.29-r50.ebuild:
   version bump
 
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.30-r50.ebuild:
+  nginx-0.8.30
+
   27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   -nginx-0.8.22-r50.ebuild:
   delete nginx-0.8.22-r50.ebuild renegotiation vulnerability in SSL protocol
