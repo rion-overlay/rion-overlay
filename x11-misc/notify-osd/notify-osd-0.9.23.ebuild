@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit flag-o-matic versionator
+inherit flag-o-matic versionator eutils
 
 DESCRIPTION="Canonical's on-screen-display notification agent."
 HOMEPAGE="https://launchpad.net/notify-osd"
