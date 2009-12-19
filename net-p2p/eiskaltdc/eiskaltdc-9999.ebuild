@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit autotools qt4 subversion fdo-mime
+inherit cmake-utils qt4 subversion fdo-mime
 
 DESCRIPTION="Qt based client for DirectConnect, fork of Valknut"
 HOMEPAGE="https://sourceforge.net/projects/eiskaltdc/"
@@ -17,23 +17,22 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="x11-libs/qt-gui:4
-		>=dev-libs/libxml2-2.4.22
-		>=net-p2p/dclib-0.3.23_p3101
-		dev-libs/openssl"
+	>=dev-libs/libxml2-2.4.22
+	>=net-p2p/dclib-0.3.23_p3101
+	dev-libs/openssl"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-src_prepare() {
-		eautoreconf
+src_configure() {
+	cmake-utils_src_configure
 }
-
 src_install() {
-	einstall || die "einstall failed"
+	cmake-utils_src_install
 	dodoc AUTHORS ChangeLog README NEWS TODO
 }
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	fdo-mime_mime_database_update
 }
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	fdo-mime_mime_database_update
 }
