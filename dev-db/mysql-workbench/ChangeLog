@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  mysql-workbench-5.2.10.ebuild:
+  add WANT_AUTOMAKE statment
+
   06 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
   initial commit
 
