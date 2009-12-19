@@ -4,10 +4,10 @@
 
 EAPI="2"
 MY_PN="FoxitReader"
-
+inherit base
 DESCRIPTION="Foxit Reader is a small,fast PDF viewer (Linux version)"
 HOMEPAGE="http://www.foxitsoftware.com/"
-SRC_URI="http://mirrors.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.1/enu/"${MY_PN}"-"${PV}".tar.bz2"
+SRC_URI="http://foxit.vo.llnwd.net/o28/pub/foxit/reader/desktop/linux/1.x/1.1/enu/"${MY_PN}"-"${PV}".tar.bz2"
 
 LICENSE="EULA"
 SLOT="0"
