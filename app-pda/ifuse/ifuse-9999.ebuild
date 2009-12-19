@@ -4,13 +4,7 @@
 
 EAPI="2"
 
-inherit autotools
-if [[ "${PV}" == 9999* ]]; then
-	inherit git
-	EGIT_REPO_URI="git://github.com/MattColyer/ifuse.git"
-else
-	SRC_URI="http://cloud.github.com/downloads/MattColyer/${PN}/${P}.tar.bz2"
-fi
+inherit autotools git
 
 DESCRIPTION="fuse module for access to iphone and ipod touch without jailbreak"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
@@ -18,21 +12,18 @@ EGIT_REPO_URI="git://github.com/MattColyer/ifuse.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="app-pda/libplist
-	app-pda/libiphone
-	sys-fs/fuse
-	dev-libs/glib:2"
+		app-pda/libiphone
+		sys-fs/fuse
+		dev-libs/glib:2"
+
 DEPEND="${RDEPEND}"
 
 src_unpack() {
-	if [[ "${PV}" == 9999* ]]; then
-		git_src_unpack
-	else
-		unpack ${A}
-	fi
+	git_src_unpack
 }
 
 src_prepare() {
@@ -41,6 +32,7 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "install failed"
+	dodoc README AUTHORS
 }
 
 pkg_postinst() {
