@@ -25,5 +25,7 @@
 	<flag name='mp4'>Add 3rd party module for MP4 stream</flag>
 	<flag name='rrd'>Enadle 3rd party rrd module</flag>
 	<flag name='chunk'>Enadle 3rd party chunk module</flag>
+	<flag name='libatomic'>Force libatomic_ops library usage:atomic memory
+		update operations</flag>
 </use>
 </pkgmetadata>
