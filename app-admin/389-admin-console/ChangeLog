@@ -1,0 +1,14 @@
+# ChangeLog for app-admin/389-admin-console
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  11 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-admin-console-1.1.4-r1.ebuild:
+  go to eapi 2
+
+*389-admin-console-1.1.4 (20 Aug 2009)
+
+  20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-admin-console-1.1.4.ebuild, +metadata.xml:
+  add new ebuild
+
