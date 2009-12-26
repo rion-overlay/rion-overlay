@@ -3,6 +3,9 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+ 9 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
+ mask media-video/tsMuxe*
+
  15 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
  mask dev-lang/kumir
 
