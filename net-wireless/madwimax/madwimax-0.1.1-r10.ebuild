@@ -6,6 +6,7 @@ EAPI="2"
 
 WANT_AUTOMAKE="1.10"
 WANT_AUTOCONF="2.5"
+
 inherit eutils autotools
 
 DESCRIPTION="A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip."
@@ -15,15 +16,18 @@ SRC_URI="http://madwimax.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 DEPEND="virtual/libusb:1
-		app-text/txt2man
+		doc? ( app-text/txt2man )
 		dev-util/pkgconfig"
-RDEPEND="virtual/libusb:1"
+RDEPEND="virtual/libusb:1
+		sys-fs/udev"
 
 src_prepare() {
+
 	epatch "${FILESDIR}/${P}"-led.patch || die "epatch failed"
+
 	eautoreconf
 }
 src_configure() {
@@ -32,16 +36,26 @@ src_configure() {
 
 src_compile() {
 	emake || die "emake failed"
-	cd "${S}"/man
-	txt2man madwimax.8.txt > madwimax.8
+
+	if use doc; then
+		cd "${S}"/man
+		txt2man madwimax.8.txt > madwimax.8
+	fi
 }
 
 src_install() {
 	dodoc README TODO THANKS AUTHORS ChangeLog
+
 	dosbin src/madwimax
+
 	doman man/madwimax.8
+
 	insinto /etc/udev/rules.d/
-	newins scripts/udev/z60_madwimax.rules 60-madwimax.rules
+	doins "${FILESDIR}/"60-madwimax.rules
+
+	newinitd "${FILESDIR}/"madwimax.initd madwimax
+	newconfd	"${FILESDIR}/"madwimax.confd madwimax
+
 	exeinto /etc/madwimax
-	doexe scripts/events/event.sh
+	doexe "${FILESDIR}/"event.sh
 }
