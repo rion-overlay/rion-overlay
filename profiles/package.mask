@@ -1,3 +1,7 @@
+# 27 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# initial commit, mask for testing
+=net-wireless/madwimax-0.1.1-r10.ebuild
+
 # 26 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # initial commit, mask for testing
 media-video/tsMuxerGUI
