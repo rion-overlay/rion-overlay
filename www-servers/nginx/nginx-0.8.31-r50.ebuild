@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+aio debug perftool addition debug geoip fastcgi chunk flv mail mp4 ipv6 \
 		image-resize pcre cpp perl pam +rt-signal random-index rrd \
-		securelink ssl status sub webdav xslt zlib"
+		securelink ssl status sub webdav xslt zlib libatomic"
 
 DEPEND=">=dev-lang/perl-5.8.7
 	geoip? ( >=dev-libs/geoip-1.4 )
@@ -35,7 +35,8 @@ DEPEND=">=dev-lang/perl-5.8.7
 			>=dev-libs/libxslt-1.1.24
 			>dev-libs/libxml2-2.7 )
 	image-resize? ( media-libs/gd )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+	libatomic? ( dev-libs/libatomic_ops )"
 
 RDEPEND="${DEPEND}"
 
@@ -87,7 +88,7 @@ src_configure() {
 	use random-index	&& myconf="${myconf} --with-http_random_index_module"
 	use securelink	&& myconf="${myconf} --with-http_secure_link_module"
 	use debug		&& myconf="${myconf} --with-debug"
-
+	use libatomic	&& myconf="${myconf} --with-libatomic"
 	# 3rd party module
 	use pam			&& myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
 	use mp4			&& myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
