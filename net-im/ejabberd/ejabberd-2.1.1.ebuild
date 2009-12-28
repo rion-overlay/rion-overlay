@@ -4,9 +4,7 @@
 
 EAPI=2
 
-inherit eutils multilib pam subversion
-
-RN_PV="2.1.0"
+inherit eutils multilib pam
 
 JABBER_ETC="/etc/jabber"
 JABBER_RUN="/var/run/jabber"
@@ -16,15 +14,14 @@ JABBER_DOC="/usr/share/doc/${PF}"
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
-ESVN_REPO_URI="http://svn.process-one.net/ejabberd/trunk"
+SRC_URI="http://www.process-one.net/downloads/${PN}/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc x86"
+EJABBERD_MODULES="mod_irc mod_muc mod_proxy65 mod_pubsub"
 IUSE="captcha debug ldap odbc pam ssl web zlib ${EJABBERD_MODULES}"
 
 DEPEND=">=net-im/jabber-base-0.01
-	net-im/exmpp
 	>=dev-libs/expat-1.95
 	>=dev-lang/erlang-11.2.5[ssl?]
 	odbc? ( dev-db/unixODBC )
@@ -36,11 +33,12 @@ RDEPEND="${DEPEND}"
 
 PROVIDE="virtual/jabber-server"
 
+S=${WORKDIR}/${P}/src
+
 src_configure() {
-	S=${WORKDIR}/${P}/src
-	cd ${S}
 	econf \
 		--docdir=/usr/share/doc/"${PF}"/html \
+		$(use_enable mod_irc) \
 		$(use_enable ldap eldap) \
 		$(use_enable mod_muc) \
 		$(use_enable mod_proxy65) \
@@ -93,7 +91,7 @@ src_install() {
 	fi
 
 	cd "${WORKDIR}/${P}/doc"
-	dodoc "release_notes_${RN_PV}.txt" || die "Installing release_notes failed"
+	dodoc "release_notes_${PV%%_rc*}.txt" || die "Installing release_notes failed"
 	rm "${D}"/usr/share/doc/"${PF}"/html/*.txt
 	chmod -x "${D}"/usr/share/doc/"${PF}"/html/* \
 						|| die "Removing executable bit from htmls failed"
@@ -137,6 +135,14 @@ src_install() {
 	sed -r "s|${captcha_search}|${captcha_replace}|" -i \
 				"${D}${JABBER_ETC}/ejabberd.cfg" \
 					|| die "Cannot set correct captcha path into ejabberd.cfg"
+
+	# if mod_irc is not enabled, comment out the mod_irc in the default
+	# ejabberd.cfg
+	if ! use mod_irc; then
+		sed -e "s/{mod_irc,/%{mod_irc,/" \
+			-i "${D}${JABBER_ETC}/ejabberd.cfg" \
+				|| die "Cannot comment out mod_irc module into ejabberd.cfg"
+	fi
 }
 
 pkg_postinst() {

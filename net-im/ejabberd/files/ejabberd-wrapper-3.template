@@ -36,6 +36,7 @@ export HOME=/var/run/jabber
 export EJABBERD_EBIN=/usr/@libdir@/erlang/lib/ejabberd-@version@/ebin
 export EJABBERD_MSGS_PATH=/usr/@libdir@/erlang/lib/ejabberd-@version@/priv/msgs
 export EJABBERD_SO_PATH=/usr/@libdir@/erlang/lib/ejabberd-@version@/priv/lib
+export EJABBERD_DOC_PATH=/usr/share/doc/@doc@/html
 export EJABBERD_LOG_PATH=$LOG_PATH
 export EJABBERD_CONFIG_PATH=$CONFIG
 
