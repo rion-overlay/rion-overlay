@@ -74,11 +74,13 @@ src_install() {
 	# remove the default ejabberdctl as we use our own
 	rm "${D}/sbin/ejabberdctl"
 
+	keepdir ${JABBER_SPOOL}
 	insinto ${JABBER_ETC}
 
 	fowners -R jabber:jabber ${JABBER_ETC}
 	fowners -R jabber:jabber ${JABBER_LOG}
 	fowners -R jabber:jabber /usr/$(get_libdir)/erlang/lib/${P}
+	fowners jabber:jabber ${JABBER_SPOOL}
 
 	if useq ssl; then
 		doins "${FILESDIR}/ssl.cnf"
