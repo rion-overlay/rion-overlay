@@ -10,12 +10,12 @@ BAM_P="bam-0.2.0"
 DESCRIPTION="Online 2D platform shooter."
 HOMEPAGE="http://www.teeworlds.com"
 SRC_URI="http://www.teeworlds.com/files/${P}-src.tar.gz -> ${P}-src.tar.gz
-	http://teeworlds.com/trac/bam/browser/releases/bam-0.2.0.tar.gz?format=raw
-	-> ${BAM_P}.tar.gz"
+		 http://teeworlds.com/trac/bam/browser/releases/bam-0.2.0.tar.gz?format=raw
+		-> ${BAM_P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug dedicated instagib"
 
 RDEPEND="dev-lang/lua
@@ -86,7 +86,7 @@ src_install() {
 		else
 			dogamesbin ${PN} || die "dogamesbin failed"
 		fi
-		newicon other/icons/Teeworlds.ico ${PN}.ico
+		newicon ${FILESDIR}/Teeworlds.png ${PN}.png
 	    make_desktop_entry ${PN} "Teeworlds"
 		insinto "${dir}"
 		doins -r data || die "doins failed"
@@ -99,3 +99,5 @@ src_install() {
 	prepgamesdirs
 	newinitd "${FILESDIR}"/teeworlds_init teeworlds
 }
+
+
