@@ -8,8 +8,10 @@
 </maintainer>
 <longdescription> Free and Open Source distributed fault-tolerant Jabber server. It's mostly written in Erlang, and works on many platforms.</longdescription>
 <use>
-	<flag name='mod_muc'>Multi user chat support in ejabberd</flag>
-	<flag name='mod_pubsub'>Pubsub support in ejabberd</flag>
-	<flag name='web'>Web support in ejabberd</flag>
+	<flag name='mod_muc'>Build Multi User Chat module</flag>
+	<flag name='mod_pubsub'>Build Pubsub module</flag>
+	<flag name='web'>Enable web admin interface</flag>
+	<flag name="captcha">Support for CAPTCHA Forms (XEP-158)</flag>
+	<flag name="mod_proxy65">Support for SOCKS5 Bytestreams (XEP-0065)</flag>
 </use>
 </pkgmetadata>
