@@ -16,8 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="x11-libs/qt-core:4
-		x11-libs/qt-gui:4
-		x11-libs/qt-phonon:4"
+		x11-libs/qt-gui:4"
 RDEPEND="${DEPEND}
 		media-video/tsMuxeR"
 
