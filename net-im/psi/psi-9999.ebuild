@@ -57,12 +57,6 @@ src_unpack() {
 
 	git_src_unpack
 
-	S="${S}/iris"
-	[[ -d "$S" ]] && rm -rf $S
-	EGIT_REPO_URI="git://git.psi-im.org/iris.git"
-	EGIT_PROJECT="iris"
-	git_src_unpack
-
 	S="${WORKDIR}/patches"
 	ESVN_REPO_URI="${PATCHES_URI}"
 	subversion_src_unpack
