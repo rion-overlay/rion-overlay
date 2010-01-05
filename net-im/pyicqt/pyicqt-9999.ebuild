@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/pyicq-t/pyicq-t-0.8b.ebuild,v 1.3 2008/08/17 15:22:50 maekke Exp $
 
