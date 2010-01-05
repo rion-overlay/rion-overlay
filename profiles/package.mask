@@ -1,3 +1,8 @@
+# 6 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask sys-power/kpowersave for remowal in 30 days
+# depend on kde-3.5 and kde-3.5 apps
+sys-power/kpowersave
+
 # 27 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # initial commit, mask for testing
 =net-wireless/madwimax-0.1.1-r10
