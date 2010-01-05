@@ -7,10 +7,10 @@ EAPI=2
 WANT_AUTOMAKE="1.9"
 
 inherit eutils multilib flag-o-matic autotools
-MY_PV="1.2.5.rc2"
+
 DESCRIPTION="389 Directory Server (core librares  and daemons )"
 HOMEPAGE="http://port389.org/"
-SRC_URI="http://directory.fedoraproject.org/sources/${PN}-${MY_PV}.tar.bz2"
+SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
@@ -40,9 +40,7 @@ DEPEND="${ALL_DEPEND}
 
 RDEPEND="${ALL_DEPEND}
 			virtual/perl-Time-Local
-			virtual/perl-MIME-Base64
-			=dev-lang/python-2*"
-S="${WORKDIR}/${PN}-${MY_PV}"
+			virtual/perl-MIME-Base64"
 
 pkg_setup() {
 	enewgroup dirsrv
@@ -51,8 +49,8 @@ pkg_setup() {
 
 src_prepare() {
 
-#	epatch "${FILESDIR}/${PV}/"*.patch
-	sed -i -e 's/nobody/dirsrv/g' configure.ac || die "run sed failed"
+	epatch "${FILESDIR}/${PV}/"*.patch
+	sed -i -e 's/nobody/dirsrv/g' configure.ac
 
 	eautoreconf
 }
