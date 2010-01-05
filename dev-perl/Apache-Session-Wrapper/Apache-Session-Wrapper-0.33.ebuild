@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #  $Header: $
 
@@ -12,9 +12,12 @@ IUSE="test"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
-RDEPEND="dev-perl/Exception-Class
+COMM_DEPEND="dev-perl/Exception-Class
 	>=dev-perl/Params-Validate-0.91
 	>=dev-perl/Apache-Session-1.88
-	dev-perl/Class-Container
-	test? ( dev-perl/Test-Pod )"
+	dev-perl/Class-Container"
+DEPEND="${DEPEND}
+		test? ( dev-perl/Test-Pod )"
+RDEPEND="${COMM_DEPEND}"
+
 SRC_TEST="do"

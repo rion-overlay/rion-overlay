@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -37,8 +37,8 @@ RDEPEND="${DEPEND}"
 PROVIDE="virtual/jabber-server"
 
 src_configure() {
-	S=${WORKDIR}/${P}/src
-	cd ${S}
+	S="${WORKDIR}/${P}"/src
+	cd "${S}"
 	econf \
 		--docdir=/usr/share/doc/"${PF}"/html \
 		$(use_enable ldap eldap) \
