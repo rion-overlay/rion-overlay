@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/omnibook-20080125.ebuild,v 1.1 2008/04/06 08:50:37 nelchael Exp $
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: media-sound/guayadeque/guayadeque-0.2.1.ebuild 2009/11/27 01:30:00 lukyn Exp $
 

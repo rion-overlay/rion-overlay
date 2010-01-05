@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-p2p/dclib/dclib-0.3.21.ebuild,v 1.1 2008/09/24 19:59:13 armin76 Exp $
 

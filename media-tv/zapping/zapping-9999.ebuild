@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-tv/zapping/zapping-0.10_rc6.ebuild,v 1.3 2008/09/09 13:47:08 cardoe Exp $
 
