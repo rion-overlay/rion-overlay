@@ -9,7 +9,6 @@ EAPI=2
 inherit eutils	multilib
 MY_P=${P/_/-}
 
-
 DESCRIPTION="OpenCA main server"
 HOMEPAGE="http://www.openca.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
@@ -136,7 +135,6 @@ cp "${FILESDIR}"/Makefile.perl-disable-0.9.3 "${S}"/src/ext-modules/Makefile || 
 
 cp "${FILESDIR}"/Makefile.perl-disable-0.9.3 "${S}"/src/modules/Makefile || die
 
-
 	econf ${myconf}
 }
 
@@ -177,7 +175,6 @@ src_install() {
 	dodoc "${S}"/contrib/apache/offline.conf
 	dodoc "${S}"/contrib/openldap/*
 
-
 }
 
 pkg_setup() {
@@ -189,4 +186,3 @@ pkg_postinst() {
 	einfo "Please check file '/etc/openca/config.xml'"
 	einfo "Then run '/etc/openca/configure_etc.sh' script"
 }
-

@@ -7,7 +7,6 @@ EAPI=2
 MODULE_AUTOR=CWES
 inherit perl-module
 
-
 DESCRIPTION="Returns a pattern for Email Addresses"
 SRC_URI="mirror://cpan/authors/id/C/CW/CWEST/"${P}".tar.gz"
 

@@ -16,4 +16,3 @@ IUSE=""
 
 DEPEND="dev-perl/Config-YAML"
 RDEPEND="${DEPEND}"
-

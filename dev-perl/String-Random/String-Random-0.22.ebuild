@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-MODULE_AUTHOR=STEVE
+EAPI="2"
+MODULE_AUTHOR="STEVE"
 inherit perl-module
 
 DESCRIPTION="Perl module to generate random strings based on a pattern"
@@ -14,4 +15,3 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 DEPEND=""
 RDEPEND=""
-

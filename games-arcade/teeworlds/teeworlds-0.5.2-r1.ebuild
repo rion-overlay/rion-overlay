@@ -86,7 +86,7 @@ src_install() {
 		else
 			dogamesbin ${PN} || die "dogamesbin failed"
 		fi
-		newicon ${FILESDIR}/Teeworlds.png ${PN}.png
+		newicon "${FILESDIR}"/Teeworlds.png "${PN}".png
 	    make_desktop_entry ${PN} "Teeworlds"
 		insinto "${dir}"
 		doins -r data || die "doins failed"
@@ -99,5 +99,3 @@ src_install() {
 	prepgamesdirs
 	newinitd "${FILESDIR}"/teeworlds_init teeworlds
 }
-
-

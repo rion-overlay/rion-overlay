@@ -158,7 +158,6 @@ src_install () {
 # Not work , upstaream bug
 # 	make   DEST_DIR="${D}" install-doc ||die "install failed"
 
-
 	doman docs/man3/base.3
 	dodoc CHANGES HISTORY I18N INSTALL README
 	dodoc README RELEASE-NOTES STATUS THANKS
@@ -168,7 +167,6 @@ src_install () {
 	mv "${D}"/var/www/localhost/cgi-bin/* "${D}/${MY_CGIBINDIR}" || die
 	rm -fr "${D}"/var/www/ || die
 	webapp_src_install
-
 # install ldap schema
 	if use ldap ; then
 		dodir /etc/openldap/schema/
