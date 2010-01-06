@@ -20,9 +20,6 @@ DEPEND="app-arch/gzip"
 RDEPEND="dev-libs/openssl
 		app-crypt/mit-krb5"
 
-
-
-
 src_configure () {
 	econf \
 	--with-openca-user=openca \
@@ -41,7 +38,6 @@ src_install () {
 
 	dodoc AUTHORS INSTALL  NEWS README  VERSION
 }
-
 
 pkg_setup() {
 		enewgroup openca

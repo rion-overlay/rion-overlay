@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test imagemagick"
 
-
 RDEPEND="imagemagick? (
 		media-gfx/imagemagick[jpeg,openmp,perl,png,tiff,jbig,jpeg2k] )
 		dev-perl/GD"

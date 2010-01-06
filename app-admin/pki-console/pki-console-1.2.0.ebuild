@@ -2,16 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2 
+EAPI="2"
 
 RPM_REV="-1"
 inherit java-pkg-2 eutils java-ant-2 pki-dogtag
 
-
 DESCRIPTION="PKI console for management of the CA, DRM, OCSP, and TKS subsystems"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
-
 
 COMMON_DEP="=dev-java/jss-4*
 	>=dev-java/ldapsdk-4.0
@@ -36,7 +34,6 @@ src_compile() {
 		-Dspecfile=${PN}.spec \
 		${antflags} \
 				compile_java || die
-
 }
 
 src_install() {

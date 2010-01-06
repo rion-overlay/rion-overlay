@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Deal with RFC 2047 encoded words (improved)"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/perl-MIME-Base64

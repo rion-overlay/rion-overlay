@@ -7,7 +7,7 @@ inherit distutils
 DESCRIPTION="A high-level Python wrapper for Kerberos (GSSAPI) operations"
 HOMEPAGE="http://trac.calendarserver.org/browser/PyKerberos"
 SRC_URI="http://honk.sigxcpu.org/projects/pykerberos/PyKerberos-1.1.tar.gz"
-RESTRICT="mirror"
+
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
@@ -17,4 +17,3 @@ DEPEND="app-crypt/mit-krb5"
 RDEPEND="${DEPEND}"
 
 python_need_rebuild
-

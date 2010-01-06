@@ -4,7 +4,6 @@
 
 EAPI=2
 
-
 inherit distutils
 
 DESCRIPTION="Set of libraries common to IPA clients and servers"
@@ -31,4 +30,3 @@ sed -e s/__VERSION__/1.2.2/ version.py.in > version.py ||die
 	cp setup.py.in setup.py || die
 distutils_src_prepare
 }
-

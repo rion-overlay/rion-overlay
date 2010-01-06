@@ -5,8 +5,6 @@
 EAPI=2
 
 MODULE_AUTHOR="RJBS"
-
-
 inherit  perl-module
 
 DESCRIPTION="Extensions to Class-DBI for MSSQL"
@@ -19,4 +17,3 @@ RDEPEND="dev-perl/Class-DBI"
 DEPEND="test? ( dev-perl/Test-Pod )"
 
 SRC_TEST=do
-

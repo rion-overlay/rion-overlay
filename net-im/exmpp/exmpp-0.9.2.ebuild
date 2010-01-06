@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit autotools
+inherit multilib
 
 DESCRIPTION="fast and scalable XMPP library written in Erlang/OTP"
 HOMEPAGE="https://support.process-one.net/doc/display/EXMPP"
@@ -17,6 +17,7 @@ IUSE="examples doc"
 
 # requires masked autoconf since previous stable one has broken erlang support
 # see README for details
+# Who use autoconf ???? eauto* ???
 DEPEND=">=sys-devel/autoconf-2.64
 	dev-lang/erlang
 	dev-libs/expat

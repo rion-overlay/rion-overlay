@@ -7,7 +7,6 @@ EAPI="2"
 MODULE_AUTOR=RHANDO
 inherit perl-module
 
-
 DESCRIPTION="TT2/3, HT, HTE, Tmpl, and Velocity Engine"
 SRC_URI="mirror://cpan/authors/id/R/RH/RHANDOM/"${P}".tar.gz"
 

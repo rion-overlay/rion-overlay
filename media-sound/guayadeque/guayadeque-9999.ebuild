@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: media-sound/guayadeque/guayadeque-0.2.1.ebuild 2009/11/27 01:30:00 lukyn Exp $
+# $Header: $
 
 EAPI="2"
 
@@ -12,6 +12,7 @@ ESVN_REPO_URI="https://guayadeque.svn.sourceforge.net/svnroot/guayadeque/Trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE=""
 KEYWORDS=""
 
 RDEPEND="x11-libs/wxGTK:2.8

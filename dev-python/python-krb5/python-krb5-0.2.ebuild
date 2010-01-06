@@ -3,13 +3,13 @@
 # $Header: $
 # rion overlay; 
 
-
 EAPI=2
 inherit distutils
 
 DESCRIPTION="Kerberos 5 Bindings for Python"
 HOMEPAGE="http://pypi.python.org/pypi/python-krb5/0.2"
 SRC_URI="http://pypi.python.org/packages/source/p/python-krb5/python-krb5-0.2.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"

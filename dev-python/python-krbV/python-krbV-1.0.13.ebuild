@@ -26,7 +26,6 @@ rpm_src_unpack
 }
 
 src_prepare(){
-	cd "${S}"
 	cp "${FILESDIR}"/setup.py "${S}"  || die "Failed copy setup.py"
 
 	awk -f gendefines.awk /usr/include/krb5.h > krb5defines.h || die \

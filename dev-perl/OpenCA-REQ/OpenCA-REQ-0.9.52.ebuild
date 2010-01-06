@@ -15,4 +15,3 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="dev-perl/X500-DN"
-

@@ -28,4 +28,3 @@ sed -e s/__VERSION__/1.2.1/ version.py.in > version.py ||die
 
 	mv setup.py.in setup.py
 }
-
