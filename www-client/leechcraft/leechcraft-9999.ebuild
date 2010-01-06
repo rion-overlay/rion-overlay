@@ -5,7 +5,7 @@
 EAPI="2"
 
 EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
-inherit git cmake-utils
+inherit python git cmake-utils
 
 DESCRIPTION="Opensource network client providing a full-featured web browser, BitTorrent client and much more."
 HOMEPAGE="http://leechcraft.org/"
@@ -13,21 +13,31 @@ HOMEPAGE="http://leechcraft.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+anhero +browser +torrent +rss +dbus lyrics history
-	mediaplayer irc +networkmonitor +newlife +opensearch debug +ftp directconnect
-	+sitedownloader +vgrabber"
-
-DEPEND=">=dev-libs/boost-1.39
+IUSE="kde +browser +torrent +rss -nufella +dbus lyrics +history
+	+mediaplayer +irc +networkmonitor +newlife +opensearch debug +ftp
+	+directconnect postgres sitedownloader +vgrabber python text_editor"
+# browser torrent rss/agregator nufella bdus
+DEPEND="app-arch/bzip2
+		>=dev-libs/boost-1.39
+		>=x11-libs/qt-core-4.6
 		>=x11-libs/qt-gui-4.6
 		>=x11-libs/qt-sql-4.6
 		>=x11-libs/qt-script-4.6
 		>=x11-libs/qt-svg-4.6
+		>=x11-libs/qt-xmlpatterns-4.6
+		>=x11-libs/qt-script-4.6
+		>=x11-libs/qt-sql-4.6[postgres?,sqlite]
+		dbus? ( x11-libs/qt-dbus )
 		net-misc/curl
 		torrent? ( =net-libs/rb_libtorrent-0.15*[crypt] )
 		mediaplayer? ( media-sound/phonon )
-		browser? ( >=x11-libs/qt-webkit-4.6 )"
+		browser? ( >=x11-libs/qt-webkit-4.6 )
+		python? ( dev-python/PythonQt )"
 RDEPEND="${DEPEND}"
 
+pkg_setup() {
+	use python && python_need_rebuild
+}
 src_unpack() {
 	git_src_unpack
 }
@@ -43,6 +53,7 @@ src_configure() {
 				$(cmake-utils_use_enable browser POSHUKU)
 				$(cmake-utils_use_enable torrent TORRENT)
 				$(cmake-utils_use_enable rss AGGREGATOR)
+				$(cmake-utils_use_enable nufella NUFELLA)
 				$(cmake-utils_use_enable dbus DBUSMANAGER)
 				$(cmake-utils_use_enable lyrics DEADLYRICS)
 				$(cmake-utils_use_enable history HISTORYHOLDER)
@@ -53,9 +64,11 @@ src_configure() {
 				$(cmake-utils_use_enable ftp FTP)
 				$(cmake-utils_use_enable directconnect DCMINATOR)
 				$(cmake-utils_use_enable sitedownloader YASD)
-				$(cmake-utils_use_enable anhero ANHERO)
+				$(cmake-utils_use_enable kde ANHERO)
 				$(cmake-utils_use_enable vgrabber VGRABBER)
-				$(cmake-utils_use_enable newlife NEWLIFE)"
+				$(cmake-utils_use_enable newlife NEWLIFE)
+				$(cmake-utils_use_enable python PyLC)
+				$(cmake-utils_use_enable text_editor POC)"
 	[ "$(get_libdir)" = "lib64" ] && mycmakeargs="${mycmakeargs}
 				-DRESPECTLIB64=True"
 	S="${WORKDIR}/${P}/src"
