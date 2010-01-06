@@ -7,7 +7,7 @@ EAPI=2
 DESCRIPTION="Rename wav files according to track names in cue"
 HOMEPAGE="https://swaj.net/unix/index.html#scripts"
 
-LICENSE="UNICNOVn"
+LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

@@ -9,7 +9,7 @@ SRC_URI="http://freeipa.org/downloads/src/freeipa-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
