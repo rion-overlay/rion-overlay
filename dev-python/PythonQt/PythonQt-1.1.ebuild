@@ -23,6 +23,7 @@ DEPEND="${COM_DEPEND}
 	test? ( x11-libs/qt-test:4 )"
 RDEPEND="${COM_DEPEND}"
 
+python_need_rebuild
 src_prepare() {
 	python_set_active_version 2
 	python_version
