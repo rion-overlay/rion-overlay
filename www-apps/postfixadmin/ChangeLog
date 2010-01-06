@@ -1,0 +1,9 @@
+# ChangeLog for www-apps/postfixadmin
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  29 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +postfixadmin-2.3.ebuild, +files/postinstall-en-2.3.txt,
+  +files/database-credentials-debian.patch, +metadata.xml:
+  initial commit #291248
+
