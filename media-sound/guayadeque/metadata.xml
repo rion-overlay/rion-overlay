@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>rion-overlay</herd>
-<maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
-</maintainer>
- <longdescription>Long description of the package</longdescription> 
-<use>
-</use>
+	<herd>net-im</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>Il'nykh Sergey</name>
+	</maintainer>
+	<longdescription lang="en">Quite powerful music player with
+	features like in amarok and more. written with wxwidgets.
+	</longdescription>
 </pkgmetadata>
