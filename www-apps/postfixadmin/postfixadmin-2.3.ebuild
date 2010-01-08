@@ -13,9 +13,9 @@ RESTRICT="mirror"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="mysql postgres +vacations addition env_password doc -xmlrpc"
+IUSE="mysql postgres +vacation addition env_password doc -xmlrpc"
 
-DEPEND="vacations? ( dev-perl/DBI
+DEPEND="vacation? ( dev-perl/DBI
 		virtual/perl-MIME-Base64
 		dev-perl/MIME-EncWords
 		dev-perl/Email-Valid
@@ -48,7 +48,7 @@ pkg_setup() {
 		|| ! PHPCHECKNODIE="yes" require_php_with_any_use ${any_flags}; then
 		die "Re-install ${PHP_PKG} with ${flags} and either ${any_flags}"
 	fi
-	if use vacations; then
+	if use vacation; then
 		enewgroup vacation
 		enewuser vacation -1 -1 -1 vacation
 	fi
@@ -61,7 +61,7 @@ src_prepare() {
 src_install() {
 	webapp_src_preinst
 
-	if use additions; then
+	if use addition; then
 
 		exeinto /usr/libexec/${PV}
 		doexe "${S}"/ADDITIONS/*.pl
