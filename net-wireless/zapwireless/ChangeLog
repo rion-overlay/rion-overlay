@@ -1,0 +1,8 @@
+# ChangeLog for net-wireless/zapwireless
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  06 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +zapwireless-1.9.ebuild, +metadata.xml:
+  initial commit
+
