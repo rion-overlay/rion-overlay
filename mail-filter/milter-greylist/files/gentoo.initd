@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# $Header: slep Exp $Id 
+
+opts="start stop restart status"
+
+depend() {
+	need net 
+	use logger
+	before sendmail postfix
+}
+
+start() {
+	ebegin "Starting $DESC"
+	start-stop-daemon --quiet --start --startas $DAEMON --pidfile $PIDFILE  -- $DOPTIONS
+	eend $? "Failed to start ${DAEMON}"
+}
+
+stop() {
+	ebegin "Stopping $DESC"
+	start-stop-daemon --stop --name $NAME
+	eend $? "Failed to stop ${DAEMON}"
+}
+
+restart() {
+	svc_stop 
+	# needed to avoid potential mi_stop errors 
+	sleep 4
+	svc_start
+	kill -HUP `head -n 1 /var/run/sendmail.pid` 
+}
+
