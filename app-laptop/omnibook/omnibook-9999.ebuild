@@ -6,7 +6,7 @@ inherit linux-mod eutils subversion
 
 DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support"
 HOMEPAGE="http://www.sourceforge.net/projects/omnibook"
-ESVN_REPO_URI="https://omnibook.svn.sourceforge.net/svnroot/omnibook/omnibook/trunk"
+ESVN_REPO_URI="https://omnibook.svn.sourceforge.net/svnroot/omnibook/trunk"
 ESVN_PATCHES="*.patch"
 LICENSE="GPL-2"
 KEYWORDS=""
