@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+PID_FILE="/var/run/cdemud.pid"
+CDEMUD="/usr/bin/cdemud"
+
+depend() {
+	need dbus
+	[ "${CDEMUD_AUDIO_DRIVER}" == alsa ] && need alsasound
+}
+
+start() {
+	ebegin "Loading CDemu userspace daemon"
+
+	if ! grep -qw vhba /proc/modules; then
+		modprobe vhba 1>/dev/null 2>&1 || eerror "Error loading vhba module"
+	fi
+	start-stop-daemon --quiet --start --pidfile ${PID_FILE}\
+		--exec ${CDEMUD} -- \
+		-d -c /dev/vhba_ctl -n ${CDEMUD_DEVICES} -a ${CDEMUD_AUDIO_DRIVER} -p ${PID_FILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping CDemu userspace daemon"
+	start-stop-daemon --quiet --stop ${CDEMUD}
+	eend $?
+}
