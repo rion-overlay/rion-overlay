@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit webapp
+inherit webapp eutils
 
 DESCRIPTION="RRDtool frontend for Postfix queue-statistics"
 HOMEPAGE="http://www.arschkrebs.de/postfix/queuegraph/"
