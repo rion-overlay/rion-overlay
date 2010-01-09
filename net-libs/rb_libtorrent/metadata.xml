@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>rion-overlay</herd>
+<maintainer>
+  <email>@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <longdescription>Long description of the package</longdescription> 
+ <use>
+	 <flag name='dht'>Add DHT support </flag>
+	 <flag name='pool-allocators'>Enable pool-allocators - not
+		 recommended</flag>
+	 <flag name='statistics'>Verbose statistic</flag>
+	 <flag name='disk-stats'> </flag>
+	 <flag name='python-binding'>Build Pyton bindings</flag>
+	<flag name='log'>Create log </flag>
+</use>
+</pkgmetadata>

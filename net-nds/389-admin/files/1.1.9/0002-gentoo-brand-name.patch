@@ -1,0 +1,29 @@
+--- configure.ac.orig	2009-10-25 13:37:40.891246870 +0200
++++ configure.ac	2009-10-25 13:41:02.683093632 +0200
+@@ -62,8 +62,8 @@
+ AC_SUBST(PACKAGE_BASE_VERSION)
+ 
+ brand=389
+-capbrand=389
+-vendor="389 Project"
++capbrand=389-Gentoo
++vendor="389 Project/Gentoo"
+ 
+ AC_MSG_CHECKING(for --enable-debug)
+ AC_ARG_ENABLE(debug, AS_HELP_STRING([--enable-debug], [Enable debug features (default: no)]),
+@@ -105,12 +105,12 @@
+ AC_DEFINE([NS_DOMESTIC], [1], [Domestic security level enabled by default])
+ 
+ # server userid, groupid
+-httpduser=nobody
+-httpdgroup=nobody
++httpduser=apache
++httpdgroup=apache
+ admservport=9830
+ admservip=0.0.0.0
+ # initdir
+-initdir=/rc.d
++initdir=/init.d
+ CXXLINK_REQUIRED=0
+ # on most platforms, we will just use perl from PATH
+ # On some platforms, we cannot.  Why not just use any old
