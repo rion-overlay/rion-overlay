@@ -5,7 +5,7 @@
 EAPI="2"
 
 EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
-inherit python git cmake-utils
+inherit python git cmake-utils confutils
 
 DESCRIPTION="Opensource network client providing a full-featured web browser, BitTorrent client and much more."
 HOMEPAGE="http://leechcraft.org/"
@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="kde +browser +torrent +rss -nufella +dbus lyrics +history
-	+mediaplayer +irc +networkmonitor +newlife +opensearch debug +ftp
+	+mediaplayer +irc +networkmonitor +newlife sqlite +opensearch debug +ftp
 	+directconnect postgres sitedownloader +vgrabber python text_editor"
 # browser torrent rss/agregator nufella bdus
 DEPEND="app-arch/bzip2
@@ -26,7 +26,7 @@ DEPEND="app-arch/bzip2
 		>=x11-libs/qt-svg-4.6
 		>=x11-libs/qt-xmlpatterns-4.6
 		>=x11-libs/qt-script-4.6
-		>=x11-libs/qt-sql-4.6[postgres?,sqlite]
+		>=x11-libs/qt-sql-4.6[postgres?,sqlite?]
 		dbus? ( x11-libs/qt-dbus )
 		net-misc/curl
 		torrent? ( =net-libs/rb_libtorrent-0.15*[crypt] )
@@ -36,6 +36,7 @@ DEPEND="app-arch/bzip2
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
+	confutils_require_any postgres sqlite
 	use python && python_need_rebuild
 }
 src_unpack() {
