@@ -11,7 +11,7 @@ HOMEPAGE="http://www.arschkrebs.de/postfix/queuegraph/"
 SRC_URI="http://www.arschkrebs.de/postfix/queuegraph/queuegraph.tar.gz"
 
 LICENSE="as-is"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="net-analyzer/rrdtool[perl]"
