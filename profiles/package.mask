@@ -1,3 +1,7 @@
+# 9 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing - not complete tested
+=mail-filter/milter-greylist-4.3.4
+
 # 6 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask sys-power/kpowersave for remowal in 30 days
 # depend on kde-3.5 and kde-3.5 apps
