@@ -9,7 +9,7 @@
  <longdescription>Web Based Management tool for Postfix style virtual domains
 	 and users.</longdescription> 
  <use>
-	 <flag name='vacations'>Install vacations script</flag>
+	 <flag name='vacation'>Install vacations script</flag>
 	 <flag name='addition'>Install addition script</flag>
 	 <flag name='env_password'>Not store database password in setup.php file -
 		 use ENV webserwer variables :)</flag>
