@@ -1,9 +1,0 @@
-# Config file for /etc/init.d/cdemu-daemon
-
-CDEMUD_DEVICES="1"
-
-# You can use all backends libao has been built with.
-# This includes for example: (<audio system> -> <driver name>)
-#   pulseaudio -> pulse
-#   alsa -> alsa
-CDEMUD_AUDIO_DRIVER="null"
