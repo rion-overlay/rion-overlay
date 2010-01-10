@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>openca</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+<!--  <description>Description of the maintainership</description> -->
+</maintainer>
+ <longdescription>The OpenCA Project is a collaborative effort to develop a
+	 robust, full-featured and Open Source out-of-the-box Certification
+	 Authority implementing the most used protocols with full-strength
+	 cryptography world-wide</longdescription>
+<!--
+<use>
+  <flag name='flag'>Description of how USE='flag' affects this package</flag>
+  <flag name='userland_GNU'>Description of how USERLAND='GNU' affects this
+	  package</flag>
+  <flag name='aspell'>Uses <pkg>app-text/aspell</pkg> for spell checking.
+	  Requires an installed dictionary from <cat>app-dicts</cat></flag>
+</use>
+-->
+</pkgmetadata>

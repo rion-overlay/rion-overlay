@@ -1,0 +1,39 @@
+# ChangeLog for dev-libs/mozldap
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> -mozldap-6.0.6.ebuild:
+  del
+
+  31 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +mozldap-9999.ebuild:
+  add live 9999 version
+
+*mozldap-9999 (31 Okt 2009)
+
+  26 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  mozldap-6.0.6-r1.ebuild:
+  add compat symliks
+
+  06 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  files/configure.in.patch, +files/nspr-m4.patch, +files/nss-m4.patch,
+  mozldap-6.0.6-r1.ebuild:
+  add more patch
+
+  06 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  files/mozldap-6.0.4-pkgconfig.patch, +mozldap-6.0.6-r1.ebuild,
+  +files/configure.in.patch:
+  revision bump - clean code
+
+  02 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> -mozldap-6.0.5.ebuild:
+  del old version
+
+  20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> mozldap-6.0.6.ebuild:
+  add keyword ~amd64
+
+*mozldap-6.0.6 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/mozldap-6.0.4-pkgconfig.patch, +mozldap-6.0.6.ebuild,
+  +metadata.xml:
+  new ebuild, alfa release, only for testing
+

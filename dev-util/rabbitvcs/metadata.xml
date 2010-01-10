@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>rion-overlay</herd>
+<maintainer>
+  <email>rion4ik@gmail.com</email>
+ <description>overlay maintainer</description> 
+</maintainer>
+ <longdescription>Integrated version control support for Nautilus
+ An extension to Nautilus to allow better integration with various source
+ control systems. RabbitVCS adds version control related commands to the
+ Nautilus context menu, and controlled directories will be detected
+ automatically and decorated with appropriate emblems. It is similar to the
+ TortoiseSVN project on Windows.</longdescription> 
+<use>
+<flag name='diff'>Use for diff command<pkg>dev-util/meld</pkg></flag>
+</use>
+</pkgmetadata>
