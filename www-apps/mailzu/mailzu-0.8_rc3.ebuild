@@ -11,7 +11,7 @@ HOMEPAGE="http://sf.net/projects/mailzu/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/MailZu%200.8RC3/MailZu_0.8RC3.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64"
 IUSE="ldap mysql postgres db_clean"
 
 DEPEND="mail-filter/amavisd-new[ldap?,mysql?,postgres?]"
@@ -44,15 +44,21 @@ pkg_setup() {
 	webapp_pkg_setup
 }
 
+src_prepare() {
+	sed -i -e "1s/usr\/local\/bin\/perl/usr\/bin\/perl/" scripts/mz_db_clean.pl \
+																	|| die "sed failed"
+	cp config/config.php.sample config/config.php
+}
+
 src_install() {
 	dodoc CHANGELOG README docs/*
-	rm "${S}"/{CHANGELOG,README}
+	rm "${S}"/{CHANGELOG,README,LICENSE}
 	rm -rf "${S}"/docs
 
 	webapp_src_preinst
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r .
-
+	webapp_configfile	"${MY_HTDOCSDIR}"/config/config.php
 	webapp_src_install
 }
