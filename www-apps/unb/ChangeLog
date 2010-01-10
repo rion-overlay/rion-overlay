@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +unb-1.6.5_rc20090606.ebuild:
+  add snapshot version
+
   10 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +unb-1.6.4.ebuild,
   +metadata.xml:
   initial commit
