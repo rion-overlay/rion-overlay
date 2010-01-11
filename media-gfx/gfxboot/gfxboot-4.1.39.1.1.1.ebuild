@@ -10,7 +10,7 @@ HOMEPAGE="http://suse.com"
 
 MPV=$(get_version_component_range 1-3 )
 RPV=$(get_version_component_range 4- )
-SRC_URI="http://download.opensuse.org/source/distribution/11.1/repo/oss/suse/src/gfxboot-${MPV}-${RPV}.src.rpm"
+SRC_URI="http://download.opensuse.org/source/distribution/11.2/repo/oss/suse/src/gfxboot-${MPV}-${RPV}.src.rpm"
 S="${WORKDIR}/${PN}-${MPV}"
 
 LICENSE="GPL-2"
