@@ -1,0 +1,8 @@
+# ChangeLog for dev-perl/Data-FormValidator
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  22 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Data-FormValidator-4.63.ebuild, +metadata.xml:
+  recommit in perl-experimental
+
