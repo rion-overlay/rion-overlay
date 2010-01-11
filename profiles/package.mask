@@ -1,3 +1,12 @@
+# 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing - not comlete
+app-admin/ipa-admintools
+app-admin/ipa-radius-admintools
+dev-python/ipa-python
+net-dialup/ipa-radius-server
+net-nds/ipa-client
+net-nds/ipa-server
+
 # 9 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing - not complete tested
 =mail-filter/milter-greylist-4.3.4
