@@ -18,7 +18,6 @@ IUSE=""
 
 RDEPEND="x11-libs/qt-gui:4
 	>=dev-libs/libxml2-2.4.22
-	>=net-p2p/dclib-0.3.23_p3101
 	dev-libs/openssl"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
