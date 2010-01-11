@@ -14,7 +14,7 @@ EHG_REVISION="default"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE="avahi crypt dbus gnome idle libnotify nls spell srv trayicon X xhtml"
 
 COMMON_DEPEND=">=dev-python/pygtk-2.12.0"
