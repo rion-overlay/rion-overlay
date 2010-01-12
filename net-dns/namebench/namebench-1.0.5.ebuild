@@ -11,7 +11,7 @@ inherit distutils
 
 DESCRIPTION="DNS Benchmark Utility"
 HOMEPAGE="http://namebench.googlecode.com/"
-SRC_URI="http://namebench.googlecode.com/files/namebench-1.0.tgz"
+SRC_URI="http://namebench.googlecode.com/files/${P}.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -24,7 +24,6 @@ RDEPEND="${DEPEND}
 		tk? ( =dev-lang/python-2*[tk?] )"
 
 RESTRICT_PYTHON_ABIS="3*"
-python_need_rebuild
 
 pkg_setup() {
 	use tk && python_tkinter_exists
