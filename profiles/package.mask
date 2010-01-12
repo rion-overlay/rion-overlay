@@ -1,3 +1,8 @@
+# 12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# python.eclass - fail
+dev-python/acutil
+net-dns/namebench
+
 # 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing - not comlete
 app-admin/ipa-admintools
