@@ -168,5 +168,8 @@ src_install() {
 		doins "${S}/src/plugins/plugins.pri"
 		doins "${S}/src/plugins/psiplugin.pri"
 		doins -r "${S}/src/plugins/include"
+		dosed "s:target.path.*:target.path = /usr/$(get_libdir)/psi/plugins:" \
+			/usr/share/psi/plugins/psiplugin.pri \
+			|| die "fixig plugin istall	path failed"
 	fi
 }
