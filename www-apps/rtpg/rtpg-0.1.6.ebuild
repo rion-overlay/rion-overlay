@@ -11,7 +11,7 @@ HOMEPAGE="http://rtpg.uvw.ru/"
 SRC_URI="mirror://debian/pool/main/r/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="apache2 minimal"
 
 DEPEND="dev-perl/Template-Toolkit
