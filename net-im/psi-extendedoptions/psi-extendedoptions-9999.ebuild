@@ -4,7 +4,7 @@
 
 inherit psiplus-plugin
 
-DESCRIPTION="Psi plugin for juick.com service"
+DESCRIPTION="Psi plugin for UI for some hidden options"
 HOMEPAGE="http://code.google.com/p/psi-dev/"
 
 LICENSE="GPL-2"
