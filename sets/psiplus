@@ -1,11 +1,3 @@
 net-im/psi
 net-im/psimedia
-net-im/psi-birthdayreminder
-net-im/psi-conferencelogger
-net-im/psi-gmailnotify
-net-im/psi-image
-net-im/psi-juick
-net-im/psi-screenshot
-net-im/psi-stopspam
-net-im/psi-translate
-net-im/psi-watcher
+net-im/psi-plugins-meta[attention,birthdayreminder,conferencelogger,extendedoptions,gmailnotify,image,juick,screenshot,stopspam,translate,watcher]
