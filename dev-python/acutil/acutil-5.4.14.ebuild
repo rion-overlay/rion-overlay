@@ -2,12 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# This is part authconfig package
-
 EAPI=2
-
+WANT_AUTOMAKE="1.11"
 NEED_PYTHON="2.5"
-SUPPORT_PYTHON_ABIS="1"
+SUPPORT_PYTHON_ABIS="2.6"
 
 inherit autotools python
 
@@ -27,7 +25,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool"
 
 S="${WORKDIR}"/authconfig-"${PV}"
-RESTRICT_PYTHON_ABIS="3.*"
+#RESTRICT_PYTHON_ABIS="3.*"
 
 src_prepare() {
 	eautoreconf
