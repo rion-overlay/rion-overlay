@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit rpm toolchain-funcs versionator
 
 DESCRIPTION="gfxboot allows you to create gfx menus for bootmanagers."
@@ -29,6 +31,7 @@ DEPEND="dev-libs/libxslt
 	>=media-libs/freetype-2
 	themes? ( dev-libs/fribidi )
 	doc? (	app-text/xmlto
+		app-text/docbook-xml-dtd:4.1.2
 		dev-perl/HTML-Parser
 		|| (
 			www-client/w3m
@@ -47,8 +50,7 @@ pkg_setup() {
 	fi
 }
 
-src_unpack () {
-	rpm_src_unpack ${A}
+src_prepare () {
 	mv "${WORKDIR}/themes" "${S}/"
 	cd "${S}"
 
