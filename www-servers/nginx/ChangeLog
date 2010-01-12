@@ -1,14 +1,16 @@
 # ChangeLog for www-servers/nginx
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header:i $
- 
- 15  Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
- -nginx-0.8.28-r50.ebuild
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+ 12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.8.32.ebuild,
+ metadata.xml:
+ version bump,scgi support
+
+ 15 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> -nginx-0.8.28-r50.ebuild:
  delete old ebuild	
 
- 15 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-  +nginx-0.8.29-r51.ebuild, metadata.xml:
-  add chunk use flag
+ 15 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>+nginx-0.8.29-r51.ebuild, 
+ metadata.xml: add chunk use flag
 
  06 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   nginx-0.8.28-r50.ebuild, nginx-0.8.29-r50.ebuild:
