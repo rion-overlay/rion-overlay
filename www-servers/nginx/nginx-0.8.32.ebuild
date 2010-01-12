@@ -13,7 +13,8 @@ SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 		pam? ( http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
 		mp4? ( http://i.6.cn/nginx_mp4_streaming_public_20081229.tar.bz2 )
 		rrd? ( http://wiki.nginx.org/images/a/a6/Ngx_rrd_graph-0.1.tar.gz  )
-		chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v0.16 -> chunkin-nginx-module-0.16.tgz )"
+		chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v0.16 -> chunkin-nginx-module-0.16.tgz )
+		scgi? (  http://hg.mperillo.ath.cx/nginx/mod_scgi/archive/tip.tar.gz -> mod_scgi-b466baa5fcdb.tar.gz )"
 
 LICENSE="BSD
 		pam? ( as-is )
@@ -22,7 +23,7 @@ LICENSE="BSD
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+aio debug perftool addition debug geoip fastcgi chunk flv mail mp4 ipv6 \
-		image-resize pcre cpp perl pam +rt-signal random-index rrd \
+		image-resize pcre cpp scgi perl pam +rt-signal random-index rrd \
 		securelink ssl status sub webdav xslt zlib libatomic"
 
 DEPEND=">=dev-lang/perl-5.8.7
@@ -53,11 +54,12 @@ src_unpack() {
 	use mp4 && unpack "nginx_mp4_streaming_public_20081229.tar.bz2"
 	use rrd && unpack "Ngx_rrd_graph-0.1.tar.gz"
 	use chunk && unpack "chunkin-nginx-module-0.16.tgz"
+	use scgi && unpack "mod_scgi-b466baa5fcdb.tar.gz"
 }
 
 src_prepare() {
 	[ -f "${FILESDIR}/${PF}.patch" ] && epatch "${FILESDIR}/${PF}.patch"
-	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die
+	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make || die "sed failed"
 }
 
 src_configure() {
@@ -94,6 +96,7 @@ src_configure() {
 	use mp4			&& myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
 	use chunk		&& myconf="${myconf} \
 						--add-module="${WORKDIR}"/agentzh-chunkin-nginx-module-f9d3f9e"
+	use scgi		&& myconf="${myconf} --add-module="${WORKDIR}"/mod_scgi-b466baa5fcdb"
 
 	if  use rrd ; then
 		myconf="${myconf} --add-module="${WORKDIR}"/ngx_rrd_graph-0.1"
@@ -133,14 +136,18 @@ src_install() {
 	insinto /etc/${PN}
 	doins conf/*
 
+	use scgi && doins "${WORKDIR}/mod_scgi-b466baa5fcdb/conf"/scgi_vars
+
 	dodoc CHANGES{,.ru} README
 
 	if  use perl ; then
 		cd "${S}"/objs/src/http/modules/perl/
 		einstall DESTDIR="${D}"|| die "failed to install perl stuff"
 	fi
+
 	use pam 		&& newdoc "${WORKDIR}"/ngx_http_auth_pam_module-1.1/README README.pam
 	use chunk   && newdoc "${WORKDIR}/agentzh-chunkin-nginx-module-f9d3f9e"/README README.chunkin
+	use scgi	&& newdoc "${WORKDIR}/mod_scgi-b466baa5fcdb"/README README.scgi
 }
 
 pkg_postinst() {
