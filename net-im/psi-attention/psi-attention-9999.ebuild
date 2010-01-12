@@ -25,6 +25,6 @@ S="${WORKDIR}/${MY_PN}"
 src_compile() {
 	sed 's/\.\.\/\.\.\/psiplugin.pri/\/usr\/share\/psi\/plugins\/psiplugin.pri/' \
 		-i "${MY_PN}".pro
-	eqmake4 "${MY_PN}".pro DESTDIR="${D}/usr/$(get_libdir)/psi/plugins"
+	eqmake4 "${MY_PN}".pro
 	emake || die "Make failed"
 }
