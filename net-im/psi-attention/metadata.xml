@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>freedesktop</herd>
+	<herd>net-im</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
+		<name>Il'nykh Sergey</name>
 	</maintainer>
-<use>
-  <flag name="monochrome">Monochrome addon for opaque light panels</flag>
-</use>
+	<longdescription lang="en">Psi plugin for XEP-0224(Attention) support.
+	</longdescription>
 </pkgmetadata>
