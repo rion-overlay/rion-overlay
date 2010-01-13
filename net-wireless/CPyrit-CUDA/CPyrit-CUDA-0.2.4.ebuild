@@ -9,7 +9,7 @@ inherit distutils
 
 DESCRIPTION="Nvidia-CUDA module for Pyrit"
 HOMEPAGE="http://pyrit.googlecode.com/"
-SRC_URI="http://pyrit.googlecode.com/files/CPyrit-CUDA-0.2.4.tar.gz"
+SRC_URI="http://pyrit.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
