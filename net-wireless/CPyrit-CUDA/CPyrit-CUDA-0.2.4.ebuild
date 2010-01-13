@@ -14,9 +14,14 @@ SRC_URI="http://pyrit.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="sse sse2"
 
-DEPEND="dev-util/nvidia-cuda-toolkit
+DEPEND="sys-libs/zlib
+		dev-libs/openssl
+		dev-util/nvidia-cuda-toolkit
 		>=x11-drivers/nvidia-drivers-190"
 RDEPEND="${DEPEND}"
 RESTRICT_PYTHON_ABIS="3*"
+
+#src_configure() {
+
