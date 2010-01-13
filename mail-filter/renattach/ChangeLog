@@ -1,0 +1,8 @@
+# ChangeLog for mail-filter/renattach
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  29 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +renattach-1.2.4.ebuild, +metadata.xml:
+  portage version bump
+
