@@ -12,13 +12,18 @@ ESVN_PROJECT="cueplayer-svn"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="x86 amd64"
-IUSE=""
+KEYWORDS="~x86 ~amd64"
+IUSE="+gst-ffmpeg +gst-flac mp3enc gst-bad gst-ugly"
 
 DEPEND="x11-libs/qt-core
         x11-libs/qt-gui
         media-libs/gstreamer
-        media-libs/gst-plugins-base"
+        media-libs/gst-plugins-base
+	gst-ffmpeg? ( media-plugins/gst-plugins-ffmpeg )
+	gst-flac? ( media-plugins/gst-plugins-flac )
+	gst-bad? ( media-libs/gst-plugins-bad )
+	gst-ugly? ( media-libs/gst-plugins-ugly )
+	mp3enc? ( media-plugins/gst-plugins-lame media-plugins/gst-plugins-taglib )"
 RDEPEND="${DEPEND}"
 
 src_unpack()
