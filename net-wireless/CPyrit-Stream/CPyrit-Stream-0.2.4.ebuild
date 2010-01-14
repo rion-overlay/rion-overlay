@@ -13,10 +13,17 @@ SRC_URI="http://pyrit.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/openssl
-		sys-libs/zlib"
+		sys-libs/zlib
+		dev-util/ati-stream-sdk-bin"
 RDEPEND="${DEPEND}"
 RESTRICT_PYTHON_ABIS="3*"
+
+src_prepare() {
+	sed -i -e 's/opt\/atibrook\/sdk/opt\/atibrook/' setup.py || die "sed failed"
+
+	distutils_src_prepare
+}
