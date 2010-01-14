@@ -20,8 +20,7 @@ DEPEND="sys-libs/zlib
 		dev-libs/openssl
 		dev-util/nvidia-cuda-toolkit
 		>=x11-drivers/nvidia-drivers-190"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+		~net-wireless/Pyrit-${PV}"
+
 RESTRICT_PYTHON_ABIS="3*"
-
-#src_configure() {
-
