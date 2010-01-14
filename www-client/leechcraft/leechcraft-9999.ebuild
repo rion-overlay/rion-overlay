@@ -39,8 +39,15 @@ pkg_setup() {
 	confutils_require_any postgres sqlite
 	use python && python_need_rebuild
 }
+
 src_unpack() {
 	git_src_unpack
+}
+
+src_prepare() {
+	python_set_active_version 2
+	python_version
+	sed -e "s:PythonVer 2.5:PythonVer ${PYVER}:" -i src/plugins/pylc/CMakeLists.txt
 }
 
 src_configure() {
