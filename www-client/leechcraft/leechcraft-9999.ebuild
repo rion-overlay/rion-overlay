@@ -30,7 +30,7 @@ DEPEND="app-arch/bzip2
 		dbus? ( x11-libs/qt-dbus )
 		net-misc/curl
 		torrent? ( =net-libs/rb_libtorrent-0.15*[crypt] )
-		mediaplayer? ( media-sound/phonon )
+		mediaplayer? ( || ( media-sound/phonon x11-libs/qt-phonon:4 ) )
 		browser? ( >=x11-libs/qt-webkit-4.6 )
 		python? ( dev-python/PythonQt )"
 RDEPEND="${DEPEND}"
