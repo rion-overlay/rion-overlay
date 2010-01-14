@@ -40,7 +40,7 @@ src_test() {
 }
 
 src_install() {
-	insinto usr/include/${P}
+	insinto usr/include/${PN}
 	doins -r src/*.h
 	doins -r src/gui/*.h
 
