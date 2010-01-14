@@ -7,7 +7,7 @@
 EAPI=2
 
 NEED_PYTHON="2.5"
-SUPPORT_PYTHON_ABIS="1"
+#SUPPORT_PYTHON_ABIS="1"
 
 inherit autotools python
 
@@ -27,9 +27,10 @@ DEPEND="${RDEPEND}
 	dev-util/intltool"
 
 S="${WORKDIR}"/authconfig-"${PV}"
-RESTRICT_PYTHON_ABIS="3.*"
+#RESTRICT_PYTHON_ABIS="3.*"
 
 src_prepare() {
+	PYTHON -2
 	eautoreconf
 }
 
