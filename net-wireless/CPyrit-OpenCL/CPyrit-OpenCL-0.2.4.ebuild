@@ -6,8 +6,9 @@ EAPI="2"
 SUPPORT_PYTHON_ABIS="2"
 
 inherit eutils distutils
+#Sorru, only nvidia driver not stub 
 
-DESCRIPTION="Nvidia-CUDA module for Pyrit"
+DESCRIPTION="Nvidia-OpenCL  module for Pyrit"
 HOMEPAGE="http://pyrit.googlecode.com/"
 SRC_URI="http://pyrit.googlecode.com/files/${P}.tar.gz"
 
