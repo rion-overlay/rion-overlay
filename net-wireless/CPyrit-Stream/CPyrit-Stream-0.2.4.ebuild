@@ -19,7 +19,10 @@ IUSE=""
 DEPEND="dev-libs/openssl
 		sys-libs/zlib
 		dev-util/ati-stream-sdk-bin"
-RDEPEND="${DEPEND}"
+
+RDEPEND="${DEPEND}
+		~net-wireless/Pyrit-${PV}"
+
 RESTRICT_PYTHON_ABIS="3*"
 
 src_prepare() {
