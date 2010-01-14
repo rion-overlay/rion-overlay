@@ -5,7 +5,7 @@
 EAPI=2
 WANT_AUTOMAKE="1.11"
 NEED_PYTHON="2.5"
-SUPPORT_PYTHON_ABIS="2.6"
+#SUPPORT_PYTHON_ABIS="1"
 
 inherit autotools python
 
@@ -28,6 +28,7 @@ S="${WORKDIR}"/authconfig-"${PV}"
 #RESTRICT_PYTHON_ABIS="3.*"
 
 src_prepare() {
+	PYTHON -2
 	eautoreconf
 }
 

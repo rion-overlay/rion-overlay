@@ -14,15 +14,11 @@ SRC_URI="http://pyrit.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuda opencl ati-stream"
+IUSE=""
 
 DEPEND="dev-libs/openssl
 		sys-libs/zlib"
 RDEPEND="${DEPEND}"
-
-PDEPEND="cuda? ( ~net-wireless/CPyrit-CUDA-${PV} )
-		opencl? ( ~net-wireless/CPyrit-OpenCL-${PV} )
-		ati-stream? ( ~net-wireless/CPyrit-Stream-${PV} )"
 
 RESTRICT_PYTHON_ABIS="3*"
 QA_EXECSTACK="usr/lib64/python2.6/site-packages/cpyrit/_cpyrit_cpu.so"

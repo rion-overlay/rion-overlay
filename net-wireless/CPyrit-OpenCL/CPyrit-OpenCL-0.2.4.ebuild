@@ -21,12 +21,14 @@ DEPEND="dev-util/nvidia-cuda-toolkit
 		~x11-drivers/nvidia-drivers-190.29
 		dev-libs/openssl
 		sys-libs/zlib"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+		~net-wireless/Pyrit-${PV}"
+
 RESTRICT_PYTHON_ABIS="3*"
 
 src_prepare() {
 	sed -i -e '/CL_DEVICE_COMPILER_NOT_AVAILABLE/d' _cpyrit_opencl.c || die "sed failed"
-	
+
 	epatch "${FILESDIR}"/*.patch
 
 	distutils_src_prepare
