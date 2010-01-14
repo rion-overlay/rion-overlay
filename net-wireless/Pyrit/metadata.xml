@@ -7,6 +7,9 @@
  <description>Description of the maintainership</description> 
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
-<use>
+ <use>
+	 <flag name='cuda'>Use CUDA (Nvidia) GPU </flag>
+	 <flag name='opencl'>USE OpenCL enabled GPU (so time only nvidia supported)</flag>
+	 <flag name='ati-stream'>USE ATI/AMD GPU</flag>
 </use>
 </pkgmetadata>
