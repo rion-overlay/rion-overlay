@@ -14,7 +14,7 @@ ESVN_REPO_URI="http://zapwireless.googlecode.com/svn/trunk/"
 ESVN_REVISION="2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND=""
