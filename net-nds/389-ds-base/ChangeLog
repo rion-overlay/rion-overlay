@@ -3,6 +3,12 @@
 # $Header: $
 
   15 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-ds-base-1.2.5.ebuild, metadata.xml:
+  new version
+
+*1.2.5
+
+  15 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -389-ds-base-1.2.4.ebuild:
   drop 1.2.4 version
 
