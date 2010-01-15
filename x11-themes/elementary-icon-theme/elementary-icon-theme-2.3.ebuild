@@ -12,7 +12,7 @@ SRC_URI="http://fc01.deviantart.net/fs71/f/2009/365/1/9/elementary_Icons_by_DanR
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sh sparc x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="monochrome"
 
 DEPEND=""
@@ -31,7 +31,6 @@ src_install() {
 	insinto /usr/share/icons
 	doins -r elementary
 	use monochrome && doins -r elementary-monochrome
-		
 }
 
 pkg_postinst() {

@@ -1,6 +1,10 @@
 # ChangeLog for x11-themes/elementary-icon-theme
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  15 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  elementary-icon-theme-2.3.ebuild:
+  drop untested keywords
 
 *elementary-icon-theme-2.1-r1 (06 Aug 2009)
 
