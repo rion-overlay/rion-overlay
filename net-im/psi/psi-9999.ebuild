@@ -79,7 +79,6 @@ src_prepare() {
 	S="${WORKDIR}/${P}"
 	cd "${S}"
 
-	epatch "${FILESDIR}"/ext-not.patch
 	epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 
