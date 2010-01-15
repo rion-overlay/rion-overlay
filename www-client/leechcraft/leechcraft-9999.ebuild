@@ -75,7 +75,7 @@ src_configure() {
 				$(cmake-utils_use_enable kde ANHERO)
 				$(cmake-utils_use_enable vgrabber VGRABBER)
 				$(cmake-utils_use_enable newlife NEWLIFE)
-				$(cmake-utils_use_enable python PyLC)
+				$(cmake-utils_use_enable python PYLC)
 				$(cmake-utils_use_enable text_editor POC)"
 	[ "$(get_libdir)" = "lib64" ] && mycmakeargs="${mycmakeargs}
 				-DRESPECTLIB64=True"
