@@ -1,6 +1,9 @@
 # ChangeLog for www-client/leechcraft
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  15 Jan 2010; <slep@gentoo.org> leechcraft-9999.ebuild:
+  fix
 
   28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
   repoman fix
