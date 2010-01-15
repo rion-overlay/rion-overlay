@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: net-im/gluxi/gluxi-9999.ebuild,v 1.4 2008/07/14 20:47:04 AntiXpucT Exp $
 # TODO: Дописать (post)install под postgresql
@@ -7,10 +7,10 @@ inherit cmake-utils eutils mercurial
 DESCRIPTION="Powerfull Jabber-bot based on net-libs/gloox"
 HOMEPAGE="http://gluxi.inhex.net/"
 EHG_REPO_URI="http://hg.inhex.net/gluxi-dev"
-LICENSE="GPL-2 LGPL"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~adm64"
-IUSE="mysql postgresql"
+KEYWORDS=""
+IUSE="mysql postgres"
 RDEPEND="<net-libs/gloox-1.0
 dev-libs/openssl
 mysql? ( virtual/mysql )
@@ -36,8 +36,8 @@ src_install() {
 	doins "${FILESDIR}"/gluxi.cfg
 	insinto /usr/share/gluxi
 	use mysql && doins "${FILESDIR}"/mysql_inst.sql
-	use postgresql && doins -r sql
-	use postgresql && fperms +x /usr/share/gluxi/update/dbupdate.sh
+	use postgres && doins -r sql
+	use postgres && fperms +x /usr/share/gluxi/update/dbupdate.sh
 	newinitd "${FILESDIR}/gluxi.init" gluxi
 }
 
