@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 bind ssl ldap geoip spf dkim drac p0f spamassassin dnsrbl postfix curl hardened"
+IUSE="ipv6 bind ssl ldap geoip spf dkim drac p0f spamassassin dnsrbl postfix curl"
 
 COMMON_DEP="|| ( ( mail-filter/libmilter[ipv6?] ) || ( mail-mta/sendmail ) )
 			sys-libs/db
@@ -73,16 +73,17 @@ src_configure() {
 	use ldap	&& myconf+=" --with-openldap"
 	use curl	&& myconf+=" --with-libcurl"
 
-	if use hardened ;then
-			myconf+=" --enable-rpath"
-		else
+#	if use hardened ;then
+#			myconf+=" --enable-rpath"
+#		else
 			myconf+=" --disable-rpath "
-	fi
+#	fi
 
 	econf \
 		--with-db \
 		--with-libmilter \
 		--with-conffile="/etc/${PN}/${PN}.conf" \
+		--with-dumpfile="/var/lib/${PN}/${PN}.db" \
 		$(use_enable drac) \
 		$(use_enable p0f) \
 		$(use_enable spamassassin) \
@@ -92,17 +93,20 @@ src_configure() {
 }
 
 src_compile() {
-	emake  || die "compile failed"
+	emake -j1  || die "compile failed"
 }
 src_install() {
 
 	emake DESTDIR="${D}" install || die "install failed"
 	dodoc ChangeLog README
 
-#	newinitd "${FILESDIR}"/gentoo.initd milter-greylist
-#	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
+	newinitd "${FILESDIR}"/gentoo.initd milter-greylist
+	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
+
+	dolib /var/lib/${PN}
+	
 }
 pkg_postinst() {
 : ;
-#	elog "Plz, see READMI files && read man file :)"
+	elog "Plz, see READMI files && read man file :)"
 }
