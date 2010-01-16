@@ -1,0 +1,25 @@
+# 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing - not comlete
+app-admin/ipa-admintools
+app-admin/ipa-radius-admintools
+dev-python/ipa-python
+net-dialup/ipa-radius-server
+net-nds/ipa-client
+net-nds/ipa-server
+
+# 9 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing - not complete tested
+=mail-filter/milter-greylist-4.3.4
+
+# 6 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask sys-power/kpowersave for remowal in 30 days
+# depend on kde-3.5 and kde-3.5 apps
+sys-power/kpowersave
+
+# 27 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+# initial commit, mask for testing
+=net-wireless/madwimax-0.1.1-r10
+
+# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
+# mask for testing; не собирается, епта
+www-apps/ikiwiki
