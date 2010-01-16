@@ -15,7 +15,7 @@ HOMEPAGE="http://zapping.sourceforge.net/"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS=""
-IUSE="arts esd lirc nls pam vdr zvbi X"
+IUSE="esd lirc nls pam vdr zvbi X"
 
 DEPEND=">=gnome-base/libgnomeui-2.0
 	>=gnome-base/libglade-2.0
@@ -27,7 +27,6 @@ DEPEND=">=gnome-base/libgnomeui-2.0
 	x86? ( vdr? ( >=media-libs/rte-0.5.2 ) )
 	lirc? ( app-misc/lirc )
 	esd? ( >=media-sound/esound-0.2.34 )
-	arts? ( kde-base/arts )
 	>=app-text/scrollkeeper-0.3.5
 	sys-apps/sed"
 RDEPEND="${DEPEND}"
