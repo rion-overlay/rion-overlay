@@ -56,6 +56,8 @@ src_unpack() {
 	! use linguas_ru && unpack "psi-0.13-20090817_langpack_for_packagers.zip"
 
 	git_src_unpack
+	cd ${S}
+	git submodule update --init
 
 	S="${WORKDIR}/patches"
 	ESVN_REPO_URI="${PATCHES_URI}"
