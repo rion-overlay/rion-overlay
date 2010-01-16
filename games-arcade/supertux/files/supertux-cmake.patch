@@ -1,0 +1,116 @@
+Index: mk/cmake/VariableOption.cmake
+===================================================================
+--- mk/cmake/VariableOption.cmake	(revision 0)
++++ mk/cmake/VariableOption.cmake	(revision 0)
+@@ -0,0 +1,58 @@
++# Copyright Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
++# 
++#  This file is part of SuperTux.
++#
++#  SuperTux is free software: you can redistribute it and/or modify
++#  it under the terms of the GNU General Public License as published by
++#  the Free Software Foundation, either version 3 of the License, or
++#  (at your option) any later version.
++#
++#  SuperTux is distributed in the hope that it will be useful,
++#  but WITHOUT ANY WARRANTY; without even the implied warranty of
++#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#  GNU General Public License for more details.
++#
++#  You should have received a copy of the GNU General Public License
++#  along with SuperTux.  If not, see <http://www.gnu.org/licenses/>.
++#
++#  - - -
++#
++#  SETIFNOTDEFINED will set the variable named by VARNAME to VALUE unless
++#  if it's already defined. If it is not set, it is set it to 
++#  VALUE
++#  When setting (or re-setting) the variable, the macro will insert it into
++#  the cmake cache with a docstring of ${VARNAME}_DOCSTRING and a variable type 
++#  of TYPE (e.g., PATH).
++#
++#  Usage example:
++#  SET(MYVAR_DOCSTRING "this variable exists")
++#
++#  IF(A)
++#    SETIFNOTDEFINED(MYVAR "default value" STRING)
++#  ELSE(A)
++#    SETIFNOTDEFINED(MYVAR "default value for when A is false" STRING)
++#  ENDIF(A)
++#
++#  Necessity:
++#
++#    Even though the command-line -D option for cmake overrides CMakeLists.txt's 
++#  attempt to set values in the cache, the SET() command will set variables locally
++#  while the script is executing. Thus, to recognize a user's option, the script must
++#  check if the variable is defined or not first. 
++#
++#    Because there are three variables pertaining to file installation and three 
++#  different defaults for different platforms, placing an IF() statement around each SET
++#  statement is impractical
++
++MACRO(SETIFNOTDEFINED VARNAME VALUE TYPE)
++  IF(NOT DEFINED ${VARNAME})
++    #set the default value and store in cache
++    SET(${VARNAME} ${VALUE} CACHE ${TYPE} ${${VARNAME}_DOCSTRING})
++    #I cannot use the PARENT_SCOPE and CACHE option at the same time...
++    SET(${VARNAME} ${VALUE} PARENT_SCOPE)
++  ELSE(NOT DEFINED ${VARNAME})
++    # set the variable into the cache; we use force because we want to add the 
++    # docstring even if the user specifies the variable
++    SET(${VARNAME} ${${VARNAME}} CACHE ${TYPE} ${${VARNAME}_DOCSTRING} FORCE)
++  ENDIF(NOT DEFINED ${VARNAME})
++ENDMACRO(SETIFNOTDEFINED)
+\ No newline at end of file
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt	(revision 5883)
++++ CMakeLists.txt	(working copy)
+@@ -349,11 +349,17 @@
+ 
+ ## Install stuff
+ 
++SET(INSTALL_SUBDIR_BIN_DOCSTRING "Directory to install binary files to")
++SET(INSTALL_SUBDIR_SHARE_DOCSTRING "Directory to install data files to")
++SET(INSTALL_SUBDIR_DOC_DOCSTRING "Directory to install doc files to")
++
++INCLUDE(VariableOption)
++
+ IF(WIN32 AND NOT UNIX)
+ 
+-  SET(INSTALL_SUBDIR_BIN ".")
+-  SET(INSTALL_SUBDIR_SHARE "data/")
+-  SET(INSTALL_SUBDIR_DOC ".")
++  SETIFNOTDEFINED(INSTALL_SUBDIR_BIN "." STRING)
++  SETIFNOTDEFINED(INSTALL_SUBDIR_SHARE "data/" STRING)
++  SETIFNOTDEFINED(INSTALL_SUBDIR_DOC "." STRING)
+ 
+   INSTALL(FILES ${SUPERTUX_SOURCE_DIR}/SDL.dll DESTINATION ${INSTALL_SUBDIR_BIN})
+   INSTALL(FILES ${SUPERTUX_SOURCE_DIR}/SDL_image.dll DESTINATION ${INSTALL_SUBDIR_BIN})
+@@ -369,19 +375,19 @@
+ ELSE(WIN32 AND NOT UNIX)
+ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ 
+-  SET(INSTALL_SUBDIR_BIN "SuperTux.app/Contents/MacOS/")
+-  SET(INSTALL_SUBDIR_SHARE "SuperTux.app/Contents/Resources/data/")
+-  SET(INSTALL_SUBDIR_DOC "SuperTux.app/Contents/Resources/")
+-
++  SETIFNOTDEFINED(INSTALL_SUBDIR_BIN "SuperTux.app/Contents/MacOS/" STRING)
++  SETIFNOTDEFINED(INSTALL_SUBDIR_SHARE "SuperTux.app/Contents/Resources/data/" STRING)
++  SETIFNOTDEFINED(INSTALL_SUBDIR_DOC "SuperTux.app/Contents/Resources/" STRING)
++  
+   INSTALL(FILES ${SUPERTUX_SOURCE_DIR}/tools/darwin/info.plist DESTINATION "SuperTux.app/Contents/")
+ 
+   INSTALL(FILES ${SUPERTUX_SOURCE_DIR}/data/images/engine/icons/supertux.png ${SUPERTUX_SOURCE_DIR}/data/images/engine/icons/supertux.icns DESTINATION "SuperTux.app/Contents/Resources/")
+ 
+ ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ 
+-  SET(INSTALL_SUBDIR_BIN "games/")
+-  SET(INSTALL_SUBDIR_SHARE "share/games/supertux2/")
+-  SET(INSTALL_SUBDIR_DOC "share/doc/supertux2/")
++  SETIFNOTDEFINED(INSTALL_SUBDIR_BIN "games" STRING)
++  SETIFNOTDEFINED(INSTALL_SUBDIR_SHARE "share/games/supertux2" STRING)
++  SETIFNOTDEFINED(INSTALL_SUBDIR_DOC "share/doc/supertux2" STRING)
+ 
+   INSTALL(FILES ${SUPERTUX_SOURCE_DIR}/supertux2.desktop DESTINATION "share/applications")
+ 
