@@ -1,0 +1,10 @@
+# Distributed under the terms of the GNU General Public License v3
+# Header: slepnoga $
+# TODO sed in this file
+
+NAME="milter-greylist"
+DAEMON=@BINDIR@/$NAME
+USER=@USER@
+SOCKET="/var/$NAME/milter-greylist.sock"
+PIDFILE="/var/$NAME/$NAME.pid"
+DOPTIONS="-p $SOCKET -u $USER -P $PIDFILE"
