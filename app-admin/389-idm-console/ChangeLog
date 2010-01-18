@@ -1,0 +1,85 @@
+# ChangeLog for app-admin/389-idm-console
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  11 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-idm-console-1.1.3-r1.ebuild:
+  revision bump add eapi 2 support
+
+  23 Aug 2009; Mario Fetka <mario.fetka@gmail.com>
+  389-idm-console-1.1.3.ebuild:
+  add my mirror for the package
+
+  23 Aug 2009; Mario Fetka <mario.fetka@gmail.com> ChangeLog:
+  delete not needed files dir
+
+  23 Aug 2009; Mario Fetka <mario.fetka@gmail.com>
+  389-idm-console-1.1.3.ebuild:
+  correct localtion of java libs
+
+  23 Aug 2009; Mario Fetka <mario.fetka@gmail.com>
+  389-idm-console-1.1.3.ebuild:
+  correct typo
+
+*389-idm-console-1.1.3 (23 Aug 2009)
+
+  23 Aug 2009; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-idm-console-1.1.1.ebuild, -fedora-idm-console-1.1.1-r1.ebuild,
+  +389-idm-console-1.1.3.ebuild, -files/fedora-idm-console-cvs.sh:
+  rename package to 389 brand
+
+  07 Apr 2009; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-idm-console-1.1.3.ebuild:
+  Bump upstream
+
+  15 Sep 2008; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-idm-console-1.1.1-r1.ebuild:
+  bump
+
+  21 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  fedora-idm-console-1.1.1.ebuild:
+  Repoman Cleanup
+
+  19 Jan 2008; Mario Fetka <mario-fetka@gmx.at>
+  fedora-idm-console-1.1.1.ebuild:
+  correct typo
+
+  19 Jan 2008; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-idm-console-1.1.0_pre20071111.ebuild:
+  Initial 1.1 FDS
+
+  11 Nov 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-idm-console-1.1.0_pre20071017.ebuild:
+  bump
+
+  17 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-idm-console-1.1.0_pre20071014.ebuild:
+  Bump to latest snapshot
+
+  16 Oct 2007; Mario Fetka <mario-fetka@gmx.at>
+  fedora-idm-console-1.1.0_pre20071014.ebuild:
+  correct typo
+
+  16 Oct 2007; Mario Fetka <mario-fetka@gmx.at>
+  fedora-idm-console-1.1.0_pre20071014.ebuild:
+  add --pwd for java launcher
+
+  14 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-idm-console-1.1.0_pre20071009.ebuild:
+  Bump to latest snapshot
+
+  09 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-idm-console-1.1.0_pre20071006.ebuild:
+  Bump to snapshot 20071009
+
+  07 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ChangeLog:
+  correct html install
+
+  07 Oct 2007; Mario Fetka <mario-fetka@gmx.at>
+  fedora-idm-console-1.1.0_pre20071006.ebuild:
+  correct typo
+
+  07 Oct 2007; Mario Fetka <mario-fetka@gmx.at> +metadata.xml,
+  +fedora-idm-console-1.1.0_pre20071006.ebuild:
+  first version
+

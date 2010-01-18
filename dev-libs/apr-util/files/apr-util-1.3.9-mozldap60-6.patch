@@ -1,0 +1,42 @@
+Submitted By: Mario Fetka (mario dot fetka at gmail dot com)
+Date: 2009-07-08
+Initial Package Version: 1.2.11
+Origin: me
+Upstream Status: unknown
+Description: lets find the mozldap 60
+ 
+diff -Naur apr-util-1.3.8.orig/build/apu-conf.m4 apr-util-1.3.8/build/apu-conf.m4
+--- apr-util-1.3.8.orig/build/apu-conf.m4	2009-07-08 15:07:49.934420770 +0000
++++ apr-util-1.3.8/build/apu-conf.m4	2009-07-08 15:11:40.809339449 +0000
+@@ -266,7 +266,8 @@
+ 
+       LIBLDAP="$withval"
+       if test "$LIBLDAP" = "yes"; then
+-        dnl The iPlanet C SDK 5.0 is as yet untested... 
++        dnl The iPlanet C SDK 5.0 is as yet untested... 
++        APU_FIND_LDAPLIB("ldap60", "-liutil60 -llber60 -lldif60 -lprldap60 -lssldap60")
+         APU_FIND_LDAPLIB("ldap50", "-lnspr4 -lplc4 -lplds4 -liutil50 -llber50 -lldif50 -lnss3 -lprldap50 -lssl3 -lssldap50")
+         APU_FIND_LDAPLIB("ldapssl41", "-lnspr3 -lplc3 -lplds3")
+         APU_FIND_LDAPLIB("ldapssl40")
+@@ -306,7 +307,20 @@
+         AC_DEFINE([HAVE_LDAP_H], 1, [Defined if ldap.h is present])
+       fi
+ 
+-      AC_CHECK_HEADERS(ldap_ssl.h, ldap_ssl_h=["#include <ldap_ssl.h>"])
++      # Mozilla has a problem in <ldap_ssl.h> which prevents it from
++      # being included by itself.  Check for <ldap_ssl.h> manually,
++      # including ldap.h first.
++      AC_CACHE_CHECK([for ldap_ssl.h], [apr_cv_hdr_ldap_ssl_h],
++      [AC_TRY_CPP(
++      [#ifdef HAVE_LDAP_H
++      #include <ldap.h>
++      #endif
++      #include <ldap_ssl.h>
++      ], [apr_cv_hdr_ldap_ssl_h=yes], [apr_cv_hdr_ldap_ssl_h=no])])
++      if test "$apr_cv_hdr_ldap_ssl_h" = "yes"; then
++        ldap_ssl_h=["#include <ldap_ssl.h>"]
++        AC_DEFINE([HAVE_LDAP_SSL_H], 1, [Defined if ldap_ssl.h is present])
++      fi
+ 
+       if test "$apr_cv_hdr_ldap_h" = "yes"; then
+         AC_CACHE_CHECK([for LDAP toolkit],
