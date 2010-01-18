@@ -22,7 +22,7 @@ PSIPLUS_ICONS_URI=http://psi-dev.googlecode.com/svn/trunk/iconsets
 ESVN_PROJECT=psiplus
 
 LICENSE="GPL-2"
-SLOT="live"
+SLOT="0" #need to de live
 KEYWORDS=""
 IUSE="crypt dbus debug doc enchant +jingle iconsets spell ssl xscreensaver powersave plugins
 whiteboarding webkit"
