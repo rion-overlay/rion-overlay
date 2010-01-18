@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/pythonqt/pythonqt/PythonQt%201.1/${P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test doc examples"
 
 COM_DEPEND="app-arch/zip

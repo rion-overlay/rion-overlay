@@ -3,6 +3,9 @@
 # $Header: $
 
   18 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> PythonQt-1.1.ebuild:
+  add ~x86 keyword
+
+  18 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> PythonQt-1.1.ebuild:
   add install PythonQtGui header
 
   06 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +PythonQt-1.1.ebuild,
