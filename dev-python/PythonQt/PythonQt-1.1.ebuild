@@ -40,11 +40,17 @@ src_test() {
 }
 
 src_install() {
+
+	# istall main dir
 	insinto usr/include/${PN}
 	doins -r src/*.h
 	doins -r src/gui/*.h
 
 	dolib.so lib/lib*.so*
+
+	# PythonQtGui headers
+	insinto usr/include/${PN}
+	doins -r extensions/PythonQtGui/*.h
 
 	if use doc;then
 		dohtml -r "${S}/"doxygen/*
