@@ -255,7 +255,7 @@ git_fetch() {
 		${elogcmd} "   at the commit:		${cursha1}"
 
 		git_branch
-		git_sumbodules
+		git_submodules
 		popd &> /dev/null
 	elif [[ -n ${EGIT_OFFLINE} ]] ; then
 		pushd "${GIT_DIR}" &> /dev/null
@@ -280,7 +280,7 @@ git_fetch() {
 			|| die "${EGIT}: can't update from ${EGIT_REPO_URI}."
 
 		git_branch
-		git_sumbodules
+		git_submodules
 		cursha1=$(git rev-parse origin/${EGIT_BRANCH})
 
 		# write out message based on the revisions
