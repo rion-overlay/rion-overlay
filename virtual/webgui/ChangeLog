@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +webgui-7.7.30.ebuild:
+  new version
+
   10 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +webgui-7.8.5.ebuild:
   initial commit
 
