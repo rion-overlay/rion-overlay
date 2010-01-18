@@ -145,7 +145,7 @@ fi
 # @FUNCTION: git_submodules
 # @DESCRIPTION:
 # Internal function wrapping the submodule initialisation and update
-git_sumbodules() {
+git_submodules() {
 	debug-print "git submodule init"
 	git submodule init
 	debug-print "git submodule update"

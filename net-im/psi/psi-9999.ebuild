@@ -18,15 +18,14 @@ EGIT_REPO_URI="git://git.psi-im.org/psi.git"
 EGIT_PROJECT="psi"
 
 PATCHES_URI=http://psi-dev.googlecode.com/svn/trunk/patches
-PSIPLUS_ICONS_URI=http://psi-dev.googlecode.com/svn/trunk/iconsets/psiplus/default
-CLIENTS_ICONS_URI=http://psi-dev.googlecode.com/svn/trunk/iconsets/clients/default
+PSIPLUS_ICONS_URI=http://psi-dev.googlecode.com/svn/trunk/iconsets
 ESVN_PROJECT=psiplus
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="live"
 KEYWORDS=""
-IUSE="crypt dbus debug doc +jingle spell ssl xscreensaver powersave plugins
-enchant whiteboarding webkit"
+IUSE="crypt dbus debug doc enchant +jingle iconsets spell ssl xscreensaver powersave plugins
+whiteboarding webkit"
 RESTRICT="test"
 
 LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
@@ -56,22 +55,17 @@ src_unpack() {
 	! use linguas_ru && unpack "psi-0.13-20090817_langpack_for_packagers.zip"
 
 	git_src_unpack
-	cd ${S}
-	git submodule update --init
 
 	S="${WORKDIR}/patches"
 	ESVN_REPO_URI="${PATCHES_URI}"
 	subversion_src_unpack
 
-	S="${WORKDIR}/${P}/iconsets/psiplus/default"
+	if use iconsets; then
+	S="${WORKDIR}/${P}"/iconsets
 	ESVN_REPO_URI="${PSIPLUS_ICONS_URI}"
 	ESVN_PROJECT=psiplus/psiplus
 	subversion_src_unpack
-
-	S="${WORKDIR}/${P}/iconsets/clients/default"
-	ESVN_REPO_URI="${CLIENTS_ICONS_URI}"
-	ESVN_PROJECT=psiplus/clients
-	subversion_src_unpack
+	fi
 }
 
 src_prepare() {
