@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils qt4 subversion
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
-ESVN_REPO_URI="http://svn.sourceforge.net/svnroot/qstardict/trunk/"
+ESVN_REPO_URI="https://qstardict.svn.sourceforge.net/svnroot/qstardict/trunk"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
