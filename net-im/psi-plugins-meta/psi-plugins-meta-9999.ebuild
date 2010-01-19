@@ -12,8 +12,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 
-PSIPLUS_PLUGINS="attention birthdayreminder conferencelogger extendedoptions gmailnotify
-image juick screenshot stopspam translate watcher"
+PSIPLUS_PLUGINS="attention autoreply birthdayreminder cleaner conferencelogger extendedoptions gmailnotify
+image icqdie juick screenshot stopspam translate watcher"
 IUSE="${PSIPLUS_PLUGINS}"
 
 DEPEND=""
