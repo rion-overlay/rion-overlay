@@ -24,7 +24,7 @@ ESVN_PROJECT=psiplus
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant +jingle spell ssl xscreensaver powersave
+IUSE="crypt dbus debug doc enchant +jingle iconsets spell ssl xscreensaver powersave
 plugins whiteboarding webkit"
 RESTRICT="test"
 
@@ -70,10 +70,17 @@ src_unpack() {
 	S="${WORKDIR}/patches"
 	ESVN_REPO_URI="${PATCHES_URI}"
 	subversion_src_unpack
-
+        use iconsets && (
+        ESVN_REPO_URI=${ICONS_URI}
+        ESVN_PROJECT=psiplus/iconsets
+        subversion_src_unpack
+        )
+	! use iconsets && (
 	unpack_default_iconset psiplus
 	unpack_default_iconset clients
 	unpack_default_iconset moods
+	unpack_default_iconset activities
+	)
 }
 
 src_prepare() {
