@@ -70,12 +70,12 @@ src_unpack() {
 	S="${WORKDIR}/patches"
 	ESVN_REPO_URI="${PATCHES_URI}"
 	subversion_src_unpack
-        use iconsets && (
-        ESVN_REPO_URI=${ICONS_URI}
-        ESVN_PROJECT=psiplus/iconsets
-        subversion_src_unpack
-        )
-	! use iconsets && (
+	use iconsets && (
+	S="${WORKDIR}/${P}/iconsets"
+	ESVN_REPO_URI="${ICONS_URI}"
+	ESVN_PROJECT=psiplus/iconsets
+	subversion_src_unpack
+	) || (
 	unpack_default_iconset psiplus
 	unpack_default_iconset clients
 	unpack_default_iconset moods
