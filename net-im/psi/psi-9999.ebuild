@@ -43,6 +43,7 @@ RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
 		webkit? ( x11-libs/qt-webkit )"
 
 DEPEND="${RDEPEND}
+		app-arch/unzip
 		sys-devel/qconf
 		doc? ( app-doc/doxygen )"
 
