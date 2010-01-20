@@ -4,7 +4,7 @@
 
 inherit psiplus-plugin
 
-DESCRIPTION="Psi config directory plugin."
+DESCRIPTION="Psi+'s \"ICQDie!!\" plugin."
 HOMEPAGE="http://psi-dev.googlecode.com"
 
 LICENSE="GPL-2"
