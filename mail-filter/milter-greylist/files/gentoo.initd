@@ -1,12 +1,11 @@
 #!/sbin/runscript
-# $Header: slep Exp $Id 
-
-opts="start stop restart status"
+# $Header: $ 
 
 depend() {
 	need net 
-	use logger
-	before sendmail postfix
+	use mta logger dns dovecot openldap dkim-filter dns p0f dracd
+	before mta
+	provide postfix_greylist
 }
 
 start() {
@@ -26,6 +25,5 @@ restart() {
 	# needed to avoid potential mi_stop errors 
 	sleep 4
 	svc_start
-	kill -HUP `head -n 1 /var/run/sendmail.pid` 
 }
 
