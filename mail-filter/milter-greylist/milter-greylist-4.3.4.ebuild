@@ -60,9 +60,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-#	sed  -e "s/greylist.conf/greylist2.conf/" -i Makefile.in \
-#								|| die "sed makefile failed"
-#	elog "Makefile fixed "
+	sed  -e "/CONFFILE/s/greylist.conf/greylist2.conf/" -i Makefile.in \
+								|| die "sed makefile failed"
+	elog "Makefile fixed "
 
 	if use drac; then
 		sed -i -e  \
@@ -151,7 +151,7 @@ src_install() {
 		echo "USER=smmsp" >> "${D}"/etc/conf.d/milter-greylist || die
 	fi
 
-	local user="smmps"
+	local user="smmsp"
 	use postfix && user="postfix"
 
 	diropts -m750 --owner=$user
