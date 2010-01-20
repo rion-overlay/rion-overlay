@@ -40,10 +40,10 @@ RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
 			!enchant? ( app-text/aspell )
 		)
 		xscreensaver? ( x11-libs/libXScrnSaver )
-		webkit? ( x11-libs/qt-webkit )"
+		webkit? ( x11-libs/qt-webkit )
+		app-arch/unzip"
 
 DEPEND="${RDEPEND}
-		app-arch/unzip
 		sys-devel/qconf
 		doc? ( app-doc/doxygen )"
 
