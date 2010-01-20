@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 bind ssl ldap geoip spf dkim drac p0f spamassassin dnsrbl postfix curl"
+IUSE="ipv6 bind +ssl ldap geoip spf dkim drac p0f spamassassin dnsrbl postfix curl"
 
 COMMON_DEP="|| ( ( mail-filter/libmilter[ipv6?] ) || ( mail-mta/sendmail ) )
 			sys-libs/db
@@ -25,7 +25,9 @@ COMMON_DEP="|| ( ( mail-filter/libmilter[ipv6?] ) || ( mail-mta/sendmail ) )
 			spf? ( mail-filter/libspf2 )
 			dkim? ( mail-filter/dkim-milter[ipv6?] )
 			postfix? ( >=mail-mta/postfix-2.5[ipv6?]
-						mail-filter/libmilter[ipv6?] )"
+						mail-filter/libmilter[ipv6?] )
+			drac? ( mail-client/drac )
+			net-mail/mailbase"
 
 DEPEND="sys-devel/flex
 		sys-devel/bison
@@ -57,6 +59,39 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+#	sed  -e "s/greylist.conf/greylist2.conf/" -i Makefile.in \
+#								|| die "sed makefile failed"
+#	elog "Makefile fixed "
+
+	if use drac; then
+		sed -i -e  \
+			's|"/usr/local/etc/drac.db/"|"/var/lib/drac/drac.db"|' \
+	 									greylist2.conf || die "sed drac failed"
+		elog "Add drac support"
+	else
+
+		sed -i -e 's/#nodrac/nodrac/' greylist2.conf || die "sed nodrac failed"
+
+		elog "Disable drac"
+	fi
+
+	if use postfix; then
+		sed -e 's/#user\ "smmsp"/user\ "postfix"/' -i greylist2.conf \
+											|| die "add postfix user failed"
+		elog "Add postfix user into config file "
+	fi
+
+sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
+	-i greylist2.conf || die "socket fix failed"
+
+sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
+	-i milter-greylist.m4 || die "sed in milter-greylist.m4 failed"
+
+sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greylist.db"|'\
+					-i greylist2.conf || die "fix db file location  failed"
+einfo "sed ended"
+}
 src_configure() {
 	local myconf=""
 
@@ -82,31 +117,66 @@ src_configure() {
 	econf \
 		--with-db \
 		--with-libmilter \
-		--with-conffile="/etc/${PN}/${PN}.conf" \
+		--with-conffile="/etc/mail/${PN}.conf" \
 		--with-dumpfile="/var/lib/${PN}/${PN}.db" \
 		$(use_enable drac) \
 		$(use_enable p0f) \
 		$(use_enable spamassassin) \
 		$(use_enable dnsrbl) \
 		$(use_enable postfix) \
-		${myconf} || die "muconf failed"
+		${myconf} || die "myconf failed"
 }
 
 src_compile() {
 	emake -j1  || die "compile failed"
 }
+
 src_install() {
 
 	emake DESTDIR="${D}" install || die "install failed"
-	dodoc ChangeLog README
+
+	if use !postfix;then
+		insinto /usr/share/sendmail-cf/hack/
+		doins milter-greylist.m4
+	fi
+
+	dodoc ChangeLog README milter-greylist.m4
 
 	newinitd "${FILESDIR}"/gentoo.initd milter-greylist
 	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
 
-	dolib /var/lib/${PN}
-	
+	if use postfix;then
+		echo "USER=postfix" >> "${D}"/etc/conf.d/milter-greylist || die
+	else
+		echo "USER=smmsp" >> "${D}"/etc/conf.d/milter-greylist || die
+	fi
+
+	local user="smmps"
+	use postfix && user="postfix"
+
+	diropts -m750 --owner=$user
+	dodir /var/run/milter-greylist/
+
+	diropts -m770 --owner=$user
+	dodir /var/lib/milter-greylist/
+	keepdir /var/lib/milter-greylist/
+	#touch "${D}"/var/lib/milter-greylist/greylist.db
 }
+
 pkg_postinst() {
-: ;
-	elog "Plz, see READMI files && read man file :)"
+	if [  -e /var/lib/milter-greylist/greylist.db ] ; then
+		touch "${D}"/var/lib/milter-greylist/greylist.db
+	fi
+
+	if use !postfix; then
+		elog " You can enable milter-greylist in your sendmail, adding the line: "
+		elog "FEATURE(\`milter-greylist')dnl"
+		elog "to you sendmail.mc file"
+	fi
+
+	if use postfix;then
+		elog "You can enable milter-greylist in your postfix, adding the line:"
+		elog ""
+		elog "to /etc/postfix/main.cf file"
+	fi
 }
