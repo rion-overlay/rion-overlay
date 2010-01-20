@@ -47,6 +47,7 @@ src_install() {
 	insinto /usr/share/aqemu/os_templates/
 	doins "${S}"/os_templates/*.aqvmt
 
+	sed -i '/Exec/s:aqemu:AQEMU:' menu_data/aqemu.desktop
 	domenu "${S}/menu_data/aqemu.desktop"
 	doicon "${S}"/menu_data/aqemu_*.png
 

@@ -1,10 +1,13 @@
-# Distributed under the terms of the GNU General Public License v3
-# Header: slepnoga $
-# TODO sed in this file
+# Distributed under the terms of the GNU General Public License v2 or later
+# Header: slepnoga rion-overlay 19/01/2010 $
 
+# daemon name
 NAME="milter-greylist"
-DAEMON=@BINDIR@/$NAME
-USER=@USER@
-SOCKET="/var/$NAME/milter-greylist.sock"
-PIDFILE="/var/$NAME/$NAME.pid"
+#daemon locations
+DAEMON=/usr/bin/$NAME
+# Unix domain socket locations
+SOCKET="/var/run/$NAME/milter-greylist.sock"
+# Pid file locations
+PIDFILE="/var/run/$NAME.pid"
+# this setting owerwrite config file !
 DOPTIONS="-p $SOCKET -u $USER -P $PIDFILE"
