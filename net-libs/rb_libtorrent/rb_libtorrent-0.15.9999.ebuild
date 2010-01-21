@@ -10,7 +10,11 @@ DISTUTILS_DISABLE_PYTHON_DEPENDENCY="yes"
 MY_P="libtorrent-rasterbar"
 inherit eutils subversion distutils autotools libtool versionator
 
-ESVN_REPO_URI="https://libtorrent.svn.sourceforge.net/svnroot/libtorrent/branches/RC_$(get_major_version)_$(get_version_component_range 2)"
+if [ "${PV}" != 9999 -a "$(get_version_component_range 3)" == 9999 ]; then
+	ESVN_REPO_URI="https://libtorrent.svn.sourceforge.net/svnroot/libtorrent/branches/RC_$(get_major_version)_$(get_version_component_range	2)"
+else
+	ESVN_REPO_URI="https://libtorrent.svn.sourceforge.net/svnroot/libtorrent/trunk"
+fi
 DESCRIPTION="BitTorrent library written in C++ for *nix."
 HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
 
@@ -41,11 +45,9 @@ src_unpack() {
 }
 
 src_prepare(){
-
-	elibtoolize
 	eautoreconf
 
-	if use python-binding;then
+	if use python-binding; then
 		cd "${S}"/bindings/python
 		distutils_src_prepare
 	fi
@@ -55,7 +57,6 @@ src_configure() {
 	local myconf
 
 	use geoip && myconf="--with-libgeoip"
-
 	econf \
 			--enable-largefile \
 	        $(use_enable log logging) \
