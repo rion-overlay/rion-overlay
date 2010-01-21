@@ -1,3 +1,7 @@
+# 21 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask alpha version
+=net-nds/389-admin-1.1.10_alpha*
+
 # 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing - not comlete
 app-admin/ipa-admintools
