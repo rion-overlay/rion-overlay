@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Jan 2010; <slep@gentoo.org> -389-admin-1.1.8-r1.ebuild:
+  drop old version
+
   22 Jan 2010; <slep@gentoo.org> metadata.xml:
   add long description in metadata
 
