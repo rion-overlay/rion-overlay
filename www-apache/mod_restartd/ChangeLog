@@ -1,6 +1,9 @@
 # ChangeLog for www-apache/mod_restartd
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  22 Jan 2010; <slep@gentoo.org> -mod_restartd-1.1.8-r1.ebuild:
+  delete old version
 
   18 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +mod_restartd-1.1.9.ebuild:
