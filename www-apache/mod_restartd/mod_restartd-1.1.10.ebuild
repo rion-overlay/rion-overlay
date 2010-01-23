@@ -21,24 +21,27 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/389-admin-${PV}/${PN}"
-
+#S="${WORKDIR}/389-admin-${MY_PV}/${PN}"
+APXS2_S="${WORKDIR}/389-admin-${MY_PV}/${PN}"
 APACHE2_MOD_CONF="48_${PN}"
 APACHE2_MOD_DEFINE="RESTARTD"
-
 DOCFILES="README"
+
 
 need_apache2
 
 src_prepare() {
+	
+	cd "${WORKDIR}/389-admin-${MY_PV}"
 	eautoreconf
+
 }
 
-src_configure() {
+isrc_configure() {
 	econf --with-apxs=${APXS} \
 	|| die "econf failed"
 }
 
-src_compile() {
+isrc_compile() {
 	emake || die
 }
