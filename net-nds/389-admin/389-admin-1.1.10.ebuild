@@ -20,6 +20,8 @@ IUSE="debug ipv6"
 # USE selinux dropped - gentoo specific
 # I`m not selinux man
 
+# TODO snmp agent init script
+
 DEPEND="dev-libs/nss[utils]
 		dev-libs/nspr[ipv6?]
 		dev-libs/svrcore
@@ -32,9 +34,9 @@ DEPEND="dev-libs/nss[utils]
 		sys-apps/tcp-wrappers[ipv6?]
 		sys-libs/pam
 		app-misc/mime-types
-		www-apache/mod_restartd
+		~www-apache/mod_restartd-${PV}
 		www-apache/mod_nss
-		www-apache/mod_admserv
+		~www-apache/mod_admserv-${PV}
 		>=app-admin/389-admin-console-1.1.0
 		>=app-admin/389-ds-console-1.1.0
 		www-servers/apache:2[apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]"
@@ -55,12 +57,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable debug) \
-	--with-fhs \
-	--with-apr-config \
-	--with-apxs=${APXS} \
-	--with-httpd=${APACHE_BIN} \
-	|| die "econf failed"
+	econf \
+		$(use_enable debug) \
+		--with-fhs \
+		--with-apr-config \
+		--with-apxs=${APXS} \
+		--with-httpd=${APACHE_BIN} \
+				|| die "econf failed"
 }
 
 src_install () {
@@ -84,5 +87,5 @@ src_install () {
 	# Patch httpd.conf 
 	# Source in httpd.conf is patch hell,imho
 	cd "${D}"/etc
-	epatch "${FILESDIR}/${PV}"-apache2-httpd.conf.patch || die
+#	epatch "${FILESDIR}/${PV}"-apache2-httpd.conf.patch || die
 }

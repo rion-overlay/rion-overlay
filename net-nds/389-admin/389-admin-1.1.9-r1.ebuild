@@ -33,9 +33,9 @@ DEPEND="dev-libs/nss[utils]
 		sys-apps/tcp-wrappers[ipv6?]
 		sys-libs/pam
 		app-misc/mime-types
-		www-apache/mod_restartd
+		~www-apache/mod_restartd-${PV}
 		www-apache/mod_nss
-		www-apache/mod_admserv
+		~www-apache/mod_admserv-${PV}
 		>=app-admin/389-admin-console-1.1.0
 		>=app-admin/389-ds-console-1.1.0
 		www-servers/apache:2[apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]"
@@ -46,10 +46,10 @@ need_apache2_2
 
 src_prepare() {
 
-	epatch "${FILESDIR}/${PV}/"*.patch
+	epatch "${FILESDIR}/${PV}"/*.patch || die "epatch failed"
 
-	sed -e "s!SUBDIRS!# SUBDIRS!g" -i Makefile.am
-	sed -e "s!nobody!apache!g" -i configure.ac
+	sed -e "s!SUBDIRS!# SUBDIRS!g" -i Makefile.am || die
+	sed -e "s!nobody!apache!g" -i configure.ac || die
 	rm -rf "${S}"/mod_* || die
 
 	eautoreconf
