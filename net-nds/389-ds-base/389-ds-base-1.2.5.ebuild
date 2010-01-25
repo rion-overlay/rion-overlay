@@ -15,7 +15,7 @@ SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="autobind auto-dn-suffix debug +pam-passthru +dna +ldapi +bitwise presence kerberos"
+IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise presence kerberos selinux"
 
 ALL_DEPEND="dev-libs/nss[utils]
 			dev-libs/nspr
@@ -36,7 +36,8 @@ ALL_DEPEND="dev-libs/nss[utils]
 
 DEPEND="${ALL_DEPEND}
 			dev-util/pkgconfig
-			sys-devel/libtool:1.5"
+			sys-devel/libtool:1.5
+			doc? ( app-doc/doxygen )"
 
 RDEPEND="${ALL_DEPEND}
 			virtual/perl-Time-Local
@@ -48,22 +49,22 @@ pkg_setup() {
 }
 
 src_prepare() {
-
-#epatch "${FILESDIR}/${PV}/"*.patch
 	sed -i -e 's/nobody/dirsrv/g' configure.ac
 
 	eautoreconf
 }
 
 src_configure() {
-	append-ldflags -Wl,--as-needed
+	local myconf=""
+
+	use auto-dn-suffix && myconf+="--enable-auto-dn-suffix "
+	use selinux && myconf+="--with-selinux "
 
 	econf \
 			$(use_enable debug) \
 			$(use_enable pam-passthru) \
 			$(use_enable ldapi) \
 			$(use_enable autobind) \
-			$(use_enable auto-dn-suffix) \
 			$(use_enable dna) \
 			$(use_enable bitwise) \
 			$(use_enable presence) \
@@ -71,11 +72,8 @@ src_configure() {
 			--enable-maintainer-mode \
 			--enable-autobind \
 			--with-fhs \
-			--without-selinux \
-						|| die "econf failed"
+			$myconf || die "econf failed"
 
-# $(use_with selinux) disable due bug in
-# configure
 }
 
 src_compile() {
@@ -115,7 +113,13 @@ src_install () {
 
 	# create the directory where our log file and database
 	diropts -m 0750 -o dirsrv -g dirsrv
-	keepdir /var/lock/dirsrv
 	keepdir /var/lib/dirsrv
+	dodir /var/lock/dirsrv
+
+	if use doc; then
+		cd "${S}"
+		doxygen slapi.doxy
+		dohtml -r docs/html
+	fi
 
 }

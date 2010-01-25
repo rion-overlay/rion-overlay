@@ -5,7 +5,9 @@
 EAPI="2"
 
 WANT_AUTOMAKE="1.9"
+
 MY_PV="1.1.10.a3"
+
 inherit eutils multilib autotools depend.apache
 
 DESCRIPTION="389 Directory Server (admin)"
@@ -15,7 +17,7 @@ SRC_URI="http://port389.org/sources/${PN}-${MY_PV}.tar.bz2"
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug ipv6"
+IUSE="debug ipv6 +threads"
 
 # USE selinux dropped - gentoo specific
 # I`m not selinux man
@@ -26,7 +28,6 @@ DEPEND="dev-libs/nss[utils]
 		dev-libs/nspr[ipv6?]
 		dev-libs/svrcore
 		dev-libs/mozldap
-		dev-libs/389-adminutil
 		dev-libs/cyrus-sasl
 		dev-libs/icu
 		>=sys-libs/db-4.2.52
@@ -34,35 +35,46 @@ DEPEND="dev-libs/nss[utils]
 		sys-apps/tcp-wrappers[ipv6?]
 		sys-libs/pam
 		app-misc/mime-types
-		~www-apache/mod_restartd-${PV}
 		www-apache/mod_nss
-		~www-apache/mod_admserv-${PV}
 		>=app-admin/389-admin-console-1.1.0
 		>=app-admin/389-ds-console-1.1.0
-		www-servers/apache:2[apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]"
+		dev-libs/389-adminutil
+		threads? ( www-servers/apache:2[apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif] )
+		!threads? ( www-servers/apache:2[-apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif] )
+		!www-apache/mod_admserv
+		!www-apache/mod_restartd"
+
+#~www-apache/mod_admserv-${PV}
+#~www-apache/mod_restartd-${PV}
 
 RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${PN}-${MY_PV}"
+
 need_apache2_2
 
 src_prepare() {
 
-#	epatch "${FILESDIR}/${PV}/"*.patch
+	epatch "${FILESDIR}/${PV}/"*.patch
 
 	sed -e "s!SUBDIRS!# SUBDIRS!g" -i Makefile.am || die "sed failed"
 	sed -e "s!nobody!apache!g" -i configure.ac	  || die "sed failed"
-	rm -rf "${S}"/mod_* || die
+#	rm -rf "${S}"/mod_* || die
 
-	eautoreconf
+	eautoconf
+	eautomake
 }
 
 src_configure() {
 	econf \
 		$(use_enable debug) \
+		$(use_enable threads threading) \
+		--disable-rpath \
 		--with-fhs \
 		--with-apr-config \
 		--with-apxs=${APXS} \
 		--with-httpd=${APACHE_BIN} \
+		--enable-rpath=no \
 				|| die "econf failed"
 }
 
@@ -88,4 +100,36 @@ src_install () {
 	# Source in httpd.conf is patch hell,imho
 	cd "${D}"/etc
 #	epatch "${FILESDIR}/${PV}"-apache2-httpd.conf.patch || die
+
+	# In this version build systems for modules is delete :(
+	# manually install modules, not using apache-modules eclass
+	# because use bindled library
+
+	# install mod_admserv
+	exeinto "${APACHE_MODULESDIR}"
+	doexe "${S}/.libs"/mod_admserv.so || die "internal ebuild error: mod_admserv not found"
+
+	insinto "${APACHE_MODULES_CONFDIR}"
+	newins "${FILESDIR}/${PV}"/48_mod_admserv.conf 48_mod_admserv \
+				|| die "internal ebuild error: 48_mod_admserv.conf not found"
+
+	# install mod_restard
+	exeinto "${APACHE_MODULESDIR}"
+	doexe "${S}/.libs"/mod_restartd.so || die "internal ebuild error: mod_restartd  not found"
+
+	insinto "${APACHE_MODULES_CONFDIR}"
+	newins "${FILESDIR}/${PV}"/48_mod_restartd.conf 48_mod_restartd \
+				|| die "internal ebuild error: 48_mod_restard.conf not found"
+
+}
+
+pkg_postinst() {
+	einfo
+	einfo " This ebuild contains two apache modules"
+	einfo "mod_admserv and mod_restartd "
+	einfo "Please fix you config files "
+	einfo
+	einfo "This programm  based on CGI script"
+	einfo "It is therefore recommended "
+	einfo "to use it apache SUEXEC"
 }

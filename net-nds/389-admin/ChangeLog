@@ -2,6 +2,20 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/1.1.10/0002-gentoo-brand-name.patch,
+  +files/1.1.10/0003-find-mod_nss.m4.patch,
+  +files/1.1.10/0004-rpath-fix.configure.ac.patch, 389-admin-1.1.10.ebuild,
+  +files/1.1.10/48_mod_admserv.conf, +files/1.1.10/48_mod_restartd.conf:
+  fix more failure
+
+  25 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/1.1.10/0002-gentoo-brand-name.patch,
+  +files/1.1.10/0003-find-mod_nss.m4.patch,
+  +files/1.1.10/0004-rpath-fix.configure.ac.patch, 389-admin-1.1.10.ebuild,
+  +files/1.1.10/48_mod_admserv.conf, +files/1.1.10/48_mod_restartd.conf:
+  fix more failure
+
   22 Jan 2010; <slep@gentoo.org> -389-admin-1.1.10_alpha2.ebuild:
   delete alpha version
 
