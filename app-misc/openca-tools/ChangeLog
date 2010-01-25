@@ -1,0 +1,28 @@
+# ChangeLog for app-misc/openca-tools
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  openca-tools-1.0.0.ebuild:
+  add ~amd64
+
+*openca-tools-1.0.0 (11 Aug 2009)
+
+  11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +openca-tools-1.0.0.ebuild:
+  old version ebuild
+
+  09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  openca-tools-1.1.0.ebuild:
+  add ~amd64,doc use flag
+
+  09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  openca-tools-1.1.0.ebuild:
+  fix HOMEPAGE
+
+*openca-tools-1.1.0 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +openca-tools-1.1.0.ebuild, +metadata.xml:
+  initial commit
+

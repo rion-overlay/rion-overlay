@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: Exp $
+
+depend() {
+	need net 
+	use mta logger dns dovecot openldap dkim-filter dns p0f dracd
+	before mta
+	provide postfix_greylist
+}
+
+start() {
+	ebegin "Starting $DESC"
+	start-stop-daemon --quiet --start --startas $DAEMON --pidfile $PIDFILE  -- $DOPTIONS
+	eend $? "Failed to start ${DAEMON}"
+}
+
+stop() {
+	ebegin "Stopping $DESC"
+	start-stop-daemon --stop --name $NAME
+	eend $? "Failed to stop ${DAEMON}"
+}
+
+restart() {
+	svc_stop 
+	# needed to avoid potential mi_stop errors 
+	sleep 4
+	svc_start
+}
+
