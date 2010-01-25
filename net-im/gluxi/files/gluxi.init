@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: Gluxi-bot init-script AntiXpucT Exp $
+
+depend() {
+	use net mysql
+}
+
+start() {
+	ebegin "Starting Gluxi"
+	start-stop-daemon --start --quiet --exec /usr/bin/gluxi --chuid gluxi -- /etc/gluxi/gluxi.cfg &
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Gluxi"
+	start-stop-daemon --stop --exec /usr/bin/gluxi
+	eend $?
+}

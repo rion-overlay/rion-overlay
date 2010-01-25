@@ -1,0 +1,18 @@
+# ChangeLog for mail-filter/milter-greylist
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  20 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> files/gentoo.confd,
+  files/gentoo.initd:
+  fix license and copyright
+
+  20 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  milter-greylist-4.3.4.ebuild, files/gentoo.confd, files/gentoo.initd:
+  more more fix
+
+  20 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +milter-greylist-4.0-r2.ebuild, +milter-greylist-4.2.3.ebuild,
+  +milter-greylist-4.3.4.ebuild, +files/gentoo.confd, +files/gentoo.initd,
+  +metadata.xml:
+  initial commit
+

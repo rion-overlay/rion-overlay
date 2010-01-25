@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header:  $
+
+depend() {
+	need sysctl
+}
+
+start() {
+	local OPTIONS=""
+	
+		
+
+	ebegin "Starting CGroup Rules Engine Daemon"
+	start-stop-daemon --start --quiet --exec /usr/sbin/cgrulesengd --make-pidfile \
+				--pidfile /var/run/cgrulesengd.pid \
+				-- --logfile=$LOGFILE \
+					
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping CGroup Rules Engine Daemon"
+	start-stop-daemon --stop --quiet --pidfile /var/lib/cgrulesengd.pid
+	eend $?
+}
