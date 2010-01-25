@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -mod_restartd-1.1.10.ebuild:
+  bindled in net-nds/389-admin
+
   23 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +mod_restartd-1.1.10.ebuild:
   version bump
