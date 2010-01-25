@@ -6,7 +6,7 @@ inherit java-pkg-2 eutils java-ant-2
 
 MY_V=1.1.3
 
-DESCRIPTION="A Java based console for remote management 389 server."
+DESCRIPTION="A Java based console for remote management 389 server.Core files"
 HOMEPAGE="http://directory.fedoraproject.org/"
 SRC_URI="http://port389.org/sources/fedora-idm-console-${PV}.tar.bz2
 	http://www.nongnu.org/smc/docs/smc-presentation2/pix/fedora.png"
