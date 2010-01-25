@@ -105,6 +105,8 @@ src_install () {
 
 	# and install gentoo style init script
 	newinitd "${FILESDIR}"/dirsrv.initd dirsrv
+	newinitd "${FILESDIR}"/dirsrv-snmp.initd dirsrv-snmp
+
 	newconfd "${FILESDIR}"/dirsrv.confd dirsrv
 
 	# cope with libraries being in /usr/lib/dirsrv
