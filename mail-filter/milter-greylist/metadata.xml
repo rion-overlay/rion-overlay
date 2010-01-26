@@ -17,5 +17,6 @@
 	 <flag name='spamassassin'> </flag>
 	 <flag name='dnsrbl'> </flag>
 	 <flag name='postfix'></flag>
+	 <flag name='sendmail'> </flag>
 </use>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit base  eutils
+inherit base  eutils confutils
 
 DESCRIPTION="Milter-greylist is a stand-alone milter that implements the greylist filtering method"
 HOMEPAGE="http://hcpnet.free.fr/milter-greylist"
@@ -13,9 +13,11 @@ SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 bind +ssl ldap geoip spf dkim drac p0f spamassassin dnsrbl postfix curl"
+IUSE="ipv6 bind +ssl ldap geoip spf dkim drac p0f spamassassin sendmail dnsrbl postfix curl"
 
-COMMON_DEP="|| ( ( mail-filter/libmilter[ipv6?] ) || ( mail-mta/sendmail ) )
+COMMON_DEP="sendmail? ( mail-mta/sendmail
+						!!mail-filter/libmilter
+						)
 			sys-libs/db
 			bind? ( net-dns/bind[ipv6?] )
 			ssl? ( dev-libs/openssl )
@@ -37,6 +39,10 @@ DEPEND="sys-devel/flex
 RDEPEND="${COMMON_DEP}"
 
 pkg_setup() {
+	confutils_require_one postfix sendmail
+	confutils_use_conflict postfix sendmail
+	confutils_use_conflict sendmail postfix
+
 	if use postfix ;then
 		einfo "Checking for postfix group ..."
 		enewgroup postfix 207 || die "problem adding group postfix"
@@ -68,18 +74,14 @@ src_prepare() {
 		sed -i -e  \
 			's|"/usr/local/etc/drac.db/"|"/var/lib/drac/drac.db"|' \
 	 									greylist2.conf || die "sed drac failed"
-		elog "Add drac support"
 	else
 
 		sed -i -e 's/#nodrac/nodrac/' greylist2.conf || die "sed nodrac failed"
-
-		elog "Disable drac"
 	fi
 
 	if use postfix; then
 		sed -e 's/#user\ "smmsp"/user\ "postfix"/' -i greylist2.conf \
 											|| die "add postfix user failed"
-		elog "Add postfix user into config file "
 	fi
 
 sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
@@ -90,7 +92,6 @@ sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/
 
 sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greylist.db"|'\
 					-i greylist2.conf || die "fix db file location  failed"
-einfo "sed ended"
 }
 src_configure() {
 	local myconf=""
@@ -170,13 +171,14 @@ pkg_postinst() {
 
 	if use !postfix; then
 		elog " You can enable milter-greylist in your sendmail, adding the line: "
-		elog "FEATURE(\`milter-greylist')dnl"
-		elog "to you sendmail.mc file"
+		elog " HACK(\`milter-greylist')dnl"
+		elog " to you sendmail.mc file"
 	fi
 
 	if use postfix;then
-		elog "You can enable milter-greylist in your postfix, adding the line:"
-		elog ""
-		elog "to /etc/postfix/main.cf file"
+		elog " You can enable milter-greylist in your postfix, adding the line:"
+		ewarn " Sorry, please read postfix manual or use web version: "
+		ewarn " http://www.postfix.org"
+		elog " to /etc/postfix/main.cf file"
 	fi
 }
