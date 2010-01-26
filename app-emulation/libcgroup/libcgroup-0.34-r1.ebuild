@@ -32,7 +32,7 @@ CONFIG_CHECK="CGROUPS
 ERROR_CGROUPS="CONFIG_CGROUPS: must enabled for works"
 
 src_prepare() {
-	elibtoolize
+	eautoconf
 }
 
 src_configure() {
@@ -40,24 +40,24 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable pam) \
 		$(use_enable tools) \
-		$(use_enable daemon) || die "foo bo-bo"
+		$(use_enable daemon) || die "econf failed"
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die "install failed"
+	emake DESTDIR="${D}" install || die "install failed"
 
 	dodoc README README_daemon
 	if use daemon;then
 		newinitd  "${FILESDIR}"/cgred.init cgred
 		newinitd  "${FILESDIR}"/cgconfig.init cgconfig
 		newconfd  "${FILESDIR}"/cgred.confd cgred
-	
+
 		insinto /etc/"${PN}"
 		doins "${S}/samples"/{cgconfig,cgrules}.conf
 	fi
 
 	rm -f "${D}"/usr/lib64/*.la
-	
+
 	if use pam;then
 		exeinto $(getpam_mod_dir)
 		doexe	"${D}"/usr/lib64/pam_cgroup.so.0.0.0
