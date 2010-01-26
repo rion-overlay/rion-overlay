@@ -6,9 +6,12 @@
   <email>@gmail.com</email>
  <description>Description of the maintainership</description> 
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
+ <longdescription lang='en'>Control groups infrastructure. The tools and library help
+ manipulate, control,administrate and monitor control groups and the associated
+ controllers.
+ </longdescription> 
 <use>
-    <flag name='tool'> </flag>
-	<flag name='daemon'> </flag>
+    <flag name='tools'> install tools </flag>
+	<flag name='daemon'> install daemon </flag>
 </use>
 </pkgmetadata>

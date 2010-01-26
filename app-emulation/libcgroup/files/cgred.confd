@@ -1,0 +1,23 @@
+# /etc/conf.d/cgred
+# config file for libcgoups engine
+#
+# The four options listed below (CONFIG_FILE, LOG_FILE, NODAEMON, LOG) are
+# the only valid ones.  Defining anything else in this file will cause the
+# CGroup Rules Engine program to fail.  So, don't do it.
+
+# The pathname to the configuration file for CGroup Rules Engine
+CONFIG_FILE="/etc/libcgroups/cgrules.conf"
+
+# Uncomment the following line to log to specified file instead of syslog
+LOG_FILE="/var/log/cgrulesengd.log"
+
+# Uncomment the second line to run CGroup Rules Engine in non-daemon mode
+NODAEMON=""
+#NODAEMON="--nodaemon"
+
+# Uncomment the second line to disable logging for CGroup Rules Engine
+# Uncomment the third line to enable more verbose logging.
+LOG=""
+#LOG="--nolog"
+#LOG="-v"
+
