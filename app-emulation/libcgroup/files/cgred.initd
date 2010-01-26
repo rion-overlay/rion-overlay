@@ -5,18 +5,15 @@
 
 depend() {
 	need sysctl
+	use localmount d
 }
 
 start() {
-	local OPTIONS=""
-	
-		
 
 	ebegin "Starting CGroup Rules Engine Daemon"
 	start-stop-daemon --start --quiet --exec /usr/sbin/cgrulesengd --make-pidfile \
 				--pidfile /var/run/cgrulesengd.pid \
 				-- --logfile=$LOGFILE \
-					
 	eend $?
 }
 
@@ -24,4 +21,9 @@ stop() {
 	ebegin "Stopping CGroup Rules Engine Daemon"
 	start-stop-daemon --stop --quiet --pidfile /var/lib/cgrulesengd.pid
 	eend $?
+}
+restart() {
+	svc_stop
+	sleep 1
+	svc_start
 }

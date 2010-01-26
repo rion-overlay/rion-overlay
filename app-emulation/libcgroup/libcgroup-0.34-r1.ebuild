@@ -47,18 +47,21 @@ src_install() {
 	emake DESTDIR=${D} install || die "install failed"
 
 	dodoc README README_daemon
-
-	newinitd  "${FILESDIR}"/cgred.init cgred
-	newinitd  "${FILESDIR}"/cgconfig.init cgconfig
-	newconfd  "${FILESDIR}"/cgred.confd cgred
-
-	insinto /etc/"${PN}"
-	doins "${S}/samples"/{cgconfig,cgrules}.conf
+	if use daemon;then
+		newinitd  "${FILESDIR}"/cgred.init cgred
+		newinitd  "${FILESDIR}"/cgconfig.init cgconfig
+		newconfd  "${FILESDIR}"/cgred.confd cgred
+	
+		insinto /etc/"${PN}"
+		doins "${S}/samples"/{cgconfig,cgrules}.conf
+	fi
 
 	rm -f "${D}"/usr/lib64/*.la
+	
+	if use pam;then
+		exeinto $(getpam_mod_dir)
+		doexe	"${D}"/usr/lib64/pam_cgroup.so.0.0.0
 
-	exeinto $(getpam_mod_dir)
-	doexe	"${D}"/usr/lib64/pam_cgroup.so.0.0.0
-
-	rm -fr "${D}"/usr/lib64/pam_*
+		rm -fr "${D}"/usr/lib64/pam_*
+	fi
 }
