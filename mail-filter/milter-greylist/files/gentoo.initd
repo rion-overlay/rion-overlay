@@ -4,9 +4,7 @@
 # $Header: Exp $
 
 depend() {
-	need net 
-	use mta logger dns dovecot openldap dkim-filter dns p0f dracd
-	before mta
+	use logger dns dovecot openldap dkim-filter dns p0f dracd sendmail
 	provide postfix_greylist
 }
 
