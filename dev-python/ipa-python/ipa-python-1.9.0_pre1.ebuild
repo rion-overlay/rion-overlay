@@ -3,11 +3,12 @@
 # $Header: $
 
 EAPI=2
+MY_PV="1.9.0.pre1"
 inherit distutils
 
 DESCRIPTION="Set of libraries common to IPA clients and servers"
 HOMEPAGE="http://www.freeipa.org"
-SRC_URI="http://freeipa.org/downloads/src/freeipa-1.2.1.tar.gz"
+SRC_URI="http://freeipa.org/downloads/src/freeipa-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,13 +19,13 @@ DEPEND=">=dev-python/python-ldap-2.2.1[sasl,ssl]
 			dev-python/python-krbV
 		|| ( dev-python/acutil app-admin/authconfig )"
 RDEPEND="${DEPEND}"
-S="${WORKDIR}"/"freeipa-${PV}/${PN}"
+S="${WORKDIR}"/"freeipa-${MY_PV}/ipapython"
 
-src_configure(){
+src_prepare(){
 # Set version
-sed -e s/__VERSION__/1.2.1/ version.py.in > version.py ||die
+	sed -e s/__VERSION__/1.9.0/ version.py.in > version.py ||die
+	perl -pi -e "s:__NUM_VERSION__:122:" version.py ||die
 
-	perl -pi -e "s:__NUM_VERSION__:121:" version.py ||die
-
-	mv setup.py.in setup.py
+	cp setup.py.in setup.py || die
+distutils_src_prepare
 }
