@@ -65,22 +65,20 @@ src_unpack() {
 	! use linguas_ru && unpack "psi-0.13-20090817_langpack_for_packagers.zip"
 
 	git_src_unpack
-	cd ${S}
-	git submodule update --init
 
 	S="${WORKDIR}/patches"
 	ESVN_REPO_URI="${PATCHES_URI}"
 	subversion_src_unpack
 	use iconsets && (
-	S="${WORKDIR}/${P}/iconsets"
-	ESVN_REPO_URI="${ICONS_URI}"
-	ESVN_PROJECT=psiplus/iconsets
-	subversion_src_unpack
+		S="${WORKDIR}/${P}/iconsets"
+		ESVN_REPO_URI="${ICONS_URI}"
+		ESVN_PROJECT=psiplus/iconsets
+		subversion_src_unpack
 	) || (
-	unpack_default_iconset psiplus
-	unpack_default_iconset clients
-	unpack_default_iconset moods
-	unpack_default_iconset activities
+		unpack_default_iconset psiplus
+		unpack_default_iconset clients
+		unpack_default_iconset moods
+		unpack_default_iconset activities
 	)
 }
 
