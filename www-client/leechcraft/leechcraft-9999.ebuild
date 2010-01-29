@@ -13,7 +13,7 @@ HOMEPAGE="http://leechcraft.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="kde +browser +torrent +rss -nufella +dbus lyrics +history
+IUSE="kde +browser +torrent +rss -nufella +dbus lyrics +history +kinotify
 	+mediaplayer +irc +networkmonitor +newlife sqlite +opensearch debug +ftp
 	+directconnect postgres sitedownloader +vgrabber python text_editor"
 # browser torrent rss/agregator nufella bdus
@@ -32,6 +32,7 @@ DEPEND="app-arch/bzip2
 		torrent? ( =net-libs/rb_libtorrent-0.15*[crypt] )
 		mediaplayer? ( || ( media-sound/phonon x11-libs/qt-phonon:4 ) )
 		browser? ( >=x11-libs/qt-webkit-4.6 )
+		kinotify? ( >=x11-libs/qt-webkit-4.6 )
 		python? ( dev-python/PythonQt )"
 RDEPEND="${DEPEND}"
 
@@ -47,7 +48,7 @@ src_unpack() {
 src_prepare() {
 	python_set_active_version 2
 	python_version
-	sed -e "s:PythonVer 2.5:PythonVer ${PYVER}:" -i src/plugins/pylc/CMakeLists.txt
+	sed -e "s:PythonVer 2.6:PythonVer ${PYVER}:" -i src/plugins/pylc/CMakeLists.txt|| die
 }
 
 src_configure() {
@@ -73,10 +74,12 @@ src_configure() {
 				$(cmake-utils_use_enable directconnect DCMINATOR)
 				$(cmake-utils_use_enable sitedownloader YASD)
 				$(cmake-utils_use_enable kde ANHERO)
+				$(cmake-utils_use_enable kinotify KINOTIFY)
 				$(cmake-utils_use_enable vgrabber VGRABBER)
 				$(cmake-utils_use_enable newlife NEWLIFE)
 				$(cmake-utils_use_enable python PYLC)
 				$(cmake-utils_use_enable text_editor POC)"
+
 	[ "$(get_libdir)" = "lib64" ] && mycmakeargs="${mycmakeargs}
 				-DRESPECTLIB64=True"
 	S="${WORKDIR}/${P}/src"
