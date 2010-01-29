@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit gnome2-utils distutils
 
-DESCRIPTION="Integrated version control support for Nautilus"
+DESCRIPTION="Integrated version control support for your desktop"
 HOMEPAGE="http://rabbitvcs.org"
 
 MY_PV=${PV/_beta/-beta-}
