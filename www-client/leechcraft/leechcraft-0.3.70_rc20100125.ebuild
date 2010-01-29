@@ -17,7 +17,6 @@ IUSE="kde +browser +torrent +rss -nufella +dbus lyrics +history
 	+mediaplayer +irc +networkmonitor +newlife sqlite +opensearch debug +ftp
 	+directconnect postgres sitedownloader +vgrabber python text_editor"
 
-# browser torrent rss/agregator nufella bdus
 DEPEND="app-arch/bzip2
 		>=dev-libs/boost-1.39
 		>=x11-libs/qt-core-4.6
@@ -34,12 +33,16 @@ DEPEND="app-arch/bzip2
 		mediaplayer? ( || ( media-sound/phonon x11-libs/qt-phonon:4 ) )
 		browser? ( >=x11-libs/qt-webkit-4.6 )
 		python? ( dev-python/PythonQt )"
+
 RDEPEND="${DEPEND}"
-S="${WORKDIR}/${P}src"
+
+S="${WORKDIR}/${P}"/src
+
 pkg_setup() {
 	confutils_require_any postgres sqlite
 	use python && python_need_rebuild
 }
+
 src_prepare() {
 	python_set_active_version 2
 	python_version
@@ -73,14 +76,15 @@ src_configure() {
 				$(cmake-utils_use_enable newlife NEWLIFE)
 				$(cmake-utils_use_enable python PYLC)
 				$(cmake-utils_use_enable text_editor POC)"
+
 	[ "$(get_libdir)" = "lib64" ] && mycmakeargs="${mycmakeargs}
 				-DRESPECTLIB64=True"
-#	S="${WORKDIR}/${P}/src"
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
+
 	doicon resources/leechcraft.png
 	make_desktop_entry leechcraft "LeechCraft" leechcraft.png
 }
