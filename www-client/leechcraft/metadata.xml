@@ -23,5 +23,6 @@
 	 <flag name='vgrabber'>Add vgrabber plugin</flag>
 	 <flag name='nufella'>Add Gnutella/Gnutella2 client plugin</flag>
 	 <flag name='text_editor'>Add text editor plugin</flag>
+	 <flag name='knotify'> </flag>
 </use>
 </pkgmetadata>
