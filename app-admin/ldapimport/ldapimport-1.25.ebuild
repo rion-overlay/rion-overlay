@@ -5,7 +5,9 @@
 EAPI="2"
 
 DESCRIPTION="A set of scripts to migrate from OpenLDAP to 389(FDS)"
-HOMEPAGE="http://wiki.babel.com.au/index.php?area=Linux%20Projects&page=LdapImport#toc3"
+HOMEPAGE="http://wiki.babel.com.au/index.php?area=Linux%20Projects&page=LdapImport#toc3
+		http://directory.fedoraproject.org/wiki/Howto:OpenLDAPMigration
+		http://directory.fedoraproject.org/wiki/UidFixup"
 SRC_URI="http://wiki.babel.com.au/uploads/LdapImport.tgz
 		http://directory.fedoraproject.org/download/ol2rhds.pl
 		http://directory.fedoraproject.org/download/ol-schema-migrate.pl
@@ -34,6 +36,7 @@ src_install() {
 	dobin "${DISTDIR}"/ol-macro-expand.pl
 	dobin "${DISTDIR}"/ol-schema-migrate.pl
 	dobin LdapImport.pl
+	dobin "${FILESDIR}"/UidFixup.pl
 
 	perlinfo
 
