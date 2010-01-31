@@ -9,15 +9,15 @@ inherit gnome2-utils distutils
 DESCRIPTION="Integrated version control support for your desktop"
 HOMEPAGE="http://rabbitvcs.org"
 
-MY_PV=${PV/_beta/-beta-}
+MY_PV=${PV/_/.}
 FRONTENDS="cli gedit nautilus thunar"
 IUSE="diff ${FRONTENDS}"
-SRC_URI="http://rabbitvcs.googlecode.com/files/${PN}-${MY_PV}.tar.gz"
+SRC_URI="http://rabbitvcs.googlecode.com/files/${PN}-core-${MY_PV}.tar.gz"
 for fe in $FRONTENDS; do 
 	SRC_URI="${SRC_URI} ${fe}? (
 	http://rabbitvcs.googlecode.com/files/${PN}-${fe}-${MY_PV}.tar.gz )"
 done
-S="${WORKDIR}/${PN}-${MY_PV}"
+S="${WORKDIR}/${PN}-core-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
