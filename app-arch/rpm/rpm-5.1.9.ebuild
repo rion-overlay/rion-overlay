@@ -1,6 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/rpm/rpm-5.1.6.ebuild,v 1.3 2009/09/05 13:26:49 tove Exp $
+# $Header: $
+
+EAPI="2"
 
 inherit multilib distutils python
 
@@ -13,7 +15,7 @@ SRC_URI="http://rpm5.org/files/rpm/rpm-5.1/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="berkdb bzip2 doc lua magic neon nls pcre perl python selinux sqlite"
 
 #	dmalloc? ( dev-libs/dmalloc )
@@ -46,16 +48,14 @@ pkg_setup () {
 	ewarn "    rpm --initdb"
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	rm -rf file xar #db
 	sed -i \
 		-e '/^pkgconfigdir/s:=.*:=$(libdir)/pkgconfig:' \
 		scripts/Makefile.in || die
 }
 
-src_compile() {
+src_configure() {
 #		$(use_with dmalloc) \
 #		$(use_with efence) \
 #		$(use_with keyutils) \
@@ -79,7 +79,6 @@ src_compile() {
 		--with-path-lib="/usr/$(get_libdir)/rpm" \
 		--with-python-lib-dir="/usr/$(get_libdir)/python${PYVER}" \
 		|| die "econf failed"
-	emake || die "emake failed"
 }
 
 src_install() {
