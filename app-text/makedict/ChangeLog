@@ -1,6 +1,10 @@
 # ChangeLog for app-text/makedict
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -makedict-0.3.1_beta1.ebuild:
+  dont fix not inherit cmake.eclass
 
   05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   makedict-0.3.1_beta1.ebuild, +metadata.xml:
