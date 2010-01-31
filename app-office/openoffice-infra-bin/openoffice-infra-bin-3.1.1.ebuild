@@ -1,6 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-infra-bin/openoffice-infra-bin-3.1.0.ebuild,v 1.2 2008/10/17 20:30:41 maekke Exp $
+# $Header: $
+
+EAPI="2"
 
 inherit eutils fdo-mime rpm multilib
 
