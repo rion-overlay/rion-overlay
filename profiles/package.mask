@@ -1,3 +1,8 @@
+# 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# masked stub ebuild: not QA , bad depend,
+# переписать надо полностью
+app-text/makedict
+
 # 23 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask due change build system and not simply bump
 #=net-nds/389-admin-1.1.10_alpha*
