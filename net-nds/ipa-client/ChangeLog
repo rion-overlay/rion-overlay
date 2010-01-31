@@ -1,6 +1,10 @@
 # ChangeLog for net-nds/ipa-client
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -ipa-client-1.2.1.ebuild:
+  drop
 
   22 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   ipa-client-1.2.2.ebuild, +files/1.2.2/ipa-client-1.2.2-gentoofy.patch:

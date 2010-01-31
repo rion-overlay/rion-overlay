@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 MODULE_AUTHOR=MARKSTOS
 inherit perl-module
 
@@ -20,7 +22,7 @@ DEPEND="
 	>=dev-perl/MIME-Types-1.005
 	dev-perl/regexp-common
 	>=dev-perl/Perl6-Junction-1.10
-	dev-perl/Email-Valid
-"
+	dev-perl/Email-Valid"
+
 RDEPEND="${DEPEND}"
 SRC_TEST="do"

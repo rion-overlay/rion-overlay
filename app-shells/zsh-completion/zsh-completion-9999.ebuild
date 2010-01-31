@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:  $
 
+EAPI="2"
+
 inherit git
 
 DESCRIPTION="Programmable Completion for zsh (includes emerge and ebuild commands)"
 HOMEPAGE="http://gzc.tuxfamily.org/"
-
 EGIT_REPO_URI="git://git.tuxfamily.org/gitroot/gzc/completion.git"
 EGIT_TREE="HEAD" # SHA1 id
 
@@ -15,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=""
+RDEPEND="${DEPEND}"
 DEPEND="app-shells/zsh"
 
 src_install() {
