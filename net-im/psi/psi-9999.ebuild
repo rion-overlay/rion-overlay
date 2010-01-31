@@ -25,7 +25,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="crypt dbus debug doc enchant +jingle iconsets spell ssl xscreensaver powersave
-plugins whiteboarding webkit"
+plugins viewmenu whiteboarding webkit"
 RESTRICT="test"
 
 LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
@@ -91,6 +91,9 @@ src_prepare() {
 
 	epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
+	epatch "${WORKDIR}/patches"/psi-add-affiliation-icons.patch
+	epatch "${WORKDIR}/patches/dev"/psi-autojoin-dialog-tab-autofoucus-off.patch
+	use viewmenu && "${WORKDIR}/patches/dev"/psi-add-view-menu-to-tray-menu.patch
 
 	subversion_wc_info
 	sed "s/.xxx/.${ESVN_WC_REVISION}/" -i src/applicationinfo.cpp
