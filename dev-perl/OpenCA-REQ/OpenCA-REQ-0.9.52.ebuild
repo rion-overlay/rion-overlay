@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit perl-openca
 
 DESCRIPTION="Perl extension to easily manage Cert REQUESTs"
@@ -10,7 +12,7 @@ SRC_URI="mirror://cpan/authors/id/M/MS/MSCHOUT/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

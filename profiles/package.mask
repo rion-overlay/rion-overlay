@@ -1,3 +1,23 @@
+# 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# masked for removal in 60 days
+# Old && not EAPI=2&&died ebuild
+=dev-util/rabbitvcs-0.12*
+media-gfx/phatch
+media-sound/alsoft-conf
+media-sound/freqtweak
+media-tv/python-xmltv
+media-tv/zapping
+net-im/gluxi
+
+# Vlastimil Babka <caster@gentoo.org> (23 Jan 2010)
+# Time to go due to EOL and security, bug #287615.
+# Will be moved to java-overlay in 30 days.
+# I have also removed in overlay
+=dev-java/ibm-jdk-bin-1.4*
+=dev-java/jrockit-jdk-bin-1.4*
+=virtual/jdk-1.4*
+=virtual/jre-1.4*
+
 # 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # not tested
 ~dev-util/febootstrap-2.6
@@ -6,13 +26,6 @@
 # masked stub ebuild: not QA , bad depend,
 # переписать надо полностью
 app-text/makedict
-
-# 23 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-# mask due change build system and not simply bump
-#=net-nds/389-admin-1.1.10_alpha*
-#>=www-apache/mod_admserv-1.1.10
-#>=www-apache/mod_restartd-1.1.10
-
 
 # 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing - not comlete
@@ -23,9 +36,6 @@ net-dialup/ipa-radius-server
 net-nds/ipa-client
 net-nds/ipa-server
 
-# 9 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-# mask for testing - not complete tested
-#=mail-filter/milter-greylist-4.3.4
 
 # 27 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # initial commit, mask for testing

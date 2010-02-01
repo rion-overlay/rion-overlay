@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit openca-perl
 
 DESCRIPTION="Perl extension for support OpenCA CGI session"
@@ -11,4 +13,5 @@ IUSE=""
 DEPEND="dev-perl/CGI-Session
 		dev-perl/OpenCA-Log"
 RDEPEND="${DEPEND}"
+
 openca-perl_set_s
