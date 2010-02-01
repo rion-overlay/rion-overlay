@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+EAPI="2"
+
 DESCRIPTION="Meta package for net-im/psi plugins"
 HOMEPAGE="http://code.google.com/p/psi-dev"
 SRC_URI=""
