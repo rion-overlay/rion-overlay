@@ -62,7 +62,7 @@ pkg_setup() {
 
 src_configure() {
 	S=${WORKDIR}/${PN}
-	cd ${S}
+	cd "${S}"
 
 	local myconf
 

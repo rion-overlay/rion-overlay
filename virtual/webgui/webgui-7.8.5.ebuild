@@ -5,11 +5,9 @@
 EAPI="2"
 
 DESCRIPTION="All depend for Web-Gui CMS"
-HOMEPAGE="http://slepnoga.googlecode.com"
 SRC_URI=""
 
 SLOT="${PV}"
-LICENSE="as-is"
 KEYWORDS="~amd64 ~x86"
 
 IUSE=""
