@@ -1,13 +1,14 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca-gnupg/qca-gnupg-9999.ebuild,v1.0 2008/03/26 11:32:19 rion Exp $
+# $Header: $
+
+EAPI="2"
 
 HOMEPAGE="http://delta.affinix.com/qca/"
-
 LICENSE="GPL-2"
-
 KEYWORDS=""
 
+DEPEND=""
 RDEPEND="app-crypt/gnupg"
 
 inherit qca-plugin
