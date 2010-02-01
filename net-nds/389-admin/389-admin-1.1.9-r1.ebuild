@@ -57,11 +57,11 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable debug) \
-	--with-fhs \
-	--with-apr-config \
-	--with-apxs=${APXS} \
-	--with-httpd=${APACHE_BIN} \
-	|| die "econf failed"
+		--with-fhs \
+		--with-apr-config \
+		--with-apxs=${APXS} \
+		--with-httpd=${APACHE_BIN} \
+			|| die "econf failed"
 }
 
 src_install () {
