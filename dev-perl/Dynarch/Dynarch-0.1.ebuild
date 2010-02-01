@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
 inherit perl-module
 
 DESCRIPTION="Required perl module for Xuheki web mail client"
@@ -15,4 +16,3 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
-RESTRICT="mirror"

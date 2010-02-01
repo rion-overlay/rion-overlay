@@ -12,7 +12,6 @@
 # modules requred  in OpenCA packages.It set ${S}
 # OpenCA modules included in openca tarball only
 
-EAPI=2
 
 inherit perl-module
 
@@ -21,7 +20,6 @@ DEPEND="sys-apps/sed
 DESCRIPTION="Based on the $ECLASS  eclass"
 HOMEPAGE="http://www.openca.org/"
 SRC_URI="mirror://sourceforge/openca/openca-base-1.0.2.tar.gz"
-RESTRICT="mirror"
 SLOT=0
 
 # @FUNCTION: openca-perl_set_s

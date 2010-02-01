@@ -2,13 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit openca-perl
 
 DESCRIPTION="Perl Crypto Extention to OpenSSL"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

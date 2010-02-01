@@ -14,8 +14,6 @@
 # Only for CPAN modules, if you have internal OpenCA modules
 # included in openca tarball , use openca-perl eclass
 
-EAPI=2
-
 inherit perl-module
 
 
