@@ -17,7 +17,9 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="x11-libs/qt-gui:4
+	x11-libs/qt-core:4
 	dev-libs/openssl
 	net-libs/libupnp"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	dev-util/pkgconfig
+	>=dev-util/cmake-2.6"
