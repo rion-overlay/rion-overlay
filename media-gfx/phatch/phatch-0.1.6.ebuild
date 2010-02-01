@@ -2,7 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: Exp $
 
-inherit distutils fdo-mime
+EAPI="2"
+NEED_PYTHON=2.5
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="2.4 3.*"
+
+inherit base distutils fdo-mime
 
 DESCRIPTION="Phatch is a simple to use cross-platform GUI Photo Batch Processor"
 HOMEPAGE="http://photobatch.stani.be/"
@@ -14,14 +19,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-lang/python
-	dev-python/wxpython
+DEPEND="dev-python/wxpython
 	dev-python/imaging"
 
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	distutils_src_unpack
+src_prepare() {
 	epatch "${FILESDIR}/${P}.patch"
 }
 
