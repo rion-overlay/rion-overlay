@@ -2,14 +2,7 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-  -makedict-0.3.1_beta1.ebuild:
-  dont fix not inherit cmake.eclass
-
-  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-  makedict-0.3.1_beta1.ebuild, +metadata.xml:
-  repoman fix
-
-  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> Manifest:
-  repoman fix
+  1 Feb 2010; Rion <dontsend@nospam.ru>
+  +makedict-0.4.1_beta1.ebuild:
+  moved to new group. so lets consider its new package.
 
