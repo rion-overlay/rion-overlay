@@ -27,8 +27,8 @@ RDEPEND="dev-python/nautilus-python
 		dev-python/pysvn
 		diff? ( dev-util/meld )"
 
-src_unpack() {
-	distutils_src_unpack
+src_prepare() {
+	distutils_src_prepare
 
 	# we should not do gtk-update-icon-cache from setup script
 	# we prefer portage for that

@@ -16,7 +16,7 @@ MY_PV=${PV/_/.}
 FRONTENDS="cli gedit nautilus thunar"
 IUSE="diff spell ${FRONTENDS}"
 SRC_URI="http://rabbitvcs.googlecode.com/files/${PN}-core-${MY_PV}.tar.gz"
-for fe in $FRONTENDS; do 
+for fe in $FRONTENDS; do
 	SRC_URI="${SRC_URI} ${fe}? (
 	http://rabbitvcs.googlecode.com/files/${PN}-${fe}-${MY_PV}.tar.gz )"
 done
@@ -40,8 +40,8 @@ PDEPEND="diff? ( dev-util/meld )
 			dev-python/dbus-python )
 		spell? ( dev-python/gtkspell-python )"
 
-src_unpack() {
-	distutils_src_unpack
+src_prepare() {
+	distutils_src_prepare
 
 	# we should not do gtk-update-icon-cache from setup script
 	# we prefer portage for that
