@@ -43,10 +43,6 @@ src_configure() {
 
 }
 
-src_compile() {
-	emake || die
-}
-
 src_install() {
 	mv .libs/libmodnss.so .libs/"${PN}".so || die
 

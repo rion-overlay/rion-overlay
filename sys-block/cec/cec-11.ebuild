@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPU="2"
-
-inherit eutils
+EAPI="2"
 
 DESCRIPTION="Coraid Ethernet Console"
 HOMEPAGE="http://sourceforge.net/projects/aoetools/"

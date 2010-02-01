@@ -1,30 +1,28 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/vblade/vblade-18.ebuild,v 1.1 2008/08/03 23:53:19 caleb Exp $
+# $Header: $
+
+EAPI="2"
 
 inherit eutils
 
 DESCRIPTION="vblade exports a block device using AoE"
 HOMEPAGE="http://sf.net/projects/aoetools/"
-#SRC_URI="mirror://sourceforge/aoetools/${P}.tar.gz"
 SRC_URI="mirror://sourceforge/aoetools/${P}.tgz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-DEPEND="virtual/libc"
+
+DEPEND=""
 RDEPEND="${DEPEND}
 		sys-apps/util-linux"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	# messy tarball
 	make clean  || die "Failed to clean up source"
 	sed -i 's,^CFLAGS.*,CFLAGS += -Wall,' makefile || die "Failed to clean up makefile"
-}
-src_compile() {
-	emake || die "emake failed"
 }
 
 src_install() {

@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:$
 
+EAPI="2"
+
 inherit eutils toolchain-funcs versionator
 
 MY_P="${PN}-$(get_version_component_range 1-2)-PR$(get_version_component_range 3)"
@@ -19,10 +21,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	epatch "${FILESDIR}/${P}"-external-md5sum-quotation.patch
 	if use md5sum-external; then
 		sed -i -e 's/^#EXTERNAL_MD5[[:blank:]]*= /EXTERNAL_MD5 = /g' \
