@@ -4,7 +4,7 @@
 =dev-util/rabbitvcs-0.12*
 media-gfx/phatch
 media-sound/alsoft-conf
-media-sound/freqtweak
+~media-sound/freqtweak-0.7.2
 media-tv/python-xmltv
 media-tv/zapping
 net-im/gluxi
