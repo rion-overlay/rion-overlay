@@ -6,12 +6,9 @@
   <email>rion4ik@gmail.com</email>
  <description>overlay maintainer</description> 
 </maintainer>
- <longdescription>Integrated version control support for Nautilus
- An extension to Nautilus to allow better integration with various source
- control systems. RabbitVCS adds version control related commands to the
- Nautilus context menu, and controlled directories will be detected
- automatically and decorated with appropriate emblems. It is similar to the
- TortoiseSVN project on Windows.</longdescription> 
+ <longdescription>RabbitVCS is a set of graphical tools written to provide
+ simple and straightforward access to the version control systems you use.
+ RabbitVCS is inspired by TortoiseSVN and others.</longdescription> 
 <use>
 <flag name='diff'>Use for diff command<pkg>dev-util/meld</pkg></flag>
 <flag name='cli'>Eanble console based frontend</flag>
