@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
-RDEPEND=" x11-libs/qt-gui:4
+RDEPEND="x11-libs/qt-gui:4
 	>=dev-libs/libxml2-2.4.22
 	>=net-p2p/dclib-0.3.23[ssl]
 	dev-libs/openssl"
