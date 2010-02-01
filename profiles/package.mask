@@ -9,7 +9,6 @@
 # 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # masked for removal in 60 days
 # Old && not EAPI=2&&died ebuild
-media-gfx/phatch
 ~media-sound/freqtweak-0.7.2
 net-im/gluxi
 
@@ -28,7 +27,7 @@ net-im/gluxi
 
 # 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # masked stub ebuild: not QA , bad depend,
-# переписать надо полностью
+# пускай пока тут побудет, пока до всех не допрет что оно переехало
 app-text/makedict
 
 # 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
