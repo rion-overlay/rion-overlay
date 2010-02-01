@@ -2,24 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit bzr
+EAPI="2"
 
-DESCRIPTION="consolidated menu for gnome"
+DESCRIPTION="Consolidated menu for gnome"
 HOMEPAGE="https://launchpad.net/gnomenu"
-EBZR_REPO_URI="lp:gnomenu"
+SRC_URI="http://launchpad.net/gnomenu/trunk/2.4/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-lang/python-2.5"
-RDEPEND="${DEPEND}
-	>=dev-python/pyxdg-0.17-r2
+DEPEND=""
+RDEPEND=">=dev-python/pyxdg-0.17-r2
 	dev-python/pycairo
 	dev-python/python-xlib
 	gnome-extra/deskbar-applet
 	dev-python/gconf-python"
+
+S="${WORKDIR}/${PN}"
 
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
