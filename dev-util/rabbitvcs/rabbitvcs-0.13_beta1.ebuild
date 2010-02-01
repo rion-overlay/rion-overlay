@@ -11,7 +11,7 @@ HOMEPAGE="http://rabbitvcs.org"
 
 MY_PV=${PV/_/.}
 FRONTENDS="cli gedit nautilus thunar"
-IUSE="diff ${FRONTENDS}"
+IUSE="diff spell ${FRONTENDS}"
 SRC_URI="http://rabbitvcs.googlecode.com/files/${PN}-core-${MY_PV}.tar.gz"
 for fe in $FRONTENDS; do 
 	SRC_URI="${SRC_URI} ${fe}? (
@@ -34,7 +34,8 @@ PDEPEND="diff? ( dev-util/meld )
 		nautilus? ( dev-python/nautilus-python
 			dev-python/dbus-python )
 		thunar? ( dev-python/thunarx-python
-			dev-python/dbus-python )"
+			dev-python/dbus-python )
+		spell? ( dev-python/gtkspell-python )"
 
 src_unpack() {
 	distutils_src_unpack
