@@ -1,0 +1,32 @@
+diff -r 70c11aa99421 libguestfs/configure.ac
+--- a/libguestfs/configure.ac	Fri Jan 22 03:56:18 2010 +0200
++++ b/libguestfs/configure.ac	Fri Jan 22 04:12:05 2010 +0200
+@@ -284,28 +284,6 @@
+     fi
+   fi
+   DIST="REDHAT"
+-else
+-  # check for debootstrap and debirf
+-  AC_CHECK_PROG([DEBOOTSTRAP],
+-        [debootstrap],[debootstrap],[no])
+-  test "x$DEBOOTSTRAP" = "xno" && \
+-        AC_MSG_ERROR([Either febootstrap or debootstrap must be installed])
+-  AC_CHECK_PROG([DEBIRF],[debirf],[debirf],[no])
+-  test "x$DEBIRF" = "xno" &&
+-        AC_MSG_ERROR([debirf must be installed])
+-  DIST="DEBIAN"
+-  case "$host_cpu" in
+-      *86)
+-          DEBIAN_KERNEL_ARCH=486
+-          ;;
+-      x86_64)
+-          DEBIAN_KERNEL_ARCH=amd64
+-          ;;
+-      *)
+-         DEBIAN_KERNEL_ARCH=$host_cpu
+-         ;;
+-   esac
+-   AC_SUBST(DEBIAN_KERNEL_ARCH)
+ fi
+ AC_SUBST(DIST)
+ 
