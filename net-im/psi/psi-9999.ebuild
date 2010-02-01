@@ -91,8 +91,10 @@ src_prepare() {
 
 	epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
-	epatch "${WORKDIR}/patches"/psi-add-affiliation-icons.patch
-	epatch "${WORKDIR}/patches/dev"/psi-autojoin-dialog-tab-autofoucus-off.patch
+	# epatch "${WORKDIR}/patches"/psi-add-affiliation-icons.patch invalid file
+	# epatch \
+	# "${WORKDIR}/patches/dev"/psi-autojoin-dialog-tab-autofoucus-off.patch
+	# buggy
 	use viewmenu && "${WORKDIR}/patches/dev"/psi-add-view-menu-to-tray-menu.patch
 
 	subversion_wc_info
