@@ -11,10 +11,7 @@
 # Old && not EAPI=2&&died ebuild
 =dev-util/rabbitvcs-0.12*
 media-gfx/phatch
-media-sound/alsoft-conf
 ~media-sound/freqtweak-0.7.2
-media-tv/python-xmltv
-media-tv/zapping
 net-im/gluxi
 
 # Vlastimil Babka <caster@gentoo.org> (23 Jan 2010)
