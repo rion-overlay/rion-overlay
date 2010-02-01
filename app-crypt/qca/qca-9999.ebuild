@@ -13,7 +13,7 @@ ESVN_REPO_URI="svn://websvn.kde.org:443/home/kde/trunk/kdesupport/qca"
 LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS=""
-IUSE="debug doc examples"
+IUSE="aqua debug doc examples"
 RESTRICT="test"
 
 DEPEND="sys-devel/qconf
@@ -25,19 +25,29 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	qconf
 	epatch "${FILESDIR}"/${P}-pcfilespath.patch
+	use aqua && sed -i \
+		-e "s|QMAKE_LFLAGS_SONAME =.*|QMAKE_LFLAGS_SONAME = -Wl,-install_name,|g" \
+		src/src.pro
 }
 
 src_configure() {
+	use prefix || EPREFIX=
+
 	_libdir=$(get_libdir)
 
+	# Ensure proper rpath
+	export EXTRA_QMAKE_RPATH="${EPREFIX}/usr/${_libdir}/qca2"
+
 	./configure \
-		--prefix=/usr \
-		--qtdir=/usr \
-		--includedir="/usr/include/qca2" \
-		--libdir="/usr/${_libdir}/qca2" \
+		--prefix="${EPREFIX}"/usr \
+		--qtdir="${EPREFIX}"/usr \
+		--includedir="${EPREFIX}"/usr/include/qca2 \
+		--libdir="${EPREFIX}"/usr/${_libdir}/qca2 \
+		--certstore-path="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt \
 		--no-separate-debug-info \
 		--disable-tests \
 		--$(use debug && echo debug || echo release) \
+		--no-framework \
 		|| die "configure failed"
 
 	eqmake4
@@ -48,7 +58,7 @@ src_install() {
 	dodoc README TODO || die "dodoc failed"
 
 	cat <<-EOF > "${WORKDIR}"/44qca2
-	LDPATH=/usr/${_libdir}/qca2
+	LDPATH="${EPREFIX}/usr/${_libdir}/qca2"
 	EOF
 	doenvd "${WORKDIR}"/44qca2 || die
 
@@ -60,4 +70,9 @@ src_install() {
 		insinto /usr/share/doc/${PF}/
 		doins -r "${S}"/examples || die "Failed to install examples"
 	fi
+
+	# add the proper rpath for packages that do CONFIG += crypto
+	echo "QMAKE_RPATHDIR += \"${EPREFIX}/usr/${_libdir}/qca2\"" >> \
+		"${D%/}${EPREFIX}/usr/share/qt4/mkspecs/features/crypto.prf" \
+		|| die "failed to add rpath to crypto.prf"
 }
