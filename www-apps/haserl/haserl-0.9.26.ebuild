@@ -2,10 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
+inherit eutils
+
 DESCRIPTION="HTML And Shell Embedded Report Language"
 HOMEPAGE="http://haserl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-RESTRICT="mirror"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
@@ -15,9 +19,8 @@ RDEPEND="lua? ( dev-lang/lua )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-src_compile() {
+src_configure() {
 	econf $(use_with lua)
-	emake || die "emake failed"
 }
 
 src_install() {

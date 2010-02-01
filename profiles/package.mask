@@ -1,4 +1,8 @@
 # 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# not tested
+~dev-util/febootstrap-2.6
+
+# 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # masked stub ebuild: not QA , bad depend,
 # переписать надо полностью
 app-text/makedict

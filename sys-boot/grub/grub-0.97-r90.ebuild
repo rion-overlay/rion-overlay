@@ -1,6 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.97-r9.ebuild,v 1.5 2009/07/04 18:46:05 robbat2 Exp $
+# $Header: $
+
+EAPI="2"
 
 # XXX: we need to review menu.lst vs grub.conf handling.  We've been converting
 #      all systems to grub.conf (and symlinking menu.lst to grub.conf), but
@@ -35,10 +37,7 @@ pkg_setup() {
 	esac
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	# patch breaks booting for some people #111885
 	rm "${WORKDIR}"/patch/400_*
 
@@ -77,7 +76,7 @@ src_unpack() {
 	fi
 }
 
-src_compile() {
+src_configure() {
 	filter-flags -fPIE #168834
 
 	use amd64 && multilib_toolchain_setup x86
@@ -152,6 +151,10 @@ src_compile() {
 	emake || die "making regular stuff"
 }
 
+src_compile() {
+	: ;
+}
+
 src_test() {
 	# non-default block size also give false pass/fails.
 	unset BLOCK_SIZE
@@ -168,7 +171,7 @@ src_install() {
 	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 	newdoc docs/menu.lst grub.conf.sample
 	dodoc "${FILESDIR}"/grub.conf.gentoo
-	prepalldocs
+#	prepalldocs <- deprecated and commented in eutils.eclass
 
 	[ -n "${GRUB_STATIC_PACKAGE_BUILDING}" ] && \
 		mv \
