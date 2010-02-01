@@ -2,9 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
+
 DESCRIPTION="Dictionary converter"
 HOMEPAGE="http://sourceforge.net/projects/xdxf/"
-SRC_URI="http://downloads.sourceforge.net/xdxf/makedict-0.3.tar.bz2"
+
+MY_PV=${PV/_/-}
+SRC_URI="mirror://sourceforge/xdxf/${PN}-${MY_PV}-Source.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"
@@ -16,5 +20,5 @@ RDEPEND=""
 
 src_install()
 {
-	emake install
+	emake install || die "install failed"
 }
