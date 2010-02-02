@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI="2"
-
+NEED_PYTHON="2.5"
 inherit distutils
 
 DESCRIPTION="A high-level Python wrapper for Kerberos (GSSAPI) operations"
@@ -19,3 +19,9 @@ DEPEND="app-crypt/mit-krb5"
 RDEPEND="${DEPEND}"
 
 python_need_rebuild
+DOCS="README.txt"
+
+src_compile() {
+	python_set_active_version 2
+	distutils_src_compile
+}
