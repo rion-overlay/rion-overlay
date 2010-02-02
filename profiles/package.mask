@@ -27,6 +27,7 @@ net-im/gluxi
 
 # 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # masked stub ebuild: not QA , bad depend,
+# 1 Feb 2010; fixed && moved - rion4ik
 # пускай пока тут побудет, пока до всех не допрет что оно переехало
 app-text/makedict
 
