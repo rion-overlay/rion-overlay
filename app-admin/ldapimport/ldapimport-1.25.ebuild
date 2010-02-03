@@ -19,7 +19,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-perl/perl-ldap[ssl,sasl]
-		dev-perl/Log-Log4perl"
+		dev-perl/Log-Log4perl
+		dev-perl/log-dispatch"
 
 RDEPEND="${DEPEND}"
 
