@@ -3,6 +3,9 @@
 # $Header: $
 
 EAPI="2"
+PYTHON_DEPEND="2"
+
+inherit python
 
 DESCRIPTION="Python bindings for the Thunar file manager"
 HOMEPAGE="http://code.google.com/p/rabbitvcs"
@@ -18,6 +21,10 @@ DEPEND=">=xfce-base/thunar-0.4.0
 	>=dev-python/gnome-python-2.12
 	>=dev-python/pygobject-2.16"
 RDEPEND="${DEPEND}"
+
+pkg_setup() {
+	python_set_active_version 2
+}
 
 src_install() {
 	emake DESTDIR="${D}" install || die
