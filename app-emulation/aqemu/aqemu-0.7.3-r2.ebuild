@@ -6,7 +6,7 @@ EAPI=2
 
 inherit qt4 flag-o-matic fdo-mime eutils
 
-DESCRIPTION="Graphical interface for QEMU emulator. Using Qt4."
+DESCRIPTION="Graphical interface for QEMU and KVM emulators. Using Qt4."
 HOMEPAGE="http://sourceforge.net/projects/aqemu/"
 SRC_URI="mirror://sourceforge/aqemu/${P}.tar.bz2"
 
