@@ -46,7 +46,8 @@ net-nds/ipa-server
 
 # 27 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
 # initial commit, mask for testing
-=net-wireless/madwimax-0.1.1-r10
+# test fail - deleted
+#=net-wireless/madwimax-0.1.1-r10
 
 # 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
 # mask for testing; не собирается, епта
