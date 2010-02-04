@@ -6,11 +6,6 @@
 # depend is profile masked
 =sys-app/yum-3.2.25
 
-# 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-# masked for removal in 60 days
-# Old && not EAPI=2&&died ebuild
-net-im/gluxi
-
 # Vlastimil Babka <caster@gentoo.org> (23 Jan 2010)
 # Time to go due to EOL and security, bug #287615.
 # Will be moved to java-overlay in 30 days.
