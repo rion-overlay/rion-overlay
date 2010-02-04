@@ -9,7 +9,6 @@
 # 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # masked for removal in 60 days
 # Old && not EAPI=2&&died ebuild
-~media-sound/freqtweak-0.7.2
 net-im/gluxi
 
 # Vlastimil Babka <caster@gentoo.org> (23 Jan 2010)
