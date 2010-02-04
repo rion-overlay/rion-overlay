@@ -15,9 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ipv6 bind +ssl ldap geoip spf dkim drac +p0f spamassassin sendmail dnsrbl postfix curl"
 
-COMMON_DEP="sendmail? ( mail-mta/sendmail
-						!!mail-filter/libmilter
-						)
+COMMON_DEP="sendmail? (
+				mail-mta/sendmail
+				!!mail-filter/libmilter
+				dkim? ( mail-filter/libdkim ) )
 			sys-libs/db
 			bind? ( net-dns/bind[ipv6?] )
 			ssl? ( dev-libs/openssl )
@@ -25,8 +26,7 @@ COMMON_DEP="sendmail? ( mail-mta/sendmail
 			curl? ( net-misc/curl[ipv6?] )
 			geoip? ( dev-libs/geoip )
 			spf? ( mail-filter/libspf2 )
-			dkim? ( mail-filter/dkim-milter[ipv6?] )
-			postfix? ( >=mail-mta/postfix-2.5[ipv6?]
+			postfix? (  >=mail-mta/postfix-2.5[ipv6?]
 						mail-filter/libmilter[ipv6?] )
 			drac? ( mail-client/drac )
 			net-mail/mailbase"
@@ -42,6 +42,7 @@ pkg_setup() {
 	confutils_require_one postfix sendmail
 	confutils_use_conflict postfix sendmail
 	confutils_use_conflict sendmail postfix
+	confutils_use_conflict postfix dkim
 
 	if use postfix ;then
 		einfo "Checking for postfix group ..."

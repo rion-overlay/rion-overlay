@@ -4,5 +4,5 @@
 
   04 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru> +libdkim-1.0.19.ebuild,
   +files/libdkim-extra-options.patch, +files/libdkim-gentoo.patch:
-  recommmit on sunrise
+  recommmit on sunrise #262919
 
