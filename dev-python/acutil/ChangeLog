@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Feb 2010; <slep@gentoo.org> -acutil-5.4.12.ebuild,
+  acutil-5.4.14.ebuild:
+  fix QA using python eclass
+
   12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-5.4.14.ebuild:
   add acutil-5.4.14.ebuild
 

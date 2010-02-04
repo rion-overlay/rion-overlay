@@ -3,6 +3,9 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+ 4 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
+ unmask freqtweak - migrate to eapi=2
+
  9 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
  mask media-video/tsMuxe*
 
