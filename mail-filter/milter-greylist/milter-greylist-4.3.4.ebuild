@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 bind +ssl ldap geoip spf dkim drac p0f spamassassin sendmail dnsrbl postfix curl"
+IUSE="ipv6 bind +ssl ldap geoip spf dkim drac +p0f spamassassin sendmail dnsrbl postfix curl"
 
 COMMON_DEP="sendmail? ( mail-mta/sendmail
 						!!mail-filter/libmilter
