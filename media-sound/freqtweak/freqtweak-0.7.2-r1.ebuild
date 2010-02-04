@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
+WX_GTK_VER="2.6"
+WANT_AUTICONF="2.5"
+WANT_AUTOMAKE="1.9"
+
 inherit eutils autotools wxwidgets flag-o-matic
 
 DESCRIPTION="FFT-based realtime audio spectral manipulation and display"
@@ -10,10 +16,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="=x11-libs/wxGTK-2.6*
+DEPEND="x11-libs/wxGTK:2.6[X]
 	>=sci-libs/fftw-3.0
 	=dev-libs/libsigc++-1.2*
 	dev-libs/libxml2
@@ -21,22 +27,16 @@ DEPEND="=x11-libs/wxGTK-2.6*
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/$P"-many-fixes.patch
 	eautoreconf
 }
 
-src_compile() {
-	WX_GTK_VER="2.6"
-	need-wxwidgets gtk2
-
+src_configure() {
 	append-flags -fno-strict-aliasing
 
 	econf \
 		--with-wxconfig-path=${WX_CONFIG} || die "econf failed"
-	emake || die "emake failed"
 }
 
 src_install() {
