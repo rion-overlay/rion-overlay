@@ -3,6 +3,7 @@
 # $Header: $
 
 EAPI="2"
+NEED_PYTHON="2.5"
 
 inherit  python qt4-r2
 
@@ -16,7 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test doc examples"
 
 COM_DEPEND="app-arch/zip
-		=dev-lang/python-2*
 		x11-libs/qt-core:4
 		x11-libs/qt-gui:4"
 DEPEND="${COM_DEPEND}
@@ -41,7 +41,7 @@ src_test() {
 
 src_install() {
 
-	# istall main dir
+	# install main dir
 	insinto usr/include/${PN}
 	doins -r src/*.h
 	doins -r src/gui/*.h

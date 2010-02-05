@@ -10,12 +10,6 @@ app-admin/pki-console
 # depend is profile masked
 =sys-app/yum-3.2.25
 
-# 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-# masked for removal in 60 days
-# Old && not EAPI=2&&died ebuild
-~media-sound/freqtweak-0.7.2
-net-im/gluxi
-
 # Vlastimil Babka <caster@gentoo.org> (23 Jan 2010)
 # Time to go due to EOL and security, bug #287615.
 # Will be moved to java-overlay in 30 days.
@@ -28,11 +22,6 @@ net-im/gluxi
 # 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # not tested
 ~dev-util/febootstrap-2.6
-
-# 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-# masked stub ebuild: not QA , bad depend,
-# пускай пока тут побудет, пока до всех не допрет что оно переехало
-app-text/makedict
 
 # 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing - not comlete
