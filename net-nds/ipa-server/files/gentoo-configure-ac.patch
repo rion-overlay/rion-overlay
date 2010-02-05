@@ -1,0 +1,47 @@
+--- configure.ac.orig	2009-08-30 03:07:34.000000000 +0300
++++ configure.ac	2009-08-30 03:08:46.000000000 +0300
+@@ -22,8 +22,8 @@
+ dnl ---------------------------------------------------------------------------
+ dnl - Check for NSPR
+ dnl ---------------------------------------------------------------------------
+-AC_CHECK_HEADER(nspr4/nspr.h)
+-if test "x$ac_cv_header_nspr4_nspr_h" = "xno" ; then
++AC_CHECK_HEADER(nspr/nspr.h)
++if test "x$ac_cv_header_nspr_nspr_h" = "xno" ; then
+ 	AC_MSG_ERROR([Required NSPR header not available (nspr-devel)])
+ fi
+ 
+@@ -31,10 +31,10 @@
+ dnl - Check for NSS
+ dnl ---------------------------------------------------------------------------
+ SAVE_CPPFLAGS=$CPPFLAGS
+-CPPFLAGS="-I/usr/include/nspr4"
+-AC_CHECK_HEADER(nss3/nss.h)
++CPPFLAGS="-I/usr/include/nspr"
++AC_CHECK_HEADER(nss/nss.h)
+ CPPFLAGS=$SAVE_CPPFLAGS
+-if test "x$ac_cv_header_nss3_nss_h" = "xno" ; then
++if test "x$ac_cv_header_nss_nss_h" = "xno" ; then
+ 	AC_MSG_ERROR([Required NSS header not available (nss-devel)])
+ fi
+ 
+@@ -44,7 +44,7 @@
+ 
+ # Need to hack CPPFLAGS to be able to correctly detetct slapi-plugin.h
+ SAVE_CPPFLAGS=$CPPFLAGS
+-CPPFLAGS="-I/usr/include/nspr4"
++CPPFLAGS="-I/usr/include/nspr"
+ AC_CHECK_HEADER(dirsrv/slapi-plugin.h)
+ CPPFLAGS=$SAVE_CPPFLAGS
+ 
+@@ -123,8 +123,8 @@
+ dnl The mozldap libraries are always needed because ipa-slapi-plugins/dna/ 
+ dnl will not build against OpenLDAP.
+ SAVE_CPPFLAGS=$CPPFLAGS
+-CPPFLAGS="-I/usr/include/nspr4 -I/usr/include/nss3"
+-AC_CHECK_HEADER(svrcore.h)
++CPPFLAGS="-I/usr/include/nspr -I/usr/include/nss"
++AC_CHECK_HEADER(svrcore/svrcore.h)
+ if test "x$ac_cv_header_svrcore_h" = "xno" ; then
+ 	AC_MSG_ERROR([Required svrcore header not available (svrcore-devel)])
+ fi
