@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit eutils multilib pam subversion
+inherit eutils multilib pam git
 
 RN_PV="2.1.0"
 
@@ -16,7 +16,7 @@ JABBER_DOC="/usr/share/doc/${PF}"
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
-ESVN_REPO_URI="http://svn.process-one.net/ejabberd/trunk"
+EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
