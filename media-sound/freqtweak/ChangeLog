@@ -1,3 +1,8 @@
 # ChangeLog for media-sound/freqtweak
-# Copyright 2000-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  04 Feb 2010; <slep@gentoo.org> -freqtweak-0.7.2.ebuild,
+  +freqtweak-0.7.2-r1.ebuild:
+  migrate to EAPI=2
+

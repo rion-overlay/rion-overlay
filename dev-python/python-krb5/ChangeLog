@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/python-krb5
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  02 Feb 2010; <slep@gentoo.org> python-krb5-0.2.ebuild:
+  new distutils
 
 *python-krb5-0.2 (05 Aug 2009)
 

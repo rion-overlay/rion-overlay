@@ -3,7 +3,9 @@
 # $Header: $
 # rion overlay; 
 
-EAPI=2
+EAPI="2"
+NEED_PYTHON="2.5"
+
 inherit distutils
 
 DESCRIPTION="Kerberos 5 Bindings for Python"
@@ -18,4 +20,8 @@ IUSE=""
 DEPEND=">=app-crypt/mit-krb5-1.3.0
 		>=sys-libs/e2fsprogs-libs-1.41.3"
 RDEPEND="${DEPEND}"
-RESTRICT="mirror"
+python_need_rebuild
+src_compile() {
+	python_set_active_version 2
+	distutils_src_compile
+}
