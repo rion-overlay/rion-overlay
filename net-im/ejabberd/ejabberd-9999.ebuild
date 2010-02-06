@@ -24,7 +24,7 @@ EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub"
 IUSE="captcha debug ldap odbc pam ssl web zlib ${EJABBERD_MODULES}"
 
 DEPEND=">=net-im/jabber-base-0.01
-	net-im/exmpp
+	=net-im/exmpp-${PV}
 	>=dev-libs/expat-1.95
 	>=dev-lang/erlang-11.2.5[ssl?]
 	odbc? ( dev-db/unixODBC )
