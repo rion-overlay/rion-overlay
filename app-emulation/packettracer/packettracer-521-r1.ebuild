@@ -61,7 +61,7 @@ src_prepare(){
 }
 
 src_install () {
-	declare PKT_HOME="opt/pt/"
+	declare PKT_HOME="/opt/pt/"
 	dodir "${PKT_HOME}/${MY_NAME}"
 	insinto "${PKT_HOME}//${MY_NAME}"
 	doins -r .
