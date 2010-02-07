@@ -1,4 +1,9 @@
-# Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# 7 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# EAPI=3 training :)
+=app-emulation/packettracer-521-r1
+
+
+# 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # Not work && build
 app-admin/pki-console
 
