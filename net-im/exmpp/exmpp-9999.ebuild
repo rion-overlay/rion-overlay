@@ -4,11 +4,11 @@
 
 EAPI="2"
 
-inherit autotools subversion
+inherit autotools git
 
 DESCRIPTION="fast and scalable XMPP library written in Erlang/OTP"
 HOMEPAGE="https://support.process-one.net/doc/display/EXMPP"
-ESVN_REPO_URI="http://svn.process-one.net/exmpp/trunk"
+EGIT_REPO_URI="git://git.process-one.net/exmpp/mainline.git"
 
 LICENSE="EPL"
 SLOT="0"
