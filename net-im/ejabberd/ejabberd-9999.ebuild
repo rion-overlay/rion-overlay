@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit eutils multilib pam subversion
+inherit eutils multilib pam git
 
 RN_PV="2.1.0"
 
@@ -16,7 +16,7 @@ JABBER_DOC="/usr/share/doc/${PF}"
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
-ESVN_REPO_URI="http://svn.process-one.net/ejabberd/trunk"
+EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
@@ -24,7 +24,7 @@ EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub"
 IUSE="captcha debug ldap odbc pam ssl web zlib ${EJABBERD_MODULES}"
 
 DEPEND=">=net-im/jabber-base-0.01
-	net-im/exmpp
+	=net-im/exmpp-${PV}
 	>=dev-libs/expat-1.95
 	>=dev-lang/erlang-11.2.5[ssl?]
 	odbc? ( dev-db/unixODBC )
