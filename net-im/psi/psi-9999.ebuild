@@ -92,9 +92,9 @@ src_prepare() {
 	epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 ########## Unstable Patches. Use for you own risk. ###########
-	use unstable && {
-	epatch "${WORKDIR}/patches/dev"/psi-autojoin-dialog-tab-autofoucus-off.patch
-	}
+#	use unstable && {
+#	epatch "${WORKDIR}/patches/dev"/psi-autojoin-dialog-tab-autofoucus-off.patch
+#	}
 ##############################################################
 	subversion_wc_info
 	sed "s/.xxx/.${ESVN_WC_REVISION}/" -i src/applicationinfo.cpp

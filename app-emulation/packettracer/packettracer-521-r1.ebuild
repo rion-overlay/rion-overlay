@@ -2,24 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 inherit eutils fdo-mime
 
 DESCRIPTION="Cisco's Packet Tracer"
 HOMEPAGE="https://www.cisco.com/web/learning/netacad/course_catalog/PacketTracer.html"
-SRC_URI="http://cisco.netacad.net/cnams/resourcewindow/noncurr/downloadTools/app_files/PacketTracer"${PV}".tar.gz"
+SRC_URI="http://cisco.netacad.net/cnams/resourcewindow/noncurr/downloadTools/app_files/PacketTracer${PV}.tar.gz"
 
 MY_PN="PacketTracer"
-MY_NAME="${MY_PN}""${PV}"
+MY_NAME="${MY_PN}${PV}"
 
-S="${WORKDIR}"/"${MY_NAME}"
+S="${WORKDIR}/${MY_NAME}"
 
-RESTRICT="fetch mirror strip"
+RESTRICT="mirror binchecks fetch"
 LICENSE="Cisco_EULA"
 
 SLOT="${PV}"
-KEYWORDS="x86 ~amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="+doc online-exam"
 
 DEPEND="app-arch/gzip
@@ -43,7 +43,7 @@ pkg_nofetch () {
 src_prepare(){
 
 	rm -rf install set_ptenv.sh tpl.linguist  \
-		tpl.packettracer extensions/ptaplayer || die "Not remove files"
+		tpl.packettracer || die "Not remove files"
 
 	# Disable automatic update :)
 	rm -fr ./extensions/PTUpdater/update_url.txt || die \
@@ -62,23 +62,23 @@ src_prepare(){
 
 src_install () {
 	declare PKT_HOME="/opt/pt/"
-	dodir "${PKT_HOME}"
-	cd "${S}/"
-	cp -R "${S}/" "${D}"${PKT_HOME} || die "Install failed!"
+	dodir "${PKT_HOME}/${MY_NAME}"
+	insinto "${PKT_HOME}//${MY_NAME}"
+	doins -r .
 
-	cd "${D}${PKT_HOME}/${MY_NAME}"
+	cd "${ED}/${PKT_HOME}/${MY_NAME}" || die
 	doicon "./art/"{app,pka,pkt,pkz}.{ico,png}
 
 	make_wrapper packettracer "./bin/PacketTracer5" "${PKT_HOME}${MY_NAME}" "${PKT_HOME}${MY_NAME}/lib"
 	make_desktop_entry "packettracer"  "PacketTracer" "app" "Education;Emulator"
 
 	insinto /usr/share/mime/applications
-	doins "${D}${PKT_HOME}/${MY_NAME}"/bin/*.xml
+	doins "${PKT_HOME}/${MY_NAME}/bin"/*.xml
 
-	rm -f "${D}${PKT_HOME}/${MY_NAME}"/bin/*.xml
+	rm  "${ED}/${PKT_HOME}/${MY_NAME}"/bin/*.xml || die
 
 	dodir /etc/evn.d
-	echo PT5HOME="${PKT_HOME}"/"${MY_NAME}" > "${D}"/etc/evn.d/50-"${MY_PN}" || die
+	echo PT5HOME="${PKT_HOME}/${MY_NAME}" > "${ED}"/etc/evn.d/50-"${MY_PN}" || die
 
 	dodoc eula.txt
 
@@ -90,19 +90,20 @@ pkg_postinst(){
 	fdo-mime_mime_database_update
 
 	if use doc ; then
-		einfo " You have doc USE flag"
-	    einfo " For use documentaion , please"
-		ewarn " install you prefered brouser and  flashplayer support"
-	    einfo " such mozilla or konqerror"
+		einfo " You have doc USE flag:"
+	    einfo " Ok, for use documentaion, please "
+		ewarn " install you prefered brouser witch  flashplayer support"
+	    einfo " such mozilla,opera  or konqerror"
 	fi
 
 	einfo ""
 	einfo ""
-	einfo " If you have multiuser enviroment"
-	einfo " you mist configure you firewall"
-	einfo " additional information see "
-	einfo " in packettracer user manual "
-
+	einfo " If you have multiuser enviroment,"
+	einfo " you mist configure you firewall to use UPnP protocol."
+	einfo " For example, install net-misc/linux-igd package"
+	einfo " Additional information, please, see"
+	einfo " in packettracer user manual"
+	einfo ""
 }
 
 pkg_postrm() {
