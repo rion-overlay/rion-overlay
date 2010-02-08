@@ -16,4 +16,4 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-PROVIDE="virtual/linux-sources"
+PROVIDE="virtual/linux-sources virtual/alsa"
