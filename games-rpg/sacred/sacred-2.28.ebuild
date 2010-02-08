@@ -15,9 +15,9 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror strip test"
 IUSE="iampirate linguas_ru"
 
-SRC_URI="http://antixpuct.liondrive.com/sacred.tar.bz2/?action=download/download -> sacred.tar.bz2
-iampirate? ( http://antixpuct.liondrive.com/sacred_pirate.tar.bz2/?action=download/download -> sacred_pirate.tar.bz2 )
-linguas_ru? ( http://antixpuct.liondrive.com/sacred_rus.tar.bz2/?action=download/download -> sacred_rus.tar.bz2 )
+SRC_URI="http://antixpuct.ru/distfiles/sacred.tar.bz2
+iampirate? ( http://antixpuct.ru/distfiles/sacred_pirate.tar.bz2 )
+linguas_ru? ( http://antixpuct.ru/distfiles/sacred_rus.tar.bz2 )
 "
 CHECKREQS_DISK_BUILD="2560"
 CHECKREQS_MEMORY="256"
