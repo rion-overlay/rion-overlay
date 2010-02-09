@@ -1,0 +1,51 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -99,14 +99,16 @@
+ # use /usr as the prefix for everything, which means
+ # /usr/etc, /usr/opt, and /usr/var.  FHS sez to use
+ # /etc, /opt, and /var.
+-ac_default_prefix=/opt/native-tools
++ac_default_prefix=/usr
+ prefix=$ac_default_prefix
+ exec_prefix=$prefix
+ # relative to prefix
+-confdir=/conf
+-readmedir=/doc
+-samplesdir=/samples
+-templatesdir=/templates
++sysconfigdir='/etc'
++confdir=$sysconfigdir
++datadir=$ac_default_prefix/share
++readmedir=$datadir/doc/$PACKAGE_NAME/
++samplesdir=$datadir/$PACKAGE_NAME/
++templatesdir=$datadir/$PACKAGE_NAME/templates
+ AC_SUBST(confdir)
+ AC_SUBST(readmedir)
+ AC_SUBST(samplesdir)
+--- Makefile.am.orig	2010-02-09 18:52:24.118471609 +0200
++++ Makefile.am	2010-02-09 18:53:27.697975776 +0200
+@@ -60,10 +60,10 @@
+ #------------------------
+ # Install Paths
+ #------------------------
+-confdir = $(prefix)@confdir@
+-readmedir = $(prefix)@readmedir@
+-samplesdir = $(prefix)@samplesdir@
+-templatesdir = $(prefix)@templatesdir@
++confdir = @confdir@
++readmedir = @readmedir@
++samplesdir = @samplesdir@
++templatesdir = @templatesdir@
+ 
+ #------------------------
+ # Build Products
+@@ -88,9 +88,6 @@
+ 
+ conf_DATA =	$(srcdir)/src/setpin/setpin.conf
+ 
+-readme_DATA =	$(srcdir)/LICENSE \
+-				$(srcdir)/doc/README
+-
+ samples_DATA =	$(srcdir)/src/bulkissuance/bulkissuance.data
+ 
+ templates_DATA =	$(srcdir)/templates/pki_instance_command_wrapper \

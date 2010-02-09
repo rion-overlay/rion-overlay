@@ -27,17 +27,17 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}/"gentoo-filesystems-layount.patch
+	epatch "${FILESDIR}/${PV}/"*.patch
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		$(use_enable amd64 64bit) \
-		$(use_enable debug) || die
+		$(use_enable debug) || die "econf failed"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc doc/READMI
+	emake DESTDIR="${D}" install || die "install failed"
+	dodoc "${S}"/doc/README
 }
