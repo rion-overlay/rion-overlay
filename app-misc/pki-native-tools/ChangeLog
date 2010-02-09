@@ -3,6 +3,12 @@
 # $Header: $
 
   09 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/1.2.0/001-gentoo-filesystems-layount.patch,
+  pki-native-tools-1.2.0.ebuild,
+  -files/1.2.0/gentoo-filesystems-layount.patch:
+  fix LICENSE install
+
+  09 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   recommit to rion overlay
 
   28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
