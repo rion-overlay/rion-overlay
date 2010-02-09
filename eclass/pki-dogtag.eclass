@@ -20,6 +20,8 @@
 # versions.
 case ${EAPI:-0} in
 	        2) : ;;
+			3) : ;;
+			4) : ;;
 			*) DEPEND="EAPI-TOO-OLD" ;;
 esac
 
