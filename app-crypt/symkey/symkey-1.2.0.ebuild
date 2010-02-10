@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2 rpm
 
 DESCRIPTION="Symmetric Key JNI Package"
-HOMEPAGE="http://pki.fedoraproject.org/"
+HOMEPAGE="http://pki.fedoraproject.org"
 SRC_URI="http://pki.fedoraproject.org/pki/download/pki/1.2.0/fc11/SRPMS/symkey-1.2.0-2.fc11.src.rpm"
 
 LICENSE="GPL-2-with-exceptions"

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: 10 Feb 2010; A.Vinogradov$
 
 # @ECLASS: pki-dogtag.eclass 
 # @MAINTAINER:
@@ -10,14 +10,8 @@
 # This eclass provides functions for Dog Tag CA and Fedora PKI packages
 # Original Author: A. Vinogradov <spamslepnoga@inbox.ru>
 # Purpose: 
-#
 
 
-
-# @ECLASS-VARIABLE: EAPI
-# @DESCRIPTION:
-# By default this eclasses want EAPI 2 which might be redefinable to newer
-# versions.
 case ${EAPI:-0} in
 	        2) : ;;
 			3) : ;;
@@ -30,12 +24,6 @@ esac
 # If not define, use default GPL-2-with-exceptions license
 LICENSE="${LICENSE:-|| ( GPL-2-with-exceptions  )}"
 
-
-
-# @ECLASS-VARIABLE: HOMEPAGE
-# @DESCRIPTION:
-[[ -z "${HOMEPAGE}" ]] && \
-		HOMEPAGE="http://pki.fedoraproject.org/wiki/PKI_Main_Page"
 
 # @ECLASS-VARIABLE: RPM_REV
 # @DESCRIPTION:
