@@ -9,6 +9,9 @@ app-admin/pki-console
 app-misc/pki-native-tools
 app-misc/pki-setup
 app-misc/osutil
+app-crypt/symkey
+
+
 
 # 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # masked for removal in 15 days
