@@ -8,7 +8,7 @@ RPM_REV="-1"
 inherit pki-dogtag
 
 DESCRIPTION="Perl scripts intended for management of warios subsystem Dog-Tag CA"
-
+HOMEPAGE="http://pki.fedoraproject.org"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 DEPEND=">=app-misc/pki-native-tools-1.2.0

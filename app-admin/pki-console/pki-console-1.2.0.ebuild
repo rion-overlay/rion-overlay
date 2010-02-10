@@ -8,6 +8,7 @@ RPM_REV="-1"
 inherit java-pkg-2 eutils java-ant-2 pki-dogtag
 
 DESCRIPTION="PKI console for management of the CA, DRM, OCSP, and TKS subsystems"
+HOMEPAGE="http://pki.fedoraproject.org"
 KEYWORDS="~amd64"
 IUSE=""
 

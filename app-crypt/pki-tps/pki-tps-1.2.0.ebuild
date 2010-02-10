@@ -11,6 +11,7 @@ RPM_REV="-3"
 inherit  autotools depend.apache eutils pki-dogtag
 
 DESCRIPTION="Token Processing System for Smartcards - Dog Tag system"
+HOMEPAGE="http://pki.fedoraproject.org"
 KEYWORDS="~amd64"
 IUSE="debug"
 
