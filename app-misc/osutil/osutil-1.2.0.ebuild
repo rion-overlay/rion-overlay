@@ -28,10 +28,9 @@ DEPEND="virtual/jdk:1.6
 EANT_BUILD_TARGET=""
 EANT_DOC_TARGET=""
 
-S=${WORKDIR}/osutil-${PV}
 src_compile() {
 	eant -Dspecfile=osutil.spec \
-	 ${antflags} build_jars build_jni_headers || die
+	 ${antflags} build_jars build_jni_headers || die "eant compile failed"
 }
 src_install() {
 	java-pkg_newjar  "${S}"/build/jars/osutil.jar osutil.jar
