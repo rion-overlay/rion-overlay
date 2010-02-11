@@ -4,27 +4,31 @@
 
 EAPI="2"
 
-WANT_AUTOMAKE="1.9"
+WANT_AUTOMAKE="1.10"
 
-inherit autotools rpm
+inherit autotools
 
 DESCRIPTION="Dogtag Certificate System - Native Tools"
 HOMEPAGE="http://pki.fedoraproject.org"
-SRC_URI="http://pki.fedoraproject.org/pki/download/pki/1.2.0/fc11/SRPMS/pki-native-tools-1.2.0-2.fc11.src.rpm"
+SRC_URI="http://pki.fedoraproject.org/pki/sources/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
-SLOT=0
 LICENSE="GPL-2-with-exceptions"
-
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
-COMMON_DEPEND="dev-libs/cyrus-sasl
-		dev-libs/mozldap
+
+DEPEND="dev-libs/cyrus-sasl
+		dev-libs/mozldap[sasl]
 		dev-libs/nspr
-		dev-libs/nss
+		dev-libs/nss[utils]
+		dev-libs/svrcore
+		sys-devel/libtool:1.5"
+
+RDEPEND="dev-libs/cyrus-sasl
+		dev-libs/mozldap[sasl]
+		dev-libs/nspr
+		dev-libs/nss[utils]
 		dev-libs/svrcore"
-DEPEND="${COMMON_DEPEND}
-		app-arch/unzip"
-RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PV}/"*.patch
