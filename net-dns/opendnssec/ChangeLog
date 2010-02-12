@@ -1,0 +1,9 @@
+# ChangeLog for net-dns/opendnssec
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  12 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +opendnssec-1.0.0.ebuild, +metadata.xml:
+  initial commit
+
+*opendnssec-1.0.0
