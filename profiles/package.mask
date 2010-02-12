@@ -1,3 +1,7 @@
+# 11 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask temporally
+net-dns/opendnssec
+
 # 7 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # EAPI=3 training :)
 =app-emulation/packettracer-521-r1
@@ -10,6 +14,7 @@ app-misc/pki-native-tools
 app-misc/pki-setup
 app-misc/osutil
 app-crypt/symkey
+app-crypt/pki-symkey
 app-crypt/pki-tps
 
 
