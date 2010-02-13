@@ -4,6 +4,7 @@
 
 EAPI="2"
 
+WANT_CMAKE="always"
 inherit cmake-utils
 
 DESCRIPTION="OpenAL Soft Configurator"
@@ -15,7 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="x11-libs/qt-gui"
+DEPEND="x11-libs/qt-core:4
+		x11-libs/qt-gui:4"
+
 RDEPEND="${DEPEND}"
 
 src_install() {
