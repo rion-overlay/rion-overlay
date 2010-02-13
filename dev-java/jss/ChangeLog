@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jss
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-java/jss/ChangeLog,v 1.21 2008/05/28 19:20:28 maekke Exp $
+
+  13 Feb 2010; <slep@gentoo.org> jss-9999.ebuild:
+  min java version - 1.5
 
   08 Nov 2009; <slep@gentoo.org> -jss-4.3.ebuild:
   del 4.3 version
