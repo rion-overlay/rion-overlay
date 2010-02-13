@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI="2"
-JAVA_PKG_IUSE="doc source"
+JAVA_PKG_IUSE=""
 
 inherit java-pkg-2 java-ant-2
 
@@ -21,7 +21,6 @@ COMMON_DEP="dev-java/jss
 			>=dev-libs/nss-3.12.5
 			dev-java/ldapsdk
 			"
-PROVIDE="virtual/symkey"
 RDEPEND=">=virtual/jre-1.6
 		${COMMON_DEP}"
 
@@ -36,8 +35,10 @@ src_prepare() {
 	java-pkg_jar-from jss-3.4 xpclass.jar jss4.jar
 	java-pkg_jar-from ldapsdk-4.1 ldapjdk.jar
 
+	epatch "${FILESDIR}"/*.patch
+
 	#Not complete 
-	eerror "not use"
+#	eerror "not use"
 
 }
 src_compile() {
@@ -46,5 +47,10 @@ src_compile() {
 		-Dproduct.prefix="" \
 		 -Dproduct="${PN}" \
 		 -Dversion="${PV}" \
-		  ${antflags} || die "eant failed"
+		  ${antflags} build_jars  build_jni_headers  || die "eant failed"
+}
+
+src_install() {
+	java-pkg_dojar build/jars/symkey.jar
+
 }
