@@ -6,12 +6,14 @@ EAPI="2"
 
 inherit eutils qt4 multilib git subversion
 
-RU_LANGPACK_VER="10_Oct_2009"
+RU_LANGPACK_VER="14_Feb_2010"
 
 DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
+# Пока не представляется возможным найти ивана — сделаем так. потом надо будет отдать ему файл и пусть задльет на psi-ru.
+## http://psi-ru.googlecode.com/files/Psi_ru_${RU_LANGPACK_VER}.zip )
 SRC_URI="
-	linguas_ru? ( http://psi-ru.googlecode.com/files/Psi_ru_${RU_LANGPACK_VER}.zip )
+	linguas_ru? ( http://shl.berlios.de/Psi_ru_${RU_LANGPACK_VER}.zip )
 	!linguas_ru? ( mirror://gentoo/psi-0.13-20090817_langpack_for_packagers.zip )
 	http://psi-dev.googlecode.com/svn/trunk/iconsets/moods/silk.jisp"
 EGIT_REPO_URI="git://git.psi-im.org/psi.git"
@@ -91,9 +93,11 @@ src_prepare() {
 
 	epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
+# Temp roster fix, пока mblsha вкуривает в него. А мы хотим уже иметь пофикшеный ростер. :) DELETE_ME_WHEN_UPSTREAM_FIX_IT.
+	epatch "${FILESDIR}"/roster_fix.patch
 ########## Unstable Patches. Use for you own risk. ###########
 #	use unstable && {
-#	epatch "${WORKDIR}/patches/dev"/psi-autojoin-dialog-tab-autofoucus-off.patch
+#	epatch "${FILESDIR}"/autocomp_links.patch
 #	}
 ##############################################################
 	subversion_wc_info
