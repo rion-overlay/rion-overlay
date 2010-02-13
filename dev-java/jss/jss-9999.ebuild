@@ -25,10 +25,10 @@ SLOT="3.4"
 KEYWORDS=""
 IUSE="doc examples source"
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND=">=virtual/jre-1.5
 		>=dev-libs/nspr-4.3
 		>=dev-libs/nss-3.9.2"
-DEPEND=">=virtual/jdk-1.4
+DEPEND=">=virtual/jdk-1.5
 		${RDEPEND}
 		app-arch/zip
 		dev-util/pkgconfig

@@ -3,15 +3,18 @@
 # $Header: $
 
 EAPI="2"
+JAVA_PKG_IUSE=""
 
-RPM_REV="-1"
-inherit java-pkg-2 eutils java-ant-2 pki-dogtag
+inherit java-pkg-2 eutils java-ant-2
 
 DESCRIPTION="PKI console for management of the CA, DRM, OCSP, and TKS subsystems"
 HOMEPAGE="http://pki.fedoraproject.org"
-KEYWORDS="~amd64"
-IUSE=""
+SRC_URI="http://pki.fedoraproject.org/pki/sources/${PN}/${P}.tar.gz"
 
+LICENSE="GPL-2"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
+SLOT="0"
 COMMON_DEP="=dev-java/jss-4*
 	>=dev-java/ldapsdk-4.0
 	>=dev-java/idm-console-framework-1.1
@@ -32,7 +35,10 @@ src_compile() {
 	    -Dldapjdk.local.location="${S}" \
 	    -Djss.local.location="${S}" \
 	    -Dconsole.local.location="${S}" \
-		-Dspecfile=${PN}.spec \
+		-Dproduct.ui.flavor.prefix="" \
+		-Dproduct.prefix="" \
+		-Dproduct="${PN}" \
+		-Dversion="${PV}" \
 		${antflags} \
 				compile_java || die
 }
