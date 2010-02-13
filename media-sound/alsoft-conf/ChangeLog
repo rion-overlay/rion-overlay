@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/alsoft-conf
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  13 Feb 2010; <slep@gentoo.org> alsoft-conf-1.4.3.ebuild:
+  fix QA
 
   07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
   add changelog
