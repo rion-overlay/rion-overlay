@@ -8,8 +8,6 @@
 app-admin/pki-console
 app-misc/pki-native-tools
 app-misc/pki-setup
-app-crypt/symkey
-app-crypt/pki-symkey
 app-crypt/pki-tps
 
 
