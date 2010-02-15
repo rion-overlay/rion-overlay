@@ -6,8 +6,6 @@
 # 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # Not work && build
 app-admin/pki-console
-app-misc/pki-native-tools
-app-misc/pki-setup
 app-crypt/pki-tps
 
 
