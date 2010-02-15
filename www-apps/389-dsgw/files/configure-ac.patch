@@ -1,0 +1,22 @@
+--- configure.ac.orig	2009-10-05 21:05:32.511995662 +0300
++++ configure.ac	2009-10-05 21:26:41.879490287 +0300
+@@ -21,7 +21,7 @@
+ # Process this file with autoconf to produce a configure script.
+ 
+ AC_PREREQ(2.59)
+-AC_INIT([dirsrv-gw], [1.1.3], [http://bugzilla.redhat.com/])
++AC_INIT([dirsrv-gw], [1.1.3], [http://code.google.com/p/rion-overlay/issues/list])
+ AC_CONFIG_SRCDIR([dsgwutil.c])
+ AM_INIT_AUTOMAKE([1.9 foreign subdir-objects])
+ AM_MAINTAINER_MODE
+@@ -69,8 +69,8 @@
+ AC_PREFIX_DEFAULT([/opt/dirsrv])
+ 
+ brand=389
+-capbrand=389
+-vendor="389 Project"
++capbrand=389-gentoo
++vendor="389 Project/Gentoo"
+ 
+ # check for --with-instconfigdir
+ AC_MSG_CHECKING(for --with-instconfigdir)

@@ -1,0 +1,7 @@
+# ChangeLog for dev-libs/qxmlrpc
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  27 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
+  add metadata
+
