@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="avahi crypt dbus gnome idle libnotify nls spell srv trayicon X xhtml"
 
-COMMON_DEPEND=">=dev-python/pygtk-2.12.0"
+COMMON_DEPEND=">=dev-python/pygtk-2.16.0"
 
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.17-r1
