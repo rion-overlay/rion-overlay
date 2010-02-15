@@ -15,13 +15,13 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 SLOT="0"
-COMMON_DEP="=dev-java/jss-4*
+COMMON_DEP=">=dev-java/jss-4.3
 	>=dev-java/ldapsdk-4.0
 	>=dev-java/idm-console-framework-1.1
 	!app-admin/fedora-idm-console"
-RDEPEND=">=virtual/jre-1.5
+RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.6
 	${COMMON_DEP}"
 
 src_prepare() {
