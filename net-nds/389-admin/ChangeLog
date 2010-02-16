@@ -2,6 +2,12 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Feb 2010; <slep@gentoo.org> -files/1.1.9-apache2-httpd.conf.patch,
+  -389-admin-1.1.9.ebuild, -files/1.1.9/0001-gentoo-apache-names.patch,
+  -389-admin-1.1.9-r1.ebuild, -files/1.1.9/0002-gentoo-brand-name.patch,
+  -files/fedora-ds-admin-1.1.5-cfgstuff-1.patch:
+  delete 1.1.9 version
+
   25 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -files/1.1.10/0002-gentoo-brand-name.patch,
   +files/1.1.10/0003-find-mod_nss.m4.patch,
