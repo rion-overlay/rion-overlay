@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-DESCRIPTION="Dogtag Certificate System - Data Recovery Authority User Interface"
+DESCRIPTION="Dogtag Certificate System - Certificate Authority User Interface"
 HOMEPAGE="http://pki.fedoraproject.org"
 SRC_URI="http://pki.fedoraproject.org/pki/sources/${PN}/${P}.tar.gz"
 
@@ -18,9 +18,8 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 
-	dodir /usr/share/pki/kra/webapps/ca/
-	insinto /usr/share/pki/kra/webapps/ca/
-	cd  "${S}"/shared/webapps/
+	dodir /usr/share/pki/ra-ui/docroot
+	insinto /usr/share/pki/ra-ui/docroot
+	cd  "${S}"/shared/docroot/
 	doins -r .
-	dodir /usr/share/pki/kra/webapps/ROOT/
 }

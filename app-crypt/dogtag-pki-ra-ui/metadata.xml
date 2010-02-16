@@ -6,8 +6,8 @@
   <email>@gmail.com</email>
  <description>Description of the maintainership</description> 
 </maintainer>
- <longdescription>The Dogtag Data Recovery Authority User Interface contains the
- graphical user interface for the Dogtag Data Recovery Manager.</longdescription> 
+ <longdescription>The Dogtag Certificate Authority User Interface contains the
+ graphical user interface for the Dogtag Certificate Authority.</longdescription> 
 <use>
 </use>
 </pkgmetadata>
