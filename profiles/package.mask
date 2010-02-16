@@ -3,6 +3,8 @@
 app-crypt/pki-ra
 app-admin/pki-console
 app-crypt/pki-tps
+app-crypt/pki-ca
+
 
 # 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # depend is profile masked
