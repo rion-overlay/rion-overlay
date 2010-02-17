@@ -26,7 +26,10 @@ DEPEND="dev-libs/cyrus-sasl
 		dev-libs/svrcore
 		dev-libs/apr-util[mozldap]
 		dev-java/velocity
-		=dev-lang/perl-5*"
+		=dev-lang/perl-5*
+		app-misc/pki-setup
+		app-crypt/dogtag-pki-tps-ui
+		"
 
 RDEPEND="${DEPEND}"
 
