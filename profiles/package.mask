@@ -27,7 +27,6 @@ app-crypt/pki-ca
 # mask for testing - not comlete
 app-admin/ipa-admintools
 app-admin/ipa-radius-admintools
-dev-python/ipa-python
 net-dialup/ipa-radius-server
 net-nds/ipa-client
 net-nds/ipa-server
