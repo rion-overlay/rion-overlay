@@ -1,0 +1,8 @@
+# ChangeLog for app-text/makedict
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  1 Feb 2010; Rion <dontsend@nospam.ru>
+  +makedict-0.4.1_beta1.ebuild:
+  moved to new group. so lets consider its new package.
+
