@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru> assets-0.1.0.ebuild:
+  fix depend
+
   18 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru> +assets-0.1.1.ebuild,
   metadata.xml:
   version bump
