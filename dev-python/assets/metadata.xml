@@ -6,8 +6,12 @@
   <email>@gmail.com</email>
  <description>Description of the maintainership</description> 
 </maintainer>
- <longdescription>`assetslib` is a simple Python library that uses
- content-hash-naming to do URL fingerprinting.</longdescription> 
+ <longdescription>The assets package does content-hash-naming (aka URL
+ fingerprinting) so you can use aggressive caching headers 
+ without risking that a client might have an
+ out-of-date version of an asset in its cache.  If the content changes, the
+ content-hash-name also changes, resulting in a different URL for each
+ bytewise-unique version of an asset.</longdescription> 
 <use>
 </use>
 </pkgmetadata>
