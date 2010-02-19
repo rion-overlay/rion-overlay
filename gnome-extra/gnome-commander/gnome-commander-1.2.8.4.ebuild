@@ -24,7 +24,7 @@ ALL_DEPEND="app-text/gnome-doc-utils
 	exif? ( media-gfx/exiv2 )
 	gsf? ( gnome-extra/libgsf )
 	id3? ( media-libs/taglib )
-	pdf? ( virtual/poppler )
+	pdf? ( app-text/poppler )
 	python? ( =dev-lang/python-2* )
 	taglib? ( media-libs/taglib )"
 DEPEND="${ALL_DEPEND}
