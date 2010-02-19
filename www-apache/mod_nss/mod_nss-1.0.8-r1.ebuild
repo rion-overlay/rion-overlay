@@ -4,7 +4,9 @@
 
 EAPI="2"
 
-inherit autotools apache-module
+WANT_AUTOMAKE="1.6"
+
+inherit autotools apache-module flag-o-matic
 
 DESCRIPTION="SSL/TLS module for the Apache HTTP server"
 HOMEPAGE="http://directory.fedoraproject.org/wiki/Mod_nss"
@@ -37,17 +39,26 @@ src_prepare() {
 }
 
 src_configure() {
+	# for future added all (linux)  64 but flags
+	setup-allowed-flags
+	filter-flag  -O3
+	use amd64  && append-cflags -m64
+
 	econf \
 	$(use_enable ecc) \
 	--with-apxs=${APXS} || die "econf failed"
 
 }
 
+src_compile() {
+	emake || die
+}
 src_install() {
 	mv .libs/libmodnss.so .libs/"${PN}".so || die
 
 	dosbin gencert nss_pcache
 	dohtml docs/mod_nss.html
+	newbin migrate.pl nss_migrate
 	dodir /etc/apache2/nss
 
 	apache-module_src_install
