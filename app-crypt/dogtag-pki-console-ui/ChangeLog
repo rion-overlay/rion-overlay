@@ -1,0 +1,9 @@
+# ChangeLog for app-crypt/dogtag-pki-console-ui
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Feb 2010; <slep@vinogradov.lv> +dogtag-pki-console-ui-1.3.0.ebuild,
+  +metadata.xml:
+  initial commit
+
+*dogtag-pki-console-ui-1.3.0  ( 16 Feb 2010 )
