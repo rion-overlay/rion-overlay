@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 22.02.2010 slepnoga v1.001 $
+# $Header: 22.02.2010 slepnoga v1.002 $
 
 
 # Original author: 0xd34df00d <0xd34df00d@gmail.com> and
@@ -33,6 +33,9 @@ if [[ "${PV}" == "9999" ]]; then
 fi
 
 HOMEPAGE="http://leechcraft.org/"
+
+DEPEND="${DEPEND}
+		!www-client/leechcraft"
 
 LICENSE="GPL-3"
 SLOT="0"
