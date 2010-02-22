@@ -2,6 +2,13 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -leechcraft-0.3.70_rc20100120.ebuild,
+  -leechcraft-0.3.70_rc20100125.ebuild,
+  -leechcraft-0.3.70_rc20100202.ebuild,
+  +leechcraft-0.3.70_rc20100216.ebuild:
+  version bump
+
   12 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +leechcraft-0.3.70_rc20100202.ebuild, metadata.xml:
   new RC
