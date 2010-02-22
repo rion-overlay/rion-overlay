@@ -1,6 +1,7 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 22.02.2010 slepnoga v1.000$
+# $Header: 22.02.2010 slepnoga v1.001 $
+
 
 # Original author: 0xd34df00d <0xd34df00d@gmail.com> and
 #				   Andrian Nord <NightNord@niifaq.ru>
@@ -18,7 +19,7 @@ esac
 
 # Exported functions
 # Logic: for live ebuild call standart and src_unpack;
-LEECHCRAFT_EXPR="src_compile src_install"
+LEECHCRAFT_EXPR="src_configure src_install"
 
 inherit cmake-utils
 
@@ -47,22 +48,22 @@ else
 	CMAKE_USE_DIR="${S}/src"
 fi
 
-# @FUNCTION:leechcraft-src_unpack
+# @FUNCTION:leechcraft_src_unpack
 # @DESCRIPTION:
 # Standart src_unpack live ebuild
 
-src_unpack() {
+leechcraft_src_unpack() {
 	git_src_unpack
 
 	cd "${S}"
 }
 
-# @FUNCTION: leechcraft-src_configure
+# @FUNCTION: leechcraft_src_configure
 # @DESCRIPTION:
 # Use for configure leechcraft source.
 # Build_type is magic :)
 
-src_configure() {
+leechcraft_src_configure() {
 	if use debug ; then
 		CMAKE_BUILD_TYPE="RelWithDebInfo"
 	else
@@ -72,10 +73,10 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-# @FUNCTION: leechcraft-src_install
+# @FUNCTION: leechcraft_src_install
 # @DESCRIPTION:
 # Call cmake-utils_src_install :)
 
-src_install() {
+leechcraft_src_install() {
 	cmake-utils_src_install
 }
