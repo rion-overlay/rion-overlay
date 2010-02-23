@@ -1,0 +1,14 @@
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# Header: slepnoga rion-overlay 19/01/2010 $
+
+# daemon name
+NAME="milter-greylist"
+#daemon locations
+DAEMON=/usr/bin/$NAME
+# Unix domain socket locations
+SOCKET="/var/run/$NAME/milter-greylist.sock"
+# Pid file locations
+PIDFILE="/var/run/$NAME.pid"
+# this setting owerwrite config file !
+DOPTIONS="-p $SOCKET -u $USER -P $PIDFILE"
