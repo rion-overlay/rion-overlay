@@ -4,6 +4,7 @@
 
 EAPI="2"
 
+EGIT_HAS_SUBMODULES=true
 inherit eutils qt4 multilib git subversion
 
 RU_LANGPACK_VER="14_Feb_2010"
@@ -91,7 +92,7 @@ src_prepare() {
 	S="${WORKDIR}/${P}"
 	cd "${S}"
 
-	epatch "${WORKDIR}/patches"/*.diff
+	EPATCH_OPTS="-p1" epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 # Temp roster fix, пока mblsha вкуривает в него. А мы хотим уже иметь пофикшеный ростер. :) DELETE_ME_WHEN_UPSTREAM_FIX_IT.
 	epatch "${FILESDIR}"/roster_fix.patch
