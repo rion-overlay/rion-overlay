@@ -68,7 +68,7 @@ SRC_URI="x86? ( ${X86_JDK_DIST} )
 
 LICENSE="IBM-J1.4"
 SLOT="1.4"
-KEYWORDS="-* amd64 ppc ppc64 x86"
+KEYWORDS="-*"
 IUSE="X alsa doc examples javacomm nsplugin"
 
 RDEPEND="=virtual/libstdc++-3.3
@@ -101,6 +101,9 @@ QA_TEXTRELS_x86="opt/${P}/jre/bin/lib*.so
 	opt/${P}/jre/bin/classic/libcore.so"
 
 pkg_nofetch() {
+	
+	eerror "This ebuild only for dewelopers :)"
+	eerror "This source is  EOL  in apstream " 
 	einfo "Due to license restrictions, we cannot redistribute or fetch the distfiles"
 	einfo "Please visit: ${DOWNLOADPAGE}"
 
