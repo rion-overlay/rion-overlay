@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nspr/nspr-4.8.ebuild,v 1.8 2009/09/23 17:06:18 armin76 Exp $
+# $Header: $
 
 EAPI="2"
 
@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="ipv6 debug"
 
-DEPEND=">=dev-db/sqlite-3.5"
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
@@ -46,12 +46,12 @@ src_compile() {
 		*) die "Failed to detect whether your arch is 64bits or 32bits, disable distcc if you're using it, please";;
 	esac
 
-	myconf="${myconf} --libdir=/usr/$(get_libdir)/nspr \
-		--enable-system-sqlite 	--with-mozilla --with-pthreads"
+	myconf="${myconf} --libdir=/usr/$(get_libdir)/nspr/"
 
 	ECONF_SOURCE="../mozilla/nsprpub" econf \
-		$(use_enable ipv6) \
 		$(use_enable debug) \
+		$(use_enable !debug optimize) \
+		$(use_enable ipv6) \
 		${myconf} || die "econf failed"
 	make CC="$(tc-getCC)" CXX="$(tc-getCXX)" || die
 }
