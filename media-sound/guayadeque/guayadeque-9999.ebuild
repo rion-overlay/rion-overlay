@@ -21,8 +21,7 @@ RDEPEND="x11-libs/wxGTK:2.8
 	media-libs/gstreamer:0.10
 	sys-apps/dbus
 	net-misc/curl
-	media-libs/flac
-	media-libs/libmp4v2"
+	media-libs/flac"
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext

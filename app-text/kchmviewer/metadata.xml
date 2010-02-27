@@ -3,8 +3,8 @@
 <pkgmetadata>
   <herd>kde</herd>
   <maintainer>
-    <email>pva@gentoo.org</email>
-    <name>Peter Volkov</name>
+    <email>rion4ik@gmail.com</email>
+    <description>overlay founder</description>
   </maintainer>
   <longdescription lang="en">
 	KchmViewer is a chm (MS HTML help file format) viewer It uses Trolltech Qt
