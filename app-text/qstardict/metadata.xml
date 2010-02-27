@@ -4,11 +4,12 @@
 	<herd>app-dict</herd>
 	<herd>qt</herd>
 	<maintainer>
-		<email>rion4ik@gmail.com</email>
+	  <email>rion4ik@gmail.com</email>
+	  <description>one of developers</description>
 	</maintainer>
 	<longdescription>Cool stardict clone written with Qt</longdescription>
 <use>
-<flag name='plugin_stardict'>no DESCRIPTION</flag>
-<flag name='plugin_web'>no DESCRIPTION</flag>
+<flag name='plugin_stardict'>build stardict plugin</flag>
+<flag name='plugin_web'>build web plugin</flag>
 </use>
 </pkgmetadata>

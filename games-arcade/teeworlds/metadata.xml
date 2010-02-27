@@ -3,10 +3,10 @@
 <pkgmetadata>
 <herd>rion-overlay</herd>
 <maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
+  <email>rion4ik@gmail.com</email>
+ <description>overlay founder</description> 
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
+ <longdescription>cool multiplayer game</longdescription> 
 <use>
 <flag name='instagib'> </flag>
 </use>
