@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-521.ebuild, -packettracer-521-r1.ebuild,
+  +packettracer-521-r2.ebuild:
+  fix syntax, thx Mellon ( gentoo.ru )
+
   07 Feb 2010; <slep@gentoo.org> -packettracer-52.ebuild,
   +packettracer-521-r1.ebuild:
   version bump
@@ -9,6 +14,8 @@
   19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +packettracer-521.ebuild:
   new version
+
+*packettracer-521
 
   06 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> packettracer-52.ebuild:
   mark stable on x86
