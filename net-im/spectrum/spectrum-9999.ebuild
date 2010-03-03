@@ -18,7 +18,11 @@ KEYWORDS=""
 
 RDEPEND="dev-libs/poco[sqlite]
 	>=net-im/pidgin-2.6.0
-	>=net-libs/gloox-1.0"
+	>=net-libs/gloox-1.0
+	|| (
+		dev-libs/poco[mysql]
+		dev-libs/poco[sqlite]
+	)"
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
