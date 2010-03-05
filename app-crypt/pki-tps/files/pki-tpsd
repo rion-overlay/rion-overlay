@@ -1,0 +1,76 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# Headers: A.Vinogradov <slep@vinogradov.lv> 16.02.2010$
+
+depend() {
+	use net dirsrv
+}
+
+
+PKI_INIT_SCRIPT=""
+PKI_PATH="/usr/share/pki/tps"
+PKI_PIDDIR="/var/run/pki/tps"
+PKI_PROCESS="pki-tpsd"
+PKI_REGISTRY="/etc/pki/tps"
+PKI_SELINUX_TYPE="pki_tps_t"
+PKI_TYPE="pki-tps"
+
+# PKI subsystem-level directory and file values for locks
+lockfile="/var/lock/subsys/pki-tpsd"
+
+
+default_error=0
+command="$1"
+pki_instance="$2"
+case "${command}" in
+	start|stop|restart|condrestart|force-restart|try-restart)
+		# * 1 generic or unspecified error (current practice)
+		default_error=1
+		;;
+	reload)
+		default_error=3
+		;;
+	status)
+		# * 4 program or service status is unknown
+		default_error=4
+		;;
+	*)
+		# * 2 invalid argument(s)
+		default_error=2
+		;;
+esac
+
+
+# Check to insure that this script's associated PKI
+# subsystem currently resides on this system.
+if [ ! -d ${PKI_PATH} ] ; then
+	echo "This machine is missing the '${PKI_TYPE}' subsystem!"
+	if [ "${command}" != "status" ]; then
+		# * 5 program is not installed
+		exit 5
+	else
+		exit ${default_error}
+	fi
+fi
+
+# Check to insure that this script's associated PKI
+# subsystem instance registry currently resides on this system.
+if [ ! -d ${PKI_REGISTRY} ] ; then
+	echo "This machine contains no registered '${PKI_TYPE}' subsystem instances!"
+	if [ "${command}" != "status" ]; then
+		# * 5 program is not installed
+		exit 5
+	else
+		exit ${default_error}
+	fi
+fi
+
+start() {
+	einfo "not implimented"
+}
+
+stop() {
+	        einfo "not implimented"
+
+}
