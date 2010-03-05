@@ -1,3 +1,8 @@
+# 5  Mar 2010; G. Rudoy <0xd34df00d@gmail.com>
+# Since we have split ebuilds now, mask this in
+# favor of net-misc/leechcraft-full.
+www-client/leechcraft
+
 # 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # init script not work
 =net-wireless/madwimax-0.1.1-r2
