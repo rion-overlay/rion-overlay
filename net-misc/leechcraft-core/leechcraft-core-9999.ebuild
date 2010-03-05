@@ -52,7 +52,8 @@ src_configure() {
 		-DENABLE_PYLC=OFF
 		-DENABLE_POC=OFF
 		-DENABLE_AUSCRIE=OFF
-		-DENABLE_SUMMARY=OFF"
+		-DENABLE_SUMMARY=OFF
+		-DENABLE_TABPP=OFF"
 	cmake-utils_src_configure
 }
 
