@@ -77,8 +77,8 @@ src_install () {
 
 	rm -f "${D}${PKT_HOME}/${MY_NAME}"/bin/*.xml
 
-	dodir /etc/evn.d
-	echo PT5HOME="${PKT_HOME}"/"${MY_NAME}" > "${D}"/etc/evn.d/50-"${MY_PN}" || die
+	dodir /etc/env.d
+	echo PT5HOME="${PKT_HOME}"/"${MY_NAME}" > "${D}"/etc/env.d/50-"${MY_PN}" || die
 
 	dodoc eula.txt
 

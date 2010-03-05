@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>rion-overlay</herd>
+<maintainer>
+  <email>@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <longdescription>This package provides two plugins for Red Hat and Fedora Directory Server.
+ 
+ The NIS Server plugin allows the directory server to act as a NIS server
+ for clients, dynamically generating and updating NIS maps according to
+ its configuration and the contents of the DIT, and serving the results to
+ clients using the NIS protocol as if it were an ordinary NIS server.
+ 
+ The Schema Compatibility plugin allows the directory server to provide an
+ alternate view of entries stored in part of the DIT, optionally adding,
+ dropping, or renaming attribute values, and optionally retrieving values
+ for attributes from multiple entries in the tree.
+ </longdescription> 
+<use>
+</use>
+</pkgmetadata>
