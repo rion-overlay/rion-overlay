@@ -29,6 +29,20 @@ RDEPEND="media-plugins/gst-plugins-speex
 	x11-libs/qt-core
 	x11-libs/qt-gui"
 
+src_unpack() {
+	subversion_src_unpack
+	OLD_S="$S"
+	S="$WORKDIR/patches"
+	ESVN_PROJECT="psimedia/patches"
+	ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
+	subversion_src_unpack
+	S="$OLD_S"
+}
+
+src_prepare() {
+	epatch "$WORKDIR/patches"/*
+}
+
 src_configure() {
 	qconf
 	./configure
