@@ -18,7 +18,8 @@ DEPEND=">=dev-libs/boost-1.39
 		>=x11-libs/qt-script-4.6
 		>=x11-libs/qt-sql-4.6[postgres?,sqlite?]"
 RDEPEND="${DEPEND}
-		>=x11-libs/qt-svg-4.6"
+		>=x11-libs/qt-svg-4.6
+		!www-client/leechcraft"
 
 pkg_setup() {
 	confutils_require_any postgres sqlite
