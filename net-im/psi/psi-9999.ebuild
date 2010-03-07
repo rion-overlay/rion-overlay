@@ -94,8 +94,6 @@ src_prepare() {
 
 	EPATCH_OPTS="-p1" epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
-# Temp roster fix, пока mblsha вкуривает в него. А мы хотим уже иметь пофикшеный ростер. :) DELETE_ME_WHEN_UPSTREAM_FIX_IT.
-	epatch "${FILESDIR}"/roster_fix.patch
 ########## Unstable Patches. Use for you own risk. ###########
 #	use unstable && {
 #	epatch "${FILESDIR}"/autocomp_links.patch
