@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 hppa ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 
 PSIPLUS_PLUGINS="attention autoreply birthdayreminder cleaner conferencelogger extendedoptions gmailnotify
-image icqdie juick screenshot stopspam translate watcher"
+image icqdie juick screenshot stopspam storagenotes translate watcher"
 IUSE="${PSIPLUS_PLUGINS}"
 
 DEPEND=""
