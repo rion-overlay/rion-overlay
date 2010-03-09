@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/apr-util
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Mar 2010; <slep@gentoo.org> apr-util-1.3.9-r102.ebuild,
+  +apr-util-1.3.9-r103.ebuild:
+  sync with main tree ebuild, add confutils
 
   17 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   -apr-util-1.3.9-r101.ebuild, +apr-util-1.3.9-r102.ebuild:
