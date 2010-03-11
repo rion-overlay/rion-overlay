@@ -1,3 +1,7 @@
+# 11 Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
+# Mask alpha version for build testing
+=net-nds/389-ds-base-1.2.6_aplpha*
+
 # 7 Mar 2010; Rion <nowhere@nowhere>
 # rabbitvcs moved to dev-vcs
 dev-util/rabbitvcs
