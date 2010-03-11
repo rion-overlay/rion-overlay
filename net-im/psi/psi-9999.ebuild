@@ -96,9 +96,9 @@ src_prepare() {
 	EPATCH_OPTS="-p1" epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 ########## Unstable Patches. Use for you own risk. ###########
-#	use unstable && {
-#	epatch "${FILESDIR}"/autocomp_links.patch
-#	}
+	use unstable && {
+	epatch "${WORKDIR}"/dev/psi-size-22x22.diff
+	}
 ##############################################################
 	subversion_wc_info
 	sed "s/.xxx/.${ESVN_WC_REVISION}/" -i src/applicationinfo.cpp
