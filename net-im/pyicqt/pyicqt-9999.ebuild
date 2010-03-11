@@ -29,8 +29,7 @@ src_install() {
 	local inspath
 
 	git checkout master
-	python_version
-	inspath=/usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
+	inspath=$(python_get_sitedir)/${PN}
 	insinto ${inspath}
 	doins -r data src tools
 	newins PyICQt.py ${PN}.py
@@ -51,13 +50,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_version
-	python_mod_optimize /usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
+	python_mod_optimize $(python_get_sitedir)/${PN}
 
 	elog "A sample configuration file has been installed in /etc/jabber/${PN}.xml."
 	elog "Please edit it and the configuration of your Jabber server to match."
 }
 
 pkg_postrm() {
-	python_mod_cleanup /usr/$(get_libdir)/python*/site-packages/${PN}
+	python_mod_cleanup $(python_get_sitedir)/${PN}
 }
