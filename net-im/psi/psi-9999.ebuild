@@ -97,7 +97,7 @@ src_prepare() {
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 ########## Unstable Patches. Use for you own risk. ###########
 	use unstable && {
-	epatch "${WORKDIR}"/dev/size-icons-22x22.diff
+	epatch "${WORKDIR}"/patches/dev/size-icons-22x22.diff
 	}
 ##############################################################
 	subversion_wc_info
