@@ -61,7 +61,7 @@ src_configure() {
 #		$(use_with keyutils) \
 #		$(use_with xar) \
 	# --with-libelf
-	use python && python_version
+	use python && pld="$(python_get_libdir)"
 	econf \
 		$(use_with berkdb db) \
 		$(use_with bzip2) \
@@ -77,7 +77,7 @@ src_configure() {
 		$(use_with sqlite) \
 		$(use berkdb || use sqlite || echo --with-db) \
 		--with-path-lib="/usr/$(get_libdir)/rpm" \
-		--with-python-lib-dir="/usr/$(get_libdir)/python${PYVER}" \
+		--with-python-lib-dir="${pld}" \
 		|| die "econf failed"
 }
 
