@@ -82,6 +82,7 @@ src_unpack() {
 		unpack_default_iconset clients
 		unpack_default_iconset moods
 		unpack_default_iconset activities
+		unpack_default_iconset system
 	)
 }
 
