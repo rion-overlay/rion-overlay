@@ -26,9 +26,8 @@ RDEPEND="${COM_DEPEND}"
 python_need_rebuild
 src_prepare() {
 	python_set_active_version 2
-	python_version
 
-	sed -e "s:PYTHON_VERSION=2.5:PYTHON_VERSION=${PYVER}:" -i build/python.prf|| die
+	sed -e "s:PYTHON_VERSION=2.5:PYTHON_VERSION=$(python_get_version):" -i build/python.prf|| die
 	sed -i -e 's/python$${PYTHON_VERSION}-config/python-config/' build/python.prf|| die
 }
 
