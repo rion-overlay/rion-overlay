@@ -39,12 +39,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_version
 	python_mod_optimize \
-		/usr/$(get_libdir)/python${PYVER}/site-packages/{yum,rpmUtils} \
+		$(python_get_sitedir)/{yum,rpmUtils} \
 		/usr/share/yum-cli
 }
 
 pkg_postrm() {
-	python_mod_cleanup /usr/$(get_libdir)/python*/site-packages/{yum,rpmUtils} /usr/share/yum-cli
+	python_mod_cleanup $(python_get_sitedir)/{yum,rpmUtils} /usr/share/yum-cli
 }
