@@ -1,22 +1,16 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: Fixed ebuilds from pva's overlay $
+# $Header: $
 
 EAPI=2
-inherit autotools eutils linux-mod git
+inherit autotools eutils linux-mod
 
-if [[ "${PV}" == 9999 ]]; then
-EGIT_REPO_URI="git://${PN}.git.sf.net/gitroot/${PN}/${PN}/"
-SRC_URI=""
-KEYWORDS=""
-else
 KEYWORDS="~x86 ~amd64"
 RESTRICT="mirror"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-fi
 
 DESCRIPTION="A set of NetFilter's modules, that not included in main tree."
-HOMEPAGE="http://${PN}.sourceforge.net/"
+HOMEPAGE="http://xtables-addons.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -42,7 +36,6 @@ pkg_setup() {
 
 #Fixme (build sandbox's warnings "Access denied")
 src_prepare() {
-        cd "${S}"
 	unset ARCH
 	eautoreconf
 	epatch "${FILESDIR}"/xtables-addons-xt_SYSRQ.patch
@@ -81,18 +74,18 @@ src_install() {
 	xt_quota2(xtables_addons:"${S}:${S}"/extensions) \
 "
 
-        insinto "$(get_libdir)"/xtables
-        insopts -m0755
-        doins "${S}"/extensions/*.so || die "Installing of .so files failed"
-        doman "${S}"/xtables-addons.8 || die "Installing of man files failed"
-        # xt_SYSRQ complains about not having crypto in you need to make menuconfig and select crypto api and most likely
-        # other things in there. But for now I'm just going to ignore it.
-        
-        linux-mod_src_install
+		insinto "$(get_libdir)"/xtables
+		insopts -m0755
+		doins "${S}"/extensions/*.so || die "Installing of .so files failed"
+		doman "${S}"/xtables-addons.8 || die "Installing of man files failed"
+		# xt_SYSRQ complains about not having crypto in you need to make menuconfig and select crypto api and most likely
+		# other things in there. But for now I'm just going to ignore it.
+
+		linux-mod_src_install
 }
 
 pkg_postinst() {
-        linux-mod_pkg_postinst
+		linux-mod_pkg_postinst
 }
 
 pkg_postrm() {
