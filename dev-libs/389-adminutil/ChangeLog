@@ -3,6 +3,12 @@
 # $Header: $
 
   12 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-adminutil-1.1.10.ebuild:
+  version bump
+
+*389-adminutil-1.1.10 ( 12 Mar 2010 )  
+  
+  12 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +389-adminutil-1.1.9.ebuild:
   bump
 
