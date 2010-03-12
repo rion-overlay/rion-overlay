@@ -35,7 +35,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}"  install || die
 
-	dodoc  ${S}/doc/*.{txt,ldif}
+	dodoc  "${S}"/doc/*.{txt,ldif}
 
 	dodoc NEWS README STATUS
 }
