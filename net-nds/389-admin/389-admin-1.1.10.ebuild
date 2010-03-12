@@ -6,7 +6,7 @@ EAPI="2"
 
 WANT_AUTOMAKE="1.9"
 
-MY_PV="1.1.10.a3"
+MY_PV="1.1.10"
 
 inherit eutils multilib autotools depend.apache
 
@@ -14,13 +14,10 @@ DESCRIPTION="389 Directory Server (admin)"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://port389.org/sources/${PN}-${MY_PV}.tar.bz2"
 
-LICENSE="GPL-2-with-exceptions"
+LICENSE="GPL-2 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug ipv6 +threads"
-
-# USE selinux dropped - gentoo specific
-# I`m not selinux man
+IUSE="debug ipv6 +threads selinux"
 
 # TODO snmp agent init script
 
@@ -42,7 +39,10 @@ DEPEND="dev-libs/nss[utils]
 		threads? ( www-servers/apache:2[apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif] )
 		!threads? ( www-servers/apache:2[-apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif] )
 		!www-apache/mod_admserv
-		!www-apache/mod_restartd"
+		!www-apache/mod_restartd
+		selinux? ( sys-apps/policycoreutils
+				sec-policy/selinux-base-policy
+				sys-apps/checkpolicy )"
 
 #~www-apache/mod_admserv-${PV}
 #~www-apache/mod_restartd-${PV}
@@ -61,14 +61,15 @@ src_prepare() {
 	sed -e "s!nobody!apache!g" -i configure.ac	  || die "sed failed"
 #	rm -rf "${S}"/mod_* || die
 
-	eautoconf
-	eautomake
+	eautoreconf
+#	eautomake
 }
 
 src_configure() {
 	econf \
 		$(use_enable debug) \
 		$(use_enable threads threading) \
+		$(use_with selinux) \
 		--disable-rpath \
 		--with-fhs \
 		--with-apr-config \
@@ -96,11 +97,6 @@ src_install () {
 	rm -rf "${D}"/usr/sbin/*-ds-admin
 	dosbin "${FILESDIR}"/*-ds-admin
 
-	# Patch httpd.conf 
-	# Source in httpd.conf is patch hell,imho
-	cd "${D}"/etc
-#	epatch "${FILESDIR}/${PV}"-apache2-httpd.conf.patch || die
-
 	# In this version build systems for modules is delete :(
 	# manually install modules, not using apache-modules eclass
 	# because use bindled library
@@ -121,11 +117,19 @@ src_install () {
 	newins "${FILESDIR}/${PV}"/48_mod_restartd.conf 48_mod_restartd \
 				|| die "internal ebuild error: 48_mod_restard.conf not found"
 
+	if use selinux; then
+		local POLICY_TYPES="targeted"
+		cd "${S}"/selinux-build
+		cp /usr/share/selinux/${POLICY_TYPES}/include/Makefile  .
+		make || die "selinux policy compile failed"
+		insinto /usr/share/selinux/${POLICY_TYPES}
+		doins -r "${S}/selinux-build/"*.pp
+	fi
 }
 
 pkg_postinst() {
 	einfo
-	einfo " This ebuild contains two apache modules"
+	einfo "This ebuild contains two apache modules"
 	einfo "mod_admserv and mod_restartd "
 	einfo "Please fix you config files "
 	einfo
