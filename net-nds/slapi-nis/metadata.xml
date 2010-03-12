@@ -19,5 +19,7 @@
  for attributes from multiple entries in the tree.
  </longdescription> 
 <use>
+	<flag name='tirpc'>Enable <pkg>net-libs/libtirpc</pkg> for RPC, instead glibc/portmap RPC</flag>
+
 </use>
 </pkgmetadata>

@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Mar 2010; <slep@gentoo.org> slapi-nis-0.17.ebuild, metadata.xml:
+  more QA fix
+
   01 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> +slapi-nis-0.17.ebuild,
   +metadata.xml:
   initial commit
