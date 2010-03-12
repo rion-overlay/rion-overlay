@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Mar 2010; <slep@gentoo.org> -fortune-mod-gentoo-ru-0.09.ebuild,
+  -fortune-mod-gentoo-ru-0.10.ebuild:
+  delete old version
+
   05 Mar 2010; <slep@gentoo.org> +fortune-mod-gentoo-ru-0.11.ebuild:
   version bump
 
