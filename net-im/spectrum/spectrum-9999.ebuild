@@ -1,4 +1,4 @@
-# Copyright 1999-2009 soul9.org
+# Copyright 1999-2010 soul9.org
 # Distributed under the terms of the WTFPL
 
 EAPI="2"
@@ -15,6 +15,7 @@ EGIT_TREE="master"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
+IUSE=""
 
 RDEPEND="dev-libs/poco[sqlite]
 	>=net-im/pidgin-2.6.0
