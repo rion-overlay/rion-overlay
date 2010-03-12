@@ -23,7 +23,7 @@ LICENSE="BSD
 	pam? ( as-is )
 	mp4? ( CCPL-Attribution-NonCommercial-NoDerivs-2.5 )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif fastcgi
 geo gzip limit_req limit_zone map memcached proxy referer rewrite ssi
@@ -52,14 +52,13 @@ for mod in $NGINX_MODULES_3RD; do
 done
 
 CDEPEND=">=dev-libs/libpcre-4.2
-	arm? ( dev-libs/libatomic_ops )
 	ssl? ( dev-libs/openssl )
 	http-cache? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_geo? ( dev-libs/geoip )
 	nginx_modules_http_gzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip_static? ( sys-libs/zlib )
 	nginx_modules_http_perl? ( >=dev-lang/perl-5.8 )
-	nginx_modules_http_secure_link? ( userland_GNU? ( dev-libs/openssl ) )
+	nginx_modules_http_secure_link? ( dev-libs/openssl  )
 	nginx_modules_http_xslt? ( dev-libs/libxml2 dev-libs/libxslt )
 	nginx_modules_http_passenger? (
 		$(ruby_implementation_depend ruby18)

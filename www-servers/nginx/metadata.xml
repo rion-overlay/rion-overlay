@@ -28,5 +28,9 @@
 	<flag name='libatomic'>Force libatomic_ops library usage:atomic memory
 		update operations</flag>
 	<flag name='scgi'> Add 3rd party module for SCGI support</flag>
+	<flag name='perftools'>Use <pkg>dev-util/google-perftools</pkg> for
+	performance tuning</flag>
+	<flag name='http'> </flag>
+	<flag name='http-cache'> </flag>
 </use>
 </pkgmetadata>
