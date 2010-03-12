@@ -131,9 +131,9 @@ src_configure() {
 		${myconf} || die "myconf failed"
 }
 
-src_compile() {
-	emake -j1  || die "compile failed"
-}
+#src_compile() {
+#	emake -j1  || die "compile failed"
+#}
 
 src_install() {
 
@@ -167,8 +167,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [  -e ${ROOT}/var/lib/milter-greylist/greylist.db ] ; then
-		touch ${ROOT}/var/lib/milter-greylist/greylist.db
+	if [  -e "${ROOT}"/var/lib/milter-greylist/greylist.db ] ; then
+		touch "${ROOT}"/var/lib/milter-greylist/greylist.db
 	fi
 
 	if use !postfix; then
@@ -180,7 +180,7 @@ pkg_postinst() {
 	fi
 
 	if use postfix;then
-		chown postfix ${ROOT}/var/lib/milter-greylist/greylist.db
+		chown postfix "${ROOT}"/var/lib/milter-greylist/greylist.db
 
 		elog
 		elog " You can enable milter-greylist in your postfix, adding the line:"
