@@ -66,10 +66,8 @@ src_install() {
 	keepdir var/lib/cache/ipa/sessions
 	keepdir var/lib/lib/ipa/sysrestore/
 
-
 }
 pkg_postrm() {
 
 	python_mod_cleanup /usr/share/ipa/ipagui/
 }
-
