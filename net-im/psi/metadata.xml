@@ -13,5 +13,7 @@
   <flag name='enchant'>Use enchant spell engine instead of aspell</flag>
   <flag name='whiteboarding'>Inreractive SVG drawing</flag>
   <flag name='webkit'>Enable chatlog rendering using webkit</flag>
+	<flag name='iconsets'>Use additional iconset</flag>
+	<flag name='unstable'>Enable unstable and not tested patchset</flag>
 </use>
 </pkgmetadata>
