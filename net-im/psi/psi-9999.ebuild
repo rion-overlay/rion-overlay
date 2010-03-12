@@ -78,7 +78,6 @@ src_unpack() {
 		ESVN_PROJECT=psiplus/iconsets
 		subversion_src_unpack
 	) || (
-		unpack_default_iconset psiplus
 		unpack_default_iconset clients
 		unpack_default_iconset moods
 		unpack_default_iconset activities
