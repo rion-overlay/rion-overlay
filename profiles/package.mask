@@ -13,6 +13,7 @@ www-client/leechcraft
 
 # 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # init script not work
+# removal 27 Mar 2010
 =net-wireless/madwimax-0.1.1-r2
 
 
