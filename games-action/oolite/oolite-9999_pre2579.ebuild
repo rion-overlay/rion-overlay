@@ -13,7 +13,7 @@ ESVN_REPO_URI="svn://svn.berlios.de/oolite-linux/trunk@${rev}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="${IUSE}"
 
 RDEPEND="virtual/opengl
