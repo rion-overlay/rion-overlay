@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.10.ebuild, +389-admin-1.1.10-r1.ebuild:
+  bump
+
   12 Mar 2010; <slep@gentoo.org>
   +files/1.1.10/0010-gentoo_selinux_makefile.patch, 389-admin-1.1.10.ebuild:
   selinux patch and test
