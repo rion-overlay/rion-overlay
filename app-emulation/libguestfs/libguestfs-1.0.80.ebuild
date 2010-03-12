@@ -15,8 +15,8 @@ SRC_URI="http://libguestfs.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="ocaml ruby java kvm haskell perl python readline nls debug doc"
+KEYWORDS="-*"
+IUSE="ocaml ruby kvm haskell perl python readline nls debug doc"
 
 DEPEND="dev-lang/perl
 		virtual/cdrtools
@@ -27,9 +27,8 @@ DEPEND="dev-lang/perl
 		nls? ( >=sys-devel/gettext-0.17 )
 		readline? ( sys-libs/readline )
 		doc? ( dev-libs/libxml2 )
-		ocaml? ( dev-lang/ocaml ) 
+		ocaml? ( dev-lang/ocaml )
 		ruby? ( dev-lang/ruby )
-		java? ( virtual/jdk:1.6 )
 		haskell? ( dev-lang/ghc )"
 
 RDEPEND="${DEPEND}"
@@ -39,8 +38,6 @@ src_prepare() {
 	eautoreconf
 }
 
-
 src_install() {
 	emake DESTDIR="${D}" install || die
 }
-
