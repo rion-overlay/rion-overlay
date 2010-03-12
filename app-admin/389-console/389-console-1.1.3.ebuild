@@ -20,13 +20,12 @@ SLOT="1.1"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-#S=${WORKDIR}/fedora-idm-console-${PV}
-
 COMMON_DEP="dev-java/jss:3.4
 			dev-java/ldapsdk:4.1
 			>=dev-java/idm-console-framework-1.1
 			app-admin/389-admin-console
-			!app-admin/fedora-idm-console"
+			!app-admin/fedora-idm-console
+			!app-admin/389-idm-console"
 
 RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
