@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+
+NAME="ipa_kpasswd"
+PROG="/usr/sbin/ipa_kpasswd"
+
+depend() {
+	use mit-krb5kdc net
+	before net
+
+start() {
+	ebegin "Starting ipa_kpasswd "
+	start-stop-daemon --start  --background --make-pidfile \
+			--pidfile /var/run/ipa_kpasswd.pid \
+			--startas /usr/sbin/ipa_kpassw
+	 eend $?
+}	
+
+stop() {
+	 ebegin "Stopping ipa_kpasswd "
+	start-stop-daemon --stop --quiet --pidfile /var/run/ipa_kpassw
+	 eend $?
+
+}	
