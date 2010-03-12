@@ -1,6 +1,9 @@
 # ChangeLog for net-p2p/eiskaltdc
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  12 Mar 2010; <slep@gentoo.org> eiskaltdc-9999.ebuild:
+  delete cmake depend in ebuild - this depend inherit in eclass
 
   19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +eiskaltdc-1.0.40.ebuild:
