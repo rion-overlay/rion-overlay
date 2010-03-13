@@ -9,5 +9,6 @@ inherit leechcraft
 DESCRIPTION="Kinotify, fancy notifications for LeechCraft."
 
 IUSE="debug"
-DEPEND="=net-misc/leechcraft-core-${PV}"
+DEPEND="=net-misc/leechcraft-core-${PV}
+		>=x11-libs/qt-webkit-4.6"
 RDEPEND="${DEPEND}"
