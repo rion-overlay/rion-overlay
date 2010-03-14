@@ -22,13 +22,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="log debug dht doc crypt pool-allocators statistics disk-stats geoip examples test python-binding zlib"
+IUSE="log debug dht doc crypt pool-allocators statistics disk-stats geoip examples test python zlib"
 
 COMMON_DEPEND=">=dev-libs/boost-1.36
 				encryption? ( dev-libs/openssl )
 				geoip? ( dev-libs/geoip )
 				zlib? ( sys-libs/zlib )
-				python-binding?
+				python?
 					( =dev-lang/python-2*
 					  >=dev-libs/boost-1.36[python] )"
 
@@ -47,7 +47,7 @@ src_unpack() {
 src_prepare(){
 	eautoreconf
 
-	if use python-binding; then
+	if use python; then
 		cd "${S}"/bindings/python
 		distutils_src_prepare
 	fi
@@ -69,7 +69,7 @@ src_configure() {
 			$(use_enable geoip) \
 			$(use_enable examples) \
 			$(use_enable test tests) \
-			$(use_enable python-binding ) \
+			$(use_enable python python-binding ) \
 			$(use_with zlib) \
 			${myconf} || die "econf failed"
 }
@@ -77,7 +77,7 @@ src_configure() {
 src_compile() {
 	emake || die "emake failed"
 
-	if use python-binding; then
+	if use python; then
 		cd "${S}"/bindings/python
 		distutils_src_compile
 	fi
@@ -93,7 +93,7 @@ src_install() {
 		doins -r "${S}"/docs/
 	fi
 
-	if use python-binding;then
+	if use python;then
 		cd "${S}"/bindings/python
 		distutils_src_install
 	fi
