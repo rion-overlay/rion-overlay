@@ -19,7 +19,7 @@ DEPEND="sys-apps/sed
 		${DEPEND}"
 DESCRIPTION="Based on the $ECLASS  eclass"
 HOMEPAGE="http://www.openca.org/"
-SRC_URI="mirror://sourceforge/openca/openca-base-1.0.2.tar.gz"
+#SRC_URI="mirror://sourceforge/openca/openca-base-1.0.2.tar.gz"
 SLOT=0
 
 # @FUNCTION: openca-perl_set_s
@@ -29,7 +29,7 @@ SLOT=0
 
 
 openca-perl_set_s() {
-		local base_dir="openca-base-1.0.2/src/modules/""${PN}"
+		local base_dir="openca-base-${PV}/src/modules/${PN}"
 		local SSS=""
 		SSS=`echo "${base_dir}" | tr "[:upper:]" "[:lower:]"`
 		S="${WORKDIR}"/"${SSS}"
