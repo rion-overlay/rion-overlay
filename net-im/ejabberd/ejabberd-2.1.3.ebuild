@@ -17,7 +17,7 @@ HOMEPAGE="http://www.ejabberd.im/"
 SRC_URI="http://www.process-one.net/downloads/${PN}/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc x86"
+KEYWORDS="~amd64 ~x86"
 EJABBERD_MODULES="mod_irc mod_muc mod_proxy65 mod_pubsub"
 IUSE="captcha debug ldap odbc pam ssl web zlib ${EJABBERD_MODULES}"
 
