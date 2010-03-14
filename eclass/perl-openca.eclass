@@ -24,9 +24,11 @@ DEPEND="sys-apps/sed
 
 RDEPEND="${DEPEND}"
 
-DESCRIPTION="Based on the $ECLASS  eclass"
+# Commented due gentoo developers request
+#DESCRIPTION="Based on the $ECLASS  eclass"
+SRC_URI="mirror://sourceforge/openca/openca-base-${PV}.tar.gz"
+
 HOMEPAGE="http://www.openca.org/"
-SRC_URI="mirror://sourceforge/openca/openca-base-1.0.2.tar.gz"
 LICENSE="${LICENSE:-|| ( Artistic GPL-2 )}"
 
 
