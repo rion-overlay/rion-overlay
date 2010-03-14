@@ -13,7 +13,6 @@
 		 recommended</flag>
 	 <flag name='statistics'>Verbose statistic</flag>
 	 <flag name='disk-stats'> </flag>
-	 <flag name='python-binding'>Build Pyton bindings</flag>
 	<flag name='log'>Create log </flag>
 </use>
 </pkgmetadata>
