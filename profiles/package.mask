@@ -1,3 +1,7 @@
+# 14 Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
+# Build fail
+=app-benchmarks/stressapptest-1.0.2
+
 # 12 Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
 # move to app-admin/389-console
 app-admin/389-idm-console
