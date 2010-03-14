@@ -4,11 +4,16 @@
 
 EAPI="2"
 
-inherit openca-perl
+SRC_VER="1.0.2"
+
+inherit perl-module
 
 DESCRIPTION="Perl Certificates DB Extention"
+SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
 KEYWORDS="~amd64 ~x86"
+
 IUSE=""
+SLOT="0"
 
 DEPEND=""
 RDEPEND=">=virtual/perl-DB_File-1.815
@@ -17,5 +22,4 @@ RDEPEND=">=virtual/perl-DB_File-1.815
 		dev-perl/OpenCA-CRL
 		dev-perl/OpenCA-OpenSSL
 		dev-perl/OpenCA-Tools"
-
-openca-perl_set_s
+S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-db"

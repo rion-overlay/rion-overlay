@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit perl-openca
+inherit perl-module eutils
 
 DESCRIPTION="Perl extension to easily manage X509 Cert"
 HOMEPAGE="http://search.cpan.org/~madwolf/OpenCA-X509-0.9.47/"
@@ -18,3 +18,12 @@ IUSE=""
 DEPEND="dev-perl/X500-DN
 		virtual/perl-Digest-MD5"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	perl-module_src_prepare
+
+	sed -i -e /prova.pl/d "${S}"/MANIFEST || die "sed failed"
+	einfo "editing MANIFEST"
+	rm -r "${S}"/prova.pl || die "Not removed prova.pl"
+	einfo "removed prova.pl"
+}

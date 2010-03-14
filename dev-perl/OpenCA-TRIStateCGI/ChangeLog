@@ -1,6 +1,10 @@
 # ChangeLog for dev-perl/OpenCA-TRIStateCGI
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -OpenCA-TRIStateCGI-1.5.5.ebuild, +OpenCA-TRIStateCGI-1.5.5-r1.ebuild:
+  eclass clean
 
   11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   OpenCA-TRIStateCGI-1.5.5.ebuild:
