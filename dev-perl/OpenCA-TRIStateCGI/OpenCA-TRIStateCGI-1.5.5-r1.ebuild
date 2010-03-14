@@ -4,13 +4,18 @@
 
 EAPI="2"
 
-inherit openca-perl
+SRC_VER="1.1.0"
+inherit perl-module
 
 DESCRIPTION="Perl extension for implementing 3-state Input Objs."
+SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+SLOT="0"
+
 DEPEND="virtual/httpd-cgi
 		dev-perl/CGI-Session"
+
 RDEPEND="${DEPEND}"
-openca-perl_set_s
+S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-tristatecgi"
