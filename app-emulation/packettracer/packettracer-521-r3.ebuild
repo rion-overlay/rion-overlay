@@ -44,7 +44,7 @@ src_prepare(){
 
 	for file in install set_ptenv.sh tpl.linguist tpl.packettracer \
 							extensions/ptaplayer bin/linguist; do
-		 rm ${file} || die "unable to rm ${file}"
+		 rm -fr  ${file} || die "unable to rm ${file}"
 	done
 }
 
@@ -53,17 +53,17 @@ src_install () {
 	local PKT_HOME="/opt/pt/"
 
 	dodir "${PKT_HOME}"
-	doins -r .  "${D}"${PKT_HOME} || die "Install failed!"
+	cp -R "${S}/"   "${D}${PKT_HOME}"  || die "Install failed!"
 
-	doicon "./art/"{app,pka,pkt,pkz}.{ico,png}
+	doicon "${S}/art/"{app,pka,pkt,pkz}.{ico,png}
 
 	make_wrapper packettracer "./bin/PacketTracer5" "${PKT_HOME}${MY_NAME}" "${PKT_HOME}${MY_NAME}/lib"
 	make_desktop_entry "packettracer"  "PacketTracer" "app" "Education;Emulator"
 
 	insinto /usr/share/mime/applications
-	doins "${D}${PKT_HOME}/${MY_NAME}"/bin/*.xml
+	doins "${D}${PKT_HOME}${MY_NAME}bin/"*.xml
 
-	rm -f "${D}${PKT_HOME}/${MY_NAME}"/bin/*.xml
+	rm -f "${D}${PKT_HOME}${MY_NAME}bin/"*.xml
 
 	dodir /etc/env.d
 	echo PT5HOME="${PKT_HOME}/${MY_NAME}" > "${D}/etc/env.d/50-${MY_PN}" || die
