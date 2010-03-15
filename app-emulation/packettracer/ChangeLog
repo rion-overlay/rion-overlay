@@ -3,6 +3,10 @@
 # $Header: $
 
   15 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  packettracer-521-r3.ebuild:
+  neutral doc use flag
+
+  15 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +packettracer-521-r3.ebuild:
   more fix for pva review
 

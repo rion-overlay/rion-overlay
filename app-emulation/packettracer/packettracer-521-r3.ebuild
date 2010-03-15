@@ -18,7 +18,7 @@ LICENSE="Cisco_EULA"
 
 SLOT="${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+doc online-exam"
+IUSE="doc online-exam"
 
 DEPEND="app-arch/gzip
 		amd64? ( >=app-emulation/emul-linux-x86-qtlibs-20081109 )"
