@@ -5,12 +5,12 @@
 EAPI=2
 
 WANT_AUTOMAKE="1.9"
-
+MY_P=${P/_alpha/.a}
 inherit eutils multilib flag-o-matic autotools
 
 DESCRIPTION="389 Directory Server (core librares  and daemons )"
 HOMEPAGE="http://port389.org/"
-SRC_URI="http://directory.fedoraproject.org/sources/389-ds-base-1.2.6.a2.tar.bz2"
+SRC_URI="http://directory.fedoraproject.org/sources/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
@@ -49,7 +49,7 @@ RDEPEND="${ALL_DEPEND}
 			virtual/perl-Time-Local
 			virtual/perl-MIME-Base64"
 
-S="${WORKDIR}/${PN}"-1.2.6.a2
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup dirsrv
