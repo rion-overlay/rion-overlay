@@ -6,7 +6,7 @@ EAPI="2"
 
 DESCRIPTION="Consolidated menu for gnome"
 HOMEPAGE="https://launchpad.net/gnomenu"
-SRC_URI="http://launchpad.net/gnomenu/trunk/2.4/+download/${P}.tar.gz"
+SRC_URI="http://launchpad.net/gnomenu/trunk/2.5/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
