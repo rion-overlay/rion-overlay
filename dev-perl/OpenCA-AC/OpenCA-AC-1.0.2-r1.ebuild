@@ -5,7 +5,7 @@
 EAPI="2"
 
 SRC_VER="1.1.0"
-inherit perl-module 
+inherit perl-module
 
 DESCRIPTION="Perl extension to OpenCA project"
 SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
@@ -23,4 +23,3 @@ RDEPEND="dev-perl/XML-Twig
 		dev-perl/perl-ldap"
 DEPEND=""
 S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-ac"
-

@@ -4,13 +4,17 @@
 
 EAPI="2"
 
-inherit openca-perl
+SRC_VER="1.1.0"
+inherit perl-module
 
 DESCRIPTION="Managing OpenCA config files"
-KEYWORDS="~amd64 x86"
+SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 IUSE=""
+SLOT="0"
+
 DEPEND=""
 RDEPEND=""
 
-openca-perl_set_s
+S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-statemachine"
