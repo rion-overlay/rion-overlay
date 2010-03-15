@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# 389 overlay, rewrite official ebuild add mozldap :)
-
 EAPI="2"
 
 inherit eutils
@@ -19,14 +17,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc iodbc unicode odbc smtp +mozldap"
 
-RDEPEND="dev-libs/apr:1
-	dev-libs/apr-util:1
-	odbc? (
-		iodbc? ( >=dev-db/libiodbc-3.52.4 )
-		!iodbc? ( dev-db/unixODBC ) )
-	smtp? ( net-libs/libesmtp )
-	mozldap? ( dev-libs/mozldap )"
-DEPEND="${RDEPEND}"
+DEPEND="dev-libs/apr:1
+		dev-libs/apr-util:1
+		odbc? (
+			iodbc? ( >=dev-db/libiodbc-3.52.4 )
+			!iodbc? ( dev-db/unixODBC ) )
+		smtp? ( net-libs/libesmtp )
+		mozldap? ( dev-libs/mozldap )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -37,8 +34,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-missing_includes.patch"
-	epatch "${FILESDIR}/${PV}-gcc44.patch"
+	epatch  "${FILESDIR}/${PV}-missing_includes.patch" \
+			"${FILESDIR}/${PV}-gcc44.patch" \
+			"${FILESDIR}"/${P}-unixODBC.patch
 }
 
 src_configure() {
