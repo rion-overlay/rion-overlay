@@ -1,0 +1,7 @@
+# ChangeLog for app-emulation/libguestfs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  12 Mar 2010; <slep@gentoo.org> libguestfs-1.0.80.ebuild, +metadata.xml:
+  QA fix
+

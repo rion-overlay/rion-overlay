@@ -1,0 +1,25 @@
+# ChangeLog for net-p2p/gnunet
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  27 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> gnunet-0.8.0c.ebuild:
+  drop untested keywords
+
+  07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> gnunet-0.8.0c.ebuild:
+  repoman RDEPEND.suspect
+
+  28 Feb 2009; Ycarus <ycarus@zugaina.org> +gnunet-0.8.0c.ebuild:
+  Bump to 0.8.0c
+
+  30 Sep 2008; Ycarus <ycarus@zugaina.org> +gnunet-0.8.0b.ebuild:
+  Bump to 0.8.0b
+
+  30 Jul 2008; Ycarus <ycarus@zugaina.org> +gnunet-0.8.0a.ebuild:
+  Bump to version 0.8.0a
+
+  15 Jun 2008; <ycarus@zugaina.org> +gnunet-0.8.0.ebuild:
+  Bump to version 0.8.0
+
+  02 Jun 2008; <ycarus@zugaina.org> +metadata.xml, +gnunet-0.8.0_pre1.ebuild:
+  Add gnunet 0.8.0_pre1
+

@@ -1,0 +1,70 @@
+diff --git a/pki-tps-1.2.0/src/modules/tokendb/mod_tokendb.cpp b/pki-tps-1.2.0/src/modules/tokendb/mod_tokendb.cpp
+--- a/pki-tps-1.2.0/src/modules/tokendb/mod_tokendb.cpp
++++ b/pki-tps-1.2.0/src/modules/tokendb/mod_tokendb.cpp
+@@ -53,12 +53,12 @@
+ #include "prmem.h"
+ #include "prtime.h"
+ 
+-#include "httpd/httpd.h"
+-#include "httpd/http_config.h"
+-#include "httpd/http_log.h"
+-#include "httpd/http_protocol.h"
+-#include "httpd/http_main.h"
+-#include "httpd/http_request.h"
++#include "apache2/httpd.h"
++#include "apache2/http_config.h"
++#include "apache2/http_log.h"
++#include "apache2/http_protocol.h"
++#include "apache2/http_main.h"
++#include "apache2/http_request.h"
+ 
+ #include "apr_strings.h"
+ 
+diff --git a/pki-tps-1.2.0/src/modules/tps/AP_Context.cpp b/pki-tps-1.2.0/src/modules/tps/AP_Context.cpp
+--- a/pki-tps-1.2.0/src/modules/tps/AP_Context.cpp
++++ b/pki-tps-1.2.0/src/modules/tps/AP_Context.cpp
+@@ -23,8 +23,8 @@
+ {
+ #endif
+ 
+-#include "httpd/httpd.h"
+-#include "httpd/http_log.h"
++#include "apache2/httpd.h"
++#include "apache2/http_log.h"
+ #include "nspr.h"
+ 
+ #include "modules/tps/AP_Context.h"
+diff --git a/pki-tps-1.2.0/src/modules/tps/AP_Session.cpp b/pki-tps-1.2.0/src/modules/tps/AP_Session.cpp
+--- a/pki-tps-1.2.0/src/modules/tps/AP_Session.cpp
++++ b/pki-tps-1.2.0/src/modules/tps/AP_Session.cpp
+@@ -27,8 +27,8 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include "nspr.h"
+-#include "httpd/httpd.h"
+-#include "httpd/http_protocol.h"
++#include "apache2/httpd.h"
++#include "apache2/http_protocol.h"
+ 
+ #include "engine/RA.h"
+ #include "main/Util.h"
+diff --git a/pki-tps-1.2.0/src/modules/tps/mod_tps.cpp b/pki-tps-1.2.0/src/modules/tps/mod_tps.cpp
+--- a/pki-tps-1.2.0/src/modules/tps/mod_tps.cpp
++++ b/pki-tps-1.2.0/src/modules/tps/mod_tps.cpp
+@@ -41,11 +41,11 @@
+ #include <unistd.h>
+ #include "nspr.h"
+ 
+-#include "httpd/httpd.h"
+-#include "httpd/http_config.h"
+-#include "httpd/http_log.h"
+-#include "httpd/http_protocol.h"
+-#include "httpd/http_main.h"
++#include "apache2/httpd.h"
++#include "apache2/http_config.h"
++#include "apache2/http_log.h"
++#include "apache2/http_protocol.h"
++#include "apache2/http_main.h"
+ 
+ #include "apr_strings.h"
+ 
