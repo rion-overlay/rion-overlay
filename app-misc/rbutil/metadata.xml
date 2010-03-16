@@ -8,6 +8,6 @@
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
 <use>
-<flag name='ypp2'>Adds Basically (and unofficial) support for Samsung YP-P2 player (can brick your device)</flag>
+<flag name='ypp2'>Adds basic (and unofficial) support for Samsung YP-P2 player (can break your device)</flag>
 </use>
 </pkgmetadata>
