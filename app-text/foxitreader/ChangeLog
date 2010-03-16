@@ -1,6 +1,11 @@
 # ChangeLog for app-text/foxitreader
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  16 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +foxitreader-1.1.0-r1.ebuild, +files/FoxitReader.txt,
+  +files/foxitreader.desktop, +files/foxitreader.png:
+  ebuild from #308147
 
   28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   foxitreader-1.1.0.ebuild:
