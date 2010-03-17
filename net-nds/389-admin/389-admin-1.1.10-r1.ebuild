@@ -22,7 +22,7 @@ IUSE="debug ipv6 +threads selinux"
 # TODO snmp agent init script
 
 DEPEND="dev-libs/nss[utils]
-		dev-libs/nspr[ipv6?]
+		|| ( <=dev-libs/nspr-4.8.3-r3[ipv6?] >=dev-libs/nspr-4.8.4 )
 		dev-libs/svrcore
 		dev-libs/mozldap
 		dev-libs/cyrus-sasl
