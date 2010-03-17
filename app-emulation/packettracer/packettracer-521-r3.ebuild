@@ -7,7 +7,7 @@ EAPI="2"
 MY_PN="PacketTracer"
 MY_P="${MY_PN}${PV}"
 
-inherit eutils fdo-mime
+inherit eutils fdo-mime multilib
 
 DESCRIPTION="Cisco's Packet Tracer"
 HOMEPAGE="https://www.cisco.com/web/learning/netacad/course_catalog/PacketTracer.html"
@@ -29,6 +29,10 @@ RDEPEND="doc? ( www-plugins/adobe-flash  )
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup () {
+	# This is a binary x86 package => ABI=x86
+	has_multilib_profile && ABI="x86"
+}
 pkg_nofetch () {
 	ewarn "To fetch sources you need cisco account which is available in case"
 	ewarn "you are cisco web-learning student, instructor or you sale cisco hardware, etc..  "
@@ -46,6 +50,7 @@ src_prepare(){
 							extensions/ptaplayer bin/linguist; do
 		 rm -fr  ${file} || die "unable to rm ${file}"
 	done
+	use !doc && rm -fr "${S}/"help/default/tutorials
 }
 
 src_install () {
@@ -57,16 +62,16 @@ src_install () {
 
 	doicon "${S}/art/"{app,pka,pkt,pkz}.{ico,png}
 
-	make_wrapper packettracer "./bin/PacketTracer5" "${PKT_HOME}${MY_NAME}" "${PKT_HOME}${MY_NAME}/lib"
+	make_wrapper packettracer "./bin/PacketTracer5" "${PKT_HOME}${MY_P}" "${PKT_HOME}${MY_P}/lib"
 	make_desktop_entry "packettracer"  "PacketTracer" "app" "Education;Emulator"
 
 	insinto /usr/share/mime/applications
-	doins "${D}${PKT_HOME}${MY_NAME}bin/"*.xml
+	doins "${D}${PKT_HOME}${MY_P}/bin/"*.xml
 
 	rm -f "${D}${PKT_HOME}${MY_NAME}bin/"*.xml
 
 	dodir /etc/env.d
-	echo PT5HOME="${PKT_HOME}/${MY_NAME}" > "${D}/etc/env.d/50-${MY_PN}" || die
+	echo PT5HOME="${PKT_HOME}/${MY_P}" > "${D}/etc/env.d/50${MY_PN}" || die "env.d files install failed"
 }
 
 pkg_postinst(){
