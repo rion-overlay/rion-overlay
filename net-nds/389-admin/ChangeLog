@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  389-admin-1.1.10-r1.ebuild, 389-admin-1.1.11_alpha2.ebuild:
+  fixed use flag ipv6, downgrade nspr library
+
   14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/1.1.11_alpha2/0001-gentoo-apache-names.patch,
   +files/1.1.11_alpha2/0003-find-mod_nss.m4.patch,
