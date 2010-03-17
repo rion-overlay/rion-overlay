@@ -60,6 +60,5 @@ src_configure() {
 
 src_install() {
 	leechcraft_src_install
-	doicon resources/leechcraft.png
 	make_desktop_entry leechcraft "LeechCraft" leechcraft.png
 }
