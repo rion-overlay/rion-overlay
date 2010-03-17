@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${PROG}: "
+	[[ -e /sys/modules/cachefiles ]] || modprobe cachefiles
+	start-stop-daemon --start --quiet --pidfile="${PIDFILE}" --exec "${PROG}" \
+		-- -p "${PIDFILE}" ${OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${PROG}: "
+	start-stop-daemon --stop --quiet --pidfile="${PIDFILE}" --exec "${PROG}"
+	eend $?
+}
