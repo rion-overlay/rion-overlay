@@ -8,7 +8,8 @@ SRC_VER="1.1.0"
 inherit  perl-module
 
 DESCRIPTION="Open-CA Perl module for DBI Extension"
-SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
+SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz
+		http://ftp.openca.org/openca-base/fixes/v1.1.0/PostgreSQL_DB/DBI.pm -> Openca-DBI.pm"
 KEYWORDS="~amd64 ~x86"
 
 IUSE=""
@@ -23,6 +24,14 @@ RDEPEND="dev-perl/DBI
 		dev-perl/libintl-perl"
 
 S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-dbi"
+
+src_unpack() {
+	unpack openca-base-${SRC_VER}.tar.gz
+}
+
+src_prepare() {
+	cp "${DISTDIR}"/Openca-DBI.pm DBI.pm || die "patch failed"
+}
 
 src_prepare() {
 	perl-module_src_prepare
