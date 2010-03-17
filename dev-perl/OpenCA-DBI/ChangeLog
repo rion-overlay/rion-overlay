@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-DBI-1.11-r1.ebuild:
+  PostgeSQL DBI for v1.1.0 - Fixes for PostgreSQL and default OpenCA 1.1.0
+  installatio
+
   14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -OpenCA-DBI-1.11.ebuild, +OpenCA-DBI-1.11-r1.ebuild:
   clean eclass
