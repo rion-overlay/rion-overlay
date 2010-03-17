@@ -17,7 +17,7 @@ IUSE="apache2 minimal"
 DEPEND="dev-perl/Template-Toolkit
 		perl-core/CGI
 		dev-perl/RTPG
-		dev-perl/RPC-XML
+		>=dev-perl/RPC-XML-0.72
 		dev-perl/JSON-XS
 		apache2? ( www-apache/mod_scgi )
 		!minimal? ( net-p2p/rtorrent[xmlrpc] )"
