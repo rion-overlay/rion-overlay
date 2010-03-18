@@ -7,10 +7,6 @@ MODULE_AUTHOR="NEZUMI"
 inherit perl-module
 
 DESCRIPTION="Charset Informations for MIME"
-#HOMEPAGE=""
-#SRC_URI=""
-
-#LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
