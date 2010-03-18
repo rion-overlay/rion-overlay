@@ -29,7 +29,7 @@ DEPEND=">=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,tokenizer,ldap?,mssql
 
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_PN}-Full-${PV}"
+S="${WORKDIR}/${MY_PN}-Full-5.5.1RC3"
 
 src_install () {
 
