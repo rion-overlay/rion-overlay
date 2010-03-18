@@ -1,0 +1,51 @@
+# 7 Mar 2010; Rion <nowhere@nowhere>
+# rabbitvcs moved to dev-vcs
+dev-util/rabbitvcs
+
+# 5  Mar 2010; G. Rudoy <0xd34df00d@gmail.com>
+# Since we have split ebuilds now, mask this in
+# favor of net-misc/leechcraft-full.
+www-client/leechcraft
+
+# 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# init script not work
+# removal 27 Mar 2010
+=net-wireless/madwimax-0.1.1-r2
+
+
+# 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# Not work && build
+app-crypt/pki-ra
+app-admin/pki-console
+app-crypt/pki-tps
+app-crypt/pki-ca
+
+
+# 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# depend is profile masked
+=sys-app/yum-3.2.25
+
+# Vlastimil Babka <caster@gentoo.org> (23 Jan 2010)
+# Time to go due to EOL and security, bug #287615.
+# Will be moved to java-overlay in 30 days.
+# I have also removed in overlay
+=dev-java/ibm-jdk-bin-1.4*
+=dev-java/jrockit-jdk-bin-1.4*
+=virtual/jdk-1.4*
+=virtual/jre-1.4*
+
+# 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# not tested
+~dev-util/febootstrap-2.6
+
+# 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing - not comlete
+app-admin/ipa-admintools
+app-admin/ipa-radius-admintools
+net-dialup/ipa-radius-server
+net-nds/ipa-client
+net-nds/ipa-server
+
+# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
+# mask for testing; не собирается, епта
+www-apps/ikiwiki

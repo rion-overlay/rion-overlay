@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/wehjit
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru> +wehjit-0.2.2.ebuild,
+  +metadata.xml:
+  initial commit
+
+*wehjit-0.2.2 ( 18 Feb 2010 )
