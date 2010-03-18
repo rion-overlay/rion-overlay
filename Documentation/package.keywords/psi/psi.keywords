@@ -16,6 +16,7 @@ net-im/psi-watcher **
 net-im/psi-cleaner **
 net-im/psi-icqdie **
 net-im/psi-autoreply **
+net-im/psi-skins **
 net-im/psi-storagenotes **
 #Build depends
 sys-devel/qconf **
