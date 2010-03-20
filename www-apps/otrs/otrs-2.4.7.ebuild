@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/otrs/otrs-2.3.3.ebuild,v 1.2 2009/05/26 17:08:02 arfrever Exp $
+# $Header: $
 
 EAPI=2
 
@@ -38,10 +38,8 @@ RDEPEND="${DEPEND}
 	virtual/perl-MIME-Base64
 	virtual/perl-libnet
 	apache2? ( www-servers/apache:2
-				mod_perl? ( =www-apache/libapreq2-2*
-				 			www-apache/mod_perl )
-			   	fastcgi? (
-				|| ( www-apache/mod_fcgid www-apache/mod_fastcgi ) ) )
+		mod_perl? ( =www-apache/libapreq2-2* www-apache/mod_perl )
+			fastcgi? ( || ( www-apache/mod_fcgid www-apache/mod_fastcgi ) ) )
 	fastcgi? ( dev-perl/FCGI )
 	gd? ( dev-perl/GD dev-perl/GDTextUtil dev-perl/GDGraph )
 	ldap? ( dev-perl/perl-ldap  )
@@ -62,42 +60,38 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cp "${S}"/Kernel/Config.pm{.dist,}
+	cp Kernel/Config.pm{.dist,} || die
 
-	cd "${S}"/Kernel/Config/
+	cd ./Kernel/Config/ || die
 	for i in *.dist; do
-		cp ${i} $(basename ${i} .dist)
+		cp ${i} $(basename ${i} .dist) || die
 	done
 
-	cd "${S}"/scripts
-	rm -rf auto_* redhat* suse* *.spec
+	rm -fr "${S}/scripts"/{auto_*, redhat*, suse*, *.spec} || die
 
 	if use fastcgi; then
-		epatch "${FILESDIR}"/apache2.patch
-		sed -e "s|cgi-bin|fcgi-bin|" -i "${S}"/scripts/apache2-httpd.include.conf
-	#	sed -e "s|index.pl|index.fpl|" -i "${S}"/var/httpd/htdocs/index.html
+		cd "${S}" || die
+		epatch "${FILESDIR}"/apache2-2.patch
+		sed -e "s|cgi-bin|fcgi-bin|" \
+						-i scripts/apache2-httpd.include.conf || die
 	fi
 }
 
 src_install() {
 	webapp_src_preinst
-	dodir "${MY_HOSTROOTDIR}"/${PF}
-
-	dodoc CHANGES CREDITS INSTALL README* TODO UPGRADING \
-		doc/otrs-database.dia doc/test-* doc/X-OTRS-Headers.txt \
-		.fetchmailrc.dist .mailfilter.dist .procmailrc.dist
-	# manual in pdf format, use online pdf/html manual
-	# Really, you have install Xorg&&pdf in web server ? :)
-	#dohtml doc/manual/{en,de}/html/*
+	dodoc CHANGES CREDITS README* TODO UPGRADING doc/otrs-database.dia \
+			doc/test-* doc/X-OTRS-Headers.txt .fetchmailrc.dist \
+			.mailfilter.dist .procmailrc.dist || die
 
 	insinto "${MY_HOSTROOTDIR}"/${PF}
-	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE Kernel bin scripts var
+	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE \
+			Kernel bin scripts var || die "doins failed"
 
-	mv "${D}/${MY_HOSTROOTDIR}"/${PF}/var/httpd/htdocs/* "${D}/${MY_HTDOCSDIR}"
-	rm -rf "${D}/${MY_HOSTROOTDIR}/${PF}"/var/httpd
+	mv "${D}/${MY_HOSTROOTDIR}"/${PF}/var/httpd/htdocs/* \
+								"${D}/${MY_HTDOCSDIR}" || die "mv failed"
+	rm -rf "${D}/${MY_HOSTROOTDIR}/${PF}"/var/httpd || die
 
-	local a d="article log pics/images pics/stats pics sessions spool tmp"
-	for a in ${d}; do
+	for a in "article log pics/images pics/stats pics sessions spool tmp"; do
 		keepdir "${MY_HOSTROOTDIR}"/${PF}/var/${a}
 	done
 
