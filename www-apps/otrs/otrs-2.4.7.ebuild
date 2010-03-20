@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit webapp eutils depend.apache confutils
+inherit webapp eutils confutils
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
 HOMEPAGE="http://otrs.org/"
@@ -12,8 +12,10 @@ SRC_URI="ftp://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="mysql postgres fastcgi ldap gd cjk"
+IUSE="apache2 mysql postgres mod_perl fastcgi ldap gd cjk"
+
 # add oracle/mssql/DB2 DB support 
+DEPEND=""
 RDEPEND="${DEPEND}
 	virtual/mta
 	>=dev-lang/perl-5.8.8
@@ -35,8 +37,11 @@ RDEPEND="${DEPEND}
 	virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
 	virtual/perl-libnet
-
-	apache2? ( =www-apache/libapreq2-2* )
+	apache2? ( www-servers/apache:2
+				mod_perl? ( =www-apache/libapreq2-2*
+				 			www-apache/mod_perl )
+			   	fastcgi? (
+				|| ( www-apache/mod_fcgid www-apache/mod_fastcgi ) ) )
 	fastcgi? ( dev-perl/FCGI )
 	gd? ( dev-perl/GD dev-perl/GDTextUtil dev-perl/GDGraph )
 	ldap? ( dev-perl/perl-ldap  )
@@ -44,16 +49,16 @@ RDEPEND="${DEPEND}
 	postgres? ( dev-perl/DBD-Pg )
 	cjk? ( dev-perl/Encode-HanExtra )"
 
-want_apache
-
 pkg_setup() {
-	depend.apache_pkg_setup
+
 	webapp_pkg_setup
+
 	if use apache2; then
 		enewuser otrs -1 -1 /dev/null apache
 	fi
 
 	confutils_require_any postgres mysql
+	confutils_use_depend_all mod_perl apache2
 }
 
 src_prepare() {
@@ -70,7 +75,7 @@ src_prepare() {
 	if use fastcgi; then
 		epatch "${FILESDIR}"/apache2.patch
 		sed -e "s|cgi-bin|fcgi-bin|" -i "${S}"/scripts/apache2-httpd.include.conf
-		sed -e "s|index.pl|index.fpl|" -i "${S}"/var/httpd/htdocs/index.html
+	#	sed -e "s|index.pl|index.fpl|" -i "${S}"/var/httpd/htdocs/index.html
 	fi
 }
 
@@ -89,7 +94,7 @@ src_install() {
 	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE Kernel bin scripts var
 
 	mv "${D}/${MY_HOSTROOTDIR}"/${PF}/var/httpd/htdocs/* "${D}/${MY_HTDOCSDIR}"
-	rm -rf "${D}/${MY_HOSTROOTDIR}"/${PF}/var/httpd
+	rm -rf "${D}/${MY_HOSTROOTDIR}/${PF}"/var/httpd
 
 	local a d="article log pics/images pics/stats pics sessions spool tmp"
 	for a in ${d}; do
@@ -108,6 +113,7 @@ pkg_postinst() {
 	ewarn "Don't run webapp-config with -d otrs. Instead, try"
 	ewarn "webapp-config -I -h <host> -d ot ${PN} ${PVR}"
 	ewarn
+
 	if ! use apache2; then
 		ewarn "You did not activate the USE-flag apache2 which means you"
 		ewarn "will need to create the otrs user yourself. Make this user"
