@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils webapp depend.php confutils
 
 DESCRIPTION="Web Based Management tool for Postfix style virtual domains and users."
-HOMEPAGE="http://high5.net/postfixadmin/"
+HOMEPAGE="http://postfixadmin.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
 RESTRICT="mirror"
 
