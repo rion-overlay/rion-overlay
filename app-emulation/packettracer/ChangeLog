@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  packettracer-521-r3.ebuild:
+  pva rewiev #2 :)
+
   17 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   packettracer-521-r3.ebuild:
   more fix in app-emulation/packettracer tnx Mellon

@@ -11,21 +11,21 @@ inherit eutils fdo-mime multilib
 
 DESCRIPTION="Cisco's Packet Tracer"
 HOMEPAGE="https://www.cisco.com/web/learning/netacad/course_catalog/PacketTracer.html"
-SRC_URI="http://cisco.netacad.net/cnams/resourcewindow/noncurr/downloadTools/app_files/PacketTracer${PV}.tar.gz"
+SRC_URI="http://cisco.netacad.net/cnams/resourcewindow/noncurr/downloadTools/app_files/${MY_P}.tar.gz"
 
 RESTRICT="fetch mirror strip"
 LICENSE="Cisco_EULA"
 
-SLOT="${PV}"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc online-exam"
 
 DEPEND="app-arch/gzip
-		amd64? ( >=app-emulation/emul-linux-x86-qtlibs-20081109 )"
+	amd64? ( >=app-emulation/emul-linux-x86-qtlibs-20081109 )"
 
 RDEPEND="doc? ( www-plugins/adobe-flash  )
-		amd64? ( >=app-emulation/emul-linux-x86-qtlibs-20081109 )
-		!<app-emulation/packettracer-52"
+	amd64? ( >=app-emulation/emul-linux-x86-qtlibs-20081109 )
+	!<app-emulation/packettracer-52"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -33,6 +33,7 @@ pkg_setup () {
 	# This is a binary x86 package => ABI=x86
 	has_multilib_profile && ABI="x86"
 }
+
 pkg_nofetch () {
 	ewarn "To fetch sources you need cisco account which is available in case"
 	ewarn "you are cisco web-learning student, instructor or you sale cisco hardware, etc..  "
@@ -82,7 +83,7 @@ pkg_postinst(){
 	if use doc ; then
 		einfo " You have doc USE flag"
 	    einfo " For use documentaion , please"
-		ewarn " install you prefered brouser and  flashplayer support"
+		einfo " install you prefered brouser and  flashplayer support"
 	    einfo " such mozilla or konqerror"
 	fi
 
