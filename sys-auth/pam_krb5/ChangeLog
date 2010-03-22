@@ -1,0 +1,8 @@
+# ChangeLog for sys-auth/pam_krb5
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +pam_krb5-4.2.ebuild,
+  +metadata.xml:
+  initial commit
+
