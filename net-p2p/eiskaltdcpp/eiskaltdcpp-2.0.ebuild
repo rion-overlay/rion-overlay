@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# ${PN}-9999        -> latest SVN
-# ${PN}-9999.REV    -> use SVN REV
-# ${PN}-VERSION     -> normal release
-
 EAPI=2
 
 inherit qt4-r2 cmake-utils
