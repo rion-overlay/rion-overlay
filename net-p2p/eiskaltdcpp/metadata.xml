@@ -2,6 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>net-p2p</herd>
-<longdescription>Qt based client for DirectConnect, fork of Valknut
-</longdescription>
+<longdescription>Qt based client for DirectConnect, fork of Valknut</longdescription>
+<use>
+        <flag name='aspell'>Enables aspell support</flag>
+</use>
 </pkgmetadata>
