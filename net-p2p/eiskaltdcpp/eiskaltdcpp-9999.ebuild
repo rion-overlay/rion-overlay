@@ -2,23 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# ${PN}-9999        -> latest SVN
-# ${PN}-9999.REV    -> use SVN REV
-# ${PN}-VERSION     -> normal genkernel release
-
 EAPI=2
 
-if [[ ${PV} == 9999* ]]
-then
-	[[ ${PV} == 9999.* ]] && ESVN_UPDATE_CMD="svn up -r ${PV/9999./}"
-	ESVN_REPO_URI="http://${PN/pp/}.googlecode.com/svn/branches/trunk/"
-	inherit qt4-r2 cmake-utils subversion
-	KEYWORDS=""
-else
-	inherit qt4-r2 cmake-utils
-	KEYWORDS="~x86 ~amd64"
-	SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.gz"
-fi
+ESVN_REPO_URI="http://${PN%pp}.googlecode.com/svn/branches/trunk/"
+inherit qt4-r2 cmake-utils subversion
+KEYWORDS=""
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"
 HOMEPAGE="http://eiskaltdc.googlecode.com/"
