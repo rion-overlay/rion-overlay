@@ -4,20 +4,23 @@
 
 EAPI="2"
 
-DESCRIPTION="Meta package for all perl depend for Web-Gui CMS"
-HOMEPAGE="http://slepnoga.googlecode.com"
-SRC_URI=""
+MY_APP="WebGUI"
+#stable or beta
+REL="beta"
+inherit  depend.apache webapp
 
-SLOT="${PV}"
-KEYWORDS="~amd64 ~x86"
-LICENSE="as-is"
+DESCRIPTION="CMS in Perl"
+HOMEPAGE="http://www.webgui.org/"
+SRC_URI="http://update.webgui.org/7.x.x/${P}-${REL}.tar.gz"
 
+LICENSE="GPL-2"
+KEYWORDS="~amd64"
 IUSE=""
-DEPEND=""
-RDEPEND=">=dev-lang/perl-5.8.8-r5
-		>=dev-perl/Template-Toolkit-2.20[gd,mysql,xml]
+RDEPEND="${DEPEND}"
+DEPEND=">=dev-lang/perl-5.8.8-r5
+		dev-perl/Template-Toolkit[gd,mysql,xml]
 		perl-core/Module-Load
-		>=dev-perl/libwww-perl-5.833
+		>=dev-perl/libwww-perl-5.824
 		>=virtual/perl-Test-Harness-2.64
 		>=dev-perl/Test-MockObject-1.02
 		>=dev-perl/Test-Deep-0.106
@@ -82,5 +85,31 @@ RDEPEND=">=dev-lang/perl-5.8.8-r5
 		>=virtual/perl-Digest-SHA-5.47
 		dev-perl/CSS-Minifier-XS
 		dev-perl/JavaScript-Minifier-XS
-		dev-perl/Readonly
-		dev-perl/Net-CIDR-Lite"
+		dev-perl/Readonly"
+
+S="${WORKDIR}/${MY_APP}"
+
+need_apache2_2
+
+src_install() {
+	webapp_src_preinst
+	dodir /var/log/
+	touch  "${D}"/var/log/webgui.log
+	fowners apache:apache "${D}"/var/log/webgui.log
+
+	insinto "${D}/${PN}"
+	doins -r "${S}"/etc/*
+
+	doinitd "${FILESDIR}"/spectre
+	dodoc  "${S}"/docs/*
+
+	dodir "${D}/${MY_HTDOCSDIR}"/public
+	cd  "${S}"/www
+
+	cp -R . "${D}/${MY_HTDOCSDIR}"/public
+	cd "${S}"
+	cp -R lib sbin "${D}/${MY_HOSTROOTDIR}"
+
+	webapp_hook_script "${FILESDIR}"/reconfig
+	webapp_src_install
+}
