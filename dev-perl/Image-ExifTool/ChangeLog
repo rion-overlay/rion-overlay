@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Image-ExifTool
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  23 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Image-ExifTool-8.15.ebuild:
+  version bump
+
+*Image-ExifTool-8.15 (23 Mar 2010 )
 
   20 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +Image-ExifTool-7.89.ebuild, +metadata.xml:
