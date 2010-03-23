@@ -91,9 +91,8 @@ S="${WORKDIR}/${MY_APP}"
 
 need_apache2_2
 
-# onlu depend work in so time.
 
-src_install_test() {
+src_install() {
 	webapp_src_preinst
 	dodir /var/log/
 	touch  "${D}"/var/log/webgui.log
