@@ -3,6 +3,10 @@
 # $Header: $
 
   23 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  CPyrit-OpenCL-0.2.4.ebuild:
+  fix DEPEND
+
+  23 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +CPyrit-OpenCL-0.3.0.ebuild:
   version bump
 
