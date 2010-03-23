@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-util/nvidia-cuda-toolkit
-		~x11-drivers/nvidia-drivers-190.29
+		~x11-drivers/nvidia-drivers-190.53
 		dev-libs/openssl
 		sys-libs/zlib"
 RDEPEND="${DEPEND}
