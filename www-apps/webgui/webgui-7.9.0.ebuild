@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-MY_APP="WebGUI"
+MY_PN="WebGUI"
 #stable or beta
 REL="beta"
 inherit  depend.apache webapp
@@ -18,76 +18,79 @@ KEYWORDS="~amd64"
 IUSE=""
 RDEPEND="${DEPEND}"
 DEPEND=">=dev-lang/perl-5.8.8-r5
-		dev-perl/Template-Toolkit[gd,mysql,xml]
-		perl-core/Module-Load
-		>=dev-perl/libwww-perl-5.824
-		>=virtual/perl-Test-Harness-2.64
-		>=dev-perl/Test-MockObject-1.02
-		>=dev-perl/Test-Deep-0.106
-		>=dev-perl/Test-Exception-0.27
-		>=dev-perl/Test-Class-0.31
-		>=dev-perl/Pod-Coverage-0.19
-		>=perl-core/Text-Balanced-2.0.2
-		>=virtual/perl-Digest-MD5-2.38
-		>=dev-perl/DBI-1.607
-		>=dev-perl/DBD-mysql-4.01.0
-		>=dev-perl/HTML-Parser-3.60
-		>=virtual/perl-Archive-Tar-1.44
-		>=dev-perl/Archive-Zip-1.26
-		>=virtual/perl-IO-Zlib-1.09
-		>=dev-perl/MIME-tools-5.427
-		dev-perl/Tie-IxHash
-		dev-perl/Tie-CPHash
-		dev-perl/XML-Simple
-		>=virtual/perl-Time-HiRes-1.97.19
-		dev-perl/DateTime-Format-Strptime
-		>=dev-perl/DateTime-Format-Mail-0.3001
-		=media-gfx/imagemagick-6*[perl]
-		dev-perl/Log-Log4perl
-		>=dev-perl/perl-ldap-0.39
-		dev-perl/HTML-Highlight
-		dev-perl/HTML-TagFilter
-		dev-perl/HTML-Template
-		dev-perl/HTML-Template-Expr
-		>=dev-perl/XML-FeedPP-0.40
-		dev-perl/JSON
-		dev-perl/Config-JSON
-		dev-perl/Text-CSV_XS
-		dev-perl/Net-Subnets
-		dev-perl/Finance-Quote
-		>=dev-perl/POE-1.005
-		>=dev-perl/POE-Component-IKC-0.2001
-		dev-perl/POE-Component-Client-HTTP
-		www-apache/libapreq2:2
-		www-apache/mod_perl
-		dev-perl/URI
-		virtual/perl-Scalar-List-Utils
-		dev-perl/Color-Calc
-		dev-perl/Text-Aspell
-		dev-perl/Weather-Com
-		dev-perl/Path-Class
-		>=dev-perl/Exception-Class-1.29
-		>=dev-perl/List-MoreUtils-0.22
-		dev-perl/HTML-TagCloud
-		dev-perl/Image-ExifTool
-		dev-perl/Archive-Any
-		>=virtual/perl-File-Path-2.08
-		dev-perl/Module-Find
-		>=dev-perl/Class-C3-0.21
-		>=dev-perl/Params-Validate-0.92
-		>=dev-perl/Clone-0.31
-		dev-perl/HTML-Packer
-		dev-perl/JavaScript-Packer
-		dev-perl/CSS-Packer
-		dev-perl/Business-Tax-VAT-Validation
-		dev-perl/Crypt-SSLeay
-		dev-perl/Scope-Guard
-		>=virtual/perl-Digest-SHA-5.47
-		dev-perl/CSS-Minifier-XS
-		dev-perl/JavaScript-Minifier-XS
-		dev-perl/Readonly"
+	dev-perl/libwww-perl
+	virtual/perl-Test-Simple
+	dev-perl/Test-MockObject
+	dev-perl/Test-Deep
+	dev-perl/Test-Exception
+	dev-perl/Test-Class
+	dev-perl/Pod-Coverage
+	virtual/perl-Text-Balanced
+	virtual/perl-Digest-MD5
+	dev-perl/DBI
+	dev-perl/DBD-mysql
+	dev-perl/HTML-Parser
+	virtual/perl-Archive-Tar
+	dev-perl/Archive-Zip
+	virtual/perl-IO-Zlib
+	dev-perl/Net-SMTP-SSL
+	dev-perl/MIME-tools
+	dev-perl/Tie-IxHash
+	dev-perl/XML-Simple
+	dev-perl/DateTime
+	virtual/perl-Time-HiRes
+	dev-perl/DateTime-Format-Strptime
+	dev-perl/DateTime-Format-Mail
+	dev-perl/DateTime-Format-HTTP
+	media-gfx/imagemagick[perl]
+	dev-perl/Log-Log4perl
+	dev-perl/perl-ldap
+	dev-perl/HTML-Highlight
+	dev-perl/HTML-TagFilter
+	dev-perl/HTML-Template
+	dev-perl/HTML-Template-Expr
+	dev-perl/Template-Toolkit
+	dev-perl/XML-FeedPP
+	dev-perl/JSON
+	dev-perl/Config-JSON
+	dev-perl/Text-CSV_XS
+	dev-perl/Net-CIDR-Lite
+	dev-perl/Finance-Quote
+	dev-perl/POE
+	dev-perl/POE-Component-IKC
+	dev-perl/POE-Component-Client-HTTP
+	dev-perl/URI
+	dev-perl/Color-Calc
+	dev-perl/Text-Aspell
+	dev-perl/Class-InsideOut
+	dev-perl/HTML-TagCloud
+	dev-perl/Image-ExifTool
+	dev-perl/Archive-Any
+	dev-perl/Path-Class
+	dev-perl/Exception-Class
+	dev-perl/List-MoreUtils
+	virtual/perl-File-Path
+	dev-perl/Module-Find
+	dev-perl/Class-C3
+	dev-perl/Params-Validate
+	dev-perl/Clone
+	dev-perl/HTML-Packer
+	dev-perl/JavaScript-Packer
+	dev-perl/CSS-Packer
+	dev-perl/Business-Tax-VAT-Validation
+	dev-perl/Crypt-SSLeay
+	dev-perl/Scope-Guard
+	virtual/perl-Digest-SHA
+	dev-perl/CSS-Minifier-XS
+	dev-perl/JavaScript-Minifier-XS
+	dev-perl/Readonly
+	dev-perl/Business-PayPal-API
+	dev-perl/Locales
+	perl-core/Test-Harness"
 
-S="${WORKDIR}/${MY_APP}"
+#Compress::Zlib;Net::POP3 -why package in stable perl ???
+
+S="${WORKDIR}/${MY_PN}"
 
 need_apache2_2
 
