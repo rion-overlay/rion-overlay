@@ -4,7 +4,8 @@
 
 EAPI=2
 
-inherit qt4-r2 cmake-utils
+#inherit qt4-r2 cmake-utils
+
 KEYWORDS="~x86 ~amd64"
 SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.gz"
 
