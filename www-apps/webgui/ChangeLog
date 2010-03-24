@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> webgui-7.9.0.ebuild,
+  -files/postinstal-ru.txt, +files/postinstall-en.txt,
+  +files/postinstall-ru.txt, files/reconfig:
+  add postinstall
+
   23 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> +webgui-7.7.26.ebuild,
   +webgui-7.7.33.ebuild, +webgui-7.9.0.ebuild:
   bump
