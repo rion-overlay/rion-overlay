@@ -5,7 +5,7 @@ net-p2p/eiskaltdcpp
 
 # 22  Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing
-www-apps/webgui
+#www-apps/webgui
 
 # 18 Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
 # upstream bug
