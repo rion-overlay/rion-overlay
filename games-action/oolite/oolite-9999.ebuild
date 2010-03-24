@@ -2,13 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI="2"
 
 inherit subversion games
 
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
-#SRC_URI="http://download.berlios.de/oolite-linux/${PN}-dev-source-${PV}.tar.bz2"
 ESVN_REPO_URI="svn://svn.berlios.de/oolite-linux/trunk"
 
 LICENSE="GPL-2"
@@ -41,7 +40,7 @@ src_prepare() {
 	default
 	sed '/oolite_LIB_DIRS/d' -i GNUmakefile
 	sed "s|/usr/share/GNUstep/Makefiles|${GNUSTEP_MAKEFILES}|" -i Makefile
-	sed "/strip/d" -i GNUmakefile.postamble # do not strip in any case
+	sed "s|strip.*|true|" -i GNUmakefile.postamble
 }
 
 src_compile() {
