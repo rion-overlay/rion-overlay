@@ -20,7 +20,7 @@ RDEPEND="x11-libs/qt-gui:4
 	x11-libs/qt-dbus:4
 	dev-libs/openssl
 	net-libs/libupnp
-	dev-libs/boost:0
+	dev-libs/boost
 	aspell? ( app-text/aspell )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
