@@ -4,7 +4,7 @@
 
 EAPI=2
 
-#inherit qt4-r2 cmake-utils
+inherit qt4-r2 cmake-utils
 
 KEYWORDS="~x86 ~amd64"
 SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.gz"
@@ -18,6 +18,7 @@ IUSE="aspell"
 
 RDEPEND="x11-libs/qt-gui:4
 	x11-libs/qt-core:4
+	x11-libs/qt-dbus:4
 	dev-libs/openssl
 	net-libs/libupnp
 	dev-libs/boost:0
