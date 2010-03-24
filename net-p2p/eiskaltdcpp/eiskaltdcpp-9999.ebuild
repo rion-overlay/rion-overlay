@@ -5,7 +5,7 @@
 EAPI=2
 
 ESVN_REPO_URI="http://${PN%pp}.googlecode.com/svn/branches/trunk/"
-inherit qt4-r2 cmake-utils subversion
+# inherit qt4-r2 cmake-utils subversion
 KEYWORDS=""
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"
