@@ -19,10 +19,10 @@ RDEPEND="x11-libs/qt-gui:4
 	x11-libs/qt-core:4
 	dev-libs/openssl
 	net-libs/libupnp
+	dev-libs/boost:0
 	aspell? ( app-text/aspell )"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
-	>=dev-util/cmake-2.6"
+	dev-util/pkgconfig"
 
 src_configure() {
 	local mycmakeargs="-DFREE_SPACE_BAR_C=1 -DFREE_SPACE_BAR=0 $(cmake-utils_use aspell USE_ASPELL)"
