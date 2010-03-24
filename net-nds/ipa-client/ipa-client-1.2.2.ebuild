@@ -35,7 +35,6 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}"/"freeipa-${PV}/${PN}"
 
 python_enable_pyc
-python_need_rebuild
 
 src_prepare(){
 # Set version
@@ -57,6 +56,10 @@ src_install() {
 	keepdir	/var/lib/ipa-client/sysrestore
 	dodir /etc/ipa/
 
+}
+
+pkg_postinst() {
+	python_need_rebuild
 }
 
 pkg_postrm() {

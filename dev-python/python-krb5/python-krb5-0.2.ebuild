@@ -20,8 +20,13 @@ IUSE=""
 DEPEND=">=app-crypt/mit-krb5-1.3.0
 		>=sys-libs/e2fsprogs-libs-1.41.3"
 RDEPEND="${DEPEND}"
-python_need_rebuild
+
 src_compile() {
 	python_set_active_version 2
 	distutils_src_compile
+}
+
+pkg_postinst() {
+	python_need_rebuild
+	distutils_pkg_postinst
 }

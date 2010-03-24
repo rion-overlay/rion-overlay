@@ -33,8 +33,6 @@ DEPEND="dev-libs/popt
 RDEPEND="${DEPEND}"
 S="${WORKDIR}"/"freeipa-${PV}/${PN}"
 
-python_need_rebuild
-
 src_prepare(){
 	# Set version
 	cd "${S}"
@@ -67,6 +65,11 @@ src_install() {
 	keepdir var/lib/lib/ipa/sysrestore/
 
 }
+
+pkg_postinst() {
+	python_need_rebuild
+}
+
 pkg_postrm() {
 
 	python_mod_cleanup /usr/share/ipa/ipagui/

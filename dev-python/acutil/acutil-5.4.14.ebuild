@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 	dev-util/intltool"
 
 S="${WORKDIR}"/authconfig-"${PV}"
-python_need_rebuild
 
 src_prepare() {
 	python_set_active_version 2
@@ -35,6 +34,11 @@ src_install() {
 	insinto /$(python_get_sitedir)
 	doins "${S}"/.libs/acutil*
 }
+
+pkg_postinst() {
+	python_need_rebuild
+}
+
 pkg_postrm() {
 	python_mod_cleanup
 }

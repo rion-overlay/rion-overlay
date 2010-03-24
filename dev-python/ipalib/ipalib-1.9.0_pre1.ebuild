@@ -28,7 +28,6 @@ DEPEND=""
 
 S="${WORKDIR}"/freeipa-1.9.0.pre1/ipalib
 
-python_need_rebuild
 python_enable_pyc
 
 src_install() {
@@ -36,9 +35,12 @@ src_install() {
 	insinto $(python_get_libdir)/site-packages/ipalib
 	doins -r .
 }
+
 pkg_postinst() {
+	python_need_rebuild
 	python_mod_optimize  /$(python_get_sitedir)/ipalib/*.py
 }
+
 pkg_postrm(){
 	python_mod_cleanup
 }

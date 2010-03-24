@@ -18,10 +18,14 @@ IUSE=""
 DEPEND="app-crypt/mit-krb5"
 RDEPEND="${DEPEND}"
 
-python_need_rebuild
 DOCS="README.txt"
 
 src_compile() {
 	python_set_active_version 2
 	distutils_src_compile
+}
+
+pkg_postinst() {
+	python_need_rebuild
+	distutils_pkg_postinst
 }

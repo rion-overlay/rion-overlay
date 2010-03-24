@@ -29,7 +29,6 @@ RDEPEND=">=dev-lang/python-2.6[sqlite]
 	dev-python/celementtree
 	dev-libs/libxml2[python]
 	dev-python/urlgrabber"
-python_need_rebuild
 
 src_install() {
 	python_set_active_version 2
@@ -39,6 +38,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	python_need_rebuild
 	python_mod_optimize \
 		$(python_get_sitedir)/{yum,rpmUtils} \
 		/usr/share/yum-cli
