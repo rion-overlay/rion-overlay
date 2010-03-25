@@ -46,7 +46,7 @@ RDEPEND=">=dev-lang/perl-5.8.8-r5
 	>=dev-perl/DateTime-Format-Strptime-1.0800
 	>=dev-perl/DateTime-Format-Mail-0.3001
 	>=dev-perl/DateTime-Format-HTTP-0.38
-	=media-gfx/imagemagick-6*[perl]
+	=media-gfx/imagemagick-6*[perl,jpeg,png,svg]
 	>=dev-perl/Log-Log4perl-1.20
 	>=dev-perl/perl-ldap-0.39
 	>=dev-perl/HTML-Highlight-0.20
@@ -105,23 +105,28 @@ src_install() {
 
 	dodir /var/log/
 	touch  "${D}"/var/log/webgui.log || die
-	fowners apache:apache "${D}"/var/log/webgui.log || die
+	fowners apache:apache /var/log/webgui.log || die 
 
-	insinto /etc/"${PN}"
-	doins -r "${S}"/etc/*
+	insinto /etc/"${PN}" || die
+	doins -r "${S}"/etc/* ||die
 
-	doinitd "${FILESDIR}"/spectre
-	dodoc  "${S}"/docs/*
+	doinitd "${FILESDIR}"/spectre || die
 
-	dodir "${MY_HTDOCSDIR}"/public
-	cd  "${S}"/www
-
-	cp -R . "${MY_HTDOCSDIR}"/public
-	cd "${S}"
-	cp -R lib sbin "${MY_HOSTROOTDIR}"
-
-#	webapp_hook_script "${FILESDIR}"/reconfig
+	insinto  "${MY_HTDOCSDIR}/"public || die
+	doins -r www/*   || die
 	
+	insinto  "${MY_HTDOCSDIR}"
+	doins -r lib || die
+	doins -r sbin || die
+	
+
+#	webapp_configfile
+	webapp_hook_script "${FILESDIR}"/reconfig
+	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
+	webapp_postinst_txt ru "${FILESDIR}"/postinstall-ru.txt
+#webapp_serverowned
+
+	dodoc  "${S}"/docs/*
 	webapp_src_install
 }
 
