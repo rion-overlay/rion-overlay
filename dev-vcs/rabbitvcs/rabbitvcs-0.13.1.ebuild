@@ -12,33 +12,26 @@ inherit gnome2-utils distutils
 DESCRIPTION="Integrated version control support for your desktop"
 HOMEPAGE="http://rabbitvcs.org"
 
-MY_PV=${PV/_/.}
 FRONTENDS="cli gedit nautilus thunar"
 IUSE="diff spell ${FRONTENDS}"
-SRC_URI="http://rabbitvcs.googlecode.com/files/${PN}-core-${MY_PV}.tar.gz"
-for fe in $FRONTENDS; do
-	SRC_URI="${SRC_URI} ${fe}? (
-	http://rabbitvcs.googlecode.com/files/${PN}-${fe}-${MY_PV}.tar.gz )"
-done
-S="${WORKDIR}/${PN}-core-${MY_PV}"
+SRC_URI="http://rabbitvcs.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=""
 RDEPEND="dev-python/pygtk
-		dev-python/pygobject
-		dev-python/pysvn
-		dev-python/configobj"
-
-PDEPEND="diff? ( dev-util/meld )
-		gedit? ( app-editors/gedit )
-		nautilus? ( dev-python/nautilus-python
-			dev-python/dbus-python )
-		thunar? ( dev-python/thunarx-python
-			dev-python/dbus-python )
-		spell? ( dev-python/gtkspell-python )"
+	dev-python/pygobject
+	dev-python/pysvn
+	dev-python/configobj
+	diff? ( dev-util/meld )
+	gedit? ( app-editors/gedit )
+	nautilus? ( dev-python/nautilus-python
+		dev-python/dbus-python )
+	thunar? ( dev-python/thunarx-python
+		dev-python/dbus-python )
+	spell? ( dev-python/gtkspell-python )"
 
 src_prepare() {
 	distutils_src_prepare
@@ -51,20 +44,20 @@ src_prepare() {
 
 src_install() {
 	distutils_src_install
-	use cli && dobin "${WORKDIR}/${PN}-cli-${MY_PV}/${PN}"
+	use cli && dobin "clients/cli/${PN}"
 	use gedit && {
 		insinto /usr/$(get_libdir)/gedit-2/plugins
-		doins "${WORKDIR}/${PN}-gedit-${MY_PV}/rabbitvcs-plugin.py"
-		doins "${WORKDIR}/${PN}-gedit-${MY_PV}/rabbitvcs.gedit-plugin"
+		doins "clients/gedit/${PN}-plugin.py"
+		doins "clients/gedit/${PN}.gedit-plugin"
 	}
 	use nautilus && {
 		insinto "/usr/$(get_libdir)/nautilus/extensions-2.0/python"
-		doins "${WORKDIR}/${PN}-nautilus-${MY_PV}/RabbitVCS.py"
+		doins "clients/nautilus/RabbitVCS.py"
 	}
 	use thunar && {
 		has_version '>=xfce-base/thunar-1.1.0' && tv=2 || tv=1
 		insinto "/usr/$(get_libdir)/thunarx-${tv}/python"
-		doins "${WORKDIR}/${PN}-thunar-${MY_PV}/RabbitVCS.py"
+		doins "clients/thunar/RabbitVCS.py"
 	}
 }
 
