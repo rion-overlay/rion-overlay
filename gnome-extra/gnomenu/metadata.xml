@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>rion-overlay</herd>
+<maintainer>
+  <email>rion4ik@gmail.com</email>
+ <description>overlay maintainer and gnomenu project commiter</description> 
+</maintainer>
+ <longdescription>A consolidated menu for gnome that brings eye candy to the
+ world of the Gnome menu's. Fully functional menu , supports themes , for a
+ composited or non composited desktop. It can emulate the look and feel of the
+ most beautiful menus of most modern desktops, and it can also use custom menus,
+ due to its powerful theme XML engine. GnoMenu currently supports Gnome-Panel,
+ Avant-Window-Navigator, Cairo-Dock, XfApplet and in the system tray.</longdescription> 
+<use>
+	<flag name='applet'>Enable gnome-panel applet</flag>
+</use>
+</pkgmetadata>

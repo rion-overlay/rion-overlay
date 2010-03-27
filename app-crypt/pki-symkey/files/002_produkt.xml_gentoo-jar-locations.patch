@@ -1,0 +1,13 @@
+Только в config.orig: config
+diff -ur config.orig/product.xml config/product.xml
+--- config.orig/product.xml	2010-02-13 04:13:44.000000000 +0200
++++ config/product.xml	2010-02-13 04:16:32.000000000 +0200
+@@ -94,7 +94,7 @@
+     </exec> 
+ 
+     <!-- Set up architecture-independent properties -->
+-    <property name="jar.home" value="/usr/share/java"/>
++    <property name="jar.home" value="/usr/share/"/>
+     <property name="pki-jar.home" value="${jar.home}/${product.prefix}"/>
+     <property name="jni-jar.home" value="/usr/lib/java"/>
+ 
