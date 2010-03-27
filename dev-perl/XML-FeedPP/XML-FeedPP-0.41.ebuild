@@ -3,16 +3,14 @@
 # $Header: $
 
 EAPI="2"
-MODULE_AUTHOR="DAGOLDEN"
+MODULE_AUTHOR="KAWASAKI"
 inherit perl-module
 
-DESCRIPTION="A safe, simple inside-out object construction kit"
+DESCRIPTION="Parse/write/merge/edit RSS/RDF/Atom syndication feeds"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LICENSE="Apache-2.0"
 IUSE=""
 
-DEPEND="virtual/perl-Scalar-List-Utils
-		virtual/perl-Class-ISA"
+DEPEND=">=dev-perl/XML-TreePP-0.38"
 RDEPEND="${DEPEND}"
 SRC_TEST="do"
