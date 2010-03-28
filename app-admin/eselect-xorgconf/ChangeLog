@@ -6,5 +6,5 @@
 
   28 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +eselect-xorgconf-0.1.ebuild, +metadata.xml:
-  initial commit, fix #311295; Tnx kristasg && Mellon
+  initial commit, fix #311295; Tnx krigstask && Mellon
 
