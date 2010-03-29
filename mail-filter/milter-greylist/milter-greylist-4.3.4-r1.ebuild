@@ -15,28 +15,27 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ipv6 bind +ssl ldap geoip spf dkim drac +p0f spamassassin sendmail dnsrbl postfix curl"
 
-COMMON_DEP="sendmail? (
-				mail-mta/sendmail
-				!!mail-filter/libmilter
-				dkim? ( mail-filter/libdkim ) )
-			sys-libs/db
-			p0f? ( net-analyzer/p0f )
-			bind? ( net-dns/bind[ipv6?] )
-			ssl? ( dev-libs/openssl )
-			openldap? ( net-nds/openldap[ipv6?] )
-			curl? ( net-misc/curl[ipv6?] )
-			geoip? ( dev-libs/geoip )
-			spf? ( mail-filter/libspf2 )
-			postfix? (  >=mail-mta/postfix-2.5[ipv6?]
-						mail-filter/libmilter[ipv6?] )
-			drac? ( mail-client/drac )
-			spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )
-			net-mail/mailbase"
-
+COMMON_DEP="net-mail/mailbase
+	sendmail? (
+		mail-mta/sendmail
+		!!mail-filter/libmilter
+		dkim? ( mail-filter/libdkim ) )
+	sys-libs/db
+	p0f? ( net-analyzer/p0f )
+	bind? ( net-dns/bind[ipv6?] )
+	ssl? ( dev-libs/openssl )
+	openldap? ( net-nds/openldap[ipv6?] )
+	curl? ( net-misc/curl[ipv6?] )
+	geoip? ( dev-libs/geoip )
+	spf? ( mail-filter/libspf2 )
+	postfix? (  >=mail-mta/postfix-2.5[ipv6?]
+				mail-filter/libmilter[ipv6?] )
+	drac? ( mail-client/drac )
+	spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )"
 DEPEND="sys-devel/flex
-		sys-devel/bison
-		dev-util/pkgconfig
-		${COMMON_DEP}"
+	sys-devel/bison
+	dev-util/pkgconfig
+	${COMMON_DEP}"
 
 RDEPEND="${COMMON_DEP}"
 
@@ -56,7 +55,6 @@ pkg_setup() {
 		einfo "Checking for postfix user ..."
 		enewuser postfix 207 -1 /var/spool/postfix postfix,mail \
 				|| die "problem adding user postfix"
-
 	else
 
 		einfo "checking for smmsp group...    create if missing."
@@ -69,6 +67,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+
 	sed  -e "/CONFFILE/s/greylist.conf/greylist2.conf/" -i Makefile.in \
 								|| die "sed makefile failed"
 	elog "Makefile fixed "
@@ -88,7 +87,7 @@ src_prepare() {
 	fi
 
 sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
-	-i greylist2.conf || die "socket fix failed"
+		-i greylist2.conf || die "socket fix failed"
 
 sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
 	-i milter-greylist.m4 || die "sed in milter-greylist.m4 failed"
@@ -96,6 +95,7 @@ sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/
 sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greylist.db"|'\
 					-i greylist2.conf || die "fix db file location  failed"
 }
+
 src_configure() {
 	local myconf=""
 
@@ -112,14 +112,9 @@ src_configure() {
 	use ldap	&& myconf+=" --with-openldap"
 	use curl	&& myconf+=" --with-libcurl"
 
-#	if use hardened ;then
-#			myconf+=" --enable-rpath"
-#		else
-			myconf+=" --disable-rpath "
-#	fi
-
 	econf \
 		--with-db \
+		--disable-rpath \
 		--with-libmilter \
 		--with-conffile="/etc/mail/${PN}.conf" \
 		--with-dumpfile="/var/lib/${PN}/${PN}.db" \
@@ -130,10 +125,6 @@ src_configure() {
 		$(use_enable postfix) \
 		${myconf} || die "myconf failed"
 }
-
-#src_compile() {
-#	emake -j1  || die "compile failed"
-#}
 
 src_install() {
 

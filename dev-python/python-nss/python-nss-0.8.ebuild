@@ -18,8 +18,9 @@ IUSE="doc"
 
 DEPEND="dev-libs/nss
 		dev-libs/nspr
-		doc? ( dev-python/docutils
-				dev-python/epydoc )"
+		doc?
+		( dev-python/docutils
+			dev-python/epydoc )"
 
 RDEPEND="${DEPEND}"
 RESTRICT_PYTHON_ABIS="3.*"
@@ -31,7 +32,6 @@ src_prepare() {
 src_install() {
 	distutils_src_install
 
-#TODO fix doc generations
 	if use doc; then
 		einfo "Generating API documentation..."
 

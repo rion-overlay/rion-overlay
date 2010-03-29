@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  29 Mar 2010; <slep@gentoo.org> milter-greylist-4.3.4-r1.ebuild:
+  fix syntax and clean
+
   12 Mar 2010; <slep@gentoo.org> -milter-greylist-4.3.4.ebuild,
   milter-greylist-4.3.4-r1.ebuild:
   more QA fix
