@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public Licence v2
+# $Header:  $
+
+depend() {
+	need net
+	before apache 
+}
+
+start() {
+#	if [ -z $PYDOC_PORT ] ; then
+#		eerror "Port not set"
+#		return 1
+#	fi
+	ebegin "Starting Spectre  WebGUI  daemon  $PYDOC_PORT" 
+	start-stop-daemon --start --background --make-pidfile \
+			  --pidfile /var/run/spectre.pid \
+			  --startas /usr/sbin/spectre -- --daemon
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pydoc server"
+	start-stop-daemon --stop --quiet --pidfile /var/run/spectre.pid
+	eend $?
+}
