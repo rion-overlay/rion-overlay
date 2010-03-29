@@ -15,41 +15,41 @@ SRC_URI="http://www.teeworlds.com/files/${P}-src.tar.gz -> ${P}-src.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug dedicated instagib"
 
 RDEPEND="dev-lang/lua
 	!dedicated? (
 		media-libs/libsdl[X,opengl]
-		sys-libs/zlib
-	)"
-# has modified wavpack and pnglite in its sources
-# not worth of effort patching up to system ones
+		sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	app-arch/zip"
 
-S=${WORKDIR}/${P}-src
+S="${WORKDIR}/${P}"-src
+
 # that's a temporary fix for datadir location
 dir=${GAMES_DATADIR}/${PN}
 
 src_prepare() {
-	rm -f license.txt
-	epatch "${FILESDIR}"/fix_datadir_search.patch
-	if use instagib ; then
-		epatch  "${FILESDIR}"/instagib-2.2.patch
-	fi
+	rm -f license.txt || die
+	epatch "${FILESDIR}"/fix_datadir_search.patch || die "epatch failed"
+
+	use instagib && epatch  "${FILESDIR}"/instagib-2.2.patch \
+								|| die "epatch failed"
 }
 
 pkg_setup() {
 	dodir /etc/${P}
-	enewgroup games
+	games_pkg_setup
 	enewuser teeworlds -1 -1 -1 games
 }
 
 src_compile() {
+
 	# compile bam
 	ebegin "Preparing BAM"
 	cd "${WORKDIR}/${BAM_P}"
+
 	$(tc-getCC) ${CFLAGS} src/tools/txt2c.c -o src/tools/txt2c || die
 	src/tools/txt2c src/base.bam src/driver_gcc.bam \
 	src/driver_cl.bam > src/internal_base.h || die
@@ -58,6 +58,7 @@ src_compile() {
 		src/lua/*.c src/*.c -o src/bam \
 		-I /usr/include/ -lm -lpthread || die
 	eend $?
+
 	# compile game
 	cd "${S}"
 	sed -i \
@@ -74,6 +75,7 @@ src_compile() {
 }
 
 src_install() {
+
 	if use debug ; then
 		newgamesbin ${PN}_srv_d ${PN}_srv || "newgamesbin failed"
 	else
@@ -86,16 +88,22 @@ src_install() {
 		else
 			dogamesbin ${PN} || die "dogamesbin failed"
 		fi
+
 		newicon "${FILESDIR}"/Teeworlds.png "${PN}".png
-	    make_desktop_entry ${PN} "Teeworlds"
+
+		make_desktop_entry ${PN} "Teeworlds"
+
 		insinto "${dir}"
 		doins -r data || die "doins failed"
+
 	else
+
 		insinto "${dir}"/data/maps
 		doins data/maps/* || die "doins failed"
 	fi
 
 	dodoc *.txt
+
 	prepgamesdirs
 	newinitd "${FILESDIR}"/teeworlds_init teeworlds
 }
