@@ -11,13 +11,13 @@ HOMEPAGE="http://leechcraft.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="kde"
 KEYWORDS=""
 RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-misc/leechcraft-core-${PV}
 		=net-misc/leechcraft-summary-${PV}
 		=net-misc/leechcraft-auscrie-${PV}
-		=net-misc/leechcraft-anhero-${PV}
+		kde? ( =net-misc/leechcraft-anhero-${PV} )
 		=net-misc/leechcraft-kinotify-${PV}
 		=net-misc/leechcraft-dbusmanager-${PV}
 		=net-misc/leechcraft-newlife-${PV}
