@@ -110,19 +110,11 @@ src_configure() {
 		$(use_enable http HTTP) || die "configure failed"
 }
 
-src_compile() {
-#	eautoreconf -iv
-	emake || die "emake failed"
-}
-
 src_install() {
 
 	newinitd "${FILESDIR}/oscada.init" oscada
 
-	for i in "icons ARCHIVES"; do
-		dodir /var/spool/openscada/$i || die
-	done
-
+	dodir /var/spool/openscada/icons
 	dodir /var/spool/openscada/ARCHIVES/MESS
 	dodir /var/spool/openscada/ARCHIVES/VAL
 
