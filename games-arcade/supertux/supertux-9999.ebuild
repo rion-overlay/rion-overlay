@@ -3,6 +3,7 @@
 # $Header: $
 
 EAPI=2
+
 inherit subversion cmake-utils eutils games
 
 DESCRIPTION="A game similar to Super Mario Bros."
@@ -25,26 +26,21 @@ RDEPEND="media-libs/libsdl[joystick]
 	x11-libs/libXt
 	opengl? ( virtual/opengl )
 	curl? ( net-misc/curl )"
+DEPEND="${RDEPEND}"
 
-#supertux's CMakeLists.txt needs the svnversion command
-DEPEND="${RDEPEND}
-	dev-util/cmake"
+DOCS="README TODO WHATSNEW.txt data/credits.txt"
 
 src_unpack() {
 	subversion_src_unpack
 }
 
-#src_prepare() {
-#	epatch "${FILESDIR}/supertux-cmake.patch"
-#}
-
 src_configure() {
 	local mycmakeargs="-DWERROR=OFF
-			 -DINSTALL_SUBDIR_BIN=games/bin
-			 -DINSTALL_SUBDIR_DOC=share/doc/${P}
-			 $(cmake-utils_use_enable opengl OPENGL)
-			 $(cmake-utils_use_enable debug SQDBG)
-			 $(cmake-utils_use debug DEBUG)"
+			-DINSTALL_SUBDIR_BIN=games/bin
+			-DINSTALL_SUBDIR_DOC=share/doc/${P}
+			$(cmake-utils_use_enable opengl OPENGL)
+			$(cmake-utils_use_enable debug SQDBG)
+			$(cmake-utils_use debug DEBUG)"
 
 	cmake-utils_src_configure
 }
@@ -55,6 +51,5 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-	dodoc README TODO WHATSNEW.txt data/credits.txt
 	prepgamesdirs
 }
