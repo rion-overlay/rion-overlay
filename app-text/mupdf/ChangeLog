@@ -1,0 +1,8 @@
+# ChangeLog for app-text/mupdf
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  08 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> +mupdf-20090703.ebuild,
+  +metadata.xml:
+  initial commit
+
