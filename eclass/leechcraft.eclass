@@ -30,6 +30,8 @@ if [[ "${PV}" == "9999" ]]; then
 	KEYWORDS=""
 
 	inherit git
+else
+	SRC_URI="mirror://sourceforge/leechcraft/leechcraft-${PV}.tar.bz2"
 fi
 
 HOMEPAGE="http://leechcraft.org/"
