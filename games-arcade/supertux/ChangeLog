@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> supertux-9999.ebuild:
+  add media-libs/glew in DEPEND
+
   29 Mar 2010; <slep@gentoo.org> supertux-0.3.3.ebuild,
   supertux-9999.ebuild, -files/supertux-cmake.patch:
   clean ebuild

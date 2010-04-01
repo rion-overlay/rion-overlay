@@ -23,6 +23,7 @@ RDEPEND="media-libs/libsdl[joystick]
 	media-libs/libvorbis
 	dev-games/physfs
 	media-libs/openal
+	media-libs/glew
 	x11-libs/libXt
 	opengl? ( virtual/opengl )
 	curl? ( net-misc/curl )"
