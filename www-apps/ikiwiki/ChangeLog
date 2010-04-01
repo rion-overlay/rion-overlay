@@ -3,6 +3,12 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+*ikiwiki-3.20100312 ( 01 Apr 2010 )
+
+  01 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -ikiwiki-3.20100102.3.ebuild, +ikiwiki-3.20100312.ebuild:
+  add new drop old
+
   01 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -ikiwiki-3.20091023.ebuild, -ikiwiki-3.20091113.ebuild:
   drop EAPI=0 version www-apps/ikiwiki

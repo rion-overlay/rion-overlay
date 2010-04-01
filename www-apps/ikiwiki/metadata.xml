@@ -6,7 +6,13 @@
   <email>@gmail.com</email>
  <description>Description of the maintainership</description> 
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
+ <longdescription>Ikiwiki is a wiki compiler. 
+ It converts wiki pages into HTML pages
+ suitable for publishing on a website. Ikiwiki stores pages and history
+ in a revision control system such as Subversion or Git. There are many
+ other features, including support for blogging, as well as a large
+ array of plugins.
+ </longdescription> 
 <use>
 </use>
 </pkgmetadata>

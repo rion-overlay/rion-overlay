@@ -64,7 +64,3 @@ app-admin/ipa-radius-admintools
 net-dialup/ipa-radius-server
 net-nds/ipa-client
 net-nds/ipa-server
-
-# 12 Sep 2009; Andrew N Golovkov <andrew.golovkov@gmail.com>
-# mask for testing; не собирается, епта
-www-apps/ikiwiki
