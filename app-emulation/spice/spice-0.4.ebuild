@@ -8,8 +8,8 @@ WANT_AUTOMAKE="1.10"
 
 inherit autotools
 
-DESCRIPTION="provide high-quality remote access to QEMU virtual machine"
-HOMEPAGE="http://www.spice-space.org"
+DESCRIPTION="Provide high-quality remote access to QEMU using SPICE protocol"
+HOMEPAGE="http://www.spice-space.org http://www.redhat.com/virtualization/rhev"
 SRC_URI="http://www.spice-space.org/download/spice_0_4.tar.bz2"
 
 LICENSE="GPL-2"
