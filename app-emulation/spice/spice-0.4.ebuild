@@ -14,8 +14,8 @@ SRC_URI="http://www.spice-space.org/download/spice_0_4.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+KEYWORDS="~amd64 ~x86"
+IUSE="static"
 
 COMMON_DEP="dev-libs/log4cpp
 	x11-libs/qcairo[X,opengl]
@@ -38,6 +38,12 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf \
+		$(use_enable static static-linkage) || die "econf failed"
+}
+
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install || die "emake failded"
+	dodoc AUTHORS ChangeLog NEWS README
 }
