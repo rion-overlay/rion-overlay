@@ -1,0 +1,1569 @@
+diff -Nur freqtweak-0.7.2.orig/configure.ac freqtweak-0.7.2/configure.ac
+--- freqtweak-0.7.2.orig/configure.ac	2009-07-12 01:17:53.000000000 +0400
++++ freqtweak-0.7.2/configure.ac	2009-09-13 05:29:33.076465653 +0400
+@@ -359,14 +359,17 @@
+       [ if test "x$enable_debug" != "xno" ; then
+ 	  CXXFLAGS="-g -Wall -D_REENTRANT $FFTW_CFLAGS $JACK_CFLAGS $WX_CFLAGS $XML_CFLAGS $SIGCPP_CFLAGS"
+ 	  CFLAGS="$CXXFLAGS"
++	  CPPFLAGS="$CPPFLAGS $XML_CPPFLAGS"
+         else
+ 	  CXXFLAGS="$FFTW_CFLAGS $JACK_CFLAGS $WX_CFLAGS $XML_CFLAGS $SIGCPP_CFLAGS -Wall -D_REENTRANT $ARCH_CFLAGS"
+ 	  CFLAGS="$CXXFLAGS"
++	  CPPFLAGS="$CPPFLAGS $XML_CPPFLAGS"
+ 	fi
+       ],
+ 	[
+ 	  CXXFLAGS="$FFTW_CFLAGS $JACK_CFLAGS $WX_CFLAGS $XML_CFLAGS $SIGCPP_CFLAGS -Wall -D_REENTRANT $ARCH_CFLAGS"
+ 	  CFLAGS="$CXXFLAGS"
++	  CPPFLAGS="$CPPFLAGS $XML_CPPFLAGS"
+         ]
+ )
+ 
+diff -Nur freqtweak-0.7.2.orig/freqtweak.1 freqtweak-0.7.2/freqtweak.1
+--- freqtweak-0.7.2.orig/freqtweak.1	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/freqtweak.1	2009-09-13 05:46:32.658466064 +0400
+@@ -14,39 +14,39 @@
+ .\" .fi        enable filling
+ .\" .br        insert line break
+ .\" .sp <n>    insert n+1 empty lines
+-.\" for manpage-specific macros, see man(7)
++.\" for manpage\(hyspecific macros, see man(7)
+ .SH NAME
+ freqtweak \- Realtime audio frequency spectral manipulation
+ .SH SYNOPSIS
+ .br
+ .B freqtweak
+-.RI [-h] 
++.RI [\-h] 
+ [
+-.B -c
++.B \-c
+ .I <num>
+ ]
+ [
+-.B -i
++.B \-i
+ .I <str>
+ ]
+ [
+-.B -o
++.B \-o
+ .I <str>
+ ]
+ [
+-.B -n 
++.B \-n 
+ .I <str>
+ ]
+ [
+-.B -D
++.B \-D
+ .I <str>
+ ]
+ [
+-.B -p
++.B \-p
+ .I <str>
+ ]
+ [
+-.B -r
++.B \-r
+ .I <str>
+ ]
+ .br
+@@ -58,16 +58,20 @@
+ manipulation and display. It provides several algorithms for
+ processing audio data in the frequency domain and a highly interactive
+ GUI to manipulate each associated filter. It also provides
+-high-resolution spectral displays in the form of scrolling-raster
++high\(hyresolution spectral displays in the form of scrolling\(hyraster
+ spectrograms and energy vs frequency plots displaying both pre and
+-post-processed spectra.
++post\(hyprocessed spectra.
++
++Freqtweak is a jack client.  You need to have jackd running in order to
++get sound input and output with freqtweak
++
+ .SH MOUSE CONTROL
+ .P
+ The processing filters are controlled through mouse operations on each
+ filter GUI window. The possible operations are:
+ .P
+ .I Left button click/drag
+-to draw filters. If Control is down, the y-axis is fixed at the last
++to draw filters. If Control is down, the y\(hyaxis is fixed at the last
+ cursor location (to draw nice horizontal lines).  If Control and Alt
+ are down you can draw nice arbitrary straight lines.
+ 
+@@ -81,19 +85,19 @@
+ modifies the alternate filter (on double filter graphs like Gate) for
+ the previous operations.
+ 
+-.I Middle-button
++.I Middle\(hybutton
+ pops up frequency axis menu.
+ 
+-.I Ctrl-Alt right-click
++.I Ctrl\(hyAlt right\(hyclick
+ resets a filter to default values.
+ 
+-.I Shift-Ctrl-Alt left-drag 
++.I Shift\(hyCtrl\(hyAlt left\(hydrag 
+ zooms in on the y axis.  Look at the status bar to see the values for
+ the cursor itself and the values of the filter at the cursor's
+ frequency.
+ 
+-.I Shift-Ctrl-Alt right-click
+-release resets the Y-zoom to full.
++.I Shift\(hyCtrl\(hyAlt right\(hyclick
++release resets the Y\(hyzoom to full.
+ 
+ The
+ .I B and BA buttons
+@@ -108,14 +112,14 @@
+ mean Toggle Grid and Toggle Grid Snap respectively.
+ .SH OPTIONS
+ This program follows the usual GNU command line syntax, with long
+-options starting with two dashes (`-').
++options starting with two dashes (`\-').
+ A summary of options is included below.
+ .TP
+ .B \-h, \-\-help
+ Show summary of options.
+ .TP
+ .B \-c <num>, \-\-channels=<num>
+-Processing channels (1-4). Default is 2.
++Processing channels (1\(hy4). Default is 2.
+ .TP
+ .B \-i <str>, \-\-inputs=<str>
+ Connect inputs from these jack ports (separate each channel with commas).
+@@ -125,17 +129,17 @@
+ Connect outputs to these jack ports (separate each channel with commas).
+ Defaults to 'alsa_pcm:playback_1,...'
+ .TP
+-.B \-n <str>, \-\-jack-name=<str>
++.B \-n <str>, \-\-jack\-name=<str>
+ Jack name. Default is freqtweak_1.
+ .TP
+ .B \-D <str>, \-\-tmpdir=<str>
+-Jack server tmp directory (should match jackd --tmpdir).
++Jack server tmp directory (should match jackd \-\-tmpdir).
+ .TP
+ .B \-p <str>, \-\-preset=<str>
+ Load the given preset initially.
+ .TP
+-.B \-r <str>, \-\-rc-dir=<str>
+-Specifies what directory to use for run-control state. Default is ~/.freqtweak.
++.B \-r <str>, \-\-rc\-dir=<str>
++Specifies what directory to use for run\(hycontrol state. Default is ~/.freqtweak.
+ 
+ .SH EXAMPLES
+ 
+@@ -146,11 +150,11 @@
+ Start freqtweak first with this command line:
+ 
+ .T
+-.B freqtweak -n ft &
++.B freqtweak \-n ft &
+ 
+ Then start alsaplayer like so: 
+ 
+-.B alsaplayer -o jack -d ft:in_1,ft:in_2 &
++.B alsaplayer \-o jack \-d ft:in_1,ft:in_2 &
+ 
+ 
+ .SH SEE ALSO
+diff -Nur freqtweak-0.7.2.orig/src/FTconfigManager.cpp freqtweak-0.7.2/src/FTconfigManager.cpp
+--- freqtweak-0.7.2.orig/src/FTconfigManager.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTconfigManager.cpp	2009-09-13 05:29:42.051465150 +0400
+@@ -202,14 +202,14 @@
+ 
+ 			XMLNode * pmNode = procmodsNode->add_child ("ProcMod");
+ 			pmNode->add_property ("pos", static_cast<const char *> (wxString::Format(wxT("%d"), n).mb_str()));
+-			pmNode->add_property ("name", pm->getConfName());
++			pmNode->add_property ("name", static_cast<const char *> (pm->getConfName().mb_str()));
+ 			
+ 			for (unsigned int m=0; m < filts.size(); ++m)
+ 			{
+ 				XMLNode * filtNode = pmNode->add_child ("Filter");
+ 
+ 				filtNode->add_property ("pos", static_cast<const char *> (wxString::Format(wxT("%d"), m).mb_str()));
+-				filtNode->add_property ("name", filts[m]->getConfigName().c_str());
++				filtNode->add_property ("name", static_cast<const char *> (filts[m]->getConfigName().mb_str()));
+ 				filtNode->add_property ("linked", static_cast<const char *> (
+ 				        wxString::Format(wxT("%d"),
+ 							 filts[m]->getLink() ?
+@@ -220,7 +220,7 @@
+ 							 filts[m]->getBypassed() ? 1 : 0).mb_str()));
+ 
+ 				std::string filtfname ( (wxString::Format(wxT("%d_%d_"), i, n)
+-							 + wxString::FromAscii (filts[m]->getConfigName().c_str())
++							 + filts[m]->getConfigName()
+ 							 + wxT(".filter")).fn_str() );
+ 				filtNode->add_property ("file", filtfname);
+ 
+@@ -312,8 +312,8 @@
+ 
+ 			FTmodulatorI * mod = (*miter);
+ 
+-			modNode->add_property ("name", mod->getConfName().c_str());
+-			modNode->add_property ("user_name", mod->getUserName().c_str());
++			modNode->add_property ("name", static_cast<const char *> (mod->getConfName().mb_str()));
++			modNode->add_property ("user_name", static_cast<const char *> (mod->getUserName().mb_str()));
+ 			modNode->add_property ("bypassed", static_cast<const char *> (wxString::Format(wxT("%d"), mod->getBypassed() ? 1 : 0).mb_str()));
+ 			modNode->add_property ("channel", static_cast<const char *> (wxString::Format(wxT("%d"), i).mb_str()));
+ 
+@@ -342,7 +342,7 @@
+ 				FTmodulatorI::Control * ctrl = (*ctrliter);
+ 				XMLNode * ctrlNode = controlsNode->add_child ("Control");
+ 
+-				ctrlNode->add_property ("name", ctrl->getConfName().c_str());
++				ctrlNode->add_property ("name", static_cast<const char *> (ctrl->getConfName().mb_str()));
+ 
+ 				//ctrlNode->add_property ("type", static_cast<const char *> (wxString::Format(wxT("%d"), (int) ctrl->getType()).mb_str()));
+ 				//ctrlNode->add_property ("units", ctrl->getUnits().c_str());
+@@ -368,17 +368,17 @@
+ 					modNode->add_property ("value", static_cast<const char *> (wxString::Format(wxT("%d"), val ? 1 : 0).mb_str()));
+ 				}
+ 				else if (ctrl->getType() == FTmodulatorI::Control::StringType) {
+-					string val;
++					wxString val;
+ 					ctrl->getValue (val);
+-					ctrlNode->add_property ("value", val.c_str());
++					ctrlNode->add_property ("value", static_cast<const char *> (val.mb_str()));
+ 				}
+ 				else if (ctrl->getType() == FTmodulatorI::Control::EnumType) {
+-					string val;
+-					list<string> enumlist;
++					wxString val;
++					list<wxString> enumlist;
+ 					ctrl->getValue (val);
+ 					ctrl->getEnumStrings(enumlist);
+ 
+-					ctrlNode->add_property ("value", val.c_str());
++					ctrlNode->add_property ("value", static_cast<const char *> (val.mb_str()));
+ 
+ // 					string enumstr;
+ // 					for (list<string>::iterator eiter=enumlist.begin(); eiter != enumlist.end(); ++eiter) {
+@@ -644,12 +644,12 @@
+ 				fprintf (stderr, "name missing in procmod!\n"); 
+ 				continue;
+ 			}
+-			string pmname = prop->value();
++			wxString pmname = wxString(prop->value().c_str(), wxConvUTF8);
+ 
+ 			// construct new procmod
+ 			FTprocI * procmod = FTdspManager::instance()->getModuleByConfigName(pmname);
+ 			if (!procmod) {
+-				fprintf (stderr, "no proc module '%s' supported\n", pmname.c_str()); 
++				//fprintf (stderr, "no proc module '%s' supported\n", pmname.mb_str()); 
+ 				continue;
+ 			}
+ 			procmod = procmod->clone();
+@@ -708,7 +708,7 @@
+ 						     + wxFileName::GetPathSeparator()
+ 						     + wxString::Format (wxT("%d_"), (int) chan_pos)
+ 						     + wxString::Format (wxT("%d_"), (int) ppos)
+-						     + wxString::FromAscii (specmod->getConfigName().c_str())
++						     + specmod->getConfigName()
+ 						     + wxT(".filter"));
+ 				if (filtfile.Open()) {
+ 
+@@ -964,7 +964,7 @@
+ 
+ 
+ 		// create the modulator
+-		FTmodulatorI * protomod = FTmodulatorManager::instance()->getModuleByConfigName (modname);
++		FTmodulatorI * protomod = FTmodulatorManager::instance()->getModuleByConfigName (wxString(modname.c_str(), wxConvUTF8));
+ 		if (!protomod) {
+ 			fprintf (stderr, "module %s could not be found\n", modname.c_str());
+ 			continue;
+@@ -973,7 +973,7 @@
+ 		FTmodulatorI * mod = protomod->clone();
+ 		mod->initialize();
+ 
+-		mod->setUserName (usermodname);
++		mod->setUserName (wxString(usermodname.c_str(), wxConvUTF8));
+ 		mod->setBypassed (bypass);
+ 
+ 		// get all controls from real one
+@@ -1003,7 +1003,7 @@
+ 				for (FTmodulatorI::ControlList::iterator citer = ctrllist.begin(); citer != ctrllist.end(); ++citer) {
+ 
+ 					FTmodulatorI::Control * ctrl = (*citer);
+-					if (ctrl->getConfName() == ctrlname)
++					if (ctrl->getConfName() == wxString(ctrlname.c_str(), wxConvUTF8))
+ 					{
+ 						if (ctrl->getType() == FTmodulatorI::Control::IntegerType) {
+ 							long intval = 0;
+@@ -1042,7 +1042,7 @@
+ 								fprintf (stderr, "string enum value missing in modulator control!\n"); 
+ 							} else {
+ 								string valstr = prop->value();
+-								ctrl->setValue(valstr);
++								ctrl->setValue(wxString(valstr.c_str(), wxConvUTF8));
+ 							}
+ 						}
+ 						else if (ctrl->getType() == FTmodulatorI::Control::BooleanType) {
+diff -Nur freqtweak-0.7.2.orig/src/FTdspManager.cpp freqtweak-0.7.2/src/FTdspManager.cpp
+--- freqtweak-0.7.2.orig/src/FTdspManager.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTdspManager.cpp	2009-09-13 05:29:42.052465836 +0400
+@@ -17,6 +17,9 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
++#include <wx/string.h>
++
+ #include "FTdspManager.hpp"
+ #include "FTioSupport.hpp"
+ #include "FTprocI.hpp"
+@@ -85,7 +88,7 @@
+ 
+ }
+ 
+-FTprocI * FTdspManager::getModuleByName (const string & name)
++FTprocI * FTdspManager::getModuleByName (const wxString & name)
+ {
+ 	for (ModuleList::iterator iter = _prototypes.begin(); iter != _prototypes.end(); ++iter) {
+ 		if ((*iter)->getName() == name) {
+@@ -97,7 +100,7 @@
+ }
+ 
+ 
+-FTprocI * FTdspManager::getModuleByConfigName (const string & name)
++FTprocI * FTdspManager::getModuleByConfigName (const wxString & name)
+ {
+ 	for (ModuleList::iterator iter = _prototypes.begin(); iter != _prototypes.end(); ++iter) {
+ 		if ((*iter)->getConfName() == name) {
+diff -Nur freqtweak-0.7.2.orig/src/FTdspManager.hpp freqtweak-0.7.2/src/FTdspManager.hpp
+--- freqtweak-0.7.2.orig/src/FTdspManager.hpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTdspManager.hpp	2009-09-13 05:29:42.052465836 +0400
+@@ -25,6 +25,8 @@
+ 
+ #include <list>
+ #include <string>
++#include <wx/wx.h>
++#include <wx/string.h>
+ using namespace std;
+ 
+ class FTprocI;
+@@ -41,8 +43,8 @@
+ 	
+ 	void getAvailableModules (ModuleList & outlist);
+ 
+-	FTprocI * getModuleByName (const string & name);
+-	FTprocI * getModuleByConfigName (const string & name);
++	FTprocI * getModuleByName (const wxString & name);
++	FTprocI * getModuleByConfigName (const wxString & name);
+ 	
+    protected:
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTmainwin.cpp freqtweak-0.7.2/src/FTmainwin.cpp
+--- freqtweak-0.7.2.orig/src/FTmainwin.cpp	2009-07-12 00:40:12.000000000 +0400
++++ freqtweak-0.7.2/src/FTmainwin.cpp	2009-09-13 05:29:42.054464764 +0400
+@@ -34,6 +34,7 @@
+ #include <wx/spinctrl.h>
+ #include <wx/notebook.h>
+ #include <wx/string.h>
++#include <wx/strconv.h>
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -899,7 +900,7 @@
+ 	_rowItems.push_back (sash);
+ 	_rowItems.push_back (lastrow);
+ 	
+-	string name = specmod->getName();
++	string name =  static_cast<const char *> (specmod->getName().mb_str());
+ 
+ 	// main label button
+ 	wxButton *labbutt = new FTtitleButton(this, false, rpanel, FT_LabelBase, wxString::FromAscii (name.c_str()),
+@@ -1727,13 +1728,12 @@
+ 		   dial->SetSize(wxSize(190,190));
+ 		   dial->CentreOnParent();
+ 		   if (dial->ShowModal() == wxID_OK) {
+-			   const char ** pnames = dial->getSelectedPorts();
++			   wxStringList pnames = dial->getSelectedPorts();
+ 			   FTioSupport::instance()->disconnectPathInput(i, NULL); // disconnect all
+-			   if (pnames) {
++			   if (pnames.GetCount()) {
+ 				   for (int j=0; pnames[j]; j++) {
+-					   FTioSupport::instance()->connectPathInput(i, pnames[j]);
++					   FTioSupport::instance()->connectPathInput(i, (const char*) wxConvCurrent->cWX2MB(pnames.Item(j)->GetData()));
+ 				   }
+-				   free(pnames);
+ 			   }
+ 		   }
+ 		   dial->Close();
+@@ -1760,13 +1760,12 @@
+ 		   dial->SetSize(wxSize(190,190));
+ 		   dial->CentreOnParent();
+ 		   if (dial->ShowModal() == wxID_OK) {
+-			   const char ** pnames = dial->getSelectedPorts();
++			   wxStringList pnames = dial->getSelectedPorts();
+ 			   FTioSupport::instance()->disconnectPathOutput(i, NULL); // disconnect all
+-			   if (pnames) {
++			   if (pnames.GetCount()) {
+ 				   for (int j=0; pnames[j]; j++) {
+-					   FTioSupport::instance()->connectPathOutput(i, pnames[j]);
++					   FTioSupport::instance()->connectPathOutput(i, (const char*) wxConvCurrent->cWX2MB(pnames.Item(j)->GetData()));
+ 				   }
+-				   free(pnames);
+ 			   }
+ 		   }
+ 
+@@ -2801,7 +2800,7 @@
+ 				wxSashLayoutWindow * sash = _rowSashes[rowcnt];
+ 				
+ 				// main label button
+-				string name = filts[m]->getName();
++				string name =  static_cast<const char *> (filts[m]->getName().mb_str());
+ 				_labelButtons[rowcnt]->SetLabel (wxString::FromAscii (name.c_str()));
+ 				_labelButtons[rowcnt]->SetToolTip(wxString(wxT("Hide ")) + wxString::FromAscii (name.c_str()));
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTmodRandomize.cpp freqtweak-0.7.2/src/FTmodRandomize.cpp
+--- freqtweak-0.7.2.orig/src/FTmodRandomize.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodRandomize.cpp	2009-09-13 05:29:42.055465449 +0400
+@@ -17,6 +17,7 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTmodRandomize.hpp"
+ #include <cstdlib>
+ #include <cstdio>
+@@ -26,12 +27,12 @@
+ using namespace PBD;
+ 
+ FTmodRandomize::FTmodRandomize (nframes_t samplerate, unsigned int fftn)
+-	: FTmodulatorI ("Randomize","Randomize", samplerate, fftn)
++	: FTmodulatorI (wxT("Randomize"),wxT("Randomize"), samplerate, fftn)
+ {
+ }
+ 
+ FTmodRandomize::FTmodRandomize (const FTmodRandomize & other)
+-	: FTmodulatorI ("Randomize", "Randomize", other._sampleRate, other._fftN)
++	: FTmodulatorI (wxT("Randomize"), wxT("Randomize"), other._sampleRate, other._fftN)
+ {
+ }
+ 
+@@ -39,31 +40,31 @@
+ {
+ 	_lastframe = 0;
+ 	
+-	_rate = new Control (Control::FloatType, "rate", "Rate", "Hz");
++	_rate = new Control (Control::FloatType, wxT("rate"), wxT("Rate"), wxT("Hz"));
+ 	_rate->_floatLB = 0.0;
+ 	_rate->_floatUB = 20.0;
+ 	_rate->setValue (0.0f);
+ 	_controls.push_back (_rate);
+ 
+-	_minval = new Control (Control::FloatType, "min_val", "Min Val", "%");
++	_minval = new Control (Control::FloatType, wxT("min_val"), wxT("Min Val"), wxT("%"));
+ 	_minval->_floatLB = 0.0;
+ 	_minval->_floatUB = 100.0;
+ 	_minval->setValue (_minval->_floatLB);
+ 	_controls.push_back (_minval);
+ 
+-	_maxval = new Control (Control::FloatType, "max_val", "Max Val", "%");
++	_maxval = new Control (Control::FloatType, wxT("max_val"), wxT("Max Val"), wxT("%"));
+ 	_maxval->_floatLB = 0.0;
+ 	_maxval->_floatUB = 100.0;
+ 	_maxval->setValue (_maxval->_floatUB);
+ 	_controls.push_back (_maxval);
+ 	
+-	_minfreq = new Control (Control::FloatType, "min_freq", "Min Freq", "Hz");
++	_minfreq = new Control (Control::FloatType, wxT("min_freq"), wxT("Min Freq"), wxT("Hz"));
+ 	_minfreq->_floatLB = 0.0;
+ 	_minfreq->_floatUB = _sampleRate / 2;
+ 	_minfreq->setValue (_minfreq->_floatLB);
+ 	_controls.push_back (_minfreq);
+ 
+-	_maxfreq = new Control (Control::FloatType, "max_freq", "Max Freq", "Hz");
++	_maxfreq = new Control (Control::FloatType, wxT("max_freq"), wxT("Max Freq"), wxT("Hz"));
+ 	_maxfreq->_floatLB = 0.0;
+ 	_maxfreq->_floatUB = _sampleRate / 2;
+ 	_maxfreq->setValue (_maxfreq->_floatUB);
+diff -Nur freqtweak-0.7.2.orig/src/FTmodRotate.cpp freqtweak-0.7.2/src/FTmodRotate.cpp
+--- freqtweak-0.7.2.orig/src/FTmodRotate.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodRotate.cpp	2009-09-13 05:29:42.055465449 +0400
+@@ -17,6 +17,7 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTmodRotate.hpp"
+ #include <cstdlib>
+ #include <cstdio>
+@@ -26,12 +27,12 @@
+ using namespace PBD;
+ 
+ FTmodRotate::FTmodRotate (nframes_t samplerate, unsigned int fftn)
+-	: FTmodulatorI ("Rotate", "Rotate", samplerate, fftn)
++	: FTmodulatorI (wxT("Rotate"), wxT("Rotate"), samplerate, fftn)
+ {
+ }
+ 
+ FTmodRotate::FTmodRotate (const FTmodRotate & other)
+-	: FTmodulatorI ("Rotate", "Rotate", other._sampleRate, other._fftN)
++	: FTmodulatorI (wxT("Rotate"), wxT("Rotate"), other._sampleRate, other._fftN)
+ {
+ }
+ 
+@@ -39,19 +40,19 @@
+ {
+ 	_lastframe = 0;
+ 	
+-	_rate = new Control (Control::FloatType, "rate", "Rate", "Hz/sec");
++	_rate = new Control (Control::FloatType, wxT("rate"), wxT("Rate"), wxT("Hz/sec"));
+ 	_rate->_floatLB = -((float) _sampleRate);
+ 	_rate->_floatUB =  (float) _sampleRate;
+ 	_rate->setValue (0.0f);
+ 	_controls.push_back (_rate);
+ 
+-	_minfreq = new Control (Control::FloatType, "min_freq", "Min Freq", "Hz");
++	_minfreq = new Control (Control::FloatType, wxT("min_freq"), wxT("Min Freq"), wxT("Hz"));
+ 	_minfreq->_floatLB = 0.0;
+ 	_minfreq->_floatUB = _sampleRate / 2;
+ 	_minfreq->setValue (_minfreq->_floatLB);
+ 	_controls.push_back (_minfreq);
+ 
+-	_maxfreq = new Control (Control::FloatType, "max_freq", "Max Freq", "Hz");
++	_maxfreq = new Control (Control::FloatType, wxT("max_freq"), wxT("Max Freq"), wxT("Hz"));
+ 	_maxfreq->_floatLB = 0.0;
+ 	_maxfreq->_floatUB = _sampleRate / 2;
+ 	_maxfreq->setValue (_maxfreq->_floatUB);
+diff -Nur freqtweak-0.7.2.orig/src/FTmodRotateLFO.cpp freqtweak-0.7.2/src/FTmodRotateLFO.cpp
+--- freqtweak-0.7.2.orig/src/FTmodRotateLFO.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodRotateLFO.cpp	2009-09-13 05:29:42.056465507 +0400
+@@ -17,6 +17,7 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTmodRotateLFO.hpp"
+ #include "FTutils.hpp"
+ 
+@@ -28,12 +29,12 @@
+ using namespace PBD;
+ 
+ FTmodRotateLFO::FTmodRotateLFO (nframes_t samplerate, unsigned int fftn)
+-	: FTmodulatorI ("RotateLFO", "Rotate LFO", samplerate, fftn)
++	: FTmodulatorI (wxT("RotateLFO"), wxT("Rotate LFO"), samplerate, fftn)
+ {
+ }
+ 
+ FTmodRotateLFO::FTmodRotateLFO (const FTmodRotateLFO & other)
+-	: FTmodulatorI ("RotateLFO", "Rotate LFO", other._sampleRate, other._fftN)
++	: FTmodulatorI (wxT("RotateLFO"), wxT("Rotate LFO"), other._sampleRate, other._fftN)
+ {
+ }
+ 
+@@ -42,32 +43,32 @@
+ 	_lastframe = 0;
+ 	_lastshift = 0;
+ 	
+-	_rate = new Control (Control::FloatType, "rate", "Rate", "Hz");
++	_rate = new Control (Control::FloatType, wxT("rate"), wxT("Rate"), wxT("Hz"));
+ 	_rate->_floatLB = 0.0;
+ 	_rate->_floatUB = 20.0;
+ 	_rate->setValue (0.0f);
+ 	_controls.push_back (_rate);
+ 
+-	_depth = new Control (Control::FloatType, "depth", "Depth", "Hz");
++	_depth = new Control (Control::FloatType, wxT("depth"), wxT("Depth"), wxT("Hz"));
+ 	_depth->_floatLB = 0;
+ 	_depth->_floatUB = (float) _sampleRate/2;
+ 	_depth->setValue (_depth->_floatUB);
+ 	_controls.push_back (_depth);
+ 
+-	_lfotype = new Control (Control::EnumType, "lfo_type", "LFO Type", "");
+-	_lfotype->_enumList.push_back("Sine");
+-	_lfotype->_enumList.push_back("Triangle");
+-	_lfotype->_enumList.push_back("Square");
+-	_lfotype->setValue (string("Sine"));
++	_lfotype = new Control (Control::EnumType, wxT("lfo_type"), wxT("LFO Type"), wxT(""));
++	_lfotype->_enumList.push_back(wxT("Sine"));
++	_lfotype->_enumList.push_back(wxT("Triangle"));
++	_lfotype->_enumList.push_back(wxT("Square"));
++	_lfotype->setValue (wxT("Sine"));
+ 	_controls.push_back (_lfotype);
+ 	
+-	_minfreq = new Control (Control::FloatType, "min_freq", "Min Freq", "Hz");
++	_minfreq = new Control (Control::FloatType, wxT("min_freq"), wxT("Min Freq"), wxT("Hz"));
+ 	_minfreq->_floatLB = 0.0;
+ 	_minfreq->_floatUB = _sampleRate / 2;
+ 	_minfreq->setValue (_minfreq->_floatLB);
+ 	_controls.push_back (_minfreq);
+ 
+-	_maxfreq = new Control (Control::FloatType, "max_freq", "Max Freq", "Hz");
++	_maxfreq = new Control (Control::FloatType, wxT("max_freq"), wxT("Max Freq"), wxT("Hz"));
+ 	_maxfreq->_floatLB = 0.0;
+ 	_maxfreq->_floatUB = _sampleRate / 2;
+ 	_maxfreq->setValue (_maxfreq->_floatUB);
+@@ -123,7 +124,7 @@
+ 	int minbin, maxbin;
+ 	double hzperbin;
+ 	double current_secs;
+-	string shape;
++	wxString shape;
+ 	
+ 	// in hz
+ 	_rate->getValue (rate);
+@@ -146,16 +147,16 @@
+ 
+ 	int shiftval = 0;
+ 	
+-	if (shape == "Sine")
++	if (shape == wxT("Sine"))
+ 	{
+ 		currdev = (double) (FTutils::sine_wave (current_secs, (double) rate) * (depth * 0.5 / hzperbin));
+ 
+-	} else if (shape == "Square")
++	} else if (shape == wxT("Square"))
+ 	{
+ 		currdev = (double) (FTutils::square_wave (current_secs, (double) rate) * (depth * 0.5 / hzperbin));
+ 
+ 	}
+-	else if (shape == "Triangle")
++	else if (shape == wxT("Triangle"))
+ 	{
+ 		currdev = (double) (FTutils::triangle_wave (current_secs, (double) rate) * (depth * 0.5 / hzperbin));
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTmodulatorDialog.cpp freqtweak-0.7.2/src/FTmodulatorDialog.cpp
+--- freqtweak-0.7.2.orig/src/FTmodulatorDialog.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodulatorDialog.cpp	2009-09-13 05:29:42.056465507 +0400
+@@ -166,7 +166,7 @@
+ 	int modnum = 0;
+ 	for (FTmodulatorManager::ModuleList::iterator moditer = mlist.begin(); moditer != mlist.end(); ++moditer)
+ 	{
+-		item = new wxMenuItem(_popupMenu, itemid, wxString::FromAscii ((*moditer)->getName().c_str()));
++		item = new wxMenuItem(_popupMenu, itemid, (*moditer)->getName());
+ 		_popupMenu->Append (item);
+ 		
+ 		Connect( itemid,  wxEVT_COMMAND_MENU_SELECTED,
+diff -Nur freqtweak-0.7.2.orig/src/FTmodulatorGui.cpp freqtweak-0.7.2/src/FTmodulatorGui.cpp
+--- freqtweak-0.7.2.orig/src/FTmodulatorGui.cpp	2009-07-12 00:45:39.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodulatorGui.cpp	2009-09-13 05:29:42.057465424 +0400
+@@ -296,8 +296,8 @@
+ 
+ 			rowsizer->Add (stattext, 0, wxALL|wxALIGN_CENTRE_VERTICAL, 2);
+ 
+-		        string currval;
+-			list<string> vallist;
++		        wxString currval;
++			list<wxString> vallist;
+ 
+ 			ctrl->getValue(currval);
+ 			ctrl->getEnumStrings (vallist);
+@@ -305,10 +305,10 @@
+ 			wxChoice * choice = new wxChoice(this, ctrlid, wxDefaultPosition, wxDefaultSize, 0, 0);
+ 
+ 			
+-			for (list<string>::iterator citer = vallist.begin(); citer != vallist.end(); ++citer) {
+-				choice->Append (wxString::FromAscii((*citer).c_str()));
++			for (list<wxString>::iterator citer = vallist.begin(); citer != vallist.end(); ++citer) {
++				choice->Append (*citer);
+ 			}
+-			choice->SetStringSelection (wxString::FromAscii(currval.c_str()));
++			choice->SetStringSelection (currval);
+ 
+ 			
+ 			rowsizer->Add (choice, 0, wxALL|wxALIGN_CENTRE_VERTICAL, 2);
+@@ -384,7 +384,7 @@
+ 				for (unsigned int m=0; m < filts.size(); ++m)
+ 				{
+ 					
+-					_popupMenu->AppendCheckItem (itemid, wxString::FromAscii (filts[m]->getName().c_str()));
++					_popupMenu->AppendCheckItem (itemid, filts[m]->getName());
+ 					
+ 					if (_modulator->hasSpecMod (filts[m])) {
+ 						_popupMenu->Check (itemid, true);
+@@ -553,7 +553,7 @@
+ 	if (obj && (ctrl = obj->control)) {
+ 
+ 		
+-		ctrl->setValue (string(static_cast<const char *> (choice->GetStringSelection().mb_str())));
++		ctrl->setValue (choice->GetStringSelection());
+ 
+ 		//cerr << " choice changed for " << ctrl->getName() <<  ": new val = " << choice->GetStringSelection().c_str() << endl;
+ 		
+@@ -656,7 +656,7 @@
+ 	if (ev.GetId() == ID_ModUserName)
+ 	{
+ 
+-		string name = static_cast<const char *> (_nameText->GetValue().fn_str());
++		wxString name =  _nameText->GetValue();
+ 		
+ 		_modulator->setUserName (name);
+ 		// cerr << "name changed to :" << name << endl;
+diff -Nur freqtweak-0.7.2.orig/src/FTmodulatorI.cpp freqtweak-0.7.2/src/FTmodulatorI.cpp
+--- freqtweak-0.7.2.orig/src/FTmodulatorI.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodulatorI.cpp	2009-09-13 05:29:42.058465412 +0400
+@@ -24,12 +24,14 @@
+ 
+ #include "FTmodulatorI.hpp"
+ #include <algorithm>
++#include <wx/wx.h>
++#include <wx/string.h>
+ 
+ using namespace std;
+ using namespace PBD;
+ 
+-FTmodulatorI::FTmodulatorI(string confname, string name, nframes_t samplerate, unsigned int fftn)
+-	: _inited(false), _name(name), _confname(confname), _userName("Unnamed"), _bypassed(false),
++FTmodulatorI::FTmodulatorI(wxString confname, wxString name, nframes_t samplerate, unsigned int fftn)
++	: _inited(false), _name(name), _confname(confname), _userName(wxT("Unnamed")), _bypassed(false),
+ 	  _sampleRate(samplerate), _fftN(fftn)
+ {
+ }
+diff -Nur freqtweak-0.7.2.orig/src/FTmodulatorI.hpp freqtweak-0.7.2/src/FTmodulatorI.hpp
+--- freqtweak-0.7.2.orig/src/FTmodulatorI.hpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodulatorI.hpp	2009-09-13 05:29:42.058465412 +0400
+@@ -26,6 +26,8 @@
+ #include <algorithm>
+ #include <sigc++/sigc++.h>
+ #include <iostream>
++#include <wx/wx.h>
++#include <wx/string.h>
+ 
+ 
+ #include "LockMonitor.hpp"
+@@ -55,17 +57,17 @@
+ 	virtual void getSpecMods (SpecModList & mods);
+ 	virtual bool hasSpecMod (FTspectrumModifier *specmod);
+ 	
+-	virtual std::string getUserName() { return _userName; }
+-	virtual void setUserName (std::string username) { _userName = username; }
++	virtual wxString getUserName() { return _userName; }
++	virtual void setUserName (wxString username) { _userName = username; }
+ 
+-	virtual std::string getName() { return _name; }
++	virtual wxString getName() { return _name; }
+ 
+ 	virtual void setFFTsize (unsigned int fftn) { _fftN = fftn; }
+ 		
+ 	virtual void setSampleRate (nframes_t rate) { _sampleRate = rate; }
+ 	virtual nframes_t getSampleRate() { return _sampleRate; }
+ 
+-	virtual const string & getConfName() { return _confname; }
++	virtual const wxString & getConfName() { return _confname; }
+ 
+ 
+ 	virtual bool getBypassed() { return _bypassed; }
+@@ -86,20 +88,20 @@
+ 			EnumType
+ 		};
+ 
+-		Control (Type t, std::string confname, std::string name, std::string units) : _type(t), _confname(confname), _name(name), _units(units) {}
++		Control (Type t, wxString confname, wxString name, wxString units) : _type(t), _confname(confname), _name(name), _units(units) {}
+ 		
+ 		Type getType() { return _type; }
+-		std::string getConfName() { return _confname; }
+-		std::string getName() { return _name; }
+-		std::string getUnits() { return _units; }
++		wxString getConfName() { return _confname; }
++		wxString getName() { return _name; }
++		wxString getUnits() { return _units; }
+ 		
+ 		inline bool getValue(bool & val);
+ 		inline bool getValue(int & val);
+ 		inline bool getValue(float & val);
+ 		// for string or enum type
+-		inline bool getValue(std::string & val);
++		inline bool getValue(wxString & val);
+ 
+-		inline bool getEnumStrings (std::list<std::string> & vals);
++		inline bool getEnumStrings (std::list<wxString> & vals);
+ 
+ 		inline bool getBounds(int & lb, int & ub);
+ 		inline bool getBounds(float & lb, float & ub);
+@@ -109,11 +111,11 @@
+ 		inline bool setValue(int val);
+ 		inline bool setValue(float val);
+ 		// for string or enum type
+-		inline bool setValue(const std::string & val);
++		inline bool setValue(const wxString & val);
+ 
+ 		int _intLB, _intUB;
+ 		float _floatLB, _floatUB;
+-		std::list<std::string> _enumList;
++		std::list<wxString> _enumList;
+ 
+ 		friend class FTmodulatorI;		
+ 		
+@@ -121,11 +123,11 @@
+ 
+ 		
+ 		Type _type;
+-		std::string _confname;
+-		std::string _name;
+-		std::string _units;
++		wxString _confname;
++		wxString _name;
++		wxString _units;
+ 		
+-		std::string _stringVal;
++		wxString _stringVal;
+ 		float  _floatVal;
+ 		int    _intVal;
+ 		bool   _boolVal;
+@@ -141,7 +143,7 @@
+ 
+    protected:
+ 
+-	FTmodulatorI(std::string confname, std::string name, nframes_t samplerate, unsigned int fftn);
++	FTmodulatorI(wxString confname, wxString name, nframes_t samplerate, unsigned int fftn);
+ 	
+ 	ControlList _controls;
+ 
+@@ -149,9 +151,9 @@
+ 	PBD::NonBlockingLock _specmodLock;
+ 
+ 	bool _inited;
+-	std::string _name;
+-	std::string _confname;
+-	std::string _userName;
++	wxString _name;
++	wxString _confname;
++	wxString _userName;
+ 	bool _bypassed;
+ 	nframes_t _sampleRate;
+ 	unsigned int _fftN;
+@@ -181,14 +183,14 @@
+ }
+ 
+ // for string or enum type
+-inline bool FTmodulatorI::Control::getValue(std::string & val)
++inline bool FTmodulatorI::Control::getValue(wxString & val)
+ {
+ 	if (_type != StringType && _type != EnumType) return false;
+ 	val = _stringVal;
+ 	return true;
+ }
+ 
+-inline bool FTmodulatorI::Control::getEnumStrings (std::list<std::string> & vals)
++inline bool FTmodulatorI::Control::getEnumStrings (std::list<wxString> & vals)
+ {
+ 	if (_type != EnumType) return false;
+ 	
+@@ -235,7 +237,7 @@
+ }
+ 
+ // for string or enum type
+-inline bool FTmodulatorI::Control::setValue(const std::string & val)
++inline bool FTmodulatorI::Control::setValue(const wxString & val)
+ {
+ 	if (_type == StringType) {
+ 		_stringVal = val;
+diff -Nur freqtweak-0.7.2.orig/src/FTmodulatorManager.cpp freqtweak-0.7.2/src/FTmodulatorManager.cpp
+--- freqtweak-0.7.2.orig/src/FTmodulatorManager.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodulatorManager.cpp	2009-09-13 05:29:42.059465329 +0400
+@@ -71,7 +71,7 @@
+ 
+ }
+ 
+-FTmodulatorI * FTmodulatorManager::getModuleByName (const string & name)
++FTmodulatorI * FTmodulatorManager::getModuleByName (const wxString & name)
+ {
+ 	for (ModuleList::iterator iter = _prototypes.begin(); iter != _prototypes.end(); ++iter) {
+ 		if ((*iter)->getName() == name) {
+@@ -83,7 +83,7 @@
+ }
+ 
+ 
+-FTmodulatorI * FTmodulatorManager::getModuleByConfigName (const string & name)
++FTmodulatorI * FTmodulatorManager::getModuleByConfigName (const wxString & name)
+ {
+ 	for (ModuleList::iterator iter = _prototypes.begin(); iter != _prototypes.end(); ++iter) {
+ 		if ((*iter)->getConfName() == name) {
+diff -Nur freqtweak-0.7.2.orig/src/FTmodulatorManager.hpp freqtweak-0.7.2/src/FTmodulatorManager.hpp
+--- freqtweak-0.7.2.orig/src/FTmodulatorManager.hpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodulatorManager.hpp	2009-09-13 05:29:42.059465329 +0400
+@@ -24,6 +24,8 @@
+ #include "FTtypes.hpp"
+ 
+ #include <list>
++#include <wx/wx.h>
++#include <wx/string.h>
+ #include <string>
+ using namespace std;
+ 
+@@ -41,8 +43,8 @@
+ 	
+ 	void getAvailableModules (ModuleList & outlist);
+ 
+-	FTmodulatorI * getModuleByName (const string & name);
+-	FTmodulatorI * getModuleByConfigName (const string & name);
++	FTmodulatorI * getModuleByName (const wxString & name);
++	FTmodulatorI * getModuleByConfigName (const wxString & name);
+ 	FTmodulatorI * getModuleByIndex (unsigned int index);
+ 	
+    protected:
+diff -Nur freqtweak-0.7.2.orig/src/FTmodValueLFO.cpp freqtweak-0.7.2/src/FTmodValueLFO.cpp
+--- freqtweak-0.7.2.orig/src/FTmodValueLFO.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTmodValueLFO.cpp	2009-09-13 05:29:42.059465329 +0400
+@@ -17,6 +17,7 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTmodValueLFO.hpp"
+ #include "FTutils.hpp"
+ 
+@@ -28,12 +29,12 @@
+ using namespace PBD;
+ 
+ FTmodValueLFO::FTmodValueLFO (nframes_t samplerate, unsigned int fftn)
+-	: FTmodulatorI ("ValueLFO", "Value LFO", samplerate, fftn)
++	: FTmodulatorI (wxT("ValueLFO"), wxT("Value LFO"), samplerate, fftn)
+ {
+ }
+ 
+ FTmodValueLFO::FTmodValueLFO (const FTmodValueLFO & other)
+-	: FTmodulatorI ("ValueLFO", "Value LFO", other._sampleRate, other._fftN)
++	: FTmodulatorI (wxT("ValueLFO"), wxT("Value LFO"), other._sampleRate, other._fftN)
+ {
+ }
+ 
+@@ -41,33 +42,33 @@
+ {
+ 	_lastframe = 0;
+ 	
+-	_rate = new Control (Control::FloatType, "rate", "Rate", "Hz");
++	_rate = new Control (Control::FloatType, wxT("rate"), wxT("Rate"), wxT("Hz"));
+ 	_rate->_floatLB = 0.0;
+ 	_rate->_floatUB = 20.0;
+ 	_rate->setValue (0.0f);
+ 	_controls.push_back (_rate);
+ 
+-	_depth = new Control (Control::FloatType, "depth", "Depth", "%");
++	_depth = new Control (Control::FloatType, wxT("depth"), wxT("Depth"), wxT("%"));
+ 	_depth->_floatLB = 0.0;
+ 	_depth->_floatUB = 100.0;
+ 	_depth->setValue (0.0f);
+ 	_controls.push_back (_depth);
+ 
+-	_lfotype = new Control (Control::EnumType, "lfo_type", "LFO Type", "");
+-	_lfotype->_enumList.push_back("Sine");
+-	_lfotype->_enumList.push_back("Triangle");
+-	_lfotype->_enumList.push_back("Square");
+-	_lfotype->setValue (string("Sine"));
++	_lfotype = new Control (Control::EnumType, wxT("lfo_type"), wxT("LFO Type"), wxT(""));
++	_lfotype->_enumList.push_back(wxT("Sine"));
++	_lfotype->_enumList.push_back(wxT("Triangle"));
++	_lfotype->_enumList.push_back(wxT("Square"));
++	_lfotype->setValue (wxT("Sine"));
+ 	_controls.push_back (_lfotype);
+ 
+ 	
+-	_minfreq = new Control (Control::FloatType, "min_freq", "Min Freq", "Hz");
++	_minfreq = new Control (Control::FloatType, wxT("min_freq"), wxT("Min Freq"), wxT("Hz"));
+ 	_minfreq->_floatLB = 0.0;
+ 	_minfreq->_floatUB = _sampleRate / 2;
+ 	_minfreq->setValue (_minfreq->_floatLB);
+ 	_controls.push_back (_minfreq);
+ 
+-	_maxfreq = new Control (Control::FloatType, "max_freq", "Max Freq", "Hz");
++	_maxfreq = new Control (Control::FloatType, wxT("max_freq"), wxT("Max Freq"), wxT("Hz"));
+ 	_maxfreq->_floatLB = 0.0;
+ 	_maxfreq->_floatUB = _sampleRate / 2;
+ 	_maxfreq->setValue (_maxfreq->_floatUB);
+@@ -151,7 +152,7 @@
+ 	float shiftval = 0;
+ 	double current_secs;
+ 	double lastshift;
+-	string shape;
++	wxString shape;
+ 	
+ 	// in hz
+ 	_rate->getValue (rate);
+@@ -202,16 +203,16 @@
+ 				continue;
+ 			}
+ 
+-			if (shape == "Sine")
++			if (shape == wxT("Sine"))
+ 			{
+ 				currdev = (double) (FTutils::sine_wave (current_secs, (double) rate) * ( (ub-lb)* (depth * 0.01) * 0.5 ));
+ 				
+-			} else if (shape == "Square")
++			} else if (shape == wxT("Square"))
+ 			{
+ 				currdev = (double) (FTutils::square_wave (current_secs, (double) rate) * ( (ub-lb)* (depth * 0.01) * 0.5 ));
+ 				
+ 			}
+-			else if (shape == "Triangle")
++			else if (shape == wxT("Triangle"))
+ 			{
+ 				currdev = (double) (FTutils::triangle_wave (current_secs, (double) rate) * ( (ub-lb)* (depth * 0.01) * 0.5 ));
+ 			}
+diff -Nur freqtweak-0.7.2.orig/src/FTportSelectionDialog.cpp freqtweak-0.7.2/src/FTportSelectionDialog.cpp
+--- freqtweak-0.7.2.orig/src/FTportSelectionDialog.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTportSelectionDialog.cpp	2009-09-13 05:29:42.060465107 +0400
+@@ -23,6 +23,7 @@
+ 
+ 
+ #include <wx/wx.h>
++#include <wx/strconv.h>
+ 
+ #include "FTportSelectionDialog.hpp"
+ #include "FTjackSupport.hpp"
+@@ -133,17 +134,10 @@
+ 
+ }
+ 
+-const char ** FTportSelectionDialog::getSelectedPorts()
++wxStringList FTportSelectionDialog::getSelectedPorts()
+ {
+-	int n = _selectedPorts.GetCount();
+-	const char ** pnames = (const char **) malloc(sizeof(char*) * n+1);
++	const wxStringList pnames = wxStringList(_selectedPorts);
+ 
+-	for (int i=0; i < n; i++) {
+-		pnames[i] = wxString(_selectedPorts.Item(i)->GetData()).mb_str();
+-	}
+-	pnames[n] = NULL;
+-
+-	// must be deleted by them
+ 	return pnames;
+ }
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTportSelectionDialog.hpp freqtweak-0.7.2/src/FTportSelectionDialog.hpp
+--- freqtweak-0.7.2.orig/src/FTportSelectionDialog.hpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTportSelectionDialog.hpp	2009-09-13 05:29:42.060465107 +0400
+@@ -43,7 +43,7 @@
+ 			  const wxString& name = wxT("PortSelectionDialog"));
+ 
+ 
+-    const char ** getSelectedPorts();
++    wxStringList getSelectedPorts();
+ 
+     void update();
+     
+diff -Nur freqtweak-0.7.2.orig/src/FTpresetBlendDialog.cpp freqtweak-0.7.2/src/FTpresetBlendDialog.cpp
+--- freqtweak-0.7.2.orig/src/FTpresetBlendDialog.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTpresetBlendDialog.cpp	2009-09-13 05:29:42.060465107 +0400
+@@ -249,7 +249,7 @@
+ 				
+ 				wxStaticText * stattext = new wxStaticText(_procPanel,
+ 									   -1,
+-									   wxString::FromAscii (filts[m]->getName().c_str()),
++									   filts[m]->getName(),
+ 									   wxDefaultPosition,
+ 									   wxSize(_namewidth, -1));
+ 				//stattext->SetFont(titleFont);
+diff -Nur freqtweak-0.7.2.orig/src/FTpresetBlender.cpp freqtweak-0.7.2/src/FTpresetBlender.cpp
+--- freqtweak-0.7.2.orig/src/FTpresetBlender.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTpresetBlender.cpp	2009-09-13 05:42:34.025715556 +0400
+@@ -102,7 +102,7 @@
+ 			// compare the proctype
+ 
+ 			if (pvec.size() <= n ||  pm->getName() != pvec[n]->getName()) {
+-				fprintf (stderr, "mismatch at %d %d: %s   %u\n", i, n, pm->getName().c_str(), pvec.size());
++				fprintf (stderr, "mismatch at %d %d: %s   %lu\n", i, n, pm->getName().mb_str(), pvec.size());
+ 				delete procvec;
+ 				return false;
+ 			}
+diff -Nur freqtweak-0.7.2.orig/src/FTprocBoost.cpp freqtweak-0.7.2/src/FTprocBoost.cpp
+--- freqtweak-0.7.2.orig/src/FTprocBoost.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocBoost.cpp	2009-09-13 05:29:42.061465304 +0400
+@@ -17,26 +17,27 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTprocBoost.hpp"
+ #include "FTutils.hpp"
+ 
+ FTprocBoost::FTprocBoost (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("EQ Boost", samprate, fftn)
++	: FTprocI(wxT("EQ Boost"), samprate, fftn)
+ {
+-	_confname = "Boost";
++	_confname = wxT("Boost");
+ }
+ 
+ FTprocBoost::FTprocBoost (const FTprocBoost & other)
+ 	: FTprocI (other._name, other._sampleRate, other._fftN)	
+ {
+-	_confname = "Boost";
++	_confname = wxT("Boost");
+ }
+ 
+ void FTprocBoost::initialize()
+ {
+ 	// create filter
+ 
+-	_eqfilter = new FTspectrumModifier("EQ Boost", "freq_boost", 0, FTspectrumModifier::POS_GAIN_MODIFIER, BOOST_SPECMOD, _fftN/2, 1.0);
++	_eqfilter = new FTspectrumModifier(wxT("EQ Boost"), wxT("freq_boost"), 0, FTspectrumModifier::POS_GAIN_MODIFIER, BOOST_SPECMOD, _fftN/2, 1.0);
+ 	_eqfilter->setRange(1.0, 16.0);
+ 	
+ 	_filterlist.push_back (_eqfilter);
+diff -Nur freqtweak-0.7.2.orig/src/FTprocCompressor.cpp freqtweak-0.7.2/src/FTprocCompressor.cpp
+--- freqtweak-0.7.2.orig/src/FTprocCompressor.cpp	2009-07-12 01:16:31.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocCompressor.cpp	2009-09-13 05:29:42.061465304 +0400
+@@ -17,6 +17,7 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTprocCompressor.hpp"
+ #include "FTutils.hpp"
+ #include <cmath>
+@@ -82,42 +83,42 @@
+ 
+ 
+ FTprocCompressor::FTprocCompressor (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("Compressor", samprate, fftn)
++	: FTprocI(wxT("Compressor"), samprate, fftn)
+ 	  , _dbAdjust(12.0)
+ 	  
+ {
+-	_confname = "Compressor";
++	_confname = wxT("Compressor");
+ }
+ 
+ FTprocCompressor::FTprocCompressor (const FTprocCompressor & other)
+ 	: FTprocI (other._name, other._sampleRate, other._fftN)	
+ 	  , _dbAdjust(12.0)
+ {
+-	_confname = "Compressor";
++	_confname = wxT("Compressor");
+ }
+ 
+ void FTprocCompressor::initialize()
+ {
+ 	// create filter
+ 
+-	_thresh_filter = new FTspectrumModifier("Comp Thresh", "compressor_thresh", 0, FTspectrumModifier::DB_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.0);
++	_thresh_filter = new FTspectrumModifier(wxT("Comp Thresh"), wxT("compressor_thresh"), 0, FTspectrumModifier::DB_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.0);
+ 	_thresh_filter->setRange(-60.0, 0.0);
+ 	_filterlist.push_back (_thresh_filter);
+ 
+-	_ratio_filter = new FTspectrumModifier("Comp Ratio", "compressor_ratio", 1, FTspectrumModifier::RATIO_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 1.0);
++	_ratio_filter = new FTspectrumModifier(wxT("Comp Ratio"), wxT("compressor_ratio"), 1, FTspectrumModifier::RATIO_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 1.0);
+ 	_ratio_filter->setRange(1.0, 20.0);
+ 	_filterlist.push_back (_ratio_filter);
+ 
+-	_release_filter = new FTspectrumModifier("Comp A/R", "compressor_release", 2, FTspectrumModifier::TIME_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.2);
++	_release_filter = new FTspectrumModifier(wxT("Comp A/R"), wxT("compressor_release"), 2, FTspectrumModifier::TIME_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.2);
+ 	_release_filter->setRange(0.0, 1.0);
+ 	_filterlist.push_back (_release_filter);
+ 
+-	_attack_filter = new FTspectrumModifier("Comp A/R", "compressor_attack", 2, FTspectrumModifier::TIME_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.1);
++	_attack_filter = new FTspectrumModifier(wxT("Comp A/R"), wxT("compressor_attack"), 2, FTspectrumModifier::TIME_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.1);
+ 	_attack_filter->setRange(0.0, 1.0);
+ 	_filterlist.push_back (_attack_filter);
+ 
+ 
+-	_makeup_filter = new FTspectrumModifier("Comp Makeup", "compressor_makeup", 3, FTspectrumModifier::DB_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.0);
++	_makeup_filter = new FTspectrumModifier(wxT("Comp Makeup"), wxT("compressor_makeup"), 3, FTspectrumModifier::DB_MODIFIER, COMPRESS_SPECMOD, _fftN/2, 0.0);
+ 	_makeup_filter->setRange(0.0, 32.0);
+ 	_filterlist.push_back (_makeup_filter);
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTprocDelay.cpp freqtweak-0.7.2/src/FTprocDelay.cpp
+--- freqtweak-0.7.2.orig/src/FTprocDelay.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocDelay.cpp	2009-09-13 05:29:42.062465711 +0400
+@@ -17,14 +17,15 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTprocDelay.hpp"
+ #include "RingBuffer.hpp"
+ 
+ FTprocDelay::FTprocDelay (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("Delay", samprate, fftn),
++	: FTprocI(wxT("Delay"), samprate, fftn),
+ 	  _delayFilter(0), _feedbackFilter(0), _frameFifo(0), _maxDelay(2.5)
+ {
+-	_confname = "Delay";
++	_confname = wxT("Delay");
+ }
+ 
+ FTprocDelay::FTprocDelay (const FTprocDelay & other)
+@@ -32,17 +33,17 @@
+ 	_delayFilter(0), _feedbackFilter(0), _frameFifo(0), _maxDelay(2.5)
+ 
+ {
+-	_confname = "Delay";
++	_confname = wxT("Delay");
+ }
+ 
+ void FTprocDelay::initialize()
+ {
+ 	// create filters
+ 	
+-	_delayFilter = new FTspectrumModifier("Delay", "delay", 0, FTspectrumModifier::TIME_MODIFIER, DELAY_SPECMOD, _fftN/2, 0.0);
++	_delayFilter = new FTspectrumModifier(wxT("Delay"), wxT("delay"), 0, FTspectrumModifier::TIME_MODIFIER, DELAY_SPECMOD, _fftN/2, 0.0);
+ 	_delayFilter->setRange(0.0, _maxDelay);
+ 	
+-	_feedbackFilter = new FTspectrumModifier("D Feedback", "feedback", 1, FTspectrumModifier::UNIFORM_MODIFIER, FEEDB_SPECMOD, _fftN/2, 0.0);
++	_feedbackFilter = new FTspectrumModifier(wxT("D Feedback"), wxT("feedback"), 1, FTspectrumModifier::UNIFORM_MODIFIER, FEEDB_SPECMOD, _fftN/2, 0.0);
+ 	_feedbackFilter->setRange(0.0, 1.0);
+ 
+ 	setMaxDelay(_maxDelay);
+diff -Nur freqtweak-0.7.2.orig/src/FTprocEQ.cpp freqtweak-0.7.2/src/FTprocEQ.cpp
+--- freqtweak-0.7.2.orig/src/FTprocEQ.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocEQ.cpp	2009-09-13 05:29:42.062465711 +0400
+@@ -17,27 +17,28 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTprocEQ.hpp"
+ #include "FTutils.hpp"
+ 
+ 
+ FTprocEQ::FTprocEQ (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("EQ Cut", samprate, fftn)
++	: FTprocI(wxT("EQ Cut"), samprate, fftn)
+ {
+-	_confname = "EQ";
++	_confname = wxT("EQ");
+ }
+ 
+ FTprocEQ::FTprocEQ (const FTprocEQ & other)
+ 	: FTprocI (other._name, other._sampleRate, other._fftN)	
+ {
+-	_confname = "EQ";
++	_confname = wxT("EQ");
+ }
+ 
+ void FTprocEQ::initialize()
+ {
+ 	// create filter
+ 
+-	_eqfilter = new FTspectrumModifier("EQ Cut", "freq", 0, FTspectrumModifier::GAIN_MODIFIER, FREQ_SPECMOD, _fftN/2, 1.0);
++	_eqfilter = new FTspectrumModifier(wxT("EQ Cut"), wxT("freq"), 0, FTspectrumModifier::GAIN_MODIFIER, FREQ_SPECMOD, _fftN/2, 1.0);
+ 	_eqfilter->setRange(0.0, 1.0);
+ 	
+ 	_filterlist.push_back (_eqfilter);
+diff -Nur freqtweak-0.7.2.orig/src/FTprocGate.cpp freqtweak-0.7.2/src/FTprocGate.cpp
+--- freqtweak-0.7.2.orig/src/FTprocGate.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocGate.cpp	2009-09-13 05:29:42.062465711 +0400
+@@ -17,34 +17,35 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTprocGate.hpp"
+ #include "FTutils.hpp"
+ 
+ FTprocGate::FTprocGate (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("Gate", samprate, fftn)
++	: FTprocI(wxT("Gate"), samprate, fftn)
+ 	  , _dbAdjust(-37.0)
+ 	
+ {
+-	_confname = "Gate";
++	_confname = wxT("Gate");
+ }
+ 
+ FTprocGate::FTprocGate (const FTprocGate & other)
+ 	: FTprocI (other._name, other._sampleRate, other._fftN)
+ 	  , _dbAdjust(other._dbAdjust)
+ {
+-	_confname = "Gate";
++	_confname = wxT("Gate");
+ }
+ 
+ void FTprocGate::initialize()
+ {
+ 	// create filters
+ 
+-	_filter = new FTspectrumModifier("Gate Bottom", "gate", 0, FTspectrumModifier::DB_MODIFIER, GATE_SPECMOD, _fftN/2, -90.0);
++	_filter = new FTspectrumModifier(wxT("Gate Bottom"), wxT("gate"), 0, FTspectrumModifier::DB_MODIFIER, GATE_SPECMOD, _fftN/2, -90.0);
+ 	_filter->setRange(-90.0, 0.0);
+ 	//_gateFilter->reset();
+ 	_filter->setBypassed(true); // by default
+ 	
+-	_invfilter = new FTspectrumModifier("Gate", "inverse_gate", 0, FTspectrumModifier::DB_MODIFIER, GATE_SPECMOD, _fftN/2, 0.0);
++	_invfilter = new FTspectrumModifier(wxT("Gate"), wxT("inverse_gate"), 0, FTspectrumModifier::DB_MODIFIER, GATE_SPECMOD, _fftN/2, 0.0);
+ 	_invfilter->setRange(-90.0, 0.0);
+ 	_invfilter->setBypassed(true); // by default
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTprocI.cpp freqtweak-0.7.2/src/FTprocI.cpp
+--- freqtweak-0.7.2.orig/src/FTprocI.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocI.cpp	2009-09-13 05:29:42.063464999 +0400
+@@ -23,9 +23,11 @@
+ 
+ 
+ #include "FTprocI.hpp"
++#include <wx/wx.h>
++#include <wx/string.h>
+ 
+ 
+-FTprocI::FTprocI (const string & name, nframes_t samprate, unsigned int fftn)
++FTprocI::FTprocI (const wxString & name, nframes_t samprate, unsigned int fftn)
+ 	: _sampleRate(samprate), _fftN(fftn), _oversamp(4), _inited(false), _name(name), _confname(name)
+ {
+ }
+diff -Nur freqtweak-0.7.2.orig/src/FTprocI.hpp freqtweak-0.7.2/src/FTprocI.hpp
+--- freqtweak-0.7.2.orig/src/FTprocI.hpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocI.hpp	2009-09-13 05:29:42.063464999 +0400
+@@ -29,6 +29,8 @@
+ 
+ #include "xml++.hpp"
+ 
++#include <wx/wx.h>
++#include <wx/string.h>
+ #include <map>
+ #include <list>
+ #include <vector>
+@@ -98,10 +100,10 @@
+ 	virtual void setOversamp (int osamp) { _oversamp = osamp; }
+ 	virtual int getOversamp() { return _oversamp; }
+ 
+-	virtual void setName (const string & name) { _name = name; }
+-	virtual const string & getName() { return _name; }
++	virtual void setName (const wxString & name) { _name = name; }
++	virtual const wxString & getName() { return _name; }
+ 
+-	virtual const string & getConfName() { return _confname; }
++	virtual const wxString & getConfName() { return _confname; }
+ 
+ 	virtual void setMaxDelay(float secs) {}
+ 	
+@@ -110,7 +112,7 @@
+ 	virtual bool useAsDefault() { return true; }
+  protected:
+ 
+-	FTprocI (const string & name, nframes_t samprate, unsigned int fftn);
++	FTprocI (const wxString & name, nframes_t samprate, unsigned int fftn);
+ 	
+ 	
+ 	bool _bypassed;
+@@ -122,8 +124,8 @@
+         FilterList _filterlist;
+ 
+ 	int _id;
+-	string _name;
+-	string _confname;
++	wxString _name;
++	wxString _confname;
+ };
+ 
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTprocLimit.cpp freqtweak-0.7.2/src/FTprocLimit.cpp
+--- freqtweak-0.7.2.orig/src/FTprocLimit.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocLimit.cpp	2009-09-13 05:29:42.063464999 +0400
+@@ -17,31 +17,32 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include "FTprocLimit.hpp"
+ #include "FTutils.hpp"
+ #include <cmath>
+ using namespace std;
+ 
+ FTprocLimit::FTprocLimit (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("Limit", samprate, fftn)
++	: FTprocI(wxT("Limit"), samprate, fftn)
+ 	  , _dbAdjust(-48.0)
+ 	  
+ {
+-	_confname = "Limit";
++	_confname = wxT("Limit");
+ }
+ 
+ FTprocLimit::FTprocLimit (const FTprocLimit & other)
+ 	: FTprocI (other._name, other._sampleRate, other._fftN)	
+ 	  , _dbAdjust(-48.0)
+ {
+-	_confname = "Limit";
++	_confname = wxT("Limit");
+ }
+ 
+ void FTprocLimit::initialize()
+ {
+ 	// create filter
+ 
+-	_threshfilter = new FTspectrumModifier("Limit", "limit_thresh", 0, FTspectrumModifier::DB_MODIFIER, MASH_SPECMOD, _fftN/2, 0.0);
++	_threshfilter = new FTspectrumModifier(wxT("Limit"), wxT("limit_thresh"), 0, FTspectrumModifier::DB_MODIFIER, MASH_SPECMOD, _fftN/2, 0.0);
+ 	_threshfilter->setRange(-90.0, 0.0);
+ 	
+ 	_filterlist.push_back (_threshfilter);
+diff -Nur freqtweak-0.7.2.orig/src/FTprocOrderDialog.cpp freqtweak-0.7.2/src/FTprocOrderDialog.cpp
+--- freqtweak-0.7.2.orig/src/FTprocOrderDialog.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocOrderDialog.cpp	2009-09-13 05:42:34.025715556 +0400
+@@ -209,8 +209,8 @@
+ 	
+ 	for (; mod != mlist.end(); ++mod)
+ 	{
+-		item.SetText (wxString::FromAscii ((*mod)->getName().c_str()));
+-		item.SetData ((unsigned) (*mod));
++		item.SetText ((*mod)->getName());
++		item.SetData ((unsigned long) (*mod));
+ 		item.SetId(pos++);
+ 		
+ 		_sourceList->InsertItem(item);
+@@ -229,8 +229,8 @@
+ 		
+ 		for (unsigned int n=0; n < procmods.size(); ++n)
+ 		{
+-			item.SetText (wxString::FromAscii (procmods[n]->getName().c_str()));
+-			item.SetData ((unsigned) procmods[n]);
++			item.SetText (procmods[n]->getName());
++			item.SetData ((unsigned long) procmods[n]);
+ 			item.SetId (n);
+ 			
+ 			_targetList->InsertItem(item);
+@@ -440,8 +440,8 @@
+ 		FTprocI * proc = (FTprocI *) _sourceList->GetItemData(itemi); 
+ 
+ 		if (proc) {
+-			item.SetText (wxString::FromAscii (proc->getName().c_str()));
+-			item.SetData ((unsigned)proc);
++			item.SetText (proc->getName());
++			item.SetData ((unsigned long)proc);
+ 			item.SetId (_targetList->GetItemCount());
+ 			
+ 			_targetList->InsertItem(item);
+diff -Nur freqtweak-0.7.2.orig/src/FTprocPitch.cpp freqtweak-0.7.2/src/FTprocPitch.cpp
+--- freqtweak-0.7.2.orig/src/FTprocPitch.cpp	2009-07-12 01:15:46.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocPitch.cpp	2009-09-13 05:38:29.810715431 +0400
+@@ -17,6 +17,7 @@
+ **  
+ */
+ 
++#include <wx/wx.h>
+ #include <math.h>
+ 
+ #include "FTprocPitch.hpp"
+@@ -25,21 +26,21 @@
+ #include <string.h>
+ 
+ FTprocPitch::FTprocPitch (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("Pitch", samprate, fftn)
++	: FTprocI(wxT("Pitch"), samprate, fftn)
+ {
+-	_confname = "Pitch";
++	_confname = wxT("Pitch");
+ }
+ 
+ FTprocPitch::FTprocPitch (const FTprocPitch & other)
+ 	: FTprocI (other._name, other._sampleRate, other._fftN)
+ {
+-	_confname = "Pitch";
++	_confname = wxT("Pitch");
+ }
+ 
+ void FTprocPitch::initialize()
+ {
+ 	// create filter
+-	_filter = new FTspectrumModifier("Pitch", "scale", 0, FTspectrumModifier::SEMITONE_MODIFIER, SCALE_SPECMOD, _fftN/2, 1.0);
++	_filter = new FTspectrumModifier(wxT("Pitch"), wxT("scale"), 0, FTspectrumModifier::SEMITONE_MODIFIER, SCALE_SPECMOD, _fftN/2, 1.0);
+  	_filter->setRange(0.5, 2.0);
+ 	_filter->setBypassed(true); // by default
+ 
+diff -Nur freqtweak-0.7.2.orig/src/FTprocWarp.cpp freqtweak-0.7.2/src/FTprocWarp.cpp
+--- freqtweak-0.7.2.orig/src/FTprocWarp.cpp	2009-07-12 01:15:59.000000000 +0400
++++ freqtweak-0.7.2/src/FTprocWarp.cpp	2009-09-13 05:40:58.427486029 +0400
+@@ -16,6 +16,7 @@
+ ** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ **  
+ */
++#include <wx/wx.h>
+ 
+ #include "FTprocWarp.hpp"
+ #include "FTutils.hpp"
+@@ -24,22 +25,22 @@
+ 
+ 
+ FTprocWarp::FTprocWarp (nframes_t samprate, unsigned int fftn)
+-	: FTprocI("Warp", samprate, fftn)
++	: FTprocI(wxT("Warp"), samprate, fftn)
+ {
+-	_confname = "Warp";
++	_confname = wxT("Warp");
+ }
+ 
+ FTprocWarp::FTprocWarp (const FTprocWarp & other)
+ 	: FTprocI (other._name, other._sampleRate, other._fftN)	
+ {
+-	_confname = "Warp";
++	_confname = wxT("Warp");
+ }
+ 
+ void FTprocWarp::initialize()
+ {
+ 	// create filter
+ 
+-	_filter = new FTspectrumModifier("Warp", "warp", 0, FTspectrumModifier::FREQ_MODIFIER, WARP_SPECMOD, _fftN/2, 0.0);
++	_filter = new FTspectrumModifier(wxT("Warp"), wxT("warp"), 0, FTspectrumModifier::FREQ_MODIFIER, WARP_SPECMOD, _fftN/2, 0.0);
+ 	_filter->setRange(0.0, _fftN/2.0);
+ 	_filter->reset();
+ 	
+diff -Nur freqtweak-0.7.2.orig/src/FTspectrumModifier.cpp freqtweak-0.7.2/src/FTspectrumModifier.cpp
+--- freqtweak-0.7.2.orig/src/FTspectrumModifier.cpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTspectrumModifier.cpp	2009-09-13 05:29:42.065465603 +0400
+@@ -24,6 +24,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdint.h>
++#include <wx/wx.h>
++#include <wx/string.h>
+ 
+ #include <algorithm>
+ using namespace std;
+@@ -34,7 +36,7 @@
+ 
+ 
+ 
+-FTspectrumModifier::FTspectrumModifier(const string &name, const string &configName, int group,
++FTspectrumModifier::FTspectrumModifier(const wxString &name, const wxString &configName, int group,
+ 				       FTspectrumModifier::ModifierType mtype, SpecModType smtype, int length, float initval)
+ 	:  _modType(mtype), _specmodType(smtype), _name(name), _configName(configName), _group(group),
+ 	   _values(0), _length(length), _linkedTo(0), _initval(initval),
+diff -Nur freqtweak-0.7.2.orig/src/FTspectrumModifier.hpp freqtweak-0.7.2/src/FTspectrumModifier.hpp
+--- freqtweak-0.7.2.orig/src/FTspectrumModifier.hpp	2009-07-12 00:36:49.000000000 +0400
++++ freqtweak-0.7.2/src/FTspectrumModifier.hpp	2009-09-13 05:29:42.066464962 +0400
+@@ -26,6 +26,8 @@
+ 
+ #include <string>
+ #include <list>
++#include <wx/wx.h>
++#include <wx/string.h>
+ using namespace std;
+ 
+ 
+@@ -55,7 +57,7 @@
+ 	};
+ 	
+ 	
+-	FTspectrumModifier(const string & name, const string &configName, int group,
++	FTspectrumModifier(const wxString & name, const wxString &configName, int group,
+ 			   ModifierType mtype, SpecModType smtype, int length=512, float initval=0.0);
+ 
+ 	virtual ~FTspectrumModifier();
+@@ -66,11 +68,11 @@
+ 	void setLength(int length);
+ 	int getLength() { return _length; }
+ 
+-	string getName() { return _name; }
+-	void setName(const string & name) { _name = name; }
++	wxString getName() { return _name; }
++	void setName(const wxString & name) { _name = name; }
+ 
+-	string getConfigName() { return _configName; }
+-	void setConfigName(const string & name) { _configName = name; }
++	wxString getConfigName() { return _configName; }
++	void setConfigName(const wxString & name) { _configName = name; }
+ 
+ 	int getGroup() { return _group; }
+ 	void setGroup(int grp) { _group = grp; }
+@@ -136,8 +138,8 @@
+ 	ModifierType _modType;
+ 	SpecModType _specmodType;
+ 
+-	string _name;
+-	string _configName;
++	wxString _name;
++	wxString _configName;
+ 	int _group;
+ 	
+ 	// might point to a linked value array
