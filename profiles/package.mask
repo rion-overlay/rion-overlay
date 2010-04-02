@@ -13,25 +13,6 @@ www-apps/webgui
 # upstream bug
 www-apps/rtpg
 
-# 18 Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
-# mask to remowal 
-=net-nds/389-ds-base-1.2.2
-
-# 7 Mar 2010; Rion <nowhere@nowhere>
-# rabbitvcs moved to dev-vcs
-dev-util/rabbitvcs
-
-# 5  Mar 2010; G. Rudoy <0xd34df00d@gmail.com>
-# Since we have split ebuilds now, mask this in
-# favor of net-misc/leechcraft-full.
-www-client/leechcraft
-
-# 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-# init script not work
-# removal 27 Mar 2010
-=net-wireless/madwimax-0.1.1-r2
-
-
 # 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # Not work && build
 app-crypt/pki-ra
