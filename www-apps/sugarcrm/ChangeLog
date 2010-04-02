@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> -sugarcrm-5.5.0.ebuild:
+  remove old ebuild
+
 *sugarcrm-5.5.1 ( 28 Mar 2010 )
 
   28 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
