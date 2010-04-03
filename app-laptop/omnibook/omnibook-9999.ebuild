@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit linux-mod eutils subversion
+inherit eutils linux-mod subversion
 
 DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support"
 HOMEPAGE="http://www.sourceforge.net/projects/omnibook"
@@ -21,10 +21,6 @@ BUILD_TARGETS=" "
 pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERNEL=${KV_MAJOR}.${KV_MINOR} KSRC=${KV_DIR}"
-}
-
-src_compile() {
-	linux-mod_src_compile
 }
 
 src_install() {
