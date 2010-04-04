@@ -19,7 +19,8 @@ COMMON_DEP="net-mail/mailbase
 	sendmail? (
 		mail-mta/sendmail
 		!!mail-filter/libmilter
-		dkim? ( mail-filter/libdkim ) )
+		dkim? (
+			mail-filter/libdkim ) )
 	sys-libs/db
 	p0f? ( net-analyzer/p0f )
 	bind? ( net-dns/bind[ipv6?] )
@@ -159,7 +160,7 @@ src_install() {
 
 pkg_postinst() {
 	if [  -e "${ROOT}"/var/lib/milter-greylist/greylist.db ] ; then
-		touch "${ROOT}"/var/lib/milter-greylist/greylist.db
+		touch "${ROOT}"/var/lib/milter-greylist/greylist.db || die
 	fi
 
 	if use !postfix; then
@@ -177,7 +178,8 @@ pkg_postinst() {
 		elog " You can enable milter-greylist in your postfix, adding the line:"
 		elog " smtpd_milters = unix:/var/run/milter-greylist/milter-greylist.sock "
 		elog " milter_connect_macros = j "
-		elog " and milter_default_action = accept "
+		elog " and "
+		elog " milter_default_action = accept "
 		elog " to /etc/postfix/main.cf file"
 		elog
 	fi
