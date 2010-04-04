@@ -2,14 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# revrite slepnoga
-
 EAPI=2
 
-inherit eutils	multilib
-MY_P=${P/_/-}
+inherit eutils	multilib depend.apache
 
-DESCRIPTION="OpenCA main server"
+MY_P="${P/_/-}"
+
+DESCRIPTION="OpenCA PKI main server"
 HOMEPAGE="http://www.openca.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
@@ -19,28 +18,27 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc +dbm mysql +postgres ldap vhosts"
 
 OPENCA_INT_MOD="dev-perl/OpenCA-Configuration
-				dev-perl/OpenCA-DB
-				dev-perl/OpenCA-LDAP
-				<dev-perl/OpenCA-OpenSSL-1.0
-				dev-perl/OpenCA-Session
-				dev-perl/OpenCA-Tools
-				dev-perl/OpenCA-UI-HTML
-				dev-perl/OpenCA-XML-Cache
-				dev-perl/OpenCA-AC
-				dev-perl/OpenCA-CRL
-				dev-perl/OpenCA-Crypto
-				dev-perl/OpenCA-DBI
-				dev-perl/OpenCA-Log
-				dev-perl/OpenCA-PKCS7
-				dev-perl/OpenCA-REQ
-				dev-perl/OpenCA-StateMachine
-				dev-perl/OpenCA-TRIStateCGI
-				dev-perl/OpenCA-X509"
+	dev-perl/OpenCA-DB
+	dev-perl/OpenCA-LDAP
+	dev-perl/OpenCA-OpenSSL
+	dev-perl/OpenCA-Session
+	dev-perl/OpenCA-Tools
+	dev-perl/OpenCA-UI-HTML
+	dev-perl/OpenCA-XML-Cache
+	dev-perl/OpenCA-AC
+	dev-perl/OpenCA-CRL
+	dev-perl/OpenCA-Crypto
+	dev-perl/OpenCA-DBI
+	dev-perl/OpenCA-Log
+	dev-perl/OpenCA-PKCS7
+	dev-perl/OpenCA-REQ
+	dev-perl/OpenCA-StateMachine
+	dev-perl/OpenCA-TRIStateCGI
+	dev-perl/OpenCA-X509"
 
 DEPEND="${RDEPEND}
-		${OPENCA_INT_MOD}
+	${OPENCA_INT_MOD}
 	>=dev-libs/openssl-0.9.7
-	www-servers/apache:2[ssl]
 	dev-perl/XML-Parser
 	virtual/perl-Digest-SHA
 	virtual/perl-MIME-Base64
@@ -70,9 +68,11 @@ DEPEND="${RDEPEND}
 	sasl? ( >=dev-perl/Authen-SASL-2.04 )
 	!=app-crypt/openca-base-1*
 	!app-misc/openca-tools"
-
 RDEPEND="${DEPEND}"
-S=${WORKDIR}/${MY_P}
+
+S="${WORKDIR}/${MY_P}"
+
+need_apache2_2
 
 src_configure() {
 	if ! use ldap ; then
@@ -89,9 +89,9 @@ src_configure() {
 		--with-httpd-user=apache \
 		--with-httpd-group=apache \
 		--disable-external-modules"
-#	if ! use vhosts ; then
-		myconf="${myconf} --with-htdocs-url-prefix=/openca"
-#	fi
+
+	myconf="${myconf} --with-htdocs-url-prefix=/openca"
+
 	if use ldap; then
 		myconf="${myconf} --with-ldap-port=389 \
 			--with-ldap-root='cn=Manager,o=OpenCA,c=IT' \
@@ -99,17 +99,19 @@ src_configure() {
 	else
 		myconf="${myconf} --disable-ldap"
 	fi
+
 	if ! use mysql && ! use postgres || use dbm; then
 		myconf="${myconf} --enable-db"
 	else
 		myconf="${myconf} --disable-db"
 	fi
+
 	if use mysql; then
 			einfo "Setting random user/password details for the mysql database"
 			local dbpass="${RANDOM}${RANDOM}${RANDOM}${RANDOM}"
 			sed -e "s/@dbpass@/${dbpass}/g" \
-						"${FILESDIR}"/mysql-setup.sql.in > "${T}"/mysql-setup.sql
-
+						"${FILESDIR}"/mysql-setup.sql.in > "${T}"/mysql-setup.sql \
+													|| die "sed failed"
 		myconf="${myconf}  --enable-dbi \
 			--with-db-type=mysql \
 			--with-db-name=openca \
@@ -118,6 +120,7 @@ src_configure() {
 			--with-db-user=openca \
 			--with-db-passwd='${dbpass}'"
 	fi
+
 	if use postgres; then
 			einfo "Setting random user/password details for the postgres database"
 			local dbpass="${RANDOM}${RANDOM}${RANDOM}${RANDOM}"
@@ -131,17 +134,16 @@ src_configure() {
 			--with-db-passwd='${dbpass}'"
 	fi
 
-cp "${FILESDIR}"/Makefile.perl-disable-0.9.3 "${S}"/src/ext-modules/Makefile || die
+	cp "${FILESDIR}"/Makefile.perl-disable-0.9.3 "${S}"/src/ext-modules/Makefile || die
+	cp "${FILESDIR}"/Makefile.perl-disable-0.9.3 "${S}"/src/modules/Makefile || die
 
-cp "${FILESDIR}"/Makefile.perl-disable-0.9.3 "${S}"/src/modules/Makefile || die
-
-	econf ${myconf}
+	econf ${myconf} || die "econf failed"
 }
 
 src_install() {
+
 	emake -j1 DESTDIR="${D}" install-online install-ca || die "install failed"
 
-	dodir /var/openca/tmp
 	keepdir /var/openca/tmp
 	fperms 775 /var/openca/tmp
 	dosym /var/openca/log /var/log/openca
@@ -149,20 +151,17 @@ src_install() {
 				/etc/openca/utf8_latin1_selector.sh
 
 	keepdir /var/openca/log
-	dodir /var/openca/log/xml
 	keepdir /var/openca/log/xml
 
-	dodoc CHANGES  README I18N HISTORY
-	dodoc THANKS TODO
+	dodoc CHANGES  README I18N HISTORY THANKS TODO
 	doman docs/man3/*.3
 
 	if use ldap; then
-		docinto openldap
-		dodocs contrib/openldap/openca.schema
+		docinto /etc/openldap/schema
+		dodoc contrib/openldap/openca.schema
 	fi
 
 	if ! use mysql && ! use postgres || use dbm ; then
-		dodir /var/openca/db
 		keepdir /var/openca/db
 	fi
 
@@ -170,6 +169,7 @@ src_install() {
 		insinto /etc/apache2/conf/vhosts
 		#***more to come***
 	fi
+
 	dosym /etc/openca/openca_rc /etc/init.d/openca
 	dodoc "${S}"/contrib/apache/httpd.conf.example
 	dodoc "${S}"/contrib/apache/offline.conf
@@ -178,8 +178,8 @@ src_install() {
 }
 
 pkg_setup() {
-	enewgroup openca
-	enewuser openca -1 -1 /dev/null openca
+	enewgroup openca || die
+	enewuser openca -1 -1 /dev/null openca || die
 }
 
 pkg_postinst() {
