@@ -15,7 +15,9 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
 QA_PRESTRIPPED="/usr/sbin/c2ctl"
+
 S="${WORKDIR}"/c2ctl
 
 src_compile() { : ; }

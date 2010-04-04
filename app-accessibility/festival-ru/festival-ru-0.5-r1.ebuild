@@ -20,17 +20,13 @@ IUSE=""
 DEPEND=">=app-accessibility/festival-1.96_beta-r1"
 RDEPEND="${DEPEND}"
 
-RESTRICT="mirror"
-
 S="${WORKDIR}"/msu_ru_nsh_clunits
 
 src_install() {
 
 	# Install the main libraries
 	insinto /usr/share/festival/voices/russian/msu_ru_nsh_clunits
-	doins -r *
+	doins -r * || die "install failed"
 
-	# Install the docs
-	cd "${S}"
 	dodoc NOTES README
 }

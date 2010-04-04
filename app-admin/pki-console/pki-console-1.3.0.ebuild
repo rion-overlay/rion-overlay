@@ -9,12 +9,14 @@ inherit java-pkg-2 eutils java-ant-2
 
 DESCRIPTION="PKI console for management of the CA, DRM, OCSP, and TKS subsystems"
 HOMEPAGE="http://pki.fedoraproject.org"
-SRC_URI="http://pki.fedoraproject.org/pki/sources/${PN}/${P}.tar.gz"
+SRC_URI="http://pki.fedoraproject.org/pki/sources/${PN}/${P}.tar.gz
+	http://www.nongnu.org/smc/docs/smc-presentation2/pix/fedora.png"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 SLOT="0"
+
 COMMON_DEP=">=dev-java/jss-4.3
 	>=dev-java/ldapsdk-4.0
 	>=dev-java/idm-console-framework-1.1
@@ -23,6 +25,10 @@ RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
 DEPEND=">=virtual/jdk-1.6
 	${COMMON_DEP}"
+
+src_unpack() {
+	unpack "${P}"
+}
 
 src_prepare() {
 	java-pkg_jarfrom ldapsdk-4.1 ldapjdk.jar
@@ -50,5 +56,5 @@ src_install() {
 				--pkg_args "-Djava.util.prefs.systemRoot=\"\$HOME/.${PN}\" -Djava.util.prefs.userRoot=\"\$HOME/.${PN}\""
 
 	doicon "${DISTDIR}"/fedora.png
-	make_desktop_entry ${PN} "Port389 Management Console" fedora.png Network
+	make_desktop_entry ${PN} "DogTag PKI Management Console" fedora.png Network
 }

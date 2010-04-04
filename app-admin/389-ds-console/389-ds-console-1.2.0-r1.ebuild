@@ -32,7 +32,7 @@ DEPEND=">=virtual/jdk-1.5
 src_prepare() {
 	# gentoo java rules say no jars with version number
 	# so sed away the version indicator '-'
-	sed -e "s!-\*!\*!g" -i build.xml
+	sed -e "s!-\*!\*!g" -i build.xml || die "sed failed"
 
 	java-pkg_jar-from ldapsdk-4.1 ldapjdk.jar
 	java-pkg_jar-from jss-3.4 xpclass.jar jss4.jar
@@ -43,12 +43,13 @@ src_compile() {
 	eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.location="${S}" \
 	     -Djss.location="${S}" \
-	     -Dconsole.location="${S}" ${antflags}
+	     -Dconsole.location="${S}" ${antflags} || die "eant failed"
 
 	use doc && eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.location="${S}" \
 	     -Djss.location="${S}" \
-	     -Dconsole.location="${S}" ${antflags} javadoc
+	     -Dconsole.location="${S}" ${antflags} javadoc \
+		 				|| die "eant javadoc failed"
 }
 
 src_install() {
@@ -60,13 +61,13 @@ src_install() {
 	dosym 389-ds_en.jar /usr/share/dirsrv/html/java/389-ds-${MY_MV}_en.jar
 
 	insinto /usr/share/dirsrv/manual/en/slapd
-	doins "${S}"/help/en/*.html
-	doins "${S}"/help/en/tokens.map
+	doins "${S}"/help/en/*.html || die
+	doins "${S}"/help/en/tokens.map || die
 
 	insinto /usr/share/dirsrv/manual/en/slapd/help
-	doins "${S}"/help/en/help/*.html
+	doins "${S}"/help/en/help/*.html || die
 
-	use doc && java-pkg_dojavadoc build/doc
+	use doc && java-pkg_dojavadoc build/doc || die
 
-	use source && java-pkg_dosrc src/com
+	use source && java-pkg_dosrc src/com || die
 }

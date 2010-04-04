@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Apr 2010; <slep@gentoo.org> saslfinger-1.0.3.ebuild:
+  fix syntax
+
   17 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +saslfinger-1.0.3.ebuild, +metadata.xml:
   initial commit
