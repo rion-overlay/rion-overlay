@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-JAVA_PKG_IUSE="doc source"
+JAVA_PKG_IUSE=""
 
 inherit java-pkg-2 eutils java-ant-2
 
@@ -21,11 +21,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEP="dev-java/jss:3.4
-			dev-java/ldapsdk:4.1
-			>=dev-java/idm-console-framework-1.1
-			app-admin/389-admin-console
-			!app-admin/fedora-idm-console
-			!app-admin/389-idm-console"
+	dev-java/ldapsdk:4.1
+	>=dev-java/idm-console-framework-1.1
+	app-admin/389-admin-console
+	!!app-admin/fedora-idm-console
+	!!app-admin/389-idm-console"
 
 RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
@@ -49,16 +49,17 @@ src_compile() {
 	eant -Dbuilt.dir="${S}"/build \
 	    -Dldapjdk.local.location="${S}" \
 	    -Djss.local.location="${S}" \
-	    -Dconsole.local.location="${S}" ${antflags}
-
+	    -Dconsole.local.location="${S}" ${antflags} \
+				die "eant failed"
 }
 
 src_install() {
 	java-pkg_newjar "${S}"/build/389-console-1.1.3_en.jar 389-console_en.jar
 	java-pkg_dolauncher ${PN} --main com.netscape.management.client.console.Console \
 				--pwd "/usr/share/dirsrv/html/java/" \
-				--pkg_args "-Djava.util.prefs.systemRoot=\"\$HOME/.${PN}\" -Djava.util.prefs.userRoot=\"\$HOME/.${PN}\""
+				--pkg_args "-Djava.util.prefs.systemRoot=\"\$HOME/.${PN}\" -Djava.util.prefs.userRoot=\"\$HOME/.${PN}\""\
+				die
 
-	doicon "${DISTDIR}"/fedora.png
+	doicon "${DISTDIR}"/fedora.png || die "doicon failed"
 	make_desktop_entry ${PN} "Port389 Management Console" fedora.png System fedora.png
 }
