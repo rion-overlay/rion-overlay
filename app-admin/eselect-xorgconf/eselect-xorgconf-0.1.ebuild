@@ -16,7 +16,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	app-admin/eselect
-	x11-base/xorg-server"
+	<x11-base/xorg-server-1.8.0"
 
 src_install() {
 	insinto /usr/share/eselect/modules
@@ -25,5 +25,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "Don't forget to rename your xorg.conf to something like"
-	elog " xorg.conf.<your card name> prior to eselecting it"
+	elog "xorg.conf.<your card name> prior to eselecting it"
 }
