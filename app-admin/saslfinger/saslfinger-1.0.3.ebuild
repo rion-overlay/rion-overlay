@@ -15,7 +15,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-		app-shells/bash"
+	app-shells/bash"
 
 src_install() {
 	dobin saslfinger

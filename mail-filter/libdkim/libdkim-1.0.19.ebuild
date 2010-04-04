@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit eutils
 
-DESCRIPTION="a library to verify and create signatures of e-mail headers"
+DESCRIPTION="A library to verify and create signatures of e-mail headers."
 HOMEPAGE="http://libdkim.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
@@ -24,8 +24,8 @@ S=${WORKDIR}/${PN}/src
 
 src_prepare() {
 	# upstream claims to be portable, but isn't very
-	epatch "${FILESDIR}/${PN}-gentoo.patch" \
-	       "${FILESDIR}/${PN}-extra-options.patch"
+	epatch "${FILESDIR}/${PN}-gentoo.patch" || die "epatch failed"
+	epatch "${FILESDIR}/${PN}-extra-options.patch" ""  die "epatch failed"
 }
 
 src_install() {

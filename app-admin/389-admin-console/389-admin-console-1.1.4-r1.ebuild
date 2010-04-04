@@ -21,14 +21,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEP="dev-java/jss:3.4
-			dev-java/ldapsdk:4.1
-			>=dev-java/idm-console-framework-1.1
-			!app-admin/fedora-ds-admin-console"
+	dev-java/ldapsdk:4.1
+	>=dev-java/idm-console-framework-1.1
+	!app-admin/fedora-ds-admin-console"
 
 RDEPEND=">=virtual/jre-1.5
 	app-arch/zip
 	${COMMON_DEP}"
-
 DEPEND=">=virtual/jdk-1.5
 	${COMMON_DEP}"
 
@@ -46,13 +45,12 @@ src_compile() {
 	eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.location="${S}" \
 	     -Djss.location="${S}" \
-	     -Dconsole.location="${S}" ${antflags}
+	     -Dconsole.location="${S}" ${antflags} || die "eant failed"
 
 	use doc && eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.location="${S}" \
 	     -Djss.location="${S}" \
-	     -Dconsole.location="${S}" ${antflags} javadoc
-
+	     -Dconsole.location="${S}" ${antflags} javadoc || die "javadoc failed"
 }
 
 src_install() {
@@ -64,13 +62,13 @@ src_install() {
 	dosym 389-admin_en.jar /usr/share/dirsrv/html/java/389-admin-${MY_MV}_en.jar
 
 	insinto /usr/share/dirsrv/manual/en/admin
-	doins "${S}"/help/en/*.html
-	doins "${S}"/help/en/tokens.map
+	doins "${S}"/help/en/*.html || die
+	doins "${S}"/help/en/tokens.map || die
 
 	insinto /usr/share/dirsrv/manual/en/admin/help
-	doins "${S}"/help/en/help/*.html
+	doins "${S}"/help/en/help/*.html || die
 
-	use doc && java-pkg_dojavadoc build/doc
+	use doc && java-pkg_dojavadoc build/doc || die
 
-	use source && java-pkg_dosrc src/com
+	use source && java-pkg_dosrc src/com || die
 }
