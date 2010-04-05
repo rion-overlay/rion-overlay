@@ -1,6 +1,10 @@
 # ChangeLog for app-crypt/openca-base
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  openca-base-1.0.2.ebuild:
+  ~amd64 keyword code ldean
 
   09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   openca-base-1.0.2.ebuild, +files/postinstall.ru:
