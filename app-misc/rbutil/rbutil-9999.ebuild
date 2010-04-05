@@ -9,8 +9,9 @@ inherit qt4-r2 subversion
 ESVN_REPO_URI="svn://svn.rockbox.org/rockbox/trunk"
 
 DESCRIPTION="The Rockbox Utility, all you need for installing and managing rockbox"
-HOMEPAGE="http://www.rockbox.org/twiki/bin/view/Main/RockboxUtility"
+HOMEPAGE="http://www.rockbox.org/wiki/RockboxUtility"
 LICENSE="GPL-2"
+
 SLOT="0"
 KEYWORDS=""
 IUSE="ypp2"
