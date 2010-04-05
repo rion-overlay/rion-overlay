@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+WANT_CMAKE="always"
+
 inherit git cmake-utils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators. Using Qt4."
@@ -18,9 +20,11 @@ IUSE="kvm linguas_ru vnc"
 DEPEND="${RDEPEND}"
 
 RDEPEND="kvm? ( app-emulation/qemu-kvm )
-		!kvm? ( >=app-emulation/qemu-0.9.0 )
-		 vnc? ( net-libs/libvncserver )
-		 x11-libs/qt-gui:4"
+	!kvm? ( >=app-emulation/qemu-0.9.0 )
+	vnc? ( net-libs/libvncserver )
+	x11-libs/qt-gui:4
+	x11-libs/qt-test:4
+	x11-libs/qt-xmlpatterns:4"
 
 DOCS="AUTHORS CHANGELOG README TODO"
 
@@ -28,17 +32,22 @@ src_unpack() {
 	git_src_unpack
 }
 
+src_configure() {
+
+	local mycmakeargs=" -DCMAKE_VERBOSE_MAKEFILE=OFF"
+	if use vnc; then
+		mycmakeargs+=" -DWITHOUT_EMBEDDED_DISPLAY=OFF "
+	else
+		mycmakeargs+=" -DWITHOUT_EMBEDDED_DISPLAY=ON "
+	fi
+
+	cmake-utils_src_configure
+}
+
 src_install() {
-#        dobin "${S}"_build/aqemu
-		if use linguas_ru;then
-				insinto /usr/share/aqemu
-				doins "${S}"_build/Russian.qm
-		fi
-#        insinto /usr/share/aqemu/os_icons
-#        doins "${S}"/os_icons/*.png
-#        insinto /usr/share/aqemu/os_templates/
-#        doins "${S}"/os_templates/*.aqvmt
-#        domenu "${S}/menu_data/aqemu.desktop"
-#        doicon "${S}"/menu_data/aqemu_*.png
+	if use linguas_ru; then
+		insinto /usr/share/aqemu
+		doins "${S}"_build/Russian.qm || die
+	fi
 	cmake-utils_src_install
 }
