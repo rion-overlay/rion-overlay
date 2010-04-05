@@ -19,17 +19,17 @@ KEYWORDS="-*"
 IUSE="ocaml ruby kvm haskell perl python readline nls debug doc"
 
 DEPEND="dev-lang/perl
-		virtual/cdrtools
-		kvm? ( app-emulation/qemu-kvm )
-		!kvm? ( >=app-emulation/qemu-0.10 )
-		>=sys-apps/fakechroot-2.8
-		dev-util/febootstrap
-		nls? ( >=sys-devel/gettext-0.17 )
-		readline? ( sys-libs/readline )
-		doc? ( dev-libs/libxml2 )
-		ocaml? ( dev-lang/ocaml )
-		ruby? ( dev-lang/ruby )
-		haskell? ( dev-lang/ghc )"
+	virtual/cdrtools
+	kvm? ( app-emulation/qemu-kvm )
+	!kvm? ( >=app-emulation/qemu-0.10 )
+	>=sys-apps/fakechroot-2.8
+	dev-util/febootstrap
+	nls? ( >=sys-devel/gettext-0.17 )
+	readline? ( sys-libs/readline )
+	doc? ( dev-libs/libxml2 )
+	ocaml? ( dev-lang/ocaml )
+	ruby? ( dev-lang/ruby )
+	haskell? ( dev-lang/ghc )"
 
 RDEPEND="${DEPEND}"
 
