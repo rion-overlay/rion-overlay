@@ -1,8 +1,0 @@
-# ChangeLog for app-dicts/aspell-lv
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  19 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
-  +aspell-lv-0.5.5.ebuild, +metadata.xml:
-  initial commit
-
