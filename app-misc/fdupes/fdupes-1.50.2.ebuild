@@ -4,9 +4,10 @@
 
 EAPI="2"
 
-inherit eutils toolchain-funcs versionator
+inherit toolchain-funcs versionator
 
 MY_P="${PN}-$(get_version_component_range 1-2)-PR$(get_version_component_range 3)"
+
 DESCRIPTION="identify/delete duplicate files residing within specified directories"
 HOMEPAGE="http://netdial.caribe.net/~adrian2/fdupes.html"
 SRC_URI="http://netdial.caribe.net/~adrian2/programs/${MY_P}.tar.gz"
@@ -22,7 +23,9 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}"-external-md5sum-quotation.patch
+
+	epatch "${FILESDIR}/${P}"-external-md5sum-quotation.patch || die
+
 	if use md5sum-external; then
 		sed -i -e 's/^#EXTERNAL_MD5[[:blank:]]*= /EXTERNAL_MD5 = /g' \
 			Makefile || die "sed failed"
