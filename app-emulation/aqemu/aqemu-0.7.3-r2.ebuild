@@ -15,21 +15,24 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="kvm linguas_ru vnc"
 
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
-RDEPEND="kvm? ( app-emulation/qemu-kvm )
-		!kvm? ( >=app-emulation/qemu-0.9.0 )
-		 vnc? ( net-libs/libvncserver )
-		 x11-libs/qt-gui:4"
+DEPEND="kvm? ( app-emulation/qemu-kvm )
+	!kvm? ( >=app-emulation/qemu-0.9.0 )
+	vnc? ( net-libs/libvncserver )
+	x11-libs/qt-gui:4"
+
+DOCS="AUTHORS CHANGELOG README TODO"
 
 src_configure() {
-
-	local mymake="AQEMU_Without_VNC.pro"
-	use vnc && mymake="AQEMU.pro"
-
 	append-ldflags --as-needed
 
-	eqmake4  ${mymake}
+	if use  vnc;then
+		eqmake4  "AQEMU.pro" || die "eqmake4 AQEMU.pro failed"
+	else
+		eqmake4 "AQEMU_Without_VNC.pro" \
+			|| die "eqmake4 AQEMU_Without_VNC.pro failed "
+	fi
 }
 
 src_install() {
@@ -47,11 +50,10 @@ src_install() {
 	insinto /usr/share/aqemu/os_templates/
 	doins "${S}"/os_templates/*.aqvmt
 
-	sed -i '/Exec/s:aqemu:AQEMU:' menu_data/aqemu.desktop
+	sed -i '/Exec/s:aqemu:AQEMU:' menu_data/aqemu.desktop || die "sed failed"
+
 	domenu "${S}/menu_data/aqemu.desktop"
 	doicon "${S}"/menu_data/aqemu_*.png
-
-	dodoc AUTHORS CHANGELOG README TODO
 
 }
 
@@ -59,6 +61,7 @@ pkg_postinst() {
 
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+
 	echo
 	elog "Files VM versions below 0.5 are NOT supported!"
 	elog "When you upgrade from version 0.5 or above, simply"

@@ -2,6 +2,13 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-0.7.3-r2.ebuild,
+  aqemu-9999.ebuild:
+  fix ebuild code - add vnc use
+
+  05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-0.7.3-r2.ebuild:
+  code clean
+
   18 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.7.3-r1.ebuild,
   +aqemu-0.7.3-r2.ebuild:
   fix .desktop file
