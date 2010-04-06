@@ -4,7 +4,10 @@
 
 EAPI="2"
 
-inherit cmake-utils
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.*"
+
+inherit cmake-utils python
 
 DESCRIPTION="Dictionary converter"
 HOMEPAGE="http://sourceforge.net/projects/xdxf/"
@@ -18,9 +21,23 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=">=dev-libs/glib-2.6.0
-		sys-libs/zlib
-		dev-libs/expat"
+	sys-libs/zlib
+	dev-libs/expat"
 RDEPEND="${DEPEND}
-		dev-lang/python"
+	dev-lang/python"
 
 S="${WORKDIR}/${PN}-${MY_PV}-Source"
+
+src_install() {
+	cmake-utils_src_install
+
+	makedict_install() {
+		cp ${D}/usr/lib/makedict-codecs/apresyan.py ${D}/usr/lib/makedict-codecs/apresyan.py-${PYTHON_ABI}
+		cp ${D}/usr/lib/makedict-codecs/mueller7_parser.py ${D}/usr/lib/makedict-codecs/mueller7_parser.py-${PYTHON_ABI}
+	}
+
+	python_execute_function makedict_install
+	
+	python_generate_wrapper_scripts --force ${D}/usr/lib/makedict-codecs/apresyan.py
+	python_generate_wrapper_scripts --force ${D}/usr/lib/makedict-codecs/mueller7_parser.py
+}
