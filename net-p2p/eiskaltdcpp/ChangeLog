@@ -1,6 +1,14 @@
-# ChangeLog for net-p2p/eiskaltdc
+# ChangeLog for net-p2p/eiskaltdcpp
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  10 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> eiskaltdcpp-9999.ebuild:
+  also add in 9999
+
+  10 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> eiskaltdcpp-2.0.ebuild:
+  add linguas use in 2.0 - tnx WiseLord
+
+*eiskaltdcpp-2.0
 
   12 Mar 2010; <slep@gentoo.org> eiskaltdc-9999.ebuild:
   delete cmake depend in ebuild - this depend inherit in eclass
