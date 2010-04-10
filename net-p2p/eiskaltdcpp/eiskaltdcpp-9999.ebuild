@@ -4,12 +4,13 @@
 
 EAPI=2
 
-ESVN_REPO_URI="http://${PN%pp}.googlecode.com/svn/branches/trunk/"
+LANGS="en be ru hu"
 inherit qt4-r2 cmake-utils subversion
-KEYWORDS=""
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"
+ESVN_REPO_URI="http://${PN%pp}.googlecode.com/svn/branches/trunk/"
 HOMEPAGE="http://eiskaltdc.googlecode.com/"
+KEYWORDS=""
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,6 +27,22 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_configure() {
-	local mycmakeargs="-DFREE_SPACE_BAR_C=1 -DFREE_SPACE_BAR=0 $(cmake-utils_use aspell USE_ASPELL)"
+
+	local LANG=""
+	local langs=""
+
+	for LANG in ${LINGUAS};do
+		for X in ${LANGS};do
+			if [[ ${LANG} == ${X} ]]; then
+				langs="${langs} ${X}"
+			fi
+		done
+	done
+
+	local mycmakeargs="-DFREE_SPACE_BAR_C=1 \
+					-DFREE_SPACE_BAR=0 \
+					$(cmake-utils_use aspell USE_ASPELL) \
+					-Dlinguas="${langs}""
+
 	cmake-utils_src_configure
 }

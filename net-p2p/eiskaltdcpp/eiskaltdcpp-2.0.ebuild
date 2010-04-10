@@ -4,16 +4,16 @@
 
 EAPI=2
 
+LANGS="en ru be"
 inherit qt4-r2 cmake-utils
-
-KEYWORDS="~x86 ~amd64"
-SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.gz"
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"
 HOMEPAGE="http://eiskaltdc.googlecode.com/"
+SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~x86 ~amd64"
 IUSE="aspell"
 
 RDEPEND="x11-libs/qt-gui:4
@@ -27,6 +27,19 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_configure() {
-	local mycmakeargs="-DFREE_SPACE_BAR_C=1 -DFREE_SPACE_BAR=0 $(cmake-utils_use aspell USE_ASPELL)"
+
+	local LANG=""
+	for LANG in ${LINGUAS};do
+		for X in ${LANGS};do
+			if [[ ${LANG} == ${X} ]]; then
+				langs+="${X}"
+			fi
+		done
+	done
+
+	local mycmakeargs="-DFREE_SPACE_BAR_C=1 \
+					-DFREE_SPACE_BAR=0 \
+					$(cmake-utils_use aspell USE_ASPELL) \
+					-Dlinguas=${langs}"
 	cmake-utils_src_configure
 }
