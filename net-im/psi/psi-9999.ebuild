@@ -4,8 +4,9 @@
 
 EAPI="2"
 
+LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
 EGIT_HAS_SUBMODULES=true
-inherit eutils qt4 multilib git subversion
+inherit eutils qt4-r2 multilib git subversion
 
 RU_LANGPACK_VER="14_Feb_2010"
 
@@ -31,14 +32,9 @@ IUSE="crypt dbus debug doc enchant +jingle iconsets spell ssl xscreensaver power
 plugins unstable whiteboarding webkit"
 RESTRICT="test"
 
-LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
-for LNG in ${LANGS}; do
-	IUSE="${IUSE} linguas_${LNG}"
-done
-
-RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
+RDEPEND="x11-libs/qt-gui:4[qt3support,dbus?]
 		>=app-crypt/qca-2.0.2:2
-		whiteboarding? ( >=x11-libs/qt-svg-4.4:4 )
+		whiteboarding? ( x11-libs/qt-svg:4 )
 		spell? ( enchant? ( app-text/enchant )
 			!enchant? ( app-text/aspell )
 		)
