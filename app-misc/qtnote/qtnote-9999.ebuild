@@ -12,9 +12,12 @@ ESVN_REPO_URI="http://qtnote.googlecode.com/svn/trunk"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="x11-libs/qt-gui"
 RDEPEND="${DEPEND}"
 
+src_unpack() {
+	subversion_src_unpack
+}
