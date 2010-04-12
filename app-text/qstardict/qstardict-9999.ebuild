@@ -4,7 +4,8 @@
 
 EAPI="2"
 
-inherit eutils qt4 subversion
+inherit eutils qt4-r2 subversion
+
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
 ESVN_REPO_URI="https://qstardict.svn.sourceforge.net/svnroot/qstardict/trunk"
@@ -22,11 +23,25 @@ RDEPEND="x11-libs/qt-core
 		dev-libs/glib:2"
 DEPEND="${RDEPEND}"
 
+get_qstardict_plugins() {
+	local eplugins=""
+	for f in $PLUGINS; do
+		use "plugin_${f}" && eplugins="${f} ${eplugins}"
+	done
+	echo "${eplugins}"
+}
+
+pkg_setup() {
+	[ "$(get_qstardict_plugins)" = "" ] && die "enable at least one plugin"
+}
+
 src_prepare() {
+	subversion_src_prepare
+	qt4-r2_src_prepare
 	find "${WORKDIR}" -name '*pr?' -exec sed "s:/lib:/$(get_libdir):" -i '{}' \;
 }
 
-src_compile() {
+src_configure() {
 	QMAKE_FLAGS=""
 	if ! use dbus; then
 		QMAKE_FLAGS+="NO_DBUS=1 "
@@ -34,17 +49,7 @@ src_compile() {
 	if ! use nls; then
 		QMAKE_FLAGS+="NO_TRANSLATIONS=1 "
 	fi
-	eplugins=""
-	for f in $PLUGINS; do
-		use "plugin_${f}" && eplugins="${eplugins} ${f}"
-	done
-	echo "${eplugins}"
-	[ "${eplugins}" == "" ] && die "Enable atleast one plugin"
-
-	eqmake4 "${PN}".pro $QMAKE_FLAGS ENABLED_PLUGINS="${eplugins}" || die "qmake failed"
-	emake || die "emake failed"
-}
-
-src_install() {
-	emake INSTALL_ROOT="${D}" install || die "emake install filed"
+	QMAKE_FLAGS+="ENABLED_PLUGINS=\"$(get_qstardict_plugins)\""
+	
+	qmake "${PN}".pro "$QMAKE_FLAGS"
 }
