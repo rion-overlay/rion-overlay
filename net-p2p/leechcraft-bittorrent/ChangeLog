@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  leechcraft-bittorrent-9999.ebuild:
+  fix depend logic - 0.15 is masked, use live
+
   22 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +leechcraft-bittorrent-9999.ebuild, +metadata.xml:
   initial commit
