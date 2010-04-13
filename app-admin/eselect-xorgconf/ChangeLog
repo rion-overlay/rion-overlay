@@ -4,6 +4,10 @@
 
   13 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   eselect-xorgconf-0.1.ebuild:
+  fix depend's
+
+  13 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  eselect-xorgconf-0.1.ebuild:
   fix homepage r.o.i #77
 
   04 Apr 2010; <slep@gentoo.org> eselect-xorgconf-0.1.ebuild:
