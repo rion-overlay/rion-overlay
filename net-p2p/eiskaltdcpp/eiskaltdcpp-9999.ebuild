@@ -4,7 +4,7 @@
 
 EAPI=2
 
-LANGS="en be ru hu"
+LANGS="be en hu ru"
 inherit qt4-r2 cmake-utils subversion
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"
@@ -27,22 +27,19 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_configure() {
-
-	local LANG=""
-	local langs=""
-
-	for LANG in ${LINGUAS};do
-		for X in ${LANGS};do
-			if [[ ${LANG} == ${X} ]]; then
-				langs="${langs} ${X}"
-			fi
-		done
+	for lang in ${LANGS}; do
+		if use linguas_${lang}; then
+			langs+="${lang} "
+		fi
 	done
-
-	local mycmakeargs="-DFREE_SPACE_BAR_C=1 \
-					-DFREE_SPACE_BAR=0 \
-					$(cmake-utils_use aspell USE_ASPELL) \
-					-Dlinguas="${langs}""
-
+	if [ "${langs}" = "" ]; then
+		langs="en"
+	fi
+	local mycmakeargs=(
+		-DFREE_SPACE_BAR_C="1"
+		-DFREE_SPACE_BAR="0"
+		"$(cmake-utils_use aspell USE_ASPELL)"
+		-Dlinguas="${langs}"
+	)
 	cmake-utils_src_configure
 }
