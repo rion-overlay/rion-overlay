@@ -3,6 +3,12 @@
 # $Header: $
 
   13 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +eselect-xorgconf-0.2.ebuild:
+  version bump, compat to 1.8 xorg
+
+*eselect-xorgconf-0.2 ( 13 Apr 2010 )
+
+  13 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   eselect-xorgconf-0.1.ebuild:
   fix depend's
 
