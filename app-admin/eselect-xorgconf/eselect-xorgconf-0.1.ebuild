@@ -4,8 +4,8 @@
 
 EAPI=3
 
-DESCRIPTION="An eselect module to manage /etc//X11/xorg.conf symlink."
-HOMEPAGE="http://code.google.com/p/krigstasks-samling/"
+DESCRIPTION="An eselect module to manage /etc/X11/xorg.conf symlink."
+HOMEPAGE="http://code.google.com/p/krigstasks-samling/wiki/EselectXorgConf"
 SRC_URI="http://krigstasks-samling.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
