@@ -3,6 +3,10 @@
 # $Header: $
 
   14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -eselect-xorgconf-0.1.ebuild, eselect-xorgconf-0.2.ebuild:
+  fix depend drop old
+
+  14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   eselect-xorgconf-0.1.ebuild, eselect-xorgconf-0.2.ebuild:
   fix block depends
 
