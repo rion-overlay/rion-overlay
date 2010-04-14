@@ -2,10 +2,15 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header$
 
+  14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> +spmfilter-9999.ebuild:
+  add live ebuild
+
+*spmfilter-9999 ( 14 Apr 2010 )
+
   14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +spmfilter-0.4.0.ebuild, +files/fail_is_not_found-cmake_list.patch,
   +files/fix-fopen.patch, +files/spmfilter, +files/spmfilter.conf,
   +metadata.xml:
   initial commit
-*spmfilter-0.4.0 ( 14 Apr 2010 )
 
+*spmfilter-0.4.0 ( 14 Apr 2010 )
