@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -rb_libtorrent-0.15.0.ebuild, +rb_libtorrent-0.15.0-r1.ebuild,
+  -rb_libtorrent-0.15.9999.ebuild:
+  add python eclass
+
   10 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -rb_libtorrent-0.15_rc4115.ebuild, rb_libtorrent-0.15.0.ebuild:
   QA fix
