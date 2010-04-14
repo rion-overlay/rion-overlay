@@ -16,9 +16,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	app-admin/eselect
-	>=x11-base/xorg-server-1.8.0
-	!<x11-base/xorg-server-1.8.0
-	!!=app-admin/eselect-xorgconf-0.1*"
+	x11-base/xorg-server"
 
 src_install() {
 	insinto /usr/share/eselect/modules
