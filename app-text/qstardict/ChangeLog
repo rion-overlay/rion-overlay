@@ -1,7 +1,8 @@
 # ChangeLog for app-text/qstardict
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/
-# Please, use echangelog tool ( gentoolkit-dev )
+
+  15 Apr 2010; Rion <rion4ik@gmail.com> qstardict-9999.ebuild:
+  dropped keywords
 
   15 Apr 2010; Rion <rion4ik@notagmail.com> qstardict-0.13.1.ebuild,
   qstardict-9999.ebuild:
