@@ -4,62 +4,51 @@
 
 EAPI="2"
 
-inherit eutils qt4 multilib confutils
+inherit eutils qt4-r2 confutils
 
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
 SRC_URI="http://qstardict.ylsoftware.com/files/${P}.tar.bz2"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ia64"
+KEYWORDS="amd64 ~ia64 x86"
 
 PLUGINS="stardict web"
-IUSE="dbus nls"
-for p in $PLUGINS; do IUSE="${IUSE} plugin_${p}"; done;
+IUSE_PLUGINS=""
+for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
+IUSE="dbus nls ${IUSE_PLUGINS}"
 
-RDEPEND="x11-libs/qt-core:4
-	x11-libs/qt-gui:4
-	dbus? ( x11-libs/qt-dbus:4 )
+RDEPEND="x11-libs/qt-gui
+	dbus? ( x11-libs/qt-dbus )
 	dev-libs/glib:2"
-DEPEND="${RDEPEND}
-	sys-apps/findutils"
+DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	confutils_require_one plugin_web plugin_stardict
+	confutils_require_any ${IUSE_PLUGINS}
 }
 
 src_prepare() {
-	find "${WORKDIR}" -name '*pr?' -exec sed "s:/lib:/$(get_libdir):" -i '{}' \;
+	qt4-r2_src_prepare
+	find "${S}" -name '*pr?' -exec sed "s:/lib:/$(get_libdir):" -i '{}' \;
 
 	# fix gcc-4.4.1 compatibility
 	sed 's/def Q_OS_WIN32/ defined(Q_OS_WIN32)/' \
-		-iplugins/stardict/dictziplib.cpp || die "sed failed"
+		-i "${S}/plugins/stardict/dictziplib.cpp" || die "sed failed"
 }
 
 src_configure() {
-	
-	local QMAKE_FLAGS=""
-
-	if ! use dbus; then
-		QMAKE_FLAGS+="NO_DBUS=1 "
-	fi
-
-	if ! use nls; then
-		QMAKE_FLAGS+="NO_TRANSLATIONS=1 "
-	fi
-
-	local eplugins=""
+	local eplugins=()
 	for f in $PLUGINS; do
-		use "plugin_${f}" && eplugins="${eplugins} ${f}"
+		use "plugin_${f}" && eplugins+=("${f}")
 	done
 
-#	[ "${eplugins}" == "" ] && die "Enable atleast one plugin"
+	QMAKE_FLAGS=(ENABLED_PLUGINS="${eplugins[@]}")
+	if ! use dbus; then
+		QMAKE_FLAGS+=(NO_DBUS=1)
+	fi
+	if ! use nls; then
+		QMAKE_FLAGS+=(NO_TRANSLATIONS=1)
+	fi
 
-	eqmake4 "${PN}".pro $QMAKE_FLAGS ENABLED_PLUGINS="${eplugins}" || die "qmake failed"
-	emake || die "emake failed"
-}
-
-src_install() {
-	emake INSTALL_ROOT="${D}" install || die "emake install filed"
+	eqmake4 "${PN}".pro "${QMAKE_FLAGS[@]}"
 }
