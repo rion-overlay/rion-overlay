@@ -11,7 +11,7 @@ HOMEPAGE="http://qstardict.ylsoftware.com/"
 ESVN_REPO_URI="https://qstardict.svn.sourceforge.net/svnroot/qstardict/trunk"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS=""
 
 PLUGINS="stardict web"
 IUSE_PLUGINS=""
