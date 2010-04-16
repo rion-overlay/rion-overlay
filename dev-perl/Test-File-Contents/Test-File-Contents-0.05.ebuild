@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Test routines for examining the contents of files"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/perl-Module-Build"
