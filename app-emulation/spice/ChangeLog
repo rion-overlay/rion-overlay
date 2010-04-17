@@ -1,0 +1,10 @@
+# ChangeLog for app-emulation/spice
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*spice-0.4.ebuild ( 01 Apr 2010 )
+
+  01 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> +spice-0.4.ebuild,
+  +metadata.xml:
+  initial commit
+

@@ -1,0 +1,39 @@
+# 17 Apr 2010;A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+=www-apps/sugarcrm-6.0*
+
+# 14 Apr 2010;A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+mail-filter/spmfilter
+mail-filter/spmfilter-smtpbcc
+
+# 22  Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+www-apps/webgui
+
+# 18 Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
+# upstream bug
+www-apps/rtpg
+
+# 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# Not work && build
+app-crypt/pki-ra
+app-admin/pki-console
+app-crypt/pki-tps
+app-crypt/pki-ca
+
+# 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# depend is profile masked
+=sys-app/yum-3.2.25
+
+# 31  Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# not tested
+~dev-util/febootstrap-2.6
+
+# 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing - not comlete
+app-admin/ipa-admintools
+app-admin/ipa-radius-admintools
+net-dialup/ipa-radius-server
+net-nds/ipa-client
+net-nds/ipa-server
