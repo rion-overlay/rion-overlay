@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	# Gentoo as-need patch
-	epatch "${FILESDIR}"/${P}-asneeded.patch || die
+	epatch "${FILESDIR}"/*-asneeded.patch || die
 	eautoreconf
 }
 
