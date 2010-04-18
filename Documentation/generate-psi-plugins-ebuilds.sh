@@ -95,5 +95,10 @@ EBUILDCONTENT
 
 done
 
+rm Documentation/package.keywords/psi/psi.keywords sets/psiplus
+(ls -1d net-im/psi*; echo 'sys-devel/qconf') > Documentation/package.keywords/psi/psi.keywords
+sed -e "s/$/ **/g" -i Documentation/package.keywords/psi/psi.keywords
+(echo 'net-im/psi[plugins]'; echo 'net-im/psimedia'; ls -1d net-im/psi*) > sets/psiplus
+
 echo
 echo "New ebuilds are ready for commit! :-)"
