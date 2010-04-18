@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> webgui-7.9.1.ebuild:
+  fix depend's
+
   25 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> -webgui-7.9.0.ebuild,
   +webgui-7.9.1.ebuild:
   bump
