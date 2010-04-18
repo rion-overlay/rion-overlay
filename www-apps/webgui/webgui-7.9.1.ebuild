@@ -92,9 +92,8 @@ RDEPEND=">=dev-lang/perl-5.8.8-r5
 	>=dev-perl/Readonly-1.03
 	>=dev-perl/Business-PayPal-API-0.62
 	>=dev-perl/Locales-0.10
-	>=perl-core/Test-Harness-3.17"
-
-#Compress::Zlib;Net::POP3 -why package in stable perl ???
+	>=perl-core/Test-Harness-3.17
+	virtual/perl-libnet"
 
 S="${WORKDIR}/${MY_PN}"
 
@@ -105,7 +104,7 @@ src_install() {
 
 	dodir /var/log/
 	touch  "${D}"/var/log/webgui.log || die
-	fowners apache:apache /var/log/webgui.log || die 
+	fowners apache:apache /var/log/webgui.log || die
 
 	insinto /etc/"${PN}" || die
 	doins -r "${S}"/etc/* ||die
@@ -114,11 +113,10 @@ src_install() {
 
 	insinto  "${MY_HTDOCSDIR}/"public || die
 	doins -r www/*   || die
-	
+
 	insinto  "${MY_HTDOCSDIR}"
 	doins -r lib || die
 	doins -r sbin || die
-	
 
 #	webapp_configfile
 	webapp_hook_script "${FILESDIR}"/reconfig
