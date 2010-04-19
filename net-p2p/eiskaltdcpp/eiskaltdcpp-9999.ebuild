@@ -4,7 +4,7 @@
 
 EAPI=2
 
-LANGS="be en hu ru"
+LANGS="be en hu ru fr"
 inherit qt4-r2 cmake-utils subversion
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"

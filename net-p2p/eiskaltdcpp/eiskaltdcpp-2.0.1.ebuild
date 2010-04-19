@@ -4,12 +4,12 @@
 
 EAPI=2
 
-LANGS="be en ru"
+LANGS="be en ru hu"
 inherit qt4-r2 cmake-utils
 
 DESCRIPTION="Qt4 based client for DirectConnect and ADC protocols, based on DC++ library"
 HOMEPAGE="http://eiskaltdc.googlecode.com/"
-SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="http://${PN/pp/}.googlecode.com/files/${P}.tar.bz2"
 KEYWORDS="~x86 ~amd64"
 
 LICENSE="GPL-3"
