@@ -8,7 +8,7 @@ LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
 EGIT_HAS_SUBMODULES=true
 inherit eutils qt4-r2 multilib git subversion
 
-RU_LANGPACK_VER="14_Feb_2010"
+RU_LANGPACK_VER="19_Apr_2010"
 
 DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
@@ -91,9 +91,9 @@ src_prepare() {
 	EPATCH_OPTS="-p1" epatch "${WORKDIR}/patches"/*.diff
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 ########## Unstable Patches. Use for you own risk. ###########
-	#use unstable && {
-	#epatch "${WORKDIR}"/patches/dev/size-icons-22x22.diff
-	#}
+	use unstable && {
+	epatch "${WORKDIR}"/patches/dev/psi-work-new-roster-doubleclick.patch
+	}
 ##############################################################
 	subversion_wc_info
 	sed "s/.xxx/.${ESVN_WC_REVISION}/" -i src/applicationinfo.cpp

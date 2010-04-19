@@ -1,6 +1,5 @@
 net-im/psi[plugins]
 net-im/psimedia
-net-im/psi
 net-im/psi-attention
 net-im/psi-autoreply
 net-im/psi-birthdayreminder
@@ -13,8 +12,6 @@ net-im/psi-historykeeper
 net-im/psi-icqdie
 net-im/psi-image
 net-im/psi-juick
-net-im/psimedia
-net-im/psi-plugins-meta
 net-im/psi-qipxstatuses
 net-im/psi-screenshot
 net-im/psi-skins
@@ -22,3 +19,4 @@ net-im/psi-stopspam
 net-im/psi-storagenotes
 net-im/psi-translate
 net-im/psi-watcher
+net-im/psi-skins-themes
