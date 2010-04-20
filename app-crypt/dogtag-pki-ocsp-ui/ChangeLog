@@ -1,0 +1,10 @@
+# ChangeLog for app-crypt/dogtag-pki-ocsp-ui
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  15 Feb 2010; <slep@gentoo.org> +dogtag-pki-ocsp-ui-1.3.0.ebuild,
+  +metadata.xml:
+  initial commit
+
+
+*dogtag-pki-oscp-ui-1.3.0 ( 15 Feb 2010 )
