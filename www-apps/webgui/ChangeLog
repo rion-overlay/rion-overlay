@@ -3,6 +3,9 @@
 # $Header: $
 
   18 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> webgui-7.9.1.ebuild:
+  fix depend - add non stable www-apache/libapreq2
+
+  18 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> webgui-7.9.1.ebuild:
   fix depend's
 
   25 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> -webgui-7.9.0.ebuild,

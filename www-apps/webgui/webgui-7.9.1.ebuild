@@ -63,7 +63,7 @@ RDEPEND=">=dev-lang/perl-5.8.8-r5
 	>=dev-perl/POE-1.005
 	>=dev-perl/POE-Component-IKC-0.2001
 	>=dev-perl/POE-Component-Client-HTTP-0.88
-	>=www-apache/libapreq2-2.08[perl]
+	>=www-apache/libapreq2-2.10[perl]
 	>=dev-perl/URI-1.53
 	>=dev-perl/Color-Calc-1.0
 	>=dev-perl/Text-Aspell-0.01
