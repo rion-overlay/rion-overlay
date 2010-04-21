@@ -1,0 +1,38 @@
+# ChangeLog for www-apache/mod_restartd
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  25 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -mod_restartd-1.1.10.ebuild:
+  bindled in net-nds/389-admin
+
+  23 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +mod_restartd-1.1.10.ebuild:
+  version bump
+
+  22 Jan 2010; <slep@gentoo.org> -mod_restartd-1.1.8-r1.ebuild:
+  delete old version
+
+  18 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +mod_restartd-1.1.9.ebuild:
+  version bump
+
+  13 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -mod_restartd-1.1.8.ebuild:
+  delete old revision
+
+  13 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/mod_restartd-1.0-prefix-config-1.patch,
+  +mod_restartd-1.1.8-r1.ebuild:
+  revision bump,more fix
+
+  21 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  mod_restartd-1.1.8.ebuild:
+  add ~amd64
+
+*mod_restartd-1.1.8 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/48_mod_restartd.conf, +mod_restartd-1.1.8.ebuild, +metadata.xml:
+  initial commit
+
