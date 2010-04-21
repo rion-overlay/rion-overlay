@@ -55,6 +55,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-freedesktop.patch"
 	# bug #258364
 	epatch "${FILESDIR}/${P}-python.patch"
+	# allow lzo cpp
+	epatch "${FILESDIR}/${P}-zeroconf_options.patch"
 
 	sed -i -e "/PATH/s:\$distcc_location:${DCCC_PATH}:" pump.in || die
 
