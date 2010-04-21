@@ -8,16 +8,14 @@ LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
 EGIT_HAS_SUBMODULES=true
 inherit eutils qt4-r2 multilib git subversion
 
-# RU_LANGPACK_VER="19_Apr_2010" Skim's not existant version
-RU_LANGPACK_VER="30_Oct_2009"
+RU_LANGPACK_VER="21_Apr_2010"
 
 DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
-# Пока не представляется возможным найти ивана — сделаем так. потом надо будет отдать ему файл и пусть задльет на psi-ru.
 ## http://psi-ru.googlecode.com/files/Psi_ru_${RU_LANGPACK_VER}.zip )
-## skim's not existant link: http://shl.berlios.de/Psi_ru_${RU_LANGPACK_VER}.zip
+
 SRC_URI="
-	linguas_ru? ( http://psi-ru.googlecode.com/files/Psi-plus_ru_${RU_LANGPACK_VER}.zip )
+	linguas_ru? ( http://shl.berlios.de/Psi_ru_${RU_LANGPACK_VER}.zip )
 	!linguas_ru? ( mirror://gentoo/psi-0.13-20090817_langpack_for_packagers.zip )
 	http://psi-dev.googlecode.com/svn/trunk/iconsets/moods/silk.jisp"
 EGIT_REPO_URI="git://git.psi-im.org/psi.git"
