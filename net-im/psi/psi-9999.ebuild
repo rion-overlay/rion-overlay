@@ -60,7 +60,7 @@ unpack_default_iconset() {
 }
 
 src_unpack() {
-	use linguas_ru && unpack "Psi-plus_ru_${RU_LANGPACK_VER}.zip"
+	use linguas_ru && unpack "Psi_ru_${RU_LANGPACK_VER}.zip"
 	! use linguas_ru && unpack "psi-0.13-20090817_langpack_for_packagers.zip"
 
 	git_src_unpack
