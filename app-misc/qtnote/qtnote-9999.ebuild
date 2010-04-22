@@ -21,3 +21,7 @@ RDEPEND="${DEPEND}"
 src_unpack() {
 	subversion_src_unpack
 }
+
+src_configure() {
+	eqmake4 ${PN}.pro PREFIX=/usr
+}
