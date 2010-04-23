@@ -12,7 +12,7 @@ DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
 HOMEPAGE="http://www.sugarforge.org/"
 #SRC_URI="mirror://sourceforge/project/${PN}/1%20-%20${MY_PN}%20${PV}/SugarCommunityEdition-${PV}/${MY_PN}-${PV}.zip"
 
-SRC_URI="http://dl.sugarforge.org/${PN}/1${MY_PN}${PV}GA/${MY_PN}${PV}GA/${MY_PN}-${PV}.zip"
+SRC_URI="http://dl.sugarforge.org/${PN}/2${MY_PN}${PV}GA/${MY_PN}${PV}GA/${MY_PN}-${PV}.zip"
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="curl imap +json +zlib +mysql +mysqli freetds ldap mssql"
