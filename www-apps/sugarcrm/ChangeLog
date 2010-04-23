@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> sugarcrm-5.5.1.ebuild,
+  sugarcrm-6.0_beta1.ebuild:
+  fix SRC_URI
+
   17 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +sugarcrm-6.0_beta1.ebuild:
   add hardmasked ebuild - only for testing && investigate new feature :)

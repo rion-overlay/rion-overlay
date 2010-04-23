@@ -5,12 +5,12 @@
 EAPI="2"
 
 MY_PN="SugarCE"
-S="${WORKDIR}"/"${MY_PN}"-"Full-5.5.0beta1"
+S="${WORKDIR}"/"${MY_PN}"-"Full-6.0.0beta1"
 inherit webapp depend.php
 
 DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
 HOMEPAGE="http://www.sugarforge.org/"
-#SRC_URI="http://dl.sugarforge.org/sugarcrm/1SugarCE6.0Beta1/SugarCE6.0beta/SugarCE-6.0.0beta1.zip"
+SRC_URI="http://dl.sugarforge.org/${PN}/1${MY_PN}6.0Beta/${MY_PN}6.0beta/${MY_PN}-6.0.0beta1.zip"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
