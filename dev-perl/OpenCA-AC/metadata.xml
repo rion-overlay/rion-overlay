@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>openca</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+<description>Perl extension to OpenCA project</description>
+</maintainer>
+<!-- <longdescription>Long description of the package</longdescription> -->
+</pkgmetadata>
