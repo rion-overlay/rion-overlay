@@ -8,17 +8,12 @@ inherit eutils
 
 DESCRIPTION="CacheFiles is a caching directory on an already mounted filesystem"
 HOMEPAGE="http://people.redhat.com/~dhowells/fscache/"
-SRC_URI="http://people.redhat.com/~dhowells/fscache/${P}.tar.bz2
-		doc? ( http://people.redhat.com/~dhowells/fscache/FS-Cache.pdf )"
+SRC_URI="http://people.redhat.com/~dhowells/fscache/${P}.tar.bz2"
 
 IUSE="doc"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-
-src_unpack() {
-	unpack ${P}.tar.bz2
-}
 
 src_install() {
 	emake DESTDIR="${D}"  install || die "install failed"
@@ -29,12 +24,6 @@ src_install() {
 	newinitd "${FILESDIR}"/cachefilesd.init cachefilesd
 
 	keepdir /var/cache/cachefilesd
-
-	if use doc; then
-		dodir /usr/share/doc/${P}/pdf
-		insinto /usr/share/doc/${P}/pdf
-		doins "${DISTDIR}"/FS-Cache.pdf
-	fi
 }
 
 pkg_postinst() {

@@ -1,6 +1,10 @@
 # ChangeLog for sys-fs/cachefilesd
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -cachefilesd-0.9.ebuild, +cachefilesd-0.9-r1.ebuild:
+  bump, remove doc use flag
 
   29 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +cachefilesd-0.9.ebuild, +files/cachefilesd.conf, +files/cachefilesd.init,
