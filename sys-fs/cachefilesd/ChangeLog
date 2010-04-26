@@ -2,6 +2,12 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*cachefilesd-0.10 ( 26 Apr 2010 )
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +cachefilesd-0.10.ebuild, files/cachefilesd.conf, files/cachefilesd.init:
+  new version
+
   26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -cachefilesd-0.9.ebuild, +cachefilesd-0.9-r1.ebuild:
   bump, remove doc use flag
