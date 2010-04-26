@@ -36,6 +36,6 @@ S="${WORKDIR}/${PN}"
 
 SRC_TEST="do"
 
-isrc_install() {
+src_install() {
 	emake DESTDIR="${D}" install || die "Install failed"
 }
