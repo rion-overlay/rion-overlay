@@ -5,7 +5,6 @@
 EAPI="2"
 
 MY_PN="SugarCE"
-S="${WORKDIR}"/"${MY_PN}"-"Full-6.0.0beta1"
 inherit webapp depend.php
 
 DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
@@ -16,21 +15,21 @@ LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="+curl imap +json +zlib +mysql freetds ldap mssql"
 
-RESTRICT="mirror"
 DEPEND="app-arch/unzip"
 RDEPEND=">=dev-lang/php-5.2[mysql=,ssl,soap,unicode,xml,curl=,imap=,json=,zlib=,ldap=,mssql=,session]
-		dev-php/PEAR-DB
-		dev-php/PEAR-Cache_Lite
-		dev-php/PEAR-Mail_Mime
-		virtual/httpd-cgi
-		freetds? ( >=dev-db/freetds-0.64
-					mssql? ( >=dev-db/freetds-0.64[mssql] ) )
-		mysql? ( >=dev-db/mysql-5.0.70 )
-		"
+	dev-php/PEAR-DB
+	dev-php/PEAR-Cache_Lite
+	dev-php/PEAR-Mail_Mime
+	virtual/httpd-cgi
+	freetds? ( >=dev-db/freetds-0.64
+				mssql? ( >=dev-db/freetds-0.64[mssql] ) )
+	mysql? ( >=dev-db/mysql-5.0.70 )"
 
+S="${WORKDIR}"/"${MY_PN}"-"Full-6.0.0beta1"
 need_php5_httpd
 src_install () {
 	webapp_src_preinst
+
 	cd "${S}"
 	einfo "Installing main files"
 	cp -R . "${D}"/"${MY_HTDOCSDIR}"
@@ -42,8 +41,8 @@ src_install () {
 
 	for foo in cache custom data modules include ; do
 		webapp_serverowned -R "${MY_HTDOCSDIR}"/"${foo}"  || die
-
 	done
+
 	webapp_serverowned "${MY_HTDOCSDIR}"/"config.php"
 	einfo "Please make adjustment of your php.ini or .htaccess file"
 	einfo "Change value "seesion.path = "  according to your desire"
