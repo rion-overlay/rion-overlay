@@ -1,15 +1,23 @@
 #!/sbin/runscript
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+description="Daemon for userspace support fscache Linux kernel feature"
+
+PIDFILE="/var/run/cachefilesd.pid"
+
+PROG="cachefilesd"
+
 depend() {
-	need net
+	 need localmount
+	 use net
+	 keyword -prefix
 }
 
 start() {
 	ebegin "Starting ${PROG}: "
-	[[ -e /sys/modules/cachefiles ]] || modprobe cachefiles
+	[[ -e /sys/module/cachefiles ]] || modprobe cachefiles
 	start-stop-daemon --start --quiet --pidfile="${PIDFILE}" --exec "${PROG}" \
 		-- -p "${PIDFILE}" ${OPTIONS}
 	eend $?
