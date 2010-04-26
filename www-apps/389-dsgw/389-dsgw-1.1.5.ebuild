@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 inherit autotools eutils
 
@@ -16,31 +16,26 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug +adminserver"
 
 DEPEND="adminserv? ( net-nds/389-admin )
-		dev-libs/nspr
-		dev-libs/nss
-		dev-libs/cyrus-sasl
-		dev-libs/mozldap
-		dev-libs/icu
-		dev-libs/389-adminutil"
+	dev-libs/nspr
+	dev-libs/nss
+	dev-libs/cyrus-sasl
+	dev-libs/mozldap
+	dev-libs/icu
+	dev-libs/389-adminutil"
 
 RDEPEND="${DEPEND}
-		dev-perl/perl-mozldap
-		virtual/perl-CGI
-		"
+	dev-perl/perl-mozldap
+	virtual/perl-CGI"
 
 src_prepare() {
-
-#	epatch "${FILESDIR}"/configure-ac.patch
 	eautoreconf
 }
 
 src_configure() {
-
 	econf \
 		$(use_enable debug) \
 		$(use_with adminserver) \
 		--with-fhs || die "econf failed"
-
 }
 
 src_install() {

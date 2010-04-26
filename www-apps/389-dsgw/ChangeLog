@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> 389-dsgw-1.1.5.ebuild:
+  fix syntax,EAPI3
+
   13 Mar 2010; <slep@gentoo.org> +389-dsgw-1.1.5.ebuild:
   version bump
 
