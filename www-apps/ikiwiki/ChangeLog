@@ -3,6 +3,12 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+*ikiwiki-3.20100403 ( 26 Apr 2010 )
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +ikiwiki-3.20100403.ebuild:
+  new version
+
 *ikiwiki-3.20100312 ( 01 Apr 2010 )
 
   01 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
