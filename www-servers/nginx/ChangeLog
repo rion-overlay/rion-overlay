@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*+nginx-0.8.36
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.8.36.ebuild:
+  new version
+
   12 Mar 2010; <slep@gentoo.org> -nginx-0.8.32.ebuild, -nginx-0.8.33.ebuild,
   nginx-0.8.34-r1.ebuild, metadata.xml:
   delete old ebuild
