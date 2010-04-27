@@ -31,8 +31,8 @@ src_compile() {
 }
 
 src_install() {
-	newinitd "${FILEDIR}"/init.d "${MY_P}"
-	newconfd "${FILEDIR}"/conf.d "${MY_P}"
+	newinitd "${FILESDIR}"/init.d "${MY_P}"
+	newconfd "${FILESDIR}"/conf.d "${MY_P}"
 
 	dobin rzscontrol || die
 	doman man/rzscontrol.1 || die
