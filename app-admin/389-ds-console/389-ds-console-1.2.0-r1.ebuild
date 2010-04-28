@@ -45,11 +45,13 @@ src_compile() {
 	     -Djss.location="${S}" \
 	     -Dconsole.location="${S}" ${antflags} || die "eant failed"
 
-	use doc && eant -Dbuilt.dir="${S}"/build \
+	if use doc;then
+		eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.location="${S}" \
 	     -Djss.location="${S}" \
 	     -Dconsole.location="${S}" ${antflags} javadoc \
 		 				|| die "eant javadoc failed"
+	fi
 }
 
 src_install() {
