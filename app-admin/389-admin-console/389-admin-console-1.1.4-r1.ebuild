@@ -47,10 +47,12 @@ src_compile() {
 	     -Djss.location="${S}" \
 	     -Dconsole.location="${S}" ${antflags} || die "eant failed"
 
-	use doc && eant -Dbuilt.dir="${S}"/build \
+	if use doc; then
+		eant -Dbuilt.dir="${S}"/build \
 	     -Dldapjdk.location="${S}" \
 	     -Djss.location="${S}" \
 	     -Dconsole.location="${S}" ${antflags} javadoc || die "javadoc failed"
+	fi
 }
 
 src_install() {
@@ -68,7 +70,11 @@ src_install() {
 	insinto /usr/share/dirsrv/manual/en/admin/help
 	doins "${S}"/help/en/help/*.html || die
 
-	use doc && java-pkg_dojavadoc build/doc || die
+	if use doc;then
+		java-pkg_dojavadoc build/doc || die
+	fi
 
-	use source && java-pkg_dosrc src/com || die
+	if source; then
+		java-pkg_dosrc src/com || die
+	fi
 }
