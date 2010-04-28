@@ -27,7 +27,7 @@ src_install() {
 	newconfd "${FILESDIR}"/cachefilesd.conf cachefilesd
 	newinitd "${FILESDIR}"/cachefilesd.init-r1 cachefilesd
 
-	keepdir /var/cache/cachefilesd
+	keepdir /var/fscache
 }
 
 pkg_postinst() {
