@@ -1,0 +1,19 @@
+diff -r 17f19fb9ff65 Makefile.am
+--- a/Makefile.am	Wed Feb 17 12:12:11 2010 +0200
++++ b/Makefile.am	Wed Feb 17 13:13:51 2010 +0200
+@@ -41,15 +41,7 @@
+ 	-DDOCDIR="\"$(docdir)\"" -DLIBEXECDIR="\"$(libexecdir)\""
+ AM_CPPFLAGS = $(DEBUG_DEFINES) $(TPS_INCLUDES) $(PATH_DEFINES)
+ # We need to make sure that libpthread is linked before libc on HP-UX.
+-if HPUX
+-AM_LDFLAGS = -lpthread -lz
+-endif
+-if LINUX
+ AM_LDFLAGS = -lz
+-endif
+-if SOLARIS
+-AM_LDFLAGS = -lz
+-endif
+ 
+ #------------------------
+ # Linker Flags
