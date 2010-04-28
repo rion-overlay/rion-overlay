@@ -22,30 +22,26 @@ IUSE="debug ipv6 +threads selinux"
 # TODO snmp agent init script
 
 DEPEND="dev-libs/nss[utils]
-		|| ( <=dev-libs/nspr-4.8.3-r3[ipv6?] >=dev-libs/nspr-4.8.4 )
-		dev-libs/svrcore
-		dev-libs/mozldap
-		dev-libs/cyrus-sasl
-		dev-libs/icu
-		>=sys-libs/db-4.2.52
-		net-analyzer/net-snmp[ipv6?]
-		sys-apps/tcp-wrappers[ipv6?]
-		sys-libs/pam
-		app-misc/mime-types
-		www-apache/mod_nss
-		>=app-admin/389-admin-console-1.1.0
-		>=app-admin/389-ds-console-1.1.0
-		dev-libs/389-adminutil
-		threads? ( www-servers/apache:2[apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif] )
-		!threads? ( www-servers/apache:2[-apache2_mpms_worker,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif] )
-		!www-apache/mod_admserv
-		!www-apache/mod_restartd
-		selinux? ( sys-apps/policycoreutils
-				sec-policy/selinux-base-policy
-				sys-apps/checkpolicy )"
-
-#~www-apache/mod_admserv-${PV}
-#~www-apache/mod_restartd-${PV}
+	|| ( <=dev-libs/nspr-4.8.3-r3[ipv6?] >=dev-libs/nspr-4.8.4 )
+	dev-libs/svrcore
+	dev-libs/mozldap
+	dev-libs/cyrus-sasl
+	dev-libs/icu
+	>=sys-libs/db-4.2.52
+	net-analyzer/net-snmp[ipv6?]
+	sys-apps/tcp-wrappers[ipv6?]
+	sys-libs/pam
+	app-misc/mime-types
+	www-apache/mod_nss
+	>=app-admin/389-admin-console-1.1.0
+	>=app-admin/389-ds-console-1.1.0
+	dev-libs/389-adminutil
+	www-servers/apache:2[threads,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]
+	!www-apache/mod_admserv
+	!www-apache/mod_restartd
+	selinux? ( sys-apps/policycoreutils
+		sec-policy/selinux-base-policy
+		sys-apps/checkpolicy )"
 
 RDEPEND="${DEPEND}"
 
