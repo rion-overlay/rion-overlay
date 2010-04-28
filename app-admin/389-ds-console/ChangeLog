@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  389-ds-console-1.2.0-r1.ebuild:
+  fix build phase in new portage version
+
   04 Apr 2010; <slep@gentoo.org> 389-ds-console-1.2.0-r1.ebuild:
   sunrise style - add more die
 

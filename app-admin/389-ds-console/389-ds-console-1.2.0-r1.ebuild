@@ -67,7 +67,11 @@ src_install() {
 	insinto /usr/share/dirsrv/manual/en/slapd/help
 	doins "${S}"/help/en/help/*.html || die
 
-	use doc && java-pkg_dojavadoc build/doc || die
+	if use doc; then
+		java-pkg_dojavadoc build/doc || die
+	fi
 
-	use source && java-pkg_dosrc src/com || die
+	if use source; then
+		java-pkg_dosrc src/com || die
+	fi
 }
