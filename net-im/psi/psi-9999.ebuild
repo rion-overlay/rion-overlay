@@ -127,7 +127,7 @@ src_configure() {
 				echo '--disable-enchant' ) || echo '--disable-aspell --disable-enchant')
 			$(use xscreensaver || echo '--disable-xss')
 			$(use plugins && echo '--enable-plugins')
-			$(use webkit && echo '--enable-qtwebkit')"
+			$(use webkit && echo '--enable-webkit')"
 
 	echo ${confcmd}
 	${confcmd} || die "configure failed"
