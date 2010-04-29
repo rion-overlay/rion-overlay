@@ -92,7 +92,8 @@ src_prepare() {
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 ########## Unstable Patches. Use for you own risk. ###########
 	use unstable && {
-	epatch "${WORKDIR}"/patches/dev/psi-work-new-roster-doubleclick.patch
+	einfo "It's nothing unstable at the moment! :)"
+	#epatch "${WORKDIR}"/patches/dev/psi-work-new-roster-doubleclick.patch
 	}
 ##############################################################
 	subversion_wc_info
