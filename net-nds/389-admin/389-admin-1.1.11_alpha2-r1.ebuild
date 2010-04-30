@@ -17,7 +17,7 @@ SRC_URI="http://port389.org/sources/${PN}-${MY_PV}.tar.bz2"
 LICENSE="GPL-2 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug ipv6 +threads selinux"
+IUSE="debug ipv6 selinux threads"
 
 # TODO snmp agent init script
 
@@ -36,7 +36,7 @@ DEPEND="dev-libs/nss[utils]
 	>=app-admin/389-admin-console-1.1.0
 	>=app-admin/389-ds-console-1.1.0
 	dev-libs/389-adminutil
-	www-servers/apache:2[threads,apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]
+	www-servers/apache:2[apache2_modules_actions,apache2_modules_alias,apache2_modules_auth_basic,apache2_modules_authz_default,apache2_modules_mime_magic,apache2_modules_rewrite,apache2_modules_setenvif]
 	!www-apache/mod_admserv
 	!www-apache/mod_restartd
 	selinux? ( sys-apps/policycoreutils
