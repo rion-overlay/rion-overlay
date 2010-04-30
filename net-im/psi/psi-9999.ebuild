@@ -8,7 +8,7 @@ LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
 EGIT_HAS_SUBMODULES=true
 inherit eutils qt4-r2 multilib git subversion
 
-RU_LANGPACK_VER="29_Apr_2010"
+RU_LANGPACK_VER="30_Apr_2010"
 
 DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
