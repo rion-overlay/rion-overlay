@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.11_alpha2.ebuild, +389-admin-1.1.11_alpha2-r1.ebuild:
+  bimp
+
   28 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   389-admin-1.1.11_alpha2.ebuild:
   fix threads depends
