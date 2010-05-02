@@ -1,0 +1,27 @@
+# ChangeLog for sys-fs/cachefilesd
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  28 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  cachefilesd-0.10-r1.ebuild:
+  fix cache storage dir's
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +cachefilesd-0.10-r1.ebuild, +files/cachefilesd.init-r1:
+  bimp for use new init script
+
+*cachefilesd-0.10 ( 26 Apr 2010 )
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +cachefilesd-0.10.ebuild, files/cachefilesd.conf, files/cachefilesd.init:
+  new version
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -cachefilesd-0.9.ebuild, +cachefilesd-0.9-r1.ebuild:
+  bump, remove doc use flag
+
+  29 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +cachefilesd-0.9.ebuild, +files/cachefilesd.conf, +files/cachefilesd.init,
+  +metadata.xml:
+  initial commit
+

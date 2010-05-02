@@ -1,0 +1,29 @@
+# ChangeLog for www-apps/phamm
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> +phamm-0.5.18.ebuild:
+  new version
+
+*phamm-0.5.18 ( 26 Apr 2010 )
+
+  12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +phamm-0.5.17.ebuild:
+  version bump
+
+*phamm-0.5.17 ( 12 Jan 2010 )
+
+  10 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> +phamm-9999.ebuild:
+  add cuurent snapshot ebuild
+
+*phamm-9999 ( 10 Sep 2009 )
+
+  09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> phamm-0.5.16.ebuild:
+  fix QA Notice
+
+*phamm-0.5.16 (05 Aug 2009)
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +phamm-0.5.16.ebuild,
+  +metadata.xml:
+  initial commit
+

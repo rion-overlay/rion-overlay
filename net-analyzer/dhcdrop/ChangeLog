@@ -1,0 +1,43 @@
+# ChangeLog for net-analyzer/dhcdrop
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> -dhcdrop-0.4-r2.ebuild:
+  delete old version
+
+  20 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> dhcdrop-9999.ebuild:
+  fix install phase
+
+  19 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> -dhcdrop-0.4-r1.ebuild:
+  delete not working ebuild
+
+*dhcdrop-0.4-r2 (19 Aug 2009)
+
+  19 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +dhcdrop-0.4-r2.ebuild:
+  fix install
+
+*dhcdrop-0.5 (19 Aug 2009)
+
+  19 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +dhcdrop-0.5.ebuild:
+  version bump
+
+  13 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> -dhcdrop-0.4.ebuild:
+  delete old revision
+
+*dhcdrop-0.4-r1 (05 Aug 2009)
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +dhcdrop-0.4-r1.ebuild,
+  +metadata.xml:
+  EAPI=2 code cleanup
+
+*dhcdrop-9999 (15 Jul 2009)
+ 15 Jul 2009; A.Vinogradov <spamslepnoga@inbox.ru>+dhcdrop-9999.ebuild:
+  Initial commit
+
+
+*dhcdrop-0.4  (15 Jul 2009)
+ 15 Jul 2009; A.Vinogradov <spamslepnoga@inbox.ru>+dhcdrop-0.4.ebuild
+ +metatdata.xml
+ +ChangeLog:
+  Initial commit
+
