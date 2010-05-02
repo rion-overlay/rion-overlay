@@ -8,7 +8,7 @@ LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
 EGIT_HAS_SUBMODULES=true
 inherit eutils qt4-r2 multilib git subversion
 
-RU_LANGPACK_VER="21_Apr_2010"
+RU_LANGPACK_VER="30_Apr_2010"
 
 DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
@@ -92,7 +92,8 @@ src_prepare() {
 	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
 ########## Unstable Patches. Use for you own risk. ###########
 	use unstable && {
-	epatch "${WORKDIR}"/patches/dev/psi-work-new-roster-doubleclick.patch
+	einfo "It's nothing unstable at the moment! :)"
+	#epatch "${WORKDIR}"/patches/dev/psi-work-new-roster-doubleclick.patch
 	}
 ##############################################################
 	subversion_wc_info
@@ -126,7 +127,7 @@ src_configure() {
 				echo '--disable-enchant' ) || echo '--disable-aspell --disable-enchant')
 			$(use xscreensaver || echo '--disable-xss')
 			$(use plugins && echo '--enable-plugins')
-			$(use webkit && echo '--enable-qtwebkit')"
+			$(use webkit && echo '--enable-webkit')"
 
 	echo ${confcmd}
 	${confcmd} || die "configure failed"
