@@ -1,0 +1,8 @@
+# ChangeLog for net-mail/pflogsumm
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  21 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +pflogsumm-1.1.3.ebuild, +metadata.xml:
+  bump - not in tree
+

@@ -1,0 +1,8 @@
+# ChangeLog for dev-perl/RTPG
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> +RTPG-0.5.ebuild,
+  +metadata.xml:
+  initial commit
+

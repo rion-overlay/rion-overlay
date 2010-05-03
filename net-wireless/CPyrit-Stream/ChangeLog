@@ -1,0 +1,11 @@
+# ChangeLog for net-wireless/CPyrit-Stream
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  CPyrit-Stream-0.2.4.ebuild:
+  fix depend
+
+  13 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +CPyrit-Stream-0.2.4.ebuild, +metadata.xml:
+  initial commit, ebuild masked due not complete depend

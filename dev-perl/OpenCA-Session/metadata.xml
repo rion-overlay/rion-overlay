@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+</maintainer>
+<longdescription>This software is a Perl5 module that helps in managing config
+files: it gives you functions capable of retieving files, stripping
+comments and blank lines, parsing function, ecc...</longdescription>
+</pkgmetadata>
