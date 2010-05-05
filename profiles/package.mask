@@ -2,6 +2,7 @@
 # mask for testing
 mail-filter/spmfilter
 mail-filter/spmfilter-smtpbcc
+mail-filter/spmfilter-diskarchive
 
 # 22  Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing
