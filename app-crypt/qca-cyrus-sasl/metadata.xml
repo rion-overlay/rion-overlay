@@ -4,4 +4,7 @@
 <herd>kde</herd>
 <herd>crypto</herd>
 <herd>qt</herd>
+<maintainer>
+  <email>rion@notthegmail.com</email>
+</maintainer>
 </pkgmetadata>
