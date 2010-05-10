@@ -1,93 +1,145 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: Fixed ebuilds from pva's overlay $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/xtables-addons-1.25.ebuild,v 1.2 2010/04/29 15:37:21 mr_bones_ Exp $
 
-EAPI=2
-inherit autotools eutils linux-mod git
+EAPI="2"
 
-EGIT_REPO_URI="git://${PN}.git.sf.net/gitroot/${PN}/${PN}/"
-SRC_URI=""
-KEYWORDS=""
+inherit eutils linux-mod
 
-DESCRIPTION="A set of NetFilter's modules, that not included in main tree."
+DESCRIPTION="extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)"
 HOMEPAGE="http://xtables-addons.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+
+if [[ ! ${PV} =~ 9999 ]]; then
+SRC_URI="mirror://sourceforge/xtables-addons/${P}.tar.bz2"
+KEYWORDS="~amd64 ~x86"
+else
+EGIT_REPO_URI="git://${PN}.git.sf.net/gitroot/${PN}/${PN}/"
+SRC_URI=""
+KEYWORDS=""
+fi;
+
+IUSE="modules"
+
+MODULES="quota2 psd pknock lscan length2 ipv4options ipset ipp2p iface geoip fuzzy condition tee tarpit sysrq steal rawnat logmark ipmark echo dhcpmac delude chaos account"
+
+for mod in ${MODULES}; do
+	IUSE="${IUSE} xtables_addons_${mod}"
+done
 
 RDEPEND="virtual/modutils
-	>net-firewall/iptables-1.4.1
-	>virtual/linux-sources-2.6.17
-	net-firewall/ipset[modules]"
-DEPEND="${RDEPEND}
-	virtual/linux-sources"
+	>=net-firewall/iptables-1.4.3
+	>virtual/linux-sources-2.6.22
+	xtables_addons_ipset? ( !net-firewall/ipset )"
 
-pkg_setup() {
-	CONFIG_CHECK="NETFILTER"
-	NETFILTER_ERROR="Your kernel does not support netfilter"
-	CONFIG_CHECK="NF_CONNTRACK"
-	NETFILTER_ERROR="You need NF_CONNTRACK compiled in or as a module"
-	CONFIG_CHECK="NF_CONNTRACK_MARK"
-	NETFILTER_ERROR="You need NF_CONNTRACK_MARK compiled in or as a module"
-	linux-mod_pkg_setup
-	BUILD_PARAMS="KERNELPATH=${KV_OUT_DIR}"
+DEPEND="${RDEPEND}"
+
+pkg_setup()	{
+	if use modules; then
+		get_version
+		check_modules_supported
+		# CONFIG_IP_NF_CONNTRACK{,_MARK} doesn't exist in >virtual/linux-sources-2.6.22
+		CONFIG_CHECK="NF_CONNTRACK NF_CONNTRACK_MARK"
+		linux-mod_pkg_setup
+
+		if ! linux_chkconfig_present IPV6; then
+			SKIP_IPV6_MODULES="ip6table_rawpost"
+		fi
+	fi
 }
 
-#Fixme (build sandbox's warnings "Access denied")
+# Helper for maintainer: cheks if all possible MODULES are listed.
+XA_qa_check() {
+	local all_modules
+	all_modules=$(sed -n '/^build_/{s/build_\(.*\)=.*/\L\1/;G;s/\n/ /;s/ $//;h}; ${x;p}' "${S}/mconfig")
+	if [[ ${all_modules} != ${MODULES} ]]; then
+		ewarn "QA: Modules in mconfig differ from \$MODULES in ebuild."
+		ewarn "Please, update MODULES in ebuild."
+		ewarn "'${all_modules}'"
+	fi
+}
+
+# Is there any use flag set?
+XA_has_something_to_build() {
+	local mod
+	for mod in ${MODULES}; do
+		use xtables_addons_${mod} && return
+	done
+
+	eerror "All modules are disabled. What do you want me to build?"
+	eerror "Please, set XTABLES_ADDONS to any combination of"
+	eerror "${MODULES}"
+	die "All modules are disabled."
+}
+
+# Parse Kbuid files and generates list of sources
+XA_get_module_name() {
+	[[ $# != 1 ]] && die "XA_get_sources_for_mod: needs exactly one argument."
+	local mod objdir build_mod sources_list
+	mod=${1}
+	objdir=${S}/extensions
+	build_mod=$(sed -n "s/\(build_${mod}\)=.*/\1/Ip" "${S}/mconfig")
+	sources_list=$(sed -n "/^obj-[$][{]${build_mod}[}]/\
+		{s:obj-[^+]\+ [+]=[[:space:]]*::;s:[.]o::g;p}" \
+				"${objdir}/Kbuild")
+
+	if [[ -d ${S}/extensions/${sources_list} ]]; then
+		objdir=${S}/extensions/${sources_list}
+		sources_list=$(sed -n "/^obj-m/\
+			{s:obj-[^+]\+ [+]=[[:space:]]*::;s:[.]o::g;p}" \
+				"${objdir}/Kbuild")
+	fi
+	for mod_src in ${sources_list}; do
+		has ${mod_src} ${SKIP_IPV6_MODULES} || \
+			echo " ${mod_src}(xtables_addons:${S}/extensions:${objdir})"
+	done
+}
+
 src_prepare() {
-	unset ARCH
-	eautoreconf
-	epatch "${FILESDIR}"/xtables-addons-xt_SYSRQ.patch
-	# Don't compile ipset
-	sed -i s/'build_ipset=m'/'build_ipset=n'/ ./mconfig
+	XA_qa_check
+	XA_has_something_to_build
+
+	local mod module_name
+	if use modules; then
+		MODULE_NAMES="compat_xtables(xtables_addons:${S}/extensions:)"
+	fi
+	for mod in ${MODULES}; do
+		if use xtables_addons_${mod}; then
+			sed "s/\(build_${mod}=\).*/\1m/I" -i mconfig || die
+			if use modules; then
+				for module_name in $(XA_get_module_name ${mod}); do
+					MODULE_NAMES+=" ${module_name}"
+				done
+			fi
+		else
+			sed "s/\(build_${mod}=\).*/\1n/I" -i mconfig || die
+		fi
+	done
+
+	sed -e 's/depmod -a/true/' -i Makefile.{in,am} || die
+	sed -e '/^all-local:/{s: modules::}' \
+		-e '/^install-exec-local:/{s: modules_install::}' \
+			-i extensions/Makefile.{in,am} || die
+}
+
+src_configure() {
+	unset ARCH # .. or it'll look for /arch/amd64/Makefile in linux sources
+	export KBUILD_EXTMOD=${S} # Avoid build in /usr/src/linux #250407
+	econf --prefix=/ \
+		--libexecdir=/lib/ \
+		--with-kbuild="${KV_DIR}"
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)" || die "emake failed"
+	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)" || die
+	use modules && BUILD_TARGETS="modules" linux-mod_src_compile
 }
 
 src_install() {
-	MODULE_NAMES="\
-	compat_xtables(xtables_addons:"${S}:${S}"/extensions) \
-	iptable_rawpost(xtables_addons:"${S}:${S}"/extensions) \
-	xt_CHAOS(xtables_addons:"${S}:${S}"/extensions) \
-	pknock/xt_pknock(xtables_addons:"${S}:${S}"/extensions) \
-	xt_DELUDE(xtables_addons:"${S}:${S}"/extensions) \
-	xt_DHCPMAC(xtables_addons:"${S}:${S}"/extensions) \
-	xt_IPMARK(xtables_addons:"${S}:${S}"/extensions) \
-	xt_LOGMARK(xtables_addons:"${S}:${S}"/extensions) \
-	xt_RAWNAT(xtables_addons:"${S}:${S}"/extensions) \
-	xt_SYSRQ(xtables_addons:"${S}:${S}"/extensions) \
-	xt_STEAL(xtables_addons:"${S}:${S}"/extensions) \
-	xt_TARPIT(xtables_addons:"${S}:${S}"/extensions) \
-	xt_TEE(xtables_addons:"${S}:${S}"/extensions) \
-	xt_condition(xtables_addons:"${S}:${S}"/extensions) \
-	xt_fuzzy(xtables_addons:"${S}:${S}"/extensions) \
-	xt_iface(xtables_addons:"${S}:${S}"/extensions) \
-	xt_geoip(xtables_addons:"${S}:${S}"/extensions) \
-	xt_ipp2p(xtables_addons:"${S}:${S}"/extensions) \
-	xt_ipv4options(xtables_addons:"${S}:${S}"/extensions) \
-	xt_length2(xtables_addons:"${S}:${S}"/extensions) \
-	xt_lscan(xtables_addons:"${S}:${S}"/extensions) \
-	xt_psd(xtables_addons:"${S}:${S}"/extensions) \
-	xt_quota2(xtables_addons:"${S}:${S}"/extensions) \
-"
-
-		insinto "$(get_libdir)"/xtables
-		insopts -m0755
-		doins "${S}"/extensions/*.so || die "Installing of .so files failed"
-		doman "${S}"/xtables-addons.8 || die "Installing of man files failed"
-		# xt_SYSRQ complains about not having crypto in you need to make menuconfig and select crypto api and most likely
-		# other things in there. But for now I'm just going to ignore it.
-
-		linux-mod_src_install
-}
-
-pkg_postinst() {
-		linux-mod_pkg_postinst
-}
-
-pkg_postrm() {
-	linux-mod_pkg_postrm
+	emake DESTDIR="${D}" install || die
+	use modules && linux-mod_src_install
+	dodoc README doc/* || die
+	find "${D}" -type f -name '*.la' -exec rm -rf '{}' '+'
 }

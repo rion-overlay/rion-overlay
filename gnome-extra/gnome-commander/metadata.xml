@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>rion-overlay</herd>
+<herd>gnome</herd>
 <maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
+  <email>rion4ik@gmail.com</email>
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
+ <longdescription>Total commander clone</longdescription> 
 <use>
 <flag name='id3'>for ID3, Vorbis, FLAC and APE</flag>
 <flag name='gsf'>add support for OLE, OLE2 and ODF</flag>

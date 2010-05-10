@@ -7,12 +7,12 @@ NEED_PYTHON=2.5
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="2.4 3.*"
 
-inherit base distutils fdo-mime
+inherit base versionator distutils fdo-mime
 
 DESCRIPTION="Phatch is a simple to use cross-platform GUI Photo Batch Processor"
 HOMEPAGE="http://photobatch.stani.be/"
 
-SRC_URI="http://sd-2469.dedibox.fr/photobatch/download/package/${P}.tar.gz"
+SRC_URI="http://photobatch.stani.be/download/package/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,16 +22,19 @@ IUSE=""
 DEPEND="dev-python/wxpython
 	dev-python/imaging"
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	sys-apps/mlocate"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}.patch"
-}
+S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_postinst()
 {
 	distutils_pkg_postinst
-	# # update mime and desktop databases (removed from setup.py by the patch)
 	fdo-mime_mime_database_update
 	fdo-mime_desktop_database_update
+}
+
+pkg_postrm() {
+	fdo-mime_desktop_database_update
+	fdo-mime_mime_database_update
 }
