@@ -4,12 +4,12 @@
 
 EAPI="2"
 
-inherit eutils linux-mod subversion
+inherit eutils linux-mod git
 
 DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support"
 HOMEPAGE="http://www.sourceforge.net/projects/omnibook"
-ESVN_REPO_URI="https://omnibook.svn.sourceforge.net/svnroot/omnibook/trunk"
-ESVN_PATCHES="*.patch"
+EGIT_REPO_URI="git://omnibook.git.sourceforge.net/gitroot/omnibook/omnibook"
+EGIT_PATCHES=( ${FILESDIR}/*.patch )
 
 LICENSE="GPL-2"
 KEYWORDS=""
