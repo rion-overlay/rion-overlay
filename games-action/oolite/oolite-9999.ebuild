@@ -16,6 +16,7 @@ KEYWORDS=""
 IUSE="${IUSE}"
 
 RDEPEND="virtual/opengl
+		<gnustep-base/gnustep-base-1.20.0
 		gnustep-base/gnustep-gui
 		media-libs/sdl-mixer
 		media-libs/sdl-image"
