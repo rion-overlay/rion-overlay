@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 May 2010; Rion <rion4ik@notagmail.com> oolite-9999.ebuild:
+  rewritten to use oolite internal way for distro-specific compilation
+
   12 Mar 2010; <slep@gentoo.org> oolite-9999_pre2579.ebuild:
   drop keywords in snapshot - use tarball
 

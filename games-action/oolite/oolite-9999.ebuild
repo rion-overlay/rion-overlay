@@ -19,7 +19,8 @@ RDEPEND="virtual/opengl
 		<gnustep-base/gnustep-base-1.20.0
 		gnustep-base/gnustep-gui
 		media-libs/sdl-mixer
-		media-libs/sdl-image"
+		media-libs/sdl-image
+		app-accessibility/espeak"
 
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make"
@@ -45,10 +46,7 @@ src_prepare() {
 }
 
 src_compile() {
-	cd deps/Cross-platform-deps/SpiderMonkey/js/src
-	BUILD_OPT=1 make -f Makefile.ref || die "make failed"
-	cd "${S}"
-	make debug=no || die "make failed"
+	make -f Makefile distro-release || die "make failed"
 }
 
 src_install() {
