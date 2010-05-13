@@ -16,11 +16,11 @@ KEYWORDS=""
 IUSE="${IUSE}"
 
 RDEPEND="virtual/opengl
-		<gnustep-base/gnustep-base-1.20.0
 		gnustep-base/gnustep-gui
 		media-libs/sdl-mixer
 		media-libs/sdl-image
 		app-accessibility/espeak"
+#<gnustep-base/gnustep-base-1.20.0
 
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make"
@@ -43,6 +43,7 @@ src_prepare() {
 	sed '/oolite_LIB_DIRS/d' -i GNUmakefile
 	sed "s|/usr/share/GNUstep/Makefiles|${GNUSTEP_MAKEFILES}|" -i Makefile
 	sed "s|strip.*|true|" -i GNUmakefile.postamble
+	epatch ${FILESDIR}/oolite-gnustep-base-1.20.patch
 }
 
 src_compile() {
