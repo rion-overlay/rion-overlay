@@ -1,0 +1,53 @@
+diff -ur oolite-dev-source-9999.orig/src/Core/Entities/Entity.m oolite-dev-source-9999/src/Core/Entities/Entity.m
+--- oolite-dev-source-9999.orig/src/Core/Entities/Entity.m	2010-05-13 20:36:04.200236797 +0600
++++ oolite-dev-source-9999/src/Core/Entities/Entity.m	2010-05-13 20:38:13.320987576 +0600
+@@ -50,12 +50,16 @@
+ #if OOLITE_MAC_OS_X
+ #import <objc/objc-class.h>
+ #endif
++#if GNUSTEP_BASE_MAJOR_VERSION < 1 || \
++    GNUSTEP_BASE_MAJOR_VERSION == 1 && \
++    GNUSTEP_BASE_MINOR_VERSION < 20
+ OOINLINE size_t class_getInstanceSize(Class cls)
+ {
+ 	return cls->instance_size;
+ }
+ #endif
+ #endif
++#endif
+ 
+ 
+ static NSString * const kOOLogEntityAddToList				= @"entity.linkedList.add";
+diff -ur oolite-dev-source-9999.orig/src/Core/NSNumberOOExtensions.m oolite-dev-source-9999/src/Core/NSNumberOOExtensions.m
+--- oolite-dev-source-9999.orig/src/Core/NSNumberOOExtensions.m	2010-05-13 20:36:04.158986828 +0600
++++ oolite-dev-source-9999/src/Core/NSNumberOOExtensions.m	2010-05-13 20:39:34.608987497 +0600
+@@ -73,7 +73,9 @@
+ @end
+ 
+ 
+-#ifdef GNUSTEP
++#if defined(GNUSTEP) && (GNUSTEP_BASE_MAJOR_VERSION < 1 || \
++    GNUSTEP_BASE_MAJOR_VERSION == 1 && \
++    GNUSTEP_BASE_MINOR_VERSION < 20) 
+ 
+ /*	As an optimization, we override the implementation on NSBoolNumber to
+ 	always return YES. In practical terms, we could always return NO in
+diff -ur oolite-dev-source-9999.orig/src/Core/Universe.m oolite-dev-source-9999/src/Core/Universe.m
+--- oolite-dev-source-9999.orig/src/Core/Universe.m	2010-05-13 20:36:04.195236637 +0600
++++ oolite-dev-source-9999/src/Core/Universe.m	2010-05-13 20:38:46.927986421 +0600
+@@ -200,11 +200,15 @@
+ #if OOLITE_MAC_OS_X
+ #import <objc/objc-class.h>
+ #endif
++#if GNUSTEP_BASE_MAJOR_VERSION < 1 || \
++    GNUSTEP_BASE_MAJOR_VERSION == 1 && \
++    GNUSTEP_BASE_MINOR_VERSION < 20
+ OOINLINE size_t class_getInstanceSize(Class cls)
+ {
+ 	return cls->instance_size;
+ }
+ #endif
++#endif
+ 
+ 
+ @implementation Universe
