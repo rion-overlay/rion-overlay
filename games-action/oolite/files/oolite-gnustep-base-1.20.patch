@@ -1,15 +1,3 @@
-diff -ur oolite-dev-source-9999.orig/src/Core/NSNumberOOExtensions.m oolite-dev-source-9999/src/Core/NSNumberOOExtensions.m
---- oolite-dev-source-9999.orig/src/Core/NSNumberOOExtensions.m	2010-05-14 13:04:30.250236905 +0600
-+++ oolite-dev-source-9999/src/Core/NSNumberOOExtensions.m	2010-05-14 13:15:18.726987552 +0600
-@@ -73,7 +73,7 @@
- @end
- 
- 
--#if OOLITE_GNUSTEP && OOLITE_GNUSTEP_1_20
-+#if OOLITE_GNUSTEP && OOLITE_GNUSTEP_1_20 == 0
- 
- /*	As an optimization, we override the implementation on NSBoolNumber to
- 	always return YES. In practical terms, we could always return NO in
 diff -ur oolite-dev-source-9999.orig/src/Core/Universe.m oolite-dev-source-9999/src/Core/Universe.m
 --- oolite-dev-source-9999.orig/src/Core/Universe.m	2010-05-14 13:04:30.264236785 +0600
 +++ oolite-dev-source-9999/src/Core/Universe.m	2010-05-14 13:06:42.357237011 +0600
