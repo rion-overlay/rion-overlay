@@ -3,6 +3,10 @@
 # $Header: $
 
   14 May 2010; Rion <rion4ik@notagmail.com>
+  -files/oolite-gnustep-base-1.20.patch, oolite-9999.ebuild:
+  compatibility patch is not needed anymore
+
+  14 May 2010; Rion <rion4ik@notagmail.com>
   files/oolite-gnustep-base-1.20.patch:
   patch updated once again
 

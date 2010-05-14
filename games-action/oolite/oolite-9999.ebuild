@@ -43,7 +43,6 @@ src_prepare() {
 	sed '/oolite_LIB_DIRS/d' -i GNUmakefile
 	sed "s|/usr/share/GNUstep/Makefiles|${GNUSTEP_MAKEFILES}|" -i Makefile
 	sed "s|strip.*|true|" -i GNUmakefile.postamble
-	epatch ${FILESDIR}/oolite-gnustep-base-1.20.patch
 }
 
 src_compile() {
