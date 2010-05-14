@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 May 2010; Rion <rion4ik@notagmail.com>
+  files/oolite-gnustep-base-1.20.patch:
+  changed patch for incomplete compatibility fix in upstream
+
   13 May 2010; Rion <rion4ik@gmail.com>
   +files/oolite-gnustep-base-1.20.patch:
   forgotten patch
