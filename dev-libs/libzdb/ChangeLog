@@ -1,0 +1,15 @@
+# ChangeLog for dev-libs/libzdb
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header$
+
+  14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> libzdb-2.6.ebuild:
+  fix build failures
+
+  14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/10libzdb-configure.ac-openssl.patch, +libzdb-2.6.ebuild,
+  +files/20libzdb-configure.ac-mysql.patch,
+  +files/30libzdb-configure.ac-postgre.patch,
+  +files/40libzdb-configure.ac-sqlite3.patch,
+  +files/libzdb-configure.ac-cumulative.patch.old, +metadata.xml:
+  initial commit
+

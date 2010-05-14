@@ -1,0 +1,17 @@
+# ChangeLog for games-action/oolite
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  13 May 2010; Rion <rion4ik@gmail.com>
+  +files/oolite-gnustep-base-1.20.patch:
+  forgotten patch
+
+  12 May 2010; Rion <rion4ik@notagmail.com> oolite-9999.ebuild:
+  rewritten to use oolite internal way for distro-specific compilation
+
+  12 Mar 2010; <slep@gentoo.org> oolite-9999_pre2579.ebuild:
+  drop keywords in snapshot - use tarball
+
+  07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  Create Changelog,fix metadat
+
