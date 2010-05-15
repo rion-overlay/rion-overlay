@@ -1,0 +1,13 @@
+--- build.xml.orig	2010-02-13 04:12:25.000000000 +0200
++++ build.xml	2010-02-13 04:18:31.000000000 +0200
+@@ -21,8 +21,8 @@
+     <import file="config/product-ext.xml" optional="true"/>
+ 
+     <property name="jss.home" value="${jni-jar.home}${dirsec}"/>
+-    <property name="jss.jar" value="${jss.home}/jss4.jar"/>
+-    <property name="ldapjdk.jar" value="${jar.home}/ldapjdk.jar"/>
++    <property name="jss.jar" value="./jss4.jar"/>
++    <property name="ldapjdk.jar" value="./ldapjdk.jar"/>
+ 
+     <path id="classpath">
+         <pathelement location="${jss.jar}"/>
