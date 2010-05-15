@@ -22,6 +22,3 @@ RDEPEND="${DEPEND}"
 for plugin in $PSIPLUS_PLUGINS; do
 	RDEPEND="${RDEPEND} ${plugin}? ( net-im/psi-${plugin} )"
 done
-
-
-
