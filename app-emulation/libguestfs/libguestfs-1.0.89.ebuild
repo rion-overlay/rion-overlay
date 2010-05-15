@@ -15,7 +15,7 @@ SRC_URI="http://libguestfs.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS="x86-interix"
 IUSE="ocaml ruby kvm haskell perl python readline nls debug doc"
 
 DEPEND="dev-lang/perl
