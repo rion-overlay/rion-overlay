@@ -33,7 +33,6 @@ RDEPEND="dev-python/pyxdg
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	epatch "${FILESDIR}/gnomenu-2.5-libdir.patch"
 	sed "s/\(LIBDIR = .*\)lib/\1$(get_libdir)/" -i Makefile
 	sed "s,'/lib/gnomenu/','/lib64/gnomenu/'," -i setup.py
 }
