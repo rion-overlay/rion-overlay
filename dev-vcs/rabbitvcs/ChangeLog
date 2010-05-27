@@ -1,6 +1,9 @@
-# ChangeLog for dev-util/nautilussvn
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog for dev-vcs/rabbitvcs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  27 May 2010; Rion <rion4ik@notagmail.com> rabbitvcs-0.13.1.ebuild:
+  fix keywords
 
   07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
   Add in metadata missing flag "diff"
