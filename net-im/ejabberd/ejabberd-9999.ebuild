@@ -31,7 +31,6 @@ RDEPEND="${DEPEND}
 
 PROVIDE="virtual/jabber-server"
 
-
 # pathes in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
 #JABBER_RUN="/var/run/jabber"
@@ -48,7 +47,7 @@ src_unpack() {
 src_prepare() {
 	git_src_prepare
 	S=${WORKDIR}/${P}/src
-	cd ${S}
+	cd "${S}"
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
 		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
