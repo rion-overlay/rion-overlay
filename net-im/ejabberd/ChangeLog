@@ -2,6 +2,18 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ChangeLog,v 1.65 2009/06/05 13:00:56 pva Exp $
 
+  27 May 2010; Rion <rion4ik@notagmail.com> -ejabberd-2.1.3.ebuild,
+  -files/ejabberd-2.confd, -files/ejabberd-2.initd,
+  +files/ejabberd-wrapper-2.template, +files/ejabberd-3.confd,
+  +files/ejabberd-3.initd, -files/ejabberd-wrapper-3.template,
+  +files/self-cert-v2.sh, -files/self-cert-v3.sh,
+  -files/ejabberdctl-wrapper-3.template, ejabberd-9999.ebuild,
+  -files/ssl.cnf:
+  fixed with portage
+
+  27 May 2010; Rion <rion4ik@notagmail.com> -ejabberd-2.1.3.ebuild:
+  in main tree
+
   14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> ejabberd-2.1.3.ebuild:
   mask keywords adn drop unsupported
 
