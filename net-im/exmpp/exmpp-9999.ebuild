@@ -42,5 +42,5 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || "install failed"
-	dodoc README EPLICENCE
+	dodoc README
 }
