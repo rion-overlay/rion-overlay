@@ -13,7 +13,7 @@ SRC_URI="mod_statsdx? ( mirror://gentoo/2.1.1-mod_statsdx.patch.bz2 )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS=""
 EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub mod_statsdx"
 IUSE="captcha debug ldap odbc pam ssl +web zlib ${EJABBERD_MODULES}"
 
