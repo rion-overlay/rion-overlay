@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/ChangeLog,v 1.22 2008/04/06 08:50:37 nelchael Exp $
 
+  27 May 2010; Rion <rion4ik@gmail.com>
+  -files/backlight-2.6.34-omnibook-20090628.patch:
+  backlight in upstream
+
   10 May 2010; Rion <rion4ik@gmail.com> omnibook-9999.ebuild:
   switched to git
 
