@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils linux-mod
+inherit autotools eutils linux-mod
 
 DESCRIPTION="extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)"
 HOMEPAGE="http://xtables-addons.sourceforge.net/"
@@ -16,6 +16,7 @@ if [[ ! ${PV} =~ 9999 ]]; then
 SRC_URI="mirror://sourceforge/xtables-addons/${P}.tar.bz2"
 KEYWORDS="~amd64 ~x86"
 else
+inherit git
 EGIT_REPO_URI="git://${PN}.git.sf.net/gitroot/${PN}/${PN}/"
 SRC_URI=""
 KEYWORDS=""
@@ -45,6 +46,7 @@ pkg_setup()	{
 		linux-mod_pkg_setup
 
 		if ! linux_chkconfig_present IPV6; then
+			einfo "Disable IPv6 Modules due to disabled IPv6 in kernel"
 			SKIP_IPV6_MODULES="ip6table_rawpost"
 		fi
 	fi
@@ -107,21 +109,22 @@ src_prepare() {
 	fi
 	for mod in ${MODULES}; do
 		if use xtables_addons_${mod}; then
-			sed "s/\(build_${mod}=\).*/\1m/I" -i mconfig || die
+			sed "s/\(build_${mod}=\).*/\1m/I" -i mconfig
 			if use modules; then
 				for module_name in $(XA_get_module_name ${mod}); do
 					MODULE_NAMES+=" ${module_name}"
 				done
 			fi
 		else
-			sed "s/\(build_${mod}=\).*/\1n/I" -i mconfig || die
+			sed "s/\(build_${mod}=\).*/\1n/I" -i mconfig
 		fi
 	done
 
-	sed -e 's/depmod -a/true/' -i Makefile.{in,am} || die
+	eautoreconf
+	sed -e 's/depmod -a/true/' -i Makefile.{in,am}
 	sed -e '/^all-local:/{s: modules::}' \
 		-e '/^install-exec-local:/{s: modules_install::}' \
-			-i extensions/Makefile.{in,am} || die
+			-i extensions/Makefile.{in,am}
 }
 
 src_configure() {
