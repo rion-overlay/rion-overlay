@@ -16,6 +16,11 @@ EAPI="2"
 # prevent perl-module from adding automagic perl DEPENDs
 GENTOO_DEPEND_ON_PERL="no"
 
+# http_headers_more (http://github.com/agentzh/headers-more-nginx-module, BSD license)
+HTTP_HEADERS_MORE_MODULE_PV="0.08"
+HTTP_HEADERS_MORE_MODULE_P="ngx-http-headers-more-${HTTP_HEADERS_MORE_MODULE_PV}"
+HTTP_HEADERS_MORE_MODULE_SHA1="5cd9a38"
+
 # http_passenger (http://www.modrails.com/, MIT license)
 # TODO: currently builds some stuff in src_configure
 PASSENGER_PV="2.2.11"
@@ -36,6 +41,7 @@ HOMEPAGE="http://sysoev.ru/nginx/
 	http://pushmodule.slact.net/
 	http://projects.unbit.it/uwsgi/"
 SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
+	nginx_modules_http_headers_more? ( http://github.com/agentzh/headers-more-nginx-module/tarball/v${HTTP_HEADERS_MORE_MODULE_PV} -> ${HTTP_HEADERS_MORE_MODULE_P}.tar.gz )
 	nginx_modules_http_passenger? ( mirror://rubyforge/passenger/passenger-${PASSENGER_PV}.tar.gz )
 	nginx_modules_http_push? ( http://pushmodule.slact.net/downloads/${HTTP_PUSH_MODULE_P}.tar.gz )
 	nginx_modules_http_uwsgi? ( http://projects.unbit.it/downloads/uwsgi-${HTTP_UWSGI_MODULE_PV}.tar.gz )
@@ -44,7 +50,7 @@ SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 	rrd? ( http://wiki.nginx.org/images/9/9d/Mod_rrd_graph-0.2.0.tar.gz )
 	chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v0.19 -> chunkin-nginx-module-0.19.tgz )"
 
-LICENSE="BSD GPL-2 MIT
+LICENSE="BSD BSD-2 GPL-2 MIT
 	pam? ( as-is )
 	mp4? ( CCPL-Attribution-NonCommercial-NoDerivs-2.5 )"
 SLOT="0"
@@ -52,11 +58,11 @@ KEYWORDS="~amd64 ~x86"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif fastcgi
 geo gzip limit_req limit_zone map memcached proxy referer rewrite ssi
-upstream_ip_hash userid"
+split_clients upstream_ip_hash userid"
 NGINX_MODULES_OPT="addition dav degradation flv geoip gzip_static image_filter
 perl random_index realip secure_link stub_status sub xslt"
 NGINX_MODULES_MAIL="imap pop3 smtp"
-NGINX_MODULES_3RD="http_passenger http_push http_uwsgi"
+NGINX_MODULES_3RD="http_headers_more http_passenger http_push http_uwsgi"
 
 IUSE="aio chunk debug +http +http-cache ipv6 libatomic mp4 pam perftools rrd ssl"
 
@@ -132,6 +138,12 @@ pkg_setup() {
 		ewarn "This nginx installation is not supported!"
 		ewarn "Make sure you can reproduce the bug without those modules"
 		ewarn "_before_ reporting bugs."
+	fi
+
+	# third-party modules
+	if use nginx_modules_http_headers_more; then
+		http_enabled=1
+		myconf="${myconf} --add-module=${WORKDIR}/agentzh-headers-more-nginx-module-${HTTP_HEADERS_MORE_MODULE_SHA1}"
 	fi
 
 	if use nginx_modules_http_passenger; then
