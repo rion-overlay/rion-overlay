@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*389-console-1.1.5
+
+  01 Jun 2010; <slep@gentoo.org> +389-console-1.1.5.ebuild:
+  version bump
+
   04 Apr 2010; <slep@gentoo.org> 389-console-1.1.4_alpha1.ebuild:
   drop java flags and add die in more statment
 
