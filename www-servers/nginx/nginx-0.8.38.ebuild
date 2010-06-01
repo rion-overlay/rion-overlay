@@ -46,13 +46,11 @@ SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 	nginx_modules_http_push? ( http://pushmodule.slact.net/downloads/${HTTP_PUSH_MODULE_P}.tar.gz )
 	nginx_modules_http_uwsgi? ( http://projects.unbit.it/downloads/uwsgi-${HTTP_UWSGI_MODULE_PV}.tar.gz )
 	pam? ( http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
-	mp4? ( http://i.6.cn/nginx_mp4_streaming_public_20081229.tar.bz2 )
 	rrd? ( http://wiki.nginx.org/images/9/9d/Mod_rrd_graph-0.2.0.tar.gz )
 	chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v0.19 -> chunkin-nginx-module-0.19.tgz )"
 
 LICENSE="BSD BSD-2 GPL-2 MIT
-	pam? ( as-is )
-	mp4? ( CCPL-Attribution-NonCommercial-NoDerivs-2.5 )"
+	pam? ( as-is )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -64,7 +62,7 @@ perl random_index realip secure_link stub_status sub xslt"
 NGINX_MODULES_MAIL="imap pop3 smtp"
 NGINX_MODULES_3RD="http_headers_more http_passenger http_push http_uwsgi"
 
-IUSE="aio chunk debug +http +http-cache ipv6 libatomic mp4 pam perftools rrd ssl"
+IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam perftools rrd ssl"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -161,7 +159,6 @@ src_unpack() {
 	# prevent ruby-ng.eclass from messing with src_unpack
 	default
 	use pam && unpack "ngx_http_auth_pam_module-1.1.tar.gz"
-	use mp4 && unpack "nginx_mp4_streaming_public_20081229.tar.bz2"
 	use rrd && unpack "Mod_rrd_graph-0.2.0.tar.gz"
 	use chunk && unpack "chunkin-nginx-module-0.19.tgz"
 }
@@ -233,7 +230,6 @@ src_configure() {
 	use rrd && myconf="${myconf} --add-module="${WORKDIR}"/mod_rrd_graph-0.2.0"
 	use chunk	&& myconf="${myconf} \
 						--add-module="${WORKDIR}"/agentzh-chunkin-nginx-module-cb610a5"
-	use mp4 && myconf="${myconf} --add-module="${WORKDIR}"/nginx_mp4_streaming_public"
 	use pam && myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
 
 	# MAIL modules
