@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*389-console-1.1.6
+
+  01 Jun 2010; <slep@gentoo.org> +389-console-1.1.6.ebuild:
+  new version
+
 *389-console-1.1.5
 
   01 Jun 2010; <slep@gentoo.org> +389-console-1.1.5.ebuild:
