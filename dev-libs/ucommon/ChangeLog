@@ -1,0 +1,8 @@
+# ChangeLog for dev-libs/ucommon
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Mar 2010; <slep@gentoo.org> +ucommon-2.0.9.ebuild,
+  +files/disable_rtf_gen_doxy.patch, +metadata.xml:
+  inirial commit
+
