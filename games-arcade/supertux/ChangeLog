@@ -1,0 +1,24 @@
+# ChangeLog for games-arcade/supertux
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  01 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> supertux-9999.ebuild:
+  add media-libs/glew in DEPEND
+
+  29 Mar 2010; <slep@gentoo.org> supertux-0.3.3.ebuild,
+  supertux-9999.ebuild, -files/supertux-cmake.patch:
+  clean ebuild
+
+  29 Mar 2010; <slep@gentoo.org> supertux-0.3.3.ebuild:
+  fix syntax
+
+  18 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> supertux-9999.ebuild:
+  fix slot
+
+  07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> supertux-9999.ebuild,
+  metadata.xml:
+  fix email addres im metadata
+
+  07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> supertux-9999.ebuild:
+  repoman fix, remove bad depend
+
