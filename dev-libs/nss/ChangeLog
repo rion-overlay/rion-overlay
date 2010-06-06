@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/nss
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.157 2009/09/24 23:35:09 anarchy Exp $
+
+  06 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/nss-3.12.5-gentoo-fixups.diff, +nss-3.12.6-r101.ebuild,
+  +files/nss-3.12.6-gentoo-fixup-warnings.patch:
+  fix install phase in-tree ebuild
 
   31 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/gentoo-fixups-1.diff, +nss-9999.ebuild, +metadata.xml:
