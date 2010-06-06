@@ -1,0 +1,5 @@
+GRANT USAGE ON openca.* TO 'openca'@'localhost' IDENTIFIED BY '@dbpass@';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON openca.* TO 'openca'@'localhost';
+
+CREATE DATABASE IF NOT EXISTS openca;
