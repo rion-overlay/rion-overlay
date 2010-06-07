@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Jun 2010; Rion <rion4ik@notagmail.com> -nginx-0.8.38.ebuild,
+  +nginx-0.8.38-r1.ebuild:
+  synced with portage
+
   01 Jun 2010; Rion <rion4ik@notagmail.com> nginx-0.8.38.ebuild:
   remove broken mp4 module
 

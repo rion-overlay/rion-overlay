@@ -31,7 +31,7 @@ RUBY_OPTIONAL="yes"
 HTTP_PUSH_MODULE_P="nginx_http_push_module-0.692"
 
 # http_uwsgi (http://projects.unbit.it/uwsgi/, GPL-2 license)
-HTTP_UWSGI_MODULE_PV="0.9.5"
+HTTP_UWSGI_MODULE_PV="0.9.5.1"
 
 inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
 
