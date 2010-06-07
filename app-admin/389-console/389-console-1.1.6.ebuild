@@ -32,7 +32,7 @@ DEPEND=">=virtual/jdk-1.6
 	${COMMON_DEP}"
 
 src_unpack() {
-	unpack ${PN}-${MY_V}.tar.bz2
+	unpack ${P}.tar.bz2
 }
 src_prepare() {
 
@@ -46,16 +46,16 @@ src_compile() {
 	    -Dldapjdk.local.location="${S}" \
 	    -Djss.local.location="${S}" \
 	    -Dconsole.local.location="${S}" ${antflags} \
-				die "eant failed"
+				||die "eant failed"
 }
 
 src_install() {
-	java-pkg_newjar "${S}"/build/389-console-1.1.3_en.jar 389-console_en.jar
+	java-pkg_newjar "${S}"/build/389-console-1.1.4_en.jar 389-console_en.jar
 	java-pkg_dolauncher ${PN} --main com.netscape.management.client.console.Console \
 				--pwd "/usr/share/dirsrv/html/java/" \
 				--pkg_args "-Djava.util.prefs.systemRoot=\"\$HOME/.${PN}\" -Djava.util.prefs.userRoot=\"\$HOME/.${PN}\""\
 				die
 
 	doicon "${DISTDIR}"/fedora.png || die "doicon failed"
-	make_desktop_entry ${PN} "Port389 Management Console" fedora.png System fedora.png
+	make_desktop_entry ${PN} "Port389 Management Console" fedora.png System Path=fedora.png
 }
