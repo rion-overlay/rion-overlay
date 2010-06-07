@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc examples source"
 
 inherit java-pkg-2 eutils java-ant-2
 
-MY_V=1.1.3
+MY_V="${PV}"
 
 DESCRIPTION="A Java Management Console framework used for remote server management."
 HOMEPAGE="http://directory.fedoraproject.org/"
