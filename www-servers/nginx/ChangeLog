@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-0.8.40
+
+  08 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.8.40.ebuild:
+  bump
+
   07 Jun 2010; Rion <rion4ik@notagmail.com> -nginx-0.8.38.ebuild,
   +nginx-0.8.38-r1.ebuild:
   synced with portage
