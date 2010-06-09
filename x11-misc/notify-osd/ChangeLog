@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -notify-osd-0.9.23.ebuild, -notify-osd-0.9.27.ebuild:
+  remove old ebuild
+
 *notify-osd-0.9.29 ( 26 Apr 2010 )
 
   26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
