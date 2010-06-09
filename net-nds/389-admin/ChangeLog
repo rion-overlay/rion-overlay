@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.11_alpha2-r1.ebuild:
+  remove alpha ebuild
+
 *389-admin-1.1.11.a4
 
   01 Jun 2010; <slep@gentoo.org> +389-admin-1.1.11_alpha4.ebuild:
