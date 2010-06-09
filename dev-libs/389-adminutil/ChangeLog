@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/1.1.8/0001-no_icu_pc.patch, -389-adminutil-1.1.8-r1.ebuild,
+  -389-adminutil-1.1.9.ebuild:
+  remove old ebuild
+
   12 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +389-adminutil-1.1.10.ebuild:
   version bump
