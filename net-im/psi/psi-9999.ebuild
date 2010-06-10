@@ -92,6 +92,12 @@ src_unpack() {
 	done
 
 	if use extras; then
+		if use linguas_ru; then
+			ESVN_PROJECT="psiplus/psi_ru" \
+			S="${WORKDIR}/psi_ru" subversion_fetch "http://psi-ru.googlecode.com/svn/branches/psi-plus"
+			mv "${WORKDIR}/psi_ru"/psi_ru.ts "${WORKDIR}/psi-l10n/ru/"
+			mv "${WORKDIR}/psi_ru/qt"/qt_ru.ts "${WORKDIR}/psi-l10n/ru/"
+		fi
 		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
 		if use iconsets; then
 			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
@@ -100,12 +106,6 @@ src_unpack() {
 				ESVN_PROJECT="psiplus/${x}"
 				subversion_fetch "${ESVN_REPO_URI}/iconsets/${x}/default" "iconsets/${x}/default"
 			done
-		fi
-		if use linguas_ru; then
-			ESVN_PROJECT="psiplus/psi_ru"
-			S="${WORKDIR}/psi_ru" subversion_fetch "http://psi-ru.googlecode.com/svn/branches/psi-plus"
-			mv "${WORKDIR}/psi_ru"/psi_ru.ts "${WORKDIR}/psi-l10n/ru/"
-			mv "${WORKDIR}/psi_ru/qt"/qt_ru.ts "${WORKDIR}/psi-l10n/ru/"
 		fi
 	fi
 }
