@@ -1,116 +1,137 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.2 2010/06/02 07:46:30 pva Exp $
 
 EAPI="2"
 
-LANGS="cs de eo es_ES fr it mk pl pt_BR ru uk ur_PK vi zh zh_TW"
-EGIT_HAS_SUBMODULES=true
+LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
+
+EGIT_REPO_URI="git://git.psi-im.org/psi.git"
+EGIT_HAS_SUBMODULES="true"
+LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
+
+ESVN_DISABLE_DEPENDENCIES="true"
+ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk"
+ESVN_PROJECT="psiplus"
+
 inherit eutils qt4-r2 multilib git subversion
 
-RU_LANGPACK_VER="19_May_2010"
-
-DESCRIPTION="Qt4 Jabber Client, with Licq-like interface"
+DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
-## http://psi-ru.googlecode.com/files/Psi_ru_${RU_LANGPACK_VER}.zip )
-
-SRC_URI="
-	linguas_ru? ( http://shl.berlios.de/Psi_ru_${RU_LANGPACK_VER}.zip )
-	!linguas_ru? ( mirror://gentoo/psi-0.13-20090817_langpack_for_packagers.zip )
-	http://psi-dev.googlecode.com/svn/trunk/iconsets/moods/silk.jisp"
-EGIT_REPO_URI="git://git.psi-im.org/psi.git"
-EGIT_PROJECT="psi"
-
-PATCHES_URI=http://psi-dev.googlecode.com/svn/trunk/patches
-ICONS_URI=http://psi-dev.googlecode.com/svn/trunk/iconsets
-ESVN_PROJECT=psiplus
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant +jingle iconsets spell ssl xscreensaver powersave
-plugins unstable whiteboarding webkit"
-RESTRICT="test"
+IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
+plugins -whiteboarding webkit"
 
-RDEPEND="x11-libs/qt-gui:4[qt3support,dbus?]
-		>=app-crypt/qca-2.0.2:2
-		whiteboarding? ( x11-libs/qt-svg:4 )
-		spell? ( enchant? ( app-text/enchant )
-			!enchant? ( app-text/aspell )
-		)
-		xscreensaver? ( x11-libs/libXScrnSaver )
-		webkit? ( x11-libs/qt-webkit )
-		app-arch/unzip"
+RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
+	>=app-crypt/qca-2.0.2:2
+	whiteboarding? ( x11-libs/qt-svg:4 )
+	spell? (
+		enchant? ( >=app-text/enchant-1.3.0 )
+		!enchant? ( app-text/aspell )
+	)
+	xscreensaver? ( x11-libs/libXScrnSaver )
+	extras? ( webkit? ( x11-libs/qt-webkit ) )
+	app-arch/unzip"
 
 DEPEND="${RDEPEND}
+	extras? (
+		${SUBVERSION_DEPEND}
 		sys-devel/qconf
-		doc? ( app-doc/doxygen )"
+	)
+	doc? ( app-doc/doxygen )"
 
 PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
-		jingle? ( net-im/psimedia )
-		ssl? ( app-crypt/qca-ossl:2 )"
+	jingle? ( net-im/psimedia )
+	ssl? ( app-crypt/qca-ossl:2 )"
 
-unpack_default_iconset() {
-	OLD_S=$S
-	S=${WORKDIR}/${P}/iconsets/${1}/default
-	ESVN_REPO_URI=${ICONS_URI}/${1}/default
-	ESVN_PROJECT=psiplus/${1}
-	subversion_src_unpack
-	S=$OLD_S
+RESTRICT="test"
+
+pkg_setup() {
+	for x in iconsets plugins powersave webkit whiteboarding;do
+	        use ${x} && use !extras && \
+			ewarn "USE=${x} is only available in Psi+ and requires USE=extras, ${x} will be disabled."
+	done
+
+	if use extras; then
+		ewarn
+		ewarn "You're about to build heavily patched version of Psi called Psi+."
+		ewarn "It has really nice features but still is under heavy development."
+		ewarn "Take a look at homepage for more info: http://code.google.com/p/psi-dev"
+		ewarn "If you wish to disable some patches just put"
+		ewarn "MY_EPATCH_EXCLUDE=\"list of patches\""
+		ewarn "into /etc/portage/env/${CATEGORY}/${PN} file."
+		ewarn
+		ewarn "Note: some patches depend on other. So if you disabled some patch"
+		ewarn "and other started to fail to apply, you'll have to disable patches"
+		ewarn "that fail too."
+
+		if use iconsets; then
+			ewarn
+			ewarn "Some artwork is from open source projects, but some is provided 'as-is'"
+			ewarn "and has not clear licensing."
+			ewarn "Possibly this build is not redistributable in some countries."
+		fi
+	fi
 }
 
 src_unpack() {
-	use linguas_ru && unpack "Psi_ru_${RU_LANGPACK_VER}.zip"
-	! use linguas_ru && unpack "psi-0.13-20090817_langpack_for_packagers.zip"
-
 	git_src_unpack
 
-	S="${WORKDIR}/patches"
-	ESVN_REPO_URI="${PATCHES_URI}"
-	subversion_src_unpack
-	use iconsets && (
-		S="${WORKDIR}/${P}/iconsets"
-		ESVN_REPO_URI="${ICONS_URI}"
-		ESVN_PROJECT=psiplus/iconsets
-		subversion_src_unpack
-	) || (
-		unpack_default_iconset clients
-		unpack_default_iconset moods
-		unpack_default_iconset activities
-		unpack_default_iconset system
-	)
+	# fetch translations
+	mkdir "${WORKDIR}/psi-l10n"
+	for x in ${LANGS}; do
+		if use linguas_${x}; then
+			EGIT_REPO_URI="${LANGS_URI}-${x}"
+			EGIT_PROJECT="psi-l10n/${x}"
+			S="${WORKDIR}/psi-l10n/${x}"
+			git_fetch
+			S="${WORKDIR}/${P}"
+		fi
+	done
+
+	if use extras; then
+		if use linguas_ru; then
+			ESVN_PROJECT="psiplus/psi_ru" \
+			S="${WORKDIR}/psi_ru" subversion_fetch "http://psi-ru.googlecode.com/svn/branches/psi-plus"
+			mv "${WORKDIR}/psi_ru"/psi_ru.ts "${WORKDIR}/psi-l10n/ru/"
+			mv "${WORKDIR}/psi_ru/qt"/qt_ru.ts "${WORKDIR}/psi-l10n/ru/"
+		fi
+		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
+		if use iconsets; then
+			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
+		else
+			for x in clients moods activities system; do
+				ESVN_PROJECT="psiplus/${x}"
+				subversion_fetch "${ESVN_REPO_URI}/iconsets/${x}/default" "iconsets/${x}/default"
+			done
+		fi
+	fi
 }
 
 src_prepare() {
-	rm "${WORKDIR}/patches"/*-psi-win32-* #useless windows patches
-	rm "${WORKDIR}/patches"/*dirty-check* #useless update check
-
-	S="${WORKDIR}/${P}"
-	cd "${S}"
-
-	EPATCH_OPTS="-p1" epatch "${WORKDIR}/patches"/*.diff
-	use powersave && epatch "${WORKDIR}/patches/dev"/psi-reduce-power-consumption.patch
-########## Unstable Patches. Use for you own risk. ###########
-	use unstable && {
-	einfo "It's nothing unstable at the moment! :)"
-	#epatch "${WORKDIR}"/patches/dev/psi-work-new-roster-doubleclick.patch
-	}
-##############################################################
-	subversion_wc_info
-	sed "s/.xxx/.${ESVN_WC_REVISION}/" -i src/applicationinfo.cpp
-
-	# enable whiteboarding
-	use whiteboarding && {
-		sed 's/#CONFIG += whiteboarding/CONFIG += whiteboarding/' \
-			-i src/src.pro
-		epatch "${WORKDIR}/patches/dev/psi-wb.patch"
-
-		ewarn "whiteboarding is very unstable thing.";
-		ewarn "don't post bug reports about it";
-	}
-
 	rm -rf third-party/qca # We use system libraries.
-	qconf
+
+	if use extras; then
+		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
+
+		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
+
+		if use whiteboarding; then
+			sed -e 's/#CONFIG += whiteboarding/CONFIG += whiteboarding/' \
+				-i src/src.pro || die "sed failed"
+			epatch "${WORKDIR}/patches/dev/psi-wb.patch"
+
+			ewarn "Whiteboarding is very unstable."
+		fi
+
+		subversion_wc_info
+		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
+			-i src/applicationinfo.cpp || die "sed failed"
+
+		qconf || die "Failed to create ./configure."
+	fi
 }
 
 src_configure() {
@@ -123,18 +144,20 @@ src_configure() {
 			--disable-growl
 			$(use dbus || echo '--disable-qdbus')
 			$(use debug && echo '--debug')
-			$(use spell && ( use enchant && echo '--disable-aspell' || \
-				echo '--disable-enchant' ) || echo '--disable-aspell --disable-enchant')
+			$(use spell && {
+				use enchant && echo '--disable-aspell' || echo '--disable-enchant'
+				} || echo '--disable-aspell --disable-enchant')
 			$(use xscreensaver || echo '--disable-xss')
-			$(use plugins && echo '--enable-plugins')
-			$(use webkit && echo '--enable-webkit')"
+			$(use extras && {
+				use plugins && echo '--enable-plugins'
+				use webkit && echo '--enable-webkit'
+				} )"
 
-	echo ${confcmd}
 	${confcmd} || die "configure failed"
 }
 
 src_compile() {
-	eqmake4 ${PN}.pro
+	eqmake4
 
 	emake || die "emake failed"
 
@@ -147,6 +170,7 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install || die "emake install failed"
+	rm "${D}"/usr/share/psi/{COPYING,README}
 
 	# this way the docs will be installed in the standard gentoo dir
 	newdoc iconsets/roster/README README.roster || die
@@ -160,30 +184,26 @@ src_install() {
 	fi
 
 	# install translations
-	insinto /usr/share/${PN}/
-	if use linguas_ru; then
-		cd "${WORKDIR}"
-		doins psi_ru.qm
-		doins qt_ru.qm
-	else
-		for LNG in ${LANGS}; do
-			if use linguas_${LNG}; then
-				cd "${WORKDIR}/${LNG}"
-				doins ${PN}_${LNG/ur_PK/ur_pk}.qm || die
-			fi
-		done
-	fi
+	cd "${WORKDIR}/psi-l10n"
+	insinto /usr/share/${PN}
+	for x in ${LANGS}; do
+		if use linguas_${x}; then
+			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
+			doins "${x}/${PN}_${x}.qm" || die
+			newins "${x}/INFO" "INFO.${x}" || die
+		fi
+	done
 
-	insinto /usr/share/psi/iconsets/moods/
-	doins "${PORTAGE_ACTUAL_DISTDIR}"/silk.jisp
-	if use plugins; then
-		cd "${S}"
-		insinto /usr/share/psi/plugins
-		doins "${S}/src/plugins/plugins.pri"
-		doins "${S}/src/plugins/psiplugin.pri"
-		doins -r "${S}/src/plugins/include"
-		dosed "s:target.path.*:target.path = /usr/$(get_libdir)/psi/plugins:" \
-			/usr/share/psi/plugins/psiplugin.pri \
-			|| die "fixig plugin istall	path failed"
+	if use extras; then
+		if use plugins; then
+			cd "${S}"
+			insinto /usr/share/psi/plugins
+			doins src/plugins/plugins.pri || die
+			doins src/plugins/psiplugin.pri || die
+			doins -r src/plugins/include || die
+			dosed "s:target.path.*:target.path = /usr/$(get_libdir)/psi/plugins:" \
+				/usr/share/psi/plugins/psiplugin.pri \
+				|| die "sed failed"
+		fi
 	fi
 }
