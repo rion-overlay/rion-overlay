@@ -3,15 +3,14 @@
 # $Header: $
 
 EAPI="2"
-MODULE_AUTHOR=CFRANKS
+MODULE_AUTHOR="GTERMARS"
 inherit perl-module
 
-DESCRIPTION="Perl6 style Junction operators in Perl5."
-LICENSE="|| ( Artistic GPL-2 )"
-
+DESCRIPTION="XS based CSS minifier"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 IUSE=""
+
 DEPEND=""
-RDEPEND=""
+RDEPEND="${DEPEND}"
+SRC_TEST="do"

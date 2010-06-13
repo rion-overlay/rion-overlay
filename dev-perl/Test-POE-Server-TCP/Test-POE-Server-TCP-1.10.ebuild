@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
-
-MODULE_AUTHOR=MSERGEANT
-
+EAPI="2"
+MODULE_AUTHOR="BINGOS"
 inherit perl-module
 
-DESCRIPTION="Perl extension for access to cdb databases"
+DESCRIPTION="A POE Component providing TCP server services for test cases"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-SRC_TEST="do"
 IUSE=""
-DEPEND="sys-libs/gdbm"
+
+DEPEND=">=dev-perl/POE-1.004"
 RDEPEND="${DEPEND}"
+SRC_TEST="do"

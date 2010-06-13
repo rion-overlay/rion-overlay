@@ -3,17 +3,14 @@
 # $Header: $
 
 EAPI="2"
-MODULE_AUTHOR="RRWO"
+MODULE_AUTHOR="GTERMARS"
 inherit perl-module
 
-DESCRIPTION="defines RGB values for common color names"
+DESCRIPTION="XS based JavaScript minifier"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-perl/Test-Exception
-	virtual/perl-File-Spec
-	>=virtual/perl-Module-Load-0.10
-	dev-perl/Module-Loaded"
+DEPEND=""
 RDEPEND="${DEPEND}"
-RC_TEST="do"
+SRC_TEST="do"

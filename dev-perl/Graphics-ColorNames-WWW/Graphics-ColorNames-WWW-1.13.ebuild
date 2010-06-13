@@ -3,18 +3,14 @@
 # $Header: $
 
 EAPI="2"
-
-MODULE_AUTHOR="TJENNESS"
+MODULE_AUTHOR="CFAERBER"
 inherit perl-module
 
-DESCRIPTION="Return name and handle of a temporary file safely"
-
+DESCRIPTION="WWW color names and equivalent RGB values"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/perl-File-Spec
-	virtual/perl-File-Path"
+DEPEND="dev-perl/Graphics-ColorNames"
 RDEPEND="${DEPEND}"
-
-SRC_TEST="do parallel"
+SRC_TEST="do"
