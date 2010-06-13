@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 PDEPEND="java? ( >=virtual/jre-1.5 )"
 
 PROVIDE="virtual/ooo"
-RESTRICT="strip"
+RESTRICT="strip binchecks"
 
 QA_EXECSTACK="usr/$(get_libdir)/openoffice/basis3.1/program/*
 	usr/$(get_libdir)/openoffice/ure/lib/*"
