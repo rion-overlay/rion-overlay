@@ -6,7 +6,7 @@ EAPI="2"
 inherit perl-module
 
 DESCRIPTION="Required perl module for Xuheki web mail client"
-HOMEPAGE="http://www.xuheki.org"
+HOMEPAGE="http://www.xuheki.com"
 SRC_URI="http://slepnoga.googlecode.com/files/Dynarch-0.1.tar.gz"
 
 LICENSE="GPL-3"
