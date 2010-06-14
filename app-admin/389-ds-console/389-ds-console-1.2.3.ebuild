@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 eutils java-ant-2
 
 MY_V=1.2.3
-MY_MV=1.2
+MY_MV=1.3
 
 DESCRIPTION="A Java based remote management console used for Managing 389 Administration and Directory Server."
 HOMEPAGE="http://port389.org/"
@@ -24,9 +24,9 @@ COMMON_DEP="dev-java/jss:3.4
 	dev-java/ldapsdk:4.1
 	>=dev-java/idm-console-framework-1.1"
 
-RDEPEND=">=virtual/jre-1.5
+RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.6
 	${COMMON_DEP}"
 
 src_prepare() {
