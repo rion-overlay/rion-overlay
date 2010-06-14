@@ -62,16 +62,19 @@ src_prepare() {
 }
 
 src_configure() {
+	# stub autoconf triplet  :(
+	local myconf=""
+	use debug && myconf=" --enable-debug "
+	use selinux &&  myconf=" --with selinux "
+
 	econf \
-		$(use_enable debug) \
 		$(use_enable threads threading) \
-		$(use_with selinux) \
 		--disable-rpath \
 		--with-fhs \
 		--with-apr-config \
 		--with-apxs=${APXS} \
 		--with-httpd=${APACHE_BIN} \
-				|| die "econf failed"
+		${myconf} || die "econf failed"
 }
 
 src_install () {
