@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<herd>no-herd</herd>
-	<maintainer>
-		<email>andrew.golovkov@gmail.com</email>
-	</maintainer>
-	<longdescription>iFuse is a FUSE filesystem driver which uses libiphone to connect to devices without jailbreak. iFuse is using the native Apple AFC protocol, over the normal USB cable in order to access the iPhone's (or iPod Touch's) media files under Linux.</longdescription>
-</pkgmetadata>
