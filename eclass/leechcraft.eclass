@@ -32,6 +32,8 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git
 else
 	SRC_URI="mirror://sourceforge/leechcraft/leechcraft-${PV}.tar.bz2"
+	MY_P='leechcraft'
+	S="${WORKDIR}/${MY_P}-${PV}"
 fi
 
 HOMEPAGE="http://leechcraft.org/"
