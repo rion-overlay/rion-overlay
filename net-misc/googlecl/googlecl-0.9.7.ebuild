@@ -18,3 +18,9 @@ IUSE=""
 DEPEND="dev-python/gdata"
 RDEPEND="${DEPEND}"
 
+src_install() {
+	doman man/*.1 || die
+	dodoc changelog INSTALL.txt || die
+
+	distutils_src_install
+}
