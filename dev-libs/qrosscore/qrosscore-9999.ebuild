@@ -23,6 +23,7 @@ DEPEND=">=x11-libs/qt-core-4.6
 RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${S}/src/qross"
+CMAKE_MIN_VERSION="2.8"
 
 src_unpack() {
 	git_src_unpack
