@@ -32,7 +32,7 @@ RDEPEND="dev-libs/expat
 					  =dev-libs/nss-3* )
 		mysql? ( =virtual/mysql-5* )
 		odbc? ( dev-db/unixODBC )
-		postgres? ( virtual/postgresql-base )
+		postgres? ( dev-db/postgresql-base )
 		sqlite? ( dev-db/sqlite:0 )
 		sqlite3? ( dev-db/sqlite:3 )"
 
