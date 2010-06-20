@@ -28,7 +28,7 @@ RDEPEND="dev-libs/expat
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( =virtual/mysql-5* )
 	odbc? ( dev-db/unixODBC )
-	postgres? ( virtual/postgresql-base )
+	postgres? ( dev-db/postgresql-base )
 	sqlite? ( dev-db/sqlite:0 )
 	sqlite3? ( dev-db/sqlite:3 )
 	mozldap? (   =dev-libs/mozldap-6*

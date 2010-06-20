@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
-	jingle? ( net-im/psimedia )
+	jingle? (
+		net-im/psimedia
+		app-crypt/qca-ossl:2
+		)
 	ssl? ( app-crypt/qca-ossl:2 )"
 
 RESTRICT="test"
@@ -66,6 +69,7 @@ pkg_setup() {
 		ewarn "Note: some patches depend on other. So if you disabled some patch"
 		ewarn "and other started to fail to apply, you'll have to disable patches"
 		ewarn "that fail too."
+		ebeep
 
 		if use iconsets; then
 			ewarn
@@ -83,8 +87,13 @@ src_unpack() {
 	mkdir "${WORKDIR}/psi-l10n"
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
-			EGIT_REPO_URI="${LANGS_URI}-${x}"
-			EGIT_PROJECT="psi-l10n/${x}"
+			if use extras && [ "${x}" = "ru" ]; then
+				EGIT_REPO_URI="git://mva.name/psi-l10n-${x}"
+				EGIT_PROJECT="psiplus-l10n/${x}"
+			else
+				EGIT_REPO_URI="${LANGS_URI}-${x}"
+				EGIT_PROJECT="psi-l10n/${x}"
+			fi
 			S="${WORKDIR}/psi-l10n/${x}"
 			git_fetch
 			S="${WORKDIR}/${P}"
@@ -92,13 +101,9 @@ src_unpack() {
 	done
 
 	if use extras; then
-		if use linguas_ru; then
-			ESVN_PROJECT="psiplus/psi_ru" \
-			S="${WORKDIR}/psi_ru" subversion_fetch "http://psi-ru.googlecode.com/svn/branches/psi-plus"
-			mv "${WORKDIR}/psi_ru"/psi_ru.ts "${WORKDIR}/psi-l10n/ru/"
-			mv "${WORKDIR}/psi_ru/qt"/qt_ru.ts "${WORKDIR}/psi-l10n/ru/"
-		fi
-		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
+		S="${WORKDIR}/patches"
+		subversion_fetch "${ESVN_REPO_URI}/patches"
+		S="${WORKDIR}/${P}"
 		if use iconsets; then
 			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
 		else
@@ -114,6 +119,9 @@ src_prepare() {
 	rm -rf third-party/qca # We use system libraries.
 
 	if use extras; then
+		EPATCH_EXCLUDE="${MY_EPATCH_EXCLUDE}
+			*-win32-*
+			*dirty-check*" \
 		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
 		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
@@ -153,6 +161,7 @@ src_configure() {
 				use webkit && echo '--enable-webkit'
 				} )"
 
+	echo "${confcmd}"
 	${confcmd} || die "configure failed"
 }
 
@@ -170,13 +179,23 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install || die "emake install failed"
-	rm "${D}"/usr/share/psi/{COPYING,README}
+	rm -f "${D}"/usr/share/psi/{COPYING,README}
 
 	# this way the docs will be installed in the standard gentoo dir
 	newdoc iconsets/roster/README README.roster || die
 	newdoc iconsets/system/README README.system || die
 	newdoc certs/README README.certs || die
 	dodoc README || die
+
+	if use extras && use plugins; then
+		insinto /usr/share/psi/plugins
+		doins src/plugins/plugins.pri || die
+		doins src/plugins/psiplugin.pri || die
+		doins -r src/plugins/include || die
+		dosed "s:target.path.*:target.path = /usr/$(get_libdir)/psi/plugins:" \
+			/usr/share/psi/plugins/psiplugin.pri \
+			|| die "sed failed"
+	fi
 
 	if use doc; then
 		cd doc
@@ -193,17 +212,4 @@ src_install() {
 			newins "${x}/INFO" "INFO.${x}" || die
 		fi
 	done
-
-	if use extras; then
-		if use plugins; then
-			cd "${S}"
-			insinto /usr/share/psi/plugins
-			doins src/plugins/plugins.pri || die
-			doins src/plugins/psiplugin.pri || die
-			doins -r src/plugins/include || die
-			dosed "s:target.path.*:target.path = /usr/$(get_libdir)/psi/plugins:" \
-				/usr/share/psi/plugins/psiplugin.pri \
-				|| die "sed failed"
-		fi
-	fi
 }
