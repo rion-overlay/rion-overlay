@@ -21,6 +21,7 @@ DEPEND="=dev-libs/qrosscore-${PV}"
 RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${S}/src/bindings/python/qrosspython"
+CMAKE_MIN_VERSION="2.8"
 
 src_unpack() {
 	git_src_unpack
