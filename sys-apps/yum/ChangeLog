@@ -1,5 +1,5 @@
 # ChangeLog for sys-apps/yum
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/yum/ChangeLog,v 1.9 2009/03/13 23:02:48 bangert Exp $
 
   13 Mar 2009; Thilo Bangert <bangert@gentoo.org> yum-2.6.1.ebuild,
