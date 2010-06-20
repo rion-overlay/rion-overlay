@@ -3,6 +3,7 @@
 # $Header: $
 
 EAPI=3
+PYTHON_DEPEND="2:2.5:2.6"
 
 inherit distutils
 
@@ -17,6 +18,10 @@ IUSE=""
 
 DEPEND="dev-python/gdata"
 RDEPEND="${DEPEND}"
+
+pkg_setup() {
+	python_set_active_version 2
+}
 
 src_install() {
 	doman man/*.1 || die
