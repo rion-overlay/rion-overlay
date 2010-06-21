@@ -43,8 +43,3 @@ pkg_setup() {
 		$(use_with id3 taglib)
 		$(use_with pdf  poppler)"
 }
-
-src_prepare() {
-	epatch "${FILESDIR}/asneeded.patch"
-	gnome2_src_prepare
-}
