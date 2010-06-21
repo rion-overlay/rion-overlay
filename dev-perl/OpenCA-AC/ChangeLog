@@ -1,0 +1,20 @@
+# ChangeLog for dev-perl/OpenCA-AC
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -OpenCA-AC-1.0.2.ebuild, +OpenCA-AC-1.0.2-r1.ebuild:
+  eclass clean
+
+  11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> OpenCA-AC-1.0.2.ebuild:
+  stable in x86
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  my english is bad
+
+*OpenCA-AC-1.0.2 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +OpenCA-AC-1.0.2.ebuild, +metadata.xml:
+  Initial recommit in my-dev overlay
+
