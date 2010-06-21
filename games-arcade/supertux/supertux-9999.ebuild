@@ -14,7 +14,7 @@ ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux"
 ESVN_PROJECT="${PN}"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="2"
 KEYWORDS=""
 IUSE="opengl curl debug"
 
