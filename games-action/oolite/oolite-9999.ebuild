@@ -43,10 +43,12 @@ src_prepare() {
 	sed '/oolite_LIB_DIRS/d' -i GNUmakefile
 	sed "s|/usr/share/GNUstep/Makefiles|${GNUSTEP_MAKEFILES}|" -i Makefile
 	sed "s|strip.*|true|" -i GNUmakefile.postamble
+	subversion_wc_info
+	sed "s/SVNREVISION :=.*/SVNREVISION := ${ESVN_WC_REVISION}/" -i Makefile
 }
 
 src_compile() {
-	make -f Makefile distro-release || die "make failed"
+	make -f Makefile release || die "make failed"
 }
 
 src_install() {
