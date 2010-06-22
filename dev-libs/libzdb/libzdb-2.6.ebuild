@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="mysql postgres +sqlite3 ssl debug doc"
 
-RDEPEND="postgres? ( >=virtual/postgresql-base-7.4 )
+RDEPEND="postgres? ( >=dev-db/postgresql-base-7.4 )
 	mysql? ( >=virtual/mysql-4.1 )
 	sqlite3? ( >=dev-db/sqlite-3.6.12
 		>=sys-devel/gcc-4.1 )
