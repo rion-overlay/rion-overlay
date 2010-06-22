@@ -1,0 +1,14 @@
+# ChangeLog for dev-python/python-krbV
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  07 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +python-krbV-1.0.90.ebuild:
+  rebase to FC14 rpm
+
+*python-krbV-1.0.13 (05 Aug 2009)
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +python-krbV-1.0.13.ebuild, +files/setup.py, +metadata.xml:
+  initial commit
+
