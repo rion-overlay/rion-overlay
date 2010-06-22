@@ -19,7 +19,7 @@ IUSE="mysql postgres"
 RDEPEND="<net-libs/gloox-1.0
 		dev-libs/openssl
 		mysql? ( virtual/mysql )
-		postgres? ( virtual/postgresql-server )
+		postgres? ( dev-db/postgresql-server )
 		www-client/lynx
 		x11-libs/qt-core:4"
 

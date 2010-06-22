@@ -8,7 +8,7 @@ DESCRIPTION="Dune Legacy is an open source clone of Dune 2."
 HOMEPAGE="http://dunelegacy.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 
-LICENSE="GPL-2 or later"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ppc"
 IUSE=""
