@@ -27,7 +27,7 @@ RDEPEND="dev-libs/beecrypt
 	berkdb? ( sys-libs/db )
 	bzip2? ( app-arch/bzip2 )
 	lua? ( dev-lang/lua )
-	neon? ( net-misc/neon )
+	neon? ( net-libs/neon )
 	pcre? ( dev-libs/libpcre )
 	perl? ( dev-lang/perl )
 	python? ( dev-lang/python )
