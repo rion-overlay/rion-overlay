@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-arch/rpm/ChangeLog,v 1.104 2009/09/06 19:27:42 idl0r Exp $
 
+  23 Jun 2010; Rion <rion4ik@notagmail.com> rpm-5.1.9.ebuild:
+  fix neon dependency
+
   06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
   -files/rpm-4.0.4-gentoo-uclibc.patch, -files/rpm-4.0.4-sandbox.patch,
   rpm-4.4.6-r6.ebuild, rpm-4.4.7-r1.ebuild, rpm-4.4.7-r2.ebuild,
