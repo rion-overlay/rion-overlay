@@ -43,10 +43,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
-	jingle? (
-		net-im/psimedia
-		app-crypt/qca-ossl:2
-		)
+	jingle? ( net-im/psimedia )
 	ssl? ( app-crypt/qca-ossl:2 )"
 
 RESTRICT="test"
@@ -69,7 +66,6 @@ pkg_setup() {
 		ewarn "Note: some patches depend on other. So if you disabled some patch"
 		ewarn "and other started to fail to apply, you'll have to disable patches"
 		ewarn "that fail too."
-		ebeep
 
 		if use iconsets; then
 			ewarn
@@ -94,16 +90,12 @@ src_unpack() {
 				EGIT_REPO_URI="${LANGS_URI}-${x}"
 				EGIT_PROJECT="psi-l10n/${x}"
 			fi
-			S="${WORKDIR}/psi-l10n/${x}"
-			git_fetch
-			S="${WORKDIR}/${P}"
+			S="${WORKDIR}/psi-l10n/${x}" git_fetch
 		fi
 	done
 
 	if use extras; then
-		S="${WORKDIR}/patches"
-		subversion_fetch "${ESVN_REPO_URI}/patches"
-		S="${WORKDIR}/${P}"
+		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
 		if use iconsets; then
 			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
 		else
@@ -119,9 +111,6 @@ src_prepare() {
 	rm -rf third-party/qca # We use system libraries.
 
 	if use extras; then
-		EPATCH_EXCLUDE="${MY_EPATCH_EXCLUDE}
-			*-win32-*
-			*dirty-check*" \
 		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
 		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
@@ -161,7 +150,6 @@ src_configure() {
 				use webkit && echo '--enable-webkit'
 				} )"
 
-	echo "${confcmd}"
 	${confcmd} || die "configure failed"
 }
 
@@ -179,7 +167,7 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install || die "emake install failed"
-	rm -f "${D}"/usr/share/psi/{COPYING,README}
+	rm "${D}"/usr/share/psi/{COPYING,README}
 
 	# this way the docs will be installed in the standard gentoo dir
 	newdoc iconsets/roster/README README.roster || die
