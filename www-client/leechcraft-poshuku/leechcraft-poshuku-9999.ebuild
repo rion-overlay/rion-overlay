@@ -26,7 +26,7 @@ src_configure() {
 		CMAKE_BUILD_TYPE="Release"
 	fi
 
-	$(cmake-utils_use_enable idn IDN)
+	local mycmakeargs="$(cmake-utils_use_enable idn IDN)"
 
 	cmake-utils_src_configure
 }
