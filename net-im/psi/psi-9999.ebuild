@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
-	jingle? ( net-im/psimedia )
+	jingle? (
+		app-crypt/qca-ossl
+		net-im/psimedia
+	)
 	ssl? ( app-crypt/qca-ossl:2 )"
 
 RESTRICT="test"
