@@ -1,0 +1,14 @@
+# ChangeLog for dev-perl/CSS-Minifier-XS
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*CSS-Minifier-XS-0.05 ( 12 Jun 2010 )
+
+  12 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +CSS-Minifier-XS-0.05.ebuild:
+  new version
+
+  20 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +CSS-Minifier-XS-0.04.ebuild, +metadata.xml:
+  initial commit
+
