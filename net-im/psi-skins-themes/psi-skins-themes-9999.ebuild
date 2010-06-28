@@ -11,8 +11,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="${DEPEND}"
-RDEPEND="${RDEPEND}"
 
 ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/skins/"
 
