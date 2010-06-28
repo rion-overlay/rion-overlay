@@ -1,0 +1,22 @@
+# ChangeLog for app-misc/qtnote
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header$
+
+  25 Apr 2010; Rion <rion4ik@gmail.com> -qtnote-0.1.1.ebuild,
+  +qtnote-0.2.0.ebuild:
+  qtnote-0.2.0 release
+
+  23 Apr 2010; Rion <rion4ik@notagmail.com> +qtnote-0.1.1.ebuild:
+  added stable version
+
+  22 Apr 2010; Rion <rion4ik@notagmail.com> qtnote-9999.ebuild:
+  using PREFIX
+
+  11 Apr 2010; Rion <rion4ik@gmail.com> qtnote-9999.ebuild:
+  qtnote: drop keywords and fix unpack
+
+*qtnote-9999 (11 Apr 2010)
+
+  11 Apr 2010; Rion <rion4ik@gmail.com> +qtnote-9999.ebuild:
+  Added new package
+

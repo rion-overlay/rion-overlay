@@ -1,0 +1,37 @@
+#!/bin/bash
+# http://gentoo-overlays.zugaina.org/webapps-experimental/portage/www-apps/webgui/files/reconfig
+# commited to rion: slepnoga aka A.Vinogradov; <spamslepnoga@inbox.ru>
+# Date: 24.03.2010
+
+die() {
+	echo "#####"
+	echo $1
+	echo "#####"
+	exit 1
+}
+
+if [ $1 = "install" ]; then
+
+#	if [ ! -e ${MY_INSTALLDIR}/log/webgui.log ]; then
+#		touch ${MY_INSTALLDIR}/log/webgui.log && chown ${VHOST_SERVER_GID}:${VHOST_SERVER_UID} ${MY_INSTALLDIR}/log/webgui.log
+#	fi
+
+	# set webguiRoot
+	sed -e "s|/data/WebGUI|${MY_INSTALLDIR}|" -i ${MY_INSTALLDIR}/sbin/preload.perl
+	# handle config files
+	if [[ -e ${MY_INSTALLDIR}/etc/${VHOST_HOSTNAME}.conf ]]; then
+		echo "${VHOST_HOSTNAME}.conf already exists, skipping"
+	else
+		cp ${MY_INSTALLDIR}/etc/WebGUI.conf.original ${MY_INSTALLDIR}/etc/${VHOST_HOSTNAME}.conf || die "cp failed"
+	sed -e "s|/data/WebGUI|${MY_INSTALLDIR}|" -i ${MY_INSTALLDIR}/etc/${VHOST_HOSTNAME}.conf || die "sed failed"
+	fi
+	# create log configs
+	if [[ -e ${MY_INSTALLDIR}/etc/log.conf ]]; then
+		echo "log.conf already exists, skipping"
+	else
+		cp ${MY_INSTALLDIR}/etc/log.conf.original ${MY_INSTALLDIR}/etc/log.conf || die "cp failed"
+	fi
+
+elif [ $1 = "clean" ]; then
+	echo $1
+fi

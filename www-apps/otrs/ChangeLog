@@ -1,0 +1,39 @@
+# ChangeLog for www-apps/otrs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  20 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.7.ebuild,
+  +files/apache2-2.patch:
+  sunrise fix
+
+  20 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.7.ebuild:
+  Fix DEPEND logic
+
+  16 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> -otrs-2.4.5.ebuild,
+  -otrs-2.4.6.ebuild, +otrs-2.4.7.ebuild:
+  delete affected www-apps/otrs version and bump
+
+  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> -otrs-2.4.1.ebuild:
+  drop old
+
+  13 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.4.6.ebuild:
+  version bump; add cjk USE
+
+  16 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.5.ebuild,
+  +files/reconfig-3:
+  fix reconfig script - new SetPermissions.pl script in upstream
+
+  28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.5.ebuild:
+  keyworded ~x86 ~amd64
+
+*otrs-2.4.5.ebuild
+  
+  19 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.4.5.ebuild:
+  add new version
+
+*otrs-2.4.1 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +files/apache2.patch,
+  +otrs-2.4.1.ebuild, +files/dbi_finish.patch, +metadata.xml:
+  initial commit,rewrite official ebuild,recommit my overlay  
+
