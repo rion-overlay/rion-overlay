@@ -17,6 +17,7 @@ RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-misc/leechcraft-core-${PV}
 		=net-misc/leechcraft-summary-${PV}
 		=net-misc/leechcraft-qrosp-${PV}
+		=app-editors/leechcraft-popishu-${PV}
 		=net-misc/leechcraft-auscrie-${PV}
 		kde? ( =net-misc/leechcraft-anhero-${PV} )
 		=net-misc/leechcraft-kinotify-${PV}
