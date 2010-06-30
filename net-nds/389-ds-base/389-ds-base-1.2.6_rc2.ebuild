@@ -21,7 +21,7 @@ ALL_DEPEND="dev-libs/nss[utils]
 			dev-libs/nspr
 			dev-libs/svrcore
 			dev-libs/mozldap
-			>=dev-libs/cyrus-sasl-2.1.19
+			>=dev-libs/cyrus-sasl-2.1.19[kerberos?]
 			>=dev-libs/icu-3.4
 			>=sys-libs/db-4.5
 			>=net-analyzer/net-snmp-5.1.2
