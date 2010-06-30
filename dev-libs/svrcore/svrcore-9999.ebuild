@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit multilib cvs
+inherit multilib cvs autotools eutils
 
 DESCRIPTION="Mozilla LDAP C SDK"
 HOMEPAGE="http://wiki.mozilla.org/LDAP_C_SDK"
@@ -23,6 +23,17 @@ DEPEND=">=dev-libs/nss-3.11
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/"mozilla/security/svrcore
+
+src_unpack() {
+	cvs_src_unpack 
+#	ecvs_clean "${S}"
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/svrcore-9999-gentoo.patch || die
+	eautoreconf
+}
+
 src_configure() {
 	econf  --with-pic || die
 }
