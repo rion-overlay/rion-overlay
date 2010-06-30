@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Jun 2010; <slep@gentoo.org> 389-ds-base-1.2.6_rc2.ebuild:
+  add kerberos use cyrus-sasl depend
+
   30 Jun 2010; <slep@gentoo.org> -389-ds-base-1.2.6_alpha4.ebuild:
   remove alpha ebuild
 
