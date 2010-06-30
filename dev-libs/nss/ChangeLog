@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.157 2009/09/24 23:35:09 anarchy Exp $
 
+  30 Jun 2010; <slep@gentoo.org> +nss-3.12.6-r102.ebuild:
+  sync witch portage tree
+
   06 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/nss-3.12.5-gentoo-fixups.diff, +nss-3.12.6-r101.ebuild,
   +files/nss-3.12.6-gentoo-fixup-warnings.patch:
