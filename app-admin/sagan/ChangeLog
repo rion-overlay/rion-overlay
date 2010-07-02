@@ -1,0 +1,11 @@
+# ChangeLog for app-admin/sagan
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sagan-0.1.0
+
+  27 Jun 2010; <slep@gentoo.org> +sagan-0.1.0.ebuild,
+  +files/install_destdir_fix.patch, +files/sagan.confd, +files/sagan.init,
+  +files/sysconfig_location.patch, +metadata.xml:
+  initila commit
+

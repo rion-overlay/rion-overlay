@@ -1,0 +1,118 @@
+# ChangeLog for www-servers/nginx
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*nginx-0.8.40
+
+  08 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.8.40.ebuild:
+  bump
+
+  07 Jun 2010; Rion <rion4ik@notagmail.com> -nginx-0.8.38.ebuild,
+  +nginx-0.8.38-r1.ebuild:
+  synced with portage
+
+  01 Jun 2010; Rion <rion4ik@notagmail.com> nginx-0.8.38.ebuild:
+  remove broken mp4 module
+
+  31 May 2010; Rion <rion4ik@notagmail.com> -nginx-0.8.36-r1.ebuild,
+  +nginx-0.8.38.ebuild:
+  new version
+
+  15 May 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -nginx-0.8.34-r1.ebuild, -nginx-0.8.35.ebuild, -nginx-0.8.36.ebuild,
+  metadata.xml:
+  remowe old ebuld
+
+  04 May 2010; Rion <rion4ik@notagmail.com> +nginx-0.8.36-r1.ebuild:
+  sync with portage
+
+*+nginx-0.8.36
+
+  26 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.8.36.ebuild:
+  new version
+
+  12 Mar 2010; <slep@gentoo.org> -nginx-0.8.32.ebuild, -nginx-0.8.33.ebuild,
+  nginx-0.8.34-r1.ebuild, metadata.xml:
+  delete old ebuild
+
+  12 Mar 2010; <slep@gentoo.org> nginx-0.8.34-r1.ebuild, metadata.xml:
+  QA fix
+
+  02 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -nginx-0.8.30-r51.ebuild, +nginx-0.8.33.ebuild:
+  add new
+
+  12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -nginx-0.8.29-r51.ebuild, -nginx-0.8.31-r50.ebuild:
+  drop old version
+
+  12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.8.32.ebuild,
+  metadata.xml:
+  version bump,scgi support
+
+  15 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> -nginx-0.8.28-r50.ebuild:
+  delete old ebuild	
+
+  15 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>+nginx-0.8.29-r51.ebuild, 
+  metadata.xml: add chunk use flag
+
+  06 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  nginx-0.8.28-r50.ebuild, nginx-0.8.29-r50.ebuild:
+  fix bad depend
+
+  01 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.29-r50.ebuild:
+  version bump
+
+  27 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -nginx-0.8.29-r50.ebuild, -nginx-0.8.30-r50.ebuild,
+  +nginx-0.8.31-r50.ebuild:
+  delete old ebuild
+
+  27 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.31-r50.ebuild:
+  new minor version
+
+  20 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.30-r51.ebuild, metadata.xml:
+  add use libatomic
+
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.30-r50.ebuild:
+  nginx-0.8.30
+
+  27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -nginx-0.8.22-r50.ebuild:
+  delete nginx-0.8.22-r50.ebuild renegotiation vulnerability in SSL protocol
+
+  27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -nginx-0.8.21-r50.ebuild:
+  delete old version
+
+  27 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.28-r50.ebuild:
+  add new dev. version
+
+  10 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.22-r50.ebuild:
+  version bump
+
+  08 Nov 2009; <slep@gentoo.org> -nginx-0.8.20-r50.ebuild:
+  remove old version
+
+  8 Noj 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+   nginx-0.8.21-r50.ebuild:
+   fix more bug
+
+  29 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.21-r50.ebuild:
+  version bump
+
+  20 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +nginx-0.8.20-r50.ebuild:
+  add new version
+
+  05 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> nginx-0.8.13.ebuild,
+  nginx-0.8.13-r10.ebuild:
+  drop untested keywords
+
