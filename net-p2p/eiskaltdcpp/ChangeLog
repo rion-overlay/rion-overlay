@@ -1,0 +1,47 @@
+# ChangeLog for net-p2p/eiskaltdcpp
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  22 Apr 2010; mva <i.am@mva.name> eiskaltdcpp-9999.ebuild:
+  Added Poland language to 9999 ebuild.
+
+  13 Apr 2010; Rion <rion4ik@gmail.com> eiskaltdcpp-2.0.ebuild,
+  eiskaltdcpp-9999.ebuild:
+  reworked linguas
+
+  10 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> eiskaltdcpp-9999.ebuild:
+  also add in 9999
+
+  10 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> eiskaltdcpp-2.0.ebuild:
+  add linguas use in 2.0 - tnx WiseLord
+
+*eiskaltdcpp-2.0
+
+  12 Mar 2010; <slep@gentoo.org> eiskaltdc-9999.ebuild:
+  delete cmake depend in ebuild - this depend inherit in eclass
+
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +eiskaltdc-1.0.40.ebuild:
+  version bump
+
+  07 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +eiskaltdc-9999-r1.ebuild:
+  add 9999 ebuild in Cmake build system testing
+
+  20 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +eiskaltdc-1.0.2.ebuild, eiskaltdc-9999.ebuild:
+  add new version
+  20 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> -eiskaltdc-1.0.0.ebuild:
+  delete old version
+
+  20 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> 
+  eiskaltdc-9999.ebuild:
+  clean ebuild code
+
+  19 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> eiskaltdc-0.5a.ebuild,
+  metadata.xml:
+  fix bad description
+
+  07 Aug 2009; <anti@gentoo.org> ChangeLog:
+  Changelog bump
+
