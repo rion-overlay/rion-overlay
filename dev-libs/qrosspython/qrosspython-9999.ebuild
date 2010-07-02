@@ -4,13 +4,14 @@
 
 EAPI=3
 
-DESCRIPTION="Python interpreter for Qross."
-HOMEPAGE="http://github.com/0xd34df00d/Qross"
-
 EGIT_REPO_URI="git://github.com/0xd34df00d/Qross.git"
 EGIT_PROJECT="qross-${PV}"
 PYTHON_DEPEND="2"
-inherit git python cmake-utils
+
+inherit python cmake-utils git
+
+DESCRIPTION="Python scripting backend for Qross."
+HOMEPAGE="http://github.com/0xd34df00d/Qross"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,12 +23,6 @@ RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${S}/src/bindings/python/qrosspython"
 CMAKE_MIN_VERSION="2.8"
-
-src_unpack() {
-	git_src_unpack
-
-	cd "${S}"
-}
 
 src_configure() {
 	if use debug ; then
