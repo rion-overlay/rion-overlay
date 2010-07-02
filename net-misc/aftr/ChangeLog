@@ -1,0 +1,10 @@
+# ChangeLog for net-misc/aftr
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*aftr-1.0.1 ( 27 Mar 2010 )
+
+  27 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> +aftr-1.0.1.ebuild,
+  +files/aftr.initd, +metadata.xml:
+  initial commit
+
