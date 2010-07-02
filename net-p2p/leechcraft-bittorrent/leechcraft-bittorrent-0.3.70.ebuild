@@ -10,7 +10,7 @@ DESCRIPTION="Full-featured BitTorrent client plugin for LeechCraft."
 
 IUSE="debug"
 DEPEND="=net-misc/leechcraft-core-${PV}
-		>=net-libs/rb_libtorrent-0.15[crypt,dht]"
+		>=net-libs/rb_libtorrent-0.15.1"
 RDEPEND="${DEPEND}
 		virtual/leechcraft-task-show"
 KEYWORDS="~amd64"

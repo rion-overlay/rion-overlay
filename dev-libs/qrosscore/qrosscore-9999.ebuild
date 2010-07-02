@@ -4,13 +4,13 @@
 
 EAPI=3
 
-DESCRIPTION="Qross is a KDE-free version of Kross."
-HOMEPAGE="http://github.com/0xd34df00d/Qross"
-
 EGIT_REPO_URI="git://github.com/0xd34df00d/Qross.git"
 EGIT_PROJECT="qross-${PV}"
 
-inherit git cmake-utils
+inherit cmake-utils git
+
+DESCRIPTION="KDE-free version of Kross (core libraries and Qt Script backend)."
+HOMEPAGE="http://github.com/0xd34df00d/Qross"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,12 +24,6 @@ RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${S}/src/qross"
 CMAKE_MIN_VERSION="2.8"
-
-src_unpack() {
-	git_src_unpack
-
-	cd "${S}"
-}
 
 src_configure() {
 	if use debug ; then

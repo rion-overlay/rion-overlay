@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Jun 2010; <slep@gentoo.org> -389-console-1.1.5.ebuild:
+  drop old slot ebuild
+
   09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -389-console-1.1.3.ebuild, -389-console-1.1.4_alpha1.ebuild:
   remove old ebuild
