@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v${PV}/s
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 debug +sasl"
+IUSE="ipv6 debug +sasl cxx"
 
 DEPEND=">=dev-libs/nss-3.11.4
 	>=dev-libs/nspr-4.0.1
@@ -48,11 +48,18 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable amd64 64bit) \
 		$(use_with sasl) \
+		$(use_enable cxx cplus) \
 		--with-svrcore-inc=/usr/include/svrcore \
 		--with-svrcore-lib=/usr/$(get_libdir)/svrcore \
 		--enable-clu \
 		--enable-optimize \
+		--enable-clu \
 		${myconf} || die "econf failed"
+}
+
+src_compile() {
+	export ${LDFLAGS}
+	emake LDFLAGS=${LDFLAGS} || die
 }
 
 src_install () {
@@ -74,7 +81,7 @@ src_install () {
 	    -e "s,%MOZLDAP_VERSION%,${PV},g" \
 	   "${S}"/"${PN}".pc.in > "${S}"/"${PN}".pc || die "sed in install failed"
 
-	emake  install || die "make failed"
+	emake  LDFLAGS=${LDFLAGS} install || die "make failed"
 	local MY_S="${WORKDIR}"/"${P}"/mozilla/dist/
 
 	rm -rf "${MY_S}/bin/"lib*.so

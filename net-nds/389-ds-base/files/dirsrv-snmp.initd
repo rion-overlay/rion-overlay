@@ -3,22 +3,42 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+# slepnoga v2 Jul  4 2010
+#additional progs grep -
 
+opts="checkconfig"
 PIDFILE="/var/run/ldap-agent.pid"
 CONFIGFILE="/etc/dirsrv/config/ldap-agent.conf"
-
+INSTANCES=""
 # instance support in progress
 
 depend() {
 	need net
+	use dns
 	use logger
 }
 
+checkconfig() {
+	# not run this code - it's not complete
+	if [ -z /etc/dirsvr/ldap-snmp.conf ] ;then
+		eerror "Config file for dirsvr-snmp not found"
+		eerror "Please create file /etc/dirsvr/ldap-snmp.conf"
+		eend 1
+		return 1
+	elif
+#	INSTANCES=$(grep instances /etc/dirsvr/ldap-snmp.conf"
+	sleep 1
+	fi
+}
+
+
 start() {
+	checkconfig || return 1
 	ebegin "Starting ldap-snmp agent"
 
-	start-stop-daemon --start --quiet -m \
-	--pidfile $PIDFILE --exec /usr/sbin/ldap-agent -- ${CONFIGFILE}
+	start-stop-daemon --start  --exec /usr/sbin/ldap-agent-bin -- ${CONFIGFILE}
+	# start is slow
+	sleep 5 
 	eend $?
 }
 
@@ -33,6 +53,6 @@ stop() {
 
 restart() {
 	svc_stop
-	sleep 2
+	sleep 2# start is slow
 	svc_start
 }
