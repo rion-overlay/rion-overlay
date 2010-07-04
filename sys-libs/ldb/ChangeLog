@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Jul 2010; <slep@gentoo.org> +ldb-0.9.11_rc20100531.ebuild,
+  metadata.xml:
+  add new masked version for testing
+
 *ldb-0.9.10_rc20100203 ( 12 Jun 2010 )
 
   12 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
