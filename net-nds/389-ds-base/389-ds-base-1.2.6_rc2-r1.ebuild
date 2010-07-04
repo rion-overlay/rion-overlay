@@ -167,4 +167,9 @@ if use selinux;then
 	fi
 
 fi
+	einfo "For use dirsvr-snmp daemon, please rewrite"
+	einfo "snmp.conf file and enable agentx setting them"
+	einfo "Default directory for agentx socket is /var/agentx"
+	einfo "Becouse net-snmp ebuild not created this directory"
+	einfo "this ebuild create it"
 }

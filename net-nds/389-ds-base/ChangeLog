@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Jul 2010; <slep@gentoo.org> 389-ds-base-1.2.6_rc2-r1.ebuild:
+  add einfo text for snmp dir's
+
   04 Jul 2010; <slep@gentoo.org> +389-ds-base-1.2.6_rc2-r1.ebuild:
   add create call for /var/agentx directory - required for ldap-agent (
   dirsvr-snmp) daemon
