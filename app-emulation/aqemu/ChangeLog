@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Jul 2010; <slep@gentoo.org> +aqemu-0.8_beta2.ebuild:
+  add new beta2 ebuild for testing
+
   05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-0.7.3-r2.ebuild,
   aqemu-9999.ebuild:
   fix ebuild code - add vnc use
