@@ -23,28 +23,23 @@ HTTP_HEADERS_MORE_MODULE_SHA1="5cd9a38"
 
 # http_passenger (http://www.modrails.com/, MIT license)
 # TODO: currently builds some stuff in src_configure
-PASSENGER_PV="2.2.11"
+PASSENGER_PV="2.2.12"
 USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
 
 # http_push (http://pushmodule.slact.net/, MIT license)
 HTTP_PUSH_MODULE_P="nginx_http_push_module-0.692"
 
-# http_uwsgi (http://projects.unbit.it/uwsgi/, GPL-2 license)
-HTTP_UWSGI_MODULE_PV="0.9.5.1"
-
 inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://sysoev.ru/nginx/
 	http://www.modrails.com/
-	http://pushmodule.slact.net/
-	http://projects.unbit.it/uwsgi/"
+	http://pushmodule.slact.net/"
 SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 	nginx_modules_http_headers_more? ( http://github.com/agentzh/headers-more-nginx-module/tarball/v${HTTP_HEADERS_MORE_MODULE_PV} -> ${HTTP_HEADERS_MORE_MODULE_P}.tar.gz )
 	nginx_modules_http_passenger? ( mirror://rubyforge/passenger/passenger-${PASSENGER_PV}.tar.gz )
 	nginx_modules_http_push? ( http://pushmodule.slact.net/downloads/${HTTP_PUSH_MODULE_P}.tar.gz )
-	nginx_modules_http_uwsgi? ( http://projects.unbit.it/downloads/uwsgi-${HTTP_UWSGI_MODULE_PV}.tar.gz )
 	pam? ( http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
 	rrd? ( http://wiki.nginx.org/images/9/9d/Mod_rrd_graph-0.2.0.tar.gz )
 	chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v0.19 -> chunkin-nginx-module-0.19.tgz )"
@@ -55,14 +50,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif fastcgi
-geo gzip limit_req limit_zone map memcached proxy referer rewrite ssi
-split_clients upstream_ip_hash userid"
+geo gzip limit_req limit_zone map memcached proxy referer rewrite scgi ssi
+split_clients upstream_ip_hash userid uwsgi"
 NGINX_MODULES_OPT="addition dav degradation flv geoip gzip_static image_filter
 perl random_index realip secure_link stub_status sub xslt"
 NGINX_MODULES_MAIL="imap pop3 smtp"
-NGINX_MODULES_3RD="http_headers_more http_passenger http_push http_uwsgi"
+NGINX_MODULES_3RD="http_headers_more http_passenger http_push"
 
-IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam perftools rrd ssl"
+IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam +pcre perftools rrd ssl"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -80,14 +75,17 @@ for mod in $NGINX_MODULES_3RD; do
 	IUSE="${IUSE} nginx_modules_${mod}"
 done
 
-CDEPEND=">=dev-libs/libpcre-4.2
+CDEPEND="
+	pcre? ( >=dev-libs/libpcre-4.2 )
 	ssl? ( dev-libs/openssl )
 	http-cache? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_geo? ( dev-libs/geoip )
 	nginx_modules_http_gzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip_static? ( sys-libs/zlib )
+	nginx_modules_http_image_filter? ( media-libs/gd )
 	nginx_modules_http_perl? ( >=dev-lang/perl-5.8 )
-	nginx_modules_http_secure_link? ( dev-libs/openssl  )
+	nginx_modules_http_rewrite? ( >=dev-libs/libpcre-4.2 )
+	nginx_modules_http_secure_link? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_xslt? ( dev-libs/libxml2 dev-libs/libxslt )
 	nginx_modules_http_passenger? (
 		$(ruby_implementation_depend ruby18)
@@ -102,16 +100,7 @@ CDEPEND=">=dev-libs/libpcre-4.2
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	libatomic? ( dev-libs/libatomic_ops )"
-
-# Maintainer notes:
-# - http_rewrite-independent pcre-support makes sense for matching locations without an actual rewrite
-# - any http-module activates the main http-functionality and overrides USE=-http
-# - keep the following 3 requirements in mind before adding external modules:
-#   * alive upstream
-#   * sane packaging
-#   * builds cleanly
-# - TODO: passenger currently builds some stuff in src_configure
-# - TODO: test the google-perftools module (included in vanilla tarball)
+PDEPEND="vim-syntax? ( app-vim/nginx-syntax )"
 
 pkg_setup() {
 	ebegin "Creating nginx user and group"
@@ -136,12 +125,6 @@ pkg_setup() {
 		ewarn "This nginx installation is not supported!"
 		ewarn "Make sure you can reproduce the bug without those modules"
 		ewarn "_before_ reporting bugs."
-	fi
-
-	# third-party modules
-	if use nginx_modules_http_headers_more; then
-		http_enabled=1
-		myconf="${myconf} --add-module=${WORKDIR}/agentzh-headers-more-nginx-module-${HTTP_HEADERS_MORE_MODULE_SHA1}"
 	fi
 
 	if use nginx_modules_http_passenger; then
@@ -179,6 +162,7 @@ src_configure() {
 	use debug && myconf="${myconf} --with-debug"
 	use ipv6 && myconf="${myconf} --with-ipv6"
 	use libatomic && myconf="${myconf} --with-libatomic"
+	use pcre && myconf="${myconf} --with-pcre"
 
 	# HTTP modules
 	for mod in $NGINX_MODULES_STD; do
@@ -200,6 +184,12 @@ src_configure() {
 		myconf="${myconf} --with-http_realip_module"
 	fi
 
+	# third-party modules
+	if use nginx_modules_http_headers_more; then
+		http_enabled=1
+		myconf="${myconf} --add-module=${WORKDIR}/agentzh-headers-more-nginx-module-${HTTP_HEADERS_MORE_MODULE_SHA1}"
+	fi
+
 	if use nginx_modules_http_passenger; then
 		http_enabled=1
 		myconf="${myconf} --add-module=${WORKDIR}/passenger-${PASSENGER_PV}/ext/nginx"
@@ -208,11 +198,6 @@ src_configure() {
 	if use nginx_modules_http_push; then
 		http_enabled=1
 		myconf="${myconf} --add-module=${WORKDIR}/${HTTP_PUSH_MODULE_P}"
-	fi
-
-	if use nginx_modules_http_uwsgi; then
-		http_enabled=1
-		myconf="${myconf} --add-module=${WORKDIR}/uwsgi-${HTTP_UWSGI_MODULE_PV}/nginx"
 	fi
 
 	if use http || use http-cache; then
@@ -269,7 +254,8 @@ src_configure() {
 		--http-client-body-temp-path=/var/tmp/${PN}/client \
 		--http-proxy-temp-path=/var/tmp/${PN}/proxy \
 		--http-fastcgi-temp-path=/var/tmp/${PN}/fastcgi \
-		--with-pcre \
+		--http-scgi-temp-path=/var/tmp/${PN}/scgi \
+		--http-uwsgi-temp-path=/var/tmp/${PN}/uwsgi \
 		${myconf} || die "configure failed"
 }
 
@@ -280,7 +266,7 @@ src_compile() {
 }
 
 src_install() {
-	keepdir /var/log/${PN} /var/tmp/${PN}/{client,proxy,fastcgi}
+	keepdir /var/log/${PN} /var/tmp/${PN}/{client,proxy,fastcgi,scgi,uwsgi}
 
 	dosbin objs/nginx
 	newinitd "${FILESDIR}"/nginx.init-r2 nginx
@@ -307,11 +293,6 @@ src_install() {
 	if use nginx_modules_http_push; then
 		docinto ${HTTP_PUSH_MODULE_P}
 		dodoc "${WORKDIR}"/${HTTP_PUSH_MODULE_P}/{changelog.txt,protocol.txt,README}
-	fi
-
-	if use nginx_modules_http_uwsgi; then
-		insinto /etc/nginx
-		doins "${WORKDIR}"/uwsgi-${HTTP_UWSGI_MODULE_PV}/nginx/uwsgi_params
 	fi
 
 	if use nginx_modules_http_passenger; then
