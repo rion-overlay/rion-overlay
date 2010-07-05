@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/ChangeLog,v 1.70 2007/01/02 04:22:46 ticho Exp $
 
+  05 Jul 2010; Rion <rion4ik@notagmail.com> grub-0.97-r90.ebuild:
+  updated patchset
+
   02 Jan 2007; Andrej Kacian <ticho@gentoo.org> grub-0.97-r3.ebuild:
   Stable on x86, bug #159636.
 
