@@ -11,7 +11,7 @@ EAPI="2"
 
 inherit mount-boot eutils flag-o-matic toolchain-funcs autotools linux-info
 
-PATCHVER="1.9" # Should match the revision ideally
+PATCHVER="1.10" # Should match the revision ideally
 DESCRIPTION="GNU GRUB Legacy boot loader"
 HOMEPAGE="http://www.gnu.org/software/grub/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
@@ -39,10 +39,15 @@ pkg_setup() {
 
 src_prepare() {
 	# patch breaks booting for some people #111885
-	rm "${WORKDIR}"/patch/400_*
+	rm "${WORKDIR}"/patch/400_*reiser4*
+
+	# remove useless patches and fix other patches after that
+	rm "${WORKDIR}"/patch/001_*
+	rm "${WORKDIR}"/patch/002_*
+	sed 's/terminfo.c tparm.c graphics.c/terminfo.c tparm.c/' \
+	 	-i "${WORKDIR}"/patch/011_all_grub-0.97-varargs.patch
 
 	# copy suse patches and remove useless splash patch
-	rm "${WORKDIR}"/patch/001_*
 	for i in `ls -1 "${FILESDIR}/suse"`; do
 		cp "${FILESDIR}"/suse/"${i}" "${WORKDIR}"/patch/`echo "${i}" |sed \
 				's/^\([0-9]\+\)-\(.*\)$/9\1_all_grub-0.97-\2.patch/'`
