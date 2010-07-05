@@ -1,0 +1,7 @@
+# ChangeLog for net-im/karaka
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
+  repoman fix
+
