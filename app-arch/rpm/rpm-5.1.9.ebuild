@@ -16,7 +16,7 @@ SRC_URI="http://rpm5.org/files/rpm/rpm-5.1/${MY_P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="berkdb bzip2 doc lua magic neon nls pcre perl python selinux sqlite"
+IUSE="+berkdb bzip2 doc lua magic neon nls pcre perl python selinux sqlite"
 
 #	dmalloc? ( dev-libs/dmalloc )
 #	efence? ( dev-util/efence )
