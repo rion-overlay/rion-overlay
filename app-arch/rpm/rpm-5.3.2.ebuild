@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit multilib distutils python
+inherit multilib python distutils
 
 MY_P=${P/_alpha/a}
 MY_P=${P/_beta/b}
@@ -16,13 +16,13 @@ SRC_URI="http://rpm5.org/files/rpm/rpm-5.3/${MY_P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+berkdb bzip2 doc lua magic neon nls pcre perl python selinux sqlite"
+IUSE="+berkdb bzip2 dmalloc doc efence keyutils lua magic neon nls pcre perl python readline selinux sqlite xar +xz"
 
-#	dmalloc? ( dev-libs/dmalloc )
-#	efence? ( dev-util/efence )
-#	keyutils? ( sys-apps/keyutils )
-#	xar? ( app-arch/xar )
-RDEPEND="dev-libs/beecrypt
+RDEPEND="dmalloc? ( dev-libs/dmalloc )
+	efence? ( dev-util/efence )
+	keyutils? ( sys-apps/keyutils )
+	xar? ( app-arch/xar )
+	dev-libs/beecrypt
 	dev-libs/popt
 	berkdb? ( sys-libs/db )
 	bzip2? ( app-arch/bzip2 )
@@ -31,8 +31,10 @@ RDEPEND="dev-libs/beecrypt
 	pcre? ( dev-libs/libpcre )
 	perl? ( dev-lang/perl )
 	python? ( dev-lang/python )
+	readline? ( sys-libs/readline )
 	selinux? ( sys-libs/libselinux )
-	sqlite? ( dev-db/sqlite )"
+	sqlite? ( dev-db/sqlite )
+	xz? ( app-arch/xz-utils )"
 # comes bundled with modified zlib
 #	>=sys-libs/zlib-1.2.3-r1
 DEPEND="${RDEPEND}
@@ -49,30 +51,32 @@ pkg_setup () {
 }
 
 src_prepare() {
-	rm -rf file xar #db
+	rm -rf file xar db pcre
 	sed -i \
 		-e '/^pkgconfigdir/s:=.*:=$(libdir)/pkgconfig:' \
 		scripts/Makefile.in || die
 }
 
 src_configure() {
-#		$(use_with dmalloc) \
-#		$(use_with efence) \
-#		$(use_with keyutils) \
-#		$(use_with xar) \
+		$(use_with dmalloc) \
+		$(use_with efence) \
+		$(use_with keyutils) \
+		$(use_with xar) \
 	# --with-libelf
 	use python && pld="$(python_get_libdir)"
 	econf \
 		$(use_with berkdb db) \
 		$(use_with bzip2) \
+		$(use_with xz) \
 		$(use_with doc apidocs) \
 		$(use_with magic file) \
 		$(use_with lua) \
 		$(use_with neon) \
 		$(use_with nls) \
-		$(use_with pcre) \
+		$(use_with pcre pcre=external) \
 		$(use_with perl) \
 		$(use_with python) \
+		$(use_with readline) \
 		$(use_with selinux) \
 		$(use_with sqlite) \
 		$(use berkdb || use sqlite || echo --with-db) \
