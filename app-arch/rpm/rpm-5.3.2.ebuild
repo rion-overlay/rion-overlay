@@ -51,7 +51,7 @@ pkg_setup () {
 }
 
 src_prepare() {
-	rm -rf file xar db pcre
+	rm -rf file xar pcre #db ##crappy, crappy rpm!
 	sed -i \
 		-e '/^pkgconfigdir/s:=.*:=$(libdir)/pkgconfig:' \
 		scripts/Makefile.in || die
