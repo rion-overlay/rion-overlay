@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit multilib python distutils
+inherit multilib python
 
 MY_P=${P/_alpha/a}
 MY_P=${P/_beta/b}
@@ -47,7 +47,7 @@ pkg_setup () {
 	ewarn "If you are upgrading from an rpm version of 5.0.0 or lower, "
 	ewarn "your database will not be updated. Please back up your rpm "
 	ewarn "database, and run: "
-	ewarn "    rpm --initdb"
+	ewarn "    rpm --rebuilddb "
 }
 
 src_prepare() {
