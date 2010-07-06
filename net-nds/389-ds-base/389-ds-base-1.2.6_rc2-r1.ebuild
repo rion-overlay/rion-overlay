@@ -5,8 +5,10 @@
 EAPI=2
 
 WANT_AUTOMAKE="1.9"
+AT_NOELIBTOOLIZE="yes"
+
 MY_P=${P/_rc/.rc}
-inherit eutils multilib flag-o-matic autotools
+inherit eutils multilib flag-o-matic libtool
 
 DESCRIPTION="389 Directory Server (core librares  and daemons )"
 HOMEPAGE="http://port389.org/"
@@ -40,7 +42,6 @@ ALL_DEPEND="dev-libs/nss[utils]
 
 DEPEND="${ALL_DEPEND}
 			dev-util/pkgconfig
-			sys-devel/libtool:1.5
 			doc? ( app-doc/doxygen )
 			selinux? ( sys-devel/m4
 						>=sys-apps/checkpolicy-1.30.12 )
@@ -57,11 +58,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e 's/nobody/dirsrv/g' configure.ac
+#	sed -i -e 's/nobody/dirsrv/g' configure.ac
 
-	use selinux && epatch "${FILESDIR}/1.2.6"/*selinux*.patch
+#	use selinux && epatch "${FILESDIR}/1.2.6"/*selinux*.patch
 
-	eautoreconf
+	elibtoolize --portage
 }
 
 src_configure() {
