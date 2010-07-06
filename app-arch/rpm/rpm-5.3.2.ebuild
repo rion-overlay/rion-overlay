@@ -11,7 +11,7 @@ MY_P=${P/_beta/b}
 
 DESCRIPTION="RPM Package Manager"
 HOMEPAGE="http://rpm5.org/"
-SRC_URI="http://rpm5.org/files/rpm/rpm-5.1/${MY_P}.tar.gz"
+SRC_URI="http://rpm5.org/files/rpm/rpm-5.3/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
