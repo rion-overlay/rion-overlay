@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 if [[ ! ${PV} =~ 9999 ]]; then
-SRC_URI="mirror://sourceforge/xtables-addons/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/xtables-addons/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 else
 inherit git
