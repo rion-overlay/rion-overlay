@@ -11,7 +11,7 @@ HOMEPAGE="http://sf.net/projects/mailzu/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/MailZu%200.8RC3/MailZu_0.8RC3.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="ldap mysql postgres db_clean"
 
 DEPEND="mail-filter/amavisd-new[ldap?,mysql?,postgres?]"
