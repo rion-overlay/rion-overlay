@@ -6,11 +6,9 @@ EAPI=3
 
 inherit  distutils
 
-
 DESCRIPTION="python-krbV allows python programs to use Kerberos 5 authentication/security"
 HOMEPAGE="http://people.redhat.com/mikeb/python-krbV"
-SRC_URI="https://fedorahosted.org/python-krbV/attachment/wiki/Releases/python-krbV-1.0.90.tar.bz2?format=raw
--> python-krbV-1.0.90.tar.bz2"
+SRC_URI="https://fedorahosted.org/python-krbV/attachment/wiki/Releases/${P}.tar.bz2?format=raw -> ${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
