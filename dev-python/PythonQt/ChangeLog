@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*PythonQt-2.0.1
+
+  07 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> +PythonQt-2.0.1.ebuild:
+  bump
+
   02 Feb 2010; <slep@gentoo.org> PythonQt-1.1.ebuild:
   QA
 
