@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  python-krbV-1.0.90.ebuild:
+  small fix SRC_URI
+
   07 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +python-krbV-1.0.90.ebuild:
   rebase to FC14 rpm
