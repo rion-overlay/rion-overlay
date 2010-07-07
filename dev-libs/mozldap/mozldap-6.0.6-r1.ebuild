@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v${PV}/s
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 debug +sasl cxx"
+IUSE="ipv6 debug +sasl cxx minimal"
 
 DEPEND=">=dev-libs/nss-3.11.4
 	>=dev-libs/nspr-4.0.1
@@ -44,22 +44,23 @@ src_configure() {
 
 	myconf="${myconf} --libdir=/usr/$(get_libdir)/mozldap"
 
-	econf $(use_enable debug) \
+	econf \
+		$(use_enable debug) \
 		$(use_enable ipv6) \
 		$(use_enable amd64 64bit) \
 		$(use_with sasl) \
 		$(use_enable cxx cplus) \
 		--with-svrcore-inc=/usr/include/svrcore \
 		--with-svrcore-lib=/usr/$(get_libdir)/svrcore \
-		--enable-clu \
+		$(use_enable minimal clu) \
 		--enable-optimize \
 		--enable-clu \
 		${myconf} || die "econf failed"
 }
 
 src_compile() {
-	export ${LDFLAGS}
-	emake LDFLAGS=${LDFLAGS} || die
+#	export "${LDFLAGS}"
+	emake LDFLAGS="${LDFLAGS}" || die
 }
 
 src_install () {
