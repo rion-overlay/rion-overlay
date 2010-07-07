@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -Test-POE-Server-TCP-1.08.ebuild:
+  drop old
+
 *Test-POE-Server-TCP-1.10 (  12 Jun 2010 )
 
   12 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
