@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ppc"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/libsdl
@@ -57,4 +57,3 @@ pkg_postinst() {
 	elog "For playing in german or french you need additionally GERMAN.PAK"
 	elog "or FRENCH.PAK."
 }
-
