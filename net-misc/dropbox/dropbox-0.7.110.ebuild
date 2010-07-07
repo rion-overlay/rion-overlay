@@ -5,7 +5,7 @@
 EAPI=2
 inherit fdo-mime eutils
 
-DESCRIPTION="Dropbox Daemon (for users, who want to use Dropbox, but don't want to use gnome)."
+DESCRIPTION="Dropbox Daemon (precompiled, without gnome deps)."
 HOMEPAGE="http://dropbox.com/"
 SRC_URI="x86? ( http://www.getdropbox.com/download?plat=lnx.x86 -> dropbox-lnx.x86-${PV}.tar.gz )
 	amd64? ( http://www.getdropbox.com/download?plat=lnx.x86_64 -> dropbox-lnx.x86_64-${PV}.tar.gz )"
