@@ -10,7 +10,7 @@ HOMEPAGE="http://dropbox.com/"
 SRC_URI="x86? ( http://www.getdropbox.com/download?plat=lnx.x86 -> dropbox-lnx.x86-${PV}.tar.gz )
 	amd64? ( http://www.getdropbox.com/download?plat=lnx.x86_64 -> dropbox-lnx.x86_64-${PV}.tar.gz )"
 
-LICENSE="GPL3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
@@ -20,8 +20,8 @@ QA_EXECSTACK_x86="opt/dropbox-daemon/_ctypes.so"
 QA_EXECSTACK_amd64="opt/dropbox-daemon/_ctypes.so"
 
 RDEPEND="net-misc/wget
-        x11-libs/libnotify
-        x11-libs/libXinerama"
+	x11-libs/libnotify
+	x11-libs/libXinerama"
 
 DEPEND="${RDEPEND}"
 
