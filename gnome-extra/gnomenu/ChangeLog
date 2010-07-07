@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Jul 2010; Rion <rion4ik@gmail.com> -gnomenu-2.8.ebuild,
+  +gnomenu-2.9.ebuild:
+  new version
+
   18 Jun 2010; Rion <rion4ik@gmail.com> -gnomenu-2.7.ebuild,
   +gnomenu-2.8.ebuild:
   new version
