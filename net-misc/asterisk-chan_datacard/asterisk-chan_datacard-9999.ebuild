@@ -8,7 +8,7 @@ inherit eutils subversion
 DESCRIPTION="Datacard channel for Asterisk."
 ESVN_REPO_URI="https://www.makhutov.org/svn/chan_datacard/trunk"
 HOMEPAGE="http://www.makhutov.org/"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,4 +22,8 @@ DEPEND="${RDEPEND}"
 src_install() {
 insinto /usr/lib/asterisk/modules
 doins "${PN/*-/}.so"
+insinto /etc/asterisk
+doins etc/datacard.conf
+newdoc README.txt README
+newdoc LICENSE.txt LICENSE
 }
