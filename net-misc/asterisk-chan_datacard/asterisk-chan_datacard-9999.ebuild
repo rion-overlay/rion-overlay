@@ -20,7 +20,7 @@ RDEPEND=">=net-misc/asterisk-1.6.2.0
 DEPEND="${RDEPEND}"
 
 src_install() {
-insinto /usr/lib/asterisk/modules
+insinto /usr/$(get_libdir)/asterisk/modules
 doins "${PN/*-/}.so"
 insinto /etc/asterisk
 doins etc/datacard.conf

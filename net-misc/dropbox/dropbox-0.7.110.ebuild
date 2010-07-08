@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=2
-inherit fdo-mime eutils
+inherit eutils
 
 DESCRIPTION="Dropbox Daemon (precompiled, without gnome deps)."
 HOMEPAGE="http://dropbox.com/"
@@ -12,7 +12,7 @@ SRC_URI="x86? ( http://www.getdropbox.com/download?plat=lnx.x86 -> dropbox-lnx.x
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror strip"
 
@@ -36,5 +36,6 @@ src_install() {
 	fperms a+x "${dir}"/dropbox || die "fperms failed"
 	dosym "${dir}"/dropboxd /opt/bin/dropbox
 	make_desktop_entry dropbox "Dropbox Daemon" package.png
-	domenu /usr/share/applications/dropboxd-dropbox.desktop
+	insinto /etc/xdg/autostart
+	doins /usr/share/applications/dropbox-dropbox.desktop
 }
