@@ -16,7 +16,7 @@ EHG_REPO_URI="http://www.spmfilter.org/hg/${PN}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="berkdb debug ssl ldap zdb"
 
 RDEPEND="net-libs/libesmtp[ssl?]
