@@ -9,7 +9,7 @@ inherit webapp depend.php
 
 DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
 HOMEPAGE="http://www.sugarforge.org/"
-SRC_URI="http://dl.sugarforge.org/${PN}/1${MY_PN}6.0RC/${MY_PN}6.0RC/${MY_PN}-6.0.0RC2.zip"
+SRC_URI="http://dl.sugarforge.org/${PN}/1${MY_PN}6.0RC/${MY_PN}6.0RC/${MY_PN}-6.0.0RC3.zip"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
