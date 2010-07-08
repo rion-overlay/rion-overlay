@@ -6,11 +6,11 @@ EAPI="2"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-ant-2 rpm
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Symmetric Key JNI Package"
 HOMEPAGE="http://pki.fedoraproject.org"
-SRC_URI="http://pki.fedoraproject.org/pki/download/pki/1.2.0/fc11/SRPMS/symkey-1.2.0-2.fc11.src.rpm"
+SRC_URI="http://pki.fedoraproject.org/pki/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
@@ -19,9 +19,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEP=""
-RDEPEND=">=virtual/jre-1.5
+RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${COMMON_DEP}"
 
