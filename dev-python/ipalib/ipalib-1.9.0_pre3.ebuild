@@ -10,7 +10,7 @@ inherit python
 
 DESCRIPTION="Python libraries used by IPA"
 HOMEPAGE="http://www.freeipa.org"
-SRC_URI="http://freeipa.org/downloads/src/freeipa-1.9.0.pre1.tar.gz"
+SRC_URI="http://freeipa.org/downloads/src/freeipa-1.9.0.pre3.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,7 +26,7 @@ RDEPEND=">=dev-python/python-ldap-2.2.1[sasl,ssl]
 
 DEPEND=""
 
-S="${WORKDIR}"/freeipa-1.9.0.pre1/ipalib
+S="${WORKDIR}"/freeipa-1.9.0.pre3/ipalib
 
 python_enable_pyc
 
