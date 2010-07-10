@@ -11,7 +11,7 @@ inherit distutils
 
 DESCRIPTION="Python libraries used by IPA"
 HOMEPAGE="http://www.freeipa.org"
-SRC_URI="http://freeipa.org/downloads/src/freeipa-1.9.0.pre1.tar.gz"
+SRC_URI="http://freeipa.org/downloads/src/freeipa-1.9.0.pre3.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,7 +28,7 @@ RDEPEND=">=dev-python/python-ldap-2.2.1[sasl,ssl]
 DEPEND="${RDEPEND}
 		dev-python/setuptools"
 
-S="${WORKDIR}"/freeipa-1.9.0.pre1/ipapython
+S="${WORKDIR}"/freeipa-1.9.0.pre3/ipapython
 
 RESTRICT_PYTHON_ABIS="3.*"
 
