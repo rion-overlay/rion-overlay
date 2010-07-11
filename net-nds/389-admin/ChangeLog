@@ -1,0 +1,247 @@
+# ChangeLog for net-nds/389-admin
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Jun 2010; <slep@gentoo.org> 389-admin-1.1.11_alpha4.ebuild:
+  fix configure phase
+
+  13 Jun 2010; <slep@gentoo.org>
+  -files/1.1.10/0001-gentoo-apache-names.patch,
+  -files/1.1.10/0003-find-mod_nss.m4.patch,
+  -files/1.1.10/0004-rpath-fix.configure.ac.patch,
+  -files/1.1.10/0010-gentoo_selinux_makefile.patch,
+  -files/1.1.10/48_mod_admserv.conf, -files/1.1.10/48_mod_restartd.conf,
+  -files/1.1.11_alpha2/0001-gentoo-apache-names.patch,
+  -files/1.1.11_alpha2/0003-find-mod_nss.m4.patch,
+  -files/1.1.11_alpha2/0004-rpath-fix.configure.ac.patch,
+  -files/1.1.11_alpha2/0010-gentoo_selinux_makefile.patch,
+  -files/1.1.11_alpha2/48_mod_admserv.conf,
+  -files/1.1.11_alpha2/48_mod_restartd.conf,
+  +files/1.1.11_alpha4/0001-gentoo-apache-names.patch,
+  +files/1.1.11_alpha4/0003-find-mod_nss.m4.patch,
+  +files/1.1.11_alpha4/0004-rpath-fix.configure.ac.patch,
+  +files/1.1.11_alpha4/0010-gentoo_selinux_makefile.patch,
+  +files/1.1.11_alpha4/48_mod_admserv.conf,
+  +files/1.1.11_alpha4/48_mod_restartd.conf:
+  fix locations
+
+  09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.11_alpha2-r1.ebuild:
+  remove alpha ebuild
+
+*389-admin-1.1.11.a4
+
+  01 Jun 2010; <slep@gentoo.org> +389-admin-1.1.11_alpha4.ebuild:
+  revision bump
+
+  30 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.11_alpha2.ebuild, +389-admin-1.1.11_alpha2-r1.ebuild:
+  bimp
+
+  28 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  389-admin-1.1.11_alpha2.ebuild:
+  fix threads depends
+
+  28 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.10-r1.ebuild:
+  remove 10 version
+
+  17 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  389-admin-1.1.10-r1.ebuild, 389-admin-1.1.11_alpha2.ebuild:
+  fixed use flag ipv6, downgrade nspr library
+
+  14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/1.1.11_alpha2/0001-gentoo-apache-names.patch,
+  +files/1.1.11_alpha2/0003-find-mod_nss.m4.patch,
+  +files/1.1.11_alpha2/0004-rpath-fix.configure.ac.patch,
+  +files/1.1.11_alpha2/0010-gentoo_selinux_makefile.patch,
+  +files/1.1.11_alpha2/48_mod_admserv.conf, +389-admin-1.1.11_alpha2.ebuild,
+  +files/1.1.11_alpha2/48_mod_restartd.conf:
+  alpha version
+
+*389-admin-1.1.11_alpha2 ( 14 Mar 2010 )
+
+  12 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.10.ebuild, +389-admin-1.1.10-r1.ebuild:
+  bump
+
+  12 Mar 2010; <slep@gentoo.org>
+  +files/1.1.10/0010-gentoo_selinux_makefile.patch, 389-admin-1.1.10.ebuild:
+  selinux patch and test
+
+  16 Feb 2010; <slep@gentoo.org> -files/1.1.9-apache2-httpd.conf.patch,
+  -389-admin-1.1.9.ebuild, -files/1.1.9/0001-gentoo-apache-names.patch,
+  -389-admin-1.1.9-r1.ebuild, -files/1.1.9/0002-gentoo-brand-name.patch,
+  -files/fedora-ds-admin-1.1.5-cfgstuff-1.patch:
+  delete 1.1.9 version
+
+  25 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/1.1.10/0002-gentoo-brand-name.patch,
+  +files/1.1.10/0003-find-mod_nss.m4.patch,
+  +files/1.1.10/0004-rpath-fix.configure.ac.patch, 389-admin-1.1.10.ebuild,
+  +files/1.1.10/48_mod_admserv.conf, +files/1.1.10/48_mod_restartd.conf:
+  fix more failure
+
+  25 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/1.1.10/0002-gentoo-brand-name.patch,
+  +files/1.1.10/0003-find-mod_nss.m4.patch,
+  +files/1.1.10/0004-rpath-fix.configure.ac.patch, 389-admin-1.1.10.ebuild,
+  +files/1.1.10/48_mod_admserv.conf, +files/1.1.10/48_mod_restartd.conf:
+  fix more failure
+
+  22 Jan 2010; <slep@gentoo.org> -389-admin-1.1.10_alpha2.ebuild:
+  delete alpha version
+
+  22 Jan 2010; <slep@gentoo.org> -389-admin-1.1.8-r1.ebuild:
+  drop old version
+
+  22 Jan 2010; <slep@gentoo.org> metadata.xml:
+  add long description in metadata
+
+  18 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-admin-1.1.10_alpha2.ebuild:
+  bump
+
+  27 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/1.1.9-apache2-httpd.conf.patch, 389-admin-1.1.9-r1.ebuild:
+  add httpd.conf patch
+
+  26 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> 389-admin-1.1.9.ebuild,
+  +389-admin-1.1.9-r1.ebuild:
+  add ipv6 use,version bump
+
+  25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/1.1.9/0001-gentoo-apache-names.patch, 389-admin-1.1.9.ebuild,
+  +files/1.1.9/0002-gentoo-brand-name.patch:
+  add more patches
+
+  25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/fedora-ds-admin-1.1.5-cfgstuff-1.patch, 389-admin-1.1.9.ebuild:
+  remove old patch
+
+  25 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +389-admin-1.1.9.ebuild:
+  version bump
+
+  07 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -389-admin-1.1.8.ebuild:
+  delete old revision
+
+  07 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  389-admin-1.1.8-r1.ebuild:
+  clean depend version
+
+  24 Aug 2009; Mario Fetka <mario.fetka@gmail.com>
+  -files/389-adminutil.patch, -389-admin-1.1.7.ebuild,
+  -files/389-admin-1.1.7-389-adminutil-1.patch, 389-admin-1.1.8.ebuild,
+  -files/fedora-ds-admin-cvs.sh:
+  add my mirror for the package
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com>
+  files/389-adminutil.patch:
+  correct patch 2nd try
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com>
+  +files/389-adminutil.patch, 389-admin-1.1.8.ebuild:
+  correct patch
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com> 389-admin-1.1.8.ebuild:
+  correct config flag
+
+*389-admin-1.1.8 (23 Jul 2009)
+
+  23 Jul 2009; Mario Fetka <mario.fetka@gmail.com> +389-admin-1.1.8.ebuild:
+  Bump
+
+*389-admin-1.1.7 (21 May 2009)
+
+  21 May 2009; Mario Fetka <mario.fetka@gmail.com> +389-admin-1.1.7.ebuild,
+  -fedora-ds-admin-1.1.7-r1.ebuild,
+  +files/389-admin-1.1.7-389-adminutil-1.patch:
+  rename package
+
+*fedora-ds-admin-1.1.7-r1 (21 May 2009)
+
+  21 May 2009; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-ds-admin-1.1.5-r2.ebuild, -fedora-ds-admin-1.1.6.ebuild,
+  -fedora-ds-admin-1.1.6-r1.ebuild, -fedora-ds-admin-1.1.7.ebuild,
+  +fedora-ds-admin-1.1.7-r1.ebuild:
+  correct dependencies & wait for correct download
+
+  07 Apr 2009; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-admin-1.1.7.ebuild:
+  Bump upstream
+
+  13 Feb 2009; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-admin-1.1.6-r1.ebuild:
+  Bump
+
+  13 Feb 2009; Mario Fetka <mario.fetka@gmail.com> files/dirsrv-admin.initd:
+  correct output of init script
+
+  13 Feb 2009; Mario Fetka <mario.fetka@gmail.com> +files/restart-ds-admin,
+  +files/start-ds-admin, +files/stop-ds-admin, fedora-ds-admin-1.1.6.ebuild:
+  add *-ds-admin wrapper for init script
+
+  15 Sep 2008; Mario Fetka <mario.fetka@gmail.com>
+  +fedora-ds-admin-1.1.6.ebuild:
+  bump
+
+  30 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  +files/fedora-ds-admin-1.1.5-cfgstuff-1.patch,
+  fedora-ds-admin-1.1.5-r2.ebuild:
+  correct cfg stuff
+
+  30 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-ds-admin-1.1.5-r1.ebuild, +fedora-ds-admin-1.1.5-r2.ebuild:
+  depend on java part of admin server
+
+  22 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  fedora-ds-admin-1.1.5-r1.ebuild:
+  add missing depend
+
+  20 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  -fedora-ds-admin-1.1.2.ebuild, -fedora-ds-admin-1.1.4.ebuild,
+  -fedora-ds-admin-1.1.5.ebuild, fedora-ds-admin-1.1.5-r1.ebuild:
+  Repoman Cleanup
+
+  18 Aug 2008; Mario Fetka <mario.fetka@gmail.com>
+  +files/dirsrv-admin.confd, +files/dirsrv-admin.initd,
+  fedora-ds-admin-1.1.5.ebuild, +fedora-ds-admin-1.1.5-r1.ebuild:
+  remove USE for now as the m4 macros aren't really usable for a system like
+  gentoo ebuild fedora-ds-admin-1.1.5-r1.ebuild digest
+
+  27 Jun 2008; Mario Fetka <mario-fetka@gmx.at> ChangeLog:
+  Bump
+
+  27 Jun 2008; Mario Fetka <mario-fetka@gmx.at>
+  +fedora-ds-admin-1.1.5.ebuild:
+  Bump
+
+  21 May 2008; Mario Fetka <mario-fetka@gmx.at>
+  +fedora-ds-admin-1.1.4.ebuild:
+  bump
+
+  27 Jan 2008; Mario Fetka <mario-fetka@gmx.at> ChangeLog:
+  bump
+
+  11 Nov 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071017.ebuild:
+  bump
+
+  17 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071014.ebuild:
+  Bump to latest snapshot
+
+  14 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071009.ebuild:
+  Bump to latest snapshot
+
+  09 Oct 2007; Mario Fetka <mario-fetka@gmx.at> ++, ++,
+  -fedora-ds-admin-1.1.0_pre20071006.ebuild:
+  Bump to snapshot 20071009
+
+  06 Oct 2007; Mario Fetka <mario-fetka@gmx.at> +metadata.xml,
+  +fedora-ds-admin-1.1.0_pre20071006.ebuild:
+  first version
+

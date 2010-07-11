@@ -1,0 +1,14 @@
+# ChangeLog for dev-perl/JavaScript-Minifier-XS
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*JavaScript-Minifier-XS-0.07 ( 12 Jun 2010 )
+
+  12 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +JavaScript-Minifier-XS-0.07.ebuild:
+  new version
+
+  20 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +JavaScript-Minifier-XS-0.06.ebuild, +metadata.xml:
+  initial commit
+
