@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Jul 2010; Rion <rion4ik@gmail.com> spectrum-9999.ebuild:
+  added dependency
+
   12 Mar 2010; <slep@gentoo.org> spectrum-9999.ebuild:
   fix IUSE repoma
 

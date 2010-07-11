@@ -26,6 +26,7 @@ RDEPEND="dev-libs/poco[sqlite]
 		dev-libs/poco[sqlite]
 	)"
 DEPEND="${RDEPEND}
+	dev-python/xmpppy
 	sys-devel/gettext"
 
 src_install () {
