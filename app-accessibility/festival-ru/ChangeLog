@@ -1,0 +1,19 @@
+# ChangeLog for app-accessibility/festival-ru
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
+# $Header: $
+
+  04 Apr 2010; <slep@gentoo.org> festival-ru-0.5-r1.ebuild:
+  fix install phase, code clean
+
+*festival-ru-0.5-r1 (05 Aug 2009)
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> festival-ru-0.5.ebuild,
+  +festival-ru-0.5-r1.ebuild, +metadata.xml:
+  version bump, some fix, EAPI=2
+
+*festival-ru-0.5
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> festival-ru-0.5.ebuild,
+  +metadata.xml:
+  repoman fix
+

@@ -1,0 +1,8 @@
+# ChangeLog for mail-mta/postfix
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  06 Jun 2010; <slep@gentoo.org> +postfix-2.7.0.ebuild, +files/mailer.conf,
+  +files/postfix.rc6.2.5, +files/smtp.pass, +files/smtp.sasl, +metadata.xml:
+  initial commit 2.7 version
+

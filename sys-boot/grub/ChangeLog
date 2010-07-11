@@ -1,0 +1,460 @@
+# ChangeLog for sys-boot/grub
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/ChangeLog,v 1.70 2007/01/02 04:22:46 ticho Exp $
+
+  05 Jul 2010; Rion <rion4ik@notagmail.com> grub-0.97-r90.ebuild:
+  updated patchset
+
+  02 Jan 2007; Andrej Kacian <ticho@gentoo.org> grub-0.97-r3.ebuild:
+  Stable on x86, bug #159636.
+
+  03 Dec 2006; Mike Frysinger <vapier@gentoo.org> grub-0.97-r3.ebuild:
+  Fix running with newer autotools (need AC_PROG_AS) #156524.
+
+*grub-1.95 (21 Oct 2006)
+
+  21 Oct 2006; Mike Frysinger <vapier@gentoo.org> +grub-1.95.ebuild:
+  Version bump #152232 by Arthur Koziel.
+
+*grub-0.97-r3 (08 Sep 2006)
+
+  08 Sep 2006; Mike Frysinger <vapier@gentoo.org> +grub-0.97-r3.ebuild:
+  Grab a bunch of patches from Debian.
+
+  30 Aug 2006; Joshua Jackson <tsunam@gentoo.org> grub-0.97-r2.ebuild:
+  Stable x86; bug #144998
+
+  25 Aug 2006; Luis Medinas <metalgod@gentoo.org> grub-0.97-r2.ebuild:
+  Stable on amd64.
+
+*grub-1.94 (18 Jun 2006)
+
+  18 Jun 2006; Mike Frysinger <vapier@gentoo.org> +grub-1.94.ebuild:
+  Version bump.
+
+  13 May 2006; Mike Frysinger <vapier@gentoo.org> grub-0.97-r2.ebuild:
+  Add a pkg_config() by Petteri Räty for users to configure other devices
+  #133129.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-grub-0.92-r1,
+  files/digest-grub-0.94-r1, files/digest-grub-0.96-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+*grub-1.93 (21 Apr 2006)
+
+  21 Apr 2006; Mike Frysinger <vapier@gentoo.org> +grub-1.93.ebuild:
+  Version bump #130586 by Anthony Red.
+
+  22 Mar 2006; Mike Frysinger <vapier@gentoo.org> grub-0.97-r2.ebuild:
+  Fix building netbot with gcc-4 #112713.
+
+  05 Feb 2006; Simon Stelling <blubb@gentoo.org> grub-1.92.ebuild:
+  remove old 2004.3 multilib checks
+
+*grub-1.92 (16 Jan 2006)
+
+  16 Jan 2006; Mike Frysinger <vapier@gentoo.org> +grub-1.92.ebuild:
+  Version bump and add lzo to DEPEND as noted by Ron in #119149.
+
+*grub-1.91 (25 Nov 2005)
+
+  25 Nov 2005; Mike Frysinger <vapier@gentoo.org> +grub-1.91.ebuild:
+  Version bump #113556 by Thomas Bettler.
+
+*grub-0.97-r2 (10 Nov 2005)
+
+  10 Nov 2005; Mike Frysinger <vapier@gentoo.org> -grub-0.97-r1.ebuild,
+  +grub-0.97-r2.ebuild:
+  Punt reiser4 patch since it breaks booting for some #111885.
+
+*grub-0.97-r1 (08 Nov 2005)
+
+  08 Nov 2005; Mike Frysinger <vapier@gentoo.org> +grub-0.97-r1.ebuild:
+  Fixes by Jon Bernard/Roy Walker for address checks on machines with lots of
+  ram #99897 and add support for Reiser4 #69590.
+
+  21 Aug 2005; Mike Frysinger <vapier@gentoo.org> grub-0.94-r1.ebuild,
+  grub-0.96-r1.ebuild, grub-0.96-r2.ebuild, grub-0.96-r3.ebuild,
+  grub-0.97.ebuild:
+  Make sure netboot files are installed into /usr/lib/grub/${CHOST}/ so the
+  pkg_postinst step works #103084 by Thomas Schweikle.
+
+*grub-0.97 (20 Aug 2005)
+
+  20 Aug 2005; Mike Frysinger <vapier@gentoo.org> grub-0.96-r1.ebuild,
+  grub-0.96-r2.ebuild, grub-0.96-r3.ebuild, +grub-0.97.ebuild:
+  Version bump #91959 by R Hill.
+
+  20 Aug 2005; Mike Frysinger <vapier@gentoo.org> grub-0.96-r1.ebuild,
+  grub-0.96-r2.ebuild, grub-0.96-r3.ebuild:
+  Add support for USE=custom-cflags #72196 by basic.
+
+*grub-0.96-r3 (03 Aug 2005)
+
+  03 Aug 2005; Mike Frysinger <vapier@gentoo.org> +grub-0.96-r3.ebuild:
+  Add patch from upstream cvs to fix #83287 by Martin Mokrejs / David James.
+
+  01 Aug 2005; Simon Stelling <blubb@gentoo.org> grub-0.96-r2.ebuild:
+  stable on amd64
+
+  28 Jul 2005; Seemant Kulleen <seemant@gentoo.org>
+  -files/grub-0.93-gcc3.3.diff, -files/grub-0.94-gcc3.4.patch,
+  -files/grub-0.94-grub.conf.patch,
+  -files/grub-0.95.20040823-warnings.patch, -files/grub-0.96-PIC.patch,
+  -files/grub-0.96-bounced-checks.patch, -files/grub-0.96-gcc2.patch,
+  -files/grub-0.96-gcc4.patch, -files/grub-0.96-i2o-raid.patch,
+  -files/grub-0.96-netboot-pic.patch, -files/grub-0.96-nxstack.patch,
+  -files/grub-0.96-r1-gcc4.patch,
+  -files/grub-0.96-xfs-writable-string.patch, -files/splash.xpm.gz,
+  grub-0.92-r1.ebuild, grub-0.94-r1.ebuild, grub-0.96-r1.ebuild,
+  grub-0.96-r2.ebuild:
+  patches, configs, splash screens are all now on mirrors and being tracked in
+  gentoo/src/patchsets/grub
+
+  28 Jul 2005; Seemant Kulleen <seemant@gentoo.org> +grub-0.92-r1.ebuild,
+  +grub-0.94-r1.ebuild:
+  add back 92 and 94 for vapier
+
+  28 Jul 2005; Seemant Kulleen <seemant@gentoo.org> -grub-0.92-r1.ebuild,
+  -grub-0.93.20030118.ebuild, -grub-0.94-r1.ebuild, -grub-0.94-r2.ebuild,
+  -grub-0.95.20040823.ebuild, -grub-0.96.ebuild:
+  remove cruft ebuilds
+
+  24 Jul 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/grub-0.96-gcc2.patch, grub-0.96-r2.ebuild:
+  Fix building with gcc2.
+
+  04 Jul 2005; Sven Wegener <swegener@gentoo.org> grub-0.95.20040823.ebuild,
+  grub-0.96.ebuild, grub-0.96-r1.ebuild, grub-0.96-r2.ebuild:
+  Updated the postinst message for bug #97882.
+
+  01 Jul 2005; Sven Wegener <swegener@gentoo.org> grub-0.96-r2.ebuild:
+  Stable on x86 to make the XFS writable-string fix available for all users.
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> grub-0.92-r1.ebuild,
+  grub-0.94-r1.ebuild, grub-0.94-r2.ebuild, grub-0.95.20040823.ebuild,
+  grub-0.96.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  29 May 2005; Marcus D. Hanwell <marcus@gentoo.org> grub-0.96-r1.ebuild:
+  Stable on amd64.
+
+  09 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/grub-0.96-netboot-pic.patch, grub-0.96-r2.ebuild:
+  Add patch by the PaX Team to fix PIC/PIE issues in the netboot code and
+  remove the chpax/paxctl stuff since the nxstack patch fixes hardened issues.
+
+*grub-0.96-r2 (08 May 2005)
+
+  08 May 2005; Sven Wegener <swegener@gentoo.org>
+  +files/grub-0.96-xfs-writable-string.patch, +grub-0.96-r2.ebuild:
+  Revision bump to pull in my writable-string patch I submitted to upstream.
+  Closes bug #90845.
+
+  20 Apr 2005; Stephen Bennett <spb@gentoo.org> grub-0.96-r1.ebuild:
+  Stable x86; older versions break with hardened gcc.
+
+  06 Apr 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/grub-0.96-r1-gcc4.patch, grub-0.96-r1.ebuild:
+  Updated gcc4 patch to apply to grub-0.96-r1
+
+  05 Apr 2005; Mark Loeser <halcy0n@gentoo.org> +files/grub-0.96-gcc4.patch,
+  grub-0.96.ebuild:
+  Backported fixes for GCC4.  Fixes bug #85016
+
+  15 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  grub-0.94-r1.ebuild, grub-0.94-r2.ebuild, grub-0.95.20040823.ebuild,
+  grub-0.96.ebuild, grub-0.96-r1.ebuild:
+  Putting ABI stuff inside an 'if use amd64' block.
+
+*grub-0.96-r1 (11 Mar 2005)
+
+  11 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/grub-0.96-PIC.patch, +files/grub-0.96-i2o-raid.patch,
+  +files/grub-0.96-nxstack.patch, +grub-0.96-r1.ebuild:
+  Add patches/fixes for a bunch of bugs ... basically lets fix i2o-raid
+  support, NX segfaults on amd64, PIC build failures, and hardened objcopy
+  funk. Thanks to Ryan Hill and everyone on #80693.
+
+*grub-0.96 (05 Mar 2005)
+
+  05 Mar 2005; Martin Schlemmer <azarah@gentoo.org> +grub-0.96.ebuild:
+  Update version.  Some cleanups.
+
+  03 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  grub-0.94-r1.ebuild, grub-0.94-r2.ebuild, grub-0.95.20040823.ebuild:
+  Multilib fixes.
+
+  20 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  grub-0.94-r1.ebuild, grub-0.94-r2.ebuild, grub-0.95.20040823.ebuild:
+  Updates to work with amd64's 2005.0.
+
+  20 Dec 2004; Simon Stelling <blubb@gentoo.org> grub-0.95.20040823.ebuild:
+  changed WANT_AUTOMAKE to 1.8
+
+  07 Dec 2004; Robin H. Johnson <robbat2@gentoo.org>
+  grub-0.95.20040823.ebuild:
+  Bug #70111, fix tc-getCC invocation.
+
+  30 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  grub-0.95.20040823.ebuild:
+  fix use invocation
+
+  22 Nov 2004; <robmoss@gentoo.org>
+  +files/grub-0.95.20040823-warnings.patch, grub-0.95.20040823.ebuild:
+  USE flagging the network booting stuff with a new local "netboot" USE flag.
+  Adding ~amd64. General tidying up of the ebuild. Adding a patch to prevent
+  use of -fwritable-strings, which doesn't do anything but throw up warnings.
+  Adding a comment to explain that FFS and UFS2 support is broken still.
+  Fixing the amd64 installation procedure.
+
+  13 Oct 2004; Travis Tilley <lv@gentoo.org> grub-0.94-r1.ebuild:
+  stable on amd64
+
+  12 Sep 2004; <rmoss@gentoo.org> grub-0.94-r1.ebuild, grub-0.94-r2.ebuild,
+  grub-0.95.20040823.ebuild:
+  Adding >=automake-1.7 dep for grub-0.9{4,5} as per bug 63509.
+
+  05 Sep 2004; <rmoss@gentoo.org> grub-0.95.20040823.ebuild:
+  The grub binary is in /sbin, not /usr/sbin. Fixing.
+
+  26 Aug 2004; <rmoss@gentoo.org> grub-0.95.20040823.ebuild:
+  gnuconfig belongs in src_unpack, not src_compile. Thanks tigger :-)
+
+  24 Aug 2004; <rmoss@gentoo.org> grub-0.95.20040823.ebuild:
+  Marking ~x86 after some overnight testing.
+
+*grub-0.95.20040823 (24 Aug 2004)
+
+  24 Aug 2004; <rmoss@gentoo.org> metadata.xml, +grub-0.95.20040823.ebuild:
+  Initial commit of grub-0.95 with CVS snapshot update. Supports (amongst other
+  things) savedefault (server-friendly feature) and uclibc (I hope...).
+
+*grub-0.94-r2 (22 Aug 2004)
+
+  22 Aug 2004; <rmoss@gentoo.org> +files/grub-0.94-grub.conf.patch,
+  +grub-0.94-r2.ebuild:
+  Trying to get rid of the need for that filthy menu.lst -> grub.conf symlink.
+
+  10 Jun 2004; Travis Tilley <lv@gentoo.org> grub-0.94-r1.ebuild:
+  fixed multilib check
+
+  09 Jun 2004; Travis Tilley <lv@gentoo.org> grub-0.94-r1.ebuild:
+  added multilib check and ~amd64 keyword
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> grub-0.94-r1.ebuild:
+  added new hardened PIE SSP switches
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> grub-0.93.20030118.ebuild:
+  removed hardened-gcc logic, added logic for suppressing PIE and SSP
+
+  06 May 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/grub-0.94-gcc3.4.patch, grub-0.94-r1.ebuild:
+  add gcc-3.4 patch #49558 by Robert Moss + ecco@piggy.demon.nl
+
+  14 Apr 2004; Scott W Taylor <swtaylor@gentoo.org> :
+  Cleanup checks for hardened
+
+  06 Apr 2004; <solar@gentoo.org> grub-0.94-r1.ebuild:
+  stable on x86
+
+  17 Mar 2004; <solar@gentoo.org> grub-0.94-r1.ebuild:
+  grub will end up with a 100+ meg stage2 file if the user has LDFLAGS=-pie, so
+  lets filter that flag out in the src_compile
+
+  25 Feb 2004; Seemant Kulleen <seemant@gentoo.org> grub-0.92-r1.ebuild:
+  global scope fixing
+
+*grub-0.94-r1 (25 Feb 2004)
+
+  25 Feb 2004; Seemant Kulleen <seemant@gentoo.org> grub-0.93.20031222.ebuild,
+  grub-0.93.20040125.ebuild, grub-0.94-r1.ebuild, grub-0.94.ebuild:
+  revision bump for spock's change
+
+  15 Feb 2004; Michal Januszewski <spock@gentoo.org> grub-0.94.ebuild:
+  Added the 'grubsplash' patch, closes #40827.
+
+*grub-0.94 (02 Feb 2004)
+
+  02 Feb 2004; Brandon Low <lostlogic@gentoo.org> grub-0.94.ebuild:
+  This ebuild isn't perfect yet, but it is better than the last few versions,
+  still no splash image, but now at least it uses the config. It appears that
+  menu.lst is back in style or something
+
+*grub-0.93.20031222 (25 Jan 2004)
+
+  25 Jan 2004; Seemant Kulleen <seemant@gentoo.org> grub-0.93.20031222.ebuild,
+  grub-0.93.20040125.ebuild:
+  new cvs snapshots of grub. Both have the acl/ext2 and acl/ext3 issues sorted
+  out. I'll be adding another snapshot to take advantage of the SuSE prettiness
+  capabilities to grub. This should close bug #30859 by Chris PeBenito
+  <pebenito@gentoo.org>
+
+  15 Dec 2003; Seemant Kulleen <seemant@gentoo.org> grub-0.93.20030118.ebuild:
+  Added autoconf to compile dependencies, closing bug #33321 by Scott Taylor
+  <scott@303underground.com>
+
+  15 Dec 2003; Seemant Kulleen <seemant@gentoo.org> grub-0.92-r1.ebuild,
+  grub-0.93.20030118.ebuild,
+  files/grub-0.92/grub-0.5.96.1-special-raid-devices.patch,
+  files/grub-0.92/grub-0.90-addsyncs.patch,
+  files/grub-0.92/grub-0.90-append.patch,
+  files/grub-0.92/grub-0.90-configfile.patch,
+  files/grub-0.92/grub-0.90-install.in.patch,
+  files/grub-0.92/grub-0.90-installcopyonly.patch,
+  files/grub-0.92/grub-0.90-passwordprompt.patch,
+  files/grub-0.92/grub-0.90-staticcurses.patch,
+  files/grub-0.92/grub-0.90-symlinkmenulst.patch,
+  files/grub-0.92/grub-0.90-vga16-keypressclear.patch,
+  files/grub-0.92/grub-0.91-bootonce.patch,
+  files/grub-0.92/grub-0.91-splashimagehelp.patch,
+  files/grub-0.92/grub-0.91-vga16-serial.patch,
+  files/grub-0.92/grub-0.92-automake16.patch,
+  files/grub-0.92/grub-0.92-nodeprecatedflags.patch,
+  files/grub-0.92/grub-0.92-usbfix.patch,
+  files/grub-0.92/grub-0.92-vga16.patch:
+  move the patches to the mirrors isntead, and add the gcc3.3 patch to 0.92 as
+  well
+
+*grub-0.93.20030118 (08 Dec 2003)
+
+  08 Dec 2003; Seemant Kulleen <seemant@gentoo.org> grub-0.92-r1.ebuild,
+  grub-0.93.20030118.ebuild, metadata.xml, files/grub-0.93-gcc3.3.diff,
+  files/splash.xpm.gz,
+  files/grub-0.92/grub-0.5.96.1-special-raid-devices.patch,
+  files/grub-0.92/grub-0.90-addsyncs.patch,
+  files/grub-0.92/grub-0.90-append.patch,
+  files/grub-0.92/grub-0.90-configfile.patch,
+  files/grub-0.92/grub-0.90-install.in.patch,
+  files/grub-0.92/grub-0.90-installcopyonly.patch,
+  files/grub-0.92/grub-0.90-passwordprompt.patch,
+  files/grub-0.92/grub-0.90-staticcurses.patch,
+  files/grub-0.92/grub-0.90-symlinkmenulst.patch,
+  files/grub-0.92/grub-0.90-vga16-keypressclear.patch,
+  files/grub-0.92/grub-0.91-bootonce.patch,
+  files/grub-0.92/grub-0.91-splashimagehelp.patch,
+  files/grub-0.92/grub-0.91-vga16-serial.patch,
+  files/grub-0.92/grub-0.92-automake16.patch,
+  files/grub-0.92/grub-0.92-nodeprecatedflags.patch,
+  files/grub-0.92/grub-0.92-usbfix.patch,
+  files/grub-0.92/grub-0.92-vga16.patch:
+  moved from sys-apps to sys-boot
+
+  01 Dec 2003; Alexander Gabert <pappy@gentoo.org> grub-0.93.20030118.ebuild:
+  added CC -yno_propolice because configure has problems with -nostdlib
+  requesting __guard symbol but cannot be resolved, future releases of
+  hardened-gcc will honour this behaviour
+
+  07 Sep 2003; Alexander Gabert <pappy@gentoo.org> grub-0.93.20030118.ebuild:
+  added hardened-gcc excludes
+
+  14 Sep 2003; John Mylchreest <johnm@gentoo.org>; grub-0.93.20030118.ebuild,
+  files/grub-0.93-gcc3.3.diff:
+  Updating for gcc 3.3 compat
+
+  27 Jul 2003; Olivier Crete <tester@gentoo.org> grub-0.93.20030118.ebuild:
+  Added support for static building
+
+  24 Jan 2002; <woodchip@gentoo.org> *.ebuild : Reorder mount-boot.eclass
+  function, clean some fluff.
+
+*grub-0.93.20030118 (18 Jan 2003)
+
+  11 Apr 2003; Joshua Brindle <method@gentoo.org> grub-0.92-r1.ebuild,
+  grub-0.93.20030118.ebuild:
+  Added filter-flags -fstack-protector
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> grub-0.93.20030118.ebuild :
+  This is definitely not for mips.  Maybe sometime in the future...
+
+  18 Jan 2003; Donny Davies <woodchip@gentoo.org> grub-0.93.20030118.ebuild :
+  New testing release; closing #11821, #13242, #9180.  See the ebuild
+  for the detailed patch list.
+
+*grub-0.92-r1 (02 Oct 2002)
+
+  10 Mar 2003; Seemant Kulleen <seemant@gentoo.org> grub-0.92-r1.ebuild:
+  change to use epatch instead, much prettier output
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> grub-0.92-r1.ebuild :
+  This is definitely not for mips.  Maybe sometime in the future...
+
+  06 Jan 2002; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+  PROVIDE virtual/bootloader
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  02 Oct 2002; Donny Davies <woodchip@gentoo.org> :
+  Merge changes from Markus Krainer <markus-krainer@chello.at> to fix:
+  bootlogo; #6820.  menu.lst was renamed to grub.conf; #6300.
+
+*grub-0.92 (25 Jun 2002)
+
+  29 Sep 2002; Donny Davies <woodchip@gentoo.org> grub-0.92.ebuild :
+  Now uses mount-boot eclass; from #7903.
+
+  13 Aug 2002; Joachim Blaabjerg <styx@gentoo.org> grub-0.92.ebuild :
+  Added grub-0.92-usbfix.patch to hopefully fix bug #6372. It still compiles!
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> grub-0.92.ebuild :
+  Added KEYWORDS.
+
+  25 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Add the latest version thanks to good work from (bug #4020)
+  Markus Krainer <markus-krainer@chello.at>.  Slotified the lot,
+  as well as move splash.xpm.gz to ${FILESDIR}/, as having three
+  seems a bit much.
+
+*grub-0.90-r7 (14 July 2002)
+
+  29 Sep 2002; Donny Davies <woodchip@gentoo.org> grub-0.90-r7.ebuild :
+  Now uses mount-boot eclass; from #7903.
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (-ppc -sparc -sparc64)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> grub-0.90-r7.ebuild :
+  Added KEYWORDS.
+
+*grub-0.90-r4 (8 Mar 2002)
+*grub-0.91-r3 (8 Mar 2002)
+
+  29 Sep 2002; Donny Davies <woodchip@gentoo.org> grub-0.91-r3.ebuild :
+  Now uses mount-boot eclass; from #7903.
+
+  19 Aug 2002; Sascha Schwabbauer <cybersystem@gentoo.org> grub-0.91-r3.ebuild :
+  Added -ppc to keywords
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> grub-0.91-r3.ebuild :
+  Added KEYWORDS.
+
+  8 Mar 2002; Bruce A. Locke <blocke@shivan.org> : grub-0.90-r4.ebuild,
+  grub-0.91-r3.ebuild: made check of /etc/fstab not match on commented out
+  entries and added a notice telling users to remove invalid /boot entries
+  from their /etc/fstab (a user had this problem while installing)
+
+*grub-0.90-r6 (4 Feb 2002)
+*grub-0.91-r1 (4 Feb 2002)
+
+  4 Feb 2002; Daniel Robbins <drobbins@gentoo.org>: grub-0.90-r6.ebuild,
+  grub-0.91-r1.ebuild: unset CFLAGS to ensure that GRUB code is i486-compatible,
+  a good thing for a boot loader.  Upgraded /boot mounting code to be compatible
+  with systems without a dedicated /boot filesystem.  Tweaked GRUB installation
+  so that the /boot/grub/*stage* files don't get overwritten, since this could
+  mess up the currently-in-the-MBR GRUB.  These fixes also close bug #527.
+
+*grub-0.90-r5 (4 Feb 2002)
+
+  4 Feb 2002; G.Bevin <gbevin@gentoo.org> grub-0.90-r5.ebuild, grub-0.91.ebuild :  
+  Added new setup function which detects if /boot is mounted or not, in case
+  it's not mounted it will try to do it automatically and in case of a failure
+  exit with an error message.
+
+*grub-0.90-r4 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
