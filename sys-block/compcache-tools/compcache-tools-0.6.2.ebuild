@@ -22,7 +22,7 @@ IUSE=""
 S="${WORKDIR}/${MY_P}/sub-projects/rzscontrol"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}_gentoo.patch"
+	epatch "${FILESDIR}"/*_gentoo.patch
 }
 
 src_compile() {
