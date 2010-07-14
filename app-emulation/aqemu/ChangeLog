@@ -2,6 +2,16 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*aqemu-0.8.0 ( 14 Jul 2010 )
+
+ 14 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -aqemu-0.8_beta2.ebuild, +aqemu-0.8.0.ebuild:
+  nev reliase
+
+  14 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -aqemu-0.8_beta2.ebuild:
+  delete beta ebuild
+
   04 Jul 2010; <slep@gentoo.org> +aqemu-0.8_beta2.ebuild:
   add new beta2 ebuild for testing
 
