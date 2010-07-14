@@ -11,7 +11,7 @@ inherit autotools python
 
 DESCRIPTION="An LDAP-like embedded database"
 HOMEPAGE="http://ldb.samba.org"
-SRC_URI="mirror://debian/pool/main/l/ldb/ldb_0.9.11~git20100531.orig.tar.gz"
+SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -19,27 +19,34 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ldap doc sqlite3 gcov"
 
 RDEPEND="dev-libs/popt
-		sys-libs/talloc[compat]
-		sys-libs/tdb
-		sys-libs/tevent
-		sqlite3? ( dev-db/sqlite:3 )
-		ldap? ( net-nds/openldap )
-		!!=net-fs/samba-4*"
+	sys-libs/talloc[compat]
+	sys-libs/tdb
+	sys-libs/tevent
+	sqlite3? ( dev-db/sqlite:3 )
+	ldap? ( net-nds/openldap )
+	!!=net-fs/samba-4*"
 
 DEPEND="doc? ( dev-libs/libxslt
-			 app-doc/doxygen )
-		${DEPEND}"
+	app-doc/doxygen )
+	${DEPEND}"
 
 RESTRICT_PYTHON_ABIS="3.*"
 
 S="${WORKDIR}/ldb-0.9.11"
 src_prepare() {
 	touch include/config.h.in
-local IPATHS="-I libreplace -I lib/replace -I ../libreplace -I ../replace -I../../../lib/replace -I ./external"
-	AM_OPTS=${IPATHS}
-	eautoheader ${IPATHS}
-	eautoconf ${IPATHS}
-	eautomake ${IPATHS}
+	cd ${S}
+	cp libreplace/libreplace.m4 . || die
+
+	./autogen.sh
+
+#local IPATHS="-I libreplace -I lib/replace -I ../libreplace -I ../replace -I../../../lib/replace -I ./external"
+#	AM_OPTS=${IPATHS}
+
+#eautoreconf ${IPATHS}
+#eautoheader ${IPATHS}
+#	eautoconf ${IPATHS}
+#	eautomake ${IPATHS}
 	_elibtoolize
 }
 
@@ -49,7 +56,7 @@ src_configure() {
 		--enable-largefile \
 		$(use_with ldap) \
 		$(use_with sqlite3) \
-		$(use_enable gcov) || die ""
+		$(use_enable gcov) -C || die ""
 }
 src_compile() {
 	emake -j1 shared-build || die
