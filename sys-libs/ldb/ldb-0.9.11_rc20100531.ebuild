@@ -23,7 +23,8 @@ RDEPEND="dev-libs/popt
 		sys-libs/tdb
 		sys-libs/tevent
 		sqlite3? ( dev-db/sqlite:3 )
-		ldap? ( net-nds/openldap )"
+		ldap? ( net-nds/openldap )
+		!!=net-fs/samba-4*"
 
 DEPEND="doc? ( dev-libs/libxslt
 			 app-doc/doxygen )
