@@ -42,7 +42,7 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_install() {
+isrc_install() {
 #	if use linguas_ru; then
 #		insinto /usr/share/aqemu
 #		doins "${S}"_build/Russian.qm || die
