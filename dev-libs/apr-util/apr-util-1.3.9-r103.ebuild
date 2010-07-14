@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="dev-libs/expat
 	>=dev-libs/apr-${APR_PV}:1
-	berkdb? ( =sys-libs/db-4* )
+	berkdb? ( >=sys-libs/db-4 )
 	freetds? ( dev-db/freetds )
 	gdbm? ( sys-libs/gdbm )
 	ldap? ( =net-nds/openldap-2* )
@@ -43,7 +43,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-support_berkeley_db-4.8.patch"
+	epatch "${FILESDIR}"/${P}-support_berkeley_db-{4.8,5.0}.patch
 	epatch "${FILESDIR}/${P}-mozldap60-6.patch"
 
 	eautoreconf
