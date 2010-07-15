@@ -1,0 +1,23 @@
+# ChangeLog for dev-python/ipa-python
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  10 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -ipa-python-1.9.0_pre1.ebuild, +ipa-python-1.9.0_pre3.ebuild:
+  bump
+
+  04 Apr 2010; <slep@gentoo.org> -ipa-python-1.2.2.ebuild:
+  drop old
+
+  01 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +ipa-python-1.9.0_pre1.ebuild:
+  add new version
+
+  21 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +ipa-python-1.2.2.ebuild:
+  version bump
+
+  29 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +ipa-python-1.2.1.ebuild, +metadata.xml:
+  initial recommit in my dev overlay
+
