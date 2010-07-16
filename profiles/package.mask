@@ -1,7 +1,3 @@
-# 5 Jul 2010 ;A. Vinogradov <spamslepnoga@inbox.ru>
-#mask for testing.Please send bug in upstream directly
-=sys-libs/ldb-0.9.11_rc20100531
-
 # 22  Mar 2010;A. Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing
 www-apps/webgui
