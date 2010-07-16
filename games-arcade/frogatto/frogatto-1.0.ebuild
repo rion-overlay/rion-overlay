@@ -15,7 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="media-libs/glew
+	media-libs/sdl-ttf
+	media-libs/sdl-mixer
+	media-libs/sdl-image"
 RDEPEND="${DEPEND}"
 
 src_compile() {
