@@ -3,15 +3,14 @@
 # $Header: $
 
 EAPI=2
+PYTHON_DEPEND="2:2.5"
 
-SUPPORT_PYTHON_ABIS="1"
-NEED_PYTHON="2.5"
-
+MY_PV=${PV/_pre/.pre}
 inherit distutils
 
 DESCRIPTION="Python libraries used by IPA"
 HOMEPAGE="http://www.freeipa.org"
-SRC_URI="http://freeipa.org/downloads/src/freeipa-1.9.0.pre3.tar.gz"
+SRC_URI="http://freeipa.org/downloads/src/freeipa-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,9 +27,7 @@ RDEPEND=">=dev-python/python-ldap-2.2.1[sasl,ssl]
 DEPEND="${RDEPEND}
 		dev-python/setuptools"
 
-S="${WORKDIR}"/freeipa-1.9.0.pre3/ipapython
-
-RESTRICT_PYTHON_ABIS="3.*"
+S="${WORKDIR}"/freeipa-${MY_PV}/${PN}
 
 python_enable_pyc
 
@@ -51,5 +48,5 @@ pkg_postinst() {
 	python_mod_optimize  /$(python_get_sitedir)/ipapython/*.py
 }
 pkg_postrm(){
-	python_mod_cleanup
+	python_mod_cleanup /$(python_get_sitedir)/ipapython/*.py
 }
