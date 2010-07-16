@@ -1,0 +1,9 @@
+# ChangeLog for dev-libs/sssd-libs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sssd-libs-1.2.1 ( 15 Jul 2010 )
+
+  15 Jul 2010; <slep@gentoo.org> +sssd-libs-1.2.1.ebuild, +metadata.xml:
+  initial commit
+
