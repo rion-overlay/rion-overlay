@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Jul 2010; <slep@gentoo.org> ipalib-1.9.0_pre3.ebuild:
+  more QA fix
+
   10 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -ipalib-1.9.0_pre1.ebuild, +ipalib-1.9.0_pre3.ebuild:
   new version
