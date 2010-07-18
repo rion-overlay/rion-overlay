@@ -15,10 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="media-libs/glew
+DEPEND="dev-util/ccache
+	media-libs/glew
 	media-libs/sdl-ttf
 	media-libs/sdl-mixer
-	media-libs/sdl-image"
+	media-libs/sdl-image
+	media-libs/libsdl[joystick]"
 RDEPEND="${DEPEND}"
 
 src_compile() {
