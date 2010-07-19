@@ -10,7 +10,7 @@ HOMEPAGE="http://dropbox.com/"
 SRC_URI="x86? ( http://www.getdropbox.com/download?plat=lnx.x86 -> dropbox-lnx.x86-${PV}.tar.gz )
 	amd64? ( http://www.getdropbox.com/download?plat=lnx.x86_64 -> dropbox-lnx.x86_64-${PV}.tar.gz )"
 
-LICENSE="GPL-3"
+LICENSE="EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
