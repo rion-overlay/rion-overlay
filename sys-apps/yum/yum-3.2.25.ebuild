@@ -3,10 +3,12 @@
 # $Header: $
 
 EAPI=2
-NEED_PYTHON=1
+
+PYTHON_depend="2:2.6"
+YTHON_USE_WITH="sqlite"
 inherit python eutils multilib
 
-DESCRIPTION="automatic updater and package installer/remover for rpm systems"
+DESCRIPTION="Automatic updater and package installer/remover for rpm systems"
 HOMEPAGE="http://yum.baseurl.org/"
 SRC_URI="http://yum.baseurl.org/download/${PV:0:3}/${P}.tar.gz"
 
@@ -16,15 +18,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="test? ( dev-python/nose )
-		>=dev-lang/python-2.6[sqlite]
-		>=app-arch/rpm-5.1.9[python]
-		dev-python/sqlitecachec
-		dev-python/celementtree
-		dev-libs/libxml2[python]
-		dev-python/urlgrabber"
+	${RDEPEND}"
 
-RDEPEND=">=dev-lang/python-2.6[sqlite]
-	>=app-arch/rpm-5.1.9[python]
+RDEPEND=">=app-arch/rpm-5.1.9[python]
 	dev-python/sqlitecachec
 	dev-python/celementtree
 	dev-libs/libxml2[python]
@@ -35,6 +31,10 @@ src_install() {
 	emake install DESTDIR="${D}" || die
 	rm -r "${D}"/etc/rc.d || die
 	find "${D}" -name '*.py[co]' -print0 | xargs -0 rm -f
+}
+
+src_test() {
+	emake test || die
 }
 
 pkg_postinst() {
