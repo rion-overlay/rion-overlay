@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-apps/yum/ChangeLog,v 1.9 2009/03/13 23:02:48 bangert Exp $
 
+  19 Jul 2010; <slep@gentoo.org> yum-3.2.25.ebuild:
+  more syntax fix or deprecation warning
+
   13 Mar 2009; Thilo Bangert <bangert@gentoo.org> yum-2.6.1.ebuild,
   yum-3.2.8.ebuild, yum-3.2.8-r1.ebuild:
   update HOMEPAGE and SRC_URI - bug #261442
