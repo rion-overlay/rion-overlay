@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-NEED_PYTHON="2.6"
+PYTHON_DEPEND="2:2.6"
 
 MY_PV=${PV/_pre/.pre}
 
