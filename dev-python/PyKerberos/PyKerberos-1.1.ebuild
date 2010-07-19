@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI="2"
-NEED_PYTHON="2.5"
+PYTHON_DEPEND="2:2.6"
 inherit distutils
 
 DESCRIPTION="A high-level Python wrapper for Kerberos (GSSAPI) operations"

@@ -4,7 +4,7 @@
 # rion overlay; 
 
 EAPI="2"
-NEED_PYTHON="2.5"
+PYTHON_DEPEND="2:2.6"
 
 inherit distutils
 

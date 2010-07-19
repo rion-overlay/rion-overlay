@@ -4,7 +4,7 @@
 
 EAPI=2
 WANT_AUTOMAKE="1.11"
-NEED_PYTHON="2.5"
+PYTHON_DEPEND="2:2.6"
 
 inherit autotools python
 
