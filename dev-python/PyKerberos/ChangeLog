@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Jul 2010; <slep@gentoo.org> PyKerberos-1.1.ebuild:
+  fix fix eclass warning for banned api
+
   02 Feb 2010; <slep@gentoo.org> PyKerberos-1.1.ebuild:
   new distutils
 

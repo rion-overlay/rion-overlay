@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Jul 2010; <slep@gentoo.org> python-krb5-0.2.ebuild:
+  fix deprecation warning for eclass api
+
   02 Feb 2010; <slep@gentoo.org> python-krb5-0.2.ebuild:
   new distutils
 
