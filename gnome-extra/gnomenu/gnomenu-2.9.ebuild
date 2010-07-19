@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-NEED_PYTHON=2.5
+PYTHON_DEPEND="2:2.5"
 
 inherit eutils python
 
@@ -33,8 +33,9 @@ RDEPEND="dev-python/pyxdg
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	sed "s/\(LIBDIR = .*\)lib/\1$(get_libdir)/" -i Makefile
-	sed "s,'/lib/gnomenu/','/lib64/gnomenu/'," -i setup.py
+	sed "s/\(LIBDIR = .*\)lib/\1$(get_libdir)/" -i Makefile || die "sed failed"
+	use amd64 && sed "s,'/lib/gnomenu/','/lib64/gnomenu/'," -i setup.py || \
+		die "sed failed"
 }
 
 src_install() {

@@ -40,7 +40,7 @@ pkg_nofetch () {
 	einfo ""
 	einfo ""
 	einfo "After that point your browser at http://cisco.netacad.net/"
-	einfo "ogin, go to PacketTracer image and download:"
+	einfo "Login, go to PacketTracer image and download:"
 	einfo "Packet Tracer v5.1 Application + Tutorial Generic links (tar.gz) file"
 	einfo ""
 }
