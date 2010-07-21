@@ -17,13 +17,13 @@ EAPI="2"
 GENTOO_DEPEND_ON_PERL="no"
 
 # http_headers_more (http://github.com/agentzh/headers-more-nginx-module, BSD license)
-HTTP_HEADERS_MORE_MODULE_PV="0.08"
+HTTP_HEADERS_MORE_MODULE_PV="0.13"
 HTTP_HEADERS_MORE_MODULE_P="ngx-http-headers-more-${HTTP_HEADERS_MORE_MODULE_PV}"
-HTTP_HEADERS_MORE_MODULE_SHA1="5cd9a38"
+HTTP_HEADERS_MORE_MODULE_SHA1="9508330"
 
 # http_passenger (http://www.modrails.com/, MIT license)
 # TODO: currently builds some stuff in src_configure
-PASSENGER_PV="2.2.12"
+PASSENGER_PV="2.2.15"
 USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
 
