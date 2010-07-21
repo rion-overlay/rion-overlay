@@ -77,9 +77,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-
-DEPEND="${DEPEND}"
-RDEPEND="${RDEPEND}"
 EBUILDCONTENT
 )" >> "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
 
