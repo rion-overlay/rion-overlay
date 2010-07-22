@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: rion $
 
 EAPI="2"
 
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 
-PSIPLUS_PLUGINS="attention autoreply birthdayreminder cleaner conferencelogger extendedoptions gmailnotify
+PSIPLUS_PLUGINS="attention autoreply birthdayreminder captchaforms cleaner conferencelogger extendedoptions gmailnotify
 historykeeper image icqdie juick screenshot skins stopspam storagenotes translate watcher"
 IUSE="${PSIPLUS_PLUGINS}"
 
