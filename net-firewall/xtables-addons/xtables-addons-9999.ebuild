@@ -33,6 +33,7 @@ done
 RDEPEND="virtual/modutils
 	>=net-firewall/iptables-1.4.3
 	>virtual/linux-sources-2.6.22
+	!=sys-kernel/linux-headers-2.6.34
 	xtables_addons_ipset? ( !net-firewall/ipset )"
 
 DEPEND="${RDEPEND}"
