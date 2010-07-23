@@ -2,6 +2,12 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*sugarcrm-6.0.0 ( 23 Jul 2010 ) A. Vinogradov
+
+  23 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -sugarcrm-6.0_rc3.ebuild, +sugarcrm-6.0.0.ebuild:
+  new version
+
   08 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -sugarcrm-6.0_beta6.ebuild, -sugarcrm-6.0_rc2.ebuild,
   +sugarcrm-6.0_rc3.ebuild:
