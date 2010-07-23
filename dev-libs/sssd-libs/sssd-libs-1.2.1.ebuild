@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit libtool
 
-DESCRIPTION="System Security Services Daemon -  provide access to identity and authentication"
+DESCRIPTION="System Security Services Daemon - provide access to identity and authentication ( shared library )"
 HOMEPAGE="https://fedorahosted.org/sssd"
 SRC_URI="https://fedorahosted.org/released/sssd/sssd-${PV}.tar.gz"
 
