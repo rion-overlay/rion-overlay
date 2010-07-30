@@ -128,7 +128,6 @@ src_install () {
 	cp -L */lib/libnssb.a "${D}"/usr/$(get_libdir) || die "copying libs failed"
 	cp -L */lib/libnssckfw.a "${D}"/usr/$(get_libdir) || die "copying libs failed"
 
-
 	# Install nss-config and pkgconfig file
 	dodir /usr/bin
 	cp -L */bin/nss-config "${D}"/usr/bin
