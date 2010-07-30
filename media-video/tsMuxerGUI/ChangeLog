@@ -1,8 +1,0 @@
-# ChangeLog for media-video/tsMuxerGUI
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  26 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-  +tsMuxerGUI-1.9.9.ebuild, +metadata.xml:
-  initial commit
-
