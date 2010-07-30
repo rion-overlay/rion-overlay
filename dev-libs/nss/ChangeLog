@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.157 2009/09/24 23:35:09 anarchy Exp $
 
+  30 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -files/gentoo-fixups-1.diff, -nss-3.12.6-r101.ebuild:
+  remove old revision
+
   30 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> -nss-9999.ebuild:
   delete live ebuild, fix 93 issue
 
