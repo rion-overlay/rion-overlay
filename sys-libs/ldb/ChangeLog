@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -ldb-0.9.10_rc20100203.ebuild, ldb-0.9.11_rc20100714.ebuild:
+  block samba[ldb] in RDEPEND
+
 *ldb-0.9.11_rc20100714.ebuild ( 14 Jul 2010 )
 
   14 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
