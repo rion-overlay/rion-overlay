@@ -24,6 +24,7 @@ RDEPEND="dev-libs/popt
 	sys-libs/tevent
 	sqlite3? ( dev-db/sqlite:3 )
 	ldap? ( net-nds/openldap )
+	!!>=net-fs/samba-3.4[ldb]
 	!!=net-fs/samba-4*"
 
 DEPEND="doc? ( dev-libs/libxslt
@@ -33,20 +34,14 @@ DEPEND="doc? ( dev-libs/libxslt
 RESTRICT_PYTHON_ABIS="3.*"
 
 S="${WORKDIR}/ldb-0.9.11"
+
 src_prepare() {
+
 	touch include/config.h.in
-	cd ${S}
 	cp libreplace/libreplace.m4 . || die
 
 	./autogen.sh
 
-#local IPATHS="-I libreplace -I lib/replace -I ../libreplace -I ../replace -I../../../lib/replace -I ./external"
-#	AM_OPTS=${IPATHS}
-
-#eautoreconf ${IPATHS}
-#eautoheader ${IPATHS}
-#	eautoconf ${IPATHS}
-#	eautomake ${IPATHS}
 	_elibtoolize
 }
 
