@@ -1,0 +1,83 @@
+diff -r 17f19fb9ff65 configure.ac
+--- a/configure.ac	Wed Feb 17 12:12:11 2010 +0200
++++ b/configure.ac	Wed Feb 17 14:56:29 2010 +0200
+@@ -107,30 +107,30 @@
+ ])
+ AC_SUBST([debug_defs])
+ 
+-AC_PREFIX_DEFAULT([/opt])
++AC_PREFIX_DEFAULT([/])
+ 
+ # installation paths - by default, configure will just
+ # use /usr as the prefix for everything, which means
+ # /usr/etc, /usr/opt, and /usr/var.  FHS sez to use
+ # /etc, /opt, and /var.
+-ac_default_prefix=/opt
++ac_default_prefix=
+ prefix=$ac_default_prefix
+ exec_prefix=$prefix
+ dnl as opposed to the default $prefix/etc
+-#sysconfdir='/etc'
++sysconfdir='/etc'
+ dnl as opposed to the default $prefix/var
+-#localstatedir='/var'
++localstatedir='/var'
+ 
+ # relative to prefix
+-aliasdir=/alias
+-apache_modulesdir=/apache/modules
+-appletsdir=/applets
+-cgibin_demodir=/cgi-bin/demo
+-cgibin_homedir=/cgi-bin/home
+-cgibin_sodir=/cgi-bin/so
+-cgibin_sowdir=/cgi-bin/sow
+-confdir=/conf
+-docrootdir=/docroot
++aliasdir=/usr/share/pki-tps/alias
++apache_modulesdir=@APACHE_MODULES_DIR@
++appletsdir=/usr/share/pki-tps/applets
++cgibin_demodir=/usr/share/pki-tps/cgi-bin/demo
++cgibin_homedir=/usr/share/cgi-bin/home
++cgibin_sodir=/usr/share/cgi-bin/so
++cgibin_sowdir=/usr/share/cgi-bin/sow
++confdir=/usr/share/pki-tps/conf
++docrootdir=$prefix/usr/share/pki-tps/
+ docroot_demodir=/docroot/demo
+ docroot_homedir=/docroot/home
+ docroot_sodir=/docroot/so
+@@ -144,16 +144,16 @@
+ docroot_tps_imgdir=/docroot/tps/admin/console/img
+ docroot_tps_jsdir=/docroot/tps/admin/console/js
+ # relative to prefix
+-licensedir=/doc
+-logsdir=/logs/signedAudit
+-perl_basedir=/perl/base
+-perl_modulesdir=/perl/modules
+-perl_servicedir=/perl/service
+-perl_templatesdir=/perl/templates
+-samplesdir=/samples
+-scriptsdir=/scripts
+-setupdir=/setup
+-templatesdir=/templates
++licensedir=/usr/share/doc/pki-tps
++logsdir=/var/log/pki/pki-tps/signedAudit
++perl_basedir=@PERL_GENTOO_BASEDIR@
++perl_modulesdir=@PERL_GENTOO_BASEDIR@/modules
++perl_servicedir=@PERL_GENTOO_BASEDIR@/service
++perl_templatesdir=@PERL_GENTOO_BASEDIR@/templates
++samplesdir=/usr/share/pki-tps/sample
++scriptsdir=/usr/share/pki-tps/scripts
++setupdir=/usr/share/pki-tps/setup
++templatesdir=/usr/share/pki-tps/templates
+ AC_SUBST(aliasdir)
+ AC_SUBST(apache_modulesdir)
+ AC_SUBST(appletsdir)
+@@ -221,7 +221,7 @@
+     AC_DEFINE([USE_NODL_TABS], [], [USE_NODL_TABS])
+     platform="linux"
+     # relative to sysconfdir
+-    initddir=/rc.d/init.d
++    initddir=/init.d
+     AC_SUBST(initddir)
+     ;;
+   ia64-hp-hpux*)
