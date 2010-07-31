@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header$
 
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +spmfilter-0.4.2.ebuild:
+  bump
+
   07 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> spmfilter-9999.ebuild:
   drop keyword in 9999 live ebuild
 
