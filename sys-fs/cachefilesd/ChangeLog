@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -cachefilesd-0.10-r1.ebuild:
+  drop
+
   09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -cachefilesd-0.9-r1.ebuild, -cachefilesd-0.10.ebuild,
   -files/cachefilesd.init:
