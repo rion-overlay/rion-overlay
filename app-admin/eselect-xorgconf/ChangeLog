@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -eselect-xorgconf-0.2.ebuild:
+  remove old ebuild
+
 *eselect-xorgconf-0.3 (09 Jun 2010)
 
   09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
