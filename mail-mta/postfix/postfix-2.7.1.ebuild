@@ -6,7 +6,7 @@ inherit eutils multilib ssl-cert toolchain-funcs flag-o-matic pam
 
 KEYWORDS="~amd64 ~x86"
 
-IUSE="cdb dovecot-sasl hardened ipv6 ldap mbox mysql nis pam postgres sasl selinux ssl vda"
+IUSE="cdb dovecot-sasl hardened ipv6 ldap mbox mysql nis pam postgres sasl selinux ssl"
 
 MY_PV="${PV/_rc/-RC}"
 MY_SRC="${PN}-${MY_PV}"
@@ -17,8 +17,8 @@ RC_VER="2.5"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail."
 HOMEPAGE="http://www.postfix.org/"
-SRC_URI="${MY_URI}/${MY_SRC}.tar.gz
-	vda? ( http://vda.sourceforge.net/VDA/${VDA_P}.patch ) "
+SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
+#	vda? ( http://vda.sourceforge.net/VDA/${VDA_P}.patch ) "
 
 LICENSE="IBM"
 SLOT="0"
