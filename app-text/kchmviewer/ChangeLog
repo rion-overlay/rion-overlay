@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-text/kchmviewer/ChangeLog,v 1.25 2009/12/17 18:15:35 pva Exp $
 
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> -kchmviewer-5.2.ebuild,
+  +kchmviewer-5.2-r10.ebuild:
+  move to r10 revision - ebuild differ on portage
+
   10 May 2010; Rion <rion4ik@gmail.com> -kchmviewer-5.1-r1.ebuild,
   +kchmviewer-5.2.ebuild:
   new version
