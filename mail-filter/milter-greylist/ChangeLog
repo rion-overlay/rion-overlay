@@ -2,6 +2,16 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -milter-greylist-4.3.4-r1.ebuild, +milter-greylist-4.3.8.ebuild:
+  remove outdated
+
+*milter-greylist-4.3.8 ( 31 Jul 2010 )
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +milter-greylist-4.3.8.ebuild:
+  bump
+
 *milter-greylist-4.3.7
 
   05 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
