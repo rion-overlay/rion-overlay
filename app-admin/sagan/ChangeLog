@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*sagan-0.1.4.ebuild ( 31 Jul 2010 )
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> +sagan-0.1.4.ebuild:
+  new version
+
 *sagan-0.1.0
 
   27 Jun 2010; <slep@gentoo.org> +sagan-0.1.0.ebuild,
