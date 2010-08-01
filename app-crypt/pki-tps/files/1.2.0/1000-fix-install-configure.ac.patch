@@ -1,0 +1,20 @@
+diff --git a/pki-tps-1.2.0/configure.ac b/pki-tps-1.2.0/configure.ac
+--- a/pki-tps-1.2.0/configure.ac
++++ b/pki-tps-1.2.0/configure.ac
+@@ -101,13 +101,13 @@
+ # use /usr as the prefix for everything, which means
+ # /usr/etc, /usr/opt, and /usr/var.  FHS sez to use
+ # /etc, /opt, and /var.
+-ac_default_prefix=/opt/tps
++ac_default_prefix=/usr
+ prefix=$ac_default_prefix
+ exec_prefix=$prefix
+ dnl as opposed to the default $prefix/etc
+-#sysconfdir='/etc'
++sysconfdir='/etc'
+ dnl as opposed to the default $prefix/var
+-#localstatedir='/var'
++localstatedir='/var'
+ 
+ # relative to prefix
+ aliasdir=/alias

@@ -1,0 +1,41 @@
+# ChangeLog for app-emulation/aqemu
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.7.3-r2.ebuild:
+  remove outdated ebuild
+
+*aqemu-0.8.0 ( 14 Jul 2010 )
+
+ 14 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -aqemu-0.8_beta2.ebuild, +aqemu-0.8.0.ebuild:
+  nev reliase
+
+  14 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -aqemu-0.8_beta2.ebuild:
+  delete beta ebuild
+
+  04 Jul 2010; <slep@gentoo.org> +aqemu-0.8_beta2.ebuild:
+  add new beta2 ebuild for testing
+
+  05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-0.7.3-r2.ebuild,
+  aqemu-9999.ebuild:
+  fix ebuild code - add vnc use
+
+  05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-0.7.3-r2.ebuild:
+  code clean
+
+  18 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.7.3-r1.ebuild,
+  +aqemu-0.7.3-r2.ebuild:
+  fix .desktop file
+
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> +aqemu-9999.ebuild:
+  add live ebuild
+
+  06 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.7.3.ebuild,
+  +aqemu-0.7.3-r1.ebuild:
+  fix bad depend on app-emulation/kvm - replace to app-emulation/qemu-kvm
+
+  13 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +aqemu-0.7.3.ebuild:
+  recommit in my personal overlay
+
