@@ -40,6 +40,6 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_newjar "${S}"/build/jars/cms-theme-1.3.0_en.jar cms-theme_en.jar
+	java-pkg_newjar "${S}"/build/jars/cms-theme-1.3.2_en.jar cms-theme_en.jar
 	use source && java-pkg_dosrc src/com
 }
