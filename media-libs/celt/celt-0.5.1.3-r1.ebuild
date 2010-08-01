@@ -15,24 +15,21 @@ SRC_URI="http://downloads.us.xiph.org/releases/${PN}/${P}.tar.gz"
 LICENSE="as-is"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE="ogg doc debug static"
+IUSE="ogg"
 
 DEPEND="ogg? ( media-libs/libogg )
 	dev-util/pkgconfig
-	sys-devel/libtool
-	doc? ( app-doc/doxygen )"
+	sys-devel/libtool"
 RDEPEND="ogg? ( media-libs/libogg )"
 
 src_prepare() {
-	eautomake
+	#eautomake
+	eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(use_with ogg ogg /usr) \
-		$(use_enable debug assertion) \
-		$(use_enable static static-modes) \
-				|| die "econf failed"
+		$(use_with ogg ogg /usr) || die "econf failed"
 }
 
 src_install() {
@@ -40,9 +37,4 @@ src_install() {
 	dodoc ChangeLog README TODO || die "dodoc failed."
 
 	find "${D}" -name '*.la' -delete
-
-#	if use doc;then
-#		doxygen Doxyfile
-#		dohtml doxy
-#	fi
 }
