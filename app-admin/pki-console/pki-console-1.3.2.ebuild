@@ -54,8 +54,8 @@ src_install() {
 	java-pkg_newjar "${S}"/build/jars/"${P}"_en.jar ${PN}_en.jar
 	java-pkg_newjar "${S}"/build/jars/"${P}".jar ${PN}.jar
 	java-pkg_dolauncher ${PN} --main com.netscape.management.client.console.Console \
+		--pwd "/usr/share/pki/html/java/" \
 				--pkg_args "-Djava.util.prefs.systemRoot=\"\$HOME/.${PN}\" -Djava.util.prefs.userRoot=\"\$HOME/.${PN}\""
-#           --pwd "/usr/share/dirsrv/html/java/" \
 
 	doicon "${DISTDIR}"/pki-fedora.png
 	make_desktop_entry ${PN} "DogTag PKI Management Console" fedora.png Network

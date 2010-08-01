@@ -13,7 +13,7 @@ HOMEPAGE="http://pki.fedoraproject.org"
 SRC_URI="http://pki.fedoraproject.org/pki/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="1.3"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
@@ -21,9 +21,11 @@ COMMON_DEP=">=dev-java/jss:4.3-4.2.6
 			dev-java/ldapsdk:4.1"
 
 DEPEND="${COMMON_DEPEND}
-		>=virtual/jdk-1.5"
+		>=virtual/jdk-1.6"
 RDEPEND="${COMMON_DEPEND}
-		>=virtual/jre-1.5"
+		>=virtual/jre-1.6"
+
+PROVIDE="virtual/pki-console-ui"
 
 src_prepare() {
 	java-pkg_jar-from ldapsdk-4.1 ldapjdk.jar
@@ -40,6 +42,8 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_newjar "${S}"/build/jars/cms-theme-1.3.0_en.jar cms-theme_en.jar
+	java-pkg_newjar "${S}"/build/jars/pki-console-theme-1.3.2_en.jar \
+			pki-console-theme_en.jar
+
 	use source && java-pkg_dosrc src/com
 }
