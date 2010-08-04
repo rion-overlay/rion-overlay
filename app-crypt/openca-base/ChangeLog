@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*openca-base-1.1.0 ( 04 Aug 2010 )
+  04 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +openca-base-1.1.0.ebuild, +files/gentoofu_configure.in.patch:
+  version bump
+
   05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   openca-base-1.0.2.ebuild:
   ~amd64 keyword code ldean
