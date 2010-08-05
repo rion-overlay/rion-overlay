@@ -8,11 +8,12 @@ inherit eutils fdo-mime rpm multilib
 
 IUSE="gnome java kde"
 
-BUILDID="9420"
-UREVER="1.5.1"
+BUILDID="9505"
+UREVER="1.6.1"
 MY_PV3="${PV}-${BUILDID}"
-BASIS="ooobasis3.1"
-MST="OOO310_m11"
+BASIS="ooobasis3.2"
+MST="OOO320_m18"
+FILEPATH="http://ftp.chg.ru/pub/OpenOffice-RU/${PV}/ru"
 
 if [ "${ARCH}" = "amd64" ] ; then
 	OOARCH="x86_64"
@@ -21,10 +22,11 @@ else
 fi
 
 S="${WORKDIR}/ru/RPMS"
+UP="ru/RPMS"
 DESCRIPTION="OpenOffice productivity suite. Russian Professional Edition"
 
-SRC_URI="amd64? ( http://ftp.chg.ru/pub/OpenOffice-RU/${PV}/ru/OOo_${PV}_LinuxX86-64_install_ru_infra.tar.gz )
-	x86? ( http://ftp.chg.ru/pub/OpenOffice-RU/${PV}/ru/OOo_${PV}_LinuxIntel_install_ru_infra.tar.gz )"
+SRC_URI="amd64? ( ${FILEPATH}/OOo_${PV}_Linux_x86-64_install-rpm_ru_infra.tar.gz )
+	x86? ( ${FILEPATH}/OOo_${PV}_Linux_x86_install-rpm_ru_infra.tar.gz )"
 
 HOMEPAGE="http://i-rs.ru/"
 
@@ -49,9 +51,14 @@ PDEPEND="java? ( >=virtual/jre-1.5 )"
 PROVIDE="virtual/ooo"
 RESTRICT="strip binchecks"
 
-QA_EXECSTACK="usr/$(get_libdir)/openoffice/basis3.1/program/*
+QA_EXECSTACK="usr/$(get_libdir)/openoffice/basis3.2/program/*
 	usr/$(get_libdir)/openoffice/ure/lib/*"
 QA_TEXTRELS="usr/$(get_libdir)/openoffice/ure/lib/*"
+#QA_PRESTRIPPED="usr/$(get_libdir)/openoffice/basis3.2/program/*
+#	usr/$(get_libdir)/openoffice/basis3.2/program/python-core-2.6.1/lib/lib-dynload/*
+#	usr/$(get_libdir)/openoffice/program/*
+#	usr/$(get_libdir)/openoffice/ure/bin/*
+#	usr/$(get_libdir)/openoffice/ure/lib/*"
 
 RESTRICT="mirror"
 
@@ -59,34 +66,35 @@ src_unpack() {
 
 	unpack ${A}
 
-	rp="./ru/RPMS"
 	for i in base binfilter calc core01 core02 core03 core04 core05 core06 core07 draw graphicfilter images impress math ooofonts ooolinguistic pyuno testtool writer xsltfilter ; do
-		rpm_unpack "${rp}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
 	done
 
 	for j in base calc draw impress math writer; do
-		rpm_unpack "${rp}/openoffice.org3-${j}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP}/openoffice.org3-${j}-${MY_PV3}.${OOARCH}.rpm"
 	done
 
-	rpm_unpack "${rp}/openoffice.org3-${MY_PV3}.${OOARCH}.rpm"
-	rpm_unpack "${rp}/openoffice.org-ure-${UREVER}-${BUILDID}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/openoffice.org3-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/openoffice.org-ure-${UREVER}-${BUILDID}.${OOARCH}.rpm"
 
-	rpm_unpack "${rp}/desktop-integration/openoffice.org3.1-freedesktop-menus-3.1-${BUILDID}.noarch.rpm"
+	rpm_unpack "./${UP}/desktop-integration/openoffice.org3.2-freedesktop-menus-3.2-${BUILDID}.noarch.rpm"
+
+	use gnome && rpm_unpack "./${UP}/${BASIS}-gnome-integration-${MY_PV3}.${OOARCH}.rpm"
+	use kde && rpm_unpack "./${UP}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
+	use java && rpm_unpack "./${UP}/${BASIS}-javafilter-${MY_PV3}.${OOARCH}.rpm"
+
+	# Unpack provided dictionaries, unless there is a better solution...
+	rpm_unpack "./${UP}/openoffice.org3-dict-de-DE-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/openoffice.org3-dict-en-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/openoffice.org3-dict-ru-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/openoffice.org3-dict-uk-${MY_PV3}.${OOARCH}.rpm"
 
 	# Lang files
-	rpm_unpack "${rp}/${BASIS}-ru-${MY_PV3}.${OOARCH}.rpm"
-	rpm_unpack "${rp}/openoffice.org3-ru-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/${BASIS}-ru-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/openoffice.org3-ru-${MY_PV3}.${OOARCH}.rpm"
 	for j in base binfilter calc draw help impress math res writer; do
-		rpm_unpack "${rp}/${BASIS}-ru-${j}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP}/${BASIS}-ru-${j}-${MY_PV3}.${OOARCH}.rpm"
 	done
-
-	for l in ${LINGUAS}; do
-		rpm_unpack "${rp}/openoffice.org3-dict-${l}-${MY_PV3}.${OOARCH}.rpm"
-	done
-
-	use gnome && rpm_unpack "${rp}/${BASIS}-gnome-integration-${MY_PV3}.${OOARCH}.rpm"
-	use kde && rpm_unpack "${rp}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
-	use java && rpm_unpack "${rp}/${BASIS}-javafilter-${MY_PV3}.${OOARCH}.rpm"
 
 }
 
@@ -113,6 +121,9 @@ src_install () {
 		fi
 	done
 
+	# Make sure the permissions are right
+	fowners -R root:0 /
+
 	# Install wrapper script
 	newbin "${FILESDIR}/wrapper.in" ooffice
 	sed -i -e s/LIBDIR/$(get_libdir)/g "${D}/usr/bin/ooffice" || die
@@ -125,14 +136,14 @@ src_install () {
 	dosym ${INSTDIR}/program/spadmin /usr/bin/ooffice-printeradmin
 	dosym ${INSTDIR}/program/soffice /usr/bin/soffice
 
-	#rm -f ${INSTDIR}/basis-link || die
-	dosym ${INSTDIR}/basis3.1 ${INSTDIR}/basis-link
+	rm -f "${D}${INSTDIR}/basis-link" || die
+	dosym ${INSTDIR}/basis3.2 ${INSTDIR}/basis-link
 
 	# Change user install dir
 	sed -i -e "s/.openoffice.org\/3/.ooo3/g" "${D}${INSTDIR}/program/bootstraprc" || die
 
 	# Non-java weirdness see bug #99366
-	use !java && rm -f "${D}${INSTDIR}/program/javaldx"
+	use !java && rm -f "${D}${INSTDIR}/ure/bin/javaldx"
 
 	# prevent revdep-rebuild from attempting to rebuild all the time
 	insinto /etc/revdep-rebuild && doins "${FILESDIR}/50-openoffice-bin"
@@ -149,9 +160,11 @@ pkg_postinst() {
 	elog " openoffice-bin does not provide integration with system spell "
 	elog " dictionaries. Please install them manually through the Extensions "
 	elog " Manager (Tools > Extensions Manager) or use the source based "
-	elog " package instead. Dictionary extensions installed to"
-	elog "/usr/$(get_libdir)//openoffice/share/extension/install/ Use extensions"
-	elog "manager to install them for your user"
+	elog " package instead. "
+	elog
+	elog " Dictionaries for english, german, russian and ukrainian are provided in "
+	elog " /usr/$(get_libdir)/openoffice/share/extension/install "
+	elog " Other dictionaries can be found at Suns extension site. "
 	elog
 
 }
