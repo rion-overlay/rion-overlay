@@ -4,6 +4,11 @@
 
 # 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # Not work && build
+<<<<<<< local
+app-crypt/pki-ra
+app-crypt/pki-tps
+=======
+>>>>>>> other
 app-emulation/libguestfs
 
 # 11 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
