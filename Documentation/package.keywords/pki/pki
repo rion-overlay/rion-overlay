@@ -25,3 +25,7 @@ app-crypt/pki-tks
 app-crypt/pki-tps
 app-crypt/pki-util
 app-crypt/pki-setup
+#Apache stuff
+www-apache/mod_revocator
+dev-libs/nss-
+
