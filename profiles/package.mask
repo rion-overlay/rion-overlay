@@ -9,9 +9,7 @@ www-apps/rtpg
 # 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
 # Not work && build
 app-crypt/pki-ra
-app-admin/pki-console
 app-crypt/pki-tps
-app-crypt/pki-ca
 app-emulation/libguestfs
 
 # 1 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
