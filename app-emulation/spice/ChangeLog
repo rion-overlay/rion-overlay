@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru> -spice-0.4.ebuild:
+  remove old ebuild
+
 *spice-0.5.3
 
   01 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru> +spice-0.5.3.ebuild:
