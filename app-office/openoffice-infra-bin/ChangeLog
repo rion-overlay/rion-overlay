@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  openoffice-infra-bin-3.2.1.ebuild:
+  disable kde use - rmp packet not found in taball
+
   05 Aug 2010; Rion <rion4ik@notagmail.com>
   -openoffice-infra-bin-3.1.1.ebuild, +openoffice-infra-bin-3.2.1.ebuild:
   new version

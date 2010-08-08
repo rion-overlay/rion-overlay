@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit eutils fdo-mime rpm multilib
 
-IUSE="gnome java kde"
+IUSE="gnome java"
 
 BUILDID="9505"
 UREVER="1.6.1"
@@ -80,7 +80,7 @@ src_unpack() {
 	rpm_unpack "./${UP}/desktop-integration/openoffice.org3.2-freedesktop-menus-3.2-${BUILDID}.noarch.rpm"
 
 	use gnome && rpm_unpack "./${UP}/${BASIS}-gnome-integration-${MY_PV3}.${OOARCH}.rpm"
-	use kde && rpm_unpack "./${UP}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
+#	use kde && rpm_unpack "./${UP}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
 	use java && rpm_unpack "./${UP}/${BASIS}-javafilter-${MY_PV3}.${OOARCH}.rpm"
 
 	# Unpack provided dictionaries, unless there is a better solution...
