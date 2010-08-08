@@ -15,7 +15,7 @@ SRC_URI="http://www.spice-space.org/download/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="proxy gui opengl static"
+IUSE="proxy gui opengl"
 
 COMMON_DEP=">=x11-libs/pixman-0.17
 	>=x11-apps/xrandr-1.2
@@ -59,12 +59,7 @@ src_configure() {
 	fi
 
 	econf \
-		$(use_enable static static-linkage) \
 		${myconf} || die "econf failed"
-}
-
-src_compile() {
-	emake -j1 || die
 }
 
 src_install() {

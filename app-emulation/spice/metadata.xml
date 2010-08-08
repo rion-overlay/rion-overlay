@@ -11,7 +11,7 @@
  deals with both the virtualized devices and the front-end. Interaction between
  front-end and back-end is done using VD-Interfaces.</longdescription> 
 <use>
-	<flag name='static'>will generate spice client binary with static linkage to
-	external libraries</flag>
+	<flag name='proxy'> </flag>
+	 <flag name='gui'> </flag>
 </use>
 </pkgmetadata>
