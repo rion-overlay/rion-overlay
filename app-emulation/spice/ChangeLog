@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru> spice-0.5.3.ebuild,
+  spice-9999.ebuild:
+  fix linking phase
+
 *pice-9999
 
   08 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru> spice-0.5.3.ebuild,
