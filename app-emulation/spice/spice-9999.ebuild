@@ -6,11 +6,12 @@ EAPI="2"
 PYTHON_DEPEND="2:2.6"
 WANT_AUTOMAKE="1.10"
 
-inherit autotools python
+inherit autotools python git
 
 DESCRIPTION="Provide high-quality remote access to QEMU using SPICE protocol"
 HOMEPAGE="http://www.spice-space.org http://www.redhat.com/virtualization/rhev"
-SRC_URI="http://www.spice-space.org/download/${P}.tar.bz2"
+#SRC_URI="http://www.spice-space.org/download/${P}.tar.bz2"
+EGIT_REPO_URI="git://cgit.freedesktop.org/spice/spice"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -36,7 +37,8 @@ COMMON_DEP=">=x11-libs/pixman-0.17
 	proxy? ( net-dialup/slirp )"
 DEPEND="${COMMON_DEP}
 	dev-util/pkgconfig
-	sys-devel/libtool"
+	sys-devel/libtool
+	dev-python/pyparsing"
 
 RDEPEND="${COMMON_DEP}"
 
