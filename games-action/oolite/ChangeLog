@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Aug 2010; Rion <rion4ik@notagmail.com> -oolite-1.73.4.ebuild,
+  +oolite-1.74.2.ebuild:
+  new version
+
   22 Jun 2010; Rion <rion4ik@notagmail.com> oolite-9999.ebuild:
   fixed live compilation
 
