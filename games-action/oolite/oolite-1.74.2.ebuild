@@ -18,7 +18,8 @@ IUSE="${IUSE}"
 RDEPEND="virtual/opengl
 		gnustep-base/gnustep-gui
 		media-libs/sdl-mixer
-		media-libs/sdl-image"
+		media-libs/sdl-image
+		app-accessibility/espeak"
 
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make"
@@ -39,10 +40,7 @@ src_prepare() {
 }
 
 src_compile() {
-	cd deps/Cross-platform-deps/SpiderMonkey/js/src
-	BUILD_OPT=1 make -f Makefile.ref || die "make failed"
-	cd "${S}"
-	make debug=no || die "make failed"
+	make -f Makefile release || die "make failed"
 }
 
 src_install() {
@@ -52,6 +50,6 @@ src_install() {
 	dogamesbin "${T}/oolite"
 	prepgamesdirs "${GNUSTEP_LOCAL_ROOT}/Applications"
 	fperms ug+x "${GNUSTEP_LOCAL_ROOT}/Applications/oolite.app/oolite"
-	doicon FreeDesktop/oolite-icon.png
-	domenu FreeDesktop/oolite.desktop
+	doicon installers/FreeDesktop/oolite-icon.png
+	domenu installers/FreeDesktop/oolite.desktop
 }
