@@ -30,16 +30,21 @@ RUBY_OPTIONAL="yes"
 # http_push (http://pushmodule.slact.net/, MIT license)
 HTTP_PUSH_MODULE_P="nginx_http_push_module-0.692"
 
+# http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
+HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-1.1"
+
 inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://sysoev.ru/nginx/
 	http://www.modrails.com/
-	http://pushmodule.slact.net/"
+	http://pushmodule.slact.net/
+	http://labs.frickle.com/nginx_ngx_cache_purge/"
 SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 	nginx_modules_http_headers_more? ( http://github.com/agentzh/headers-more-nginx-module/tarball/v${HTTP_HEADERS_MORE_MODULE_PV} -> ${HTTP_HEADERS_MORE_MODULE_P}.tar.gz )
 	nginx_modules_http_passenger? ( mirror://rubyforge/passenger/passenger-${PASSENGER_PV}.tar.gz )
 	nginx_modules_http_push? ( http://pushmodule.slact.net/downloads/${HTTP_PUSH_MODULE_P}.tar.gz )
+	nginx_modules_http_cache_purge? ( http://labs.frickle.com/files/${HTTP_CACHE_PURGE_MODULE_P}.tar.gz )
 	pam? ( http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
 	rrd? ( http://wiki.nginx.org/images/9/9d/Mod_rrd_graph-0.2.0.tar.gz )
 	chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v0.19 -> chunkin-nginx-module-0.19.tgz )"
@@ -55,7 +60,7 @@ split_clients upstream_ip_hash userid uwsgi"
 NGINX_MODULES_OPT="addition dav degradation flv geoip gzip_static image_filter
 perl random_index realip secure_link stub_status sub xslt"
 NGINX_MODULES_MAIL="imap pop3 smtp"
-NGINX_MODULES_3RD="http_headers_more http_passenger http_push"
+NGINX_MODULES_3RD="http_headers_more http_passenger http_push http_push"
 
 IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam +pcre perftools rrd ssl vim-syntax"
 
@@ -200,6 +205,11 @@ src_configure() {
 		myconf="${myconf} --add-module=${WORKDIR}/${HTTP_PUSH_MODULE_P}"
 	fi
 
+	if use nginx_modules_http_cache_purge; then
+		http_enabled=1
+		myconf="${myconf} --add-module=${WORKDIR}/${HTTP_CACHE_PURGE_MODULE_P}"
+	fi
+
 	if use http || use http-cache; then
 		http_enabled=1
 	fi
@@ -293,6 +303,11 @@ src_install() {
 	if use nginx_modules_http_push; then
 		docinto ${HTTP_PUSH_MODULE_P}
 		dodoc "${WORKDIR}"/${HTTP_PUSH_MODULE_P}/{changelog.txt,protocol.txt,README}
+	fi
+
+	if use nginx_modules_http_cache_purge; then
+		docinto ${HTTP_CACHE_PURGE_MODULE_P}
+		dodoc "${WORKDIR}"/${HTTP_CACHE_PURGE_MODULE_P}/{CHANGES,README}
 	fi
 
 	if use nginx_modules_http_passenger; then
