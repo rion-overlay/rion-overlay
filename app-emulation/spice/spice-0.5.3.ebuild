@@ -10,7 +10,7 @@ inherit autotools python
 
 DESCRIPTION="Provide high-quality remote access to QEMU using SPICE protocol"
 HOMEPAGE="http://www.spice-space.org http://www.redhat.com/virtualization/rhev"
-SRC_URI="http://www.spice-space.org/download/${P}.tar.bz2"
+SRC_URI="http://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
