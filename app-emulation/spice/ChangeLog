@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Aug 2010; <slep@gentoo.org> spice-0.5.3.ebuild,
+  +files/disable-python-check-configure.ac.patch:
+  disable python depend
+
   10 Aug 2010; <slep@gentoo.org> spice-0.5.3.ebuild:
   fix USR_src
 

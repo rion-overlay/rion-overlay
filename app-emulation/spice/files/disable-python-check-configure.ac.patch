@@ -1,0 +1,18 @@
+--- configure.ac.orig	2010-08-11 06:47:08.026654987 +0300
++++ configure.ac	2010-08-11 06:48:13.435635501 +0300
+@@ -25,7 +25,6 @@
+ AC_PROG_LIBTOOL
+ AM_PROG_CC_C_O
+ AC_C_BIGENDIAN
+-AC_PATH_PROGS(PYTHON, python2 python)
+ 
+ SPICE_LT_VERSION=m4_format("%d:%d:%d", 1, 0, 1)
+ AC_SUBST(SPICE_LT_VERSION)
+@@ -369,7 +368,6 @@
+ common/Makefile
+ common/win/Makefile
+ common/win/my_getopt-1.5/Makefile
+-python_modules/Makefile
+ server/Makefile
+ client/Makefile
+ client/x11/Makefile
