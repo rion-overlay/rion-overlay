@@ -3,10 +3,9 @@
 # $Header: $
 
 EAPI="2"
-PYTHON_DEPEND="2:2.6"
 WANT_AUTOMAKE="1.10"
 
-inherit autotools python
+inherit autotools
 
 DESCRIPTION="Provide high-quality remote access to QEMU using SPICE protocol"
 HOMEPAGE="http://www.spice-space.org http://www.redhat.com/virtualization/rhev"
@@ -40,17 +39,17 @@ DEPEND="${COMMON_DEP}
 
 RDEPEND="${COMMON_DEP}"
 
-pkg_setup() {
-	python_set_active_version 2
-}
-
 src_prepare() {
+	#disable uneede pyton check
+	epatch "${FILESDIR}/"disable-python-check-configure.ac.patch || die
+	sed -i -e 's/python_modules/ /g' Makefile.am || die "sed failed"
+
 	eautoreconf
 }
 
 src_configure() {
 	local myconf=""
-# Опять идиоты не освоили автотулсы ::::::(
+
 	if use proxy;then
 		myconf+=" --enable-tunnel "
 	fi
@@ -65,4 +64,6 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install || die "emake failded"
 	dodoc AUTHORS ChangeLog NEWS README
+
+	find "${D}" -name '*.la' -delete
 }
