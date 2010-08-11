@@ -17,13 +17,12 @@ SLOT="5"
 KEYWORDS="~amd64 ~x86"
 IUSE="ogg"
 
-DEPEND="ogg? ( media-libs/libogg )
+DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-devel/libtool"
 RDEPEND="ogg? ( media-libs/libogg )"
 
 src_prepare() {
-	#eautomake
 	eautoreconf
 }
 
