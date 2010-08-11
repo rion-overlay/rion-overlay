@@ -12,12 +12,13 @@ SRC_URI="http://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install || die "install failed"
+	dodoc NEWS
 }

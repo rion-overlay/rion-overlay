@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Aug 2010; <slep@gentoo.org> spice-protocol-0.5.3.ebuild:
+  more minor QA fix
+
   01 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +spice-protocol-0.5.3.ebuild, +metadata.xml:
   initial commit
