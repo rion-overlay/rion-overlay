@@ -31,8 +31,8 @@ COMMON_DEP=">=x11-libs/pixman-0.17
 	virtual/jpeg
 	>=sys-devel/gcc-4.1
 	app-emulation/spice-protocol
-	gui? ( =dev-games/cegui-6* )
-	proxy? ( net-dialup/slirp )"
+	gui? ( =dev-games/cegui-0.6* )
+	proxy? ( net-libs/slirp )"
 DEPEND="${COMMON_DEP}
 	dev-util/pkgconfig
 	sys-devel/libtool"
@@ -53,8 +53,13 @@ src_configure() {
 	if use proxy;then
 		myconf+=" --enable-tunnel "
 	fi
+
 	if use gui; then
 		myconf+="  --enable-gui "
+	fi
+
+	if use opengl; then
+		myconf+=" --enable-opengl "
 	fi
 
 	econf \

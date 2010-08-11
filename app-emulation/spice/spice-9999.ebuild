@@ -33,8 +33,8 @@ COMMON_DEP=">=x11-libs/pixman-0.17
 	virtual/jpeg
 	>=sys-devel/gcc-4.1
 	app-emulation/spice-protocol
-	gui? ( =dev-games/cegui-6* )
-	proxy? ( net-dialup/slirp )"
+	gui? ( =dev-games/cegui-0.6* )
+	proxy? ( net-libs/slirp )"
 DEPEND="${COMMON_DEP}
 	dev-util/pkgconfig
 	sys-devel/libtool
@@ -60,15 +60,15 @@ src_configure() {
 		myconf+="  --enable-gui "
 	fi
 
+	if use opengl; then
+		myconf+=" --enable-opengl "
+	fi
+
 	econf \
 		${myconf} || die "econf failed"
 }
 
-src_compile() {
-	emake -j1 || die
-}
-
 src_install() {
-	emake DESTDIR="${D}" install || die "emake failded"
+	emake DESTDIR="${D}" install || die "emake failed"
 	dodoc AUTHORS ChangeLog NEWS README
 }
