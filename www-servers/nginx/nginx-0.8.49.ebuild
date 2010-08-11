@@ -141,6 +141,12 @@ pkg_setup() {
 		ewarn "To actually disable all http-functionality you also have to disable"
 		ewarn "all nginx http modules."
 	fi
+
+	if use nginx_modules_http_cache_purge && (use !nginx_modules_http_fastcgi || use !nginx_modules_http_uwsgi); then
+		eerror "The module cache_purge currently requires fastcgi and uwsgi modules to be built."
+		eerror "It will otherwise fail while linking."
+		die "Insufficient use-flags"
+	fi
 }
 
 src_unpack() {

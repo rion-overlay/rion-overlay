@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Aug 2010; Rion <rion4ik@notagmail.com> -nginx-0.8.48.ebuild,
+  +nginx-0.8.49.ebuild:
+  new nginx
+
   09 Aug 2010; Rion <rion4ik@notagmail.com> -nginx-0.8.47.ebuild,
   +nginx-0.8.48.ebuild:
   new version
