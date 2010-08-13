@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+# A.Vinogradov <spamslepnoga@inbox.lv>
+
+depend() {
+	need net
+	use apache myslq slapd  postgresql 
+
+}
+
+start() {
+	ebegin "Starting OpenCA RA"
+	/opt/openca/bin/openca-setpasswd 
+	eend $?
+}
+
+stop() {
+
+}
+
+restart() {
+
+}

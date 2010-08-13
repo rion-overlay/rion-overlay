@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>rion-overlay</herd>
+<maintainer>
+  <email>@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <longdescription>Long description of the package</longdescription> 
+ <use>
+	 <flag name='spf'> </flag>
+	 <flag name='dnsrbl'> </flag>
+	 <flag name='bind'> </flag>
+	 <flag name='dkim'> </flag>
+	 <flag name='drac'> </flag>
+	 <flag name='p0f'> </flag>
+	 <flag name='spamassassin'> </flag>
+	 <flag name='dnsrbl'> </flag>
+	 <flag name='postfix'></flag>
+	 <flag name='sendmail'> </flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/files/ejabberd-3.initd,v 1.1 2010/05/26 20:25:25 pva Exp $
+
+depend() {
+	use dns
+	need net
+	provide jabber-server
+}
+
+start() {
+	ebegin "Starting ejabberd"
+	/usr/sbin/ejabberdctl ${EJABBERDCTL_OPT} start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ejabberd"
+	/usr/sbin/ejabberdctl stop
+	eend $?
+}

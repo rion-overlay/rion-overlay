@@ -1,0 +1,9 @@
+# ChangeLog for dev-util/ati-stream-sdk-bin
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +files/99atistream,
+  +ati-stream-sdk-bin-1.4.0_beta.ebuild, +files/gcc-4.3-atistream.patch,
+  +metadata.xml:
+  recommit in pentoo
+

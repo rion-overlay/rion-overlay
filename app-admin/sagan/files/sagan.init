@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	use logger
+	need localmount
+
+}
+
+start() {
+	/usr/bin/sagan  ${SAGAN_OPTS} --user sagan  --program ${LOGGER}
+
+	eend $?
+}
+
+stop() {
+	killall -15 sagan
+
+}
+
+restart() {
+
+}
