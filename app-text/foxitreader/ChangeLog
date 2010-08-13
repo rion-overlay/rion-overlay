@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -foxitreader-1.1.0-r1.ebuild:
+  remove ebuild - not work and bad depends
+
   16 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +foxitreader-1.1.0-r1.ebuild, +files/FoxitReader.txt,
   +files/foxitreader.desktop, +files/foxitreader.png:
