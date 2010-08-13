@@ -126,7 +126,7 @@ src_prepare() {
 			ewarn "Whiteboarding is very unstable."
 		fi
 
-		subversion_wc_info
+		subversion_wc_info "${ESVN_REPO_URI}/patches"
 		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
 			-i src/applicationinfo.cpp || die "sed failed"
 
