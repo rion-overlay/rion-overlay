@@ -9,5 +9,8 @@
  <longdescription>Long description of the package</longdescription> 
 <use>
 	<flag name='kvm'>Add support kernel virtual mashine</flag>
+	<flag name='spice'>Build witch SPUCEd qemu, use
+	<pkg>app-emulation/qemu-kvm-spice</pkg> </flag>
+
 </use>
 </pkgmetadata>

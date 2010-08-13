@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-9999.ebuild,
+  metadata.xml:
+  add spice USE in aqemu-9999 and depend it to app-emulation/qemu-kvm-spice
+
   31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.7.3-r2.ebuild:
   remove outdated ebuild
 

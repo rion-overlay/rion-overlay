@@ -6,7 +6,7 @@ EAPI="2"
 
 WANT_CMAKE="always"
 
-inherit git cmake-utils
+inherit git cmake-utils confutils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators. Using Qt4."
 HOMEPAGE="http://sourceforge.net/projects/aqemu"
@@ -15,18 +15,26 @@ EGIT_REPO_URI="git://aqemu.git.sourceforge.net/gitroot/aqemu/aqemu"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="kvm linguas_ru vnc"
+IUSE="kvm linguas_ru vnc spice"
 
 DEPEND="${RDEPEND}"
 
 RDEPEND="kvm? ( app-emulation/qemu-kvm )
-	!kvm? ( >=app-emulation/qemu-0.9.0 )
+	!kvm? (
+		spice? ( app-emulation/qemu-kvm-spice  )
+		!spice? ( app-emulation/qemu-kvm
+				!app-emulation/qemu-kvm-spice )
+		)
 	vnc? ( net-libs/libvncserver )
 	x11-libs/qt-gui:4
 	x11-libs/qt-test:4
 	x11-libs/qt-xmlpatterns:4"
 
 DOCS="AUTHORS CHANGELOG README TODO"
+
+pkg_setup() {
+	confutils_use_depend_all spice kvm
+}
 
 src_unpack() {
 	git_src_unpack
