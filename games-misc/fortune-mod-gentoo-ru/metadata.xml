@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>rion-overlay</herd>
+<herd>no-herd</herd>
 <maintainer>
   <email>spamslepnoga@inbox.ru</email></maintainer>
   <maintainer>
@@ -10,6 +10,4 @@
 </maintainer>
  <longdescription>Fortune database of quotes from gentoo.ru forum and
  gentoo@conference.gentoo.ru and more russian gentoo resourses</longdescription> 
-<use>
-</use>
 </pkgmetadata>
