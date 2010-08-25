@@ -2,4 +2,3 @@ net-misc/asterisk-sounds-ru -wav alaw gsm
 net-misc/asterisk-core-sounds alaw gsm
 net-misc/asterisk-extra-sounds alaw gsm
 net-misc/asterisk-moh-opsound alaw gsm
-net-misc/asterisk-sounds-ru alaw gsm
