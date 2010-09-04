@@ -21,7 +21,7 @@ DEPEND="
 	media-libs/freeglut
 	dev-libs/libconfig
 	media-libs/giflib
-	media-libs/freetype
+	media-libs/freetype:2
 	media-libs/imlib2
 	media-libs/jpeg
 	media-libs/libpng
