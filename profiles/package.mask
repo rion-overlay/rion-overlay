@@ -1,3 +1,7 @@
+# 4 Sev 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+=www-apps/otrs-3.0.0_beta2
+
 # 13 Aug 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # ebuild use live dep's, waiting for in portage unmask 
 =app-emulation/aqemu-0.8.0-r1
