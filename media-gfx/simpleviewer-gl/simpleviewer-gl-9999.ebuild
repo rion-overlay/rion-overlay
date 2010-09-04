@@ -17,15 +17,15 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
-virtual/opengl
-media-libs/freeglut
-dev-libs/libconfig
-media-libs/giflib
-media-libs/freetype
-media-libs/imlib2
-media-libs/jpeg
-media-libs/libpng
-"
+	virtual/opengl
+	media-libs/freeglut
+	dev-libs/libconfig
+	media-libs/giflib
+	media-libs/freetype
+	media-libs/imlib2
+	media-libs/jpeg
+	media-libs/libpng
+	media-libs/tiff"
 RDEPEND="${DEPEND}"
 
 src_install() {
