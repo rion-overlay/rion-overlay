@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> +libdkim-1.0.21.ebuild:
+  bump
+
   04 Apr 2010; <slep@gentoo.org> libdkim-1.0.19.ebuild:
   add die in epatch
 

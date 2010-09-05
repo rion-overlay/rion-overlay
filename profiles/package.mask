@@ -1,3 +1,7 @@
+# 5 Sev 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+>=mail-filter/libdkim-1.0.21
+
 # 4 Sev 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing
 =www-apps/otrs-3.0.0_beta2
