@@ -18,5 +18,7 @@
 	 <flag name='dnsrbl'> </flag>
 	 <flag name='postfix'></flag>
 	 <flag name='sendmail'> </flag>
+	 <flag name='sopenldap'>Build witch openldap support</flag>
+
 </use>
 </pkgmetadata>

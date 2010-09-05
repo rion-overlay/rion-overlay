@@ -25,7 +25,7 @@ COMMON_DEP="net-mail/mailbase
 	p0f? ( net-analyzer/p0f )
 	bind? ( net-dns/bind[ipv6?] )
 	ssl? ( dev-libs/openssl )
-	openldap? ( net-nds/openldap[ipv6?] )
+	ldap? ( net-nds/openldap[ipv6?] )
 	curl? ( net-misc/curl[ipv6?] )
 	geoip? ( dev-libs/geoip )
 	spf? ( mail-filter/libspf2 )
