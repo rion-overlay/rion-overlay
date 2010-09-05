@@ -19,7 +19,9 @@ if [ $1 = "install" ]; then
 	sed -i "s|/opt/otrs|${VHOST_ROOT}/${PF}|g" ${VHOST_ROOT}/${PF}/Kernel/Config.pm || die "sed failed"
 
 	# set permissions
-	${VHOST_ROOT}/${PF}/bin/SetPermissions.sh   --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache ${VHOST_ROOT}/${PF} > /dev/null || die "Could not set permissions"
+	chmod +x ${VHOST_ROOT}/${PF}/bin/SetPermissions.sh
+	${VHOST_ROOT}/${PF}/bin/SetPermissions.sh   --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache --admin-user=root  \
+					${VHOST_ROOT}/${PF} > /dev/null || die "Could not set permissions"
 
 
 elif [ $1 = "clean" ]; then

@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="apache2 mysql postgres mod_perl fastcgi ldap gd cjk"
 
 # add oracle/mssql/DB2 DB support 
-DEPEND=""
+DEPEND="perl-core/Getopt-Long"
 RDEPEND="${DEPEND}
 	virtual/mta
 	>=dev-lang/perl-5.8.8
@@ -83,16 +83,16 @@ src_install() {
 			doc/test-* doc/X-OTRS-Headers.txt .fetchmailrc.dist \
 			.mailfilter.dist .procmailrc.dist || die
 
-	insinto "${MY_HOSTROOTDIR}"/${PF}
+	insinto "${MY_HOSTROOTDIR}/${PF}"
 	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE \
 			Kernel bin scripts var || die "doins failed"
 
-	mv "${D}/${MY_HOSTROOTDIR}"/${PF}/var/httpd/htdocs/* \
+	mv "${D}/${MY_HOSTROOTDIR}/${PF}/var/httpd/"htdocs/* \
 								"${D}/${MY_HTDOCSDIR}" || die "mv failed"
 	rm -rf "${D}/${MY_HOSTROOTDIR}/${PF}"/var/httpd || die
 
 	for a in "article log pics/images pics/stats pics sessions spool tmp"; do
-		keepdir "${MY_HOSTROOTDIR}"/${PF}/var/${a}
+		keepdir "${MY_HOSTROOTDIR}/${PF}/var/${a}"
 	done
 
 	webapp_configfile "${MY_HOSTROOTDIR}"/${PF}/Kernel/Config.pm
