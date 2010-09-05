@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Sep 2010; <slep@gentoo.org> files/reconfig-3:
+  fix reconfig script
+
   05 Sep 2010; <slep@gentoo.org> otrs-2.4.7.ebuild, files/reconfig-3:
   fix install root
 
