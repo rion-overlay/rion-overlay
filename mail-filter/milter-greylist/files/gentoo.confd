@@ -12,3 +12,4 @@ SOCKET="/var/run/$NAME/milter-greylist.sock"
 PIDFILE="/var/run/$NAME.pid"
 # this setting owerwrite config file !
 DOPTIONS="-p $SOCKET -u $USER -P $PIDFILE"
+DESC=milter-greylist
