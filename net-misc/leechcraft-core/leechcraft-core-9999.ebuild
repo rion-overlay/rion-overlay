@@ -57,7 +57,8 @@ src_configure() {
 		-DENABLE_TABPP=OFF
 		-DENABLE_SECMAN=OFF
 		-DENABLE_QROSP=OFF
-		-DENABLE_POPISHU=OFF"
+		-DENABLE_POPISHU=OFF
+		-DENABLE_SHELLOPEN=OFF"
 	cmake-utils_src_configure
 }
 
