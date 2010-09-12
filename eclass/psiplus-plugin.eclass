@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_PN}"
 EXPORT_FUNCTIONS src_compile src_install
 
 psiplus-plugin_src_compile() {
-	sed 's/\.\.\/\.\.\/psiplugin.pri/\/usr\/share\/psi\/plugins\/psiplugin.pri/' \
+	sed 's#\.\./\.\./psiplugin.pri#/usr/share/psi/plugins/psiplugin.pri#' \
 		-i "${MY_PN}".pro
 	eqmake4 "${MY_PN}".pro QMAKE_STRIP=echo
 	emake || die "Make failed"
