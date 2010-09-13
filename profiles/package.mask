@@ -1,3 +1,9 @@
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#mask for work failures
+app-crypt/openca-base
+app-crypt/openca
+
+
 # 5 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing
 =dev-libs/ucommon-3.3.5
