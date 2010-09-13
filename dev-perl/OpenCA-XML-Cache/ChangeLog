@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-XML-Cache-0.9.3.ebuild, metadata.xml:
+  fix SRC_URI
+
   11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   OpenCA-XML-Cache-0.9.3.ebuild:
   stable in x86

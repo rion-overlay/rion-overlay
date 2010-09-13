@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>openca</herd>
+<herd>no-herd</herd>
 <maintainer>
-  <email>spamslepnoga@inbox.ru</email>
+  <email>andreis.vinogradovs@gmail.com</email>
  <description>Perl module to cache the configuration files of OpenCA</description> 
 </maintainer>
 <!-- <longdescription>Long description of the package</longdescription> -->
