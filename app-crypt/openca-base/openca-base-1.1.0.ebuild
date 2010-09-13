@@ -154,6 +154,10 @@ src_install () {
 
 	# newinitd ${FILESDIR}/openca.init openca
 	# newconfd ${FILESDIR}/openca.conf openca
+	if use ldap; then
+		insinto  /etc/openldap/schema/
+		doins contrib/openldap/openca.schema
+	fi
 }
 
 pkg_postinst() {
