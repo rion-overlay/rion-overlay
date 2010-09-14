@@ -1,0 +1,25 @@
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#mask for work failures
+app-crypt/openca-base
+app-crypt/openca
+
+
+# 5 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+=dev-libs/ucommon-3.3.5
+
+# 5 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+>=mail-filter/libdkim-1.0.21
+
+# 4 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+=www-apps/otrs-3.0.0_beta2
+
+# 13 Aug 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# ebuild use live dep's, waiting for in portage unmask 
+=app-emulation/aqemu-0.8.0-r1
+
+# 4  Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+# Not work && build
+app-emulation/libguestfs

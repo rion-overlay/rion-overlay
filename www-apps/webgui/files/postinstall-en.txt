@@ -1,0 +1,23 @@
+1. Create and populate a MySQL database. Modify these commands to match your
+database, username, and password:
+
+ mysqladmin create webgui
+ mysql -uwebgui -ppassword webgui < ${MY_INSTALLDIR}/docs/create.sql
+
+2. Edit ${MY_INSTALLDIR}/etc/${VHOST_HOSTNAME}.conf to match your DB settings and log directory.
+
+3. Configure Apache:
+Add the following to ${MY_INSTALLDIR}/.htaccess or your httpd.conf
+
+ PerlSetVar WebguiRoot ${MY_INSTALLDIR}
+ PerlCleanupHandler Apache2::SizeLimit
+ PerlRequire ${MY_INSTALLDIR}/sbin/preload.perl
+ SetHandler perl-script
+ PerlInitHandler WebGUI
+ PerlSetVar WebguiConfig ${VHOST_HOSTNAME}.conf
+
+Be sure that Apache is started with -D APREQ -D PERL.
+
+4. Log in: username/pass:  "Admin" and "123qwe"
+
+If you are stuck, read http://www.plainblack.com/installing_webgui
