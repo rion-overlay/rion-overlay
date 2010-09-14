@@ -36,6 +36,10 @@ RDEPEND="${DEPEND}
 	dev-perl/LWP-UserAgent-Determined
 	dev-perl/PDF-API2
 	dev-perl/Digest-SHA-PurePerl
+	dev-perl/Text-CSV
+	dev-perl/JSON
+	dev-perl/CSS-Minifier
+	dev-perl/JavaScript-Minifier
 	>=virtual/perl-CGI-3.33
 	virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
