@@ -3,6 +3,14 @@
 # $Header: $
 
   14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/postinstall-ru-2.txt, +postinstall-ru-2.txt:
+  fix install
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/postinstall-ru-2.txt:
+  fix install - add postinstall-ru-2.txt
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -otrs-3.0.0_beta2.ebuild, +otrs-3.0.0_beta3.ebuild:
   bump
 
