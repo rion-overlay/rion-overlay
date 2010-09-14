@@ -9,7 +9,7 @@ WEBAPP_MANUAL_SLOT="yes"
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
 HOMEPAGE="http://otrs.org/"
-SRC_URI="ftp://ftp.otrs.org/pub/${PN}/${PN}-3.0.0-beta2.tar.bz2"
+SRC_URI="ftp://ftp.otrs.org/pub/${PN}/${PN}-3.0.0-beta3.tar.bz2"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
