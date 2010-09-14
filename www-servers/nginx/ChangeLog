@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> -nginx-0.8.49.ebuild:
+  remove old
+
 *nginx-0.8.50 (  04 Sep 2010 )
 
   04 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.8.50.ebuild:
