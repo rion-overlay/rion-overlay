@@ -19,7 +19,3 @@ stop() {
 	killall -15 sagan
 
 }
-
-restart() {
-
-}
