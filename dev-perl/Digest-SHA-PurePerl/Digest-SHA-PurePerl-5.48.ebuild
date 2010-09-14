@@ -16,3 +16,13 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 SRC_TEST="do"
+
+src_install() {
+
+	perl-module_src_install
+	# file collison witch Digest-SHA
+	# required create eselect module or
+	# managed symlink other
+	rm "${D}/usr/bin/"shasum ||die
+	rm "${D}/usr/share/man/man1/"shasum* || die
+}
