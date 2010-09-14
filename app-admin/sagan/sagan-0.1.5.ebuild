@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit autotools eutils
+inherit eutils autotools
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="http://sagan.softwink.com/"
@@ -20,7 +20,7 @@ RDEPEND="dev-libs/libpcre
 	app-admin/sagan-rules
 	smtp? ( net-libs/libesmtp )
 	mysql? ( virtual/mysql )
-	postgers? ( dev-db/postgresql-base )"
+	postgres? ( dev-db/postgresql-base )"
 
 pkg_setup() {
 	enewgroup sagan
@@ -29,15 +29,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/install_destdir_fix.patch || die "epatch failed"
-	epatch "${FILESDIR}"/sysconfig_location.patch || die
 	eautoreconf
-	# sed -e -i 's/usr\/local/d' etc/sagan.conf
 }
 
 src_configure() {
 	econf \
-		--enable-logzilla \
 		$(use_enable mysql) \
 		$(use_enable postgres postgresql)  \
 		$(use_enable smtp esmtp) || die "econf failed"
@@ -52,7 +48,7 @@ src_install() {
 
 	keepdir /var/log/sagan
 	keepdir /var/run/sagan
-
+	
 	newinitd "${FILESDIR}"/sagan.init sagan || die
 	newconfd "${FILESDIR}"/sagan.confd sagan || die
 }
@@ -70,6 +66,6 @@ pkg_postinst() {
 		ewarn "and create home directory manuallu"
 	fi
 
-	einfo "for configuration please read Sagan HOWTOO"
+	einfo "For configuration please read Sagan HOWTOO"
 	einfo "https://wiki.softwink.com/bin/view/Main/SaganHOWTO"
 }
