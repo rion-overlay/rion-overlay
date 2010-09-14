@@ -11,7 +11,7 @@ inherit autotools
 
 DESCRIPTION="Libguestfs is a library for accessing and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
-SRC_URI="http://libguestfs.org/download/${P}.tar.gz"
+SRC_URI="http://libguestfs.org/download/1.5-development/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
