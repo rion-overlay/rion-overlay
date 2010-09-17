@@ -1,4 +1,4 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,7 +13,7 @@ SRC_URI="http://ftp.edgewall.com/pub/bitten/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~x86 ~amd64"
-IUSE="+master test"
+IUSE="master test"
 
 SLOT="0"
 
