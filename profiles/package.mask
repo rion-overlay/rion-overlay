@@ -1,8 +1,15 @@
-#16 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# Multiple XSS and denial of service vulnerabilities
+# see  http://otrs.org/advisory/OSA-2010-02-en/
+<www-apps/otrs-2.3.6
+=www-apps/otrs-2.4.7
+
+
+# 16 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # again mask otrs - incomplit deps
 >=www-apps/otrs-3.0
 
-#13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 #mask for work failures
 app-crypt/openca-base
 app-crypt/openca
