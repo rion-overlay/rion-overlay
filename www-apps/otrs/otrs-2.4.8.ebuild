@@ -96,7 +96,7 @@ src_install() {
 	for a in ${d}; do
 		keepdir "${MY_HOSTROOTDIR}/${PF}/var/${a}"
 	done
-#	keepdir
+
 	webapp_configfile "${MY_HOSTROOTDIR}"/${PF}/Kernel/Config.pm
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
 	webapp_hook_script "${FILESDIR}"/reconfig-3

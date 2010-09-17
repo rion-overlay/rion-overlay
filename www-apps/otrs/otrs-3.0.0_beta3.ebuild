@@ -93,6 +93,13 @@ src_prepare() {
 src_install() {
 	webapp_src_preinst
 
+	dodir "${MY_HOSTROOTDIR}"/${PF}
+	dodoc CHANGES CREDITS INSTALL README* TODO UPGRADING \
+	 	doc/otrs-database.dia doc/test-* doc/X-OTRS-Headers.txt \
+		.fetchmailrc.dist .mailfilter.dist .procmailrc.dist
+
+	#dohtml doc/manual/{en,de}/html/*
+
 	insinto "${MY_HOSTROOTDIR}/${PF}"
 	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE \
 			Kernel bin scripts var || die "doins failed"
@@ -101,7 +108,7 @@ src_install() {
 								"${D}/${MY_HTDOCSDIR}" || die "mv failed"
 	rm -rf "${D}/${MY_HOSTROOTDIR}/${PF}"/var/httpd || die
 
-	for a in "article log pics/images pics/stats pics sessions spool tmp"; do
+	for a in "article log pics/images pics/stats pics sessions spool tmp tmp/CacheFileStorable"; do
 		keepdir "${MY_HOSTROOTDIR}/${PF}/var/${a}"
 	done
 
