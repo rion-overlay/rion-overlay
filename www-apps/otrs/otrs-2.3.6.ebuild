@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/otrs/otrs-2.3.3.ebuild,v 1.2 2009/05/26 17:08:02 arfrever Exp $
+# $Header: $
 
 inherit webapp eutils depend.apache
 
@@ -15,7 +15,6 @@ IUSE="mysql postgres fastcgi ldap gd pdf"
 RDEPEND="${DEPEND}
 	virtual/mta
 	=dev-lang/perl-5*
-
 	dev-perl/Authen-SASL
 	dev-perl/Crypt-PasswdMD5
 	dev-perl/DBI
@@ -31,11 +30,10 @@ RDEPEND="${DEPEND}
 	virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
 	virtual/perl-libnet
-
 	apache2? ( =www-apache/libapreq2-2* )
 	fastcgi? ( dev-perl/FCGI )
 	gd? ( dev-perl/GD dev-perl/GDTextUtil dev-perl/GDGraph )
-	ldap? ( dev-perl/perl-ldap net-nds/openldap )
+	ldap? ( dev-perl/perl-ldap )
 	mysql? ( >=dev-perl/DBD-mysql-3.0005 )
 	pdf? ( dev-perl/PDF-API2 )
 	postgres? ( dev-perl/DBD-Pg )
@@ -92,7 +90,7 @@ src_install() {
 
 	webapp_configfile "${MY_HOSTROOTDIR}"/${PF}/Kernel/Config.pm
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
-	webapp_hook_script "${FILESDIR}"/reconfig-2
+	webapp_hook_script "${FILESDIR}"/reconfig-4
 	webapp_src_install
 }
 
