@@ -1,0 +1,49 @@
+diff -r 3b274e0f46dc configure.ac
+--- a/configure.ac	Mon Apr 12 05:26:32 2010 +0300
++++ b/configure.ac	Tue Apr 13 05:30:16 2010 +0300
+@@ -169,35 +169,26 @@
+ # Database Libraries 
+ 
+ 
+-mysql="yes"
++mysql="no"
+ AC_MSG_CHECKING(for mysql)
+ AC_ARG_WITH([mysql], 
+         AS_HELP_STRING([--with-mysql(=<path>)], 
+                 [path is optional and if given should specify the full path to the MySQL
+                  configure script, mysql_config. E.g. --with-mysql=/<path>/mysql_config]), 
+         [
+-                if test "xno" = "x$with_mysql"; then
+-                        AC_MSG_RESULT([no])
+-                        mysql="no"
+-                else
++                if test "xyes" = "x$with_mysql"; then
+                         AC_MSG_RESULT([yes])
+-                        AC_CHECK_FILE([$with_mysql], 
+-                        [
+-                                MYSQLCONFIG=$with_mysql
+-                        ], 
+-                        [
+-                                AC_MSG_WARN([mysql_config given as $with_mysql not found])
+-                                mysql="no"
+-                        ])        
+-                fi
++                        mysql="yes"
++		AC_PATH_PROG([MYSQLCONFIG], [mysql_config], [no], [$PATH:/usr/local/bin:/usr/local/mysql/bin:/usr/bin])
++		if test "x$MYSQLCONFIG" = "xno"; then
++			AC_MSG_WARN([mysql_config is required to build libzdb with mysql])
++			 mysql="no"
++			 AC_MSG_RESULT([no])
++		fi
++		fi
+         ],
+         [
+-                AC_MSG_RESULT([yes])
+-                AC_PATH_PROG([MYSQLCONFIG], [mysql_config], [no], [$PATH:/usr/local/bin:/usr/local/mysql/bin:/usr/bin])
+-                if test "x$MYSQLCONFIG" = "xno"; then
+-                        AC_MSG_WARN([mysql_config is required to build libzdb with mysql])
+                         mysql="no"
+-                fi
+         ])
+ if test "xyes" = "x$mysql"; then
+         svd_CPPFLAGS=$CPPFLAGS
