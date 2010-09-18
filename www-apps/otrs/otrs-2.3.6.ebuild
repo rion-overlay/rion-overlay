@@ -75,7 +75,7 @@ src_install() {
 	dodoc CHANGES CREDITS INSTALL README* TODO UPGRADING \
 		doc/otrs-database.dia doc/test-* doc/X-OTRS-Headers.txt \
 		.fetchmailrc.dist .mailfilter.dist .procmailrc.dist
-	dohtml doc/manual/{en,de}/html/*
+	dodoc doc/manual/{en,de}/*.pdf
 
 	insinto "${MY_HOSTROOTDIR}"/${PF}
 	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE Kernel bin scripts var

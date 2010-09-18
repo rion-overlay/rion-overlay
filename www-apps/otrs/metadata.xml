@@ -4,5 +4,6 @@
   <herd>no-herd</herd>
 <use>
 <flag name='mod_perl'> </flag>
+<flag name='rpc'> </flag>
 </use>
 </pkgmetadata>
