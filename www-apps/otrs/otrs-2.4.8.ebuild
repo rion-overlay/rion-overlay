@@ -12,10 +12,10 @@ SRC_URI="ftp://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="apache2 mysql postgres mod_perl fastcgi ldap gd cjk"
+IUSE="apache2 +mysql postgres mod_perl fastcgi ldap gd cjk +rpc"
 
 # add oracle/mssql/DB2 DB support 
-DEPEND="perl-core/Getopt-Long"
+DEPEND="virtual/perl-Getopt-Long"
 RDEPEND="${DEPEND}
 	virtual/mta
 	>=dev-lang/perl-5.8.8
@@ -33,6 +33,8 @@ RDEPEND="${DEPEND}
 	dev-perl/libwww-perl
 	dev-perl/LWP-UserAgent-Determined
 	dev-perl/PDF-API2
+	dev-perl/IO-Socket-SSL
+	dev-perl/Net-SMTP-SSL
 	>=virtual/perl-CGI-3.33
 	virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
@@ -45,7 +47,8 @@ RDEPEND="${DEPEND}
 	ldap? ( dev-perl/perl-ldap  )
 	mysql? ( >=dev-perl/DBD-mysql-3.0005 )
 	postgres? ( dev-perl/DBD-Pg )
-	cjk? ( dev-perl/Encode-HanExtra )"
+	cjk? ( dev-perl/Encode-HanExtra )
+	rpc? ( dev-perl/SOAP-Lite )"
 
 pkg_setup() {
 
@@ -79,6 +82,8 @@ src_prepare() {
 
 src_install() {
 	webapp_src_preinst
+	dodir "${MY_HOSTROOTDIR}/${PF}"
+
 	dodoc CHANGES CREDITS README* TODO UPGRADING doc/otrs-database.dia \
 			doc/test-* doc/X-OTRS-Headers.txt .fetchmailrc.dist \
 			.mailfilter.dist .procmailrc.dist || die
@@ -87,11 +92,13 @@ src_install() {
 	doins -r .fetchmailrc.dist .mailfilter.dist .procmailrc.dist RELEASE \
 			Kernel bin scripts var || die "doins failed"
 
+	dodoc doc/manual/{en,de}/*.pdf
+
 	mv "${D}/${MY_HOSTROOTDIR}/${PF}/var/httpd/"htdocs/* \
 								"${D}/${MY_HTDOCSDIR}" || die "mv failed"
 	rm -rf "${D}/${MY_HOSTROOTDIR}/${PF}"/var/httpd || die
 
-	local a d="article log pics/images pics/stats pics sessions spool tmp"
+	local a d="article log pics pics/images pics/stats sessions spool tmp"
 
 	for a in ${d}; do
 		keepdir "${MY_HOSTROOTDIR}/${PF}/var/${a}"
@@ -99,6 +106,8 @@ src_install() {
 
 	webapp_configfile "${MY_HOSTROOTDIR}"/${PF}/Kernel/Config.pm
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en-2.txt
+	webapp_postinst_txt ru "${FILESDIR}"/postinstall-ru-2.txt
+
 	webapp_hook_script "${FILESDIR}"/reconfig-3
 	webapp_src_install
 }
