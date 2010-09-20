@@ -22,4 +22,4 @@ www-client/leechcraft:torrent - Build BitTorrent client based on rb_libtorrent
 net-libs/rb_libtorrent:log - Enable log
 net-libs/rb_libtorrent:resolvecountries - Enable capability for resolving countries
 net-libs/rb_libtorrent:verbose - Enable verbose log
-
+net-misc/remmina-plugins:nx - Build NX Compression plugin
