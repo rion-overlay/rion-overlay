@@ -33,9 +33,9 @@ RDEPEND="dev-python/pyxdg
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	sed "s/\(LIBDIR = .*\)lib/\1$(get_libdir)/" -i Makefile || die "sed failed"
-	use amd64 && sed "s,'/lib/gnomenu/','/lib64/gnomenu/'," -i setup.py || \
-		die "sed failed"
+	sed -i -e "s/\(LIBDIR = .*\)lib/\1$(get_libdir)/" Makefile || die "sed failed"
+	use amd64 && { sed "s,'/lib/gnomenu/','/lib64/gnomenu/'," -i setup.py || \
+		die "sed failed"; }
 }
 
 src_install() {
