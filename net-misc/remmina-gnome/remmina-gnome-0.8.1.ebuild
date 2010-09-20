@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/remmina/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="avahi nls"
 
 RDEPEND="gnome-base/gnome-panel
