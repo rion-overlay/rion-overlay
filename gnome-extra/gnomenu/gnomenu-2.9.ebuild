@@ -34,7 +34,7 @@ S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	sed -i -e "s/\(LIBDIR = .*\)lib/\1$(get_libdir)/" Makefile || die "sed failed"
-	use amd64 && { sed "s,'/lib/gnomenu/','/lib64/gnomenu/'," -i setup.py || \
+	use amd64 && { sed -i -e  "s,'/lib/gnomenu/','/lib64/gnomenu/'," setup.py || \
 		die "sed failed"; }
 }
 
