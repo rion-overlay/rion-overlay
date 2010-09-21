@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>rion-overlay</herd>
+<maintainer>
+  <email>@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <longdescription>Long description of the package</longdescription> 
+ <use>
+	<flag name='system'> </flag> 
+	<flag name='blockcalc'>  </flag> 
+	<flag name='javalikecalc'> </flag> 
+	<flag name='diamondboards'> </flag> 
+	<flag name='logiclev'> </flag> 
+	<flag name='simens'> </flag> 
+	<flag name='dcon'> </flag> 
+	<flag name='icp_das'> </flag> 
+	<flag name='fsarch'> </flag> 
+	<flag name='modbus'> </flag> 
+	<flag name='dbarch'> </flag>
+	<flag name='daqgate'> </flag>
+	<flag name='serial'> </flag>
+	<flag name='http'> </flag>
+	<flag name='selfsystem'> </flag>
+	<flag name='vcaengine'> </flag>
+	<flag name='vision'> </flag>
+	<flag name='qtstarter'> </flag>
+	<flag name='qtcfg'> </flag>
+	<flag name='dbarch'> </flag>
+	<flag name='dbarch'> </flag> 
+	<flag name='webcfg'> </flag>
+	<flag name='webcfgd'> </flag>
+	<flag name='webvision'> </flag>
+	<flag name='systemtest'> </flag>
+	<flag name='flibcomplex1'> </flag>
+	<flag name='flibmath'> </flag>
+	<flag name='flibsys'> </flag>
+	<flag name='demo'> </flag>
+ </use>
+</pkgmetadata>
