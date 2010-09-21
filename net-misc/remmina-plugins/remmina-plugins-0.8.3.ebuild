@@ -28,6 +28,13 @@ RDEPEND="${RDEPEND}
 	nx? ( net-misc/nx )
 	xdmcp? ( x11-base/xorg-server[kdrive] )"
 
+src_prepare() {
+		if has_version ">net-misc/freerdp-0.7.4"; then
+			sed -i -e 's/rdp5_performanceflags/performanceflags/g' \
+				rdp/remminapluginrdp.c
+		fi
+}
+
 src_configure() {
 	if use nx && ! use ssh; then
 		ewarn "nx support requires ssh."
