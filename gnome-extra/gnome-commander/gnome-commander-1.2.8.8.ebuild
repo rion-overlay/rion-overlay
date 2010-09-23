@@ -12,7 +12,7 @@ HOMEPAGE="http://www.nongnu.org/gcmd/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="chm doc exif +gsf id3 pdf python"
+IUSE="chm doc exif +gsf pdf python taglib"
 
 ALL_DEPEND="app-text/gnome-doc-utils
 	dev-libs/glib:2
@@ -23,7 +23,6 @@ ALL_DEPEND="app-text/gnome-doc-utils
 	chm? ( dev-libs/chmlib )
 	exif? ( media-gfx/exiv2 )
 	gsf? ( gnome-extra/libgsf )
-	id3? ( media-libs/taglib )
 	pdf? ( app-text/poppler )
 	python? ( =dev-lang/python-2* )
 	taglib? ( media-libs/taglib )"
@@ -40,6 +39,6 @@ pkg_setup() {
 		$(use_with chm libchm)
 		$(use_with exif exiv2)
 		$(use_with gsf libgsf)
-		$(use_with id3 taglib)
+		$(use_with taglib)
 		$(use_with pdf  poppler)"
 }
