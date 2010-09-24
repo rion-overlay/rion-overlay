@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.otrs.org/pub/${PN}/${PN}-3.0.0-beta3.tar.bz2"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="apache2 mysql postgres mod_perl fastcgi ldap gd cjk"
+IUSE="apache2 +mysql postgres mod_perl fastcgi ldap +gd cjk"
 SLOT="3.0.0"
 
 # add oracle/mssql/DB2 DB support 
@@ -51,7 +51,9 @@ RDEPEND="${DEPEND}
 		!fastcgi? (
 			!mod_perl? ( www-servers/apache:2[suexec] ) )
 			)
-	fastcgi? ( dev-perl/FCGI )
+	fastcgi? ( dev-perl/FCGI virtual/httpd-fastcgi )
+	!fastcgi? (
+		!apache2? ( virtual/httpd-cgi ) )
 	gd? ( dev-perl/GD dev-perl/GDTextUtil dev-perl/GDGraph )
 	ldap? ( dev-perl/perl-ldap  )
 	mysql? ( >=dev-perl/DBD-mysql-3.0005 )
@@ -84,7 +86,7 @@ src_prepare() {
 
 	if use fastcgi; then
 		cd "${S}" || die
-		epatch "${FILESDIR}"/apache2-2.patch
+		epatch "${FILESDIR}"/apache2-3.0.patch
 		sed -e "s|cgi-bin|fcgi-bin|" \
 						-i scripts/apache2-httpd.include.conf || die
 	fi
@@ -95,8 +97,8 @@ src_install() {
 
 	dodir "${MY_HOSTROOTDIR}"/${PF}
 	dodoc CHANGES CREDITS INSTALL README* TODO UPGRADING \
-	 	doc/otrs-database.dia doc/test-* doc/X-OTRS-Headers.txt \
-		.fetchmailrc.dist .mailfilter.dist .procmailrc.dist
+	 	doc/otrs-database.dia  doc/X-OTRS-Headers.txt \
+		.fetchmailrc.dist .mailfilter.dist .procmailrc.dist || die
 
 	#dohtml doc/manual/{en,de}/html/*
 
