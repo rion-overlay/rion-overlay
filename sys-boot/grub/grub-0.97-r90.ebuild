@@ -9,7 +9,7 @@ EAPI="2"
 #      we never updated any of the source code (it still all wants menu.lst),
 #      and there is no indication that upstream is making the transition.
 
-inherit mount-boot eutils flag-o-matic toolchain-funcs autotools linux-info
+inherit mount-boot eutils flag-o-matic toolchain-funcs autotools linux-info pax-utils
 
 PATCHVER="1.10" # Should match the revision ideally
 DESCRIPTION="GNU GRUB Legacy boot loader"
@@ -20,14 +20,14 @@ SRC_URI="mirror://gentoo/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="custom-cflags ncurses netboot static"
 
-DEPEND="ncurses? (
+RDEPEND="ncurses? (
 		>=sys-libs/ncurses-5.2-r5
 		amd64? ( app-emulation/emul-linux-x86-baselibs )
 	)"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 PROVIDE="virtual/bootloader"
 
 pkg_setup() {
@@ -62,8 +62,8 @@ src_prepare() {
 	local t="custom"
 	if [[ -z ${GRUB_MAX_KERNEL_SIZE} ]] ; then
 		case $(tc-arch) in
-			amd64) GRUB_MAX_KERNEL_SIZE=7 ;;
-			x86)   GRUB_MAX_KERNEL_SIZE=3 ;;
+			amd64) GRUB_MAX_KERNEL_SIZE=9 ;;
+			x86)   GRUB_MAX_KERNEL_SIZE=5 ;;
 		esac
 		t="default"
 	fi
@@ -172,6 +172,9 @@ src_install() {
 		exeinto /usr/lib/grub/${CHOST}
 		doexe nbgrub pxegrub stage2/stage2.netboot || die "netboot install"
 	fi
+
+	# bug 330745
+	pax-mark -m "${D}"/sbin/grub
 
 	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 	newdoc docs/menu.lst grub.conf.sample
