@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +otrs-3.0.0_beta4.ebuild:
+  bump beta ebuild for testing
+
   17 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> -otrs-2.4.7.ebuild:
   removed by listed in CVE
 
