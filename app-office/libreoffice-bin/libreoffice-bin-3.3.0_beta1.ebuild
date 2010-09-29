@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils fdo-mime rpm multilib
+inherit eutils fdo-mime gnome2-utils rpm multilib
 
 IUSE="gnome java kde"
 
@@ -17,9 +17,9 @@ BASIS="lobasis3.3"
 FILEPATH="http://download.documentfoundation.org/libreoffice/testing"
 
 if [ "${ARCH}" = "amd64" ] ; then
-	OOARCH="x86_64"
+	LOARCH="x86_64"
 else
-	OOARCH="i586"
+	LOARCH="i586"
 fi
 
 S="${WORKDIR}/en-US/RPMS"
@@ -38,7 +38,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="!app-office/openoffice
 	!app-office/openoffice-bin
 	!app-office/openoffice-infra
-    !app-office/openoffice-infra-bin
+	!app-office/openoffice-infra-bin
 	x11-libs/libXaw
 	sys-libs/glibc
 	>=dev-lang/perl-5.0
@@ -73,32 +73,32 @@ src_unpack() {
 	for i in base binfilter calc core01 core02 core03 core04 core05 core06 \
 		core07 draw graphicfilter images impress math ogltrans ooofonts \
 		ooolinguistic pyuno testtool writer xsltfilter ; do
-		rpm_unpack "./${UP}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP}/${BASIS}-${i}-${MY_PV3}.${LOARCH}.rpm"
 	done
 
 	for j in base calc draw impress math writer; do
-		rpm_unpack "./${UP}/libreoffice3-${j}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP}/libreoffice3-${j}-${MY_PV3}.${LOARCH}.rpm"
 	done
 
-	rpm_unpack "./${UP}/libreoffice3-${MY_PV3}.${OOARCH}.rpm"
-	rpm_unpack "./${UP}/libreoffice-ure-${UREVER}-${BUILDID}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/libreoffice3-${MY_PV3}.${LOARCH}.rpm"
+	rpm_unpack "./${UP}/libreoffice-ure-${UREVER}-${BUILDID}.${LOARCH}.rpm"
 
 	rpm_unpack "./${UP}/desktop-integration/libreoffice3.3-freedesktop-menus-3.3-${BUILDID}.noarch.rpm"
 
-	use gnome && rpm_unpack "./${UP}/${BASIS}-gnome-integration-${MY_PV3}.${OOARCH}.rpm"
-	use kde && rpm_unpack "./${UP}/${BASIS}-kde-integration-${MY_PV3}.${OOARCH}.rpm"
-	use java && rpm_unpack "./${UP}/${BASIS}-javafilter-${MY_PV3}.${OOARCH}.rpm"
+	use gnome && rpm_unpack "./${UP}/${BASIS}-gnome-integration-${MY_PV3}.${LOARCH}.rpm"
+	use kde && rpm_unpack "./${UP}/${BASIS}-kde-integration-${MY_PV3}.${LOARCH}.rpm"
+	use java && rpm_unpack "./${UP}/${BASIS}-javafilter-${MY_PV3}.${LOARCH}.rpm"
 
 	# Extensions
 	for j in mediawiki-publisher pdf-import presentation-minimizer presenter-screen report-builder; do
-		rpm_unpack "./${UP}/${BASIS}-extension-${j}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP}/${BASIS}-extension-${j}-${MY_PV3}.${LOARCH}.rpm"
 	done
 
 	# Lang files
-	rpm_unpack "./${UP}/${BASIS}-en-US-${MY_PV3}.${OOARCH}.rpm"
-	rpm_unpack "./${UP}/libreoffice3-en-US-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP}/${BASIS}-en-US-${MY_PV3}.${LOARCH}.rpm"
+	rpm_unpack "./${UP}/libreoffice3-en-US-${MY_PV3}.${LOARCH}.rpm"
 	for j in base binfilter calc draw help impress math res writer; do
-		rpm_unpack "./${UP}/${BASIS}-en-US-${j}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP}/${BASIS}-en-US-${j}-${MY_PV3}.${LOARCH}.rpm"
 	done
 
 }
@@ -155,10 +155,15 @@ src_install () {
 
 }
 
+pkg_preinst() {
+	use gnome && gnome2_icon_savelist
+}
+
 pkg_postinst() {
 
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+	use gnome && gnome2_icon_cache_update
 
 	[[ -x /sbin/chpax ]] && [[ -e /usr/$(get_libdir)/libreoffice/program/soffice.bin ]] && chpax -zm /usr/$(get_libdir)/libreoffice/program/soffice.bin
 
@@ -168,4 +173,9 @@ pkg_postinst() {
 	elog " package instead. "
 	elog
 
+}
+
+pkg_postrm() {
+	fdo-mime_desktop_database_update
+	use gnome && gnome2_icon_cache_update
 }
