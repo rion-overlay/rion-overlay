@@ -29,7 +29,7 @@ DESCRIPTION="LibreOffice productivity suite."
 SRC_URI="amd64? ( ${FILEPATH}/LO_${MY_PV1}_Linux_x86-64_install-rpm_en-US.tar.gz )
 	x86? ( ${FILEPATH}/LO_${MY_PV1}_Linux_x86_install-rpm_en-US.tar.gz )"
 
-HOMEPAGE="http://i-rs.ru/"
+HOMEPAGE="http://www.documentfoundation.org"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -37,6 +37,8 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="!app-office/openoffice
 	!app-office/openoffice-bin
+	!app-office/openoffice-infra
+    !app-office/openoffice-infra-bin
 	x11-libs/libXaw
 	sys-libs/glibc
 	>=dev-lang/perl-5.0
@@ -118,12 +120,7 @@ src_install () {
 		fi
 		mv ${desk}.desktop libreoffice-${desk}.desktop
 		sed -i -e s/Exec=libreoffice/Exec=loffice/g libreoffice-${desk}.desktop || die
-	#	sed -i -e s/openofficeorg3-${desk}/ooo-${desk}/g libreoffice-${desk}.desktop || die
 		domenu libreoffice-${desk}.desktop
-#		insinto /usr/share/pixmaps
-#		if [ "${desk}" != "qstart" ] ; then
-#			newins "${WORKDIR}/usr/share/icons/gnome/48x48/apps/openofficeorg3-${desk}.png" ooo-${desk}.png
-#		fi
 	done
 	insinto /usr/share
 	doins -r "${WORKDIR}"/usr/share/icons
