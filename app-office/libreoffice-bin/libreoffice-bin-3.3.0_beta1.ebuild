@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit eutils fdo-mime rpm multilib
 
-IUSE="gnome java"
+IUSE="gnome java kde"
 
 BUILDID="9526"
 UREVER="1.7.0"
