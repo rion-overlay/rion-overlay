@@ -84,7 +84,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CPPFLAGS="${CPPFLAGS}" \
+			|| die "emake failed"
 
 	if use doc; then
 		emake dox || die "emake dox failed"
