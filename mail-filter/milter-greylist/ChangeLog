@@ -1,0 +1,67 @@
+# ChangeLog for mail-filter/milter-greylist
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  05 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  milter-greylist-4.3.7.ebuild, milter-greylist-4.3.8.ebuild,
+  files/gentoo.confd:
+  fix USE ldap build
+
+  05 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> files/gentoo.confd:
+  fix confd files, see http://bugs.gentoo.org/attachment.cgi?id=239139
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -milter-greylist-4.3.4-r1.ebuild, +milter-greylist-4.3.8.ebuild:
+  remove outdated
+
+*milter-greylist-4.3.8 ( 31 Jul 2010 )
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +milter-greylist-4.3.8.ebuild:
+  bump
+
+*milter-greylist-4.3.7
+
+  05 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +milter-greylist-4.3.7.ebuild:
+  bump
+
+  04 Apr 2010; <slep@gentoo.org> milter-greylist-4.3.4-r1.ebuild:
+  syntax clean mail-filter/milter-greylist
+
+  04 Apr 2010; <slep@gentoo.org> milter-greylist-4.3.4-r1.ebuild:
+  more syntax fix
+
+  29 Mar 2010; <slep@gentoo.org> milter-greylist-4.3.4-r1.ebuild:
+  fix syntax and clean
+
+  12 Mar 2010; <slep@gentoo.org> -milter-greylist-4.3.4.ebuild,
+  milter-greylist-4.3.4-r1.ebuild:
+  more QA fix
+
+  12 Mar 2010; <slep@gentoo.org> -milter-greylist-4.3.4.ebuild:
+  delete old ebuild
+
+  04 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +milter-greylist-4.3.4-r1.ebuild:
+  fix depend
+
+  26 Jan 2010; <slep@gentoo.org> milter-greylist-4.3.4.ebuild,
+  files/gentoo.initd, metadata.xml:
+  test init script and delete debug messages
+
+  20 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> files/gentoo.confd,
+  files/gentoo.initd:
+  fix license and copyright
+
+  20 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  milter-greylist-4.3.4.ebuild, files/gentoo.confd, files/gentoo.initd:
+  more more fix
+
+  20 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +milter-greylist-4.0-r2.ebuild, +milter-greylist-4.2.3.ebuild,
+  +milter-greylist-4.3.4.ebuild, +files/gentoo.confd, +files/gentoo.initd,
+  +metadata.xml:
+  initial commit
+
+*milter-greylist-4.2.3 (  20 Dec 2009 )
