@@ -1,0 +1,41 @@
+# ChangeLog for app-crypt/qca-logger
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca-logger/ChangeLog,v 1.3 2008/03/15 11:34:50 corsair Exp $
+
+  15 Mar 2008; Markus Rothe <corsair@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Added ~ppc64
+
+  14 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Removed accidental RESTRICT=mirror.
+
+  13 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +qca-logger-2.0.0_beta2.ebuild:
+  Initial import to the tree as per bug 129536.
+
+*qca-logger-2.0.0_beta2 (15 Dec 2007)
+
+  15 Dec 2007; Ingmar Vanhassel <ingmar.vanhassel@gmail.com>
+  -qca-logger-2.0.0_beta1.ebuild, +qca-logger-2.0.0_beta2.ebuild:
+  Added qca-logger-2.0.0_beta2.ebuild.
+
+  06 Nov 2007; Ingmar Vanhassel <ingmar.vanhassel@gmail.com>
+  -qca-logger-0.1_p20070829-r1.ebuild, +qca-logger-2.0.0_beta1.ebuild:
+  Added qca-logger-2.0.0_beta1.ebuild, thanks to Davide Pesavento in Bug 129536.
+
+  04 Oct 2007; Emanuele A. Bagnaschi <zephyrus@mirach.it>
+  -qca-logger-0.1_p20070829.ebuild, qca-logger-0.1_p20070829-r1.ebuild:
+  Minor changes to the ebuild, thanks to Davide Pesavento. See bug #129536.
+  Removed old '-r0' ebuild.
+
+  10 Sep 2007; Emanuele A. Bagnaschi <zephyrus@mirach.it>
+  +qca-logger-0.1_p20070829-r1.ebuild:
+  Updated to reflect change about the behaviour of debug builds.
+  Thanks to Davide Pesavento.
+
+  07 Sep 2007; Emanuele A. Bagnaschi <zephyrus@mirach.it>
+  +qca-logger-0.1_p20070829.ebuild:
+  Added qca-logger-0.1_p20070829. Moving to a more sane qca2 framework. Many
+  thanks to Davide Pesavento and Alon Bar-Lev, see bug #129536.
+

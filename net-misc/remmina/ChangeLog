@@ -1,0 +1,8 @@
+# ChangeLog for net-misc/remmina
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  20 Sep 2010; Rion <rion4ik@notagmail.com> +remmina-0.8.2.ebuild,
+  +metadata.xml:
+  initial version
+

@@ -1,0 +1,13 @@
+# ChangeLog for dev-perl/POE-Component-Client-Keepalive
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  12 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -POE-Component-Client-Keepalive-0.262.ebuild,
+  +POE-Component-Client-Keepalive-0.263.ebuild:
+  new version
+
+  20 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +POE-Component-Client-Keepalive-0.262.ebuild, +metadata.xml:
+  initial commit
+

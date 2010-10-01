@@ -1,0 +1,58 @@
+# ChangeLog for www-apps/redmine
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/redmine/ChangeLog,v 1.10 2010/07/10 04:54:33 matsuu Exp $
+
+  10 Jul 2010; MATSUU Takuto <matsuu@gentoo.org> redmine-0.9.6.ebuild:
+  Fixed dependency.
+
+*redmine-0.9.6 (08 Jul 2010)
+
+  08 Jul 2010; MATSUU Takuto <matsuu@gentoo.org> -redmine-0.9.2.ebuild,
+  -redmine-0.9.3.ebuild, -redmine-0.9.4.ebuild, -redmine-0.9.5.ebuild,
+  +redmine-0.9.6.ebuild:
+  Version bumped. Removed old versions.
+
+*redmine-0.9.5 (07 Jul 2010)
+
+  07 Jul 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.5.ebuild:
+  Version bumped. Convert to ruby-ng.
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  redmine-0.9.2.ebuild, redmine-0.9.3.ebuild, redmine-0.9.4.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> redmine-0.9.2.ebuild,
+  redmine-0.9.3.ebuild, redmine-0.9.4.ebuild:
+  Moving dev-util/cvs* to dev-vcs/cvs*
+
+*redmine-0.9.4-r1 (08 May 2010)
+
+  08 May 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.4-r1.ebuild:
+  Added fastcgi USE flag, bug #318089.
+
+*redmine-0.9.4 (07 May 2010)
+
+  07 May 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.4.ebuild,
+  metadata.xml:
+  Version bumped.
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> redmine-0.9.2.ebuild,
+  redmine-0.9.3.ebuild, metadata.xml:
+  Propagate move of dev-util/git to dev-vcs/git
+
+  14 Mar 2010; Lennart Kolmodin <kolmodin@gentoo.org> redmine-0.9.2.ebuild,
+  redmine-0.9.3.ebuild, metadata.xml:
+  Change references to dev-util/darcs to dev-vcs/darcs due to the move.
+
+*redmine-0.9.3 (04 Mar 2010)
+
+  04 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.3.ebuild:
+  Version bumped.
+
+*redmine-0.9.2 (10 Feb 2010)
+
+  10 Feb 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +files/10_redmine_vhost.conf, +redmine-0.9.2.ebuild, +files/redmine.confd,
+  +files/redmine.initd, +metadata.xml:
+  Initial import, bug #260575.
+
