@@ -31,7 +31,7 @@ RUBY_OPTIONAL="yes"
 HTTP_PUSH_MODULE_P="nginx_http_push_module-0.692"
 
 # http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
-HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-1.1"
+HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-1.2"
 
 inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
 
@@ -140,12 +140,6 @@ pkg_setup() {
 	if use !http; then
 		ewarn "To actually disable all http-functionality you also have to disable"
 		ewarn "all nginx http modules."
-	fi
-
-	if use nginx_modules_http_cache_purge && (use !nginx_modules_http_fastcgi || use !nginx_modules_http_uwsgi); then
-		eerror "The module cache_purge currently requires fastcgi and uwsgi modules to be built."
-		eerror "It will otherwise fail while linking."
-		die "Insufficient use-flags"
 	fi
 }
 
