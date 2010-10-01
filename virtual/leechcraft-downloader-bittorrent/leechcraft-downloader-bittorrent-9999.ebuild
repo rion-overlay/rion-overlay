@@ -13,5 +13,5 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="net-misc/leechcraft-bittorrent"
+DEPEND="net-p2p/leechcraft-bittorrent"
 RDEPEND="${DEPEND}"
