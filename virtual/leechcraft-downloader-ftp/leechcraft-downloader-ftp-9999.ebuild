@@ -13,5 +13,5 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="net-misc/leechcraft-lcftp"
+DEPEND="net-ftp/leechcraft-lcftp"
 RDEPEND="${DEPEND}"
