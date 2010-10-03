@@ -22,8 +22,22 @@ DEPEND="net-misc/aria2
 	dev-libs/openssl"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	for f in main.cpp norwegianwoodstyle.cpp abstractstorage.cpp karia2.cpp \
+		ariaman.cpp sqlitecategorymodel.cpp preferencesdialog.cpp \
+		sqlitetaskmodel.cpp; do
+		sed -i -e \
+		"s#\(app.\|qApp->\|QCoreApplication::\|QApplication::\)applicationDirPath()#QString\(\"/usr/share/${PN}\"\)#g" \
+		"$f"
+	done
+	subversion_src_prepare
+}
+
 src_install() {
 	dobin bin/${PN}
 	insinto /usr/share/${PN}
 	doins -r icons browser Resources images translations data doc sounds
+
+	domenu data/karia2.desktop
+	doicon Resources/karia2.png
 }
