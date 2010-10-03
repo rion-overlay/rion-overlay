@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Oct 2010; Rion <rion4ik@gmail.com> stardict-ruspack-0.2-r1.ebuild:
+  store package in *.rar. rar dependency is either rar or unrar
+
   03 Feb 2010; Peter Volkov <pva@gentoo.org> stardict-ruspack-0.2-r1.ebuild:
   app-dict/stardict moved to app-text/stardict.
 
