@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> -ucommon-2.0.9.ebuild,
+  -ucommon-3.3.5.ebuild, +ucommon-4.0.2.ebuild, metadata.xml:
+  complete clean ebuild's
+
 *ucommon-3.3.5
 
   05 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> +ucommon-3.3.5.ebuild:
