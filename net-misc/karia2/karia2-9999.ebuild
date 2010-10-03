@@ -35,7 +35,7 @@ src_prepare() {
 
 src_install() {
 	dobin bin/${PN}
-	insinto /usr/share/${PN}
+	insinto "${EPREFIX}"/usr/share/${PN}
 	doins -r icons browser Resources images translations data doc sounds
 
 	domenu data/karia2.desktop
