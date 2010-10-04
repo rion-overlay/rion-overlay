@@ -1,0 +1,8 @@
+# ChangeLog for x11-misc/kbdd
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Oct 2010; Nickolaj Stjujsckij <sterkrig@home.no> kbdd-0.1.ebuild,
+  +metadata.xml:
+  Add kbdd, simple layout switcher, v.0.1
+
