@@ -17,18 +17,19 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="dev-libs/nss
-		dev-libs/nspr
-		doc?
-		( dev-python/docutils
+	dev-libs/nspr
+	doc? ( dev-python/docutils
 			dev-python/epydoc )"
 
 RDEPEND="${DEPEND}"
 RESTRICT_PYTHON_ABIS="3.*"
 
 DOCS="README doc/ChangeLog"
+
 src_prepare() {
 	epatch "${FILESDIR}"/*.patch
 }
+
 src_install() {
 	distutils_src_install
 
