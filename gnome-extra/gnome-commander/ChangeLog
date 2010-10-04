@@ -1,0 +1,24 @@
+# ChangeLog for gnome-extra/gnome-commander
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  23 Sep 2010; Rion <rion4ik@gmail.com> -gnome-commander-1.2.8.6.ebuild,
+  +gnome-commander-1.2.8.8.ebuild:
+  new version
+
+  21 Jun 2010; Rion <rion4ik@notagmail.com> -gnome-commander-1.2.8.5.ebuild,
+  +gnome-commander-1.2.8.6.ebuild, -files/asneeded.patch:
+  new version
+
+  10 May 2010; Rion <rion4ik@gmail.com> -gnome-commander-1.2.8.4.ebuild,
+  +gnome-commander-1.2.8.5.ebuild:
+  new version
+
+  28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  gnome-commander-1.2.8.2.ebuild, metadata.xml:
+  fix depend
+
+  27 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  gnome-commander-1.2.8.ebuild, metadata.xml:
+  drop not supported keywords
+
