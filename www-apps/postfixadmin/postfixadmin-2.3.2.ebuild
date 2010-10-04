@@ -15,16 +15,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE="mysql postgres +vacation addition env_password doc -xmlrpc"
 
 DEPEND="vacation? ( dev-perl/DBI
-		virtual/perl-MIME-Base64
-		dev-perl/MIME-EncWords
-		dev-perl/Email-Valid
-		dev-perl/Mail-Sender
-		dev-perl/log-dispatch
-		dev-perl/Log-Log4perl
-		dev-perl/MIME-Charset
-		mysql? ( dev-perl/DBD-mysql )
-		postgres? ( dev-perl/DBD-Pg ) )
-		xmlrpc? ( dev-php5/ZendFramework[-minimal] )"
+	virtual/perl-MIME-Base64
+	dev-perl/MIME-EncWords
+	dev-perl/Email-Valid
+	dev-perl/Mail-Sender
+	dev-perl/log-dispatch
+	dev-perl/Log-Log4perl
+	dev-perl/MIME-Charset
+	mysql? ( dev-perl/DBD-mysql )
+	postgres? ( dev-perl/DBD-Pg ) )
+	xmlrpc? ( dev-php5/ZendFramework[-minimal] )"
 
 RDEPEND="${DEPEND}"
 
@@ -57,6 +57,7 @@ src_prepare() {
 	use env_password && epatch "${FILESDIR}"/database-credentials-debian.patch
 
 }
+
 src_install() {
 	webapp_src_preinst
 
