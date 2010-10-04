@@ -24,5 +24,6 @@ DEPEND="x11-libs/libxklavier
 RDEPEND="${DEPEND}"
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install || die "make failed"
+	dodoc AUTHORS ChangeLog NEWS README || die "Installing docs failed"
 }
