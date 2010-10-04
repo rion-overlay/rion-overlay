@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>maintainer-wanted</herd>
+	<longdescription>
+		RipWrap is a Gtk2::Perl application for encoding from various video
+		formats (including DVD's) to various formats. It neatly wraps MPlayer
+		and MEncoder,
+		two of the best tools for playing and encoding video. It additionally
+		wraps around MP4Box to allow output of mpeg 4 files.
+		As well as creating a simple interface for those scared of getting down
+		and dirty with MEncoders
+		command line interface, It also automates the process in a number of
+		ways.
+	</longdescription>
+	<use>
+		<flag name='mp2'>Add mp2 support</flag>
+		<flag name='mp4'>Add mp4 support</flag>
+	</use>
+</pkgmetadata>
+
