@@ -1,0 +1,16 @@
+# ChangeLog for dev-libs/libcollection
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  30 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  libcollection-0.5.1.ebuild, metadata.xml:
+  QA - drop use
+
+  29 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +libcollection-0.5.1.ebuild, +metadata.xml:
+  initial recommit to rion ovrlay
+
+  29 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  collection-0.5.1.ebuild:
+  add amd64 keyword
+
