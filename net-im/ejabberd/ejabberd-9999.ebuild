@@ -1,62 +1,63 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-2.1.3.ebuild,v 1.1 2010/05/26 20:25:25 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-2.1.5-r1.ebuild,v 1.1 2010/08/30 11:02:13 pva Exp $
 
 EAPI=3
 
-inherit eutils multilib pam ssl-cert git
+inherit eutils multilib pam ssl-cert git autotools
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
 EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
-SRC_URI="mod_statsdx? ( mirror://gentoo/2.1.1-mod_statsdx.patch.bz2 )"
+SRC_URI="mod_srl? ( https://alioth.debian.org/frs/download.php/3354/mod_shared_roster_ldap-0.5.3.tgz )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub mod_statsdx"
-IUSE="captcha debug ldap odbc pam ssl +web zlib ${EJABBERD_MODULES}"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub mod_srl"
+IUSE="captcha debug ldap odbc pam +web zlib ${EJABBERD_MODULES}"
 
-DEPEND=">=net-im/jabber-base-0.01
-	>=dev-libs/expat-1.95
-	>=dev-lang/erlang-12.2.5[ssl?]
+DEPEND="net-im/exmpp
+	>=net-im/jabber-base-0.01
+	>=dev-lang/erlang-12.2.5[ssl]
 	odbc? ( dev-db/unixODBC )
 	ldap? ( =net-nds/openldap-2* )
-	ssl? ( >=dev-libs/openssl-0.9.8e )
+	>=dev-libs/openssl-0.9.8e
 	captcha? ( media-gfx/imagemagick[truetype,png] )
 	zlib? ( sys-libs/zlib )"
-#>=sys-apps/shadow-4.1.4.2-r2 - fixes bug in su that made ejabberdctl unworkable.
+#>=sys-apps/shadow-4.1.4.2-r3 - fixes bug in su that made ejabberdctl unworkable.
 RDEPEND="${DEPEND}
-	>=sys-apps/shadow-4.1.4.2-r2"
+	>=sys-apps/shadow-4.1.4.2-r3"
 
 PROVIDE="virtual/jabber-server"
 
-# pathes in net-im/jabber-base
+# paths in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
 #JABBER_RUN="/var/run/jabber"
 JABBER_SPOOL="${EPREFIX}/var/spool/jabber"
 JABBER_LOG="${EPREFIX}/var/log/jabber"
 JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
-RNOTES_VER="2.1.2"
+RNOTES_VER="3.0.0"
 
 src_unpack() {
 	git_src_unpack
-	default
+	cd "${S}"
+	unpack ${A}
 }
 
 src_prepare() {
 	git_src_prepare
 	S=${WORKDIR}/${P}/src
 	cd "${S}"
-	if use mod_statsdx; then
-		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
-		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
-		epatch "${WORKDIR}/2.1.1-mod_statsdx.patch"
+
+	if use mod_srl; then
+		ewarn "mod_srl is not a part of upstream tarball but is a third-party module"
+		ewarn "taken from here: https://alioth.debian.org/projects/ejabberd-msrl/"
 	fi
 
 	# don't install release notes (we'll do this manually)
 	sed '/install .* [.][.]\/doc\/[*][.]txt $(DOCDIR)/d' -i Makefile.in || die
-	# Set correct pathes
+	# Set correct paths
 	sed -e "/^EJABBERDDIR[[:space:]]*=/{s:ejabberd:${PF}:}" \
 		-e "/^ETCDIR[[:space:]]*=/{s:@sysconfdir@/ejabberd:${JABBER_ETC}:}" \
 		-e "/^LOGDIR[[:space:]]*=/{s:@localstatedir@/log/ejabberd:${JABBER_LOG}:}" \
@@ -84,6 +85,7 @@ src_prepare() {
 	# correct path to captcha script in default ejabberd.cfg
 	sed -e 's|\({captcha_cmd,[[:space:]]*"\).\+"}|\1/usr/'$(get_libdir)'/erlang/lib/'${P}'/priv/bin/captcha.sh"}|' \
 			-i ejabberd.cfg.example || die "Failed sed ejabberd.cfg.example"
+	eautoconf
 }
 
 src_configure() {
@@ -94,7 +96,6 @@ src_configure() {
 		$(use_enable mod_muc) \
 		$(use_enable mod_proxy65) \
 		$(use_enable mod_pubsub) \
-		$(use_enable ssl tls) \
 		$(use_enable web) \
 		$(use_enable odbc) \
 		$(use_enable zlib ejabberd_zlib) \
@@ -153,10 +154,10 @@ pkg_postinst() {
 		source "${EROOT}/etc/conf.d/ejabberd"
 		ewarn
 		ewarn "!!! WARNING !!!  WARNING !!!  WARNING !!!  WARNING !!!"
-		ewarn "Starting with 2.1.x some pathes and configuration files were"
-		ewarn "changed to better reflect upstream intentions. Notable changes are:"
+		ewarn "Starting with 2.1.x some paths and configuration files were"
+		ewarn "changed to reflect upstream intentions better. Notable changes are:"
 		ewarn
-		ewarn "1. Everything (even init scripts) are now handled by ejabberdctl script."
+		ewarn "1. Everything (even init scripts) is now handled with ejabberdctl script."
 		ewarn "Thus main configuration file became /etc/jabberd/ejabberdctl.cfg"
 		ewarn "You must update ERLANG_NODE there with the value of EJABBERD_NODE"
 		ewarn "from /etc/conf.d/ejebberd or ejabberd will refuse to start."
@@ -197,17 +198,15 @@ pkg_postinst() {
 		ewarn "PLEASE! Run 'etc-update' now!"
 	fi
 
-	if use ssl; then
-		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Ejabberd XMPP Server}"
-		install_cert /etc/ssl/ejabberd/server
-		if [[ -e ${EROOT}/etc/jabber/ssl.pem ]]; then
-			ewarn
-			ewarn "The location of SSL certificates has changed. If you are"
-			ewarn "upgrading from ${CATEGORY}/${PN}-2.0.5* or earlier  you might"
-			ewarn "want to move your old certificates from /etc/jabber into"
-			ewarn "/etc/ssl/ejabberd/, update config files and"
-			ewarn "rm /etc/jabber/ssl.pem to avoid this message."
-			ewarn
-		fi
+	SSL_ORGANIZATION="${SSL_ORGANIZATION:-Ejabberd XMPP Server}"
+	install_cert /etc/ssl/ejabberd/server
+	if [[ -e ${EROOT}/etc/jabber/ssl.pem ]]; then
+		ewarn
+		ewarn "The location of SSL certificates has changed. If you are"
+		ewarn "upgrading from ${CATEGORY}/${PN}-2.0.5* or earlier  you might"
+		ewarn "want to move your old certificates from /etc/jabber into"
+		ewarn "/etc/ssl/ejabberd/, update config files and"
+		ewarn "rm /etc/jabber/ssl.pem to avoid this message."
+		ewarn
 	fi
 }
