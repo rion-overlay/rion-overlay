@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="mysql postgres +sqlite3 ssl debug doc"
 
-RDEPEND="postgres? ( >=dev-db/postgresql-base-7.4 )
+RDEPEND="postgres? ( >=dev-db/postgresql-base-8.0 )
 	mysql? ( >=virtual/mysql-4.1 )
 	sqlite3? ( >=dev-db/sqlite-3.6.12
 		>=sys-devel/gcc-4.1 )
@@ -34,7 +34,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/*.patch || die
+	epatch "${FILESDIR}"/2.7/*.patch || die
 	eautoreconf
 }
 
@@ -72,6 +72,7 @@ src_configure() {
 		$(use_with sqlite3 sqlite) \
 		$(use_enable sqlite3 sqliteunlock) \
 		$(use_enable ssl openssl) \
+		--without-oci \
 		${myconf} \
 		|| die "econf failed"
 }
