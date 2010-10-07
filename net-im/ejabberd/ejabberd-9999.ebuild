@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-2.1.5-r1.ebuild,v 1.1 2010/08/30 11:02:13 pva Exp $
+# $Header: $
 
 EAPI=3
 
@@ -13,7 +13,7 @@ SRC_URI="mod_srl? ( https://alioth.debian.org/frs/download.php/3354/mod_shared_r
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS=""
 EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub mod_srl"
 IUSE="captcha debug ldap odbc pam +web zlib ${EJABBERD_MODULES}"
 
