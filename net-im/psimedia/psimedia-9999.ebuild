@@ -31,16 +31,13 @@ RDEPEND="media-plugins/gst-plugins-speex
 
 src_unpack() {
 	subversion_src_unpack
-	OLD_S="$S"
-	S="$WORKDIR/patches"
-	ESVN_PROJECT="psimedia/patches"
-	ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
-	subversion_src_unpack
-	S="$OLD_S"
+	S="$WORKDIR/patches" ESVN_PROJECT="psimedia/patches" subversion_fetch \
+		"http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
 }
 
 src_prepare() {
 	epatch "$WORKDIR/patches"/*
+	subversion_src_prepare
 }
 
 src_configure() {

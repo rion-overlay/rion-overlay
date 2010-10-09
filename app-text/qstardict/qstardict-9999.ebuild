@@ -13,24 +13,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
-PLUGINS="stardict web"
+PLUGINS="stardict swac web"
 IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
 IUSE="dbus nls ${IUSE_PLUGINS}"
 
 RDEPEND="x11-libs/qt-gui
 	dbus? ( x11-libs/qt-dbus )
-	dev-libs/glib:2"
+	dev-libs/glib:2
+	plugin_swac? ( x11-libs/qt-sql )"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	confutils_require_any ${IUSE_PLUGINS}
-}
-
-src_prepare() {
-	qt4-r2_src_prepare
-	subversion_src_prepare
-	find "${S}" -name '*pr?' -exec sed "s:/lib:/$(get_libdir):" -i '{}' \;
 }
 
 src_configure() {
@@ -39,7 +34,10 @@ src_configure() {
 		use "plugin_${f}" && eplugins+=("${f}")
 	done
 
-	QMAKE_FLAGS=(ENABLED_PLUGINS="${eplugins[@]}")
+	QMAKE_FLAGS=(
+		ENABLED_PLUGINS="${eplugins[@]}"
+		LIB_DIR="/usr/$(get_libdir)/${PN}"
+	)
 	if ! use dbus; then
 		QMAKE_FLAGS+=(NO_DBUS=1)
 	fi
