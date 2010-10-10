@@ -1,6 +1,12 @@
 # ChangeLog for app-arch/rpm
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/rpm/ChangeLog,v 1.104 2009/09/06 19:27:42 idl0r Exp $
+# $Header:  $
+
+  10 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> rpm-5.3.3.ebuild,
+  metadata.xml:
+  fix depend efence, replace efence -> duma, see  wrt #262528, or wrt #128814
+  bug from ssuominen.
+  Also see http://www.mail-archive.com/gentoo-dev@lists.gentoo.org/msg35074.html
 
   14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> -rpm-5.3.2.ebuild,
   +rpm-5.3.3.ebuild:

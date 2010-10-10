@@ -10,7 +10,7 @@ SRC_URI="http://sagan.softwink.com/rules/${P}-r1.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

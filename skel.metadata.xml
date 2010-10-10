@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>rion-overlay</herd>
+<herd>no-herd</herd>
 <maintainer>
-  <email>@gmail.com</email>
+ <email>rion@gmail.com</email>
  <description>Description of the maintainership</description> 
+  <upstream>
+   <maintainer status="inactive">
+    <name>Foo Bar</name>
+    <email>foo@bar.bar</email>
+   </maintainer>
+   <maintainer status="active">
+    <name>Foo Gentoo</name>
+    <email>foo@gentoo.org</email>
+   </maintainer>
+    <changelog>http://foo.bar/changelog.txt</changelog>
+    <doc lang="en">http://foo.bar/doc/index.html</doc>
+    <doc lang="de">http://foo.bar/doc/index.de.html</doc>
+    <bugs-to>https://bugs.foo.bar</bugs-to>
+    <remote-id type="freshmeat">foobar</remote-id>
+   <remote-id type="sourceforge">foobar</remote-id>
+  </upstream>
 </maintainer>
  <longdescription>Long description of the package</longdescription> 
 <use>

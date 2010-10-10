@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+berkdb bzip2 dmalloc doc efence keyutils lua magic neon nls pcre perl python readline selinux sqlite xar +xz"
 
 RDEPEND="dmalloc? ( dev-libs/dmalloc )
-	efence? ( dev-util/efence )
+	efence? ( dev-util/duma )
 	keyutils? ( sys-apps/keyutils )
 	xar? ( app-arch/xar )
 	dev-libs/beecrypt

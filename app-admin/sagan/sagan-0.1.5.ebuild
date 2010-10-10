@@ -48,7 +48,7 @@ src_install() {
 
 	keepdir /var/log/sagan
 	keepdir /var/run/sagan
-	
+
 	newinitd "${FILESDIR}"/sagan.init sagan || die
 	newconfd "${FILESDIR}"/sagan.confd sagan || die
 }
