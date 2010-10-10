@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils multilib qt4 subversion
+inherit eutils multilib qt4-r2 subversion
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="http://delta.affinix.com/qca/"
@@ -18,12 +18,9 @@ RESTRICT="test"
 
 DEPEND="sys-devel/qconf
 		x11-libs/qt-core:4[debug?]"
-RDEPEND="${DEPEND}
-	!<app-crypt/qca-1.0-r3:0
-"
+RDEPEND="x11-libs/qt-core:4[debug?]"
 
 src_prepare() {
-	qconf
 	epatch "${FILESDIR}"/${P}-pcfilespath.patch
 	use aqua && sed -i \
 		-e "s|QMAKE_LFLAGS_SONAME =.*|QMAKE_LFLAGS_SONAME = -Wl,-install_name,|g" \
@@ -37,7 +34,7 @@ src_configure() {
 
 	# Ensure proper rpath
 	export EXTRA_QMAKE_RPATH="${EPREFIX}/usr/${_libdir}/qca2"
-
+	qconf
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--qtdir="${EPREFIX}"/usr \
