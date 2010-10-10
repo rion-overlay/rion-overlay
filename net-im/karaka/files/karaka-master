@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+PIDFILE=/var/run/jabber/karaka_master.pid
+
+depend() {
+	need net
+	use jabber-server
+}
+
+start() {
+	ebegin "Starting karaka-master"
+	start-stop-daemon --start --pidfile ${PIDFILE} --chuid jabber:jabber \
+		--exec /usr/bin/python INSPATH/karaka-master.py
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping karaka-master"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	eend $?
+}
