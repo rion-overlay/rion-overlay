@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit qt4 subversion
+inherit qt4-r2 subversion
 
 DESCRIPTION="Qt ./configure generation util"
 HOMEPAGE="http://delta.affinix.com/qconf/"
@@ -22,8 +22,4 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	./configure \
 		--prefix=/usr || die "configure failed"
-}
-
-src_install() {
-	emake INSTALL_ROOT="${D}" install || die "emake install failed"
 }

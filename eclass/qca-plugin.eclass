@@ -9,7 +9,7 @@
 # @DESCRIPTION:
 # This eclass will be used to build all svn qca plugins
 
-inherit eutils qt4 subversion 
+inherit eutils qt4-r2 subversion 
 
 IUSE="debug"
 SLOT="2"
@@ -24,9 +24,9 @@ RDEPEND="${DEPEND}"
 # @DESCRIPTION:
 # Default src_prepare function for packages that depends on qca-plugin
 qca-plugin_src_prepare() {
-	cd "${S}/plugins/${PN}"
+	S="${S}/plugins/${PN}"
+	cd "${S}"
 	qt4_src_prepare
-	qconf
 }
 
 # @FUNCTION: qca-plugin_src_configure
@@ -35,35 +35,14 @@ qca-plugin_src_prepare() {
 # @DESCRIPTION:
 # Default src_configure function for packages that depends on qca-plugin
 qca-plugin_src_configure() {
-	cd "${S}/plugins/${PN}"
+	qconf
 	# cannot use econf because of non-standard configure script
 	./configure \
 		--qtdir=/usr \
 		$(use debug && echo "--debug" || echo "--release") \
 		--no-separate-debug-info \
 		|| die "configure failed"
-}
-
-# @FUNCTION: qca-plugin_src_compile
-# @MAINTAINER:
-# rion <rion4ik@gmail.com>
-# @DESCRIPTION:
-# Default src_compile function for packages that depends on qca-plugin
-qca-plugin_src_compile() {
-	cd "${S}/plugins/${PN}"
 	eqmake4 ${PN}.pro
-	emake || die "emake failed"
-}                                  
-
-
-# @FUNCTION: qca-plugin_src_install
-# @MAINTAINER:
-# rion <rion4ik@gmail.com>
-# @DESCRIPTION:
-# Default src_install function for packages that depends on qca-plugin
-qca-plugin_src_install() {
-	cd "${S}/plugins/${PN}"
-	emake INSTALL_ROOT="${D}" install || die "make install failed"
 }
 
-EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install
+EXPORT_FUNCTIONS src_prepare src_configure

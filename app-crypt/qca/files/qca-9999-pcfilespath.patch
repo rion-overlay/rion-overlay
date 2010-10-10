@@ -1,13 +1,11 @@
-Index: qca-2.0.2/configure
-===================================================================
---- qca-2.0.2.orig/configure
-+++ qca-2.0.2/configure
-@@ -937,7 +937,7 @@ public:
+--- qcm/extra.qcm.orig	2010-10-10 23:48:54.491000070 +0600
++++ qcm/extra.qcm	2010-10-10 23:50:25.608000070 +0600
+@@ -217,7 +217,7 @@
  		if(!pcfiles.isEmpty())
  		{
          		str = QString(
--			"pcfiles.path = \$\$LIBDIR/pkgconfig\n"
-+			"pcfiles.path = \$\$LIBDIR/../pkgconfig\n"
+-			"pcfiles.path = $$LIBDIR/pkgconfig\n"
++			"pcfiles.path = $$LIBDIR/../pkgconfig\n"
  			"pcfiles.files = %1\n"
  			"INSTALLS += pcfiles\n"
  			).arg(pcfiles.join(" "));
