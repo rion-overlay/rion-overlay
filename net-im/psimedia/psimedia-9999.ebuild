@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit subversion
+inherit qt4-r2 subversion
 
 DESCRIPTION="Psi plugin for voice/video calls"
 HOMEPAGE="http://delta.affinix.com/"
@@ -43,6 +43,7 @@ src_prepare() {
 src_configure() {
 	qconf
 	./configure
+	eqmake4
 }
 
 src_install() {
