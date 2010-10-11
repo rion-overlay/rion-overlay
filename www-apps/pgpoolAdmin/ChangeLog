@@ -1,8 +1,0 @@
-# ChangeLog for www-apps/pgpoolAdmin
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
-  +pgpoolAdmin-2.3.ebuild, +metadata.xml:
-  initial commit
-
