@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  add description in metadata - QA fix
+
   05 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   milter-greylist-4.3.7.ebuild, milter-greylist-4.3.8.ebuild,
   files/gentoo.confd:

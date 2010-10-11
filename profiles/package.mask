@@ -14,7 +14,7 @@
 
 # 16 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # again mask otrs - incomplit deps
-#>=www-apps/otrs-3.0
+>=www-apps/otrs-3.0
 
 # 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 #mask for work failures
