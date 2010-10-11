@@ -46,12 +46,12 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}"
 	doins -r  "${S}/htdocs"/*
 
-	insinto "${MY_HOSTROOTDIR}" 
+	insinto "${MY_HOSTROOTDIR}"
 	doins -r cache
 	doins -r lib po templates
 
 	webapp_src_install
-	
+
 	insinto /usr/share/javascript/jquery/
 	doins "${DISTDIR}"/jquery.min.js || die
 
