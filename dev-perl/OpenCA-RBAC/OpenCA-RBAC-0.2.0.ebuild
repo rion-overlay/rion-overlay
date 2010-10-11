@@ -19,4 +19,3 @@ DEPEND=""
 RDEPEND=""
 
 S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-rbac"
-
