@@ -25,7 +25,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc README CHANGES LICENSE || die "Installing documentation failed"
-	#dolib.so libkbdd.so || die "Installing shared lib failed"
 	dobin kbdd || die "Installing executable failed"
+	#dolib.so libkbdd.so || die "Installing shared lib failed"
+	dodoc README CHANGES || die "Installing documentation failed"
 }
