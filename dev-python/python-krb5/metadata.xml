@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<herd>no-herd</herd>
-<longdescription>
-This extension allows python programs to use the MIT Kerberos 5 libraries
-</longdescription>
-<maintainer><email>spamslepnoga@inbox.ru</email></maintainer>
-</pkgmetadata>
