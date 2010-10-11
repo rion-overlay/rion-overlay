@@ -22,4 +22,5 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	./configure \
 		--prefix=/usr || die "configure failed"
+	eqmake4
 }
