@@ -10,7 +10,7 @@ DESCRIPTION="A QT4 GUI for aria2 download manager"
 HOMEPAGE="https://sourceforge.net/projects/karia2/"
 ESVN_REPO_URI="https://karia2.svn.sourceforge.net/svnroot/karia2/trunk"
 
-LICENSE="GPL"
+LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
