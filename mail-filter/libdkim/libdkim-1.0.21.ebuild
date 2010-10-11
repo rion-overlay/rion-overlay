@@ -25,7 +25,7 @@ S=${WORKDIR}/${PN}/src
 src_prepare() {
 	# upstream claims to be portable, but isn't very
 	epatch "${FILESDIR}/${PN}-gentoo.patch" || die "epatch failed"
-	epatch "${FILESDIR}/${PN}-extra-options.patch" ""  die "epatch failed"
+	epatch "${FILESDIR}/${PN}-extra-options.patch" ||  die "epatch failed"
 }
 
 src_install() {

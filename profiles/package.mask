@@ -21,10 +21,6 @@
 app-crypt/openca-base
 app-crypt/openca
 
-# 5 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
-# mask for testing
->=mail-filter/libdkim-1.0.21
-
 # 4 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing
 =www-apps/otrs-3.0.0_beta*
