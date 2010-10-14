@@ -99,6 +99,8 @@ src_unpack() {
 
 	if use extras; then
 		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
+		subversion_wc_info "${ESVN_REPO_URI}/patches"
+		psi_plus_revision=$ESVN_WC_REVISION
 		if use iconsets; then
 			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
 		else
@@ -124,8 +126,7 @@ src_prepare() {
 			ewarn "Whiteboarding is very unstable."
 		fi
 
-		subversion_wc_info "${ESVN_REPO_URI}/patches"
-		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
+		sed -e "s/.xxx/.${psi_plus_revision}/" \
 			-i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."
