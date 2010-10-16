@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Oct 2010; Nickolaj Stjujsckij <sterkrig@home.no> +kbdd-9999.ebuild:
+  Add git-version
+
   15 Oct 2010; Nickolaj Stjujsckij <sterkrig@home.no> -kbdd-0.2.2.ebuild,
   +kbdd-0.2.3.ebuild:
   Bump v0.2.3
