@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*acutil-6.1.11 ( 6 Oct 2010 )
+
+  16 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.11.ebuild:
+  bump
+
 *acutil-6.1.10 (04 Oct 2010)
 
   04 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.10.ebuild:
