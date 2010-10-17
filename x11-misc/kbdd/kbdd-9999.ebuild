@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://github.com/qnikst/kbdd.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus"
+IUSE="dbus debug"
 
 DEPEND="dev-libs/glib
 		x11-libs/libX11
@@ -31,7 +31,7 @@ src_prepare() {
 	eautoreconf
 }
 src_configure() {
-	econf $(use_enable dbus) || die "econf failed"
+	econf $(use_enable dbus) $(use_enable debug) || die "econf failed"
 }
 
 src_install() {
