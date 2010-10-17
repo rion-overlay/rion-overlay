@@ -4,17 +4,18 @@
 
 EAPI="2"
 
-inherit eutils fdo-mime gnome2-utils rpm multilib
+inherit eutils fdo-mime gnome2-utils rpm multilib versionator
 
 IUSE="gnome java kde"
 
-BUILDID="9526"
+BUILDID="1"
 UREVER="1.7.0"
 MY_PV="${PV/_*/}"
 MY_PV1="${PV/_/-}"
 MY_PV3="${MY_PV}-${BUILDID}"
-BASIS="lobasis3.3"
-FILEPATH="http://download.documentfoundation.org/libreoffice/testing"
+MY_PVM1=$(get_major_version)
+MY_PVM2=$(get_version_component_range 1-2)
+BASIS="libobasis${MY_PVM2}"
 
 if [ "${ARCH}" = "amd64" ] ; then
 	LOARCH="x86_64"
@@ -22,12 +23,14 @@ else
 	LOARCH="i586"
 fi
 
+FILEPATH="http://download.documentfoundation.org/libreoffice/testing/${MY_PV1}/rpm"
+
 S="${WORKDIR}/en-US/RPMS"
 UP="en-US/RPMS"
 DESCRIPTION="LibreOffice productivity suite."
 
-SRC_URI="amd64? ( ${FILEPATH}/LO_${MY_PV1}_Linux_x86-64_install-rpm_en-US.tar.gz )
-	x86? ( ${FILEPATH}/LO_${MY_PV1}_Linux_x86_install-rpm_en-US.tar.gz )"
+SRC_URI="amd64? ( ${FILEPATH}/x86_64/LibO_${PV}_Linux_x86-64_install-rpm_en-US.tar.gz )
+	x86? ( ${FILEPATH}/x86/LibO_${PV}_Linux_x86_install-rpm_en-US.tar.gz )"
 
 HOMEPAGE="http://www.documentfoundation.org"
 
@@ -55,16 +58,16 @@ PDEPEND="java? ( >=virtual/jre-1.5 )"
 PROVIDE="virtual/ooo"
 RESTRICT="strip binchecks"
 
-QA_EXECSTACK="usr/$(get_libdir)/libreoffice/basis3.3/program/*
+QA_EXECSTACK="usr/$(get_libdir)/libreoffice/basis${MY_PVM2}/program/*
 	usr/$(get_libdir)/libreoffice/ure/lib/*"
 QA_TEXTRELS="usr/$(get_libdir)/libreoffice/ure/lib/*"
-QA_PRESTRIPPED="usr/$(get_libdir)/libreoffice/basis3.3/program/*
-	usr/$(get_libdir)/libreoffice/basis3.3/program/python-core-2.6.1/lib/lib-dynload/*
+QA_PRESTRIPPED="usr/$(get_libdir)/libreoffice/basis${MY_PVM2}/program/*
+	usr/$(get_libdir)/libreoffice/basis${MY_PVM2}/program/python-core-2.6.1/lib/lib-dynload/*
 	usr/$(get_libdir)/libreoffice/program/*
 	usr/$(get_libdir)/libreoffice/ure/bin/*
 	usr/$(get_libdir)/libreoffice/ure/lib/*"
 
-RESTRICT="mirror"
+RESTRICT="mirror strip"
 
 src_unpack() {
 
@@ -77,13 +80,13 @@ src_unpack() {
 	done
 
 	for j in base calc draw impress math writer; do
-		rpm_unpack "./${UP}/libreoffice3-${j}-${MY_PV3}.${LOARCH}.rpm"
+		rpm_unpack "./${UP}/libreoffice${MY_PVM1}-${j}-${MY_PV3}.${LOARCH}.rpm"
 	done
 
-	rpm_unpack "./${UP}/libreoffice3-${MY_PV3}.${LOARCH}.rpm"
+	rpm_unpack "./${UP}/libreoffice${MY_PVM1}-${MY_PV3}.${LOARCH}.rpm"
 	rpm_unpack "./${UP}/libreoffice-ure-${UREVER}-${BUILDID}.${LOARCH}.rpm"
 
-	rpm_unpack "./${UP}/desktop-integration/libreoffice3.3-freedesktop-menus-3.3-${BUILDID}.noarch.rpm"
+	rpm_unpack "./${UP}/desktop-integration/libreoffice${MY_PVM2}-freedesktop-menus-${MY_PVM2}-${BUILDID}.noarch.rpm"
 
 	use gnome && rpm_unpack "./${UP}/${BASIS}-gnome-integration-${MY_PV3}.${LOARCH}.rpm"
 	use kde && rpm_unpack "./${UP}/${BASIS}-kde-integration-${MY_PV3}.${LOARCH}.rpm"
@@ -96,7 +99,7 @@ src_unpack() {
 
 	# Lang files
 	rpm_unpack "./${UP}/${BASIS}-en-US-${MY_PV3}.${LOARCH}.rpm"
-	rpm_unpack "./${UP}/libreoffice3-en-US-${MY_PV3}.${LOARCH}.rpm"
+	rpm_unpack "./${UP}/libreoffice${MY_PVM1}-en-US-${MY_PV3}.${LOARCH}.rpm"
 	for j in base binfilter calc draw help impress math res writer; do
 		rpm_unpack "./${UP}/${BASIS}-en-US-${j}-${MY_PV3}.${LOARCH}.rpm"
 	done
@@ -109,7 +112,7 @@ src_install () {
 
 	einfo "Installing OpenOffice.org into build root..."
 	dodir ${INSTDIR}
-	mv "${WORKDIR}"/opt/libreoffice3/* "${D}${INSTDIR}" || die
+	mv "${WORKDIR}"/opt/libreoffice${MY_PVM1}/* "${D}${INSTDIR}" || die
 
 	#Menu entries, icons and mime-types
 	cd "${D}${INSTDIR}/share/xdg/"
@@ -142,10 +145,10 @@ src_install () {
 	dosym ${INSTDIR}/program/soffice /usr/bin/soffice
 
 	rm -f "${D}${INSTDIR}/basis-link" || die
-	dosym ${INSTDIR}/basis3.3 ${INSTDIR}/basis-link
+	dosym ${INSTDIR}/basis${MY_PVM2} ${INSTDIR}/basis-link
 
 	# Change user install dir
-	sed -i -e "s/.libreoffice\/3/.lo3/g" "${D}${INSTDIR}/program/bootstraprc" || die
+	sed -i -e "s/.libreoffice\/${MY_PVM1}/.lo${MY_PVM1}/g" "${D}${INSTDIR}/program/bootstraprc" || die
 
 	# Non-java weirdness see bug #99366
 	use !java && rm -f "${D}${INSTDIR}/ure/bin/javaldx"
