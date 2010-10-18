@@ -3,6 +3,9 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+  18 Oct 2010; Nikoli <nikoli@lavabit.com> asterisk-gui-2.9999.ebuild:
+  make repoman happy
+
   16 Jul 2010; mva <mva@mva.name> +asterisk-gui-2.9999.ebuild,
   -asterisk-gui-9999.ebuild:
   Fixed version
