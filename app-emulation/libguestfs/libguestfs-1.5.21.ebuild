@@ -11,11 +11,12 @@ inherit autotools
 
 DESCRIPTION="Libguestfs is a library for accessing and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
-SRC_URI="http://libguestfs.org/download/1.5-development/${P}.tar.gz"
+SRC_URI="http://libguestfs.org/download/1.5-development/${P}.tar.gz
+	http://libguestfs.org/download/binaries/libguestfs-1.5.19-x86_64.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-x86-interix"
+KEYWORDS="~amd64"
 IUSE="ocaml ruby kvm haskell perl python readline nls debug doc"
 
 DEPEND="dev-lang/perl
@@ -33,9 +34,20 @@ DEPEND="dev-lang/perl
 
 RDEPEND="${DEPEND}"
 
+src_unpack() {
+	unpack ${P}.tar.gz
+}
+
 src_prepare() {
 	epatch "${FILESDIR}"/*.patch
 	eautoreconf
+}
+
+scr_configure() {
+	econf \
+		--with-repo=fedora-12 \
+		--disable-appliance \
+		--disable-daemon || die
 }
 
 src_install() {
