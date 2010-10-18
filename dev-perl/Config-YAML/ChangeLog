@@ -1,0 +1,8 @@
+# ChangeLog for dev-perl/Config-YAML
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  21 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Config-YAML-1.42.ebuild, +metadata.xml:
+  initial commit
+
