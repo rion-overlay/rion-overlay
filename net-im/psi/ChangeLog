@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Oct 2010; Nikoli <nikoli@lavabit.com> psi-9999.ebuild:
+  fix build, some patches may affect qca
+
   18 Oct 2010; Nikoli <nikoli@lavabit.com> psi-9999.ebuild, metadata.xml:
   run qmake in src_configure, fix deps, cosmetics
 
