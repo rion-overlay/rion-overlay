@@ -108,8 +108,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm -rf third-party/qca # We use system libraries.
-
 	if use extras; then
 		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
@@ -128,6 +126,8 @@ src_prepare() {
 
 		qconf || die "Failed to create ./configure."
 	fi
+
+	rm -rf third-party/qca # We use system libraries. Remove after patching, some patches may affect qca.
 }
 
 src_configure() {
