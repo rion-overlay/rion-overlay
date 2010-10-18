@@ -36,10 +36,16 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${P}.tar.gz
+
+	cd ${WORKDIR}
+	mkdir image
+	cd image || die
+	unpack libguestfs-1.5.19-x86_64.tar.gz
+	mv "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/*.patch
+	#epatch "${FILESDIR}"/*.patch
 	eautoreconf
 }
 
