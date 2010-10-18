@@ -1,13 +1,13 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.2 2010/06/02 07:46:30 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.5 2010/08/02 09:58:16 pva Exp $
 
 EAPI="2"
 
 LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
 EGIT_REPO_URI="git://git.psi-im.org/psi.git"
-EGIT_HAS_SUBMODULES="true"
+EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
 
 ESVN_DISABLE_DEPENDENCIES="true"
@@ -25,6 +25,7 @@ IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver
 plugins -whiteboarding webkit"
 
 RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
+	>=x11-libs/qt-qt3support-4.4:4
 	>=app-crypt/qca-2.0.2:2
 	whiteboarding? ( x11-libs/qt-svg:4 )
 	spell? (
@@ -44,8 +45,8 @@ DEPEND="${RDEPEND}
 
 PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
 	jingle? (
-		app-crypt/qca-ossl
 		net-im/psimedia
+		app-crypt/qca-ossl:2
 	)
 	ssl? ( app-crypt/qca-ossl:2 )"
 
@@ -62,13 +63,7 @@ pkg_setup() {
 		ewarn "You're about to build heavily patched version of Psi called Psi+."
 		ewarn "It has really nice features but still is under heavy development."
 		ewarn "Take a look at homepage for more info: http://code.google.com/p/psi-dev"
-		ewarn "If you wish to disable some patches just put"
-		ewarn "MY_EPATCH_EXCLUDE=\"list of patches\""
-		ewarn "into /etc/portage/env/${CATEGORY}/${PN} file."
 		ewarn
-		ewarn "Note: some patches depend on other. So if you disabled some patch"
-		ewarn "and other started to fail to apply, you'll have to disable patches"
-		ewarn "that fail too."
 
 		if use iconsets; then
 			ewarn
@@ -113,6 +108,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	rm -rf third-party/qca # We use system libraries.
+
 	if use extras; then
 		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
@@ -131,8 +128,6 @@ src_prepare() {
 
 		qconf || die "Failed to create ./configure."
 	fi
-	
-	rm -rf third-party/qca # We use system libraries.
 }
 
 src_configure() {
@@ -154,12 +149,13 @@ src_configure() {
 				use webkit && echo '--enable-webkit'
 				} )"
 
+	echo "${confcmd}"
 	${confcmd} || die "configure failed"
+
+	eqmake4
 }
 
 src_compile() {
-	eqmake4
-
 	emake || die "emake failed"
 
 	if use doc; then
@@ -171,7 +167,7 @@ src_compile() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install || die "emake install failed"
-	rm "${D}"/usr/share/psi/{COPYING,README}
+	rm -f "${D}"/usr/share/psi/{COPYING,README}
 
 	# this way the docs will be installed in the standard gentoo dir
 	newdoc iconsets/roster/README README.roster || die
