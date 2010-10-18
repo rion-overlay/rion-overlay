@@ -2,6 +2,17 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -libguestfs-1.4.5.ebuild, -libguestfs-1.5.13.ebuild,
+  +libguestfs-1.5.21.ebuild:
+  remove old ebuild
+
+*+libguestfs-1.5.21 ( 18 Oct 2010 )
+
+  18 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +libguestfs-1.5.21.ebuild:
+  bump version
+
   14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -libguestfs-1.4.1.ebuild, +libguestfs-1.4.5.ebuild,
   -libguestfs-1.5.2.ebuild, +libguestfs-1.5.13.ebuild:
