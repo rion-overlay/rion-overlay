@@ -12,7 +12,7 @@ ESVN_REPO_URI="https://karia2.svn.sourceforge.net/svnroot/karia2/trunk"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="net-misc/aria2
