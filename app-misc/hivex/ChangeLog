@@ -1,0 +1,10 @@
+# ChangeLog for app-misc/hivex
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*hivex-1.2.3.ebuild ( 19 Oct 2010 )
+
+  19 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +hivex-1.2.3.ebuild,
+  +metadata.xml:
+  initial commit
+
