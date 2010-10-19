@@ -27,6 +27,7 @@ DEPEND="dev-lang/perl
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/autoconf_fix.patch || die
 	eautoreconf
 }
 
