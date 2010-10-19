@@ -22,15 +22,22 @@ IUSE="ocaml ruby kvm haskell perl python readline nls debug doc"
 DEPEND="dev-lang/perl
 	virtual/cdrtools
 	kvm? ( app-emulation/qemu-kvm )
-	!kvm? ( >=app-emulation/qemu-0.10 )
+	!kvm? ( >=app-emulation/qemu-0.12 )
+	sys-apps/fakeroot
+	dev-libs/libpcre
+	sys-apps/file
+	app-emulation/libvirt
+	dev-libs/libxml2
 	>=sys-apps/fakechroot-2.8
-	dev-util/febootstrap
+	app-admin/augeas
+	sys-fs/squashfs-tools
 	nls? ( >=sys-devel/gettext-0.17 )
 	readline? ( sys-libs/readline )
 	doc? ( dev-libs/libxml2 )
 	ocaml? ( dev-lang/ocaml )
 	ruby? ( dev-lang/ruby )
 	haskell? ( dev-lang/ghc )"
+# hivex >= 1.2.1 (http://libguestfs.org/download)
 
 RDEPEND="${DEPEND}"
 
@@ -44,7 +51,7 @@ src_unpack() {
 	mv "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
 }
 
-src_prepare() {
+src_pirepare() {
 	#epatch "${FILESDIR}"/*.patch
 	eautoreconf
 }
