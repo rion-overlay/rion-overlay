@@ -44,7 +44,6 @@ JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
 
 src_unpack() {
 	default
-	cd "${S}"
 	for MODULE in ${EJABBERD_MODULES_ADDITIONAL}; do
 	if use ${MODULE}; then
 		MODULE=${MODULE/postgres/pgsql}
@@ -52,6 +51,7 @@ src_unpack() {
 		ESVN_REPO_URI="http://svn.process-one.net/ejabberd-modules/${MODULE}/trunk"
 		ESVN_PROJECT="ejabberd/${MODULE}"
 		subversion_fetch "${ESVN_REPO_URI}" additional/"${MODULE}"
+		cd "${S}"
 		cp additional/"${MODULE}"/src/*.?rl .
 		mkdir additional_docs
 		find additional/"${MODULE}" -type d ! -empty -name 'conf' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
