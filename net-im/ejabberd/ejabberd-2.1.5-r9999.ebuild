@@ -23,7 +23,6 @@ DEPEND=">=net-im/jabber-base-0.01
 	>=dev-libs/expat-1.95
 	>=dev-lang/erlang-12.2.5[ssl]
 	odbc? ( dev-db/unixODBC )
-	postgres? ( =net-im/${PF}[odbc] )
 	ldap? ( =net-nds/openldap-2* )
 	>=dev-libs/openssl-0.9.8e
 	captcha? ( media-gfx/imagemagick[truetype,png] )
@@ -62,6 +61,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	( ( use postgres || use mysql ) && use odbc ) || die "SQL supporting modules require ejabberd to be builded with odbc support"
 	epatch "${FILESDIR}/${P}-md2-optional.patch" #331299
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstrrrream tarball but is a third-party module"
