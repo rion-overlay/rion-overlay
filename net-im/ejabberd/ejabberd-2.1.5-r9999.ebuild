@@ -53,10 +53,10 @@ src_unpack() {
 		subversion_fetch "${ESVN_REPO_URI}" additional/"${MODULE}"
 		cd "${S}"
 		cp additional/"${MODULE}"/src/*.?rl .
+		cp odbc/*.sql additional_docs
 		mkdir additional_docs
 		find additional/"${MODULE}" -type d ! -empty -name 'conf' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
 		find additional/"${MODULE}" -type d ! -empty -name 'doc' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
-		find additional/"${MODULE}" -type f -iname 'README*' -exec cp {} additional_docs/README_"${MODULE}" \;
 	fi
 	done
 }
