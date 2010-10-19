@@ -1,0 +1,20 @@
+# ChangeLog for sys-auth/pam_ccreds
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru> -pam_ccreds-8.ebuild,
+  -files/pam_ccreds-8_dependencies.patch:
+  remove old
+
+  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +pam_ccreds-10.ebuild,
+  +files/10/pam_ccreds-10_find_pam_libdir.patch:
+  version bump
+
+  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +pam_ccreds-8.ebuild,
+  +files/pam_ccreds-8_dependencies.patch, +metadata.xml:
+  fix install
+
+  30 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +pam_ccreds-8.ebuild,
+  +files/pam_ccreds-8_dependencies.patch:
+  initilal commit GBB #246420
+
