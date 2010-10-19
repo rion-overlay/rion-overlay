@@ -25,12 +25,26 @@ fi
 
 FILEPATH="http://download.documentfoundation.org/libreoffice/testing/${MY_PV1}/rpm"
 
-S="${WORKDIR}/en-US/RPMS"
+S="${WORKDIR}"
 UP="en-US/RPMS"
 DESCRIPTION="LibreOffice productivity suite."
 
 SRC_URI="amd64? ( ${FILEPATH}/x86_64/LibO_${PV}_Linux_x86-64_install-rpm_en-US.tar.gz )
 	x86? ( ${FILEPATH}/x86/LibO_${PV}_Linux_x86_install-rpm_en-US.tar.gz )"
+
+LANGS="af ar as_IN be_BY bg bn bn_BD bn_IN bo br brx bs ca cs cy da de dgo dz el
+en_GB en_ZA eo es et eu fa fi fr ga gd gl gu gu_IN he hi hr hu is it ja ka kid
+kk km kn ko kok ks ku ky lo lt lv mai mk ml_IN mn mni mr_IN ms my nb ne nl nn nr
+ns oc om or-IN pa_IN pap pl ps pt pt_BR ro ru rw sa_IN sat sc sd sh si sk sl sr
+ss st sv sw sw_TZ ta_IN te_IN tg th ti_ER tn tr ts ug uk ur_IN uz ve vi xh zh_CN
+zh_TW zu"
+
+for X in ${LANGS} ; do
+	[[ ${X} != "en" ]] && SRC_URI="${SRC_URI} linguas_${X}? (
+		x86? ( "${FILEPATH}"/x86/LibO_${PV}_Linux_x86_langpack-rpm_${X/_/-}.tar.gz )
+		amd64? ( "${FILEPATH}"/x86_64/LibO_${PV}_Linux_x86-64_langpack-rpm_${X/_/-}.tar.gz ) )"
+	IUSE="${IUSE} linguas_${X}"
+done
 
 HOMEPAGE="http://www.documentfoundation.org"
 
@@ -48,7 +62,10 @@ RDEPEND="!app-office/openoffice
 	app-arch/zip
 	app-arch/unzip
 	x11-libs/libXinerama
-	>=media-libs/freetype-2.1.10-r2"
+	>=media-libs/freetype-2.1.10-r2
+	linguas_ja? ( >=media-fonts/kochi-substitute-20030809-r3 )
+	linguas_zh_CN? ( >=media-fonts/arphicfonts-0.1-r2 )
+	linguas_zh_TW? ( >=media-fonts/arphicfonts-0.1-r2 )"
 
 DEPEND="${RDEPEND}
 	sys-apps/findutils"
@@ -61,11 +78,6 @@ RESTRICT="strip binchecks"
 QA_EXECSTACK="usr/$(get_libdir)/libreoffice/basis${MY_PVM2}/program/*
 	usr/$(get_libdir)/libreoffice/ure/lib/*"
 QA_TEXTRELS="usr/$(get_libdir)/libreoffice/ure/lib/*"
-QA_PRESTRIPPED="usr/$(get_libdir)/libreoffice/basis${MY_PVM2}/program/*
-	usr/$(get_libdir)/libreoffice/basis${MY_PVM2}/program/python-core-2.6.1/lib/lib-dynload/*
-	usr/$(get_libdir)/libreoffice/program/*
-	usr/$(get_libdir)/libreoffice/ure/bin/*
-	usr/$(get_libdir)/libreoffice/ure/lib/*"
 
 RESTRICT="mirror strip"
 
@@ -97,12 +109,33 @@ src_unpack() {
 		rpm_unpack "./${UP}/${BASIS}-extension-${j}-${MY_PV3}.${LOARCH}.rpm"
 	done
 
-	# Lang files
-	rpm_unpack "./${UP}/${BASIS}-en-US-${MY_PV3}.${LOARCH}.rpm"
-	rpm_unpack "./${UP}/libreoffice${MY_PVM1}-en-US-${MY_PV3}.${LOARCH}.rpm"
-	for j in base binfilter calc draw help impress math res writer; do
-		rpm_unpack "./${UP}/${BASIS}-en-US-${j}-${MY_PV3}.${LOARCH}.rpm"
+	strip-linguas ${LANGS}
+
+	if [[ -z "${LINGUAS}" ]]; then
+		export LINGUAS="en"
+	fi
+
+	for k in ${LINGUAS}; do
+		i="${k/_/-}"
+		if [[ ${i} = "en" ]] ; then
+			i="en-US"
+			LANGDIR="${i}/RPMS/"
+		else
+			LANGDIR="${i}/RPMS/"
+		fi
+		rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${MY_PV3}.${LOARCH}.rpm"
+		rpm_unpack "./${LANGDIR}/libreoffice${MY_PVM1}-${i}-${MY_PV3}.${LOARCH}.rpm"
+		for j in base binfilter calc draw help impress math res writer; do
+			rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${j}-${MY_PV3}.${LOARCH}.rpm"
+		done
 	done
+
+	# Lang files
+	#rpm_unpack "./${UP}/${BASIS}-en-US-${MY_PV3}.${LOARCH}.rpm"
+	#rpm_unpack "./${UP}/libreoffice${MY_PVM1}-en-US-${MY_PV3}.${LOARCH}.rpm"
+	#for j in base binfilter calc draw help impress math res writer; do
+	#	rpm_unpack "./${UP}/${BASIS}-en-US-${j}-${MY_PV3}.${LOARCH}.rpm"
+	#done
 
 }
 
