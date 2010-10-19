@@ -1,0 +1,131 @@
+# ChangeLog for app-crypt/qca
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.38 2008/03/15 11:30:02 corsair Exp $
+
+  15 Mar 2008; Markus Rothe <corsair@gentoo.org> qca-2.0.0-r2.ebuild:
+  Added ~ppc64
+
+  05 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org> qca-1.0-r2.ebuild:
+  s/mips/~mips/
+
+  05 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org> qca-2.0.0-r2.ebuild:
+  Make dependencies compatible with split Qt-4.4.0*.
+
+  01 Mar 2008; Jeroen Roovers <jer@gentoo.org> qca-2.0.0-r2.ebuild:
+  Marked ~hppa.
+
+  15 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org> qca-1.0-r2.ebuild,
+  qca-1.0-r3.ebuild, qca-2.0.0-r2.ebuild:
+  Fix URI, bug#210171, thanks to  Thomas Wouters
+
+  23 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> ChangeLog:
+  Fix blocker.
+
+  23 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> qca-2.0.0-r2.ebuild:
+  Block versions of app-crypt/qca:0 that don't slot properly.
+
+*qca-1.0-r3 (18 Jan 2008)
+
+  18 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> +qca-1.0-r3.ebuild:
+  Fix slotting for =app-crypt/qca-1*, thanks to Alon Bar-Lev in bug 129536.
+
+  13 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org> metadata.xml,
+  qca-2.0.0-r2.ebuild:
+  Removed accidental RESTRICT=mirror and added kde to metadata.xml.
+
+*qca-2.0.0-r2 (13 Jan 2008)
+
+  13 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/qca-2.0.0-debug-same-pkgconfig-file.patch, +qca-2.0.0-r2.ebuild:
+  Version bump as per bug 129536.
+
+  19 Oct 2006; Markus Ullmann <jokey@gentoo.org> qca-1.0-r2.ebuild:
+  minor QA: IUSE wrt bug #150083
+
+  08 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Gustavo gave up on this package, redirect to qt herd.
+
+  07 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> qca-1.0-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Gustavo Felisberto <humpback@gentoo.org>; qca-1.0-r2.ebuild:
+  Added no strip to lib at request from Flameeyes.
+
+  25 Oct 2005; Gustavo Felisberto <humpback@gentoo.org>; qca-1.0-r2.ebuild:
+  Plugin like deps should not be in RDEPEND
+
+  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> -qca-1.0.ebuild,
+  -qca-1.0-r1.ebuild, qca-1.0-r2.ebuild:
+  removed die from epatch || die. old version cleanout
+
+  28 Jul 2005; Caleb Tennis <caleb@gentoo.org> qca-1.0.ebuild,
+  qca-1.0-r1.ebuild, qca-1.0-r2.ebuild:
+  Fix qt per bug #100235
+
+  09 Jul 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  +files/qca-1.0-fbsd.patch, qca-1.0-r2.ebuild:
+  Patch to solve problems on bsd. Thaks to Diego Pettenò in bug #93817.
+
+  02 Jul 2005; Hardave Riar <hardave@gentoo.org> qca-1.0-r2.ebuild:
+  Stable on mips
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> qca-1.0-r2.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> qca-1.0-r2.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  26 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> qca-1.0-r2.ebuild:
+  Stable on alpha.
+
+  24 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> qca-1.0-r2.ebuild:
+  stable on amd64 wrt #86389
+
+  23 Feb 2005; Hardave Riar <hardave@gentoo.org> qca-1.0-r2.ebuild:
+  Marked ~mips
+
+*qca-1.0-r2 (24 Jan 2005)
+
+  24 Jan 2005; Gustavo Felisberto <humpback@gentoo.org>; +qca-1.0-r2.ebuild:
+  Some cosmetic fixes, thanks to Justin (psi developer)
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> qca-1.0-r1.ebuild:
+  Stable on ppc.
+
+  21 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> qca-1.0-r1.ebuild:
+  Add ~alpha keyword.
+
+  18 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> qca-1.0-r1.ebuild:
+  Stable on sparc
+
+  17 Jan 2005; Gustavo Felisberto <humpback@gentoo.org>; qca-1.0-r1.ebuild:
+  Marked x86
+
+  05 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org> qca-1.0-r1.ebuild,
+  qca-1.0.ebuild:
+  multilib fixes.
+
+*qca-1.0-r1 (04 Jan 2005)
+
+  04 Jan 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  +files/qca-pathfix.patch, +qca-1.0-r1.ebuild:
+  Fixed no-fixpath. Lets see if it solves the Sandbox issues.
+
+  03 Jan 2005; Gustavo Felisberto <humpback@gentoo.org>; metadata.xml:
+  Updated maintainer in metadata.xml
+
+  30 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> qca-1.0.ebuild:
+  Added to ~amd64.
+
+  30 Dec 2004; Chris White <chriswhite@gentoo.org> qca-1.0.ebuild:
+  Ok so, added ~ppc keywords and ~hppa/~ia64 as per vapier's request. Fixed to
+  install into /usr not /usr/local.
+
+  29 Dec 2004; Jason Wever <weeve@gentoo.org> qca-1.0.ebuild:
+  Added ~sparc keyword to fix broken deps of qca-tls-1.0-r1.
+
+*qca-1.0 (03 Dec 2004)
+
+  03 Dec 2004; Gustavo Felisberto <humpback@gentoo.org>; +qca-1.0.ebuild:
+  Initial import
+
