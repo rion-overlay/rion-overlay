@@ -55,6 +55,7 @@ src_unpack() {
 		cp additional/"${MODULE}"/src/*.?rl .
 		mkdir additional_docs
 		find additional/"${MODULE}" -type d ! -empty -name 'conf' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
+		find additional/"${MODULE}" -type d ! -empty -name 'doc' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
 		find additional/"${MODULE}" -type f -iname 'README*' -exec cp {} additional_docs/README_"${MODULE}" \;
 	fi
 	done
