@@ -8,7 +8,6 @@
  machine (VM) disk images</description> 
 </maintainer>
 <use>
-<flag name="kvm">Use <pkg>app-emulation/qemu-kvm</pkg> instead <pkg>app-emulation/qemu</pkg></flag>
 <flag name="haskell">Enable haskell bindings</flag>
 </use>
 </pkgmetadata>
