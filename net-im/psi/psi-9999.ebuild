@@ -197,7 +197,7 @@ src_install() {
 		if use linguas_${x}; then
 			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
 			doins "${x}/${PN}_${x}.qm" || die
-			newins "${x}/INFO" "INFO.${x}" || die
+			newins "${x}/INFO" "INFO.${x}"
 		fi
 	done
 }
