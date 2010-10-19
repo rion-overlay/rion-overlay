@@ -56,7 +56,8 @@ src_unpack() {
 		cp odbc/*.sql additional_docs
 		mkdir additional_docs
 		find additional/"${MODULE}" -type d ! -empty -name 'conf' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
-		find additional/"${MODULE}" -type d ! -empty -name 'doc' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
+		find additional/"${MODULE}" -type d ! -empty -name 'doc' -exec cp -r {} additional_docs/doc_"${MODULE}" \;
+		find additional/"${MODULE}" -type f -name 'README*' -exec cp {} additional_docs \;
 	fi
 	done
 }
@@ -148,7 +149,7 @@ src_install() {
 	cd "${WORKDIR}/${P}/doc"
 	dodoc "release_notes_${PV%%_rc*}.txt" || die
 	cd "${S}"
-	dodoc additional_docs/* || die
+	dodoc -r additional_docs || die
 	#dodir /var/lib/ejabberd
 	newinitd "${FILESDIR}/${PN}-3.initd" ${PN} || die "Cannot install init.d script"
 	newconfd "${FILESDIR}/${PN}-3.confd" ${PN} || die "Cannot install conf.d file"
