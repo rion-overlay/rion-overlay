@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 WANT_AUTOCONF="2.5"
 WANT_AUTOMAKE="1.10"
@@ -17,14 +17,21 @@ SRC_URI="http://libguestfs.org/download/1.5-development/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ocaml ruby kvm haskell perl python readline nls debug doc"
+IUSE="ocaml ruby haskell perl python readline nls debug doc"
 
 DEPEND="dev-lang/perl
 	virtual/cdrtools
-	kvm? ( app-emulation/qemu-kvm )
-	!kvm? ( >=app-emulation/qemu-0.10 )
-	>=sys-apps/fakechroot-2.8
+	app-emulation/qemu-kvm
+	sys-apps/fakeroot
+	dev-libs/libpcre
+	sys-apps/file
+	app-emulation/libvirt
+	dev-libs/libxml2
 	dev-util/febootstrap
+	>=sys-apps/fakechroot-2.8
+	app-admin/augeas
+	sys-fs/squashfs-tools
+	>=app-misc/hivex-1.2.1
 	nls? ( >=sys-devel/gettext-0.17 )
 	readline? ( sys-libs/readline )
 	doc? ( dev-libs/libxml2 )
@@ -37,7 +44,7 @@ RDEPEND="${DEPEND}"
 src_unpack() {
 	unpack ${P}.tar.gz
 
-	cd ${WORKDIR}
+	cd "${WORKDIR}"
 	mkdir image
 	cd image || die
 	unpack libguestfs-1.5.19-x86_64.tar.gz
@@ -46,14 +53,17 @@ src_unpack() {
 
 src_prepare() {
 	#epatch "${FILESDIR}"/*.patch
+	declare vmchannel_test=no
 	eautoreconf
 }
 
 scr_configure() {
-	econf \
+	declare vmchannel_test=no
+	econf -C \
 		--with-repo=fedora-12 \
 		--disable-appliance \
-		--disable-daemon || die
+		--disable-daemon \
+		--with-java-home=no || die
 }
 
 src_install() {
