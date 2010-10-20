@@ -1,0 +1,8 @@
+# ChangeLog for www-apache/mod_revocator
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  06 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +mod_revocator-1.0.3.ebuild, +metadata.xml:
+  initial commit
+
