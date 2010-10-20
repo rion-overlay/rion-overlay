@@ -7,10 +7,7 @@ EAPI="2"
 inherit psiplus-plugin
 
 DESCRIPTION="Psi skins plugin."
-HOMEPAGE="http://psi-dev.googlecode.com"
 
-LICENSE="GPL-2"
-SLOT="0"
 KEYWORDS=""
 IUSE="+themes"
 

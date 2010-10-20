@@ -5,7 +5,7 @@
 EAPI="2"
 
 DESCRIPTION="Meta package for net-im/psi plugins"
-HOMEPAGE="http://code.google.com/p/psi-dev"
+HOMEPAGE="http://psi-dev.googlecode.com"
 
 LICENSE="GPL-2"
 SLOT="0"
