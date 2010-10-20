@@ -1,24 +1,20 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: rion $
+# $Header: $
 
 EAPI="2"
 
 DESCRIPTION="Meta package for net-im/psi plugins"
 HOMEPAGE="http://code.google.com/p/psi-dev"
-SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS=""
+IUSE="attention autoreply birthdayreminder captchaforms chess cleaner conferencelogger contentdownloader extendedoptions gmailnotify
+historykeeper icqdie image juick qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher"
 
-PSIPLUS_PLUGINS="attention autoreply birthdayreminder captchaforms cleaner conferencelogger extendedoptions gmailnotify
-historykeeper image icqdie juick screenshot skins stopspam storagenotes translate watcher"
-IUSE="${PSIPLUS_PLUGINS}"
+RDEPEND=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
-for plugin in $PSIPLUS_PLUGINS; do
-	RDEPEND="${RDEPEND} ${plugin}? ( net-im/psi-${plugin} )"
+for plugin in $IUSE; do
+	RDEPEND+=" ${plugin}? ( >=net-im/psi-${plugin}-${PV} )"
 done
