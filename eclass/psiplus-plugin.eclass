@@ -16,11 +16,15 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
 
-EXPORT_FUNCTIONS src_prepare
+EXPORT_FUNCTIONS src_prepare src_configure
 
 psiplus-plugin_src_prepare() {
 	qt4-r2_src_prepare
-	sed 's#\.\./\.\./psiplugin.pri#/usr/share/psi/plugins/psiplugin.pri#' \
-		-i "${MY_PN}".pro
-	eqmake4 "${MY_PN}".pro QMAKE_STRIP=echo
+
+	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi/plugins/psiplugin.pri#' \
+		-i "${MY_PN}".pro || die
+}
+
+psiplus-plugin_src_configure() {
+	eqmake4 "${MY_PN}".pro
 }
