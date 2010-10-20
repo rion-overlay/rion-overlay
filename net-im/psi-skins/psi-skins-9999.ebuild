@@ -11,7 +11,7 @@ DESCRIPTION="Psi skins plugin."
 KEYWORDS=""
 IUSE="+themes"
 
-RDEPEND+=" themes? ( !net-im/psi-skins-themes )"
+RDEPEND="themes? ( !net-im/psi-skins-themes )"
 
 src_unpack() {
 	subversion_src_unpack
