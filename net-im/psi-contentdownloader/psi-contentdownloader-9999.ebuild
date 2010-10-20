@@ -5,9 +5,11 @@
 EAPI="2"
 
 inherit psiplus-plugin
+
 DESCRIPTION="Psi plugin for downloading extras"
 
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="net-libs/libproxy"
+DEPEND="net-libs/libproxy"
+RDEPEND="${DEPEND}"

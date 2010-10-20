@@ -7,7 +7,6 @@ EAPI="2"
 inherit psiplus-plugin
 
 DESCRIPTION="Translate plugin for psi"
-HOMEPAGE="http://vampirus.ru/projects/psi/"
 
 KEYWORDS=""
 IUSE=""

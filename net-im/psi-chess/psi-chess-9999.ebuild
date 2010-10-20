@@ -5,6 +5,7 @@
 EAPI="2"
 
 inherit psiplus-plugin
+
 DESCRIPTION="Psi plugin to play chess with your friends"
 
 KEYWORDS=""
