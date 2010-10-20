@@ -149,7 +149,9 @@ src_install() {
 	cd "${WORKDIR}/${P}/doc"
 	dodoc "release_notes_${PV%%_rc*}.txt" || die
 	cd "${S}"
-	dodoc -r additional_docs || die
+        insinto "${EPREFIX}/usr/share/doc/${PF}"
+        doins -r additional_docs || die
+        # fixme: it is dodoc -r should be here, but it will be only in EAPI=4
 	#dodir /var/lib/ejabberd
 	newinitd "${FILESDIR}/${PN}-3.initd" ${PN} || die "Cannot install init.d script"
 	newconfd "${FILESDIR}/${PN}-3.confd" ${PN} || die "Cannot install conf.d file"
