@@ -5,7 +5,8 @@
 EAPI=3
 
 WANT_AUTOMAKE="1.11"
-inherit autotools
+inherit autotools perl-app 
+# bash-completion python java-pkg-2 haskell-cabal
 
 DESCRIPTION="Library for reading and writing Windows Registry "hive" binary files."
 HOMEPAGE="http://libguestfs.org"
@@ -14,7 +15,7 @@ SRC_URI="http://libguestfs.org/download/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ocaml readline perl nls"
+IUSE="ocaml readline perl"
 
 DEPEND="dev-lang/perl
 	virtual/libiconv
@@ -33,11 +34,9 @@ src_prepare() {
 
 src_configure() {
 	econf -C \
-		--enable-gcc-warnings \
 		$(use_with readline) \
 		$(use_with ocaml) \
 		$(use_with perl) \
-		$(use_enable nls) \
 		--disable-rpath || die
 }
 
