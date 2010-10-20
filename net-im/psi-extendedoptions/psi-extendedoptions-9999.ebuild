@@ -7,9 +7,6 @@ EAPI="2"
 inherit psiplus-plugin
 
 DESCRIPTION="Psi plugin for UI for some hidden options"
-HOMEPAGE="http://code.google.com/p/psi-dev/"
 
-LICENSE="GPL-2"
-SLOT="0"
 KEYWORDS=""
 IUSE=""

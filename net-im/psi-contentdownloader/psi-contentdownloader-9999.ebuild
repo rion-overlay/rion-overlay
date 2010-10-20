@@ -6,10 +6,7 @@ EAPI="2"
 
 inherit psiplus-plugin
 DESCRIPTION="Psi plugin for downloading extras"
-HOMEPAGE="http://psi-dev.googlecode.com"
 
-LICENSE="GPL-2"
-SLOT="0"
 KEYWORDS=""
 IUSE=""
 

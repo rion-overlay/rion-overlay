@@ -9,7 +9,5 @@ inherit psiplus-plugin
 DESCRIPTION="Translate plugin for psi"
 HOMEPAGE="http://vampirus.ru/projects/psi/"
 
-LICENSE="GPL-2"
-SLOT="0"
 KEYWORDS=""
 IUSE=""

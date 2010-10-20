@@ -5,8 +5,11 @@
 inherit qt4-r2 subversion
 
 MY_PN="${PN/*-}plugin"
-
+HOMEPAGE="http://psi-dev.googlecode.com"
 ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/${MY_PN}"
+
+LICENSE="GPL-2"
+SLOT="0"
 
 DEPEND=">net-im/psi-0.14[extras,plugins]"
 RDEPEND="${DEPEND}"
@@ -21,4 +24,3 @@ psiplus-plugin_src_prepare() {
 		-i "${MY_PN}".pro
 	eqmake4 "${MY_PN}".pro QMAKE_STRIP=echo
 }
-
