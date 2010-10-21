@@ -1,7 +1,6 @@
-diff -r 94175b222a79 configure.ac
---- a/configure.ac	Tue Oct 19 20:06:17 2010 +0300
-+++ b/configure.ac	Wed Oct 20 20:20:56 2010 +0300
-@@ -171,61 +171,47 @@
+--- /home/maks/hivex-1.2.3/configure.ac	2010-08-27 12:48:18.000000000 +0400
++++ /home/maks/work/hivex-1.2.3/configure.ac	2010-10-21 18:29:53.000000000 +0400
+@@ -171,61 +171,44 @@
  AC_SUBST([LIBXML2_LIBS])
  
  dnl Check for OCaml (optional, for OCaml bindings).
@@ -20,8 +19,7 @@ diff -r 94175b222a79 configure.ac
 -    #include <caml/mlvalues.h>
 -    ])
 -    CFLAGS="$old_CFLAGS"
-+dnl For Perl
- 
+-
 -    dnl Do we have function caml_raise_with_args?
 -    f=caml_raise_with_args
 -    AC_MSG_CHECKING([for function $f])
@@ -39,54 +37,62 @@ diff -r 94175b222a79 configure.ac
 -    fi
 -    rm -f conftest conftest.* conftest_ml.*
 -fi
-+with_perl=no
-+missing_perl_modules=no
-+AC_ARG_WITH([perl],
-+	[AS_HELP_STRING([--with-perl],[build Perl binding])],
-+     [with_perl=yes], 
-+     [with_perl=no])
- 
+-
 -dnl Check for Perl (optional, for Perl bindings).
 -dnl XXX This isn't quite right, we should check for Perl devel library.
 -AC_CHECK_PROG([PERL],[perl],[perl],[no])
-+PERL=
++dnl For Perl
  
 -dnl Check for Perl modules that must be present to compile and
 -dnl test the Perl bindings.
--missing_perl_modules=no
-+AS_IF([test "x$with_perl" != xno],
-+	[AC_CHECK_PROG([PERL],[perl],[yes],[no])
-+	AC_MSG_NOTICE ([with_pe....yes])
+ missing_perl_modules=no
+-for pm in Test::More ExtUtils::MakeMaker IO::Stringy; do
+-    AC_MSG_CHECKING([for $pm])
+-    if ! perl -M$pm -e1 >/dev/null 2>&1; then
+-        AC_MSG_RESULT([no])
+-        missing_perl_modules=yes
+-    else
+-        AC_MSG_RESULT([yes])
+-    fi
+-done
+-if test "x$missing_perl_modules" = "xyes"; then
+-    AC_MSG_WARN([some Perl modules required to compile or test the Perl bindings are missing])
+-fi
++AC_ARG_WITH([perl],
++	[AS_HELP_STRING([--with-perl],[build Perl binding])],
++     [], 
++     [with_perl=no])
++
++PERL=
++AS_IF([test "x$with_perl" != xno ],[
++	AC_CHECK_PROG([PERL],[perl],[yes],[no])
 +	if test "x$PERL" != "xyes";then
 +		AC_MSG_FAILURE([perl not found])
 +	else
-+		AC_MSG_NOTICE ([perl found])
++		AC_MSG_NOTICE([perl found])
 +	fi
 +
- for pm in Test::More ExtUtils::MakeMaker IO::Stringy; do
-     AC_MSG_CHECKING([for $pm])
-     if ! perl -M$pm -e1 >/dev/null 2>&1; then
--        AC_MSG_RESULT([no])
-+        AC_MSG_FAILURE([no])
-         missing_perl_modules=yes
-     else
-         AC_MSG_RESULT([yes])
-     fi
- done
-+
- if test "x$missing_perl_modules" = "xyes"; then
--    AC_MSG_WARN([some Perl modules required to compile or test the Perl bindings are missing])
-+    AC_MSG_FAILURE([some Perl modules required to compile or test the Perl bindings are missing])
- fi
--
++    for pm in Test::More ExtUtils::MakeMaker IO::Stringy; do
++        AC_MSG_CHECKING([for $pm])
++        if ! perl -M$pm -e1 >/dev/null 2>&1; then
++            AC_MSG_RESULT([no])
++            missing_perl_modules=yes
++        else
++            AC_MSG_RESULT([yes])
++        fi
++    done
+ 
++    if test "x$missing_perl_modules" = "xyes"; then
++        AC_MSG_FAILURE([some Perl modules required to compile or test the Perl bindings are missing])
++    fi
 +])
  AM_CONDITIONAL([HAVE_PERL],
 -    [test "x$PERL" != "xno" -a "x$missing_perl_modules" != "xyes"])
-+    [test "x$PERL" = "yes" -a "x$missing_perl_modules" != "xyes" -a "x$with_perl" != xno])
++    [test "x$PERL" = "xyes" -a "x$missing_perl_modules" != "xyes" -a "x$with_perl" != xno])
  
  dnl dnl Check for Python (optional, for Python bindings).
  dnl AC_CHECK_PROG([PYTHON],[python],[python],[no])
-@@ -454,8 +440,6 @@
+@@ -454,8 +437,6 @@
  echo
  echo "This is how we have configured the optional components for you today:"
  echo
