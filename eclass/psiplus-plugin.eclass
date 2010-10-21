@@ -2,19 +2,28 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit qt4-r2 subversion
+MY_PN="${PN#psi-}plugin"
+SCM=""
+if [ "${PV#9999}" != "${PV}" ] ; then
+	SCM="subversion"
+	ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/${MY_PN}"
+fi
 
-MY_PN="${PN/*-}plugin"
+inherit qt4-r2 ${SCM}
+
 HOMEPAGE="http://psi-dev.googlecode.com"
-ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/${MY_PN}"
+if [ "${PV#9999}" != "${PV}" ] ; then
+	SRC_URI=""
+	S="${WORKDIR}/${MY_PN}"
+else
+	SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">net-im/psi-0.14[extras,plugins]"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_PN}"
 
 EXPORT_FUNCTIONS src_prepare src_configure
 
