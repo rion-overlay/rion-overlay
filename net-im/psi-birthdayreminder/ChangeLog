@@ -3,6 +3,11 @@
 # $Header: $
 
   21 Oct 2010; Nikoli <nikoli@lavabit.com>
+  -psi-birthdayreminder-0.2.6_pre.ebuild,
+  +psi-birthdayreminder-0.2.6_pre3076.ebuild:
+  fix version
+
+  21 Oct 2010; Nikoli <nikoli@lavabit.com>
   +psi-birthdayreminder-0.2.6_pre.ebuild:
   version bump
 
