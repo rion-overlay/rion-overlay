@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+<herd>net-im</herd>
+<maintainer>
+  <email>mva@mva.name rion@gmail.com</email>
+</maintainer>
+<longdescription> Free and Open Source distributed fault-tolerant Jabber server. It's mostly written in Erlang, and works on many platforms.</longdescription>
+<use>
+	<flag name='mod_muc'>Build Multi User Chat module</flag>
+	<flag name='mod_pubsub'>Build Pubsub module</flag>
+	<flag name='web'>Enable web admin interface</flag>
+	<flag name="captcha">Support for CAPTCHA Forms (XEP-158)</flag>
+	<flag name="mod_proxy65">Support for SOCKS5 Bytestreams (XEP-0065)</flag>
+	<flag name='mod_irc'>Build IRC module</flag>
+	<flag name='mod_srl'>Build shared roster with LDAP supporting module</flag>
+	<flag name='mod_statsdx'>Build stats module</flag>
+	<flag name='atom_pubsub'>Build pubsub to Atom translation module</flag>
+	<flag name='ircd'>Build IRC-Daemon module</flag>
+	<flag name='mod_archive'>Build archive module</flag>
+	<flag name='mod_cron'>Build cron module</flag>
+	<flag name='mod_openid'>Build module for OpenID-providing</flag>
+	<flag name='mod_log_chat'>Build module for logging chats (with odbc support)</flag>
+	<flag name='mod_multicast'>Build module for sending multicast stanzas</flag>
+	<flag name='mod_profile'>Build user profile module</flag>
+	<flag name='mod_rest'>Build rest-module</flag>
+	<flag name='mod_s2s_log'>Build module for s2s logging</flag>
+	<flag name='mod_shcommands'>Build module for executing shell-commands</flag>
+	<flag name='mod_webpresence'>Build web presence module.</flag>
+</use>
+</pkgmetadata>
