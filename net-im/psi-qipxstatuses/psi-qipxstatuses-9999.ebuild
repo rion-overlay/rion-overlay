@@ -5,6 +5,7 @@
 EAPI="2"
 
 inherit psiplus-plugin
+
 DESCRIPTION="QIP xStatus reader Psi plugin"
 
 KEYWORDS=""
