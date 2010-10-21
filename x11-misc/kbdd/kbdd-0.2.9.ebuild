@@ -7,7 +7,7 @@ EAPI=3
 DESCRIPTION="Very simple layout switcher"
 HOMEPAGE="http://github.com/qnikst/kbdd"
 SRC_URI="http://github.com/qnikst/${PN}/tarball/v${PV} -> ${P}.tar.gz"
-HASH="0041512"
+HASH="2a1321f"
 
 LICENSE="GPL-2"
 SLOT="0"

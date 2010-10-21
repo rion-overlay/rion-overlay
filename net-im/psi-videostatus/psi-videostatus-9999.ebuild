@@ -5,6 +5,7 @@
 EAPI="2"
 
 inherit psiplus-plugin
+
 DESCRIPTION="Psi plugin for settings some status during video watching"
 
 KEYWORDS=""
