@@ -28,5 +28,12 @@
 	<flag name='mod_s2s_log'>Build module for s2s logging</flag>
 	<flag name='mod_shcommands'>Build module for executing shell-commands</flag>
 	<flag name='mod_webpresence'>Build web presence module.</flag>
+	<flag name='md5'>Apply patch, that makes eJabberd save and read passwords hashed in md5, instead of plaintext.</flag>
+	<flag name='mod_admin_extra'>Build module for extra admin features (for ejabberdctl).</flag>
+	<flag name='mod_logsession'>Build logsession module.</flag>
+	<flag name='mod_logxml'>Build logxml module.</flag>
+	<flag name='mod_muc_admin'>Build module for extra (muc-related) admin features (for ejabberdctl).</flag>
+	<flag name='mod_muc_log_http'>Build module for accessing to logs during internal webserver.</flag>
+	<flag name='mod_register_web'>Build module for registration over web.</flag>
 </use>
 </pkgmetadata>

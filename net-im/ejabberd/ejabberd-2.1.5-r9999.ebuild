@@ -15,9 +15,9 @@ SRC_URI="http://www.process-one.net/downloads/${PN}/${PV}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-EJABBERD_MODULES_ADDITIONAL="atom_pubsub ircd mod_archive mod_cron mod_openid mod_log_chat mod_multicast mod_profile mod_rest mod_s2s_log mod_shcommands mod_webpresence mysql postgres xmlrpc"
+EJABBERD_MODULES_ADDITIONAL="atom_pubsub ircd mod_admin_extra mod_archive mod_cron mod_log_chat mod_logsession mod_logxml mod_muc_admin mod_muc_log_http mod_multicast mod_openid mod_profile mod_register_web mod_rest mod_s2s_log mod_shcommands mod_webpresence mysql postgres xmlrpc"
 EJABBERD_MODULES="mod_irc mod_muc mod_proxy65 mod_pubsub mod_srl mod_statsdx"
-IUSE="captcha debug ldap odbc pam +web zlib ${EJABBERD_MODULES} ${EJABBERD_MODULES_ADDITIONAL}"
+IUSE="captcha debug ldap md5 odbc pam +web zlib ${EJABBERD_MODULES} ${EJABBERD_MODULES_ADDITIONAL}"
 
 DEPEND=">=net-im/jabber-base-0.01
 	>=dev-libs/expat-1.95
@@ -44,6 +44,8 @@ JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
 
 src_unpack() {
 	default
+	cd "${S}"
+	mkdir additional_docs
 	for MODULE in ${EJABBERD_MODULES_ADDITIONAL}; do
 	if use ${MODULE}; then
 		MODULE=${MODULE/postgres/pgsql}
@@ -54,7 +56,6 @@ src_unpack() {
 		cd "${S}"
 		cp additional/"${MODULE}"/src/*.?rl .
 		cp odbc/*.sql additional_docs
-		mkdir additional_docs
 		find additional/"${MODULE}" -type d ! -empty -name 'conf' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
 		find additional/"${MODULE}" -type d ! -empty -name 'doc' -exec cp -r {} additional_docs/doc_"${MODULE}" \;
 		find additional/"${MODULE}" -type f -name 'README*' -exec cp {} additional_docs/README_"${MODULE}" \;
@@ -65,6 +66,7 @@ src_unpack() {
 src_prepare() {
 	( ( use postgres || use mysql ) && use odbc ) || die "SQL supporting modules require ejabberd to be builded with odbc support"
 	epatch "${FILESDIR}/${P}-md2-optional.patch" #331299
+	use md5 && epatch "${FILESDIR}/auth_md5.patch"
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstrrrream tarball but is a third-party module"
 		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
@@ -149,9 +151,9 @@ src_install() {
 	cd "${WORKDIR}/${P}/doc"
 	dodoc "release_notes_${PV%%_rc*}.txt" || die
 	cd "${S}"
-        insinto "${EPREFIX}/usr/share/doc/${PF}"
-        doins -r additional_docs || die
-        # fixme: it is dodoc -r should be here, but it will be only in EAPI=4
+	insinto "${EPREFIX}/usr/share/doc/${PF}"
+	doins -r additional_docs || die
+	# fixme: it is dodoc -r should be here, but it will be only in EAPI=4
 	#dodir /var/lib/ejabberd
 	newinitd "${FILESDIR}/${PN}-3.initd" ${PN} || die "Cannot install init.d script"
 	newconfd "${FILESDIR}/${PN}-3.confd" ${PN} || die "Cannot install conf.d file"
