@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Oct 2010; Rion <rion4ik@notagmail.com> psi-9999.ebuild:
+  fix icons exporting. required in new revisions
+
   19 Oct 2010; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20101019.ebuild:
   add snapshot
 
