@@ -99,7 +99,7 @@ src_unpack() {
 		if use iconsets; then
 			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
 		else
-			for x in clients moods activities system; do
+			for x in clients moods activities system roster; do
 				ESVN_PROJECT="psiplus/${x}"
 				subversion_fetch "${ESVN_REPO_URI}/iconsets/${x}/default" "iconsets/${x}/default"
 			done
