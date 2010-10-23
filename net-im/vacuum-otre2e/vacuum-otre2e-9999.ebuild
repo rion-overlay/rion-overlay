@@ -4,12 +4,12 @@
 
 EAPI=2
 
-inherit qt4-r2 subversion
+inherit qt4-r2 mercurial
 
 MY_PN="${PN/vacuum-/}"
 DESCRIPTION="Off-The-Record messaging (OTR) for vacuum"
 HOMEPAGE="http://code.google.com/p/vacuum-plugins"
-ESVN_REPO_URI="http://vacuum-plugins.googlecode.com/svn/plugins/${MY_PN}"
+EHG_REPO_URI="https://${MY_PN}.vacuum-plugins.googlecode.com/hg/"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,6 +24,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${VACUUM_DEPEND}[sdk]
 "
+
+S="${WORKDIR}/hg"
 
 src_configure() {
 	eqmake4 ${MY_PN}.pro \
