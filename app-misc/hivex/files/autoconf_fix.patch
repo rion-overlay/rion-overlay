@@ -1,34 +1,38 @@
---- /home/maks/hivex-1.2.3/configure.ac	2010-08-27 12:48:18.000000000 +0400
-+++ /home/maks/work/hivex-1.2.3/configure.ac	2010-10-21 18:29:53.000000000 +0400
-@@ -171,61 +171,44 @@
+--- configure.ac.orig	2010-10-22 19:47:42.119099198 +0300
++++ configure.ac	2010-10-22 19:47:32.323369272 +0300
+@@ -171,12 +171,17 @@
  AC_SUBST([LIBXML2_LIBS])
  
  dnl Check for OCaml (optional, for OCaml bindings).
++AC_ARG_ENABLE([ocaml],
++         AS_HELP_STRING([--enable-ocaml],[Enable ocaml binding]))
++
 +
  AC_PROG_OCAML
  AC_PROG_FINDLIB
- AM_CONDITIONAL([HAVE_OCAML],[test "x$OCAMLC" != "xno" -a "x$OCAMLFIND" != "xno"])
+-AM_CONDITIONAL([HAVE_OCAML],[test "x$OCAMLC" != "xno" -a "x$OCAMLFIND" != "xno"])
  
--if test "x$OCAMLC" != "xno"; then
++
++
++AS_IF([test "x$enable_ocaml" != "xno"], [
+ if test "x$OCAMLC" != "xno"; then
 -    dnl Check if we have caml/unixsupport.h header (OCaml bindings only).
--    old_CFLAGS="$CFLAGS"
--    CFLAGS="$CFLAGS -I$OCAMLLIB"
--    AC_CHECK_HEADERS([caml/unixsupport.h],[],[],
--    [
--    #include <caml/config.h>
--    #include <caml/mlvalues.h>
--    ])
--    CFLAGS="$old_CFLAGS"
--
+     old_CFLAGS="$CFLAGS"
+     CFLAGS="$CFLAGS -I$OCAMLLIB"
+     AC_CHECK_HEADERS([caml/unixsupport.h],[],[],
+@@ -186,7 +191,7 @@
+     ])
+     CFLAGS="$old_CFLAGS"
+ 
 -    dnl Do we have function caml_raise_with_args?
--    f=caml_raise_with_args
--    AC_MSG_CHECKING([for function $f])
--    echo "char $f (); char foo() { return $f (); }" > conftest.c
--    rm -f conftest_ml.ml
--    touch conftest_ml.ml
--    if $OCAMLOPT -c conftest.c 2>/dev/null && \
--       $OCAMLOPT -c conftest_ml.ml 2>/dev/null && \
--       $OCAMLOPT conftest.o conftest_ml.cmx -o conftest 2>/dev/null ; then
++dnl Do we have function caml_raise_with_args?
+     f=caml_raise_with_args
+     AC_MSG_CHECKING([for function $f])
+     echo "char $f (); char foo() { return $f (); }" > conftest.c
+@@ -195,37 +200,46 @@
+     if $OCAMLOPT -c conftest.c 2>/dev/null && \
+        $OCAMLOPT -c conftest_ml.ml 2>/dev/null && \
+        $OCAMLOPT conftest.o conftest_ml.cmx -o conftest 2>/dev/null ; then
 -        AC_DEFINE([HAVE_CAML_RAISE_WITH_ARGS],[1],
 -                  [Defined if function caml_raise_with_args exists.])
 -        AC_MSG_RESULT([found])
@@ -36,11 +40,23 @@
 -        AC_MSG_RESULT([not found])
 -    fi
 -    rm -f conftest conftest.* conftest_ml.*
--fi
--
++        AC_DEFINE([HAVE_CAML_RAISE_WITH_ARGS],[1],  
++	    [Defined if function caml_raise_with_args exists.])
++       AC_MSG_RESULT([found])
++   else
++      AC_MSG_FAILURE([not found])
++
++   fi
++   rm -f conftest conftest.* conftest_ml.*
+ fi
+ 
 -dnl Check for Perl (optional, for Perl bindings).
 -dnl XXX This isn't quite right, we should check for Perl devel library.
 -AC_CHECK_PROG([PERL],[perl],[perl],[no])
++  ])
++
++AM_CONDITIONAL([HAVE_OCAML],[test "x$OCAMLC" != "xno" -a "x$OCAMLFIND" != "xno" -a "x$enable_ocaml" != "xno"])
++
 +dnl For Perl
  
 -dnl Check for Perl modules that must be present to compile and
@@ -58,19 +74,12 @@
 -if test "x$missing_perl_modules" = "xyes"; then
 -    AC_MSG_WARN([some Perl modules required to compile or test the Perl bindings are missing])
 -fi
-+AC_ARG_WITH([perl],
-+	[AS_HELP_STRING([--with-perl],[build Perl binding])],
-+     [], 
-+     [with_perl=no])
-+
++AC_ARG_ENABLE([perl],
++	AS_HELP_STRING([--with-perl],[build Perl binding]))
+ 
 +PERL=
-+AS_IF([test "x$with_perl" != xno ],[
++AS_IF([test "x$enable_perl" != "xno" ],[
 +	AC_CHECK_PROG([PERL],[perl],[yes],[no])
-+	if test "x$PERL" != "xyes";then
-+		AC_MSG_FAILURE([perl not found])
-+	else
-+		AC_MSG_NOTICE([perl found])
-+	fi
 +
 +    for pm in Test::More ExtUtils::MakeMaker IO::Stringy; do
 +        AC_MSG_CHECKING([for $pm])
@@ -81,23 +90,14 @@
 +            AC_MSG_RESULT([yes])
 +        fi
 +    done
- 
-+    if test "x$missing_perl_modules" = "xyes"; then
-+        AC_MSG_FAILURE([some Perl modules required to compile or test the Perl bindings are missing])
-+    fi
++
++    AS_IF([test "x$missing_perl_modules" = "xyes"],
++        [AC_MSG_FAILURE([some Perl modules required to compile or test the Perl bindings are missing])],
++	 )
 +])
  AM_CONDITIONAL([HAVE_PERL],
 -    [test "x$PERL" != "xno" -a "x$missing_perl_modules" != "xyes"])
-+    [test "x$PERL" = "xyes" -a "x$missing_perl_modules" != "xyes" -a "x$with_perl" != xno])
++    [test "x$PERL" = "xyes" -a "x$missing_perl_modules" != "xyes" -a "x$enable_perl" = "xyes"])
  
  dnl dnl Check for Python (optional, for Python bindings).
  dnl AC_CHECK_PROG([PYTHON],[python],[python],[no])
-@@ -454,8 +437,6 @@
- echo
- echo "This is how we have configured the optional components for you today:"
- echo
--echo -n "OCaml bindings ...................... "
--if test "x$HAVE_OCAML_TRUE" = "x"; then echo "yes"; else echo "no"; fi
- echo -n "Perl bindings ....................... "
- if test "x$HAVE_PERL_TRUE" = "x"; then echo "yes"; else echo "no"; fi
- dnl echo -n "Python bindings ..................... "
