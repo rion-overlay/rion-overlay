@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit eutils
+inherit eutils multilib
 
 DESCRIPTION="Minimal Xml parser and printer for OCaml"
 HOMEPAGE="http://tech.motion-twin.com/xmllight.html"
@@ -13,20 +13,22 @@ SRC_URI="http://tech.motion-twin.com/zip/${P}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 DEPEND="dev-lang/ocaml"
-S=${WORKDIR}/${PN}
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${PN}"
 
 src_compile() {
-	pwd
-	make all || make all || die  # Will fail in 1st run ... FIXME
-	make opt || die
+	make  || die  # Will fail in 1st run ... FIXME
 }
 
 src_install() {
-	dodir /usr/lib/ocaml
-	make INSTALLDIR=${D}/usr/lib/ocaml install || die
-	dodoc doc/* README
+	dodir /usr/$(get_libdir)/ocaml
+	emake INSTALLDIR="${D}"/usr/$(get_libdir)/ocaml install || die
+	dodoc  README
+	if use doc; then
+		dohtml doc/*
+	fi
 }
-
