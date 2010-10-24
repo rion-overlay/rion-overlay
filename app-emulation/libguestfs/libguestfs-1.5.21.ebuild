@@ -52,10 +52,11 @@ COMMON_DEPEND="dev-libs/libpcre
 		dev-perl/XML-Writer
 		dev-lang/perl
 		app-misc/hivex[perl]
+		dev-perl/libintl-perl
 		dev-ml/xml-light )
 	php? ( dev-lang/php )"
 
-#tools?  Sys::Virt  Locale::TextDomain
+#tools?  Sys::Virt
 DEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jdk-1.6 )"
 RDEPEND="${DEPEND}
