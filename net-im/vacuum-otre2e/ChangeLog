@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Oct 2010; Nikoli <nikoli@lavabit.com> vacuum-otre2e-9999.ebuild:
+  migrate to mercurial
+
   21 Oct 2010; Nikoli <nikoli@lavabit.com> +vacuum-otre2e-9999.ebuild,
   +metadata.xml:
   initial ebuild
