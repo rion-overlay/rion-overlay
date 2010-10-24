@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>nikoli@lavabit.com</email>
+		<name>Nikoli</name>
+	</maintainer>
+	<longdescription lang="en">
+	cgit - cgi for git
+
+	This is an attempt to create a fast web interface for the git scm, using a
+	builtin cache to decrease server io-pressure.
+	</longdescription>
+</pkgmetadata>
