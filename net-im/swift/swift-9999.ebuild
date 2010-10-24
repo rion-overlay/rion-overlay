@@ -57,6 +57,8 @@ src_compile() {
 		ccflags="${CFLAGS}"
 		linkflags="${LDFLAGS}"
 		${MAKEOPTS}
+		ccache=1
+		distcc=1
 		debug="$(use debug && echo 1 || echo 0)"
 		qt="${WORKDIR}/qt4"
 		openssl="/usr"
