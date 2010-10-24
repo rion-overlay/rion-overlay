@@ -50,12 +50,12 @@ COMMON_DEPEND="dev-libs/libpcre
 	tools? ( >=app-misc/hivex-1.2.1[perl]
 		virtual/perl-Getopt-Long
 		dev-perl/XML-Writer
+		dev-lang/perl
 		app-misc/hivex[perl]
-			)
+		dev-ml/xml-light )
 	php? ( dev-lang/php )"
 
-#ocaml? ( xml-light )
-#tools?  Sys::Virt Data::Dumper
+#tools?  Sys::Virt  Locale::TextDomain
 DEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jdk-1.6 )"
 RDEPEND="${DEPEND}
@@ -72,8 +72,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	#epatch "${FILESDIR}"/*.patch
-	declare vmchannel_test=no
+	epatch "${FILESDIR}"/all.patch
 	eautoreconf
 }
 
