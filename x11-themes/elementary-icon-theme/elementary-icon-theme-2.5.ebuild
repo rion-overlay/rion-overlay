@@ -8,8 +8,8 @@ inherit gnome2-utils
 
 DESCRIPTION="Elementary gnome icon theme"
 HOMEPAGE="https://launchpad.net/elementaryicons"
-SRC_URI="http://launchpad.net/elementaryicons/2.0/2.4/+download/elementary.tar.gz -> ${P}.tar.gz
-	monochrome? ( http://launchpad.net/elementaryicons/2.0/2.4/+download/elementary-monochrome.tar.gz -> ${PN}-monochrome-${PV}.tar.gz )"
+SRC_URI="http://launchpad.net/elementaryicons/2.0/${PV}/+download/elementary.tar.gz -> ${P}.tar.gz
+	monochrome? ( http://launchpad.net/elementaryicons/2.0/${PV}/+download/elementary-mono-dark.tar.gz -> ${PN}-mono-dark-${PV}.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,7 +24,7 @@ src_install() {
 	insinto /usr/share/icons
 	cd "${WORKDIR}"
 	doins -r elementary
-	use monochrome && doins -r elementary-monochrome
+	use monochrome && doins -r elementary-mono-dark
 }
 
 pkg_preinst() {
