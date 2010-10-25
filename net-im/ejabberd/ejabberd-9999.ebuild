@@ -85,6 +85,7 @@ src_prepare() {
 	# correct path to captcha script in default ejabberd.cfg
 	sed -e 's|\({captcha_cmd,[[:space:]]*"\).\+"}|\1/usr/'$(get_libdir)'/erlang/lib/'${P}'/priv/bin/captcha.sh"}|' \
 			-i ejabberd.cfg.example || die "Failed sed ejabberd.cfg.example"
+	eaclocal
 	eautoconf
 }
 

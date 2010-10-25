@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ChangeLog,v 1.65 2009/06/05 13:00:56 pva Exp $
 
+  25 Oct 2010; Rion <rion4ik@notagmail.com> ejabberd-9999.ebuild:
+  fix configuring
+
   06 Oct 2010; Rion <rion4ik@notagmail.com>
   +files/ejabberd-2.1.4-mod_shared_roster_ldap.patch,
   +files/ejabberd-2.1.5-md2-optional.patch, +files/ejabberd-3.confd,
