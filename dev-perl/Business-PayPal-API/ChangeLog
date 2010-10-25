@@ -1,0 +1,22 @@
+# ChangeLog for dev-perl/Business-PayPal-API
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -Business-PayPal-API-0.62.ebuild:
+  remove old
+
+*Business-PayPal-API-0.69 (  12 Jun 2010 )
+
+  12 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Business-PayPal-API-0.69.ebuild:
+  new version
+
+  26 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  Business-PayPal-API-0.62.ebuild:
+  keyword ~x86
+
+  24 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Business-PayPal-API-0.62.ebuild, +metadata.xml:
+  initial commit
+

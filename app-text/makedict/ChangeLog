@@ -1,0 +1,11 @@
+# ChangeLog for app-text/makedict
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  15 May 2010; G. Rudoy <0xd34df00d@gmail.com> makedict-0.4.1_beta1.ebuild:
+  Fixed repoman warnings.
+
+  1 Feb 2010; Rion <dontsend@nospam.ru>
+  +makedict-0.4.1_beta1.ebuild:
+  moved to new group. so lets consider its new package.
+
