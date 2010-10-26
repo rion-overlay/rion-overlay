@@ -3,6 +3,10 @@
 # $Header: $
 
   24 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  libguestfs-1.5.21.ebuild:
+  add dev-perl/libintl-perlin depend
+
+  24 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   libguestfs-1.5.21.ebuild, +files/all.patch:
   patch for automagicdepends
 
