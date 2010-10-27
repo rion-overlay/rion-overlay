@@ -16,11 +16,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-text/htmltidy
-	net-libs/libotr"
+	net-libs/libotr
+	x11-libs/qt-gui"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi/plugins/psiplugin.pri#' \
-	                -i "${PN}".pro
+	                -i "${PN}".pro || die
 	qt4-r2_src_prepare
 }
