@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+ <maintainer>
+ 	<email>spamslepnoga@inbox.ru</email>
+ </maintainer>
+<use>
+  <flag name='smtp' restrict='&lt;0.10'>Offer SMTP support via
+    <pkg>net-libs/libsmtp</pkg></flag>
+  <flag name='smtp' restrict='*'>Offer SMTP support via
+    <pkg>net-libs/libesmtp</pkg></flag>
+	<flag name='mozldap' restrict='&lt;0.10'>Offer 389 LDAP
+	server support via <pkg>dev-libs/mozldap</pkg></flag>
+</use>
+</pkgmetadata>

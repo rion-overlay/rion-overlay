@@ -1,0 +1,51 @@
+# ChangeLog for app-emulation/libguestfs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  libguestfs-1.5.21.ebuild:
+  add dev-perl/libintl-perlin depend
+
+  24 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  libguestfs-1.5.21.ebuild, +files/all.patch:
+  patch for automagicdepends
+
+  18 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -libguestfs-1.4.5.ebuild, -libguestfs-1.5.13.ebuild,
+  +libguestfs-1.5.21.ebuild:
+  remove old ebuild
+
+*+libguestfs-1.5.21 ( 18 Oct 2010 )
+
+  18 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +libguestfs-1.5.21.ebuild:
+  bump version
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -libguestfs-1.4.1.ebuild, +libguestfs-1.4.5.ebuild,
+  -libguestfs-1.5.2.ebuild, +libguestfs-1.5.13.ebuild:
+  bump
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -libguestfs-1.4.1.ebuild, +libguestfs-1.4.5.ebuild,
+  -libguestfs-1.5.2.ebuild, +libguestfs-1.5.13.ebuild:
+  bump
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -libguestfs-1.0.89.ebuild, +libguestfs-1.4.1.ebuild,
+  +libguestfs-1.5.2.ebuild:
+  bump, remove old
+
+  15 May 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  libguestfs-1.0.89.ebuild:
+
+
+  :wq
+
+  05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -libguestfs-1.0.80.ebuild, +libguestfs-1.0.89.ebuild:
+  add new,drop old
+
+  12 Mar 2010; <slep@gentoo.org> libguestfs-1.0.80.ebuild, +metadata.xml:
+  QA fix
+
