@@ -7,25 +7,28 @@ EAPI=3
 DESCRIPTION="Very simple layout switcher"
 HOMEPAGE="http://github.com/qnikst/kbdd"
 SRC_URI="http://github.com/qnikst/${PN}/tarball/v${PV} -> ${P}.tar.gz"
-HASH="faa9d88"
+HASH="fae999b"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="dbus"
 
 DEPEND="dev-libs/glib
-		x11-libs/libX11"
+		x11-libs/libX11
+		dbus? (
+			sys-apps/dbus
+			>=dev-libs/dbus-glib-0.86
+			)"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/qnikst-kbdd-${HASH}"
 
-src_compile() {
-	emake || die "make failed"
+src_configure() {
+	econf $(use_enable dbus) || die "econf failed"
 }
 
 src_install() {
-	dobin kbdd || die "Installing executable failed"
-	#dolib.so libkbdd.so || die "Installing shared lib failed"
-	dodoc README CHANGES || die "Installing documentation failed"
+	emake DESTDIR="${D}" install || die "install failed"
+	dodoc README ChangeLog AUTHORS NEWS
 }
