@@ -28,6 +28,24 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	dev-util/cmake"
 
+# echo $(cat po/CMakeLists.txt | grep ADD_SUBDIRECTORY | sed 's#ADD_SUBDIRECTORY( \(\w\+\) )#\1#')
+LANGS="es uk it de fr is nb th cz ru"
+for l in $LANGS ; do
+	IUSE="$IUSE linguas_${l}"
+done
+
+src_prepare() {
+	for l in $LANGS ; do
+		if use linguas_${l} ; then
+			LANGS="${LANGS/${l}/}"
+		fi
+	done
+	llangs=`echo $LANGS`
+	re="${llangs// /\\|}"
+	sed -i -e "/ADD_SUBDIRECTORY( \(${re}\) )/d" po/CMakeLists.txt
+	base_src_prepare
+}
+
 pkg_postinst()	{
 
 einfo "A plugin for the music-applet is available for ppl using this great applet. With this you
