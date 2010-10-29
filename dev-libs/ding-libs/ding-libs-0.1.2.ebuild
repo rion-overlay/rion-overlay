@@ -17,7 +17,7 @@ IUSE="test"
 RDEPEND="!dev-libs/libcollection
 	!dev-libs/libdhash
 	!dev-libs/libini_config
-	dev-libs/libpath_utils
+	!dev-libs/libpath_utils
 	!dev-libs/libref_array"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
