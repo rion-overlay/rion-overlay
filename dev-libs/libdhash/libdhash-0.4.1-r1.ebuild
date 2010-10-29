@@ -4,18 +4,22 @@
 
 EAPI=3
 
-DESCRIPTION="Path_utils library from sssd project"
+DESCRIPTION="Dhash library from sssd project"
 HOMEPAGE="https://fedorahosted.org/sssd/"
 SRC_URI="https://fedorahosted.org/released/ding-libs/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test doc"
+IUSE="trace"
 
-DEPEND="doc? ( app-doc/doxygen )
-	test? ( dev-libs/check )"
-RDEPEND=""
+DEPEND="!dev-libs/ding-libs"
+RDEPEND="${DEPEND}"
+
+src_configure() {
+	econf \
+		$(use trace && echo '--enable-trace=7') || die
+}
 
 src_install() {
 	emake DESTDIR="${ED}" install || die
