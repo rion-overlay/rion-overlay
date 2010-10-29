@@ -15,7 +15,8 @@ IUSE="trace doc"
 
 RDEPEND=">=dev-libs/libcollection-0.5.0
 	>=dev-libs/libpath_utils-0.2.0
-	>=dev-libs/libref_array-0.1.0"
+	>=dev-libs/libref_array-0.1.0
+	!dev-libs/ding-libs"
 
 DEPEND="doc? ( app-doc/doxygen )
 	${RDEPEND}"

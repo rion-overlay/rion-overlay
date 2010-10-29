@@ -4,28 +4,20 @@
 
 EAPI=3
 
-inherit autotools
-
-DESCRIPTION="Collection library from sssd project"
+DESCRIPTION="Path_utils library from sssd project"
 HOMEPAGE="https://fedorahosted.org/sssd/"
 SRC_URI="https://fedorahosted.org/released/ding-libs/${P}.tar.gz"
 
-LICENSE="LGPL-3"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test doc"
 
-DEPEND=""
-RDEPEND=""
-
-src_prepare() {
-	eautoreconf
-}
+DEPEND="doc? ( app-doc/doxygen )
+	test? ( dev-libs/check )
+	!dev-libs/ding-libs"
+RDEPEND="!dev-libs/ding-libs"
 
 src_install() {
 	emake DESTDIR="${ED}" install || die
-
-	#delete .la files
-	find "${ED}"/$(get_libdir) -name \*.la -delete
-
 }
