@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  python-krbV-1.0.90.ebuild:
+  fix eclass errors
+
   07 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   python-krbV-1.0.90.ebuild:
   small fix SRC_URI
