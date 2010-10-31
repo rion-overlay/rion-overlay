@@ -4,6 +4,7 @@
 
 EAPI=3
 
+PYTHON_DEPEND="2:2.6"
 inherit  distutils
 
 DESCRIPTION="python-krbV allows python programs to use Kerberos 5 authentication/security"
@@ -20,26 +21,15 @@ DEPEND=">=app-crypt/mit-krb5-1.1.2
 RDEPEND="${DEPEND}"
 
 DOCS="AUTHORS INSTALL README NEWS krbV-code-snippets.py"
+
+pkg_setup() {
+	# Don't support python3
+	python_set_active_version 2
+	python_pkg_setup
+}
+
 src_prepare(){
 	cp "${FILESDIR}"/setup.py "${S}"  || die "Failed copy setup.py"
 	awk -f gendefines.awk /usr/include/krb5.h > krb5defines.h || die "awk failed"
 	rm -f configure
-	# Don't support python3
-	python_set_active_version 2
-
-	distutils_src_prepare
 }
-
-iisrc_configure() {
-	distutils_src_configure
-}
-
-src_compile() {
-	distutils_src_compile
-}
-
-src_install(){
-	distutils_src_install
-}
-#pkg_postinst() { distutils_pkg_postinst ; }
-#pkg_postrm() { distutils_pkg_postrm ; }
