@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +libguestfs-1.5.26.ebuild:
+  bump
+
   24 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   libguestfs-1.5.21.ebuild:
   add dev-perl/libintl-perlin depend
