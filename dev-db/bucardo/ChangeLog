@@ -1,0 +1,8 @@
+# ChangeLog for dev-db/bucardo
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  01 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> +bucardo-4.4.0.ebuild,
+  +files/bucardo, +metadata.xml:
+  Initial commit
+
