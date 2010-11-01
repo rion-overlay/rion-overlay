@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit subversion
+inherit subversion cmake-utils
 
 DESCRIPTION="Small and simple image viewer for Linux."
 HOMEPAGE="http://sourceforge.net/projects/simpleviewer/"
@@ -16,25 +16,23 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	virtual/opengl
 	media-libs/freeglut
-	dev-libs/libconfig
-	media-libs/giflib
+	virtual/opengl
 	media-libs/freetype:2
-	media-libs/imlib2
-	media-libs/jpeg
 	media-libs/libpng
+	media-libs/jpeg
 	media-libs/tiff
-"
+	media-libs/giflib
+	media-libs/imlib2
+	dev-libs/libconfig"
 RDEPEND="${DEPEND}"
 
+src_unpack() {
+	subversion_src_unpack
+}
+
 src_prepare() {
-	sed \
-		-e "/^CC=/s/g++/$(tc-getCC)/"  \
-		-e "/^CFLAGS=/s/-O2/${CFLAGS}/"  \
-		-e "/^LDFLAGS=/s/$/ ${LDFLAGS}/"  \
-		-e "/^LDFLAGS=/s/-s//"  \
-		-i Makefile || die
+	sed -e "/^ADD_DEFINITION/d" -i CMakeLists.txt
 }
 
 src_install() {
