@@ -6,14 +6,14 @@ EAPI=3
 
 WANT_AUTOMAKE="1.11"
 inherit autotools perl-app
-# bash-completion python java-pkg-2 haskell-cabal
+
 DESCRIPTION="Library for reading and writing Windows Registry "hive" binary files."
 HOMEPAGE="http://libguestfs.org"
 SRC_URI="http://libguestfs.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="ocaml readline nls perl test"
 
 RDEPEND="dev-lang/perl
@@ -59,12 +59,4 @@ src_install() {
 		einfo "removed perl scriipt"
 	fi
 	dodoc README
-	#install translation files - build system stub
-#	if use nls;then
-#		for i in gu hi kn ml mr nl or  pa pl ta te
-#		do
-#			# please update me to use LINGUAS
-#			domo "${S}/po"/$i.mo|| die
-#		done
-#	fi
 }
