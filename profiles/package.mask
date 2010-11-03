@@ -2,10 +2,6 @@
 # Maks for testing
 ~dev-libs/libzdb-2.7
 
-# 4 Okt 2010; A.Vinogradov <spamslepnoga@inbox.ru>
-# Maks for testing
-~net-voip/sipwitch-0.9.1
-
 # 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # Multiple XSS and denial of service vulnerabilities
 # see  http://otrs.org/advisory/OSA-2010-02-en/
