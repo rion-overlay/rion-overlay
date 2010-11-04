@@ -1,3 +1,7 @@
+# 4 Noj 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#Mask for testing
+>=app-emulation/libguestfs-1.6.0
+
 # 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # Multiple XSS and denial of service vulnerabilities
 # see  http://otrs.org/advisory/OSA-2010-02-en/
