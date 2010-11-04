@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header$
 
+  04 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> -files/2.7/All.patch,
+  libzdb-2.7.ebuild, +files/2.7/fix_automagic_build.patch:
+  fix patch for 2.7
+
 *libzdb-2.7 ( 04 Oct 2010 )
 
   04 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +libzdb-2.7.ebuild:

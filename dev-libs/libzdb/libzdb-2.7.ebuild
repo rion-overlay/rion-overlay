@@ -21,7 +21,7 @@ RDEPEND="postgres? ( >=dev-db/postgresql-base-8.0 )
 	mysql? ( >=virtual/mysql-4.1 )
 	sqlite3? ( >=dev-db/sqlite-3.6.12
 		>=sys-devel/gcc-4.1 )
-	>=dev-libs/glib-2.8
+	dev-libs/glib:2
 	dev-libs/openssl"
 DEPEND="${RDEPEND}
 	sys-devel/flex
