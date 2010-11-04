@@ -6,8 +6,7 @@ EAPI=3
 
 DESCRIPTION="Very simple layout switcher"
 HOMEPAGE="http://github.com/qnikst/kbdd"
-SRC_URI="http://github.com/qnikst/${PN}/tarball/v${PV} -> ${P}.tar.gz"
-HASH="f526c2b"
+SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,8 +20,6 @@ DEPEND="dev-libs/glib
 			>=dev-libs/dbus-glib-0.86
 			)"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/qnikst-kbdd-${HASH}"
 
 src_configure() {
 	econf $(use_enable dbus) || die "econf failed"
