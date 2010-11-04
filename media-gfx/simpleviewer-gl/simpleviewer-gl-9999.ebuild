@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit subversion cmake-utils
+inherit cmake-utils subversion
 
 DESCRIPTION="Small and simple image viewer for Linux."
 HOMEPAGE="http://sourceforge.net/projects/simpleviewer/"
@@ -16,26 +16,27 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
+	dev-libs/libconfig
 	media-libs/freeglut
-	virtual/opengl
 	media-libs/freetype:2
-	media-libs/libpng
-	media-libs/jpeg
-	media-libs/tiff
 	media-libs/giflib
 	media-libs/imlib2
-	dev-libs/libconfig"
+	media-libs/jpeg
+	media-libs/libpng
+	media-libs/tiff
+	virtual/opengl
+"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	subversion_src_unpack
-}
-
 src_prepare() {
-	sed -e "/^ADD_DEFINITION/d" -i CMakeLists.txt
+	sed \
+		-e "/^ADD_DEFINITIONS/d"  \
+		-i CMakeLists.txt || die
 }
 
 src_install() {
-	dobin sviewgl
-	dodoc config.example
+	pushd "${CMAKE_BUILD_DIR}"
+	dobin sviewgl || die
+	popd
+	dodoc config.example README
 }
