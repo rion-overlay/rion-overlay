@@ -4,13 +4,13 @@
 
 EAPI="2"
 
-MY_PV="0.8"
+MY_P="AQEMU-0.8.1-Beta2"
 
 inherit  cmake-utils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators. Using Qt4."
 HOMEPAGE="http://sourceforge.net/projects/aqemu"
-SRC_URI="mirror://sourceforge/aqemu/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/aqemu/AQEMU-0.8.1-Beta2.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,7 +28,7 @@ RDEPEND="kvm? ( app-emulation/qemu-kvm )
 
 DOCS="AUTHORS CHANGELOG README TODO"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 

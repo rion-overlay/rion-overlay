@@ -15,7 +15,7 @@ EGIT_REPO_URI="git://aqemu.git.sourceforge.net/gitroot/aqemu/aqemu"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="kvm linguas_ru vnc spice"
+IUSE="kvm vnc spice"
 
 DEPEND="${RDEPEND}"
 
@@ -49,12 +49,4 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
-}
-
-src_install() {
-	if use linguas_ru; then
-		insinto /usr/share/aqemu
-		doins "${S}"_build/Russian.qm || die
-	fi
-	cmake-utils_src_install
 }
