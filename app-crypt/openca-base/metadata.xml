@@ -4,9 +4,7 @@
 <herd>no-herd</herd>
 <maintainer>
   <email>andreis.vinogradovs@gmail.com</email>
- <description>Description of the maintainership</description> 
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
 <use>
  <flag name='ca-only'></flag>
  <flag name='ra-only'></flag>
