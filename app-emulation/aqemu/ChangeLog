@@ -2,6 +2,14 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-0.8.0.ebuild,
+  +aqemu-0.8.1_beta2.ebuild, aqemu-9999.ebuild, metadata.xml:
+  drop USE linguas_ru
+
+  05 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +aqemu-0.8.1_beta2.ebuild:
+  bump
+
   13 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru> +aqemu-0.8.0-r1.ebuild:
   add spice flag
 
