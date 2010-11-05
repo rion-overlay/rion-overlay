@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  05 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> +rpm-5.3.4.ebuild:
+  bump
+
   10 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> rpm-5.3.3.ebuild,
   metadata.xml:
   fix depend efence, replace efence -> duma, see  wrt #262528, or wrt #128814
