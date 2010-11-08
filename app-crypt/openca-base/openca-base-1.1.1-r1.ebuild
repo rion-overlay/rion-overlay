@@ -14,12 +14,10 @@ DESCRIPTION="Open Source out-of-the-box Certification Authority system"
 HOMEPAGE="http://www.openca.org/"
 SRC_URI="mirror://sourceforge/openca/${P}.tar.gz"
 
-RESTRICT="mirror"
-
 LICENSE="OpenCA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dbm mysql +postgres ldap sasl ca-only ra-only node-only scep full-install db2"
+IUSE="dbm mysql +postgres ldap sasl install-offline install-online install-ext scep db2"
 
 COMMON_DEP="!app-crypt/openca
 	dev-libs/openssl
@@ -147,22 +145,38 @@ myconf=" \
 
 src_install () {
 
-# install CA script
-	make   DEST_DIR="${D}" install-common  ||die "install CA failed"
+	if use install-offline;then
+	make   DEST_DIR="${D}" install-offline ||die "install CA failed"
+	fi
+
+	if use install-online ;then
+	DEST_DIR="${D}"  install-online ||die "install failed"
+	fi
+
+	if use install-ext;then
+	make   DEST_DIR="${D}"  install-ext ||die "install failed"
+	fi
 
 	rm -fr "${D}"/usr/etc || die
 
-	# newinitd ${FILESDIR}/openca.init openca
-	# newconfd ${FILESDIR}/openca.conf openca
+	 newinitd ${FILESDIR}/openca.init openca
+	 newconfd ${FILESDIR}/openca.conf openca
 	if use ldap; then
 		insinto  /etc/openldap/schema/
 		doins contrib/openldap/openca.schema
 	fi
+	dodoc ChangeLog INSTALL I18N NOTES.Chain README STATUS THANKS
+	dodoc docs/HISTORY 
+	doman docs/man3/base.3
+
 }
 
 pkg_postinst() {
 	einfo "Please check file '/etc/openca/config.xml'"
 	einfo "Then run '/etc/openca/configure_etc.sh' script"
+	einfo "If you use apache web server,"
+	einfo " it's highly recommended to use SuExec feature"
+	einfo "to work with different user permision"
 }
 
 pkg_setup() {

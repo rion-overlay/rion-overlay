@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -openca-base-1.1.1.ebuild, +openca-base-1.1.1-r1.ebuild:
+  fix build
+
   05 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +openca-base-1.1.1.ebuild:
   bump
