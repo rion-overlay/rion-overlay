@@ -17,11 +17,6 @@ stop() {
     eend $?
 }
 
-restart() {
-    stop
-    start
-}
-
 reload() {
     ebegin "Attempting to gracefully restart Bucardo..."
     /usr/bin/bucardo_ctl start "Attempting to gracefully restart Bucardo..."
