@@ -1,0 +1,12 @@
+# ChangeLog for dev-python/posix-ipc
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Oct 2010; Nickolaj Stjujsckij <sterkrig@home.no>
+  posix-ipc-0.8.1.ebuild:
+  Add `examples` use flag; rename to dev-python/posix_ipc
+
+  22 Sep 2010; Nickolaj Stjujsckij <sterkrig@home.no>
+  +posix-ipc-0.8.1.ebuild, +metadata.xml:
+  Add Python module for POSIX IPC
+

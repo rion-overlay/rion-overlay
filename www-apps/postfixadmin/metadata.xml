@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+ <description></description> 
+</maintainer>
+ <longdescription>Web Based Management tool for Postfix style virtual domains
+	 and users.</longdescription> 
+ <use>
+	 <flag name='vacation'>Install vacations script</flag>
+	 <flag name='addition'>Install addition script</flag>
+	 <flag name='env_password'>Not store database password in setup.php file -
+		 use ENV webserwer variables :)</flag>
+ </use>
+</pkgmetadata>
