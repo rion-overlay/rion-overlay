@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3-r1.ebuild,
+  +hivex-1.2.3-r2.ebuild:
+  fil localpod install
+
   01 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3-r1.ebuild:
   clean and add ~x86 keyword
 
