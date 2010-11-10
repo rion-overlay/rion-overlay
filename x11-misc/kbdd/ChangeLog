@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> -kbdd-0.2.9.ebuild,
+  -kbdd-0.3.1.ebuild, +kbdd-0.4.ebuild:
+  Bump 0.4, remove old versions
+
   04 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> kbdd-0.3.2.ebuild:
   Make 0.3.2 actually downloadable (tarball uploaded to rion-overlay), drop
   $HASH
