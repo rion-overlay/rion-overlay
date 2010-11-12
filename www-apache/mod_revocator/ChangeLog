@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -mod_revocator-1.0.3.ebuild, +mod_revocator-1.0.3-r1.ebuild,
+  +files/respect_ldflags.patch, metadata.xml:
+  fix build
+
   06 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +mod_revocator-1.0.3.ebuild, +metadata.xml:
   initial commit
