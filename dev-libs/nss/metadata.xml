@@ -5,6 +5,6 @@
 <use>
   <flag name='utils'>Install utilities included with the library</flag>
   <flag name='mod)revocator'>Install files nedeed for
- 		 <pkg>www-apache/mod_revocator</pkg>build</flag>
+ 		 <pkg>www-apache/revocator</pkg>build</flag>
 </use>
 </pkgmetadata>

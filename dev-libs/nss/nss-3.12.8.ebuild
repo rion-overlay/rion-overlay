@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/${RTM_NAME}
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="utils mod_revocator"
+IUSE="utils revocator"
 
 DEPEND="dev-util/pkgconfig"
 RDEPEND=">=dev-libs/nspr-${NSPR_VER}
@@ -137,7 +137,7 @@ src_install () {
 	cp -L */lib/libcrmf.a "${ED}"/usr/$(get_libdir) || die "copying libs failed"
 
 	# Added slep: install libnssb.a and libnssckfw.a - nedeed by mod_revocator
-	if use mod_revocator;then
+	if use revocator;then
 	cp -L */lib/libnssb.a "${ED}"/usr/$(get_libdir) || die "copying libs failed"
 	cp -L */lib/libnssckfw.a "${ED}"/usr/$(get_libdir) || die "copying libs failed"
 	fi
