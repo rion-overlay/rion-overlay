@@ -10,7 +10,6 @@
 <use>
 <flag name="haskell">Enable haskell bindings</flag>
 <flag name="fuse">Enable haskell bindings</flag>
-<flag name="ocaml-viewer">Enable haskell bindings</flag>
 <flag name="tools">Enable haskell bindings</flag>
 </use>
 </pkgmetadata>
