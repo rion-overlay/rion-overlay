@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> -kbdd-0.4.ebuild,
+  +kbdd-0.4.1.ebuild:
+  Update 0.4 branch to 0.4.1
+
   10 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> -kbdd-0.2.9.ebuild,
   -kbdd-0.3.1.ebuild, +kbdd-0.4.ebuild:
   Bump 0.4, remove old versions
