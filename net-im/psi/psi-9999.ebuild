@@ -21,7 +21,7 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus doc enchant extras jingle iconsets spell ssl xscreensaver powersave
+IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
 plugins -whiteboarding webkit"
 
 RDEPEND=">=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
@@ -138,7 +138,9 @@ src_configure() {
 			--qtdir=/usr
 			--disable-bundled-qca
 			--disable-growl
+			--no-separate-debug-info
 			$(use dbus || echo '--disable-qdbus')
+			$(use debug && echo '--debug')
 			$(use spell && {
 				use enchant && echo '--disable-aspell' || echo '--disable-enchant'
 				} || echo '--disable-aspell --disable-enchant')
