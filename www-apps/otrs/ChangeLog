@@ -1,0 +1,97 @@
+# ChangeLog for www-apps/otrs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  26 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.4.9.ebuild:
+  bump for OTRS Security Advisory 2010-03
+
+*otrs-3.0.0_beta ( 12 Oct 2010 )
+
+  12 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +otrs-3.0.0_beta5.ebuild:
+  bump
+
+*otrs-3.0.0_beta4 ( 27 Sep 2010 )
+
+  27 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +otrs-3.0.0_beta4.ebuild:
+  bump beta ebuild for testing
+
+  17 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> -otrs-2.4.7.ebuild:
+  removed by listed in CVE
+
+*otrs-2.4.8 ( 17 Sep 2010 )
+*otrs-2.3.6 ( 17 Sep 2010 )
+*otrs-3.0.0_beta3 ( 17 Sep 2010 )
+
+  17 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.3.6.ebuild,
+  otrs-2.4.7.ebuild, +otrs-2.4.8.ebuild, otrs-3.0.0_beta3.ebuild:
+  add 2.3.6 for security reason
+
+  16 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.3.6.ebuild,
+  otrs-2.4.7.ebuild, +otrs-2.4.8.ebuild, otrs-3.0.0_beta3.ebuild:
+  bump
+
+  16 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.7.ebuild,
+  +otrs-2.4.8.ebuild, otrs-3.0.0_beta3.ebuild:
+  bump and QA
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/postinstall-ru-2.txt, +postinstall-ru-2.txt:
+  fix install
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/postinstall-ru-2.txt:
+  fix install - add postinstall-ru-2.txt
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -otrs-3.0.0_beta2.ebuild, +otrs-3.0.0_beta3.ebuild:
+  bump
+
+  05 Sep 2010; <slep@gentoo.org> files/reconfig-3:
+  fix reconfig script
+
+  05 Sep 2010; <slep@gentoo.org> otrs-2.4.7.ebuild, files/reconfig-3:
+  fix install root
+
+*otrs-3.0.0_beta2 (04 Sep 2010)
+
+  04 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +otrs-3.0.0_beta2.ebuild:
+  new otrs
+
+  20 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.7.ebuild,
+  +files/apache2-2.patch:
+  sunrise fix
+
+  20 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.7.ebuild:
+  Fix DEPEND logic
+
+  16 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> -otrs-2.4.5.ebuild,
+  -otrs-2.4.6.ebuild, +otrs-2.4.7.ebuild:
+  delete affected www-apps/otrs version and bump
+
+  31 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> -otrs-2.4.1.ebuild:
+  drop old
+
+  13 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.4.6.ebuild:
+  version bump; add cjk USE
+
+  16 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.5.ebuild,
+  +files/reconfig-3:
+  fix reconfig script - new SetPermissions.pl script in upstream
+
+  28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> otrs-2.4.5.ebuild:
+  keyworded ~x86 ~amd64
+
+*otrs-2.4.5.ebuild
+  
+  19 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +otrs-2.4.5.ebuild:
+  add new version
+
+*otrs-2.4.1 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +files/apache2.patch,
+  +otrs-2.4.1.ebuild, +files/dbi_finish.patch, +metadata.xml:
+  initial commit,rewrite official ebuild,recommit my overlay  
+
