@@ -8,7 +8,7 @@ inherit eutils multilib qt4-r2 subversion
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="http://delta.affinix.com/qca/"
-ESVN_REPO_URI="svn://websvn.kde.org:443/home/kde/trunk/kdesupport/qca"
+ESVN_REPO_URI="svn://anonsvn.kde.org/home/kde/trunk/kdesupport/qca"
 
 LICENSE="LGPL-2"
 SLOT="2"

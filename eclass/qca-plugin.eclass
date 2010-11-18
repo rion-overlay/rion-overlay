@@ -13,7 +13,7 @@ inherit eutils qt4-r2 subversion
 
 IUSE="debug"
 SLOT="2"
-ESVN_REPO_URI="svn://websvn.kde.org:443/home/kde/trunk/kdesupport/qca/"
+ESVN_REPO_URI="svn://anonsvn.kde.org/home/kde/trunk/kdesupport/qca"
 ESVN_PROJECT="qca"
 DEPEND=">=app-crypt/qca-${PV}[debug?]"
 RDEPEND="${DEPEND}"
