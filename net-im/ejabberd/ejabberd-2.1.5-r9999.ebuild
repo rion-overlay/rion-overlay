@@ -145,6 +145,7 @@ src_install() {
 	# http://www.process-one.net/docs/ejabberd/guide_en.html
 	if use pam; then
 		pamd_mimic_system xmpp auth account || die "Cannot create pam.d file"
+		fowners root:jabber "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam" || die
 		fperms 4750 "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam" || die "Cannot adjust epam permissions"
 	fi
 
