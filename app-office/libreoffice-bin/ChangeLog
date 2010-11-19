@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Nov 2010; Rion <rion4ik@notagmail.com> libreoffice-bin-3.3.0_beta3.ebuild:
+  added all other languages
+
 *libreoffice-bin-3.3.0_beta3 (19 Nov 2010)
 
   19 Nov 2010; Rion <rion4ik@notagmail.com>
