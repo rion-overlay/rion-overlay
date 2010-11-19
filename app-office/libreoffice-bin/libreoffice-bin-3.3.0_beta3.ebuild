@@ -8,41 +8,46 @@ inherit eutils fdo-mime gnome2-utils rpm multilib versionator
 
 IUSE="gnome java kde"
 
-BUILDID="1"
+BUILDID="2"
+BUILDDATE="20101115"
 UREVER="1.7.0"
 MY_PV="${PV/_*/}"
-MY_PV1="${PV/_/-}"
-MY_PV3="${MY_PV}-${BUILDID}"
+MY_PV1="${PV/_/-}" # or download uri
+MY_PV2="${PV/_/}_${BUILDDATE}" # for unpacked root dirs
+MY_PV3="${MY_PV}-${BUILDID}" # for rpm file names
 MY_PVM1=$(get_major_version)
 MY_PVM2=$(get_version_component_range 1-2)
 BASIS="libobasis${MY_PVM2}"
 
 if [ "${ARCH}" = "amd64" ] ; then
 	LOARCH="x86_64"
+	UP="LibO_${MY_PV2}_Linux_x86-64_install-rpm_en-US/RPMS"
+	LANGP="LibO_${MY_PV2}_Linux_x86-64_langpack-rpm_"
 else
 	LOARCH="i586"
+	UP="LibO_${MY_PV2}_Linux_x86_install-rpm_en-US/RPMS"
+	LANGP="LibO_${MY_PV2}_Linux_x86_langpack-rpm_"
 fi
 
 FILEPATH="http://download.documentfoundation.org/libreoffice/testing/${MY_PV1}/rpm"
 
 S="${WORKDIR}"
-UP="en-US/RPMS"
 DESCRIPTION="LibreOffice productivity suite."
 
-SRC_URI="amd64? ( ${FILEPATH}/x86_64/LibO_${PV}_Linux_x86-64_install-rpm_en-US.tar.gz )
-	x86? ( ${FILEPATH}/x86/LibO_${PV}_Linux_x86_install-rpm_en-US.tar.gz )"
+SRC_URI="amd64? ( ${FILEPATH}/x86_64/LibO_${MY_PV}_Linux_x86-64_install-rpm_en-US.tar.gz )
+	x86? ( ${FILEPATH}/x86/LibO_${MY_PV}_Linux_x86_install-rpm_en-US.tar.gz )"
 
-LANGS="af ar as_IN be_BY bg bn bn_BD bn_IN bo br brx bs ca cs cy da de dgo dz el
-en_GB en_ZA eo es et eu fa fi fr ga gd gl gu gu_IN he hi hr hu is it ja ka kid
-kk km kn ko kok ks ku ky lo lt lv mai mk ml_IN mn mni mr_IN ms my nb ne nl nn nr
-ns oc om or-IN pa_IN pap pl ps pt pt_BR ro ru rw sa_IN sat sc sd sh si sk sl sr
-ss st sv sw sw_TZ ta_IN te_IN tg th ti_ER tn tr ts ug uk ur_IN uz ve vi xh zh_CN
-zh_TW zu"
+LANGS="ru ja zh_CN zh_TW"
+#LANGS="af ar as be_BY bg bn bo br brx bs ca cs cy da de dgo dz el en_GB en_ZA eo
+#es et eu fa fi fr ga gd gl gu he hi hr hu is it ja ka kid kk km kn ko kok ks ku
+#ky lo lt lv mai mk ml mn mni mr ms my nb ne nl nn nr ns oc om or pa_IN pap pl ps
+#pt pt_BR ro ru rw sa_IN sat sc sd sh si sk sl sq sr ss st sv sw_TZ ta te tg th
+#ti tn tr ts ug uk ur uz ve vi xh zh_CN zh_TW zu"
 
 for X in ${LANGS} ; do
 	[[ ${X} != "en" ]] && SRC_URI="${SRC_URI} linguas_${X}? (
-		x86? ( "${FILEPATH}"/x86/LibO_${PV}_Linux_x86_langpack-rpm_${X/_/-}.tar.gz )
-		amd64? ( "${FILEPATH}"/x86_64/LibO_${PV}_Linux_x86-64_langpack-rpm_${X/_/-}.tar.gz ) )"
+		x86? ( "${FILEPATH}"/x86/LibO_${MY_PV}_Linux_x86_langpack-rpm_${X/_/-}.tar.gz )
+		amd64? ( "${FILEPATH}"/x86_64/LibO_${MY_PV}_Linux_x86-64_langpack-rpm_${X/_/-}.tar.gz ) )"
 	IUSE="${IUSE} linguas_${X}"
 done
 
@@ -96,7 +101,7 @@ src_unpack() {
 	done
 
 	rpm_unpack "./${UP}/libreoffice${MY_PVM1}-${MY_PV3}.${LOARCH}.rpm"
-	rpm_unpack "./${UP}/libreoffice-ure-${UREVER}-${BUILDID}.${LOARCH}.rpm"
+	rpm_unpack "./${UP}/libreoffice${MY_PVM1}-ure-${UREVER}-${BUILDID}.${LOARCH}.rpm"
 
 	rpm_unpack "./${UP}/desktop-integration/libreoffice${MY_PVM2}-freedesktop-menus-${MY_PVM2}-${BUILDID}.noarch.rpm"
 
@@ -119,9 +124,9 @@ src_unpack() {
 		i="${k/_/-}"
 		if [[ ${i} = "en" ]] ; then
 			i="en-US"
-			LANGDIR="${i}/RPMS/"
+			LANGDIR="${LANGP}${i}/RPMS/"
 		else
-			LANGDIR="${i}/RPMS/"
+			LANGDIR="${LANGP}${i}/RPMS/"
 		fi
 		rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${MY_PV3}.${LOARCH}.rpm"
 		rpm_unpack "./${LANGDIR}/libreoffice${MY_PVM1}-${i}-${MY_PV3}.${LOARCH}.rpm"
@@ -145,7 +150,7 @@ src_install () {
 
 	einfo "Installing OpenOffice.org into build root..."
 	dodir ${INSTDIR}
-	mv "${WORKDIR}"/opt/libreoffice${MY_PVM1}/* "${D}${INSTDIR}" || die
+	mv "${WORKDIR}"/opt/libreoffice/* "${D}${INSTDIR}" || die
 
 	#Menu entries, icons and mime-types
 	cd "${D}${INSTDIR}/share/xdg/"
