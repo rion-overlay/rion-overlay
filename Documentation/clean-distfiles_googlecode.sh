@@ -3,9 +3,16 @@
 
 googleproject="rion-overlay"
 
+manifests="$(find -type f -name Manifest)"
+if [ "x$manifests" = "x" ];
+then
+	echo "No Manifests in current directory"
+	exit 1
+fi
+
 # list of distfiles
 grep -e DIST \
-	$(find -type f -name Manifest) |\
+	$manifests |\
 	awk '{print $2}'|\
 	sort -u > /tmp/distfiles_overlay
 
@@ -15,8 +22,7 @@ wget -O- \
 	grep \
 		-e "http://${googleproject}.googlecode.com/files/" |\
 	sed \
-		-e "s#^ <a href=\"http://${googleproject}.googlecode.com/files/##" \
-		-e 's/".*//' |\
+		-e "s#^ <a href=\"http://${googleproject}.googlecode.com/files/\([^\"]*\)\".*#\1#" |\
 	sort > /tmp/distfiles_googlecode
 
 # removed from overlay
@@ -29,5 +35,5 @@ diff --unchanged-line-format='' --old-line-format='' --new-line-format='%L' \
 
 while read f
 do
-	echo xdg-open "http://code.google.com/p/${googleproject}/downloads/delete?name=${f}"
+	xdg-open "http://code.google.com/p/${googleproject}/downloads/delete?name=${f}" &
 done < /tmp/distfiles_remove
