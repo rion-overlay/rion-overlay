@@ -84,7 +84,7 @@ src_unpack() {
 	mkdir image
 	cd image || die
 	unpack libguestfs-1.7.0-x86_64.tar.gz
-	mv "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
+	cp "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
 }
 
 src_prepare() {
@@ -118,13 +118,15 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${ED}" install || die
 
 	dodoc BUGS HACKING README RELEASE-NOTES TODO
 
 	if !use bash-completion;then
 		rm -fr "${S}"/etc/bash-completion || die
 	fi
+
+	cp "${WORKDIR}"/image/usr/local/lib/guestfs/* "${ED}"/usr/$(get_libdir)/guestfs/appliance/ || die
 
 	fixlocalpod
 }
