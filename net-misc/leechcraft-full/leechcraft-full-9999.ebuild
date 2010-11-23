@@ -4,8 +4,7 @@
 
 EAPI="2"
 
-DESCRIPTION="Merge this to pull all official LeechCraft plugins which are
-considered to be useful."
+DESCRIPTION="Merge this to pull all official LeechCraft plugins which are considered to be useful."
 
 HOMEPAGE="http://leechcraft.org/"
 
@@ -21,6 +20,7 @@ RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-misc/leechcraft-auscrie-${PV}
 		kde? ( =net-misc/leechcraft-anhero-${PV} )
 		=net-misc/leechcraft-kinotify-${PV}
+		=net-misc/leechcraft-lackman-${PV}
 		=net-misc/leechcraft-dbusmanager-${PV}
 		=net-misc/leechcraft-newlife-${PV}
 		=net-misc/leechcraft-tabpp-${PV}
