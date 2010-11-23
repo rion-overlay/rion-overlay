@@ -34,6 +34,7 @@ else
 	SRC_URI="mirror://sourceforge/leechcraft/leechcraft-${PV}.tar.bz2"
 	MY_P='leechcraft'
 	S="${WORKDIR}/${MY_P}-${PV}"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 HOMEPAGE="http://leechcraft.org/"
