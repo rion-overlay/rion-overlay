@@ -4,16 +4,16 @@
 
 EAPI="2"
 
-inherit cmake-utils subversion
+inherit cmake-utils
 
 DESCRIPTION="Music management program designed for all music enthusiasts"
 HOMEPAGE="http://guayadeque.org"
-ESVN_REPO_URI="https://guayadeque.svn.sourceforge.net/svnroot/guayadeque/Trunk"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ipod"
-KEYWORDS=""
+IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="x11-libs/wxGTK:2.8
 	media-libs/taglib
@@ -21,8 +21,7 @@ RDEPEND="x11-libs/wxGTK:2.8
 	media-libs/gstreamer:0.10
 	sys-apps/dbus
 	net-misc/curl
-	media-libs/flac
-	ipod? ( media-libs/libgpod )"
+	media-libs/flac"
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -30,7 +29,7 @@ DEPEND="${RDEPEND}
 	dev-util/cmake"
 
 # echo $(cat po/CMakeLists.txt | grep ADD_SUBDIRECTORY | sed 's#ADD_SUBDIRECTORY( \(\w\+\) )#\1#')
-LANGS="es uk it de fr is nb th cz ru hu sv"
+LANGS="es uk it de fr is nb th"
 for l in $LANGS ; do
 	IUSE="$IUSE linguas_${l}"
 done
