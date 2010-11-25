@@ -4,6 +4,7 @@
 
 EAPI=3
 
+SUPPORT_PYTHON_ABIS="1"
 inherit distutils
 
 DESCRIPTION="Add support for i18n, documentation and icons to distutils"
