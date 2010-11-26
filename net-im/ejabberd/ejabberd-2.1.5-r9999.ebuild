@@ -4,19 +4,20 @@
 
 EAPI=3
 
-inherit eutils multilib pam ssl-cert subversion
+inherit eutils multilib pam ssl-cert git subversion
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
-SRC_URI="http://www.process-one.net/downloads/${PN}/${PV}/${P}.tar.gz
-	mod_statsdx? ( mirror://gentoo/2.1.1-mod_statsdx.patch.bz2 )
-	mod_srl? ( https://alioth.debian.org/frs/download.php/3354/mod_shared_roster_ldap-0.5.3.tgz )"
+EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
+EGIT_COMMIT="2.1.x"
+EGIT_BRANCH="2.1.x"
+SRC_URI="mod_statsdx? ( mirror://gentoo/2.1.1-mod_statsdx.patch.bz2 )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 EJABBERD_MODULES_ADDITIONAL="atom_pubsub ircd mod_admin_extra mod_archive mod_cron mod_log_chat mod_logsession mod_logxml mod_muc_admin mod_muc_log_http mod_multicast mod_openid mod_profile mod_register_web mod_rest mod_s2s_log mod_shcommands mod_webpresence mysql postgres xmlrpc"
-EJABBERD_MODULES="mod_irc mod_muc mod_proxy65 mod_pubsub mod_srl mod_statsdx"
+EJABBERD_MODULES="mod_irc mod_muc mod_proxy65 mod_pubsub mod_statsdx"
 IUSE="captcha debug ldap md5 odbc pam +web zlib ${EJABBERD_MODULES} ${EJABBERD_MODULES_ADDITIONAL}"
 
 DEPEND=">=net-im/jabber-base-0.01
@@ -33,7 +34,7 @@ RDEPEND="${DEPEND}
 
 PROVIDE="virtual/jabber-server"
 
-S=${WORKDIR}/${P}/src
+#S=${WORKDIR}/${P}/src
 
 # paths in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
@@ -42,8 +43,15 @@ JABBER_SPOOL="${EPREFIX}/var/spool/jabber"
 JABBER_LOG="${EPREFIX}/var/log/jabber"
 JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
 
+pkg_setup() {
+	{ use postgres || use mysql; } && \
+	{ use odbc || die "SQL supporting modules require ejabberd to be builded with odbc support"; }
+}
+
 src_unpack() {
 	default
+	git_src_unpack
+	S="${S}/src"
 	cd "${S}"
 	mkdir additional_docs
 	for MODULE in ${EJABBERD_MODULES_ADDITIONAL}; do
@@ -64,19 +72,11 @@ src_unpack() {
 }
 
 src_prepare() {
-	( ( use postgres || use mysql ) && use odbc ) || die "SQL supporting modules require ejabberd to be builded with odbc support"
-	epatch "${FILESDIR}/${P}-md2-optional.patch" #331299
 	use md5 && epatch "${FILESDIR}/auth_md5.patch"
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstrrrream tarball but is a third-party module"
 		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
 		epatch "${WORKDIR}/2.1.1-mod_statsdx.patch"
-	fi
-
-	if use mod_srl; then
-		ewarn "mod_srl is not a part of upstream tarball but is a third-party module"
-		ewarn "taken from here: https://alioth.debian.org/projects/ejabberd-msrl/"
-		cp "${WORKDIR}"/src/mod_shared_roster_ldap{.{e,h}rl,_helpers.erl} "${S}" || die
 	fi
 
 	# don't install release notes (we'll do this manually)
@@ -158,6 +158,10 @@ src_install() {
 	#dodir /var/lib/ejabberd
 	newinitd "${FILESDIR}/${PN}-3.initd" ${PN} || die "Cannot install init.d script"
 	newconfd "${FILESDIR}/${PN}-3.confd" ${PN} || die "Cannot install conf.d file"
+}
+
+pkg_preinst() {
+	true
 }
 
 pkg_postinst() {

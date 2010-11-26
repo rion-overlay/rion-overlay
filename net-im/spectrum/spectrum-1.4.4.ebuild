@@ -3,17 +3,16 @@
 # $Header: $
 EAPI=2
 
-inherit cmake-utils git
+inherit cmake-utils
 
 DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
 
-EGIT_PROJECT="spectrum"
-EGIT_REPO_URI="git://github.com/hanzz/${EGIT_PROJECT}.git"
+SRC_URI="http://spectrum.im/attachments/download/30/spectrum-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="mysql sqlite tools"
 
@@ -24,6 +23,10 @@ RDEPEND=">=dev-libs/poco-1.3.3[mysql?,sqlite?]
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/cmake"
+
+src_unpack() {
+	unpack ${A}
+}
 
 src_install () {
 	cmake-utils_src_install
