@@ -5,14 +5,20 @@
 EAPI="3"
 
 WANT_AUTOMAKE="1.11"
+
 JAVA_PKG_OPT_USE="java"
 JAVA_PKG_ALLOW_VM_CHANGE="yes"
+
 APLANCE_PV="1.7.12"
+
 PYTHON_DEPEND="python? 2:2.6"
 
+USE_RUBY="ruby18"
+RUBY_OPTIONAL="yes"
+
 inherit autotools bash-completion confutils java-utils-2 java-pkg-opt-2 \
-perl-module python
-# php-ext-base-r1 ruby-ng haskell-cabal(?)
+perl-module python ruby-ng
+# php-ext-base-r1 haskell-cabal(?)
 
 DESCRIPTION="Libguestfs is a library for accessing and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
@@ -72,8 +78,10 @@ pkg_setup() {
 	python_need_rebuild
 
 	confutils_use_depend_all source java
-	confutils_use_depend_all javdoc java
-	
+	confutils_use_depend_all javadoc java
+
+	ruby-ng_pkg_setup
+
 	use php && ( ewarn "PHP bindings are incomplete and may not compile." &&
 	ewarn "If so, remove php flag" )
 }
