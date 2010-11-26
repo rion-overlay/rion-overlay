@@ -1,0 +1,7 @@
+# /etc/conf.d/spectrum.SPECTRUMGEN2PROTOCOL: config file for spectrum SPECTRUMGEN2PROTOCOL transport
+
+# Configfile
+CONFFILE="/etc/spectrum/SPECTRUMGEN2PROTOCOL.cfg"
+
+# PID
+PIDFILE="/var/run/spectrum/SPECTRUMGEN2PROTOCOL.pid"

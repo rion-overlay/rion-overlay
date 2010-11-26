@@ -2,6 +2,13 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*spectrum-1.4.4 (25 Nov 2010)
+
+  25 Nov 2010; Rion <rion4ik@notagmail.com> +spectrum-1.4.4.ebuild,
+  spectrum-9999.ebuild, +files/spectrum.confd, +files/spectrum.initd,
+  -files/spectrum.init, files/spectrum.cfg:
+  synced with gentoo bug tracker #291437
+
   11 Jul 2010; Rion <rion4ik@gmail.com> spectrum-9999.ebuild:
   added dependency
 
