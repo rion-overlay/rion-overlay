@@ -6,7 +6,7 @@ EAPI=3
 
 DESCRIPTION="Very simple layout switcher"
 HOMEPAGE="http://github.com/qnikst/kbdd"
-SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="http://cloud.github.com/downloads/qnikst/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
