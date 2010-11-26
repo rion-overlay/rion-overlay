@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-im</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>Il'nykh Sergey</name>
+	</maintainer>
+	<longdescription lang="en">Psi plugin for sending in-band images
+	encoded in base64. Plugin uses standard xhtml xmpp extension and
+	img data protocol to encode image. So this raw xml should be 
+	properly understood by any other xmpp client.
+	</longdescription>
+</pkgmetadata>
