@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> kbdd-0.3.2.ebuild,
+  kbdd-0.4.3.ebuild, kbdd-0.4.4.ebuild:
+  Switch back to upstream (github) SRC_URI
+
 *kbdd-0.4.4 (26 Nov 2010)
 
   26 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> +kbdd-0.4.4.ebuild:
