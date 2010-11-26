@@ -9,14 +9,14 @@ depend() {
 }
 
 start() {
-        ebegin "Starting SPECTRUMGEN2PROTOCOL XMPP/Spectrum Transport"
+        ebegin "Starting S2P Spectrum Transport"
         start-stop-daemon --start --pidfile ${PIDFILE} \
                  --chuid jabber:jabber --exec /usr/bin/spectrum -- ${CONFFILE}
         eend $?
 }
 
 stop() {
-        ebegin "Stopping SPECTRUMGEN2PROTOCOL XMPP/Spectrum Transport"
+        ebegin "Stopping S2P Spectrum Transport"
         start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
         eend $?
 }
