@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+ <email>spamslenoga@inbox.ru</email>
+ <description>Library for reading and writing Windows Registry "hive" binary
+ files.</description> 
+</maintainer>
+<use>
+</use>
+</pkgmetadata>
