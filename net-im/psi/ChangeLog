@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Nov 2010; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20101127.ebuild:
+  new snapshot
+
   16 Nov 2010; Nikoli <nikoli@lavabit.com> psi-0.15_pre20101019.ebuild,
   psi-9999.ebuild:
   Drop USE=debug as it strips symbols and breaks debugging, #345285
