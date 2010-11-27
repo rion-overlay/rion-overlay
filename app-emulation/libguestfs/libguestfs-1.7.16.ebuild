@@ -9,7 +9,7 @@ WANT_AUTOMAKE="1.11"
 JAVA_PKG_OPT_USE="java"
 JAVA_PKG_ALLOW_VM_CHANGE="yes"
 
-APLANCE_PV="1.7.12"
+APLANCE_PV="1.7.16"
 
 PYTHON_DEPEND="python? 2:2.6"
 
@@ -125,8 +125,16 @@ src_configure() {
 		$(use_with tools) || die
 }
 
+src_compile() {
+	emake -j1 || die
+}
+
+src_test() {
+	emake -j1 check || die
+}
+
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake -j1 DESTDIR="${D}" install || die
 
 	dodoc BUGS HACKING README RELEASE-NOTES TODO
 
