@@ -11,7 +11,7 @@ EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
 
 ESVN_DISABLE_DEPENDENCIES="true"
-ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk"
+ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches"
 ESVN_PROJECT="psiplus"
 
 inherit eutils qt4-r2 multilib git subversion
@@ -94,15 +94,13 @@ src_unpack() {
 	done
 
 	if use extras; then
-		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
-		subversion_wc_info "${ESVN_REPO_URI}/patches"
-		psi_plus_revision=$ESVN_WC_REVISION
+		S="${WORKDIR}/patches" subversion_fetch
 		if use iconsets; then
-			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
+			subversion_fetch "${ESVN_REPO_URI%patches}iconsets" "iconsets"
 		else
 			for x in activities affiliations clients moods roster system; do
-				ESVN_PROJECT="psiplus/${x}"
-				subversion_fetch "${ESVN_REPO_URI}/iconsets/${x}/default" "iconsets/${x}/default"
+				ESVN_PROJECT="psiplus/${x}" \
+				subversion_fetch "${ESVN_REPO_URI%patches}iconsets/${x}/default" "iconsets/${x}/default"
 			done
 		fi
 	fi
@@ -122,7 +120,8 @@ src_prepare() {
 			ewarn "Whiteboarding is very unstable."
 		fi
 
-		sed -e "s/.xxx/.${psi_plus_revision}/" \
+		subversion_wc_info
+		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
 			-i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."
