@@ -40,8 +40,9 @@ DEPEND="${RDEPEND}
 	extras? (
 		sys-devel/qconf
 	)
-	doc? ( app-doc/doxygen )"
-
+	doc? ( app-doc/doxygen )
+	dev-util/pkgconfig
+"
 PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
 	jingle? (
 		net-im/psimedia
@@ -58,14 +59,14 @@ pkg_setup() {
 	done
 
 	if use extras; then
-		ewarn
+		echo
 		ewarn "You're about to build heavily patched version of Psi called Psi+."
 		ewarn "It has really nice features but still is under heavy development."
 		ewarn "Take a look at homepage for more info: http://code.google.com/p/psi-dev"
-		ewarn
+		echo
 
 		if use iconsets; then
-			ewarn
+			echo
 			ewarn "Some artwork is from open source projects, but some is provided 'as-is'"
 			ewarn "and has not clear licensing."
 			ewarn "Possibly this build is not redistributable in some countries."

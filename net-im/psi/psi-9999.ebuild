@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.7 2010/11/16 15:34:08 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.8 2010/11/16 20:15:46 pva Exp $
 
 EAPI="2"
 
@@ -11,7 +11,7 @@ EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
 
 ESVN_DISABLE_DEPENDENCIES="true"
-ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk"
+ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches"
 ESVN_PROJECT="psiplus"
 
 inherit eutils qt4-r2 multilib git subversion
@@ -41,8 +41,9 @@ DEPEND="${RDEPEND}
 		${SUBVERSION_DEPEND}
 		sys-devel/qconf
 	)
-	doc? ( app-doc/doxygen )"
-
+	doc? ( app-doc/doxygen )
+	dev-util/pkgconfig
+"
 PDEPEND="crypt? ( app-crypt/qca-gnupg:2 )
 	jingle? (
 		net-im/psimedia
@@ -59,14 +60,14 @@ pkg_setup() {
 	done
 
 	if use extras; then
-		ewarn
+		echo
 		ewarn "You're about to build heavily patched version of Psi called Psi+."
 		ewarn "It has really nice features but still is under heavy development."
 		ewarn "Take a look at homepage for more info: http://code.google.com/p/psi-dev"
-		ewarn
+		echo
 
 		if use iconsets; then
-			ewarn
+			echo
 			ewarn "Some artwork is from open source projects, but some is provided 'as-is'"
 			ewarn "and has not clear licensing."
 			ewarn "Possibly this build is not redistributable in some countries."
@@ -93,15 +94,13 @@ src_unpack() {
 	done
 
 	if use extras; then
-		S="${WORKDIR}/patches" subversion_fetch "${ESVN_REPO_URI}/patches"
-		subversion_wc_info "${ESVN_REPO_URI}/patches"
-		psi_plus_revision=$ESVN_WC_REVISION
+		S="${WORKDIR}/patches" subversion_fetch
 		if use iconsets; then
-			subversion_fetch "${ESVN_REPO_URI}/iconsets" "iconsets"
+			subversion_fetch "${ESVN_REPO_URI%patches}iconsets" "iconsets"
 		else
 			for x in activities affiliations clients moods roster system; do
-				ESVN_PROJECT="psiplus/${x}"
-				subversion_fetch "${ESVN_REPO_URI}/iconsets/${x}/default" "iconsets/${x}/default"
+				ESVN_PROJECT="psiplus/${x}" \
+				subversion_fetch "${ESVN_REPO_URI%patches}iconsets/${x}/default" "iconsets/${x}/default"
 			done
 		fi
 	fi
@@ -121,7 +120,8 @@ src_prepare() {
 			ewarn "Whiteboarding is very unstable."
 		fi
 
-		sed -e "s/.xxx/.${psi_plus_revision}/" \
+		subversion_wc_info
+		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
 			-i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."
