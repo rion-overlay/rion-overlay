@@ -1,0 +1,37 @@
+# ChangeLog for app-admin/sagan
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sagan-0.1.7 (30 Nov 2010)
+
+  30 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> +sagan-0.1.7.ebuild:
+  bump
+
+*sagan-0.1.6 ( 17 Oct 2010 )
+
+  17 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +sagan-0.1.6.ebuild:
+  version bump
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> -sagan-0.1.0.ebuild,
+  -sagan-0.1.4.ebuild, +sagan-0.1.5.ebuild,
+  -files/install_destdir_fix.patch, files/sagan.init,
+  -files/sysconfig_location.patch, metadata.xml:
+  remove old
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> -sagan-0.1.0.ebuild,
+  -sagan-0.1.4.ebuild, +sagan-0.1.5.ebuild,
+  -files/install_destdir_fix.patch, -files/sysconfig_location.patch:
+  remove old
+
+*sagan-0.1.4.ebuild ( 31 Jul 2010 )
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> +sagan-0.1.4.ebuild:
+  new version
+
+*sagan-0.1.0
+
+  27 Jun 2010; <slep@gentoo.org> +sagan-0.1.0.ebuild,
+  +files/install_destdir_fix.patch, +files/sagan.confd, +files/sagan.init,
+  +files/sysconfig_location.patch, +metadata.xml:
+  initila commit
+
