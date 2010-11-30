@@ -1,0 +1,23 @@
+# ChangeLog for app-office/openoffice-infra-bin
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  08 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  openoffice-infra-bin-3.2.1.ebuild:
+  disable kde use - rmp packet not found in taball
+
+  05 Aug 2010; Rion <rion4ik@notagmail.com>
+  -openoffice-infra-bin-3.1.1.ebuild, +openoffice-infra-bin-3.2.1.ebuild:
+  new version
+
+  13 Jun 2010; Rion <rion4ik@gmail.com> openoffice-infra-bin-3.1.1.ebuild:
+  addedd restrict binchecks in order to hide qa warnings
+
+  15 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  openoffice-infra-bin-3.0.1.ebuild, openoffice-infra-bin-3.1.0.ebuild:
+  replace lib64 (get_libdir) in elog messages
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
+  Some repoman fix;openoffice-infra-bin-3.0.1.ebuild,  
+  openoffice-infra-bin-3.1.0.ebuild:
+

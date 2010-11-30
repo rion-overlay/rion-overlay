@@ -1,0 +1,14 @@
+# ChangeLog for dev-perl/OpenCA-RBAC
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-RBAC-0.2.0.ebuild:
+  stable in x86
+
+*OpenCA-RBAC-0.2.0 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +OpenCA-RBAC-0.2.0.ebuild, +metadata.xml:
+  Initial recommit in my-dev overlay
+
