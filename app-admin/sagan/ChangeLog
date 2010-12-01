@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> -sagan-0.1.5.ebuild:
+  remove olsd sagan
+
 *sagan-9999 (01 Dec 2010)
 
   01 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> +sagan-9999.ebuild:
