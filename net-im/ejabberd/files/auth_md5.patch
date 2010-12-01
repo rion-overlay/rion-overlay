@@ -1,0 +1,111 @@
+--- ejabberd_auth_odbc.erl.orig	2010-10-21 13:14:24.000000000 +0400
++++ ejabberd_auth_odbc.erl	2010-10-21 19:18:53.152068186 +0400
+@@ -55,7 +55,24 @@
+     ok.
+ 
+ plain_password_required() ->
+-    false.
++    true.
++
++hex(S) ->
++    hex(S, []).
++
++hex([], Res) ->
++    lists:reverse(Res);
++hex([N | Ns], Res) ->
++    hex(Ns, [digit_to_xchar(N rem 16),
++	     digit_to_xchar(N div 16) | Res]).
++
++digit_to_xchar(D) when (D >= 0) and (D < 10) ->
++    D + 48;
++digit_to_xchar(D) ->
++    D + 87.
++
++password_hash(A) ->
++    hex(binary_to_list(crypto:md5(A))).
+ 
+ %% @spec (User, Server, Password) -> true | false | {error, Error}
+ check_password(User, Server, Password) ->
+@@ -65,8 +82,9 @@
+ 	LUser ->
+ 	    Username = ejabberd_odbc:escape(LUser),
+ 	    LServer = jlib:nameprep(Server),
++	    PasswordHash = password_hash(Password),
+ 	    try odbc_queries:get_password(LServer, Username) of
+-		{selected, ["password"], [{Password}]} ->
++		{selected, ["password"], [{PasswordHash}]} ->
+ 		    Password /= ""; %% Password is correct, and not empty
+ 		{selected, ["password"], [{_Password2}]} ->
+ 		    false; %% Password is not correct
+@@ -82,35 +100,7 @@
+ 
+ %% @spec (User, Server, Password, Digest, DigestGen) -> true | false | {error, Error}
+ check_password(User, Server, Password, Digest, DigestGen) ->
+-    case jlib:nodeprep(User) of
+-	error ->
+-	    false;
+-	LUser ->
+-	    Username = ejabberd_odbc:escape(LUser),
+-	    LServer = jlib:nameprep(Server),
+-	    try odbc_queries:get_password(LServer, Username) of
+-		%% Account exists, check if password is valid
+-		{selected, ["password"], [{Passwd}]} ->
+-		    DigRes = if
+-				 Digest /= "" ->
+-				     Digest == DigestGen(Passwd);
+-				 true ->
+-				     false
+-			     end,
+-		    if DigRes ->
+-			    true;
+-		       true ->
+-			    (Passwd == Password) and (Password /= "")
+-		    end;
+-		{selected, ["password"], []} ->
+-		    false; %% Account does not exist
+-		{error, _Error} ->
+-		    false %% Typical error is that table doesn't exist
+-	    catch
+-		_:_ ->
+-		    false %% Typical error is database not accessible
+-	    end
+-    end.
++    check_password(User, Server, Password).
+ 
+ %% @spec (User::string(), Server::string(), Password::string()) ->
+ %%       ok | {error, invalid_jid}
+@@ -120,7 +110,7 @@
+ 	    {error, invalid_jid};
+ 	LUser ->
+ 	    Username = ejabberd_odbc:escape(LUser),
+-	    Pass = ejabberd_odbc:escape(Password),
++	    Pass = ejabberd_odbc:escape(password_hash(Password)),
+ 	    LServer = jlib:nameprep(Server),
+ 	    case catch odbc_queries:set_password_t(LServer, Username, Pass) of
+ 	        {atomic, ok} -> ok;
+@@ -136,7 +126,7 @@
+ 	    {error, invalid_jid};
+ 	LUser ->
+ 	    Username = ejabberd_odbc:escape(LUser),
+-	    Pass = ejabberd_odbc:escape(Password),
++	    Pass = ejabberd_odbc:escape(password_hash(Password)),
+ 	    LServer = jlib:nameprep(Server),
+ 	    case catch odbc_queries:add_user(LServer, Username, Pass) of
+ 		{updated, 1} ->
+@@ -262,13 +252,14 @@
+ 	    error;
+ 	LUser ->
+ 	    Username = ejabberd_odbc:escape(LUser),
+-	    Pass = ejabberd_odbc:escape(Password),
++	    Pass = ejabberd_odbc:escape(password_hash(Password)),
+ 	    LServer = jlib:nameprep(Server),
++	    PasswordHash = password_hash(Password),
+ 	    F = fun() ->
+ 			Result = odbc_queries:del_user_return_password(
+ 				   LServer, Username, Pass),
+ 			case Result of
+-			    {selected, ["password"], [{Password}]} ->
++			    {selected, ["password"], [{PasswordHash}]} ->
+ 				ok;
+ 			    {selected, ["password"], []} ->
+ 				not_exists;
