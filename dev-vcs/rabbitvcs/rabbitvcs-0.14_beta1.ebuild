@@ -28,7 +28,7 @@ RDEPEND="dev-python/configobj
 	diff? ( dev-util/meld )
 	gedit? ( app-editors/gedit )
 	git? ( dev-python/dulwich )
-	nautilus? ( dev-python/nautilus-python
+	nautilus? ( >=dev-python/nautilus-python-0.7.0
 		dev-python/dbus-python )
 	spell? ( dev-python/gtkspell-python )
 	thunar? ( dev-python/thunarx-python
