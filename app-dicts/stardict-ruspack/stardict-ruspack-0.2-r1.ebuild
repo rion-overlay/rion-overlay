@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="|| ( app-text/stardict app-text/qstardict )
+RDEPEND="|| ( app-text/stardict app-text/qstardict app-dicts/goldendict )
 	!app-dicts/stardict-freedict-eng-rus"
 
 DEPEND="|| ( app-arch/unrar app-arch/rar )"

@@ -54,7 +54,7 @@ RESTRICT="test"
 
 pkg_setup() {
 	for x in iconsets plugins powersave webkit whiteboarding;do
-	        use ${x} && use !extras && \
+		use ${x} && use !extras && \
 			ewarn "USE=${x} is only available in Psi+ and requires USE=extras, ${x} will be disabled."
 	done
 
