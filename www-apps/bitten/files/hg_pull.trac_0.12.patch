@@ -1,0 +1,13 @@
+Index: bitten/build/hgtools.py
+===================================================================
+--- bitten/build/hgtools.py	(revision 959)
++++ bitten/build/hgtools.py	(working copy)
+@@ -18,7 +18,7 @@
+     """
+     args = ['pull', '-u']
+     if revision:
+-        args += ['-r', revision.split(':')[1]]
++        args += ['-r', revision.split(':')[-1]]
+ 
+     from bitten.build import shtools
+     returncode = shtools.execute(ctxt, file_='hg', args=args, dir_=dir_)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+</maintainer>
+<longdescription>Phamm is a front-end written in PHP to manage 
+virtual service's using a LDAP directory backend.</longdescription>
+<use>
+  <flag name='isp-schema'>Install additonal LDAP schema for ISP</flag>
+  <flag name='amavis-schema'>Install additonal LDAP schema for<pkg>mail-filter/amavisd-new</pkg></flag>
+  <flag name='dns-schema'>Install additonal LDAP schema for DNS server</flag>
+ <flag name='ftp-schema'>Install additonal LDAP schema for<pkg>net-ftp/pure-ftpd</pkg></flag>
+</use>
+</pkgmetadata>
