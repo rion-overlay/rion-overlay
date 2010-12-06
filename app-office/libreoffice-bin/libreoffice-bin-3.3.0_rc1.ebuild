@@ -8,25 +8,23 @@ inherit eutils fdo-mime gnome2-utils rpm multilib versionator
 
 IUSE="gnome java kde"
 
-BUILDID="2"
-BUILDDATE="20101115"
+BUILDID="3"
 UREVER="1.7.0"
-MY_PV="${PV/_*/}"
-MY_PV1="${PV/_/-}" # or download uri
-MY_PV2="${PV/_/}_${BUILDDATE}" # for unpacked root dirs
-MY_PV3="${MY_PV}-${BUILDID}" # for rpm file names
+MY_PV="${PV/_/}" # download file name
+MY_PV1="${PV/_/-}" # download uri
+MY_PV3="${PV/_*/}-${BUILDID}" # for rpm file names
 MY_PVM1=$(get_major_version)
 MY_PVM2=$(get_version_component_range 1-2)
 BASIS="libobasis${MY_PVM2}"
 
 if [ "${ARCH}" = "amd64" ] ; then
 	LOARCH="x86_64"
-	UP="LibO_${MY_PV2}_Linux_x86-64_install-rpm_en-US/RPMS"
-	LANGP="LibO_${MY_PV2}_Linux_x86-64_langpack-rpm_"
+	UP="LibO_${MY_PV}_Linux_x86-64_install-rpm_en-US/RPMS"
+	LANGP="LibO_${MY_PV}_Linux_x86-64_langpack-rpm_"
 else
 	LOARCH="i586"
-	UP="LibO_${MY_PV2}_Linux_x86_install-rpm_en-US/RPMS"
-	LANGP="LibO_${MY_PV2}_Linux_x86_langpack-rpm_"
+	UP="LibO_${MY_PV}_Linux_x86_install-rpm_en-US/RPMS"
+	LANGP="LibO_${MY_PV}_Linux_x86_langpack-rpm_"
 fi
 
 FILEPATH="http://download.documentfoundation.org/libreoffice/testing/${MY_PV1}/rpm"
@@ -37,6 +35,10 @@ DESCRIPTION="LibreOffice productivity suite."
 SRC_URI="amd64? ( ${FILEPATH}/x86_64/LibO_${MY_PV}_Linux_x86-64_install-rpm_en-US.tar.gz )
 	x86? ( ${FILEPATH}/x86/LibO_${MY_PV}_Linux_x86_install-rpm_en-US.tar.gz )"
 
+# echo $(wget -qO-
+# http://download.documentfoundation.org/libreoffice/testing/3.3.0-rc1/rpm/x86/
+# | grep langpack | sed 's/.*langpack-rpm_\(.\+\).tar.gz.*/\1/' | sort -u | sed
+# 's/-/_/' )
 LANGS="af ar as be_BY bg bn bo br brx bs ca cs cy da de dgo dz el en_GB en_ZA eo
 es et eu fa fi fr ga gd gl gu he hi hr hu is it ja ka kid kk km kn ko kok ks ku
 ky lo lt lv mai mk ml mn mni mr ms my nb ne nl nn nr ns oc om or pa_IN pap pl ps
@@ -133,14 +135,6 @@ src_unpack() {
 			rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${j}-${MY_PV3}.${LOARCH}.rpm"
 		done
 	done
-
-	# Lang files
-	#rpm_unpack "./${UP}/${BASIS}-en-US-${MY_PV3}.${LOARCH}.rpm"
-	#rpm_unpack "./${UP}/libreoffice${MY_PVM1}-en-US-${MY_PV3}.${LOARCH}.rpm"
-	#for j in base binfilter calc draw help impress math res writer; do
-	#	rpm_unpack "./${UP}/${BASIS}-en-US-${j}-${MY_PV3}.${LOARCH}.rpm"
-	#done
-
 }
 
 src_install () {
