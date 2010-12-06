@@ -1,0 +1,35 @@
+# ChangeLog for dev-util/febootstrap
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*febootstrap-3.0 (05 Dec 2010)
+
+  05 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> +febootstrap-3.0.ebuild:
+  new version
+
+*febootstrap-2.11 (05 Dec 2010)
+
+  05 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> +febootstrap-2.11.ebuild:
+  bump
+
+*febootstrap-2.8 (20 Nov 2010)
+
+  20 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> +febootstrap-2.8.ebuild:
+  add 2.8 version
+
+  30 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -febootstrap-2.6.ebuild:
+  remove old
+
+*febootstrap-2.10 ( 30 Oct 2010 )
+
+  30 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +febootstrap-2.10.ebuild:
+  new version
+
+* febootstrap-2.7.ebuild
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +febootstrap-2.7.ebuild:
+  bump
+
