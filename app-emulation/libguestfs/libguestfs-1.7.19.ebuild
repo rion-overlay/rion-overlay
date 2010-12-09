@@ -23,7 +23,7 @@ perl-module python ruby-ng
 DESCRIPTION="Libguestfs is a library for accessing and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
 SRC_URI="http://libguestfs.org/download/1.7-development/${P}.tar.gz
-	http://libguestfs.org/download/binaries/libguestfs-${APLANCE_PV}-x86_64.tar.gz"
+	http://rion-overlay.googlecode.com/files/libguestfs-1.7.18-x86_64.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
