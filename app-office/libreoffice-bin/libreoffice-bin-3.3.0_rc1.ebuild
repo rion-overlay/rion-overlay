@@ -124,8 +124,7 @@ src_unpack() {
 	for k in ${LINGUAS}; do
 		i="${k/_/-}"
 		if [[ ${i} = "en" ]] ; then
-			i="en-US"
-			LANGDIR="${LANGP}${i}/RPMS/"
+			continue
 		else
 			LANGDIR="${LANGP}${i}/RPMS/"
 		fi
