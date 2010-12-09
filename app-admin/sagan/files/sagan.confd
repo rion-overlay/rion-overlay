@@ -1,0 +1,16 @@
+# Sagan daemon configuration file
+#
+# Run in daemon mode
+SAGAN_OPTS=" --daemon "
+#
+# Make debug mode
+# SAGAN_OPTS = "${SAGAN_OPT} --debug "
+#
+# Run as user, default sagan - so time run as root
+#SAGAN_USER = "root"
+#
+#Chroot sagan daemon to sagan's home
+#SAGAN_CHROOT="yes"
+#Run Sagan in syslog-ng's 'program' mode.
+#
+#LOGGER="syslog-ng"

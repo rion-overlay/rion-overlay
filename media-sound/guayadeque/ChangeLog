@@ -1,0 +1,17 @@
+# ChangeLog for media-sound/guayadeque
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*guayadeque-0.2.7 (24 Nov 2010)
+
+  24 Nov 2010; Rion <rion4ik@notagmail.com> +guayadeque-0.2.7.ebuild,
+  guayadeque-9999.ebuild:
+  improved ebuild. added stable version
+
+  28 Oct 2010; Rion <rion4ik@notagmail.com> guayadeque-9999.ebuild:
+  add linguas support
+
+  06 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> guayadeque-9999.ebuild,
+  +metadata.xml:
+  initial commit
+
