@@ -10,9 +10,8 @@ inherit webapp  eutils
 
 DESCRIPTION="A complete CRM and groupware system for businesses of all sizes."
 HOMEPAGE="http://www.sugarforge.org/"
-#SRC_URI="mirror://sourceforge/project/${PN}/3%20-%20%SugarCRM%20${PV}/SugarCommunityEdition-${PV}/${MY_PN}-${PV}.zip"
+SRC_URI="http://www.sugarforge.org/frs/download.php/7016/SugarCE-5.5.4.zip"
 
-SRC_URI="http://dl.sugarforge.org/${PN}/2${MY_PN}${PV}/${MY_PN}${PV}/${MY_PN}-${PV}.zip"
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="curl imap +json +zlib +mysql +mysqli freetds ldap mssql"
