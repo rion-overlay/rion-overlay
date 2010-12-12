@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Dec 2010; Nikoli <nikoli@lavabit.com>
+  +psi-watcher-0.3.5_pre3378.ebuild:
+  version bump
+
   12 Dec 2010; Nikoli <nikoli@lavabit.com> +psi-watcher-0.3.5_pre.ebuild:
   version bump
 
