@@ -20,7 +20,7 @@
 	<flag name='conferencelogger'>Enable plugin which saves logs of conferences</flag>
 	<flag name='contentdownloader'>Enable plugin for downloading extras</flag>
 	<flag name='extendedoptions'>Enable plugin for UI for some hidden options</flag>
-	<flag name='gmailnotify'>Enable Gmail notify plugin for psi</flag>
+	<flag name='gmailservice'>Enable Gmail Service plugin for psi</flag>
 	<flag name='historykeeper'>Enable plugin to keep certain contacts history clean</flag>
 	<flag name='icqdie'>Enable "ICQDie!!" plugin.</flag>
 	<flag name='image'>Enable plugin for sending in-band images</flag>
