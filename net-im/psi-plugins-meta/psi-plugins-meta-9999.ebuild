@@ -10,7 +10,7 @@ HOMEPAGE="http://psi-dev.googlecode.com"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="attention autoreply birthdayreminder captchaforms chess cleaner conferencelogger contentdownloader extendedoptions gmailnotify
+IUSE="attention autoreply birthdayreminder captchaforms chess cleaner conferencelogger contentdownloader extendedoptions gmailservice
 historykeeper icqdie image juick qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher"
 
 RDEPEND=""
