@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Dec 2010; Nikoli <nikoli@lavabit.com> +psi-juick-0.10.4_pre3374.ebuild:
+  version bump
+
   27 Nov 2010; Nikoli <nikoli@lavabit.com> +psi-juick-0.10.3_pre3199.ebuild:
   version bump
 
