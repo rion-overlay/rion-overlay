@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libguestfs-1.7.23 (15 Dec 2010)
+
+  15 Dec 2010; <slep@gentoo.org> +libguestfs-1.7.23.ebuild:
+  bump
+
   09 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> libguestfs-1.7.18.ebuild,
   libguestfs-1.7.19.ebuild:
   replace URI_SRC to rion overlay dovnload
