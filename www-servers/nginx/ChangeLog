@@ -2,6 +2,11 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-0.9.3 (19 Dec 2010)
+
+  19 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> +nginx-0.9.3.ebuild:
+  add new nging ebuild, migrate to 3.0.1 passenger module
+
   19 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> -nginx-0.8.52.ebuild,
   -nginx-0.8.53.ebuild:
   drop old ebuild
