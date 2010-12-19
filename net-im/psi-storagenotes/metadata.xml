@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-im</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>Il'nykh Sergey</name>
+	</maintainer>
+	<longdescription lang="en">Psi plugin implements XEP-0049 - Jabber notes.
+	XEP-0049 allows to store any arbitrary XML on the server side.
+	</longdescription>
+</pkgmetadata>
