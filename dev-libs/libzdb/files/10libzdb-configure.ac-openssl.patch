@@ -1,0 +1,88 @@
+diff -r 68b903e11cb0 Makefile.am
+--- a/Makefile.am	Sun Apr 11 23:41:15 2010 +0300
++++ b/Makefile.am	Mon Apr 12 05:27:51 2010 +0300
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = foreign no-dependencies
+-ACLOCAL_AMFLAGS  = -I m4
++ACLOCAL_AMFLAGS  = -I config
+ 
+ SUBDIRS         = . $(UNIT_TEST)
+ DIST_SUBDIRS    = . test
+diff -r 68b903e11cb0 configure.ac
+--- a/configure.ac	Sun Apr 11 23:41:15 2010 +0300
++++ b/configure.ac	Mon Apr 12 05:27:51 2010 +0300
+@@ -4,7 +4,7 @@
+ 
+ AC_INIT([libzdb], [2.6], [bugs-libzdb@tildeslash.com])
+ AC_CONFIG_AUX_DIR(config)
+-AC_CONFIG_MACRO_DIR([m4])
++AC_CONFIG_MACRO_DIR([config])
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_SRCDIR([src/Config.h])
+ AC_CONFIG_COMMANDS([libtool_patch],[test `uname` = "OpenBSD" && perl -p -i -e "s/deplibs_check_method=.*/deplibs_check_method=pass_all/g" libtool])
+@@ -16,6 +16,7 @@
+ 
+ AC_PROG_CC
+ AC_PROG_GCC_TRADITIONAL
++PKG_PROG_PKG_CONFIG
+ AC_PATH_PROG([RE2C], [re2c], [no], [$PATH:/usr/local/bin:/usr/bin])
+ AC_PATH_PROG([FLEX], [flex], [no])
+ if test "x$FLEX" = "xno"; then
+@@ -108,6 +109,7 @@
+     ]
+ )
+ 
++openssl="false"
+ AC_ARG_ENABLE([openssl],
+         AS_HELP_STRING([--enable-openssl(=<path>)], 
+                 [Link libzdb with openssl. If database libraries were linked static,
+@@ -116,21 +118,16 @@
+                 be given to specify the top-level directory to search for openssl to
+                 link with]),
+      [
+-        openssl="true"
+-        if test "x$enableval" = "xyes"; then
++     	AS_IF([test "x$enable_openssl" != "xno"], [
++		PKG_CHECK_MODULES([openssl], [openssl >= 0.9])
+ 		AC_CHECK_LIB([ssl], [SSL_library_init], [], [AC_MSG_ERROR([libssl not found])])
+ 		AC_CHECK_LIB([crypto], [SHA1_Init], [], [AC_MSG_ERROR([libcrypto not found])])
+-	else
+-                AC_MSG_CHECKING([for openssl in $enableval])
+-                LDFLAGS="-L$enableval/lib -lssl -lcrypto $LDFLAGS "
+-                CPPFLAGS="-I$enableval/include $CPPFLAGS"
+-                if test -r "$enableval/lib/libssl.a" -a -r "$enableval/lib/libcrypto.a"; then
+-                        AC_MSG_RESULT([ok])
+-                else
+-                       AC_MSG_ERROR([openssl not found in $enableval])
+-                fi
+-        fi
+-     ],[openssl="false"])
++		LDFLAGS="$LDFLAGS `$PKG_CONFIG --libs-only-l  openssl`"
++		openssl="true"
++		 ])
++	 ],
++	
++	[openssl="false"])
+ 
+ AC_ARG_ENABLE(sqliteunlock,
+ 	AS_HELP_STRING([--enable-sqliteunlock], 
+@@ -196,7 +193,7 @@
+         ],
+         [
+                 AC_MSG_RESULT([yes])
+-                AC_PATH_PROG([MYSQLCONFIG], [mysql_config], [no], [$PATH:/usr/local/bin:/usr/local/mysql/bin])
++                AC_PATH_PROG([MYSQLCONFIG], [mysql_config], [no], [$PATH:/usr/local/bin:/usr/local/mysql/bin:/usr/bin])
+                 if test "x$MYSQLCONFIG" = "xno"; then
+                         AC_MSG_WARN([mysql_config is required to build libzdb with mysql])
+                         mysql="no"
+@@ -320,10 +317,6 @@
+ fi
+ AM_CONDITIONAL([WITH_SQLITE], test "xyes" = "x$sqlite")
+ 
+-if test "xno" = "x$postgresql" -a "xno" = "x$mysql" -a "xno" = "x$sqlite"; then
+-        AC_MSG_ERROR([No available database found or selected. Try configure --help])
+-fi
+-
+ AC_SUBST(DBLDFLAGS)
+ AC_SUBST(DBCPPFLAGS)
+ 

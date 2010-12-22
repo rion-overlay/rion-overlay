@@ -1,0 +1,38 @@
+--- Makefile.am	2010-04-13 17:11:09.000000000 +0300
++++ /home/slep/Makefile.am	2010-11-12 10:45:08.529207953 +0200
+@@ -7,7 +7,7 @@
+ 
+ libmodrev_la_SOURCES = mod_rev.c
+ 
+-libmodrev_la_LDFLAGS = -module -avoid-version
++libmodrev_la_LDFLAGS = $(LDFLAGS) -module -avoid-version
+ 
+ INCLUDES = -I@apache_inc@ @nspr_inc@ @nss_inc@ @apr_inc@ -Imozilla/security/nss/lib/base @ldapsdk_inc@ -Imozilla/security/nss/lib/ckfw
+ LIBS = @ldapsdk_lib@ @nspr_lib@ @nss_lib@ @ldapsdk_libs_ssl@ -lssl3 -lsmime3 -lnss3 -lnssb @ldapsdk_libs@ -lplc4 -lplds4 -lnspr4 -lpthread -ldl
+@@ -38,8 +38,8 @@
+ 	-rpath $(libdir) $(librevocation_la_OBJECTS) $(librevocation_la_LIBADD) $(LIBS) libnssckfw2.a -lnssb
+ 
+ install-exec-local: all-local
+-	install -m 755 ldapget $(bindir)
+-	install -m 755 crlhelper $(bindir)
++	install -D -m 755 ldapget $(DESTDIR)/$(bindir)
++	install -D -m 755 crlhelper $(DESTDIR)/$(bindir)
+ 
+ clean-local:
+ 	-rm -f libnssckfw2.a ldapget crlhelper
+@@ -49,12 +49,12 @@
+ # This uses the local .libs directory to link against, assuming that the
+ # revocation library been installed globally yet.
+ ldaptest:
+-	$(CXX) $(CXXFLAGS) ldaptest.cpp client.o ldap-client.o unescape.o -o ldaptest $(INCLUDES) $(LIBS) -L .libs/ -lrevocation
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) ldaptest.cpp client.o ldap-client.o unescape.o -o ldaptest $(INCLUDES) $(LIBS) -L .libs/ -lrevocation
+ 
+ # This program is used to retrieve data from an LDAP URL and return the
+ # attribute data over stdout. It is used in conjunction with an exec:// URL
+ ldapget: ldapget.cpp relink
+-	$(CXX) $(CXXFLAGS) ldapget.cpp client.o ldap-client.o http-client.o unescape.o -o ldapget $(INCLUDES) $(LIBS) libnssckfw2.a -L .libs/ -lrevocation
++	$(CXX) $(CXXFLAGS) $(LDFLAGS)  ldapget.cpp client.o ldap-client.o http-client.o unescape.o -o ldapget $(INCLUDES) $(LIBS) libnssckfw2.a -L .libs/ -lrevocation
+ 
+ crlhelper: crlhelper.cpp relink
+-	$(CXX) $(CXXFLAGS) crlhelper.cpp client.o ldap-client.o http-client.o unescape.o -o crlhelper $(INCLUDES) $(LIBS) libnssckfw2.a -L .libs/ -lrevocation
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) crlhelper.cpp client.o ldap-client.o http-client.o unescape.o -o crlhelper $(INCLUDES) $(LIBS) libnssckfw2.a -L .libs/ -lrevocation

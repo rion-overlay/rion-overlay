@@ -1,0 +1,26 @@
+# ChangeLog for dev-util/openscada
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -openscada-0.6.4.1.ebuild:
+  remov
+
+*openscada-0.6.4.2 (08 Jul 2010)
+
+  08 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +openscada-0.6.4.2.ebuild:
+  bump
+
+  29 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/fix-location-qt4-gentoo_configure.in.patch,
+  +openscada-0.6.4.1.ebuild, +files/oscada.init, +metadata.xml:
+  recommit to rion
+
+*openscada-0.6.4.1 ( 06 Feb 2010 )
+
+  06 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +openscada-0.6.4.1.ebuild, +files/oscada.init, +files/x86_64.patch,
+  +metadata.xml:
+  initial commit; Tnx Agressor ( gentoo.ru forum )
+ 
