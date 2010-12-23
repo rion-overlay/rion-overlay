@@ -1,6 +1,6 @@
-# 4 Noj 2010; A.Vinogradov <spamslepnoga@inbox.ru>
-#Mask for testing
-<app-emulation/libguestfs-1.7.12
+# 19 Dec 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+=www-servers/nginx-0.9*
 
 # 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # Multiple XSS and denial of service vulnerabilities

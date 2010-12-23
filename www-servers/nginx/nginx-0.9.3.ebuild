@@ -23,7 +23,7 @@ HTTP_HEADERS_MORE_MODULE_SHA1="9508330"
 
 # http_passenger (http://www.modrails.com/, MIT license)
 # TODO: currently builds some stuff in src_configure
-PASSENGER_PV="2.2.15"
+PASSENGER_PV="3.0.1"
 USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
 
@@ -32,6 +32,9 @@ HTTP_PUSH_MODULE_P="nginx_http_push_module-0.692"
 
 # http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
 HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-1.2"
+
+CHUNKIN_MODULE_PV="0.21"
+CHUNKIN_MODULE_SHA1="847b3de"
 
 inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
 
@@ -47,7 +50,7 @@ SRC_URI="http://sysoev.ru/nginx/${P}.tar.gz
 	nginx_modules_http_cache_purge? ( http://labs.frickle.com/files/${HTTP_CACHE_PURGE_MODULE_P}.tar.gz )
 	pam? ( http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.1.tar.gz )
 	rrd? ( http://wiki.nginx.org/images/9/9d/Mod_rrd_graph-0.2.0.tar.gz )
-	chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v0.19 -> chunkin-nginx-module-0.19.tgz )"
+	chunk? ( http://github.com/agentzh/chunkin-nginx-module/tarball/v${CHUNKIN_MODULE_PV} -> chunkin-nginx-module-${CHUNKIN_MODULE_PV}.tgz )"
 
 LICENSE="BSD BSD-2 GPL-2 MIT
 	pam? ( as-is )"
@@ -148,7 +151,7 @@ src_unpack() {
 	default
 	use pam && unpack "ngx_http_auth_pam_module-1.1.tar.gz"
 	use rrd && unpack "Mod_rrd_graph-0.2.0.tar.gz"
-	use chunk && unpack "chunkin-nginx-module-0.19.tgz"
+	use chunk && unpack "chunkin-nginx-module-${CHUNKIN_MODULE_PV}.tgz"
 }
 
 src_prepare() {
@@ -224,7 +227,7 @@ src_configure() {
 	use perftools && myconf="${myconf}  --with-google_perftools_module"
 	use rrd && myconf="${myconf} --add-module="${WORKDIR}"/mod_rrd_graph-0.2.0"
 	use chunk	&& myconf="${myconf} \
-						--add-module="${WORKDIR}"/agentzh-chunkin-nginx-module-cb610a5"
+						--add-module="${WORKDIR}"/agentzh-chunkin-nginx-module-${CHUNKIN_MODULE_SHA1}"
 	use pam && myconf="${myconf} --add-module="${WORKDIR}"/ngx_http_auth_pam_module-1.1"
 
 	# MAIL modules
@@ -332,7 +335,7 @@ src_install() {
 		doexe ext/nginx/HelperServer
 	fi
 
-	use chunk   && newdoc "${WORKDIR}/agentzh-chunkin-nginx-module-cb610a5"/README README.chunkin
+	use chunk   && newdoc "${WORKDIR}/agentzh-chunkin-nginx-module-${CHUNKIN_MODULE_SHA1}"/README README.chunkin
 	use pam && newdoc "${WORKDIR}"/ngx_http_auth_pam_module-1.1/README README.pam
 }
 
