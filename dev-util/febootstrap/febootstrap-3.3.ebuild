@@ -4,7 +4,7 @@
 
 EAPI="3"
 
-inherit eutils
+inherit eutils autotools
 
 DESCRIPTION="Fedora bootstrap scripts"
 HOMEPAGE="http://people.redhat.com/~rjones/febootstrap/"
@@ -21,7 +21,15 @@ RDEPEND="dev-lang/ocaml[ocamlopt]
 	=app-arch/rpm-4*
 	>=sys-apps/yum-3.2.21
 	sys-fs/e2fsprogs
-	sys-libs/e2fsprogs-libs"
+	sys-libs/e2fsprogs-libs
+	=sys-apps/module-init-tools-3.5"
+# Spanki bug
+
+DEPEND="${RDEPEND}"
+
+src_prepare() {
+	eautoreconf
+}
 
 src_install() {
 	emake DESTDIR="${ED}" install || die "emake install failed"
