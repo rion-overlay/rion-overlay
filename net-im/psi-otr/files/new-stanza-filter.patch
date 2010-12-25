@@ -1,0 +1,24 @@
+--- ./src/PsiOtrPlugin.hpp	2010-12-13 12:27:29.845000084 +0500
++++ ./src/PsiOtrPlugin.hpp	2010-12-13 12:29:06.433000106 +0500
+@@ -105,6 +105,7 @@
+ 
+     // StanzaFilter
+     virtual bool incomingStanza(int account, const QDomElement& xml);
++    virtual bool outgoingStanza(int account, QDomElement& xml);
+ 
+     // ToolbarIconAccessor
+     virtual QList<QVariantHash>* getButtonParam();
+--- ./src/PsiOtrPlugin.cpp	2010-12-13 12:27:42.733000098 +0500
++++ ./src/PsiOtrPlugin.cpp	2010-12-13 12:30:07.111000069 +0500
+@@ -299,6 +299,11 @@
+     return false;
+ }
+ 
++bool PsiOtrPlugin::outgoingStanza(int account, QDomElement& xml)
++{
++	return false;
++}
++
+ //-----------------------------------------------------------------------------
+ 
+ QList<QVariantHash>* PsiOtrPlugin::getButtonParam()
