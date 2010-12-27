@@ -1,0 +1,26 @@
+#!/bin/bash
+
+version=3.3.0-rc2
+arches="x86 x86_64"
+outfile=/tmp/libreoffice.manifest
+
+
+for arch in $arches; do
+
+  baseUrl=http://download.documentfoundation.org/libreoffice/testing/$version/rpm/$arch
+
+  wget -qO- "$baseUrl" | grep -oP "LibO[^\"]+gz" | sort -u | while read -r file; do
+    mirrors=`wget -qO- "$baseUrl/${file}.mirrorlist"`
+    bytes=`echo "$mirrors" | grep -oP '\d+(?= bytes)'`
+    sha256=`echo "$mirrors" | grep -oP '(?<=SHA-256 Hash</a>: <tt>)\w+(?=</tt>)'`
+    sha1=`echo "$mirrors" | grep -oP '(?<=SHA-1 Hash</a>: <tt>)\w+(?=</tt>)'`
+    [ -n "${bytes}" ] && [ -n "${sha256}" ] && [ -n "${sha1}" ] || { echo "failed to update data for {$file}"; exit 1; }
+    echo "DIST ${file} ${bytes} SHA1 ${sha1} SHA256 ${sha256}" | tee -a $outfile || { echo "failed to write data to ${outfile}"; exit 1; }
+  done
+
+done
+
+cp "$outfile" app-office/libreoffice-bin/Manifest || { echo "failed to replace manifest file. check if you are in overlay root and have necessary right."; exit 1; }
+echo "now execute something like:"
+echo "\$ ebuild app-office/libreoffice-bin/libreoffice-bin-${version/-/_}.ebuild digest"
+echo "if ebuild is already there or you know what to do."
