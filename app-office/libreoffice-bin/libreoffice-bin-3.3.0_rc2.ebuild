@@ -6,9 +6,9 @@ EAPI="2"
 
 inherit eutils fdo-mime gnome2-utils rpm multilib versionator
 
-IUSE="gnome java kde"
+IUSE="gnome java kde linguas_en"
 
-BUILDID="3"
+BUILDID="4"
 UREVER="1.7.0"
 MY_PV="${PV/_/}" # download file name
 MY_PV1="${PV/_/-}" # download uri
@@ -33,20 +33,24 @@ S="${WORKDIR}"
 DESCRIPTION="LibreOffice productivity suite."
 
 SRC_URI="amd64? ( ${FILEPATH}/x86_64/LibO_${MY_PV}_Linux_x86-64_install-rpm_en-US.tar.gz )
-	x86? ( ${FILEPATH}/x86/LibO_${MY_PV}_Linux_x86_install-rpm_en-US.tar.gz )"
+	x86? ( ${FILEPATH}/x86/LibO_${MY_PV}_Linux_x86_install-rpm_en-US.tar.gz )
+	linguas_en? (
+		x86? ( "${FILEPATH}"/x86/LibO_${MY_PV}_Linux_x86_langpack-rpm_en-US.tar.gz )
+		amd64? ( "${FILEPATH}"/x86_64/LibO_${MY_PV}_Linux_x86-64_langpack-rpm_en-US.tar.gz )
+	)"
 
 # echo $(wget -qO-
 # http://download.documentfoundation.org/libreoffice/testing/3.3.0-rc1/rpm/x86/
 # | grep langpack | sed 's/.*langpack-rpm_\(.\+\).tar.gz.*/\1/' | sort -u | sed
 # 's/-/_/' )
-LANGS="af ar as be_BY bg bn bo br brx bs ca cs cy da de dgo dz el en_GB en_ZA eo
-es et eu fa fi fr ga gd gl gu he hi hr hu is it ja ka kid kk km kn ko kok ks ku
-ky lo lt lv mai mk ml mn mni mr ms my nb ne nl nn nr ns oc om or pa_IN pap pl ps
-pt pt_BR ro ru rw sa_IN sat sc sd sh si sk sl sq sr ss st sv sw_TZ ta te tg th
-ti tn tr ts ug uk ur uz ve vi xh zh_CN zh_TW zu"
+LANGS="af ar as be_BY bg bn bo br brx bs ca cs cy da de dgo dz el en_GB en_US
+en_ZA eo es et eu fa fi fr ga gd gl gu he hi hr hu is it ja ka kid kk km kn ko
+kok ks ku ky lo lt lv mai mk ml mn mni mr ms my nb ne nl nn nr ns oc om or pa_IN
+pap pl ps pt pt_BR ro ru rw sa_IN sat sc sd sh si sk sl sq sr ss st sv sw_TZ ta
+te tg th ti tn tr ts ug uk ur uz ve vi xh zh_CN zh_TW zu"
 
 for X in ${LANGS} ; do
-	[[ ${X} != "en" ]] && SRC_URI="${SRC_URI} linguas_${X}? (
+	SRC_URI="${SRC_URI} linguas_${X}? (
 		x86? ( "${FILEPATH}"/x86/LibO_${MY_PV}_Linux_x86_langpack-rpm_${X/_/-}.tar.gz )
 		amd64? ( "${FILEPATH}"/x86_64/LibO_${MY_PV}_Linux_x86-64_langpack-rpm_${X/_/-}.tar.gz ) )"
 	IUSE="${IUSE} linguas_${X}"
@@ -125,13 +129,15 @@ src_unpack() {
 		i="${k/_/-}"
 		if [[ ${i} = "en" ]] ; then
 			i="en-US"
-			LANGDIR="${UP}"
+			idict="en"
 		else
-			LANGDIR="${LANGP}${i}/RPMS/"
+			idict="$i"
 		fi
+		LANGDIR="${LANGP}${i}/RPMS/"
 		rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${MY_PV3}.${LOARCH}.rpm"
 		rpm_unpack "./${LANGDIR}/libreoffice${MY_PVM1}-${i}-${MY_PV3}.${LOARCH}.rpm"
-		for j in base binfilter calc draw help impress math res writer; do
+		rpm_unpack "./${LANGDIR}/libreoffice${MY_PVM1}-dict-${idict}-${MY_PV3}.${LOARCH}.rpm"
+		for j in base binfilter calc help math res writer; do
 			rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${j}-${MY_PV3}.${LOARCH}.rpm"
 		done
 	done
