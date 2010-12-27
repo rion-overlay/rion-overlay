@@ -29,6 +29,7 @@ RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-ftp/leechcraft-lcftp-${PV}
 		=net-misc/leechcraft-historyholder-${PV}
 		=net-news/leechcraft-aggregator-${PV}
+		=net-misc/leechcraft-azoth-${PV}
 		=www-client/leechcraft-deadlyrics-${PV}
 		=www-client/leechcraft-poshuku-${PV}
 		=www-client/leechcraft-vgrabber-${PV}
