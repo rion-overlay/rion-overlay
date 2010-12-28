@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Dec 2010; Nikoli <nikoli@lavabit.com>
+  +psi-cleaner-0.2.9_pre3410.ebuild:
+  version bump
+
   12 Dec 2010; Nikoli <nikoli@lavabit.com>
   +psi-cleaner-0.2.9_pre3369.ebuild:
   version bump
