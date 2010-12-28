@@ -2,6 +2,10 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Dec 2010; Nikoli <nikoli@lavabit.com>
+  +psi-gmailservice-0.5.7_pre3417.ebuild:
+  version bump
+
   12 Dec 2010; Nikoli <nikoli@lavabit.com>
   +psi-gmailservice-0.5.6_pre3373.ebuild:
   version bump
