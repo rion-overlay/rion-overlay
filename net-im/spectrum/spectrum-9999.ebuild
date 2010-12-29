@@ -49,6 +49,7 @@ src_install () {
 			newinitd "${WORKDIR}/spectrum.initd.${protocol}" "spectrum.${protocol}" || die
 
 			sed -e 's,S2P,'${protocol}',g' "${FILESDIR}/spectrum.confd" > "${WORKDIR}/spectrum.confd.${protocol}" || die
+			sed -e 's,${protocol}.cfg,'${protocol}:${port}',g' "${FILESDIR}/spectrum.confd" > "${WORKDIR}/spectrum.confd.${protocol}"
 			newconfd "${WORKDIR}/spectrum.confd.${protocol}" "spectrum.${protocol}" || die
 		done
 	else
