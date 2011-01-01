@@ -5,11 +5,13 @@
 # @ECLASS: qca-plugin.eclass
 # @MAINTAINER:
 # Rion <rion4ik@gmail.com>
+# qt4 eclass fix
+# slepnoga <spamslepnoga@inbox.ru>
 # @BLURB: Eclass for QCA plugins
 # @DESCRIPTION:
 # This eclass will be used to build all svn qca plugins
 
-inherit eutils qt4-r2 subversion 
+inherit eutils qt4-r2 subversion
 
 IUSE="debug"
 SLOT="2"
@@ -26,7 +28,7 @@ RDEPEND="${DEPEND}"
 qca-plugin_src_prepare() {
 	S="${S}/plugins/${PN}"
 	cd "${S}"
-	qt4_src_prepare
+	qt4-r2_src_prepare
 }
 
 # @FUNCTION: qca-plugin_src_configure
