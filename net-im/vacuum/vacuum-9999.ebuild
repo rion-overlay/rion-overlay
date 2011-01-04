@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -25,6 +25,7 @@ RDEPEND="
 	>=x11-libs/qt-gui-4.5:4
 	>=dev-libs/openssl-0.9.8k
 	adiummessagestyle? ( >=x11-libs/qt-webkit-4.5:4 )
+	x11-libs/libXScrnSaver
 "
 DEPEND="${RDEPEND}"
 
