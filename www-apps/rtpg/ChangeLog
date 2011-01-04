@@ -1,6 +1,19 @@
 # ChangeLog for www-apps/rtpg
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  04 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -rtpg-0.1.6.ebuild,
+  -rtpg-0.2.9.ebuild, +rtpg-0.2.11.ebuild:
+  drop old
+
+*rtpg-0.2.11 (04 Jan 2011)
+
+  04 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -rtpg-0.1.6.ebuild,
+  +rtpg-0.2.11.ebuild:
+  bump
+
+  04 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -rtpg-0.1.6.ebuild:
+  drop old
 
   17 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> rtpg-0.1.6.ebuild:
   fix Can't locate RPC/XML/ParserFactory.pm 
