@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -129,14 +129,11 @@ src_unpack() {
 		i="${k/_/-}"
 		if [[ ${i} = "en" ]] ; then
 			i="en-US"
-			idict="en"
-		else
-			idict="$i"
 		fi
 		LANGDIR="${LANGP}${i}/RPMS/"
 		rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${MY_PV3}.${LOARCH}.rpm"
 		rpm_unpack "./${LANGDIR}/libreoffice${MY_PVM1}-${i}-${MY_PV3}.${LOARCH}.rpm"
-		rpm_unpack "./${LANGDIR}/libreoffice${MY_PVM1}-dict-${idict}-${MY_PV3}.${LOARCH}.rpm"
+		rpm_unpack "./${LANGDIR}/libreoffice${MY_PVM1}-dict-"*"-${MY_PV3}.${LOARCH}.rpm"
 		for j in base binfilter calc help math res writer; do
 			rpm_unpack "./${LANGDIR}/${BASIS}-${i}-${j}-${MY_PV3}.${LOARCH}.rpm"
 		done
