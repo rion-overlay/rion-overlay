@@ -1,6 +1,9 @@
 # ChangeLog for app-office/libreoffice-bin
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Jan 2011; Rion <rion4ik@gmail.com> libreoffice-bin-3.3.0_rc2.ebuild:
+  fixed dicts installation
 
 *libreoffice-bin-3.3.0_rc2 (27 Dec 2010)
 
