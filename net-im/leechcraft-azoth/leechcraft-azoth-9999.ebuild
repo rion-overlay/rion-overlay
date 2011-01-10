@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -9,7 +9,8 @@ inherit leechcraft
 DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 
 IUSE="debug +xoox +chathistory +p100q"
-DEPEND="=net-misc/leechcraft-core-${PV}"
+DEPEND="=net-misc/leechcraft-core-${PV}
+		xoox? ( >=net-libs/gloox-1.0 )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
