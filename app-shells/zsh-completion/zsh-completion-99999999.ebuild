@@ -7,8 +7,8 @@ EAPI="2"
 inherit git
 
 DESCRIPTION="Programmable Completion for zsh (includes emerge and ebuild commands)"
-HOMEPAGE="http://gzc.tuxfamily.org/"
-EGIT_REPO_URI="git://git.tuxfamily.org/gitroot/gzc/completion.git"
+HOMEPAGE="http://git.overlays.gentoo.org/gitweb/?p=proj/zsh-completion.git"
+EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/zsh-completion.git"
 EGIT_TREE="HEAD" # SHA1 id
 
 LICENSE="ZSH"
