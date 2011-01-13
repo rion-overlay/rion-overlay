@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,7 +17,7 @@ IUSE="avahi debug doc examples test"
 
 RDEPEND="
 	avahi? ( net-dns/avahi )
-	>=dev-libs/boost-1.34
+	>=dev-libs/boost-1.42
 	>=dev-libs/openssl-0.9.8g
 	>=net-dns/libidn-1.10
 	>=x11-libs/libXScrnSaver-1.2
@@ -44,9 +44,7 @@ src_prepare() {
 
 	pushd 3rdParty
 	# TODO 'CppUnit'
-	rm -rf CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib
-	# 'Boost' we need >=1.42, but it is not stable now.
-	find Boost/src -type f | grep -v uuid | xargs rm -f
+	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib
 	popd
 }
 
