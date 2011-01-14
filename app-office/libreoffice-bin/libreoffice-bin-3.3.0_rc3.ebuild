@@ -52,7 +52,7 @@ for X in ${LANGS} ; do
 	IUSE="${IUSE} linguas_${X}"
 done
 
-HOMEPAGE="http://www.documentfoundation.org"
+HOMEPAGE="http://www.libreoffice.org/"
 
 LICENSE="LGPL-2"
 SLOT="0"

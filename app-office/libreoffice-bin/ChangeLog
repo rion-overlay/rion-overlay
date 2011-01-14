@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Jan 2011; Rion <rion4ik@gmail.com> libreoffice-bin-3.3.0_rc3.ebuild:
+  update homepage
+
 *libreoffice-bin-3.3.0_rc3 (14 Jan 2011)
 
   14 Jan 2011; Rion <rion4ik@notagmail.com> -libreoffice-bin-3.3.0_rc2.ebuild,
