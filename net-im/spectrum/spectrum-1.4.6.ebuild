@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 EAPI=2
@@ -8,7 +8,7 @@ inherit cmake-utils
 DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
 
-SRC_URI="http://spectrum.im/attachments/download/33/spectrum-${PV}.tar.gz"
+SRC_URI="http://spectrum.im/attachments/download/34/spectrum-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -50,7 +50,6 @@ src_install () {
 			newinitd "${WORKDIR}/spectrum.initd.${protocol}" "spectrum.${protocol}" || die
 
 			sed -e 's,S2P,'${protocol}',g' "${FILESDIR}/spectrum.confd" > "${WORKDIR}/spectrum.confd.${protocol}" || die
-			sed -e 's,${protocol}.cfg,'${protocol}:${port}',g' "${FILESDIR}/spectrum.confd" > "${WORKDIR}/spectrum.confd.${protocol}"
 			newconfd "${WORKDIR}/spectrum.confd.${protocol}" "spectrum.${protocol}" || die
 		done
 	else
@@ -65,6 +64,7 @@ src_install () {
 			newinitd "${WORKDIR}/spectrum.initd.${protocol}" "spectrum.${protocol}" || die
 
 			sed -e 's,S2P,'${protocol}',g' "${FILESDIR}/spectrum.confd" > "${WORKDIR}/spectrum.confd.${protocol}" || die
+			sed -e 's,${protocol}.cfg,'${protocol}:${port}',g' "${FILESDIR}/spectrum.confd" > "${WORKDIR}/spectrum.confd.${protocol}"
 			newconfd "${WORKDIR}/spectrum.confd.${protocol}" "spectrum.${protocol}" || die
 		done
 	fi
