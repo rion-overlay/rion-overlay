@@ -30,7 +30,7 @@ EXPORT_FUNCTIONS src_prepare src_configure
 psiplus-plugin_src_prepare() {
 	qt4-r2_src_prepare
 
-	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi/plugins/psiplugin.pri#' \
+	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi-plus/plugins/psiplugin.pri#' \
 		-i "${MY_PN}".pro || die
 }
 

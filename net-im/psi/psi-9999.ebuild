@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.10 2010/11/30 19:24:56 pva Exp $
 
@@ -61,7 +61,9 @@ pkg_setup() {
 			ewarn "USE=${x} is only available in Psi+ and requires USE=extras, ${x} will be disabled."
 	done
 
+	MY_PN=psi
 	if use extras; then
+		MY_PN=psi-plus
 		echo
 		ewarn "You're about to build heavily patched version of Psi called Psi+."
 		ewarn "It has really nice features but still is under heavy development."
@@ -179,19 +181,19 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install || die "emake install failed"
 
 	# this way the docs will be installed in the standard gentoo dir
-	rm -f "${D}"/usr/share/psi/{COPYING,README}
+	rm -f "${D}"/usr/share/${MY_PN}/{COPYING,README}
 	newdoc iconsets/roster/README README.roster || die
 	newdoc iconsets/system/README README.system || die
 	newdoc certs/README README.certs || die
 	dodoc README || die
 
 	if use extras && use plugins; then
-		insinto /usr/share/psi/plugins
+		insinto /usr/share/${MY_PN}/plugins
 		doins src/plugins/plugins.pri || die
 		doins src/plugins/psiplugin.pri || die
 		doins -r src/plugins/include || die
-		dosed "s:target.path.*:target.path = /usr/$(get_libdir)/psi/plugins:" \
-			/usr/share/psi/plugins/psiplugin.pri \
+		dosed "s:target.path.*:target.path = /usr/$(get_libdir)/${MY_PN}/plugins:" \
+			/usr/share/${MY_PN}/plugins/psiplugin.pri \
 			|| die "sed failed"
 	fi
 
@@ -201,7 +203,7 @@ src_install() {
 
 	# install translations
 	cd "${WORKDIR}/psi-l10n"
-	insinto /usr/share/${PN}
+	insinto /usr/share/${MY_PN}
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
 			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
