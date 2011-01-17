@@ -1,0 +1,25 @@
+# ChangeLog for www-apps/dotclear
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -dotclear-2.1.7.ebuild:
+  drop old
+
+*otclear-2.2 ( 31 Jul 2010 )
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> +dotclear-2.2.ebuild:
+  bump
+
+  09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru> -dotclear-2.1.6.ebuild:
+  remove old
+
+*dotclear-2.1.7
+
+  25 May 2010; <slep@gentoo.org> +dotclear-2.1.7.ebuild:
+  bump
+
+*dotclear-2.1.6
+
+  09 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +dotclear-2.1.6.ebuild,
+  +files/postinst.en.txt, +metadata.xml:
+  initial commit
+
