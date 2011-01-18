@@ -1,13 +1,13 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=2
 WX_GTK_VER="2.8"
 
-inherit eutils
+inherit eutils wxwidgets
 
-DESCRIPTION="Create your own collection of e-books"
+DESCRIPTION="E-book collection manager"
 HOMEPAGE="http://www.lintest.ru/wiki/MyRuLib"
 SRC_URI="http://www.lintest.ru/pub/${P/-/_}.tar.gz"
 

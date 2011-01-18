@@ -6,7 +6,4 @@
 		<email>nikoli@lavabit.com</email>
 		<name>Nikoli</name>
 	</maintainer>
-<use>
-	<flag name="stable">Clone stable git tree</flag>
-</use>
 </pkgmetadata>
