@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,10 +13,11 @@ ESVN_REPO_URI="https://delta.affinix.com/svn/trunk/psimedia"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="extras"
 
 DEPEND="sys-devel/qconf"
-RDEPEND="media-plugins/gst-plugins-speex
+RDEPEND="net-im/psi[extras=]
+	media-plugins/gst-plugins-speex
 	>=media-plugins/gst-plugins-v4l-0.10.22
 	>=media-plugins/gst-plugins-theora-0.10.22
 	>=media-plugins/gst-plugins-ogg-0.10.22
@@ -31,12 +32,14 @@ RDEPEND="media-plugins/gst-plugins-speex
 
 src_unpack() {
 	subversion_src_unpack
-	S="$WORKDIR/patches" ESVN_PROJECT="psimedia/patches" subversion_fetch \
-		"http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
+	use extras && {
+		S="$WORKDIR/patches" ESVN_PROJECT="psimedia/patches" subversion_fetch \
+			"http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
+	}
 }
 
 src_prepare() {
-	epatch "$WORKDIR/patches"/*
+	use extras && epatch "$WORKDIR/patches"/*
 	subversion_src_prepare
 }
 
@@ -47,6 +50,7 @@ src_configure() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/psi/plugins
+	use extras && insinto /usr/$(get_libdir)/psi-plus/plugins
+	! use extras && insinto /usr/$(get_libdir)/psi/plugins
 	doins gstprovider/libgstprovider.so
 }
