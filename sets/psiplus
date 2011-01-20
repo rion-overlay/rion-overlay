@@ -23,4 +23,7 @@ net-im/psi-watcher
 net-im/psi-videostatus
 net-im/psi-contentdownloader
 net-im/psi-pepchangenotify
+net-im/psi-plugins-meta
+net-im/psi-psto
+net-im/psi-otr
 net-im/psi-extendedmenu
