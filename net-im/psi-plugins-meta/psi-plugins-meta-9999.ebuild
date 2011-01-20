@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="attention autoreply birthdayreminder captchaforms chess cleaner conferencelogger contentdownloader extendedoptions gmailservice
-historykeeper icqdie image juick qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher"
+historykeeper icqdie image juick otr pepchangenotify extendedmenu psto qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher"
 
 RDEPEND=""
 
