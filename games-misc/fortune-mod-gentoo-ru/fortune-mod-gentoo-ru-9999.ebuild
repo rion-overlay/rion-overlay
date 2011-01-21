@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -18,9 +18,12 @@ RDEPEND="games-misc/fortune-mod"
 
 S="${WORKDIR}"
 
-src_compile() {
+src_prepare() {
 
-	mv hg/gentoo-ru-9999 gentoo-ru
+	mv gentoo-ru-9999 gentoo-ru || die
+}
+
+src_compile() {
 	/usr/bin/strfile gentoo-ru || die
 }
 
