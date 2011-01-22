@@ -1,6 +1,12 @@
 # ChangeLog for www-servers/nginx
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*nginx-0.9.4 (22 Jan 2011)
+
+  22 Jan 2011; Rion <rion4ik@gmail.com> -nginx-0.9.3.ebuild,
+  +nginx-0.9.4.ebuild:
+  new version of nginx
 
 *nginx-0.9.3 (19 Dec 2010)
 
