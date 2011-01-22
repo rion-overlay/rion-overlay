@@ -19,3 +19,5 @@ DEPEND="
 	net-libs/libotr
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/trunk-compatibility.patch" )

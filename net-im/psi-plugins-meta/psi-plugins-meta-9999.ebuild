@@ -15,6 +15,8 @@ historykeeper icqdie image juick otr pepchangenotify extendedmenu psto qipxstatu
 
 RDEPEND=""
 
-for plugin in $IUSE; do
+for plugin in ${IUSE/otr}; do
 	RDEPEND+=" ${plugin}? ( >=net-im/psi-${plugin}-${PV} )"
 done
+
+RDEPEND+=" otr? ( net-im/psi-otr )"
