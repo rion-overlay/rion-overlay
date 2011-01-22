@@ -1,0 +1,8 @@
+# ChangeLog for net-analyzer/goaccess
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Dec 2010; Nikoli <nikoli@lavabit.com> +goaccess-0.4.1.ebuild,
+  +metadata.xml:
+  initial ebuild
+
