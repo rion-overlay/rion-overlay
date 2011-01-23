@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=3.3.0-rc3
+version=3.3.0-rc4
 arches="x86 x86_64"
 outfile=/tmp/libreoffice.manifest
 
