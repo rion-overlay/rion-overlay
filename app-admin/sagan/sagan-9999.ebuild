@@ -13,15 +13,17 @@ ESVN_REPO_URI="http://svn.softwink.com/svn/repos/sagan/trunk"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="smtp mysql postgres prelude"
+IUSE="smtp mysql postgres prelude lognorm pcap"
 
 DEPEND="dev-util/pkgconfig"
 RDEPEND="dev-libs/libpcre
 	app-admin/sagan-rules
 	smtp? ( net-libs/libesmtp )
+	pcap? ( net-libs/libpcap )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql-base )
-	prelude? ( dev-libs/libprelude )"
+	prelude? ( dev-libs/libprelude )
+	lognorm? ( dev-libs/liblognorm )"
 
 pkg_setup() {
 	enewgroup sagan
@@ -38,7 +40,9 @@ src_configure() {
 		$(use_enable mysql) \
 		$(use_enable postgres postgresql)  \
 		$(use_enable smtp esmtp) \
-		$(use_enable prelude ) || die "econf failed"
+		$(use_enable prelude ) \
+		$(use_enable lognorm) \
+		$(use_enable pcap libpcap) || die "econf failed"
 }
 
 src_install() {
