@@ -8,7 +8,7 @@ inherit eutils fdo-mime gnome2-utils rpm multilib versionator
 
 IUSE="gnome java kde linguas_en"
 
-BUILDID="5"
+BUILDID="6"
 UREVER="1.7.0"
 MY_PV="${PV/_/}" # download file name
 MY_PV1="${PV/_/-}" # download uri
