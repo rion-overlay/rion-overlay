@@ -101,6 +101,7 @@ CDEPEND="
 		>=dev-ruby/rake-0.8.1
 		>=dev-ruby/fastthread-1.0.1
 		>=dev-ruby/rack-1.0.0
+		!!www-apache/passenger
 	)
 	perftools? ( dev-util/google-perftools )
 	rrd? ( >=net-analyzer/rrdtool-1.3.8 )
