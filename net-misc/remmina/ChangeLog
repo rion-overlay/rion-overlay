@@ -1,0 +1,36 @@
+# ChangeLog for net-misc/remmina
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*remmina-0.9.3 (20 Jan 2011)
+
+  20 Jan 2011; Rion <rion4ik@notagmail.com> -remmina-0.9.2.ebuild,
+  +remmina-0.9.3.ebuild:
+  new version
+
+*remmina-0.9.2 (27 Dec 2010)
+
+  27 Dec 2010; Rion <rion4ik@notagmail.com> -remmina-0.9.1.ebuild,
+  +remmina-0.9.2.ebuild:
+  new version
+
+*remmina-0.9.1 (15 Dec 2010)
+
+  15 Dec 2010; Rion <rion4ik@notagmail.com> -remmina-0.9.0.ebuild,
+  +remmina-0.9.1.ebuild:
+  new version
+
+*remmina-0.9.0 (13 Dec 2010)
+
+  13 Dec 2010; Rion <rion4ik@notagmail.com> -remmina-0.8.3.ebuild,
+  +remmina-0.9.0.ebuild:
+  new version
+
+  18 Oct 2010; Rion <rion4ik@notagmail.com> -remmina-0.8.2.ebuild,
+  +remmina-0.8.3.ebuild:
+  new version
+
+  20 Sep 2010; Rion <rion4ik@notagmail.com> +remmina-0.8.2.ebuild,
+  +metadata.xml:
+  initial version
+
