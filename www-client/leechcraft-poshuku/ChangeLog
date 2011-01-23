@@ -1,0 +1,23 @@
+# ChangeLog for www-client/leechcraft-poshuku
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  10 Jan 2011; G. Rudoy <0xd34df00d@gmail.com> leechcraft-poshuku-9999.ebuild:
+  Updated ebuild for poshuku-9999 to depend on qjson.
+
+  27 Jun 2010; <slep@gentoo.org> leechcraft-poshuku-9999.ebuild:
+  fix idn use flag
+
+  25 Jun 2010; G. Rudoy <0xd34df00d@gmail.com>
+  leechcraft-poshuku-9999.ebuild:
+  Added idn useflag for LC Poshuku.
+
+  22 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +leechcraft-poshuku-9999.ebuild, +metadata.xml:
+  recommit in rion
+
+  13 Feb 2010; G. Rudoy <0xd34df00d@gmail.com>
+  +leechcraft-poshuku-9999.ebuild:
+  Split build for Poshuku plugin.
+
+*leechcraft-poshuku-9999 ( 13 Feb 2010; G. Rudoy )
