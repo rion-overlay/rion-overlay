@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> sagan-rules-9999.ebuild,
+  sagan-rules-10212010.ebuild:
+  small description fix
+
   23 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru>
   -sagan-rules-08222010-r1.ebuild, -sagan-rules-10052010.ebuild:
   drop old ebuild
