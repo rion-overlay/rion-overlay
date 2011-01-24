@@ -6,7 +6,7 @@ EAPI=3
 
 inherit subversion
 
-DESCRIPTION="Rules for Sagan log analizer"
+DESCRIPTION="Rules for Sagan log analyzer"
 HOMEPAGE="http://sagan.softwink.com/"
 ESVN_REPO_URI="http://svn.softwink.com/svn/repos/sagan-rules/trunk"
 
