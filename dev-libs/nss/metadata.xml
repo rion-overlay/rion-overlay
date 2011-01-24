@@ -4,7 +4,6 @@
 <herd>mozilla</herd>
 <use>
   <flag name='utils'>Install utilities included with the library</flag>
-  <flag name='mod)revocator'>Install files nedeed for
- 		 <pkg>www-apache/revocator</pkg>build</flag>
+  <flag name='revocator'>Install files nedeed for <pkg>www-apache/revocator</pkg>build</flag>
 </use>
 </pkgmetadata>
