@@ -1,16 +1,14 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-MY_P="AQEMU-0.8.1-Beta2"
-
 inherit  cmake-utils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators. Using Qt4."
 HOMEPAGE="http://sourceforge.net/projects/aqemu"
-SRC_URI="mirror://sourceforge/aqemu/AQEMU-0.8.1-Beta2.tar.bz2"
+SRC_URI="mirror://sourceforge/aqemu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="kvm vnc"
 
 DEPEND="${RDEPEND}"
-
 RDEPEND="kvm? ( app-emulation/qemu-kvm )
 	!kvm? ( >=app-emulation/qemu-0.9.0 )
 	vnc? ( net-libs/libvncserver )
@@ -27,8 +24,6 @@ RDEPEND="kvm? ( app-emulation/qemu-kvm )
 	x11-libs/qt-xmlpatterns:4"
 
 DOCS="AUTHORS CHANGELOG README TODO"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 
