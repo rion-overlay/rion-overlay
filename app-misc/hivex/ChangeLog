@@ -1,0 +1,30 @@
+# ChangeLog for app-misc/hivex
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*hivex-1.2.4 (23 Dec 2010)
+
+  23 Dec 2010; <slep@gentoo.org> +hivex-1.2.4.ebuild:
+  bump
+
+  09 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3-r1.ebuild,
+  +hivex-1.2.3-r2.ebuild:
+  fil localpod install
+
+  01 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3-r1.ebuild:
+  clean and add ~x86 keyword
+
+  23 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> -hivex-1.2.3.ebuild,
+  +hivex-1.2.3-r1.ebuild, files/autoconf_fix.patch:
+  fix configure
+
+  19 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3.ebuild,
+  +files/autoconf_fix.patch:
+  disable biindings due automagic depends
+
+*hivex-1.2.3.ebuild ( 19 Oct 2010 )
+
+  19 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +hivex-1.2.3.ebuild,
+  +metadata.xml:
+  initial commit
+

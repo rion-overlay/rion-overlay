@@ -1,0 +1,14 @@
+# ChangeLog for net-im/swift
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  13 Jan 2011; Nikoli <nikoli@lavabit.com> swift-9999.ebuild:
+  boost-1.42 is stable
+
+  24 Oct 2010; Nikoli <nikoli@lavabit.com> swift-9999.ebuild:
+  upstream now supports ccache and distcc
+
+  18 Oct 2010; Nikoli <nikoli@lavabit.com> +swift-9999.ebuild,
+  +metadata.xml:
+  initial import
+
