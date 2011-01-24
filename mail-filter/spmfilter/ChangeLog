@@ -1,6 +1,9 @@
 # ChangeLog for mail-filter/spmfilter
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header$
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -spmfilter-0.4.0.ebuild:
+  drop old
 
   31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   +spmfilter-0.4.2.ebuild:
