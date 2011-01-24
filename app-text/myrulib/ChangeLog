@@ -1,0 +1,12 @@
+# ChangeLog for app-text/myrulib
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Jan 2011; Nikoli <nikoli@lavabit.com> myrulib-0.24.18.ebuild,
+  +myrulib-0.26.6.ebuild, myrulib-9999.ebuild:
+  version bump, stable git branch is obsolete
+
+  18 Dec 2010; Nikoli <nikoli@lavabit.com> +myrulib-0.24.18.ebuild,
+  +myrulib-9999.ebuild, +metadata.xml:
+  initial ebuilds
+
