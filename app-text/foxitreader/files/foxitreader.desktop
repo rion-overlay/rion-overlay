@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=FoxitReader
-Type=Application
-Comment=Foxit PDF Reader
-Exec=foxitreader
-TryExec=foxitreader
-Icon=foxitreader
-Categories=GTK;Office;Viewer;
-MimeType=application/pdf;
