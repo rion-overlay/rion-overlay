@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -29,7 +29,7 @@ RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-ftp/leechcraft-lcftp-${PV}
 		=net-misc/leechcraft-historyholder-${PV}
 		=net-news/leechcraft-aggregator-${PV}
-		=net-misc/leechcraft-azoth-${PV}
+		=net-im/leechcraft-azoth-${PV}
 		=www-client/leechcraft-deadlyrics-${PV}
 		=www-client/leechcraft-poshuku-${PV}
 		=www-client/leechcraft-vgrabber-${PV}
