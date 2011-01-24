@@ -1,6 +1,13 @@
 # ChangeLog for app-admin/sagan
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  23 Jan 2011; <slep@gentoo.org> -sagan-0.1.6.ebuild:
+  drop old sagan ebuild
+
+  23 Jan 2011; <slep@gentoo.org> sagan-9999.ebuild, files/sagan.confd,
+  files/sagan.init, metadata.xml:
+  more fix
 
   01 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru> -sagan-0.1.5.ebuild:
   remove olsd sagan

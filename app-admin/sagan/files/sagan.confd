@@ -11,6 +11,3 @@ SAGAN_OPTS=" --daemon "
 #
 #Chroot sagan daemon to sagan's home
 #SAGAN_CHROOT="yes"
-#Run Sagan in syslog-ng's 'program' mode.
-#
-#LOGGER="syslog-ng"
