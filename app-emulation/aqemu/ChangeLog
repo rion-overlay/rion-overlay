@@ -1,6 +1,16 @@
 # ChangeLog for app-emulation/aqemu
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.8.0.ebuild,
+  -aqemu-0.8.0-r1.ebuild:
+  drop old
+
+*aqemu-0.8.1 (24 Jan 2011)
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.8.1_beta2.ebuild,
+  +aqemu-0.8.1.ebuild:
+  bump
 
   05 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> aqemu-0.8.0.ebuild,
   +aqemu-0.8.1_beta2.ebuild, aqemu-9999.ebuild, metadata.xml:
