@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/acutil
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*acutil-6.1.12 (24 Jan 2011)
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.12.ebuild:
+  bump
 
   16 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> -acutil-6.1.6.ebuild,
   -acutil-6.1.10.ebuild:
