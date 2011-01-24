@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -51,8 +51,15 @@ src_install() {
 	keepdir /var/log/sagan
 	keepdir /var/run/sagan
 
+	mkfifo -m 0640 "${D}"/var/run/sagan.fifo || die
+	chown sagan.root "${D}"/var/run/sagan.fifo || die
+
+	touch "${D}"/var/log/sagan/sagan.log || die
+	chown sagan.sagan "${D}"/var/log/sagan/sagan.log || die
+
 	newinitd "${FILESDIR}"/sagan.init sagan || die
 	newconfd "${FILESDIR}"/sagan.confd sagan || die
+
 }
 
 pkg_postinst() {

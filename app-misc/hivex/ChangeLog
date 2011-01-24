@@ -1,6 +1,10 @@
 # ChangeLog for app-misc/hivex
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -hivex-1.2.3-r1.ebuild,
+  -hivex-1.2.3-r2.ebuild:
+  drop old
 
 *hivex-1.2.4 (23 Dec 2010)
 

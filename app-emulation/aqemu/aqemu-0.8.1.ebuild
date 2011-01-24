@@ -1,10 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
-
-MY_PV="0.8"
 
 inherit  cmake-utils
 
@@ -18,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="kvm vnc"
 
 DEPEND="${RDEPEND}"
-
 RDEPEND="kvm? ( app-emulation/qemu-kvm )
 	!kvm? ( >=app-emulation/qemu-0.9.0 )
 	vnc? ( net-libs/libvncserver )
@@ -27,8 +24,6 @@ RDEPEND="kvm? ( app-emulation/qemu-kvm )
 	x11-libs/qt-xmlpatterns:4"
 
 DOCS="AUTHORS CHANGELOG README TODO"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_configure() {
 

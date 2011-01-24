@@ -1,6 +1,10 @@
 # ChangeLog for app-emulation/packettracer
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-521-r3.ebuild:
+  drop old
 
   17 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   packettracer-521-r3.ebuild:
