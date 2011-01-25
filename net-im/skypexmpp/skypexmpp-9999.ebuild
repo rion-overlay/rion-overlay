@@ -7,8 +7,8 @@ EAPI="2"
 inherit eutils subversion python
 
 DESCRIPTION="XMPP skype gateway"
-HOMEPAGE="http://code.google.com/p/karaka"
-ESVN_REPO_URI="http://karaka.googlecode.com/svn/trunk"
+HOMEPAGE="http://sourceforge.net/projects/skypexmpp"
+ESVN_REPO_URI="https://skypexmpp.svn.sourceforge.net/svnroot/skypexmpp/"
 
 LICENSE="GPL-2"
 SLOT="0"
