@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jan 2011; Nikoli <nikoli@lavabit.com> psi-psto-9999.ebuild:
+  fix
+
   13 Jan 2011; mva <mva@mva.name> ChangeLog:
   Initial.
 
