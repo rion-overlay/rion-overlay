@@ -1,6 +1,9 @@
 # ChangeLog for net-im/psi-chess
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  25 Jan 2011; Nikoli <nikoli@lavabit.com> +psi-chess-0.2.0_pre3567.ebuild:
+  version bump
 
   27 Dec 2010; Nikoli <nikoli@lavabit.com> +psi-chess-0.1.9_pre3410.ebuild:
   version bump

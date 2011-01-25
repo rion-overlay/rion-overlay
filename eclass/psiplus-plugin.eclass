@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -22,7 +22,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">net-im/psi-0.14[extras,plugins]"
+DEPEND=">=net-im/psi-0.15_pre20110125[extras,plugins]"
 RDEPEND="${DEPEND}"
 
 EXPORT_FUNCTIONS src_prepare src_configure

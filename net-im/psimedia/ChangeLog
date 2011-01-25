@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jan 2011; Nikoli <nikoli@lavabit.com> +psimedia-1.0.3_p20110125.ebuild:
+  add snapshot
+
+  25 Jan 2011; Nikoli <nikoli@lavabit.com> psimedia-9999.ebuild,
+  metadata.xml:
+  fix deps, sync with portage
+
   18 Jan 2011; Rion <rion4ik@gmail.com> psimedia-9999.ebuild:
   fix install path for psi-plus
 
