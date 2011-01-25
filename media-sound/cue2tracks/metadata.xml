@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>sterkrig@home.no</email>
+ <description>Trac-based continuous integration framework</description>
+</maintainer>
+<use>
+<flag name='mac'>Add support for Monkey's Audio files</flag>
+<flag name='flake'>Add support for Flake, alternative FLAC encoder</flag>
+<flag name='tta'>Add support for TTA-encoding</flag>
+</use>
+
+</pkgmetadata>

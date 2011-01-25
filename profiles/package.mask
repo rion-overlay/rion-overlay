@@ -1,0 +1,22 @@
+# 19 Dec 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+=www-servers/nginx-0.9*
+
+# 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# Multiple XSS and denial of service vulnerabilities
+# see  http://otrs.org/advisory/OSA-2010-02-en/
+<www-apps/otrs-2.3.6
+=www-apps/otrs-2.4.7
+
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#mask for work failures
+app-crypt/openca-base
+app-crypt/openca
+
+# 4 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for testing
+=www-apps/otrs-3.0.0_beta*
+
+# 13 Aug 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# ebuild use live dep's, waiting for in portage unmask 
+=app-emulation/aqemu-0.8.0-r1
