@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
-<maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
-</maintainer>
- <longdescription>Long description of the package</longdescription> 
-<use>
-</use>
+	<herd>net-im</herd>
+	<maintainer>
+		<email>nikoli@lavabit.com</email>
+		<name>Nikoli</name>
+	</maintainer>
+	<use>
+		<flag name='demo'>Build simple test application for the PsiMedia system</flag>
+		<flag name='extras'>Enables extra non official patches</flag>
+	</use>
 </pkgmetadata>
