@@ -1,17 +1,13 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: mva$
+# $Header: $
 
 EAPI="2"
-inherit mercurial psiplus-plugin
+
+inherit psiplus-plugin mercurial
 
 DESCRIPTION="Psi plugin for psto.net service"
-SCM="mercurial"
 EHG_REPO_URI="https://bitbucket.org/werehuman/psi-psto-plugin"
+
 KEYWORDS=""
 IUSE=""
-
-
-src_unpack() {
-mercurial_fetch
-}
