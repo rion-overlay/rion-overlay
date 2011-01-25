@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>andreis.vinogradovs@gmail.com</email>
+ <description>Sagan is a multi-threaded, real time system and event log monitoring system</description> 
+ </maintainer>
+<use>
+<flag name='smtp'> Build witch SMTP ( E-Mail) support</flag>
+<flag name='lognorm'>Add support for log/rules normalizations via <pkg>dev-libs/liblognorm</pkg></flag>
+<flag name='pcap'>Add support for network packet capture via <pkg>net-libs/libpcap</pkg></flag>
+</use>
+</pkgmetadata>

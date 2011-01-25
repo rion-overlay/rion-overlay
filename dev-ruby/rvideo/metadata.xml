@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd></herd>
+<maintainer><email>graaff@gentoo.org</email></maintainer>
+<use>
+  <flag name="flv">Add support for postprocessing .flv files with flvtool2</flag>
+</use>
+</pkgmetadata>
