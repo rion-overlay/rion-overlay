@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+opts="${opts} reload"
+
+start() {
+    ebegin "Starting bucardo"
+    /usr/bin/bucardo_ctl start "Starting Bucardo via init-script"
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping bucardo"
+    /usr/bin/bucardo_ctl stop "Stopping Bucardo via init-script..."
+    eend $?
+}
+
+reload() {
+    ebegin "Attempting to gracefully restart Bucardo..."
+    /usr/bin/bucardo_ctl start "Attempting to gracefully restart Bucardo..."
+	eend $?
+}
