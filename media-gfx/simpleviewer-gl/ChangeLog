@@ -1,0 +1,11 @@
+# ChangeLog for media-gfx/simpleviewer-gl
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Nov 2010; Nikoli <nikoli@lavabit.com> simpleviewer-gl-9999.ebuild:
+  migrate to cmake
+
+  18 Oct 2010; Nikoli <nikoli@lavabit.com> simpleviewer-gl-9999.ebuild,
+  +metadata.xml:
+  respect CXX, CFLAGS, LDFLAGS, fix strip, cosmetics
+

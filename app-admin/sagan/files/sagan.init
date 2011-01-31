@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	use logger mysql postgresql 
+	need localmount
+
+}
+
+start() {
+	/usr/bin/sagan  ${SAGAN_OPTS} --daemon --user ${SAGAN_USER}  --program ${LOGGER}
+
+	eend $?
+}
+
+stop() {
+	kill -15 `cat /var/run/sagan/sagan.pid`
+
+}
