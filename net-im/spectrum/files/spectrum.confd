@@ -1,7 +1,7 @@
-# /etc/conf.d/spectrum.S2P: config file for spectrum S2P transport
+# /etc/conf.d/spectrum.PROTOCOL: config file for spectrum PROTOCOL transport
 
 # Configfile
-CONFFILE="/etc/spectrum/S2P.cfg"
+CONFFILE="/etc/spectrum/PROTOCOL.cfg"
 
 # PID
-PIDFILE="/var/run/spectrum/S2P.pid"
+PIDFILE="/var/run/spectrum/PROTOCOL.pid"

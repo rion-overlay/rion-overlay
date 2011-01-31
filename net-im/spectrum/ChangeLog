@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Jan 2011; Rion <rion4ik@notagmail.com> spectrum-1.4.7.ebuild,
+  spectrum-9999.ebuild, -files/spectrum.symlink.cfg, files/spectrum.cfg,
+  files/spectrum.confd, files/spectrum.initd:
+  sync with tracker + small chnages
+
 *spectrum-1.4.6 (15 Jan 2011)
 
   15 Jan 2011; Rion <rion4ik@gmail.com> -spectrum-1.4.5.ebuild,
