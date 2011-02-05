@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/kbdd
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  05 Feb 2011; Nickolaj Stjujsckij <sterkrig@home.no> -kbdd-0.4.4.ebuild:
+  Remove 0.4.4, because 0.5 behaves decently
 
 *kbdd-0.5 (16 Dec 2010)
 
