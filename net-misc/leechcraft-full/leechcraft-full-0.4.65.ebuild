@@ -11,6 +11,7 @@ HOMEPAGE="http://leechcraft.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="kde"
+KEYWORDS="~amd64 ~x86"
 RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-misc/leechcraft-core-${PV}
 		=net-misc/leechcraft-summary-${PV}
