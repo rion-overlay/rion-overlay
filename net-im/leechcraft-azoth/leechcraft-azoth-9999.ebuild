@@ -10,7 +10,8 @@ DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 
 IUSE="debug +xoox +chathistory +p100q"
 DEPEND="=net-misc/leechcraft-core-${PV}
-		xoox? ( >=net-libs/qxmpp-9999 )"
+		>=x11-libs/qt-webkit-4.6.0
+		xoox? ( >=net-libs/qxmpp-9999[extras] )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
