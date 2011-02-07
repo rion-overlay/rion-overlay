@@ -9,5 +9,8 @@
 	<longdescription lang="en">
 		A cross-platform C++ XMPP client library based on the Qt framework.
 	</longdescription>
+	<use>
+		<flag name="extras">Enables extra non official patches from git://github.com/0xd34df00d/qxmpp-dev.git feature fork.</flag>
+	</use>
 </pkgmetadata>
 
