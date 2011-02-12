@@ -8,7 +8,7 @@ inherit leechcraft
 
 DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 
-IUSE="debug +xoox +chathistory +p100q"
+IUSE="debug +xoox +chathistory +p100q +standardstyles +acetamide"
 DEPEND="=net-misc/leechcraft-core-${PV}
 		>=x11-libs/qt-webkit-4.6.0
 		xoox? ( >=net-libs/qxmpp-9999[extras] )"
@@ -25,6 +25,8 @@ src_configure() {
 		`cmake-utils_use_enable chathistory AZOTH_CHATHISTORY`
 		`cmake-utils_use_enable p100q AZOTH_P100Q`
 		`cmake-utils_use_enable xoox AZOTH_XOOX`
+		`cmake-utils_use_enable standardstyles AZOTH_STANDARDSTYLES`
+		`cmake-utils_use_enable acetamide AZOTH_ACETAMIDE`
 		"
 
 	cmake-utils_src_configure
