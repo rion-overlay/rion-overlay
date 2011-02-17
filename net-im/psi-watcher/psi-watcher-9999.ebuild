@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit psiplus-plugin
 
-DESCRIPTION="Psi plugin for sending in-band images"
+DESCRIPTION="Psi plugin for watching on contacts"
 
 KEYWORDS=""
 IUSE=""
