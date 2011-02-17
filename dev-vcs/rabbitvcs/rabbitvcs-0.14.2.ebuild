@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rabbitvcs/rabbitvcs-0.13.3.ebuild,v 1.1 2010/10/26 20:59:03 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rabbitvcs/rabbitvcs-0.14.1.1.ebuild,v 1.1 2011/02/06 18:34:40 xmw Exp $
 
-EAPI=2
+EAPI="3"
 
 PYTHON_DEPEND="2:2.5"
 SUPPORT_PYTHON_ABIS="1"
@@ -12,15 +12,15 @@ inherit gnome2-utils distutils
 
 DESCRIPTION="Integrated version control support for your desktop"
 HOMEPAGE="http://rabbitvcs.org"
-SRC_URI="http://rabbitvcs.googlecode.com/files/${P/_/}.tar.gz"
+SRC_URI="http://rabbitvcs.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cli diff gedit git nautilus spell thunar"
-S="${WORKDIR}/${P/_/}"
 
 RDEPEND="dev-python/configobj
+	dev-python/gnome-vfs-python
 	dev-python/pygobject
 	dev-python/pygtk
 	dev-python/pysvn
@@ -42,6 +42,9 @@ src_prepare() {
 	# we should not do gtk-update-icon-cache from setup script
 	# we prefer portage for that
 	sed -e 's/"install"/"fakeinstall"/' -i "${S}/setup.py" || die
+
+	# fix locale installation directory
+	sed -i -e 's:/locale:/share/locale:' "${S}/setup.py" || die
 }
 
 src_install() {
@@ -51,17 +54,17 @@ src_install() {
 		dobin clients/cli/${PN} || die
 	fi
 	if use gedit ; then
-		insinto /usr/$(get_libdir)/gedit-2/plugins
+		insinto "${EPREFIX}/usr/$(get_libdir)/gedit-2/plugins"
 		doins clients/gedit/${PN}-plugin.py || die
 		doins clients/gedit/${PN}.gedit-plugin || die
 	fi
 	if use nautilus ; then
-		insinto /usr/$(get_libdir)/nautilus/extensions-2.0/python
+		insinto "${EPREFIX}/usr/$(get_libdir)/nautilus/extensions-2.0/python"
 		doins clients/nautilus/RabbitVCS.py || die
 	fi
 	if use thunar ; then
 		has_version '>=xfce-base/thunar-1.1.0' && tv=2 || tv=1
-		insinto "/usr/$(get_libdir)/thunarx-${tv}/python"
+		insinto "${EPREFIX}/usr/$(get_libdir)/thunarx-${tv}/python"
 		doins clients/thunar/RabbitVCS.py || die
 	fi
 }
@@ -75,7 +78,7 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 
 	elog "You should restart file manager to changes take effect:"
-	use nautilus && elog "\$ nautilus -q && nautilus &"
+	use nautilus && elog "\$ nautilus -q"
 	use thunar && elog "\$ thunar -q && thunar &"
 	elog ""
 	elog "Also you should really look at known issues page:"
