@@ -42,9 +42,6 @@ src_prepare() {
 	# we should not do gtk-update-icon-cache from setup script
 	# we prefer portage for that
 	sed -e 's/"install"/"fakeinstall"/' -i "${S}/setup.py" || die
-
-	# fix locale installation directory
-	sed -i -e 's:/locale:/share/locale:' "${S}/setup.py" || die
 }
 
 src_install() {
