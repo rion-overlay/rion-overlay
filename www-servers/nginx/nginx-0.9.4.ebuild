@@ -33,8 +33,8 @@ HTTP_PUSH_MODULE_P="nginx_http_push_module-0.692"
 # http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
 HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-1.2"
 
-CHUNKIN_MODULE_PV="0.21"
-CHUNKIN_MODULE_SHA1="847b3de"
+CHUNKIN_MODULE_PV="0.22rc1"
+CHUNKIN_MODULE_SHA1="b0a3ee3"
 
 inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
 
@@ -157,6 +157,19 @@ src_unpack() {
 
 src_prepare() {
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make
+
+	if use nginx_modules_http_passenger; then
+		cd "${WORKDIR}"/passenger-"${PASSENGER_PV}";
+
+		epatch "${FILESDIR}"/passenger-3.0.0-gentoo.patch
+		epatch "${FILESDIR}"/passenger-3.0.0-ldflags.patch
+
+		sed -i -e "s:/usr/share/doc/phusion-passenger:/usr/share/doc/${P}:" \
+		-e "s:/usr/lib/phusion-passenger/agents:/usr/libexec/passenger/agents:" lib/phusion_passenger.rb || die
+		sed -i -e "s:/usr/lib/phusion-passenger/agents:/usr/libexec/passenger/agents:" ext/common/ResourceLocator.h || die
+		sed -i -e '/passenger-install-apache2-module/d' -e "/passenger-install-nginx-module/d" lib/phusion_passenger/packaging.rb || die
+		rm -f bin/passenger-install-apache2-module bin/passenger-install-nginx-module || die "Unable to remove unneeded install script."
+	fi
 }
 
 src_configure() {
@@ -310,25 +323,8 @@ src_install() {
 	fi
 
 	if use nginx_modules_http_passenger; then
-		# passengers Rakefile is so horribly broken that we have to do it
-		# manually
 		cd "${WORKDIR}"/passenger-${PASSENGER_PV}
-
-		export RUBY="ruby18"
-
-		insinto $(${RUBY} -rrbconfig -e 'print Config::CONFIG["archdir"]')/phusion_passenger
-		insopts -m 0755
-		doins ext/phusion_passenger/*.so
-		doruby -r lib/phusion_passenger
-
-		exeinto /usr/bin
-		doexe bin/passenger-memory-stats bin/passenger-status
-
-		exeinto /usr/libexec/passenger/bin
-		doexe bin/passenger-spawn-server
-
-		exeinto /usr/libexec/passenger/ext/nginx
-		doexe ext/nginx/HelperServer
+		rake fakeroot
 	fi
 
 	use chunk   && newdoc "${WORKDIR}/agentzh-chunkin-nginx-module-${CHUNKIN_MODULE_SHA1}"/README README.chunkin
