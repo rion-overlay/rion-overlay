@@ -23,7 +23,7 @@ HTTP_HEADERS_MORE_MODULE_SHA1="9508330"
 
 # http_passenger (http://www.modrails.com/, MIT license)
 # TODO: currently builds some stuff in src_configure
-PASSENGER_PV="3.0.1"
+PASSENGER_PV="3.0.2"
 USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
 
