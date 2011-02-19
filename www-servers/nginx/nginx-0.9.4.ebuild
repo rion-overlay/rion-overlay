@@ -157,11 +157,6 @@ src_unpack() {
 
 src_prepare() {
 	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make
-
-	if use nginx_modules_http_passenger; then
-		cd "${WORKDIR}"/passenger-${PASSENGER_PV}
-		epatch "${FILESDIR}"/passenger-CFLAGS.patch
-	fi
 }
 
 src_configure() {
