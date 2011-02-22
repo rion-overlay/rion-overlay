@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Feb 2011; mva <mva@mva.name> nginx-0.9.4.ebuild,
+  +files/passenger-3.0.0-gentoo.patch, +files/passenger-3.0.0-ldflags.patch,
+  metadata.xml:
+  Fixed NgX v0.9 with Passenger v3
+
   23 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> nginx-0.9.4.ebuild:
   add block to www-apache/passenger, fix gb#348501
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
+<herd>rion-overlay</herd>
 <maintainer>
-	<email>voxus@gentoo.org</email>
+	<email>mva@mva.name</email>
 </maintainer>
 <use>
 	<flag name='aio'>Enable aio support</flag>
