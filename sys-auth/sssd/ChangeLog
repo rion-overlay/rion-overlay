@@ -1,0 +1,13 @@
+# ChangeLog for sys-auth/sssd
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sssd-1.5.0 (12 Feb 2011)
+
+  12 Feb 2011; A. Vinogradov <spamslepnoga@inbox.ru> +sssd-1.5.0.ebuild:
+  bump major version
+
+  01 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> +sssd-1.4.1.ebuild,
+  +metadata.xml:
+  initial rekommit from my dew overlay
+
