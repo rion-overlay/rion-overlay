@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -19,7 +19,8 @@ SLOT="0"
 
 PYTHON_DEPEND="2"
 DISTUTILS_SRC_TEST="setup.py"
-RESTRICT_PYTHON_ABIS="2:2.4"
+RESTRICT_PYTHON_ABIS="3.*"
+SUPPORT_PYTHON_ABIS="1"
 
 RDEPEND="master? ( www-apps/trac )"
 
@@ -33,7 +34,6 @@ src_prepare() {
 }
 
 pkg_setup() {
-	python_set_active_version 2
 	DISTUTILS_GLOBAL_OPTIONS=($(use_with master))
 }
 
