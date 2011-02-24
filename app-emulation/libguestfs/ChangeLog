@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Feb 2011; A. Vinogradov <spamslepnoga@inbox.ru> libguestfs-1.7.24.ebuild:
+  delete patch in ibguestfs-1.7.24
+
   24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -libguestfs-1.7.18.ebuild:
   drop old
 
