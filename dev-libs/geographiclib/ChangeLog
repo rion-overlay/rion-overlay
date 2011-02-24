@@ -1,0 +1,21 @@
+# ChangeLog for dev-libs/geographiclib
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*geographiclib-1.8 (24 Feb 2011)
+
+  24 Feb 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.8.ebuild:
+  Bump version to 1.8
+
+*geographiclib-1.7 (25 Jan 2011)
+
+  25 Jan 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  -geographiclib-1.2.ebuild, -geographiclib-1.4.ebuild,
+  +geographiclib-1.7.ebuild:
+  Drop old versions, bump to 1.7 (thanks to slepnoga for reminder)
+
+  22 Sep 2010; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.2.ebuild, +geographiclib-1.4.ebuild:
+  Add GeographicLib (vv. 1.2, 1.4)
+

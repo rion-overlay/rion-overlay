@@ -1,0 +1,47 @@
+# ChangeLog for app-admin/sagan-rules
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> sagan-rules-9999.ebuild,
+  sagan-rules-10212010.ebuild:
+  small description fix
+
+  23 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  -sagan-rules-08222010-r1.ebuild, -sagan-rules-10052010.ebuild:
+  drop old ebuild
+
+*sagan-rules-9999 (23 Jan 2011)
+
+  23 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> +sagan-rules-9999.ebuild:
+  add live ebuild
+
+*sagan-rules-10212010 (30 Nov 2010)
+
+  30 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +sagan-rules-10212010.ebuild:
+  bump
+
+  17 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -sagan-rules-07222010.ebuild, +sagan-rules-10052010.ebuild:
+  update ruleset
+
+  10 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  sagan-rules-07222010.ebuild, sagan-rules-08222010-r1.ebuild:
+  add ~x86 keywords
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -sagan-rules-06242010.ebuild, +sagan-rules-08222010-r1.ebuild:
+  version bum and remove old
+
+*sagan-rules-07222010
+
+  31 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +sagan-rules-07222010.ebuild:
+  bump
+
+*sagan-rules-06242010
+
+  27 Jun 2010; <slep@gentoo.org> +sagan-rules-06242010.ebuild,
+  +metadata.xml:
+  initial commit
+
