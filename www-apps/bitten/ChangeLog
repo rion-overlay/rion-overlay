@@ -1,6 +1,10 @@
 # ChangeLog for www-apps/bitten
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  24 Feb 2011; Nickolaj Stjujsckij <sterkrig@home.no> -bitten-0.6_beta2.ebuild,
+  -bitten-0.6_beta3.ebuild:
+  Drop old/unpatched betas
 
   23 Oct 2010; Nickolaj Stjujsckij <sterkrig@home.no>
   +bitten-0.6_beta3-r1.ebuild, +files/hg_pull.trac_0.12.patch:
