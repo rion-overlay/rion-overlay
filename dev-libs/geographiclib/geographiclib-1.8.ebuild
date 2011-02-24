@@ -18,7 +18,8 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	emake DESTDIR="${D}" install || die
+	rm -rf ${D}/usr/share/doc/
 	if use doc; then
-		dohtml -r doc/*
+		dohtml -r doc/* || die "Installing HTML documentation failed"
 	fi
 }
