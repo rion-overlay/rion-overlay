@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI="2"
-LANGSLONG="de_DE pl_PL ru_RU uk_UA"
+LANGS="de pl ru uk"
 
 inherit cmake-utils subversion
 
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS=""
 PLUGINS=" adiummessagestyle annotations autostatus avatars bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver multiuserchat pepmanager privacylists privatestorage registration remotecontrol rostersearch servicediscovery sessionnegotiation socksstreams vcard xmppuriqueries"
 IUSE="${PLUGINS// / +} sdk"
-for x in ${LANGSLONG}; do
-	IUSE+=" linguas_${x%_*}"
+for x in ${LANGS}; do
+	IUSE+=" linguas_${x}"
 done
 
 RDEPEND="
@@ -34,8 +34,8 @@ DOCS="AUTHORS CHANGELOG README TRANSLATORS"
 src_configure() {
 	# linguas
 	local langs="none;"
-	for x in ${LANGSLONG}; do
-		use linguas_${x%_*} && langs+="${x};"
+	for x in ${LANGS}; do
+		use linguas_${x} && langs+="${x};"
 	done
 
 	local mycmakeargs=(
