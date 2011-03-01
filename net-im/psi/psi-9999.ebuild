@@ -116,14 +116,6 @@ src_prepare() {
 
 		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
 
-		if use whiteboarding; then
-			sed -e 's/#CONFIG += whiteboarding/CONFIG += whiteboarding/' \
-				-i src/src.pro || die "sed failed"
-			epatch "${WORKDIR}/patches/dev/psi-wb.patch"
-
-			ewarn "Whiteboarding is very unstable."
-		fi
-
 		subversion_wc_info
 		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
 			-i src/applicationinfo.cpp || die "sed failed"
@@ -159,6 +151,7 @@ src_configure() {
 	if use extras; then
 		use plugins && myconf+=" --enable-plugins"
 		use webkit && myconf+=" --enable-webkit"
+		use whiteboarding && myconf+=" --enable-whiteboarding"
 	fi
 
 	einfo "./configure ${myconf}"
