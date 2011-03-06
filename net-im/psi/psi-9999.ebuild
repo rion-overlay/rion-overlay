@@ -22,7 +22,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
-plugins -whiteboarding webkit"
+plugins whiteboarding webkit"
 
 RDEPEND="
 	>=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
@@ -56,7 +56,7 @@ PDEPEND="
 RESTRICT="test"
 
 pkg_setup() {
-	for x in iconsets plugins powersave webkit whiteboarding; do
+	for x in iconsets plugins powersave webkit; do
 		use ${x} && use !extras && \
 			ewarn "USE=${x} is only available in Psi+ and requires USE=extras, ${x} will be disabled."
 	done
@@ -147,11 +147,11 @@ src_configure() {
 	else
 		myconf+=" --disable-aspell --disable-enchant"
 	fi
+	use whiteboarding && myconf+=" --enable-whiteboarding"
 	use xscreensaver || myconf+=" --disable-xss"
 	if use extras; then
 		use plugins && myconf+=" --enable-plugins"
 		use webkit && myconf+=" --enable-webkit"
-		use whiteboarding && myconf+=" --enable-whiteboarding"
 	fi
 
 	einfo "./configure ${myconf}"
