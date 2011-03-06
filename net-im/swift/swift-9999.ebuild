@@ -43,7 +43,7 @@ src_prepare() {
 	done
 
 	pushd 3rdParty
-	# TODO 'CppUnit'
+	# TODO CppUnit, Lua
 	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib
 	popd
 }
@@ -55,6 +55,7 @@ src_compile() {
 		ccflags="${CFLAGS}"
 		linkflags="${LDFLAGS}"
 		${MAKEOPTS}
+		allow_warnings=1
 		ccache=1
 		distcc=1
 		debug="$(use debug && echo 1 || echo 0)"
@@ -82,10 +83,25 @@ src_install() {
 	fi
 
 	if use examples; then
+		for i in EchoBot{1,2,3,4,5,6} EchoComponent; do
+			newbin "Documentation/SwiftenDevelopersGuide/Examples/EchoBot/${i}" "${PN}-${i}"
+		done
+
 		dobin Limber/limber
-		dobin Swiften/Examples/ConnectivityTest/ConnectivityTest
-		dobin Swiften/Examples/SendMessage/SendMessage
+		dobin Sluift/sluift
+		dobin Swiften/Config/swiften-config
+
+		for i in BenchTool ConnectivityTest LinkLocalTool ParserTester SendFile SendMessage; do
+			newbin "Swiften/Examples/${i}/${i}" "${PN}-${i}"
+		done
+		newbin Swiften/Examples/SendFile/ReceiveFile "${PN}-ReceiveFile"
 		use avahi && dobin Swiften/Examples/LinkLocalTool/LinkLocalTool
+
+		for i in ClientTest NetworkTest StorageTest TLSTest; do
+			newbin "Swiften/QA/${i}/${i}" "${PN}-${i}"
+		done
+
+		newbin SwifTools/Idle/IdleQuerierTest/IdleQuerierTest ${PN}-IdleQuerierTest
 	fi
 
 	use doc && dohtml "Documentation/SwiftenDevelopersGuide/Swiften Developers Guide.html"
