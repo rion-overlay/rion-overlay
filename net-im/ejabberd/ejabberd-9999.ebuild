@@ -4,17 +4,16 @@
 
 EAPI=3
 
-inherit eutils multilib pam ssl-cert git autotools
+inherit eutils multilib pam ssl-cert autotools git
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
 EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
-SRC_URI="mod_srl? ( https://alioth.debian.org/frs/download.php/3354/mod_shared_roster_ldap-0.5.3.tgz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub mod_srl"
+EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub"
 IUSE="captcha debug ldap odbc pam +web zlib ${EJABBERD_MODULES}"
 
 DEPEND="net-im/exmpp
@@ -39,21 +38,10 @@ JABBER_LOG="${EPREFIX}/var/log/jabber"
 JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
 RNOTES_VER="3.0.0"
 
-src_unpack() {
-	git_src_unpack
-	cd "${S}"
-	unpack ${A}
-}
-
 src_prepare() {
 	git_src_prepare
 	S=${WORKDIR}/${P}/src
 	cd "${S}"
-
-	if use mod_srl; then
-		ewarn "mod_srl is not a part of upstream tarball but is a third-party module"
-		ewarn "taken from here: https://alioth.debian.org/projects/ejabberd-msrl/"
-	fi
 
 	# don't install release notes (we'll do this manually)
 	sed '/install .* [.][.]\/doc\/[*][.]txt $(DOCDIR)/d' -i Makefile.in || die
