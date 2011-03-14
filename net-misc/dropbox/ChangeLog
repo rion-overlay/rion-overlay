@@ -1,0 +1,16 @@
+# ChangeLog for net-misc/dropbox
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  01 Feb 2011; Rion <rion4ik@notagmail.com> dropbox-1.0.20.ebuild:
+  added symlink for icons
+
+*dropbox-1.0.20 (30 Jan 2011)
+
+  30 Jan 2011; Rion <rion4ik@gmail.com> -dropbox-0.7.110.ebuild,
+  +dropbox-1.0.20.ebuild:
+  new version
+
+  07 Jul 2010; mva <mva@mva.name> dropbox-0.7.110.ebuild, +metadata.xml:
+  fixed description, added metadata and changelog
+

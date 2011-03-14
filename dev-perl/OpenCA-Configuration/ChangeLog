@@ -1,0 +1,18 @@
+# ChangeLog for dev-perl/OpenCA-Configuration
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-Configuration-1.5.3.ebuild:
+  eclass clean
+
+  11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-Configuration-1.5.3.ebuild:
+  stable in x86
+
+*OpenCA-Configuration-1.5.3 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +OpenCA-Configuration-1.5.3.ebuild, +metadata.xml:
+  Initial recommit in my-dev overlay
+
