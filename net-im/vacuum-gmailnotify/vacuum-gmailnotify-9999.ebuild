@@ -3,12 +3,12 @@
 # $Header: $
 
 EAPI=2
-LANGSLONG="pl_PL ru_RU"
+LANGSLONG="pl ru uk"
 
 inherit qt4-r2 mercurial
 
 MY_PN="${PN/vacuum-/}"
-DESCRIPTION="DBus popup notifications for vacuum"
+DESCRIPTION="GMail notifications for vacuum"
 HOMEPAGE="http://code.google.com/p/vacuum-im"
 EHG_REPO_URI="https://${MY_PN}.vacuum-plugins.googlecode.com/hg/"
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-VACUUM_DEPEND=">=net-im/vacuum-1.0.3"
+VACUUM_DEPEND=">=net-im/vacuum-1.1.0"
 RDEPEND="
 	${VACUUM_DEPEND}
 "
