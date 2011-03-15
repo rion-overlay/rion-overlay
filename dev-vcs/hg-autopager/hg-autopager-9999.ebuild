@@ -9,7 +9,7 @@ SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="2.4 3.* *-jython"
 
 DESCRIPTION="Autopager extension for Mercurial SCM"
-HOMEPAGE="http://bitheap.org/hg/autopager/"
+HOMEPAGE="http://mercurial.selenic.com/wiki/AutopagerExtension"
 SRC_URI=""
 
 EHG_REPO_URI="http://bitheap.org/hg/autopager/"
