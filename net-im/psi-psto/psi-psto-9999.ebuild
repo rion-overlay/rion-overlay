@@ -11,3 +11,5 @@ EHG_REPO_URI="https://bitbucket.org/werehuman/psi-psto-plugin"
 
 KEYWORDS=""
 IUSE=""
+RDEPEND="${RDEPEND}
+	x11-libs/qt-xmlpatterns:4"
