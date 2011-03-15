@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-VACUUM_DEPEND=">=net-im/vacuum-1.0.3"
+VACUUM_DEPEND=">=net-im/vacuum-1.1.0"
 RDEPEND="
 	${VACUUM_DEPEND}
 	>=x11-libs/qt-gui-4.5:4[dbus]
