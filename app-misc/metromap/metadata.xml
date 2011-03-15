@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>nikoli@lavabit.com</email>
+		<name>Nikoli</name>
+	</maintainer>
+	<longdescription lang="en">
+	A simple pygtk+2 programm for finding paths in metro(subway) maps. Maps for Moscow, St. Petersburg, Kiev, London and Berlin are included, others can be downloaded from http://pmetro.info/Maps.html
+	</longdescription>
+</pkgmetadata>
