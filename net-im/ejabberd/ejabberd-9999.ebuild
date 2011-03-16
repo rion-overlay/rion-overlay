@@ -55,6 +55,7 @@ src_prepare() {
 		-e "s|\(ETCDIR=\)@SYSCONFDIR@.*|\1${JABBER_ETC}|" \
 		-e "s|\(LOGS_DIR=\)@LOCALSTATEDIR@.*|\1${JABBER_LOG}|" \
 		-e "s|\(SPOOLDIR=\)@LOCALSTATEDIR@.*|\1${JABBER_SPOOL}|" \
+		-e 's#EJID=`id -g $INSTALLUSER`#GIDS=`$IDCMD -G`#' \
 			-i ejabberdctl.template || die
 
 	# Set shell, so it'll work even in case jabber user have no shell
