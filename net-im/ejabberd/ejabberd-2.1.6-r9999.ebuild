@@ -74,7 +74,7 @@ src_unpack() {
 src_prepare() {
 	use md5 && epatch "${FILESDIR}/auth_md5.patch"
 	if use mod_statsdx; then
-		ewarn "mod_statsdx is not a part of upstrrrream tarball but is a third-party module"
+		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
 		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
 		epatch "${WORKDIR}/2.1.1-mod_statsdx.patch"
 	fi
