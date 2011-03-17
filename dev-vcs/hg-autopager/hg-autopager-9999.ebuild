@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=3
 inherit mercurial python
 
-EAPI=3
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="2.4 3.* *-jython"
 
@@ -34,4 +34,3 @@ src_install() {
 	}
 	python_execute_function dumb_install
 }
-
