@@ -1,0 +1,10 @@
+# ChangeLog for app-admin/sigar
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sigar-1.6.5 (12 Mar 2011)
+
+  12 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +sigar-1.6.5.ebuild,
+  +metadata.xml:
+  initial commit
+
