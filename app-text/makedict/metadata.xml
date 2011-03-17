@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>rion4ik@gmail.com</email>
+ <description>Sergey Ilinyh</description> 
+</maintainer>
+ <longdescription>Utility for conversion various types of dictionaries</longdescription> 
+<use>
+</use>
+</pkgmetadata>
