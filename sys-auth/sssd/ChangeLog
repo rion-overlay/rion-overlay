@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> sssd-1.5.0.ebuild:
+  replace depend ldb witch samba[ldb]
+
   17 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> -sssd-1.4.1.ebuild:
   remove old ebuild
 
