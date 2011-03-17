@@ -1,3 +1,8 @@
+# 17 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# Mask for removal in 30 day
+# please use net-fs/samba[ldb] directly
+sys-libs/ldb
+
 # 25 Jan 2011; Rion <rion@rion.ru>
 # in development
 net-im/skypexmpp
