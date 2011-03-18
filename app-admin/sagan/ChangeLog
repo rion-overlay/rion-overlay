@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> -sagan-9999.ebuild:
+  drop live ebuild
+
 *sagan-0.1.8-r1 (18 Mar 2011)
 
   18 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> -sagan-0.1.7-r1.ebuild,
