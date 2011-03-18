@@ -3,8 +3,7 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
+  <email>andreis.vinogradovs@gmail.com</email>
 </maintainer>
  <longdescription>This package provides two plugins for Red Hat and Fedora Directory Server.
  
@@ -19,7 +18,9 @@
  for attributes from multiple entries in the tree.
  </longdescription> 
 <use>
-	<flag name='tirpc'>Enable <pkg>net-libs/libtirpc</pkg> for RPC, instead glibc/portmap RPC</flag>
-
+<flag name='tirpc'>Enable <pkg>net-libs/libtirpc</pkg> for RPC, instead glibc/portmap RPC</flag>
+<flag name='389'>Use <pkg>net-nds/389-ds-base</pkg> as base server</flag>
+<flag name='openldap'>Use <pkg>net-nds/openldap</pkg> as base server</flag>
+<flag name='asyncns'>Enable name service queries asynchronously via <pkg>net-libs/libasyncns</pkg> </flag>
 </use>
 </pkgmetadata>
