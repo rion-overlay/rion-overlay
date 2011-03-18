@@ -3,19 +3,23 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+
 depend() {
-	use logger mysql postgresql 
-	need localmount
+        use logger mysql postgresql
+        need localmount
 
 }
 
 start() {
-	/usr/bin/sagan  ${SAGAN_OPTS} --daemon --user ${SAGAN_USER}  --program ${LOGGER}
-
-	eend $?
+        
+	einfo "Starting sagan"
+        start-stop-daemon --start  --pidfile /var/run/sagan/sagan.pid /usr/bin/sagan -- --daemon  ${SAGAN_OPTS}  --user ${SAGAN_USER} 
+        eend $?
 }
 
 stop() {
-	kill -15 `cat /var/run/sagan/sagan.pid`
+        start-stop-daemon --stop --quiet --pidfile /var/run/sagan/sagan.pid
+        eend $?
 
 }
+
