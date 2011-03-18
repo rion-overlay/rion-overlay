@@ -1,0 +1,10 @@
+# ChangeLog for net-im/vacuum-gmailnotify
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*vacuum-gmailnotify-9999 (10 Feb 2011)
+
+  10 Feb 2011; Nikoli <nikoli@lavabit.com> +vacuum-gmailnotify-9999.ebuild,
+  +metadata.xml:
+  initial ebuild
+
