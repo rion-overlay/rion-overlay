@@ -33,6 +33,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	esvn_clean "${S}"
 	eautoreconf
 }
 
