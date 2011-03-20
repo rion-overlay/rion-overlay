@@ -8,8 +8,8 @@ inherit qt4-r2
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework."
 HOMEPAGE="http://code.google.com/p/qxmpp/"
-SRC_URI="extras? ( https://github.com/downloads/0xd34df00d/qxmpp-dev/qxmpp-02072011-extras.tar.bz2 )
-		 !extras? ( https://github.com/downloads/0xd34df00d/qxmpp-dev/qxmpp-02072011-upstream.tar.bz2 )"
+SRC_URI="extras? ( https://github.com/downloads/0xd34df00d/qxmpp-dev/qxmpp-0.3.0-extras.tar.bz2 )
+		 !extras? ( https://github.com/downloads/0xd34df00d/qxmpp-dev/qxmpp-0.3.0-upstream.tar.bz2 )"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
