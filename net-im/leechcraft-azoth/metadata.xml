@@ -10,6 +10,7 @@
  <use>
   <flag name="acetamide">Build Acetamide, the IRC protocol support</flag>
   <flag name="chathistory">Build ChatHistory which stories chat history</flag>
+  <flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
   <flag name="p100q">Build p100q, plugin for psto.net microblogging service</flag>
   <flag name="standardstyles">Build support for standard Azoth styles engine</flag>
   <flag name="xoox">Build Xoox, gloox-based plugin for XMPP support</flag>
