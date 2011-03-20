@@ -8,7 +8,7 @@ inherit confutils leechcraft
 
 DESCRIPTION="Poshuku, the full-featured web browser plugin for LeechCraft."
 
-IUSE="debug idn sqlite postgres"
+IUSE="debug idn +sqlite postgres"
 DEPEND="=net-misc/leechcraft-core-${PV}[postgres?,sqlite?]
 		>=x11-libs/qt-webkit-4.6
 		>=dev-libs/qjson-0.7.1-r1
