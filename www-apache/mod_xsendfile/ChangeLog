@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/www-apache/mod_xsendfile/ChangeLog,v 1.3 2010/05/21 18:54:21 pacho Exp $
 
+  18 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> mod_xsendfile-0.12.ebuild:
+  rewrite to EAPI3 fix docs install
+
+  18 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  files/50_mod_xsendfile.conf:
+  add more info in mod definition file
+
 *mod_xsendfile-0.12 (05 Mar 2011)
 
   05 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru>
