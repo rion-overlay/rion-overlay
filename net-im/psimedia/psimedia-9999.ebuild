@@ -30,7 +30,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=media-plugins/gst-plugins-theora-0.10.22
 	>=media-plugins/gst-plugins-alsa-0.10.22
 	>=media-plugins/gst-plugins-ogg-0.10.22
-	>=media-plugins/gst-plugins-v4l-0.10.22
+	!extras? ( >=media-plugins/gst-plugins-v4l-0.10.22 )
 	media-plugins/gst-plugins-v4l2
 	media-plugins/gst-plugins-jpeg
 	!<net-im/psi-0.13_rc1

@@ -42,5 +42,6 @@
     <flag name="socksstreams">Enable initiating SOCKS5 data streams between two XMPP entities</flag>
     <flag name="vcard">Enable obtaining peer's personal contact information</flag>
     <flag name="xmppuriqueries">Allow other plugins to handle XMPP URI queries</flag>
+    <flag name="vcs-revision">Add VCS revision to version number, INSECURE.</flag>
   </use>
 </pkgmetadata>
