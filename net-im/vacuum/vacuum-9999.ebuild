@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 PLUGINS=" adiummessagestyle annotations autostatus avatars bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver multiuserchat pepmanager privacylists privatestorage registration remotecontrol rostersearch servicediscovery sessionnegotiation socksstreams vcard xmppuriqueries"
-IUSE="${PLUGINS// / +} sdk"
+IUSE="${PLUGINS// / +} sdk vcs-revision"
 for x in ${LANGS}; do
 	IUSE+=" linguas_${x}"
 done
@@ -30,6 +30,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS CHANGELOG README TRANSLATORS"
+
+pkg_setup() {
+	if use vcs-revision; then
+		ewarn "Anyone will be able to see your VCS revision of ${PN}, it is insecure."
+	fi
+}
 
 src_configure() {
 	# linguas
@@ -48,6 +54,11 @@ src_configure() {
 	for x in ${PLUGINS}; do
 		mycmakeargs+=( "$(cmake-utils_use ${x} PLUGIN_${x})" )
 	done
+
+	if use vcs-revision; then
+		subversion_wc_info # eclass is broken
+		mycmakeargs+=( -DVER_STRING="${ESVN_WC_REVISION}" )
+	fi
 
 	cmake-utils_src_configure
 }
