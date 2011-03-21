@@ -1,0 +1,11 @@
+# ChangeLog for net-libs/jquery
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*jquery-1.5.1 (19 Mar 2011)
+*jquery-1.4.2 (19 Mar 2011)
+
+  19 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +jquery-1.4.2.ebuild,
+  +jquery-1.5.1.ebuild, +metadata.xml:
+  initial commit
+

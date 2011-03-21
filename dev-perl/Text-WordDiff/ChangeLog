@@ -1,0 +1,8 @@
+# ChangeLog for dev-perl/Text-WordDiff
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  17 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Text-WordDiff-0.05.ebuild, +metadata.xml:
+  initial commit
+

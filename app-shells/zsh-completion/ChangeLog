@@ -1,0 +1,16 @@
+# ChangeLog for app-shells/zsh-completion
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  12 Jan 2011; mva <mva@mva.name> -zsh-completion-9999.ebuild,
+  +zsh-completion-99999999.ebuild:
+  change to 99999999 version due to long version numeration in upstream. 
+
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  zsh-completion-9999.ebuild:
+  drop keyword in live ebuild
+
+  23 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  zsh-completion-9999.ebuild, +metadata.xml:
+  repoman fix
+
