@@ -1,8 +1,10 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=2
+
+LANGS="ru"
 
 inherit qt4-r2 mercurial
 
@@ -26,6 +28,19 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/hg"
+
+src_prepare() {
+	qt4-r2_src_prepare
+
+	# linguas
+	for x in ${LANGS}; do
+		if ! use linguas_${x}; then
+			rm -rf "translations/src/${x}/" "translations/bin/${x}/"
+			sed -e "s#./translations/src/${x}/\$\${TARGET}.ts##" \
+				-i ${MY_PN}.pro || die
+		fi
+	done
+}
 
 src_configure() {
 	eqmake4 ${MY_PN}.pro \
