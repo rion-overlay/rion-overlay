@@ -1,3 +1,18 @@
+# 21 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# Mask for removal in 60 day
+mail-filter/spmfilter
+mail-filter/spmfilter-diskarchive
+mail-filter/spmfilter-smtpbcc
+dev-libs/libzdb
+net-analyzer/dhcdrop
+net-wireless/CPyrit-CUDA
+net-wireless/CPyrit-OpenCL
+net-wireless/CPyrit-Stream
+net-wireless/Pyrit
+www-apps/mailzu
+
+
+
 # 17 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # Mask for removal in 30 day
 # please use net-fs/samba[ldb] directly
@@ -25,7 +40,3 @@ app-crypt/openca
 # 4 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # mask for testing
 =www-apps/otrs-3.0.0_beta*
-
-# 13 Aug 2010; A.Vinogradov <spamslepnoga@inbox.ru>
-# ebuild use live dep's, waiting for in portage unmask 
-=app-emulation/aqemu-0.8.0-r1
