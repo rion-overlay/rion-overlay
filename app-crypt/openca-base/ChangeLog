@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Mar 2011; <slep@gentoo.org> openca-base-1.1.1-r1.ebuild, metadata.xml:
+  fix QA
+
   08 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   -openca-base-1.1.1.ebuild, +openca-base-1.1.1-r1.ebuild:
   fix build

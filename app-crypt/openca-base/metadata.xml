@@ -6,10 +6,13 @@
   <email>andreis.vinogradovs@gmail.com</email>
 </maintainer>
 <use>
- <flag name='ca-only'></flag>
- <flag name='ra-only'></flag>
- <flag name='node-only'></flag>
-  <flag name='full-install'></flag>
-   <flag name='scep'></flag>
+ <flag name='ca-only'> </flag>
+ <flag name='ra-only'> </flag>
+ <flag name='node-only'> </flag>
+  <flag name='full-install'> </flag>
+   <flag name='scep'> </flag>
+<flag name="install-offline"> </flag>
+<flag name="install-online"> </flag>
+<flag name="install-ext"> </flag>
 </use>
 </pkgmetadata>

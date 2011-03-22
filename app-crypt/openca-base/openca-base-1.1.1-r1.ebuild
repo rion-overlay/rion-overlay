@@ -159,14 +159,14 @@ src_install () {
 
 	rm -fr "${D}"/usr/etc || die
 
-	 newinitd ${FILESDIR}/openca.init openca
-	 newconfd ${FILESDIR}/openca.conf openca
+	 newinitd "${FILESDIR}"/openca.init openca
+	 newconfd "${FILESDIR}"/openca.conf openca
 	if use ldap; then
 		insinto  /etc/openldap/schema/
 		doins contrib/openldap/openca.schema
 	fi
 	dodoc ChangeLog INSTALL I18N NOTES.Chain README STATUS THANKS
-	dodoc docs/HISTORY 
+	dodoc docs/HISTORY
 	doman docs/man3/base.3
 
 }
