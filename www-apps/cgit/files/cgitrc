@@ -13,6 +13,10 @@
 #enable-index-links=1
 
 
+# Enable ASCII art commit history graph on the log pages
+#enable-commit-graph=1
+
+
 # Show number of affected files per commit on the log pages
 #enable-log-filecount=1
 
@@ -53,7 +57,7 @@
 ## List of common mimetypes
 ##
 
-#mimetype.git=image/git
+#mimetype.gif=image/gif
 #mimetype.html=text/html
 #mimetype.jpg=image/jpeg
 #mimetype.jpeg=image/jpeg
