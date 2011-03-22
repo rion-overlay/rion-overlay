@@ -18,12 +18,12 @@ IUSE="mysql sqlite symlinks tools staticport"
 
 RDEPEND=">=dev-libs/poco-1.3.3[mysql?,sqlite?]
 	media-gfx/imagemagick[cxx]
-        >=net-im/pidgin-2.6.0
-        >=net-libs/gloox-1.0
-        dev-python/xmpppy"
+	>=net-im/pidgin-2.6.0
+	>=net-libs/gloox-1.0
+	dev-python/xmpppy"
 DEPEND="${RDEPEND}
-        sys-devel/gettext
-        dev-util/cmake"
+	sys-devel/gettext
+	dev-util/cmake"
 
 PROTOCOL_LIST="aim facebook gg icq irc msn msn_pecan myspace qq simple sipe twitter xmpp yahoo"
 
