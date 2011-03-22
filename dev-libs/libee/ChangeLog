@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Mar 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  libee-0.1.0.ebuild:
+  keyworded ~x86
+
 *libee-0.1.0 (23 Jan 2011)
 
   23 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> +libee-0.1.0.ebuild,

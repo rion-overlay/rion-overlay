@@ -12,7 +12,7 @@ SRC_URI="http://www.libee.org/files/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="dev-libs/libxml2
