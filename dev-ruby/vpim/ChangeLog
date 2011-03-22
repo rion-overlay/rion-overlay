@@ -1,5 +1,5 @@
 # ChangeLog for dev-ruby/vpim
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 
   03 Sep 2010; Hans de Graaff <graaff@gentoo.org> -vpim-0.695.ebuild:
   Remove old version.

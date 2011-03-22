@@ -57,7 +57,7 @@ METACONTENT
   echo -e "</longdescription>\n</pkgmetadata>" >> "net-im/psi-${pn}/metadata.xml"
 
   echo "$(cat <<'EBUILDCONTENT'
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -81,7 +81,7 @@ EBUILDCONTENT
 )" >> "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
 
   echo "# ChangeLog for net-im/psi-${pn}
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # \$Header: \$
 
   `LANG=C date "+%d %b %Y"`; $USER <$USER@bots.ru> ChangeLog:
