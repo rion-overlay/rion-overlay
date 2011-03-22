@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Mar 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  sagan-0.1.8-r1.ebuild:
+  add ~x86 keyword
+
   18 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> -sagan-9999.ebuild:
   drop live ebuild
 
