@@ -1,3 +1,15 @@
+# 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# live depend on non live ebuild
+net-misc/leechcraft-qrosp
+
+
+# 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# mask due bad depends, abandoned ebuild, apstream also abandoned
+# removal in 10 day
+media-video/ripwrap
+dev-ruby/rvideo
+
+
 # 21 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # Mask for removal in 60 day
 mail-filter/spmfilter
