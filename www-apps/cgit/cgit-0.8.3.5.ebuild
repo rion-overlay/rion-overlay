@@ -6,20 +6,20 @@ EAPI="2"
 
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit webapp eutils multilib git
+inherit webapp eutils multilib
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
-GIT_V="1.7.4"
+GIT_V="1.7.3"
 
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="http://hjemli.net/git/cgit/about/"
-SRC_URI="mirror://kernel/software/scm/git/git-${GIT_V}.tar.bz2"
-EGIT_REPO_URI="git://hjemli.net/pub/git/${PN}"
+SRC_URI="mirror://kernel/software/scm/git/git-${GIT_V}.tar.bz2
+	http://hjemli.net/git/cgit/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc highlight"
 
 RDEPEND="
@@ -41,12 +41,6 @@ pkg_setup() {
 	enewuser "${PN}"
 }
 
-src_unpack() {
-	git_src_unpack
-
-	cd "${WORKDIR}" && unpack ${A}
-}
-
 src_prepare() {
 	rmdir git || die
 	mv "${WORKDIR}"/git-"${GIT_V}" git || die
@@ -59,7 +53,7 @@ src_prepare() {
 src_compile() {
 	emake || die
 	if use doc ; then
-		emake doc-man || die
+		emake man-doc || die
 	fi
 }
 
@@ -67,11 +61,12 @@ src_install() {
 	webapp_src_preinst
 
 	emake \
-		prefix=/usr \
-		libdir=/usr/$(get_libdir) \
 		CGIT_SCRIPT_PATH="${MY_CGIBINDIR}" \
 		CGIT_DATA_PATH="${MY_HTDOCSDIR}" \
 		DESTDIR="${D}" install || die
+
+	exeinto /usr/$(get_libdir)/${PN}/filters
+	doexe filters/*.sh
 
 	insinto /etc
 	doins "${FILESDIR}"/cgitrc
