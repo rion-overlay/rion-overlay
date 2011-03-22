@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>andreis.vinogradovs@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <use>
+	 <flag name='spf'>Add Sender Policy Framework support </flag>
+	 <flag name='dnsrbl'>Add dnsrbl blacklist support </flag>
+	 <flag name='bind'>Use <pkg>net-dns/bind-tools</pkg> resolver instead glibc
+	 resolver</flag>
+	 <flag name='dkim'>Add DomainKeys Identified Mail support </flag>
+	 <flag name='drac'>Add support for POP-before-SMTP AAA, use<pkg>mail-client/drac</pkg></flag>
+	 <flag name='p0f'>Add support for OS type detection's.
+	 Use<pkg>net-analyzer/p0f</pkg></flag>
+	 <flag name='spamassassin'>Add spamassasin plugin</flag>
+	 <flag name='postfix'>Add support for <pkg>mail-mta/postfix</pkg> MTA</flag>
+	 <flag name='sendmail'>Add support for <pkg>mail-mta/sendmail</pkg> MTA </flag>
+	 <flag name='ldap'>Build witch openldap support</flag>
+</use>
+</pkgmetadata>

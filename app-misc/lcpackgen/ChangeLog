@@ -1,0 +1,8 @@
+# ChangeLog for app-misc/lcpackgen
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  27 Jun 2010; G. Rudoy <0xd34df00d@gmail.com> +lcpackgen-9999.ebuild,
+  +metadata.xml:
+  Added ebuidl for lcpackgen.
+
