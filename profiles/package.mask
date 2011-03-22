@@ -1,7 +1,14 @@
 # 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# RDEPEND.badmasked, not properly used python eclass
+net-im/skypexmpp 
+
+# 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# QA bug - wait for mantainer OR remowal in 10 day
+net-misc/asterisk-sounds-ru 
+
+# 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # live depend on non live ebuild
 net-misc/leechcraft-qrosp
-
 
 # 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # mask due bad depends, abandoned ebuild, apstream also abandoned
