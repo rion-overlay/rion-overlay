@@ -34,10 +34,11 @@ src_prepare() {
 
 	# linguas
 	for x in ${LANGS}; do
-		if ! use linguas_${x}; then
-			rm -rf "translations/src/${x}/" "translations/bin/${x}/"
-			sed -e "s#./translations/src/${x}/\$\${TARGET}.ts##" \
-				-i ${MY_PN}.pro || die
+		if use !linguas_${x}; then
+			rm -rf "translations/${x}/" || die
+			sed -e "s#translations/${x}/\$\${FIRST_TARGET}.ts##" \
+				-e "/TRANS_LANGS/s/${x}//" \
+				-i translations.inc || die
 		fi
 	done
 }
