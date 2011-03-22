@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://github.com/hanzz/${EGIT_PROJECT}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 IUSE="mysql sqlite symlinks tools staticport"
 

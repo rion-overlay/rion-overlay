@@ -1,9 +1,0 @@
-# ChangeLog for sys-devel/distcc
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*distcc-9999 ( rion )
-
-  02 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru> distcc-9999.ebuild:
-  drop all keyword in live ebuild
-
