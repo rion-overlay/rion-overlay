@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-im</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>Il'nykh Sergey</name>
+	</maintainer>
+	<longdescription lang="en">
+This plugin sets some given status in psi while you watching video in some supported video player
+</longdescription>
+</pkgmetadata>

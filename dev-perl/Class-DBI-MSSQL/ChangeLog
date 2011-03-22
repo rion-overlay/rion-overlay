@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/Class-DBI-MSSQL
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*Class-DBI-MSSQL-0.122 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Class-DBI-MSSQL-0.122.ebuild, +metadata.xml:
+  initial commit keyword for testing
+

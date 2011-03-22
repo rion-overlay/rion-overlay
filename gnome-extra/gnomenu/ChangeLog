@@ -1,0 +1,34 @@
+# ChangeLog for gnome-extra/gnomenu
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  20 Sep 2010; Rion <rion4ik@gmail.com> gnomenu-2.9.ebuild:
+  fixed installation on x32 systemy
+
+  19 Jul 2010; Rion <rion4ik@gmail.com> gnomenu-2.9.ebuild:
+  x32 compatible
+
+  07 Jul 2010; Rion <rion4ik@gmail.com> -gnomenu-2.8.ebuild,
+  +gnomenu-2.9.ebuild:
+  new version
+
+  18 Jun 2010; Rion <rion4ik@gmail.com> -gnomenu-2.7.ebuild,
+  +gnomenu-2.8.ebuild:
+  new version
+
+  11 Jun 2010; Rion <rion4ik@notagmail.com> -gnomenu-2.6.1.ebuild,
+  +gnomenu-2.7.ebuild:
+  new version
+
+  26 May 2010; Rion <rion4ik@gmail.com> -gnomenu-2.6.ebuild,
+  +gnomenu-2.6.1.ebuild:
+  new version
+
+  25 May 2010; Rion <rion4ik@notagmail.com> -files/gnomenu-2.5-libdir.patch,
+  gnomenu-2.6.ebuild:
+  remove useless patch
+
+  25 May 2010; Rion <rion4ik@notagmail.com> -gnomenu-2.5.ebuild,
+  +gnomenu-2.6.ebuild:
+  new version
+

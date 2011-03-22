@@ -1,0 +1,29 @@
+# ChangeLog for net-libs/rb_libtorrent
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -rb_libtorrent-0.15.0.ebuild, +rb_libtorrent-0.15.0-r1.ebuild,
+  -rb_libtorrent-0.15.9999.ebuild:
+  add python eclass
+
+  10 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -rb_libtorrent-0.15_rc4115.ebuild, rb_libtorrent-0.15.0.ebuild:
+  QA fix
+
+  09 Apr 2010; G. Rudoy <0xd34df00d@gmail.com>
+  rb_libtorrent-0.15.0.ebuild, rb_libtorrent-0.15_rc4115.ebuild
+  Added ebuild for the released libtorrent and removed an old one.
+
+  14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  rb_libtorrent-0.15_rc4115.ebuild, rb_libtorrent-0.15.9999.ebuild,
+  rb_libtorrent-9999.ebuild:
+  rename use python-bindings to python - sync witch upstream
+
+  18 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  rb_libtorrent-9999.ebuild:
+  fix 9999
+
+  28 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +metadata.xml:
+  repoman fix
+

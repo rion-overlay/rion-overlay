@@ -1,0 +1,8 @@
+# ChangeLog for dev-perl/JavaScript-Minifier
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  14 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +JavaScript-Minifier-1.05.ebuild, +metadata.xml:
+  initial commit
+
