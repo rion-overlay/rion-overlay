@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Mar 2011; <slep@gentoo.org> -separate-0.5.5.ebuild:
+  drop due QA errors - RDEPEND.implicit
+
   10 Dec 2010; Hans de Graaff <graaff@gentoo.org> separate-0.5.8.ebuild:
   Explicitly set RDEPEND.
 
