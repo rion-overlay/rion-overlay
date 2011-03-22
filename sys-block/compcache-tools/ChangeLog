@@ -1,0 +1,24 @@
+# ChangeLog for sys-block/compcache-tools
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*compcache-tools-0.6.2 (  08 Jul 2010 )
+
+ 08 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +compcache-tools-0.6.2.ebuild:
+  bump
+
+  27 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +compcache-tools-0.6.ebuild, +files/compcache-tools-0.6_gentoo.patch,
+  +files/conf.d, +files/init.d, +metadata.xml:
+  recommit in rion, split two ebuild's: in sunrise and #252987
+  in sunrise - ebuild, in  #252987 - RC script's
+
+
+
+  04 Jan 2010; Russell Harmon (eatnumber1) <russ@eatnumber1.com>
+  +compcache-tools-0.6.ebuild, +files/compcache-tools-0.6_gentoo.patch,
+  +metadata.xml:
+  New ebuild for bug 299664. Thanks to Russell Harmon
+
+*compcache-tools-0.6 ( 04 Jan 2010 )

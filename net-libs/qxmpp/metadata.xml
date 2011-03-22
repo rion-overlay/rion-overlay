@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>0xd34df00d@gmail.com</email>
+		<name>G. Rudoy</name>
+	</maintainer>
+	<longdescription lang="en">
+		A cross-platform C++ XMPP client library based on the Qt framework.
+	</longdescription>
+	<use>
+		<flag name="extras">Enables extra non official patches from git://github.com/0xd34df00d/qxmpp-dev.git feature fork.</flag>
+	</use>
+</pkgmetadata>
+

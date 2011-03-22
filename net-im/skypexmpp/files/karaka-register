@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+PIDFILE=/var/run/jabber/karaka_register.pid
+
+depend() {
+	need net
+	use jabber-server
+}
+
+start() {
+	ebegin "Starting karaka-register"
+	start-stop-daemon --start --pidfile ${PIDFILE} --chuid jabber:jabber \
+		--exec /usr/bin/python INSPATH/karaka-register.py
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping karaka-register"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	eend $?
+}

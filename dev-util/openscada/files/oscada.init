@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	use clock logger
+	need localmount
+}
+
+start() {
+	ebegin "Starting openscada daemon"
+	start-stop-daemon --start --background --quiet --exec /usr/bin/openscada -- --demon
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping openscada daemon"
+	start-stop-daemon --stop --quiet --retry 5 --name openscada
+	eend $?
+}

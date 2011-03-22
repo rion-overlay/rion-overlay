@@ -1,0 +1,10 @@
+# ChangeLog for dev-ml/xml-light
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*xml-light-2.2 ( 23 Oct 2010 )
+
+  23 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +xml-light-2.2.ebuild,
+  +metadata.xml:
+  Initial recommit from ibormuth overlay.Add multilib,amd64 and fix install
+

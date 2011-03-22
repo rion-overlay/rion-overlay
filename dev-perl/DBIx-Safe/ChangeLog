@@ -1,0 +1,8 @@
+# ChangeLog for dev-perl/DBIx-Safe
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  01 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no>
+  +DBIx-Safe-1.2.5.ebuild, +metadata.xml:
+  Initial commit
+
