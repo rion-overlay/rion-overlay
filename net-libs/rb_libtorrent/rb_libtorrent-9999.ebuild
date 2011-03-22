@@ -25,7 +25,7 @@ KEYWORDS=""
 IUSE="log debug dht doc crypt pool-allocators statistics disk-stats geoip examples test python zlib"
 
 COMMON_DEPEND=">=dev-libs/boost-1.36
-				encryption? ( dev-libs/openssl )
+				crypt? ( dev-libs/openssl )
 				geoip? ( dev-libs/geoip )
 				zlib? ( sys-libs/zlib )
 				python?
