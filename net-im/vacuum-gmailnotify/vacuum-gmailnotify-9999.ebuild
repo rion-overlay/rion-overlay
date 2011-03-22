@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=2
-LANGSLONG="pl ru uk"
+LANGS="pl ru uk"
 
 inherit qt4-r2 mercurial
 
@@ -31,8 +31,8 @@ src_prepare() {
 	qt4-r2_src_prepare
 
 	# linguas
-	for x in ${LANGSLONG}; do
-		if use !linguas_${x%_*}; then
+	for x in ${LANGS}; do
+		if use !linguas_${x}; then
 			rm -rf "translations/${x}/" || die
 			sed -e "s#translations/${x}/\$\${FIRST_TARGET}.ts##" \
 				-e "/TRANS_LANGS/s/${x}//" \
