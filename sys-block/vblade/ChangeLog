@@ -1,5 +1,5 @@
 # ChangeLog for sys-block/vblade
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-block/vblade/ChangeLog,v 1.21 2008/08/03 23:53:19 caleb Exp $
 
   18 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> -vblade-19.ebuild:
