@@ -14,7 +14,6 @@
 	<flag name="captcha">Support for CAPTCHA Forms (XEP-158)</flag>
 	<flag name="mod_proxy65">Support for SOCKS5 Bytestreams (XEP-0065)</flag>
 	<flag name='mod_irc'>Build IRC module</flag>
-	<flag name='mod_srl'>Build shared roster with LDAP supporting module</flag>
 	<flag name='mod_statsdx'>Build stats module</flag>
 	<flag name='atom_pubsub'>Build pubsub to Atom translation module</flag>
 	<flag name='ircd'>Build IRC-Daemon module</flag>
