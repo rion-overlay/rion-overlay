@@ -5,6 +5,23 @@ net-im/skypexmpp
 # 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # QA bug - wait for mantainer OR remowal in 10 day
 net-misc/asterisk-sounds-ru 
+dev-ruby/bluefeather
+dev-ruby/fcgi
+dev-ruby/holidays
+dev-ruby/inifile
+dev-ruby/lockfile
+dev-ruby/mini_magick/
+dev-ruby/rdiscount
+dev-util/madde
+games-arcade/frogatto
+=dev-vcs/rabbitvcs-0.14.2.1
+=net-misc/dropbox-1.0.20
+dev-util/madde
+net-misc/asterisk-sounds-ru
+net-misc/asterisk-sounds-ru-tamara
+
+
+
 
 # 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # live depend on non live ebuild
@@ -15,6 +32,7 @@ net-misc/leechcraft-qrosp
 # removal in 10 day
 media-video/ripwrap
 dev-ruby/rvideo
+net-mail/isoqlog
 
 
 # 21 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
