@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-2.1.5-r2.ebuild,v 1.1 2010/10/15 17:34:36 pva Exp $
+# $Header: pva Exp $
 
 EAPI=3
 
@@ -11,6 +11,7 @@ HOMEPAGE="http://www.ejabberd.im/"
 EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
 EGIT_COMMIT="2.1.x"
 EGIT_BRANCH="2.1.x"
+
 SRC_URI="mod_statsdx? ( mirror://gentoo/2.1.1-mod_statsdx.patch.bz2 )"
 
 LICENSE="GPL-2"
@@ -18,6 +19,7 @@ SLOT="0"
 KEYWORDS=""
 EJABBERD_MODULES_ADDITIONAL="atom_pubsub ircd mod_admin_extra mod_archive mod_cron mod_log_chat mod_logsession mod_logxml mod_muc_admin mod_muc_log_http mod_multicast mod_openid mod_profile mod_register_web mod_rest mod_s2s_log mod_shcommands mod_webpresence mysql postgres xmlrpc"
 EJABBERD_MODULES="mod_irc mod_muc mod_proxy65 mod_pubsub mod_statsdx"
+
 IUSE="captcha debug ldap md5 odbc pam +web zlib ${EJABBERD_MODULES} ${EJABBERD_MODULES_ADDITIONAL}"
 
 DEPEND=">=net-im/jabber-base-0.01
@@ -30,11 +32,8 @@ DEPEND=">=net-im/jabber-base-0.01
 	zlib? ( sys-libs/zlib )"
 #>=sys-apps/shadow-4.1.4.2-r3 - fixes bug in su that made ejabberdctl unworkable.
 RDEPEND="${DEPEND}
-	>=sys-apps/shadow-4.1.4.2-r3"
-
-PROVIDE="virtual/jabber-server"
-
-#S=${WORKDIR}/${P}/src
+	>=sys-apps/shadow-4.1.4.2-r3
+	 pam? ( virtual/pam )"
 
 # paths in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
@@ -152,7 +151,7 @@ src_install() {
 	cd "${WORKDIR}/${P}/doc"
 	dodoc "release_notes_${PV%%_rc*}.txt" || die
 	cd "${S}"
-	insinto "${EPREFIX}/usr/share/doc/${PF}"
+	insinto "/usr/share/doc/${PF}"
 	doins -r additional_docs || die
 	# fixme: it is dodoc -r should be here, but it will be only in EAPI=4
 	#dodir /var/lib/ejabberd
