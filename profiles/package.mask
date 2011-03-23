@@ -10,7 +10,7 @@ dev-ruby/fcgi
 dev-ruby/holidays
 dev-ruby/inifile
 dev-ruby/lockfile
-dev-ruby/mini_magick/
+dev-ruby/mini_magick
 dev-ruby/rdiscount
 dev-util/madde
 games-arcade/frogatto
@@ -19,7 +19,7 @@ games-arcade/frogatto
 dev-util/madde
 net-misc/asterisk-sounds-ru
 net-misc/asterisk-sounds-ru-tamara
-
+net-misc/karia2
 
 
 
