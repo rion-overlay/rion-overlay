@@ -2,7 +2,6 @@
 # RDEPEND.badmasked, not properly used python eclass
 net-im/skypexmpp 
 
-
 # 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # QA bug - wait for mantainer OR remowal in 10 day
 net-misc/asterisk-sounds-ru 
