@@ -25,6 +25,7 @@ RDEPEND="
 	>=x11-libs/qt-gui-4.5:4
 	>=dev-libs/openssl-0.9.8k
 	adiummessagestyle? ( >=x11-libs/qt-webkit-4.5:4 )
+	net-dns/libidn
 	x11-libs/libXScrnSaver
 "
 DEPEND="${RDEPEND}"
