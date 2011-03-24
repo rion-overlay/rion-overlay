@@ -3,9 +3,10 @@
 # $Header: $
 
 EAPI=2
-LANGSLONG="ru_RU"
 
-inherit qt4-r2 mercurial
+LANGS="ru"
+
+inherit cmake-utils mercurial
 
 MY_PN="${PN/vacuum-/}"
 DESCRIPTION="DBus popup notifications for vacuum"
@@ -16,6 +17,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
+for x in ${LANGS}; do
+	IUSE+=" linguas_${x}"
+done
 
 VACUUM_DEPEND=">=net-im/vacuum-1.1.0"
 RDEPEND="
@@ -28,23 +32,17 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/hg"
 
-src_prepare() {
-	qt4-r2_src_prepare
-
-	# linguas
-	for x in ${LANGSLONG}; do
-		if ! use linguas_${x%_*}; then
-			rm -rf "translations/src/${x}/" "translations/bin/${x}/"
-			sed -e "s#./translations/src/${x}/\$\${TARGET}.ts##" \
-				-i ${MY_PN}.pro || die
-		fi
-	done
-}
-
 src_configure() {
-	eqmake4 ${MY_PN}.pro \
-		INSTALL_PREFIX="/usr" \
-		INSTALL_APP_DIR="vacuum" \
-		INSTALL_LIB_DIR="$(get_libdir)" \
-		INSTALL_RES_DIR="share"
+	# linguas
+	local langs="none;"
+	for x in ${LANGS}; do
+		use linguas_${x} && langs+="${x};"
+	done
+
+	local mycmakeargs=(
+		-DINSTALL_LIB_DIR="$(get_libdir)"
+		-DLANGS="${langs}"
+	)
+
+	cmake-utils_src_configure
 }
