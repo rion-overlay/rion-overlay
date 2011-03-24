@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 inherit qt4-r2 subversion
 
@@ -28,7 +28,7 @@ src_prepare() {
 		sqlitetaskmodel.cpp; do
 		sed -i -e \
 		"s#\(app.\|qApp->\|QCoreApplication::\|QApplication::\)applicationDirPath()#QString\(\"/usr/share/${PN}\"\)#g" \
-		"$f"
+		"$f" || die
 	done
 	subversion_src_prepare
 }

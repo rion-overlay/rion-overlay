@@ -14,12 +14,10 @@ dev-ruby/mini_magick
 dev-ruby/rdiscount
 dev-util/madde
 games-arcade/frogatto
-=dev-vcs/rabbitvcs-0.14.2.1
 =net-misc/dropbox-1.0.20
 dev-util/madde
 net-misc/asterisk-sounds-ru
 net-misc/asterisk-sounds-ru-tamara
-net-misc/karia2
 
 
 
