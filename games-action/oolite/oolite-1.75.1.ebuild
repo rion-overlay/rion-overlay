@@ -2,18 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 inherit games
 
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
-SRC_URI="mirror://berlios/oolite-linux/${PN}-dev-source-${PV}.tar.bz2"
+FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0rc1.source.js-only.tbz"
+SRC_URI="mirror://berlios/oolite-linux/${PN}-dev-source-${PV}.tar.bz2
+	${FF_JS_URI}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="${IUSE}"
+IUSE="${IUSE} debug"
 
 RDEPEND="virtual/opengl
 		gnustep-base/gnustep-gui
@@ -25,6 +27,7 @@ DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make"
 
 S="${WORKDIR}/${PN}-dev-source-${PV}"
+PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
 
 pkg_setup() {
 	GNUSTEP_MAKEFILES=`gnustep-config --variable=GNUSTEP_MAKEFILES` || \
@@ -32,15 +35,21 @@ pkg_setup() {
 	source "${GNUSTEP_MAKEFILES}/GNUstep.sh"
 }
 
+src_unpack() {
+	base_src_unpack
+	mkdir "${S}"/deps/Cross-platform-deps/mozilla || die
+	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/Cross-platform-deps/mozilla/ || die
+	mv "${WORKDIR}/mozilla-2.0/nsprpub" "${S}"/deps/Cross-platform-deps/mozilla/ || die
+	echo "${FF_JS_URI}" > "${S}"/deps/Cross-platform-deps/mozilla/current.url
+}
+
 src_prepare() {
-	default
-	sed '/oolite_LIB_DIRS/d' -i GNUmakefile
-	sed "s|/usr/share/GNUstep/Makefiles|${GNUSTEP_MAKEFILES}|" -i Makefile
-	sed "s|strip.*|true|" -i GNUmakefile.postamble
+	base_src_prepare
+	sed -i -e 's/\r//g' "${S}"/deps/Cocoa-deps/scripts/update-mozilla.sh
 }
 
 src_compile() {
-	make -f Makefile release || die "make failed"
+	emake -f Makefile $(use debug && echo debug || echo release) || die
 }
 
 src_install() {
