@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -16,14 +16,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-VACUUM_DEPEND=">=net-im/vacuum-1.1.0"
 RDEPEND="
-	${VACUUM_DEPEND}
+	>=net-im/vacuum-1.1.0
 	net-libs/libotr
 "
-DEPEND="${RDEPEND}
-	${VACUUM_DEPEND}[sdk]
-"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/hg"
 

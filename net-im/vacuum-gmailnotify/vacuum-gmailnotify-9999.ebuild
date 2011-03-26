@@ -21,13 +21,10 @@ for x in ${LANGS}; do
 	IUSE+=" linguas_${x}"
 done
 
-VACUUM_DEPEND=">=net-im/vacuum-1.1.0"
 RDEPEND="
-	${VACUUM_DEPEND}
+	>=net-im/vacuum-1.1.0
 "
-DEPEND="${RDEPEND}
-	${VACUUM_DEPEND}[sdk]
-"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/hg"
 
