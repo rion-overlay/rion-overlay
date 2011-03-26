@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 LANGS="de pl ru uk"
 
 inherit cmake-utils
@@ -15,10 +15,25 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 PLUGINS=" adiummessagestyle annotations autostatus avatars bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver multiuserchat pepmanager privacylists privatestorage registration remotecontrol rostersearch servicediscovery sessionnegotiation socksstreams vcard xmppuriqueries"
-IUSE="${PLUGINS// / +} sdk"
+IUSE="${PLUGINS// / +}"
 for x in ${LANGS}; do
 	IUSE+=" linguas_${x}"
 done
+
+REQUIRED_USE="
+	annotations? ( privatestorage )
+	avatars? ( vcard )
+	bookmarks? ( privatestorage )
+	captchaforms? ( dataforms )
+	commands? ( dataforms )
+	datastreamsmanager? ( dataforms )
+	filestreamsmanager? ( datastreamsmanager )
+	filetransfer? ( filestreamsmanager datastreamsmanager )
+	pepmanager? ( servicediscovery )
+	registration? ( dataforms )
+	remotecontrol? ( commands dataforms )
+	sessionnegotiation? ( dataforms )
+"
 
 RDEPEND="
 	>=x11-libs/qt-core-4.5:4[ssl]
@@ -40,9 +55,9 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DINSTALL_LIB_DIR="$(get_libdir)"
-		"$(cmake-utils_use sdk INSTALL_SDK)"
+		-DINSTALL_SDK=ON
 		-DLANGS="${langs}"
-		-DINSTALL_DOCS="0"
+		-DINSTALL_DOCS=OFF
 	)
 
 	for x in ${PLUGINS}; do

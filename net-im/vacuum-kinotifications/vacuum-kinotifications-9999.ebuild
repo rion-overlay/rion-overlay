@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI=3
 
 LANGS="ru"
 
@@ -21,14 +21,11 @@ for x in ${LANGS}; do
 	IUSE+=" linguas_${x}"
 done
 
-VACUUM_DEPEND=">=net-im/vacuum-1.1.0"
 RDEPEND="
-	${VACUUM_DEPEND}
+	>=net-im/vacuum-1.1.0
 	x11-libs/qt-webkit:4
 "
-DEPEND="${RDEPEND}
-	${VACUUM_DEPEND}[sdk]
-"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/hg"
 
