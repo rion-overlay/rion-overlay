@@ -64,8 +64,19 @@ src_compile() {
 		SWIFT_INSTALLDIR="${S}/usr"
 		docbook_xsl="/usr/share/sgml/docbook/xsl-stylesheets"
 		docbook_xml="/usr/share/sgml/docbook/xml-dtd-4.5"
+		Swift "${S}/usr"
 	)
-	use test && scons_vars+=( test="unit" )
+	use test && scons_vars+=( test="unit" QA )
+	use avahi && scons_vars+=( Slimber )
+	use examples && scons_vars+=(
+			Documentation/SwiftenDevelopersGuide/Examples
+			Limber
+			Sluift
+			Swiften/Config
+			Swiften/Examples
+			Swiften/QA
+			SwifTools
+			)
 
 	scons "${scons_vars[@]}" || die
 }
