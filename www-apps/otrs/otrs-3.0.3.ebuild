@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 	dev-perl/Mail-POP3Client
 	dev-perl/MailTools
 	>=dev-perl/MIME-tools-5.427
-	dev-perl/Net-IMAP-Simple
+	dev-perl/NetxAP
 	dev-perl/Net-IMAP-Simple-SSL
 	>dev-perl/Net-DNS-0.60
 	dev-perl/Net-SMTP-SSL
