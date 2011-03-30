@@ -57,10 +57,6 @@ sys-libs/ldb
 # in development
 net-im/skypexmpp
 
-# 19 Dec 2010; A.Vinogradov <spamslepnoga@inbox.ru>
-# mask for testing
-=www-servers/nginx-0.9*
-
 # 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # Multiple XSS and denial of service vulnerabilities
 # see  http://otrs.org/advisory/OSA-2010-02-en/
