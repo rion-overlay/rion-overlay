@@ -15,6 +15,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-perl/Class-Accessor
+	dev-perl/Coro
 	dev-perl/DateTime
 	dev-perl/DateTime-Format-Mail
 	dev-perl/DateTime-Format-Natural
@@ -22,9 +23,11 @@ RDEPEND="dev-perl/Class-Accessor
 	dev-perl/Email-MIME
 	dev-perl/Email-MIME-ContentType
 	dev-perl/Email-Simple
+	dev-perl/Encode-IMAPUTF7
 	virtual/perl-MIME-Base64
 	dev-perl/List-MoreUtils
 	dev-perl/Net-SSLeay
+	dev-perl/Net-Server-Coro
 	dev-perl/regexp-common
 	dev-perl/DateTime-Format-Strptime
 	dev-perl/Parse-RecDescent"
