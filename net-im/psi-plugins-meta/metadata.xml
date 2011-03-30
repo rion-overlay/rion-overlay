@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>nikoli@lavabit.com</email>
+		<name>Nikoli</name>
+	</maintainer>
+	<longdescription lang="en">Meta package for Psi plugins.
+	Just set USE flag corresponding to needed for you plugins
+	and emerge this package
+	</longdescription>
+<use>
+	<flag name='attention'>Enable plugin for making attention (XEP-0224)</flag>
+	<flag name='autoreply'>Enable autoreply plugin.</flag>
+	<flag name='birthdayreminder'>Enable plugin to remind contact's birthdays</flag>
+	<flag name='captchaforms'>Enable plugin to show MUC's captcha</flag>
+	<flag name='chess'>Enable plugin to play chess with your friends</flag>
+	<flag name='cleaner'>Enable profile cleaner plugin.</flag>
+	<flag name='conferencelogger'>Enable plugin which saves logs of conferences</flag>
+	<flag name='contentdownloader'>Enable plugin for downloading extras</flag>
+	<flag name='extendedoptions'>Enable plugin for UI for some hidden options</flag>
+	<flag name='gmailservice'>Enable Gmail Service plugin for psi</flag>
+	<flag name='historykeeper'>Enable plugin to keep certain contacts history clean</flag>
+	<flag name='icqdie'>Enable "ICQDie!!" plugin.</flag>
+	<flag name='image'>Enable plugin for sending in-band images</flag>
+	<flag name='juick'>Enable plugin for juick.com service</flag>
+	<flag name='qipxstatuses'>Enable QIP xStatus reader plugin</flag>
+	<flag name='screenshot'>Enable plugin to quickly make screenshots</flag>
+	<flag name='skins'>Enable skins plugin.</flag>
+	<flag name='stopspam'>Enable plugin for spam blocking</flag>
+	<flag name='storagenotes'>Enable plugin for Jabber notes protocol extension</flag>
+	<flag name='translate'>Enable Translate plugin</flag>
+	<flag name='videostatus'>Enable plugin for settings some status during video watching</flag>
+	<flag name='watcher'>Enable plugin for sending in-band images</flag>
+</use>
+</pkgmetadata>

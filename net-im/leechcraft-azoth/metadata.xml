@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <longdescription>Azoth, the modular IM client for LeechCraft</longdescription> 
+ <use>
+  <flag name="acetamide">Build Acetamide, the IRC protocol support</flag>
+  <flag name="chathistory">Build ChatHistory which stories chat history</flag>
+  <flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
+  <flag name="p100q">Build p100q, plugin for psto.net microblogging service</flag>
+  <flag name="standardstyles">Build support for standard Azoth styles engine</flag>
+  <flag name="xoox">Build Xoox, gloox-based plugin for XMPP support</flag>
+ </use>
+</pkgmetadata>
