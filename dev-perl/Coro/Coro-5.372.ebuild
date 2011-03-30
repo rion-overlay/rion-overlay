@@ -7,9 +7,8 @@ EAPI=3
 MODULE_AUTHOR="MLEHMANN"
 inherit perl-module
 
-DESCRIPTION=""
+DESCRIPTION="The only real threads in perl."
 
-#LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -18,7 +17,13 @@ RDEPEND="dev-perl/Event
 	dev-perl/AnyEvent
 	dev-perl/common-sense
 	virtual/perl-Scalar-List-Utils
-	dev-perl/EV"
+	dev-perl/EV
+	dev-perl/AnyEvent
+	virtual/perl-Storable
+	virtual/perl-Time-HiRes
+	dev-perl/Guard
+	dev-perl/IO-AIO"
+
 DEPEND="${RDEPEND}"
 
 SRC_TEST="do"
