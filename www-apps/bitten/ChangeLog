@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Mar 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  -files/hg_pull.trac_0.12.patch:
+  Drop patch unused since last beta
+
   24 Mar 2011; Nickolaj Stjujsckij <sterkrig@home.no>
   -bitten-0.6_beta3-r1.ebuild:
   Drop 0.6 beta3
