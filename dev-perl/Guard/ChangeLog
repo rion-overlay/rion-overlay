@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/Guard
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*Guard-1.021 (30 Mar 2011)
+
+  30 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +Guard-1.021.ebuild,
+  +metadata.xml:
+  initial commit
+

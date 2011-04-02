@@ -1,0 +1,15 @@
+# ChangeLog for net-mail/renattach
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  05 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +renattach-1.2.4.ebuild, +metadata.xml:
+  move to net-mail category
+
+  04 Apr 2010; <slep@gentoo.org> renattach-1.2.4.ebuild:
+  syntax fix
+
+  29 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +renattach-1.2.4.ebuild, +metadata.xml:
+  portage version bump
+

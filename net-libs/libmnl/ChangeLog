@@ -1,0 +1,11 @@
+# ChangeLog for net-libs/libmnl
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*libmnl-9999 (27 Feb 2011)
+*libmnl-1.0.1 (27 Feb 2011)
+
+  27 Feb 2011; A. Vinogradov <spamslepnoga@inbox.ru> +libmnl-1.0.1.ebuild,
+  +libmnl-9999.ebuild, +metadata.xml:
+  initial commit
+

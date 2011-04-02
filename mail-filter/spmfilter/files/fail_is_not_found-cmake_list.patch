@@ -1,0 +1,30 @@
+diff -r 739925154516 cmake/Modules/FindDB4.cmake
+--- a/cmake/Modules/FindDB4.cmake	Mon Apr 12 10:15:02 2010 +0300
++++ b/cmake/Modules/FindDB4.cmake	Mon Apr 12 10:40:52 2010 +0300
+@@ -8,5 +8,5 @@
+ 	message(STATUS "  found db4 library ${HAVE_DB4}")
+ 	message(STATUS "  found db4 include path ${DB4_INCLUDE_PATH}")
+ else(HAVE_DB4)
+-	message(STATUS "  db4 library could not be found, disabling db4 backend.")
++	message(FATAL_ERROR "  db4 library could not be found, disabling db4 backend.")
+ endif(HAVE_DB4)
+diff -r 739925154516 cmake/Modules/FindLdap.cmake
+--- a/cmake/Modules/FindLdap.cmake	Mon Apr 12 10:15:02 2010 +0300
++++ b/cmake/Modules/FindLdap.cmake	Mon Apr 12 10:40:52 2010 +0300
+@@ -8,5 +8,5 @@
+ 	message(STATUS "  found ldap library ${HAVE_LDAP}")
+ 	message(STATUS "  found ldap include path ${LDAP_INCLUDE_PATH}")
+ else(HAVE_LDAP)
+-	message(STATUS "  ldap library could not be found, disabling ldap backend.")
++	message(FATAL_ERROR "  ldap library could not be found, disabling ldap backend.")
+ endif(HAVE_LDAP)
+diff -r 739925154516 cmake/Modules/FindZdb.cmake
+--- a/cmake/Modules/FindZdb.cmake	Mon Apr 12 10:15:02 2010 +0300
++++ b/cmake/Modules/FindZdb.cmake	Mon Apr 12 10:40:52 2010 +0300
+@@ -15,5 +15,5 @@
+ 	string(REGEX REPLACE "include" "include/zdb" ZDB_INCLUDE_DIR ${ZDB_HEADER_DIR})
+ 	message(STATUS "  found zdb include path ${ZDB_INCLUDE_DIR}")
+ else(HAVE_ZDB)
+-	message(STATUS "  zdb library could not be found, disabling sql backend.")
++	message(FATAL_ERROR "  zdb library could not be found, disabling sql backend.")
+ endif(HAVE_ZDB)
