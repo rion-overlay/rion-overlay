@@ -30,7 +30,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=media-plugins/gst-plugins-theora-0.10.22
 	>=media-plugins/gst-plugins-alsa-0.10.22
 	>=media-plugins/gst-plugins-ogg-0.10.22
-	>=media-plugins/gst-plugins-v4l-0.10.22
 	media-plugins/gst-plugins-v4l2
 	media-plugins/gst-plugins-jpeg
 	!<net-im/psi-0.13_rc1
@@ -51,12 +50,15 @@ src_prepare() {
 		sed -e '/^SUBDIRS[[:space:]]*+=[[:space:]]*demo[[:space:]]*$/d;' \
 			-i psimedia.pro || die
 	fi
+	# Remove support for V4L v1 because linux-headers-2.6.38 stopped shipping linux/videodev.h.
+	epatch "${FILESDIR}"/${PN}-1.0.3-linux-headers-2.6.38.patch
+	epatch "${FILESDIR}"/${PN}-1.0.3-remove-v4l-driver.patch
 }
 
 src_configure() {
 	qconf
-	# qconf generaged configure script...
-	./configure || die
+	# qconf generated configure script...
+	./configure --no-separate-debug-info || die
 
 	eqmake4
 }
