@@ -11,5 +11,5 @@ DESCRIPTION="Qrosp, scrpting support for LeechCraft via Qross."
 IUSE="debug"
 KEYWORDS="~x86 ~amd64"
 DEPEND="=net-misc/leechcraft-core-${PV}
-	dev-libs/qrosscore"
+	=dev-libs/qrosscore-0.2.0"
 RDEPEND="${DEPEND}"
