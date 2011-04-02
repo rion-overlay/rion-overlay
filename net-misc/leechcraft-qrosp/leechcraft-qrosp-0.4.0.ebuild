@@ -9,6 +9,7 @@ inherit leechcraft
 DESCRIPTION="Qrosp, scrpting support for LeechCraft via Qross."
 
 IUSE="debug"
+KEYWORDS="~amd64 ~x86"
 DEPEND="=net-misc/leechcraft-core-${PV}
 	dev-libs/qrosscore"
 RDEPEND="${DEPEND}"
