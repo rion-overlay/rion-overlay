@@ -32,6 +32,10 @@
 	<flag name='storagenotes'>Enable plugin for Jabber notes protocol extension</flag>
 	<flag name='translate'>Enable Translate plugin</flag>
 	<flag name='videostatus'>Enable plugin for settings some status during video watching</flag>
-	<flag name='watcher'>Enable plugin for sending in-band images</flag>
+	<flag name='watcher'>Emanable plugin for sending in-band images</flag>
+	 <flag name='otr'></flag>
+	      <flag name='psto'>s</flag>
+	<flag name='pepchangenotify'></flag>
+    <flag name='extendedmenu'></flag>
 </use>
 </pkgmetadata>

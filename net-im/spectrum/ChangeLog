@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Apr 2011; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  add new USE in metadata
+
   31 Jan 2011; Rion <rion4ik@notagmail.com> spectrum-1.4.7.ebuild,
   spectrum-9999.ebuild, -files/spectrum.symlink.cfg, files/spectrum.cfg,
   files/spectrum.confd, files/spectrum.initd:

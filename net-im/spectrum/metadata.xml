@@ -10,5 +10,7 @@
   <flag name='symlinks'>Make symlinks for configuration files of all protocols
   to one file</flag>
   <flag name='tools'>Install spectrum tools</flag>
+
+  <flag name='staticport'>Install spectrum tools</flag>
 </use>
 </pkgmetadata>
