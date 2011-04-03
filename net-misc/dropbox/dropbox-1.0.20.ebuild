@@ -3,6 +3,7 @@
 # $Header: $
 
 EAPI="4"
+
 inherit base
 
 DESCRIPTION="Dropbox Daemon (precompiled, without gnome deps)."
@@ -14,7 +15,7 @@ LICENSE="EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror strip"
+RESTRICT="strip"
 
 QA_EXECSTACK_x86="opt/dropbox-daemon/_ctypes.so"
 QA_EXECSTACK_amd64="opt/dropbox-daemon/_ctypes.so"
@@ -28,18 +29,18 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/.dropbox-dist"
 
 src_install() {
-	local dir="${EPREFIX}/opt/dropbox-daemon"
+	local dir="/opt/dropbox-daemon"
 	insinto "${dir}"
 	doins -r *
-	rm -rf  "${D}/${dir}"/icons
+	rm -rf  "${ED}/${dir}"/icons
 	fperms a+x "${dir}"/dropboxd
 	fperms a+x "${dir}"/dropbox
 	dosym "${dir}"/dropboxd /opt/bin/dropbox
 
-	insinto "${EPREFIX}"/usr/share
+	insinto /usr/share
 	doins -r icons
-	dosym "${EPREFIX}"/usr/share/icons "${EPREFIX}/opt/dropbox-daemon/icons"
+	dosym /usr/share/icons /opt/dropbox-daemon/icons
 	make_desktop_entry dropbox "Dropbox Daemon" dropboxstatus-logo
-	insinto "${EPREFIX}"/etc/xdg/autostart
-	doins "${ED}"/usr/share/applications/dropbox-dropbox.desktop
+	insinto /etc/xdg/autostart
+	doins /usr/share/applications/dropbox-dropbox.desktop
 }
