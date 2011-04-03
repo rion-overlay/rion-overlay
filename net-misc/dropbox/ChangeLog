@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Apr 2011; A. Vinogradov <spamslepnoga@inbox.ru> dropbox-1.0.20.ebuild:
+  Fix QA issue - wrong used ebuild helpers and portage variables
+
   01 Feb 2011; Rion <rion4ik@notagmail.com> dropbox-1.0.20.ebuild:
   added symlink for icons
 
