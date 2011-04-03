@@ -51,17 +51,17 @@ src_install() {
 		dobin clients/cli/${PN} || die
 	fi
 	if use gedit ; then
-		insinto "${EPREFIX}/usr/$(get_libdir)/gedit-2/plugins"
+		insinto /usr/$(get_libdir)/gedit-2/plugins
 		doins clients/gedit/${PN}-plugin.py || die
 		doins clients/gedit/${PN}.gedit-plugin || die
 	fi
 	if use nautilus ; then
-		insinto "${EPREFIX}/usr/$(get_libdir)/nautilus/extensions-2.0/python"
+		insinto /usr/$(get_libdir)/nautilus/extensions-2.0/python
 		doins clients/nautilus/RabbitVCS.py || die
 	fi
 	if use thunar ; then
 		has_version '>=xfce-base/thunar-1.1.0' && tv=2 || tv=1
-		insinto "${EPREFIX}/usr/$(get_libdir)/thunarx-${tv}/python"
+		insinto /usr/$(get_libdir)/thunarx-${tv}/python
 		doins clients/thunar/RabbitVCS.py || die
 	fi
 }
