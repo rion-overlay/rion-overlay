@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-vcs/rabbitvcs/ChangeLog,v 1.2 2011/02/06 18:34:40 xmw Exp $
 
+*rabbitvcs-0.14.2.1-r1 (03 Apr 2011)
+
+  03 Apr 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  -rabbitvcs-0.14.2.1.ebuild, +rabbitvcs-0.14.2.1-r1.ebuild:
+  fix QA issue - not properly used E* variables;
+  >=EAPI=3 helpers always include ED,EROOT, etc variable
+
 *rabbitvcs-0.14.2.1 (18 Feb 2011)
 
   18 Feb 2011; rion <rion4ik@spamogmail.com> -rabbitvcs-0.14.2.ebuild,
