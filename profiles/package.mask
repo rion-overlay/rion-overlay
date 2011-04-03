@@ -13,25 +13,14 @@ dev-ruby/lockfile
 dev-ruby/mini_magick
 dev-ruby/rdiscount
 dev-util/madde
-games-arcade/frogatto
 =net-misc/dropbox-1.0.20
 dev-util/madde
 net-misc/asterisk-sounds-ru
 net-misc/asterisk-sounds-ru-tamara
 
-
-
 # 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # live depend on non live ebuild
 net-misc/leechcraft-qrosp
-
-# 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
-# mask due bad depends, abandoned ebuild, apstream also abandoned
-# removal in 10 day
-media-video/ripwrap
-dev-ruby/rvideo
-net-mail/isoqlog
-
 
 # 21 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # Mask for removal in 60 day
@@ -46,22 +35,15 @@ net-wireless/CPyrit-Stream
 net-wireless/Pyrit
 www-apps/mailzu
 
-
-
 # 17 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # Mask for removal in 30 day
 # please use net-fs/samba[ldb] directly
 sys-libs/ldb
 
-# 25 Jan 2011; Rion <rion@rion.ru>
-# in development
-net-im/skypexmpp
-
 # 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # Multiple XSS and denial of service vulnerabilities
 # see  http://otrs.org/advisory/OSA-2010-02-en/
 <www-apps/otrs-2.3.6
-=www-apps/otrs-2.4.7
 
 # 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 #mask for work failures
