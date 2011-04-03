@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Modification of UTF-7 encoding for IMAP"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="virtual/perl-Encode"

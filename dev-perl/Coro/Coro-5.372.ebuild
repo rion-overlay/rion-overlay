@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The only real threads in perl."
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-perl/Event

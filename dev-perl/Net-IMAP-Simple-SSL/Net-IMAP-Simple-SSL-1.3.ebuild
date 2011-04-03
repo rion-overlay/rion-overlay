@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="SSL support for Net::IMAP::Simple"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-perl/IO-Socket-SSL
