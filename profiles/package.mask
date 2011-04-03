@@ -18,10 +18,6 @@ dev-util/madde
 net-misc/asterisk-sounds-ru
 net-misc/asterisk-sounds-ru-tamara
 
-# 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
-# live depend on non live ebuild
-net-misc/leechcraft-qrosp
-
 # 21 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # Mask for removal in 60 day
 mail-filter/spmfilter
