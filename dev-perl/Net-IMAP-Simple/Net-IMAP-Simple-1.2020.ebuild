@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for simple IMAP account handling."
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-perl/Class-Accessor

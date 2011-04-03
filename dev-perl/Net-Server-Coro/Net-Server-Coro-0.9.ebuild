@@ -11,7 +11,7 @@ DESCRIPTION="A co-operative multithreaded server using Coro"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-perl/Coro

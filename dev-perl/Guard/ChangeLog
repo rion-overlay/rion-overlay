@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Apr 2011; A. Vinogradov <spamslepnoga@inbox.ru> Guard-1.021.ebuild:
+  keyword ~x86
+
 *Guard-1.021 (30 Mar 2011)
 
   30 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +Guard-1.021.ebuild,
