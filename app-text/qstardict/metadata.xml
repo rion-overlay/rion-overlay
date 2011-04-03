@@ -10,5 +10,6 @@
 <use>
 <flag name='plugin_stardict'>build stardict plugin</flag>
 <flag name='plugin_web'>build web plugin</flag>
+<flag name='plugin_swac'> </flag>
 </use>
 </pkgmetadata>

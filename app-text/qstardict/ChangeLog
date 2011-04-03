@@ -1,6 +1,9 @@
 # ChangeLog for app-text/qstardict
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 
+  03 Apr 2011; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  add new USE in repoman
+
   09 Oct 2010; Rion <rion4ik@gmail.com> qstardict-9999.ebuild:
   slightly improved. added plugin
 
