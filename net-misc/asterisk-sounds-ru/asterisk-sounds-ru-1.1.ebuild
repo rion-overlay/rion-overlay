@@ -1,6 +1,7 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: Author: mva $
+
 EAPI="3"
 
 inherit eutils
@@ -19,6 +20,7 @@ SLOT="0"
 IUSE="+alaw +gsm wav"
 
 DEPEND=">=net-misc/asterisk-1.6.2.0"
+RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	use wav && (
