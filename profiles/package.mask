@@ -1,3 +1,7 @@
+# 4 Apr 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# test build is broken
+net-misc/asterisk-sounds-ru-tamara
+
 # 22 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # RDEPEND.badmasked, not properly used python eclass
 net-im/skypexmpp 
