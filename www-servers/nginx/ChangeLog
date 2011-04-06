@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-0.9.6 (06 Apr 2011)
+
+  06 Apr 2011; <slep@gentoo.org> +nginx-0.9.6.ebuild:
+  bump
+
   19 Feb 2011; mva <mva@mva.name> nginx-0.9.4.ebuild,
   +files/passenger-3.0.0-gentoo.patch, +files/passenger-3.0.0-ldflags.patch,
   metadata.xml:
