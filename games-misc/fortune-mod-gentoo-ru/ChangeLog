@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*fortune-mod-gentoo-ru-0.21 (06 Apr 2011)
+
+  06 Apr 2011; <slep@gentoo.org> +fortune-mod-gentoo-ru-0.21.ebuild:
+  bump
+
 *fortune-mod-gentoo-ru-0.20 (03 Feb 2011)
 
   03 Feb 2011; <slep@gentoo.org> +fortune-mod-gentoo-ru-0.20.ebuild:
