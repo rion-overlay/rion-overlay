@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*posix_ipc-0.9.1 (08 Apr 2011)
+
+  08 Apr 2011; Nickolaj Stjujsckij <sterkrig@home.no> +posix_ipc-0.9.1.ebuild:
+  Drop old, add new
+
 *posix_ipc-0.9.0 (25 Jan 2011)
 
   25 Jan 2011; Nickolaj Stjujsckij <sterkrig@home.no> +posix_ipc-0.9.0.ebuild:
