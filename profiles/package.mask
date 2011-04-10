@@ -13,7 +13,6 @@ dev-ruby/lockfile
 dev-ruby/mini_magick
 dev-ruby/rdiscount
 dev-util/madde
-=net-misc/dropbox-1.0.20
 dev-util/madde
 net-misc/asterisk-sounds-ru
 net-misc/asterisk-sounds-ru-tamara
@@ -30,11 +29,6 @@ net-wireless/CPyrit-OpenCL
 net-wireless/CPyrit-Stream
 net-wireless/Pyrit
 www-apps/mailzu
-
-# 17 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
-# Mask for removal in 30 day
-# please use net-fs/samba[ldb] directly
-sys-libs/ldb
 
 # 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 # Multiple XSS and denial of service vulnerabilities
