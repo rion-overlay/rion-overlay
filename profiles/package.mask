@@ -12,10 +12,6 @@ dev-ruby/inifile
 dev-ruby/lockfile
 dev-ruby/mini_magick
 dev-ruby/rdiscount
-dev-util/madde
-dev-util/madde
-net-misc/asterisk-sounds-ru
-net-misc/asterisk-sounds-ru-tamara
 
 # 21 Mar 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # Mask for removal in 60 day
