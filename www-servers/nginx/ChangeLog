@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-0.9.7 (11 Apr 2011)
+
+  11 Apr 2011; rion <rion4ik@spamogmail.com> -nginx-0.9.6.ebuild,
+  +nginx-0.9.7.ebuild, files/nginx.logrotate:
+  Synced with portage
+
 *nginx-0.9.6 (06 Apr 2011)
 
   06 Apr 2011; <slep@gentoo.org> +nginx-0.9.6.ebuild:
