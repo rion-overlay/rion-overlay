@@ -38,7 +38,6 @@
     <flag name="rostersearch">Allows to search for contacts in the roster</flag>
     <flag name="servicediscovery">Enable receiving information about Jabber entities</flag>
     <flag name="sessionnegotiation">Enable initiating the session between two entities with setting the rules for XMPP stanzas exchange</flag>
-    <flag name="skinmanager">Enable changing of the application look and feel</flag>
     <flag name="socksstreams">Enable initiating SOCKS5 data streams between two XMPP entities</flag>
     <flag name="vcard">Enable obtaining peer's personal contact information</flag>
     <flag name="xmppuriqueries">Allow other plugins to handle XMPP URI queries</flag>
