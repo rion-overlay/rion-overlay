@@ -16,5 +16,7 @@
 	performance tuning</flag>
 	<flag name='http'> </flag>
 	<flag name='http-cache'> </flag>
+	<flag name='nginx_modules_http_upload'>Enable support for handling file
+				uploads using multipart/form-data encoding</flag>
 </use>
 </pkgmetadata>
