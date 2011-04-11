@@ -18,4 +18,3 @@ IUSE=""
 
 DEPEND="x11-libs/gtksourceview:2.0"
 RDEPEND="${DEPEND}"
-
