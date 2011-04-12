@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 inherit cmake-utils subversion
 
@@ -21,7 +21,7 @@ DEPEND="
 	media-libs/freetype:2
 	media-libs/giflib
 	media-libs/imlib2
-	media-libs/jpeg
+	virtual/jpeg
 	media-libs/libpng
 	media-libs/tiff
 	virtual/opengl
@@ -30,13 +30,12 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed \
-		-e "/^ADD_DEFINITIONS/d"  \
+		-e "/^ADD_DEFINITIONS/d" \
 		-i CMakeLists.txt || die
 }
 
 src_install() {
-	pushd "${CMAKE_BUILD_DIR}"
-	dobin sviewgl || die
-	popd
+	dobin "${WORKDIR}"/sviewgl
+
 	dodoc config.example README
 }
