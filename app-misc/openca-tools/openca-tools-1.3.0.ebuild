@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
-inherit eutils multilib autotools
+WANT_AUTOMAKE="1.11"
+
+inherit autotools
 
 DESCRIPTION="This package contains the prerequisites for installing OpenCA"
 HOMEPAGE="http://www.openca.org"
@@ -14,13 +16,13 @@ LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug doc"
+IUSE="debug"
 
-DEPEND="sys-devel/libtool
-	dev-util/pkgconfig"
+DEPEND="dev-util/pkgconfig"
 RDEPEND=">=dev-libs/openssl-0.9.7"
 
 src_prepare() {
+
 	eautoreconf
 }
 
@@ -28,17 +30,14 @@ src_configure () {
 	econf \
 	--with-openca-user=openca \
 	--with-openca-group=openca \
-	$( use_enable  debug debug ) || die "econf failed"
+	$(use_enable debug) || die "econf failed"
 }
 
 src_install () {
 
-	emake DESTDIR="${D}"  install || die "einstall failed"
+	emake DESTDIR="${ED}"  install || die "install failed"
 
-	for i in usr/include /usr/sbin/ ; do
-		rm -fr	"${D}"/$i || die
-	done
-	rm -fr "${D}"/usr/$(get_libdir) || die
+	rm -fr "${ED}"/usr/share/man || die
 
 	dodoc AUTHORS INSTALL  NEWS README  VERSION
 }
