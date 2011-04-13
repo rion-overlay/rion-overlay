@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/openca/${P}.tar.gz"
 LICENSE="OpenCA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dbm mysql +postgres ldap sasl install-offline install-online install-ext scep db2"
+IUSE="dbm mysql postgres ldap sasl +install-offline install-online install-ext scep db2"
 
 COMMON_DEP="!app-crypt/openca
 	dev-libs/openssl
