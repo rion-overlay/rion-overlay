@@ -19,7 +19,7 @@ IUSE=""
 RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	>=dev-libs/expat-2
-	dev-db/sqlite:3
+	dev-db/sqlite:3[fts3]
 	"
 # TODO dev-db/wxSQLite3 (sunrise overlay)
 DEPEND="${RDEPEND}"
