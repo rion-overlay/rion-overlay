@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 PYTHON_DEPEND="2:2.5"
+RESTRICT_PYTHON_ABIS="3.*"
+SUPPORT_PYTHON_ABIS="1"
 
 inherit eutils python
 
@@ -34,12 +36,16 @@ S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	sed -i -e "s/\(LIBDIR = .*\)lib/\1$(get_libdir)/" Makefile || die "sed failed"
-	use amd64 && { sed -i -e  "s,'/lib/gnomenu/','/lib64/gnomenu/'," setup.py || \
-		die "sed failed"; }
+	sed -i -e  "s,'/lib/gnomenu/','/$(get_libdir)/gnomenu/'," \
+		-e "/INSTALL_PREFIX = '/aINSTALL_PREFIX='${EROOT}/usr'" \
+		setup.py || die "sed failed";
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	install() {
+		emake DESTDIR="${ED}" install || die "emake"
+	}
+	python_execute_function install
 }
 
 pkg_postinst() {
