@@ -1,0 +1,22 @@
+--- ./configure.in.orig	2009-10-12 12:21:59.000000000 +0300
++++ ./configure.in	2010-01-19 18:43:16.227642190 +0200
+@@ -459,7 +459,7 @@
+     elif test -d "${oldincludedir}/QtCore"; then QT4_INCL="${oldincludedir}";
+     elif test -d "${QT4_DIR}/include/QtCore"; then QT4_INCL="${QT4_DIR}/include"; fi
+     if test -z ${QT4_INCL}; then AC_MSG_ERROR([QT4 development, include files no present (into directory ${QT4_DIR})! Install QT4 library development package.]); fi
+-    if test $target_cpu == "x86_64"; then QT4_LIB="${QT4_DIR}/lib64"; else QT4_LIB="${QT4_DIR}/lib"; fi
++    if test $target_cpu == "x86_64"; then QT4_LIB="${QT4_DIR}"; else QT4_LIB="${QT4_DIR}"; fi
+     AC_SUBST(QT4_INCL)
+     AC_SUBST(QT4_LIB)
+ #--- Modules checkings ---
+--- ./configure.orig	2009-10-12 12:21:59.000000000 +0300
++++ ./configure	2010-01-19 18:43:05.234644226 +0200
+@@ -31111,7 +31111,7 @@
+     if test -z ${QT4_INCL}; then { { $as_echo "$as_me:$LINENO: error: QT4 development, include files no present (into directory ${QT4_DIR})! Install QT4 library development package." >&5
+ $as_echo "$as_me: error: QT4 development, include files no present (into directory ${QT4_DIR})! Install QT4 library development package." >&2;}
+    { (exit 1); exit 1; }; }; fi
+-    if test $target_cpu == "x86_64"; then QT4_LIB="${QT4_DIR}/lib64"; else QT4_LIB="${QT4_DIR}/lib"; fi
++    if test $target_cpu == "x86_64"; then QT4_LIB="${QT4_DIR}"; else QT4_LIB="${QT4_DIR}"; fi
+ 
+ 
+ #--- Modules checkings ---
