@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	sys-apps/file
 	app-emulation/libvirt
 	dev-libs/libxml2:2
-	dev-util/febootstrap
+	=dev-util/febootstrap-3*
 	>=sys-apps/fakechroot-2.8
 	app-admin/augeas
 	sys-fs/squashfs-tools
@@ -98,7 +98,6 @@ src_unpack() {
 
 src_prepare() {
 	java-pkg-opt-2_src_prepare
-	#epatch "${FILESDIR}"/remove-root-check.patch
 	eautoreconf
 }
 
