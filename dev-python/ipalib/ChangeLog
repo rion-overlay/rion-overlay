@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/ipalib
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  19 Jul 2010; <slep@gentoo.org> ipalib-1.9.0_pre3.ebuild:
+  fix QA deprecation warning
+
+  16 Jul 2010; <slep@gentoo.org> ipalib-1.9.0_pre3.ebuild:
+  more QA fix
+
+  10 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -ipalib-1.9.0_pre1.ebuild, +ipalib-1.9.0_pre3.ebuild:
+  new version
+
+  18 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +ipalib-1.9.0_pre1.ebuild, +metadata.xml:
+  initial commit
+

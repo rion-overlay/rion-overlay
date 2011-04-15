@@ -1,0 +1,283 @@
+diff -r 16a2d2c5d3b9 src/smf_message.c
+--- a/src/smf_message.c	Mon Apr 12 09:27:26 2010 +0300
++++ b/src/smf_message.c	Mon Apr 12 09:29:38 2010 +0300
+@@ -15,6 +15,7 @@
+  * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+@@ -456,20 +457,18 @@
+  */
+ int smf_message_to_file(SMFMessage_T *message, const char *filename) {
+ 	GMimeStream *stream;
+-	int fd;
++	FILE *fd;
+ 	
+-	if ((fd = open(filename,O_WRONLY|O_CREAT)) == -1) {
++	if ((fd = fopen(filename,"wb+")) == NULL) {
+ 		TRACE(TRACE_ERR,"unable to create %s",filename);
+ 		return -1;
+ 	}
+ 
+-	stream = g_mime_stream_fs_new(fd);
++	stream = g_mime_stream_file_new(fd);
+ 	g_mime_object_write_to_stream((GMimeObject *)message->data,stream);
+ 	
+ 	g_mime_stream_flush(stream);
+-	g_mime_stream_close(stream);
+ 	g_object_unref(stream);
+-	close(fd);
+ 	return 0;
+ }
+ 
+diff -r 16a2d2c5d3b9 src/smf_modules.c
+--- a/src/smf_modules.c	Mon Apr 12 09:27:26 2010 +0300
++++ b/src/smf_modules.c	Mon Apr 12 09:29:38 2010 +0300
+@@ -110,18 +110,20 @@
+ 	GMimeMessage *msg;
+ 	GMimeFilter *crlf;
+ 	char *new_queue_file;
+-	int fd, fd2;
++	FILE *fd, *fd2;
+ 
+ 	if (session->dirty_headers == NULL)
+ 		return 0;
+ 
+ 	TRACE(TRACE_DEBUG,"flushing header information to filesystem");
+ 
+-	if ((fd = open(session->queue_file,O_RDONLY)) == -1) {
++	fd = fopen(session->queue_file,"r");
++	if(NULL == fd) {
+ 		TRACE(TRACE_ERR,"unable to open queue file");
+ 		return -1;
+ 	}
+-	stream = g_mime_stream_fs_new(fd);
++
++	stream = g_mime_stream_file_new(fd);
+ 	parser = g_mime_parser_new_with_stream(stream);
+ 	msg = g_mime_parser_construct_message(parser);
+ 	g_object_unref(parser);
+@@ -162,16 +164,16 @@
+ 	g_mime_stream_flush(stream);
+ 	smf_core_gen_queue_file(&new_queue_file);
+ 
+-	if ((fd2 = open(new_queue_file,O_RDWR|O_CREAT)) == -1) {
++	fd2 = fopen(new_queue_file, "w+");
++	if(NULL == fd2) {
+ 		TRACE(TRACE_ERR,"failed writing queue file");
+ 		g_object_unref(msg);
+ 		g_object_unref(parser);
+ 		g_object_unref(stream);
+-		close(fd);
+ 		return -1;
+ 	}
+ 
+-	stream2 = g_mime_stream_fs_new(fd2);
++	stream2 = g_mime_stream_file_new(fd2);
+ #ifdef HAVE_GMIME24
+ 	stream_filter = g_mime_stream_filter_new(stream2);
+ 	crlf = g_mime_filter_crlf_new(TRUE,FALSE);
+@@ -185,12 +187,6 @@
+ 	g_mime_object_write_to_stream(GMIME_OBJECT(msg),stream_filter);
+ 	g_mime_stream_flush(stream2);
+ 
+-	close(fd);
+-	close(fd2);
+-
+-	g_mime_stream_close(stream_filter);
+-	g_mime_stream_close(stream2);
+-	g_mime_stream_close(stream);
+ 	g_object_unref(msg);
+ 	g_object_unref(stream2);
+ 	g_object_unref(stream);
+diff -r 16a2d2c5d3b9 src/smf_pipe.c
+--- a/src/smf_pipe.c	Mon Apr 12 09:27:26 2010 +0300
++++ b/src/smf_pipe.c	Mon Apr 12 09:29:38 2010 +0300
+@@ -126,7 +126,7 @@
+ 	GMimeParser *parser;
+ 	gchar *line;
+ 	gsize length;
+-	int fd;
++	FILE *fd;
+ 	GError *error = NULL;
+ #ifdef HAVE_GMIME24
+ 	GMimeHeaderList *headers;
+@@ -143,12 +143,12 @@
+ 	in = g_io_channel_unix_new(STDIN_FILENO);
+ 	g_io_channel_set_encoding(in, NULL, NULL);
+ 
+-	if ((fd = open(session->queue_file,O_RDWR|O_CREAT)) == -1) {
++	if ((fd = fopen(session->queue_file,"wb+")) == NULL) {
+ 		TRACE(TRACE_ERR,"failed writing queue file");
+ 		return -1;
+ 	}
+ 
+-	out = g_mime_stream_fs_new(fd);
++	out = g_mime_stream_file_new(fd);
+ 
+ 
+ 	while (g_io_channel_read_line(in, &line, &length, NULL, NULL) == G_IO_STATUS_NORMAL) {
+@@ -156,7 +156,6 @@
+ 			TRACE(TRACE_ERR,"%s",error->message);
+ 			g_io_channel_unref(in);
+ 			g_object_unref(out);
+-			close(fd);
+ 			g_free(line);
+ 			remove(session->queue_file);
+ 			g_error_free(error);
+@@ -177,7 +176,7 @@
+ 	g_mime_stream_seek(out,0,0);
+ 	parser = g_mime_parser_new_with_stream(out);
+ 	message = GMIME_OBJECT(g_mime_parser_construct_message(parser));
+-	
++
+ 	smf_message_extract_addresses(message);
+ 
+ #ifdef HAVE_GMIME24
+@@ -195,9 +194,6 @@
+ 	g_object_unref(out);
+ 	g_io_channel_unref(in);
+ 
+-	close(fd);
+-
+-
+ 	if (load_modules() != 0) {
+ 		remove(session->queue_file);
+ 		smf_session_free();
+diff -r 16a2d2c5d3b9 src/smf_session.c
+--- a/src/smf_session.c	Mon Apr 12 09:27:26 2010 +0300
++++ b/src/smf_session.c	Mon Apr 12 09:29:38 2010 +0300
+@@ -15,6 +15,7 @@
+  * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <stdio.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <string.h>
+@@ -129,19 +130,19 @@
+ 	SMFSession_T *session = smf_session_get();
+ 	GIOChannel *in;
+ 	GMimeStream *out;
+-	int fd;
++	FILE *fd;
+ 	gchar *line;
+ 	GError *error = NULL;
+ 
+ 	if (path == NULL)
+ 		return -1;
+ 
+-	if ((fd = open(path,O_WRONLY|O_CREAT,S_IRWXU)) == -1) {
++	if ((fd = fopen(path,"wb")) == NULL) {
+ 		TRACE(TRACE_ERR,"failed opening destination file");
+ 		return -1;
+ 	}
+ 
+-	out = g_mime_stream_fs_new(fd);
++	out = g_mime_stream_file_new(fd);
+ 
+ 	if (smf_modules_flush_dirty(session) != 0)
+ 		TRACE(TRACE_ERR,"message flush failed");
+@@ -149,7 +150,6 @@
+ 	if ((in = g_io_channel_new_file(session->queue_file,"r", &error)) == NULL) {
+ 		TRACE(TRACE_ERR,"%s",error->message);
+ 		g_error_free(error);
+-		close(fd);
+ 		g_object_unref(out);
+ 		return -1;
+ 	}
+@@ -160,7 +160,6 @@
+ 			TRACE(TRACE_ERR,"failed writing file");
+ 			g_io_channel_shutdown(in,TRUE,NULL);
+ 			g_io_channel_unref(in);
+-			close(fd);
+ 			g_object_unref(out);
+ 			g_free(line);
+ 			g_remove(path);
+@@ -170,7 +169,6 @@
+ 	}
+ 
+ 	g_mime_stream_flush(out);
+-	close(fd);
+ 	g_object_unref(out);
+ 	g_io_channel_shutdown(in,TRUE,NULL);
+ 	g_io_channel_unref(in);
+@@ -366,15 +364,15 @@
+ 	SMFMessage_T *message;
+ 	GMimeStream *stream, *mem_stream;
+ 	GMimeParser *parser;
+-	int fd;
++	FILE *fd;
+ 
+ 	message = smf_message_new();
+ 
+-	if ((fd = open(session->queue_file,O_RDONLY)) == -1) {
++	if ((fd = fopen(session->queue_file,"r")) == NULL) {
+ 		return NULL;
+ 	}
+ 
+-	stream = g_mime_stream_fs_new(fd);
++	stream = g_mime_stream_file_new(fd);
+ 	
+ 	mem_stream = g_mime_stream_mem_new();
+ 	g_mime_stream_write_to_stream(stream,mem_stream);
+@@ -385,11 +383,8 @@
+ 	message->data = g_mime_parser_construct_message(parser);
+ 
+ 	g_object_unref(parser);
+-	g_mime_stream_close(stream);
+ 	g_object_unref(stream);
+-	close(fd);
+ 	g_object_unref(mem_stream);
+ 
+-
+ 	return message;
+ }
+diff -r 16a2d2c5d3b9 src/smf_smtpd.c
+--- a/src/smf_smtpd.c	Mon Apr 12 09:27:26 2010 +0300
++++ b/src/smf_smtpd.c	Mon Apr 12 09:29:38 2010 +0300
+@@ -238,7 +238,7 @@
+ 	GMimeStream *out;
+ 	gchar *line;
+ 	gsize length;
+-	int fd;
++	FILE *fd;
+ 	GMimeParser *parser;
+ 	GMimeMessage *message;
+ 	char *message_id;
+@@ -260,11 +260,11 @@
+ 	g_io_channel_set_encoding(in, NULL, NULL);
+ 	g_io_channel_set_close_on_unref(in,TRUE);
+ 
+-	if ((fd = open(session->queue_file,O_RDWR|O_CREAT)) == -1) {
++	if ((fd = fopen(session->queue_file,"wb+")) == NULL) {
+ 		return;
+ 	}
+ 
+-	out = g_mime_stream_fs_new(fd);
++	out = g_mime_stream_file_new(fd);
+ 	
+ 	while (g_io_channel_read_line(in, &line, &length, NULL, NULL) == G_IO_STATUS_NORMAL) {
+ 		if ((g_ascii_strcasecmp(line, ".\r\n")==0)||(g_ascii_strcasecmp(line, ".\n")==0)) break;
+@@ -272,7 +272,6 @@
+ 		
+ 		if (g_mime_stream_write(out,line,length) == -1) {
+ 			smtpd_string_reply(CODE_451);
+-			g_mime_stream_close(out);
+ 			g_object_unref(out);
+ 			g_io_channel_unref(in);
+ 			g_free(line);
+@@ -303,10 +302,7 @@
+ 	smf_message_extract_addresses(GMIME_OBJECT(message));
+ 	g_object_unref(parser);
+ 	g_object_unref(message);
+-	g_mime_stream_close(out);
+ 	g_object_unref(out);
+-	close(fd);
+-
+ 
+ 	if (session->message_from->addr == NULL) {
+ 		smf_session_header_append("From",g_strdup(session->envelope_from->addr));

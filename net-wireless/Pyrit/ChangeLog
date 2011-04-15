@@ -1,0 +1,13 @@
+# ChangeLog for net-wireless/Pyrit
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  23 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> +Pyrit-0.3.0.ebuild:
+  version bump
+
+*pyrit-0.3.0 ( 23 Mar 2010 )
+
+  12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +Pyrit-0.2.4.ebuild,
+  +metadata.xml:
+  initial commit
+
