@@ -10,7 +10,7 @@ DESCRIPTION="Powerful UML 2 modelling tool. BoUML fork"
 HOMEPAGE="http://douml.sourceforge.net"
 ESVN_REPO_URI="https://douml.svn.sourceforge.net/svnroot/douml/trunk"
 
-LICENSE="GPL"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
