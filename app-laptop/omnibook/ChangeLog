@@ -1,0 +1,162 @@
+# ChangeLog for app-laptop/omnibook
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/ChangeLog,v 1.22 2008/04/06 08:50:37 nelchael Exp $
+
+  27 May 2010; Rion <rion4ik@gmail.com>
+  -files/backlight-2.6.34-omnibook-20090628.patch:
+  backlight in upstream
+
+  10 May 2010; Rion <rion4ik@gmail.com> omnibook-9999.ebuild:
+  switched to git
+
+  05 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  repoman fix
+
+*omnibook-9999 ( )
+
+*omnibook-20080125 (06 Apr 2008)
+
+  06 Apr 2008; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  +omnibook-20080125.ebuild:
+  Version bump to resolve bug #200399, changed maintainer.
+
+  26 Nov 2007; Michele Noberasco <s4t4n@gentoo.org> omnibook-20070211.ebuild:
+  Added code to prevent this package from being built on kernels greater than 2.6.11.
+  Closes bug #200399.
+
+  25 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  omnibook-20070211.ebuild:
+  Works on amd64.
+
+  20 Jul 2007; Michele Noberasco <s4t4n@gentoo.org> omnibook-20070211.ebuild:
+  Stable for x86.
+  omnibook-20060817-r1.ebuild:
+  Wiped out previous version.
+
+*omnibook-20070211 (13 Feb 2007)
+
+  13 Feb 2007; Michele Noberasco <s4t4n@gentoo.org> metadata.xml, +omnibook-20070211.ebuild:
+  Version bump. Closes bug #166622.
+
+  24 Dec 2006; Michele Noberasco <s4t4n@gentoo.org> omnibook-20060817-r1.ebuild:
+  Stable for x86. Closes bug #158529.
+  omnibook-20060817.ebuild:
+  Wiped out previous revisione.
+
+*omnibook-20060817-r1 (20 Dec 2006)
+
+  20 Dec 2006; Michele Noberasco <s4t4n@gentoo.org> +omnibook-20060817-r1.ebuild:
+  Revision bump, with patch to fix compilation against kernels >=2.6.19.
+  See bug #158529.
+
+  27 Nov 2006; Michele Noberasco <s4t4n@gentoo.org> omnibook-20060817.ebuild:
+  Stable for x86. Closes bug #156396.
+  omnibook-20060126.ebuild:
+  Wiped out previous release.
+
+*omnibook-20060817 (23 Aug 2006)
+
+  23 Aug 2006; Michele Noberasco <s4t4n@gentoo.org> metadata.xml, +omnibook-20060817.ebuild:
+  Version bump. Listed myself as maintainer as I have the hardware to test.
+  Switched back to the old naming style to make emerge -u work correctly with version names.
+  omnibook-20060126.ebuild:
+  Stable for x86.
+  -omnibook-2.20060816.ebuild,-omnibook-20050217.ebuild:
+  Wiped out older versions.
+
+*omnibook-2.20060816 (17 Aug 2006)
+
+  17 Aug 2006; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  +omnibook-2.20060816.ebuild:
+  I am no longer maintainer because I have a new notebook, version bump thanks
+  to Christian Banik <mynews@buschaos.de> in bug 144210
+
+  08 Apr 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/omnibook-toshiba-m30x.patch, -omnibook-20050217-r1.ebuild,
+  -omnibook-20050217-r3.ebuild, omnibook-20060126.ebuild:
+  remove old, add module_param fix
+
+*omnibook-20060126 (02 Mar 2006)
+
+  02 Mar 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/remove-legacy-isa-fromio.patch, +omnibook-20060126.ebuild:
+  version bump
+
+*omnibook-20050217-r3 (02 Sep 2005)
+
+  02 Sep 2005; Michele Noberasco <s4t4n@gentoo.org>
+  +files/omnibook-toshiba-m30x.patch, +omnibook-20050217-r3.ebuild:
+  Revision bump, updating Toshiba M30X patch to also enable multimedia keys.
+  -omnibook-20050217-r2.ebuild,files/digest-omnibook-20050217-r2:
+  Removed previous revision.
+
+*omnibook-20050217-r2 (02 Sep 2005)
+
+  02 Sep 2005; Michele Noberasco <s4t4n@gentoo.org>
+  +files/omnibook-toshiba-m30x.patch, +omnibook-20050217-r2.ebuild:
+  Revision bump, with patch to add support for Toshiba Satellite
+  M30X series...
+
+*omnibook-20050217-r1 (12 Jun 2005)
+
+  12 Jun 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/omnibook-fix-obtest-segfault.patch, +omnibook-20050217-r1.ebuild:
+  Fix obtest segfault thanks to Andrew D. Keyser (aka Legoguy)
+  <andrewdk@sbcglobal.net> in bug 86335
+
+  10 May 2005; Stefan Schweizer <genstef@gentoo.org>
+  -omnibook-20040916.ebuild, omnibook-20050217.ebuild:
+  Fix portage-cvs-linux-mod-problem and remove old version
+
+  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  omnibook-20040916.ebuild, omnibook-20050217.ebuild:
+  marked -ppc since there are no powerpc omnibooks
+
+*omnibook-20050217 (04 Mar 2005)
+
+  04 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
+  +omnibook-20050217.ebuild:
+  Version bump.
+
+  02 Jan 2005; Stefan Schweizer <genstef@gentoo.org>
+  -omnibook-20021016.ebuild, -omnibook-20030403.ebuild,
+  -omnibook-20030828.ebuild, -omnibook-20040701.ebuild,
+  omnibook-20040916.ebuild:
+  Version 20040916 stable on x86. Conversion to linux-mod, pruned out old
+  versions
+
+*omnibook-20040916 (15 Nov 2004)
+
+  15 Nov 2004; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +omnibook-20021016.ebuild, +omnibook-20030403.ebuild,
+  +omnibook-20030828.ebuild, +omnibook-20040701.ebuild,
+  +omnibook-20040916.ebuild:
+  Move Package from app-misc to app-laptop
+
+*omnibook-20040916 (15 Nov 2004)
+
+  15 Nov 2004; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +omnibook-20040916.ebuild:
+  Version bump, migration to kernel-mod and closes bug 69944 thanks to Tom A.
+  Bergmann <botas@gmx.net>
+
+*omnibook-20040701 (20 Jul 2004)
+
+  20 Jul 2004; <plasmaroo@gentoo.org> +omnibook-20040701.ebuild:
+  Version bump - closes bug #42858.
+
+*omnibook-20030828 (31 Oct 2003)
+
+  31 Oct 2003; <plasmaroo@gentoo.org> omnibook-20030828.ebuild:
+  Version bump.
+
+*omnibook-20030403 (12 May 2003)
+
+  12 May 2003; Hanno Boeck <hanno@gentoo.org> omnibook-20030403 :
+  New version commited by Gustavo Felisberto.
+
+*omnibook-20021016 (01 Jan 2003)
+
+  01 Jan 2003; Hanno Boeck <hanno@gentoo.org> omnibook-20021016.ebuild :
+  Added ebuild for omnibook kernel module. Resolves bug #11409.
+  Ebuild commited by Mikko Ala-Fossi.
