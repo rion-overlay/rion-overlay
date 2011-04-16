@@ -2,6 +2,16 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*otrs-3.0.7 (16 Apr 2011)
+
+  16 Apr 2011; <slep@gentoo.org> +otrs-3.0.7.ebuild:
+  bump
+
+*otrs-2.4.10 (16 Apr 2011)
+
+  16 Apr 2011; <slep@gentoo.org> +otrs-2.4.10.ebuild:
+  bump
+
 *otrs-3.0.3 (30 Mar 2011)
 
   30 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> -otrs-3.0.0_beta5.ebuild,
