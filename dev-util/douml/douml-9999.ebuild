@@ -19,7 +19,6 @@ DEPEND="x11-libs/qt-qt3support
 	x11-libs/qt-sql"
 RDEPEND="${DEPEND}"
 
-
 src_prepare() {
 	sed -i -e "s:/usr/lib:/usr/$(get_libdir):" \
 		-e "s:/usr/:${EROOT}usr/:" Makefile || die
