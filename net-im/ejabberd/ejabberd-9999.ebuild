@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit eutils multilib pam ssl-cert autotools git
+inherit eutils multilib pam ssl-cert autotools git-2
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
@@ -39,7 +39,7 @@ JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
 RNOTES_VER="3.0.0"
 
 src_prepare() {
-	git_src_prepare
+	git-2_src_prepare
 	S=${WORKDIR}/${P}/src
 	cd "${S}"
 

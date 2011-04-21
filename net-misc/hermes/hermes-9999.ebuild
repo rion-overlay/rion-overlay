@@ -9,7 +9,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 SUPPORT_PYTHON_ABIS="1"
 PYTHON_MODNAME="hermes"
 
-inherit distutils git ssl-cert
+inherit distutils git-2 ssl-cert
 
 DESCRIPTION="The great messenger of the gods"
 HOMEPAGE="https://github.com/Ri0n/Hermes"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.10 2010/11/30 19:24:56 pva Exp $
 
-EAPI="2"
+EAPI="4"
 
 LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
@@ -14,7 +14,7 @@ ESVN_DISABLE_DEPENDENCIES="true"
 ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches"
 ESVN_PROJECT="psiplus"
 
-inherit eutils qt4-r2 multilib git subversion
+inherit eutils qt4-r2 multilib git-2 subversion
 
 DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
@@ -80,20 +80,20 @@ pkg_setup() {
 }
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 
 	# fetch translations
 	mkdir "${WORKDIR}/psi-l10n"
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
 			if use extras && [ "${x}" = "ru" ]; then
-				EGIT_REPO_URI="git://mva.name/psi-l10n-${x}"
-				EGIT_PROJECT="psiplus-l10n/${x}"
+				local EGIT_REPO_URI="git://mva.name/psi-l10n-${x}"
+				local EGIT_PROJECT="psiplus-l10n/${x}"
 			else
-				EGIT_REPO_URI="${LANGS_URI}-${x}"
-				EGIT_PROJECT="psi-l10n/${x}"
+				local EGIT_REPO_URI="${LANGS_URI}-${x}"
+				local EGIT_PROJECT="psi-l10n/${x}"
 			fi
-			S="${WORKDIR}/psi-l10n/${x}" git_fetch
+			EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" git-2_src_unpack
 		fi
 	done
 
@@ -171,7 +171,7 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install || die "emake install failed"
+	emake INSTALL_ROOT="${ED}" install || die "emake install failed"
 
 	# this way the docs will be installed in the standard gentoo dir
 	rm -f "${D}"/usr/share/${MY_PN}/{COPYING,README}
@@ -185,8 +185,8 @@ src_install() {
 		doins src/plugins/plugins.pri || die
 		doins src/plugins/psiplugin.pri || die
 		doins -r src/plugins/include || die
-		dosed "s:target.path.*:target.path = /usr/$(get_libdir)/${MY_PN}/plugins:" \
-			/usr/share/${MY_PN}/plugins/psiplugin.pri \
+		sed -i -e "s:target.path.*:target.path = /usr/$(get_libdir)/${MY_PN}/plugins:" \
+			"${ED}"/usr/share/${MY_PN}/plugins/psiplugin.pri \
 			|| die "sed failed"
 	fi
 

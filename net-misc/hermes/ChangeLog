@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Apr 2011; rion <rion4ik@spamogmail.com> hermes-9999.ebuild:
+  move to git-2
+
 *hermes-9999 (16 Apr 2011)
 
   16 Apr 2011; Rion <rion4ik@gmail.com> +hermes-9999.ebuild, +files/init,

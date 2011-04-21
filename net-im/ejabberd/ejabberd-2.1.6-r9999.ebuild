@@ -4,12 +4,11 @@
 
 EAPI=3
 
-inherit eutils multilib pam ssl-cert git subversion
+inherit eutils multilib pam ssl-cert git-2 subversion
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/"
 EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
-EGIT_COMMIT="2.1.x"
 EGIT_BRANCH="2.1.x"
 
 SRC_URI="mod_statsdx? ( mirror://gentoo/2.1.1-mod_statsdx.patch.bz2 )"
@@ -49,7 +48,7 @@ pkg_setup() {
 
 src_unpack() {
 	default
-	git_src_unpack
+	git-2_src_unpack
 	S="${S}/src"
 	cd "${S}"
 	mkdir additional_docs
