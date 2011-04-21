@@ -8,7 +8,7 @@ SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="3.*"
 PYTHON_MODNAME="rcore"
 
-inherit distutils git
+inherit distutils git-2
 
 DESCRIPTION="Just an core for all rion's projects"
 HOMEPAGE="http://dev.brocompany.com/"

@@ -1,7 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
-EAPI=2
+
+EAPI="4"
 
 inherit cmake-utils git
 
@@ -73,7 +74,7 @@ src_install () {
 		else
 			sed -e 's,\$filename:protocol,'${protocol}',g' \
 				-e 's,\$filename:port,'${port}',g' \
-				spectrum.cfg > "${D}/etc/spectrum/${protocol}.cfg" || die
+				spectrum.cfg > "${ED}/etc/spectrum/${protocol}.cfg" || die
 			sed -e 's,PROTOCOL,'${protocol}',g' \
 				"${FILESDIR}"/spectrum.confd > spectrum.confd
 		fi

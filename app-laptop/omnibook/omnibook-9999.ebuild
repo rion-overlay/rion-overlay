@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit eutils linux-mod git
+inherit eutils linux-mod git-2
 
 DESCRIPTION="Linux kernel module for (but not limited to) HP Omnibook support"
 HOMEPAGE="http://www.sourceforge.net/projects/omnibook"
