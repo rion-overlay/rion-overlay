@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-1.0.0-r2 (22 Apr 2011)
+
+  18 Apr 2011; mva <mva.name@gmail.com> +nginx-1.0.0-r2.ebuild:
+  fixed NgX+Passenger3 building.
+
 *nginx-1.0.0-r1 (18 Apr 2011)
 
   18 Apr 2011; Rion <rion4ik@gmail.com> +files/nginx-0.8.32-ey-balancer.patch,
