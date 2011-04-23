@@ -101,7 +101,7 @@ src_test() {
 }
 
 src_install() {
-	escons "${scons_vars[@]}" SWIFT_INSTALLDIR="${D}/usr" "${D}/usr"
+	escons "${scons_vars[@]}" SWIFT_INSTALLDIR="${ED}/usr" "${ED}/usr"
 
 	if use avahi; then
 		newbin Slimber/Qt/slimber slimber-qt
