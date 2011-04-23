@@ -2,18 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
+SCONS_MIN_VERSION="1.2"
+LANGS=" ca de es fr hu nl pl ru se sk"
 
-inherit toolchain-funcs git
+[[ ${PV} = *9999* ]] && VCS_ECLASS="git" || VCS_ECLASS=""
+
+inherit scons-utils toolchain-funcs ${VCS_ECLASS}
 
 DESCRIPTION="Qt4 jabber (xmpp) client"
 HOMEPAGE="http://swift.im/"
-EGIT_REPO_URI="git://gitorious.org/${PN}/${PN}.git"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="git://gitorious.org/${PN}/${PN}.git"
+else
+	SRC_URI="http://swift.im/downloads/releases/${P}/${P}.tar.gz"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+if [[ ${PV} != *9999* ]]; then
+	KEYWORDS="~amd64 ~x86"
+else
+	KEYWORDS=""
+fi
 IUSE="avahi debug doc examples test"
+IUSE+="${LANGS// / linguas_}"
 
 RDEPEND="
 	avahi? ( net-dns/avahi )
@@ -26,26 +39,31 @@ RDEPEND="
 	dev-libs/libxml2
 	>=dev-libs/expat-2.0.1
 	sys-libs/zlib
-	"
+"
 DEPEND="${RDEPEND}
-	>=dev-util/scons-1.2
 	doc? (
 		>=app-text/docbook-xsl-stylesheets-1.75
 		>=app-text/docbook-xml-dtd-4.5
 		dev-libs/libxslt
 	)
-	"
+"
 
 src_prepare() {
-	mkdir "${WORKDIR}/qt4"
+	mkdir "${WORKDIR}/qt4" || die
 	for d in include lib share; do
-		ln -s "/usr/${d}/qt4" "${WORKDIR}/qt4/${d}"
+		ln -s "${EPREFIX}/usr/${d}/qt4" "${WORKDIR}/qt4/${d}" || die
 	done
 
-	pushd 3rdParty
+	pushd 3rdParty || die
 	# TODO CppUnit, Lua
-	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib
-	popd
+	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib || die
+	popd || die
+
+	for x in ${LANGS}; do
+		if use !linguas_${x}; then
+			rm -f Swift/Translations/swift_${x}.ts || die
+		fi
+	done
 }
 
 src_compile() {
@@ -54,19 +72,16 @@ src_compile() {
 		cxx="$(tc-getCXX)"
 		ccflags="${CFLAGS}"
 		linkflags="${LDFLAGS}"
-		${MAKEOPTS}
 		allow_warnings=1
 		ccache=1
 		distcc=1
-		debug="$(use debug && echo 1 || echo 0)"
+		$(use_scons debug)
 		qt="${WORKDIR}/qt4"
-		openssl="/usr"
-		SWIFT_INSTALLDIR="${S}/usr"
-		docbook_xsl="/usr/share/sgml/docbook/xsl-stylesheets"
-		docbook_xml="/usr/share/sgml/docbook/xml-dtd-4.5"
-		Swift "${S}/usr"
+		openssl="${EPREFIX}/usr"
+		docbook_xsl="${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets"
+		docbook_xml="${EPREFIX}/usr/share/sgml/docbook/xml-dtd-4.5"
+		Swift
 	)
-	use test && scons_vars+=( test="unit" QA )
 	use avahi && scons_vars+=( Slimber )
 	use examples && scons_vars+=(
 			Documentation/SwiftenDevelopersGuide/Examples
@@ -78,15 +93,15 @@ src_compile() {
 			SwifTools
 			)
 
-	scons "${scons_vars[@]}" || die
+	escons "${scons_vars[@]}"
+}
+
+src_test() {
+	escons "${scons_vars[@]}" test="unit" QA
 }
 
 src_install() {
-	insinto /usr
-	doins -r usr/share
-
-	into /usr
-	dobin usr/bin/swift
+	escons "${scons_vars[@]}" SWIFT_INSTALLDIR="${D}/usr" "${D}/usr"
 
 	if use avahi; then
 		newbin Slimber/Qt/slimber slimber-qt
