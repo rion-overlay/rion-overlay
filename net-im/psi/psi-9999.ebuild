@@ -130,8 +130,6 @@ src_configure() {
 	# unable to use econf because of non-standard configure script
 	# disable growl as it is a MacOS X extension only
 	local myconf="
-		--prefix=/usr
-		--qtdir=/usr
 		--disable-bundled-qca
 		--disable-growl
 		--no-separate-debug-info
@@ -155,7 +153,10 @@ src_configure() {
 	fi
 
 	einfo "./configure ${myconf}"
-	./configure ${myconf} || die "configure failed"
+	./configure \
+		--prefix="$EPREFIX"/usr \
+		--qtdir="$EPREFIX"/usr \
+		${myconf} || die "configure failed"
 
 	eqmake4
 }
@@ -171,10 +172,10 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${ED}" install || die "emake install failed"
+	emake INSTALL_ROOT="${D}" install || die "emake install failed"
 
 	# this way the docs will be installed in the standard gentoo dir
-	rm -f "${D}"/usr/share/${MY_PN}/{COPYING,README}
+	rm -f "${ED}"/usr/share/${MY_PN}/{COPYING,README}
 	newdoc iconsets/roster/README README.roster || die
 	newdoc iconsets/system/README README.system || die
 	newdoc certs/README README.certs || die
