@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Apr 2011; Nikoli <nikoli@lavabit.com>
+  +psi-extendedoptions-0.3.2_pre3687.ebuild:
+  version bump
+
   25 Jan 2011; Nikoli <nikoli@lavabit.com>
   +psi-extendedoptions-0.3.1_pre3500.ebuild:
   version bump
