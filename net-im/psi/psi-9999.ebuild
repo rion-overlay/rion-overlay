@@ -152,7 +152,6 @@ src_configure() {
 		use webkit && myconf+=" --enable-webkit"
 	fi
 
-	einfo "./configure ${myconf}"
 	./configure \
 		--prefix="$EPREFIX"/usr \
 		--qtdir="$EPREFIX"/usr \
