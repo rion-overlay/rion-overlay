@@ -1,0 +1,13 @@
+# 15 Apr 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# Mask for testing
+>=app-emulation/libguestfs-1.10.0
+
+# 17 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+# Multiple XSS and denial of service vulnerabilities
+# see  http://otrs.org/advisory/OSA-2010-02-en/
+<www-apps/otrs-2.3.6
+
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#mask for work failures
+app-crypt/openca-base
+app-crypt/openca

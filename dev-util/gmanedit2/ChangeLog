@@ -1,0 +1,10 @@
+# ChangeLog for dev-util/gmanedit2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*gmanedit2-9999 (04 Apr 2011)
+
+  04 Apr 2011; rion <rion4ik@spamogmail.com> +gmanedit2-9999.ebuild,
+  +metadata.xml:
+  initial version
+

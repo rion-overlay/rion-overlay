@@ -1,0 +1,14 @@
+# ChangeLog for dev-perl/Encode-IMAPUTF7
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  03 Apr 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  Encode-IMAPUTF7-1.05.ebuild:
+  keyword ~x86
+
+*Encode-IMAPUTF7-1.05 (30 Mar 2011)
+
+  30 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  +Encode-IMAPUTF7-1.05.ebuild, +metadata.xml:
+  initial commit
+
