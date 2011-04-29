@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  29 Apr 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>> metadata.xml:
+  fix mantainer in metadata
+
 *libmnl-9999 (27 Feb 2011)
 *libmnl-1.0.1 (27 Feb 2011)
 
