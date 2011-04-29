@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 inherit autotools multilib
 
@@ -27,7 +27,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install || die
+	emake DESTDIR="${D}" install || die
 	dodoc README
 
 	if use examples; then
@@ -35,5 +35,5 @@ src_install() {
 		doins -r "${S}/"examples/*
 	fi
 	# Remove unnedeed la files
-	find "${ED}"/usr/$(get_libdir) -name \*.la -delete
+	find "${D}"/usr/$(get_libdir) -name \*.la -delete
 }
