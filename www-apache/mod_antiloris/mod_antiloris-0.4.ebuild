@@ -11,7 +11,7 @@ HOMEPAGE="http://sourceforge.net/projects/mod-antiloris"
 SRC_URI="mirror://sourceforge/mod-antiloris/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 SLOT="0"
 
