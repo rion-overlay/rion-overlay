@@ -5,15 +5,15 @@
 EAPI=4
 WX_GTK_VER="2.8"
 
-inherit eutils wxwidgets git
+inherit eutils wxwidgets
 
 DESCRIPTION="E-book collection manager"
 HOMEPAGE="http://www.lintest.ru/wiki/MyRuLib"
-EGIT_REPO_URI="git://github.com/lintest/${PN}"
+SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -26,11 +26,13 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-faxpp.patch
+
 	# for sure
 	rm -rf \
+		3rdparty/faxpp \
 		3rdparty/sqlite3 \
 	|| die
-	# TODO 3rdparty/faxpp
 }
 
 src_configure() {
