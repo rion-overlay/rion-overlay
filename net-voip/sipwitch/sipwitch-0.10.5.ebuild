@@ -13,15 +13,15 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test doc debug openssl gnutls gcrypt avahi notify"
+IUSE="doc debug openssl gnutls gcrypt avahi notify"
 
-COMMON_DEP=">=dev-libs/ucommon-3.3.4
-			>=net-libs/libeXosip-3.1.0
-			openssl? ( dev-libs/openssl )
-			gnutls? ( net-libs/gnutls )
-			gcrypt? ( dev-libs/libgcrypt )
-			avahi? ( net-dns/avahi )
-			notify? ( x11-libs/libnotify )"
+COMMON_DEP=">=dev-libs/ucommon-4.2.0
+	>=net-libs/libeXosip-3.1.0
+	openssl? ( dev-libs/openssl )
+	gnutls? ( net-libs/gnutls )
+	gcrypt? ( dev-libs/libgcrypt )
+	avahi? ( net-dns/avahi )
+	notify? ( x11-libs/libnotify )"
 
 DEPEND="dev-util/pkgconfig
 	sys-devel/libtool
@@ -32,11 +32,13 @@ RDEPEND="${COMMON_DEP}"
 pkg_config() {
 	confutils_require_one openssl gnutls gcrypt
 }
+
 src_prepare() {
 	# Dirty hack, disable avahi patch
 	use !avahi && epatch "${FILESDIR}"/disable_avahi-configure.ac.patch
 	eautoreconf
 }
+
 src_configure() {
 	local crypto=""
 	use openssl && crypto="openssl"
@@ -51,10 +53,12 @@ src_configure() {
 		|| die "econf failed"
 }
 src_test() {
-	use test && emake check || die "test failed"
+
+emake check || die "test failed"
 }
+
 src_install() {
-	emake DESTDIR="${ED}" install || die "install failed"
+	emake DESTDIR="${D}" install || die "install failed"
 
 	dodir /var/log/
 	dodir /var/run/"${PN}"

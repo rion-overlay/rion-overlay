@@ -1,0 +1,88 @@
+diff -ur test.orig/chroot.sh test/chroot.sh
+--- test.orig/chroot.sh	2011-04-30 19:05:41.000000000 +0300
++++ test/chroot.sh	2011-04-30 19:05:48.000000000 +0300
+@@ -10,7 +10,7 @@
+ fi
+ 
+ if [ $# -gt 0 ]; then
+-    HOME=/root exec /usr/sbin/chroot $destdir "$@"
++    HOME=/root exec /bin/chroot $destdir "$@"
+ else
+-    HOME=/root exec /usr/sbin/chroot $destdir $SHELL
++    HOME=/root exec /bin/chroot $destdir $SHELL
+ fi
+diff -ur test.orig/common.inc test/common.inc
+--- test.orig/common.inc	2011-04-30 19:05:41.000000000 +0300
++++ test/common.inc	2011-04-30 19:05:48.000000000 +0300
+@@ -26,7 +26,7 @@
+     export LD_PRELOAD
+ 
+     if ! which chroot >/dev/null; then
+-        PATH=$PATH:/usr/sbin:/sbin
++        PATH=$PATH:/usr/sbin:/sbin:/bin
+         export PATH
+     fi
+ 
+diff -ur test.orig/febootstrap.sh test/febootstrap.sh
+--- test.orig/febootstrap.sh	2011-04-30 19:05:41.000000000 +0300
++++ test/febootstrap.sh	2011-04-30 19:05:48.000000000 +0300
+@@ -6,7 +6,7 @@
+ export PATH=$srcdir/bin:$PATH
+ 
+ run () {
+-    HOME=/root fakechroot /usr/sbin/chroot $destdir "$@"
++    HOME=/root fakechroot /bin/chroot $destdir "$@"
+ }
+ 
+ vendor=${VENDOR:-`lsb_release -s -i | tr 'A-Z' 'a-z'`}
+@@ -21,13 +21,13 @@
+ fi
+ 
+ export FAKECHROOT_EXCLUDE_PATH=${FAKECHROOT_EXCLUDE_PATH:-/dev:/proc:/sys}
+-export FAKECHROOT_CMD_SUBST=/sbin/ldconfig=/bin/true:/usr/sbin/glibc_post_upgrade.i686=/bin/true:/usr/sbin/glibc_post_upgrade.x86_64=/bin/true:/usr/sbin/build-locale-archive=/bin/true:/usr/sbin/libgcc_post_upgrade=/bin/true:/sbin/new-kernel-pkg=/bin/true:/usr/sbin/nscd=/bin/true
++export FAKECHROOT_CMD_SUBST=/sbin/ldconfig=/bin/true:/bin/glibc_post_upgrade.i686=/bin/true:/bin/glibc_post_upgrade.x86_64=/bin/true:/bin/build-locale-archive=/bin/true:/bin/libgcc_post_upgrade=/bin/true:/sbin/new-kernel-pkg=/bin/true:/bin/nscd=/bin/true
+ export FAKECHROOT_AF_UNIX_PATH=/tmp
+ 
+ rm -rf $destdir
+ 
+ if ! which chroot >/dev/null; then
+-    PATH=$PATH:/usr/sbin:/sbin
++    PATH=$PATH:/bin:/sbin
+     export PATH
+ fi
+ 
+@@ -38,8 +38,8 @@
+ rm -fv $destdir/etc/yum.repos.d/*update*.repo
+ sed -i 's/^enabled=0/enabled=1/' $destdir/etc/yum.repos.d/*.repo
+ 
+-HOME=/root fakeroot fakechroot /usr/sbin/chroot $destdir yum -y update
+-HOME=/root fakeroot fakechroot /usr/sbin/chroot $destdir yum -y install fakeroot gcc gettext make rpm-build tar yum-utils
++HOME=/root fakeroot fakechroot /bin/chroot $destdir yum -y update
++HOME=/root fakeroot fakechroot /bin/chroot $destdir yum -y install fakeroot gcc gettext make rpm-build tar yum-utils
+ 
+ # rpmbuild has statically compiled glob() function so buildroot directory have to be the same inside and outside fakechroot.
+ FAKECHROOT_EXCLUDE_PATH=$FAKECHROOT_EXCLUDE_PATH:/tmp
+diff -ur test.orig/t/chroot.t test/t/chroot.t
+--- test.orig/t/chroot.t	2011-04-30 19:05:41.000000000 +0300
++++ test/t/chroot.t	2011-04-30 19:06:36.000000000 +0300
+@@ -15,7 +15,7 @@
+     else
+ 
+         for testtree in testtree /testtree ./testtree /./testtree testtree/. testtree/./.; do
+-            t=`$srcdir/$chroot.sh testtree /usr/sbin/chroot $testtree /bin/cat /CHROOT`
++            t=`$srcdir/$chroot.sh testtree /bin/chroot $testtree /bin/cat /CHROOT`
+             test "$t" = "testtree/testtree" || not
+             ok "$chroot chroot $testtree:" $t
+         done
+diff -ur test.orig/testtree.sh test/testtree.sh
+--- test.orig/testtree.sh	2011-04-30 19:05:41.000000000 +0300
++++ test/testtree.sh	2011-04-30 19:05:48.000000000 +0300
+@@ -64,7 +64,7 @@
+     '/usr/bin/seq' \
+     '/usr/bin/strace' \
+     '/usr/bin/touch' \
+-    '/usr/sbin/chroot' \
++    '/bin/chroot' \
+     '/usr/local/bin/bash' \
+     '/usr/local/bin/gseq' \
+     '/usr/local/bin/ltrace' \
