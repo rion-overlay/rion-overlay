@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/ChangeLog,v 1.22 2008/04/06 08:50:37 nelchael Exp $
 
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -files/omnibook-a110-support.patch, -files/omnibook-gcc-warnings.patch,
+  -files/omnibook-toshiba-satellite-a300-support.patch:
+  delete unneeded files
+
   21 Apr 2011; rion <rion4ik@spamogmail.com> omnibook-9999.ebuild:
   move to git-2
 
