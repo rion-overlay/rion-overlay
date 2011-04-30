@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*ucommon-4.3.2 (30 Apr 2011)
+
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +ucommon-4.3.2.ebuild:
+  bump
+
 *ucommon-4.1.0 (24 Jan 2011)
 
   24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> +ucommon-4.1.0.ebuild:
