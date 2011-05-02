@@ -5,7 +5,7 @@
 EAPI="3"
 
 WANT_AUTOMAKE="1.11"
-
+AUTOTOOLS_IN_SOURCE_BUILD=1
 JAVA_PKG_OPT_USE="java"
 JAVA_PKG_ALLOW_VM_CHANGE="yes"
 
@@ -16,21 +16,21 @@ PYTHON_DEPEND="python? 2:2.6"
 USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
 
-inherit autotools bash-completion confutils java-utils-2 java-pkg-opt-2 \
+inherit autotools-utils bash-completion confutils java-utils-2 java-pkg-opt-2 \
 perl-module python ruby-ng
 # php-ext-base-r1 haskell-cabal(?)
 
 DESCRIPTION="Libguestfs is a library for accessing and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
-SRC_URI="http://libguestfs.org/download/1.10-stable/${P}.tar.gz
-	http://rion-overlay.googlecode.com/files/libguestfs-1.7.18-x86_64.tar.gz"
+SRC_URI="http://libguestfs.org/download/1.10-stable/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse +ocaml perl python ruby haskell php readline nls debug doc nls source javadoc"
+IUSE="acl fuse +ocaml perl python ruby haskell php readline nls debug doc nls source
+javadoc libvirtd xml config augeas"
 
-COMMON_DEPEND="
+CDEPEND="
 	virtual/perl-Getopt-Long
 	dev-perl/Sys-Virt
 	>=app-misc/hivex-1.2.1[perl]
@@ -39,36 +39,45 @@ COMMON_DEPEND="
 	dev-libs/libpcre
 	app-arch/cpio
 	dev-lang/perl
-	virtual/cdrtools
+	app-cdr/cdrkit
 	>=app-emulation/qemu-kvm-0.13
 	sys-apps/fakeroot
 	sys-apps/file
-	app-emulation/libvirt
-	dev-libs/libxml2:2
-	=dev-util/febootstrap-3*
+	libvirtd? ( app-emulation/libvirt )
+	xml? ( dev-libs/libxml2:2 )
+	config? ( dev-libs/libconfig )
+	>dev-util/febootstrap-3.2
 	>=sys-apps/fakechroot-2.8
-	app-admin/augeas
+	augeas? ( app-admin/augeas )
 	sys-fs/squashfs-tools
 	perl? ( virtual/perl-ExtUtils-MakeMaker )
 	fuse? ( sys-fs/fuse )
 	readline? ( sys-libs/readline )
 	doc? ( dev-libs/libxml2 )
-	ocaml? ( dev-lang/ocaml
+	ocaml? (
+		dev-lang/ocaml
 		dev-ml/xml-light
-		dev-ml/findlib )
-	ruby? ( dev-lang/ruby
-			dev-ruby/rake )
+		dev-ml/findlib
+		)
+	ruby? (
+		dev-lang/ruby
+		dev-ruby/rake
+		)
 	java? ( virtual/jre )
 	haskell? ( dev-lang/ghc )
-	php? ( dev-lang/php )"
+	php? ( dev-lang/php )
+	acl? ( virtual/acl )
+	"
 
-DEPEND="${COMMON_DEPEND}
+DEPEND="${CDEPEND}
 	dev-util/gperf
 	java? ( >=virtual/jdk-1.6
 		source? ( app-arch/zip ) )
 	doc? ( app-text/po4a )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.6 )"
+
+S="${WORKDIR}/all/${P}"
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
@@ -86,30 +95,22 @@ pkg_setup() {
 	ewarn "If so, remove php flag" )
 }
 
-src_unpack() {
-	unpack ${P}.tar.gz
-
-	cd "${WORKDIR}"
-	mkdir image
-	cd image || die
-	unpack libguestfs-${APLANCE_PV}-x86_64.tar.gz
-	cp "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
-}
-
 src_prepare() {
 	java-pkg-opt-2_src_prepare
 	eautoreconf
 }
 
 src_configure() {
-	econf -C \
+
+	local myeconfargs=(
+		--enable-gcc-warnings \
 		--with-repo=fedora-12 \
 		--disable-appliance \
 		--disable-daemon \
 		--with-drive-if=virtio \
 		--with-net-if=virtio-net-pci \
 		--disable-rpath \
-		$(use_with java java-home) \
+		--without-java-home \
 		$(use_enable nls) \
 		$(use_with readline) \
 		$(use_enable ocaml-viewer) \
@@ -121,15 +122,9 @@ src_configure() {
 		$(use_enable haskell) \
 		$(use_enable php) \
 		$(use_with doc po4a) \
-		$(use_with tools) || die
-}
-
-src_compile() {
-	emake -j1 || die
-}
-
-src_test() {
-	emake -j1 check || die
+		$(use_with tools)
+		)
+	autotools-utils_src_configure
 }
 
 src_install() {
