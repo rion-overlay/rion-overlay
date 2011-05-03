@@ -26,6 +26,10 @@ S="${WORKDIR}"/"${MY_P}"
 
 SRC_TEST=""
 
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-destdir.patch"
+}
+
 src_install() {
 	einstall || die "Installing failed"
 	doinitd "${FILESDIR}"/bucardo || die "Installing init-script failed"
