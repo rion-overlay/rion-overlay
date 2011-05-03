@@ -27,10 +27,11 @@ SRC_URI="http://libguestfs.org/download/1.10-stable/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="acl fuse +ocaml perl python ruby haskell php readline nls debug doc nls source
-javadoc libvirtd xml config augeas"
+IUSE="acl fuse +ocaml perl python ruby haskell php +readline nls debug doc nls
+source javadoc libvirtd +xml +config augeas static-libs"
 
 CDEPEND="
+	sys-libs/db:4.7
 	virtual/perl-Getopt-Long
 	dev-perl/Sys-Virt
 	>=app-misc/hivex-1.2.1[perl]
@@ -40,7 +41,10 @@ CDEPEND="
 	app-arch/cpio
 	dev-lang/perl
 	app-cdr/cdrkit
-	>=app-emulation/qemu-kvm-0.13
+	x86? (
+	>=app-emulation/qemu-kvm-0.13[qemu_softmmu_targets_x86,qemu_softmmu_targets_x86_64,qemu_user_targets_x86_64] )
+	amd64? (
+	>=app-emulation/qemu-kvm-0.13[qemu_softmmu_targets_x86_64,qemu_user_targets_x86_64] )
 	sys-apps/fakeroot
 	sys-apps/file
 	libvirtd? ( app-emulation/libvirt )
@@ -105,8 +109,8 @@ src_configure() {
 	local myeconfargs=(
 		--enable-gcc-warnings \
 		--with-repo=fedora-12 \
-		--disable-appliance \
-		--disable-daemon \
+		--enable-appliance \
+		--enable-daemon \
 		--with-drive-if=virtio \
 		--with-net-if=virtio-net-pci \
 		--disable-rpath \
