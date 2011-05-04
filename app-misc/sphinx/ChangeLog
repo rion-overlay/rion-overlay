@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+*sphinx-2.0.1_beta-r1 (04 May 2011)
+
+  04 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  +sphinx-2.0.1_beta-r1.ebuild:
+  update libstemmer tarboll
+
 *sphinx-9999 (04 May 2011)
 
   04 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
