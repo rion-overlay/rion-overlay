@@ -20,7 +20,7 @@ SRC_URI="http://sphinxsearch.com/files/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="debug +id64 mysql odbc postgres stemmer test static-libs"
 
 RDEPEND="mysql? ( virtual/mysql )
