@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  04 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  sphinx-2.0.1_beta.ebuild, sphinx-2.0.1_beta-r1.ebuild:
+  keyworded ~amd64-linux
+
 *sphinx-2.0.1_beta-r1 (04 May 2011)
 
   04 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
