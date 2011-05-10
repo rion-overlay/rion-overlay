@@ -82,6 +82,7 @@ RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.6 )"
 
 S="${WORKDIR}/all/${P}"
+DOCS=(BUGS HACKING README RELEASE-NOTES TODO)
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
@@ -99,26 +100,21 @@ pkg_setup() {
 	ewarn "If so, remove php flag" )
 }
 
-src_prepare() {
+src_prepiare() {
 	java-pkg-opt-2_src_prepare
-	eautoreconf
+#	eautoreconf
 }
 
 src_configure() {
 
 	local myeconfargs=(
-		--enable-gcc-warnings \
-		--with-repo=fedora-12 \
-		--enable-appliance \
-		--enable-daemon \
-		--with-drive-if=virtio \
-		--with-net-if=virtio-net-pci \
+		--disable-appliance \
+		--disable-daemon \
 		--disable-rpath \
-		--without-java-home \
+		--disable-perl \
 		$(use_enable nls) \
 		$(use_with readline) \
 		$(use_enable ocaml-viewer) \
-		$(use_enable perl) \
 		$(use_enable fuse) \
 		$(use_enable ocaml) \
 		$(use_enable python) \
@@ -132,21 +128,19 @@ src_configure() {
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}" install || die
-
-	dodoc BUGS HACKING README RELEASE-NOTES TODO
+	autotools-utils_src_install
 
 	if use bash-completion;then
 	dobashcompletion \
-	"${ED}/etc"/bash_completion.d/guestfish-bash-completion.sh
+	"${D}/etc"/bash_completion.d/guestfish-bash-completion.sh
 	fi
 
-	rm -fr "${ED}/etc"/bash* || die
+	rm -fr "${D}/etc"/bash* || die
 
-	insinto /usr/$(get_libdir)/guestfs/
-	doins "${WORKDIR}/image/usr/local/lib/"guestfs/*
+	#insinto /usr/$(get_libdir)/guestfs/
+	#doins "${WORKDIR}/image/usr/local/lib/"guestfs/*
 
-	find "${ED}/usr"/$(get_libdir) -name \*.la -delete
+	find "${D}/usr"/$(get_libdir) -name \*.la -delete
 	if use java; then
 		java-pkg_newjar  java/${P}.jar ${PN},jar
 		rm  -fr  "${D}/usr"/share/java
