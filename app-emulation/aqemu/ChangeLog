@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> aqemu-9999.ebuild:
+  migrate to git-2
+
   24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -aqemu-0.8.0.ebuild,
   -aqemu-0.8.0-r1.ebuild:
   drop old
