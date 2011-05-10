@@ -6,7 +6,7 @@ EAPI="2"
 
 WANT_CMAKE="always"
 
-inherit git cmake-utils confutils
+inherit git-2 cmake-utils confutils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators. Using Qt4."
 HOMEPAGE="http://sourceforge.net/projects/aqemu"
@@ -36,7 +36,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 }
 
 src_configure() {
