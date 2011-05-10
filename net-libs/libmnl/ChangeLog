@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> libmnl-9999.ebuild:
+  more fix migrate to git-2 eclass
+
   10 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -libmnl-1.0.1.ebuild:
   in main tree
