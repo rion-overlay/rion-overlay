@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit git autotools
+inherit git-2 autotools
 
 DESCRIPTION="Very simple layout switcher"
 HOMEPAGE="http://github.com/qnikst/kbdd"
