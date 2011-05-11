@@ -28,8 +28,6 @@ DEPEND="net-im/exmpp
 RDEPEND="${DEPEND}
 	>=sys-apps/shadow-4.1.4.2-r3"
 
-PROVIDE="virtual/jabber-server"
-
 # paths in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
 #JABBER_RUN="/var/run/jabber"
