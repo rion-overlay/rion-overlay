@@ -30,7 +30,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=media-plugins/gst-plugins-theora-0.10.22
 	>=media-plugins/gst-plugins-alsa-0.10.22
 	>=media-plugins/gst-plugins-ogg-0.10.22
-	!extras? ( >=media-plugins/gst-plugins-v4l-0.10.22 )
 	media-plugins/gst-plugins-v4l2
 	media-plugins/gst-plugins-jpeg
 	!<net-im/psi-0.13_rc1
@@ -44,16 +43,18 @@ DEPEND="${COMMON_DEPEND}
 src_unpack() {
 	subversion_src_unpack
 
-	if use extras; then
-		S="${WORKDIR}/patches" \
-		ESVN_PROJECT="${PN}/patches" \
-		subversion_fetch \
-			"http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
-	fi
+	S="${WORKDIR}/patches" \
+	ESVN_PROJECT="${PN}/patches" \
+	subversion_fetch \
+		"http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
 }
 
 src_prepare() {
-	use extras && epatch "${WORKDIR}"/patches/*
+	use extras && {
+		epatch "${WORKDIR}"/patches/* || die
+	} || {
+		epatch "${WORKDIR}"/patches/*-psimedia-2.6.38-compilation-fix.diff || die
+	}
 
 	subversion_src_prepare
 
@@ -68,7 +69,7 @@ src_prepare() {
 src_configure() {
 	qconf
 	# qconf generaged configure script...
-	./configure || die
+	./configure --no-separate-debug-info || die
 
 	eqmake4
 }
