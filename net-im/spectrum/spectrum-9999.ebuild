@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit cmake-utils git
+inherit cmake-utils git-2
 
 DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
@@ -22,7 +22,8 @@ RDEPEND=">=dev-libs/poco-1.3.3[mysql?,sqlite?]
 	media-gfx/imagemagick[cxx]
 	>=net-im/pidgin-2.6.0
 	>=net-libs/gloox-1.0
-	dev-python/xmpppy"
+	dev-python/xmpppy
+	dev-libs/libev"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/cmake"
