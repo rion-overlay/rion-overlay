@@ -9,8 +9,7 @@ inherit cmake-utils git-2
 DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
 
-EGIT_PROJECT="spectrum"
-EGIT_REPO_URI="git://github.com/hanzz/${EGIT_PROJECT}.git"
+EGIT_REPO_URI="git://github.com/hanzz/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
