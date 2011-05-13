@@ -88,10 +88,10 @@ src_unpack() {
 		if use linguas_${x}; then
 			if use extras && [ "${x}" = "ru" ]; then
 				local EGIT_REPO_URI="git://mva.name/psi-l10n-${x}"
-				local EGIT_PROJECT="psiplus-l10n/${x}"
+				local EGIT_DIR="${EGIT_STORE_DIR}/psiplus-l10n/${x}"
 			else
 				local EGIT_REPO_URI="${LANGS_URI}-${x}"
-				local EGIT_PROJECT="psi-l10n/${x}"
+				local EGIT_DIR="${EGIT_STORE_DIR}/psi-l10n/${x}"
 			fi
 			EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" git-2_src_unpack
 		fi
