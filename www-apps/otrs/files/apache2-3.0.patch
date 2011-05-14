@@ -1,0 +1,28 @@
+--- scripts/apache2-httpd.include.conf.orig	2010-09-19 09:16:52.293739115 +0300
++++ scripts/apache2-httpd.include.conf	2010-09-19 09:20:23.031972027 +0300
+@@ -11,7 +11,7 @@
+ <IfModule mod_perl.c>
+ 
+     # load all otrs modules
+-    Perlrequire /opt/otrs/scripts/apache2-perl-startup.pl
++#    Perlrequire /opt/otrs/scripts/apache2-perl-startup.pl
+ 
+     # Apache::Reload - Reload Perl Modules when Changed on Disk
+     PerlModule Apache2::Reload
+@@ -22,8 +22,8 @@
+     <Location /otrs>
+ #        ErrorDocument 403 /otrs/customer.pl
+         ErrorDocument 403 /otrs/index.pl
+-        SetHandler  perl-script
+-        PerlResponseHandler ModPerl::Registry
++#        SetHandler  perl-script
++#        PerlResponseHandler ModPerl::Registry
+         Options +ExecCGI
+         PerlOptions +ParseHeaders
+         PerlOptions +SetupEnv
+@@ -61,4 +61,4 @@
+ </IfModule>
+ 
+ # MaxRequestsPerChild (so no apache child will be to big!)
+-MaxRequestsPerChild 4000
++#MaxRequestsPerChild 4000

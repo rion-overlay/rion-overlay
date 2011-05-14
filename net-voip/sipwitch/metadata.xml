@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+ <description>GNU SIP Witch is a call and registration server for the SIP protocol</description> 
+</maintainer>
+ <longdescription>Long description of the package</longdescription> 
+<use>
+<flag name='openssl'>  </flag>
+<flag name='gcrypt'>  </flag>
+<flag name='notify'>  </flag>
+</use>
+</pkgmetadata>

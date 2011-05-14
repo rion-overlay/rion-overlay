@@ -1,0 +1,11 @@
+# ChangeLog for dev-python/python-nss
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> python-nss-0.8.ebuild:
+  small fix
+
+  17 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru> +python-nss-0.8.ebuild,
+  +files/gentoo_lib_name.patch, +metadata.xml:
+  initial commit
+
