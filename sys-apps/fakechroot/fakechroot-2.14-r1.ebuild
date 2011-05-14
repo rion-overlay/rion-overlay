@@ -24,4 +24,3 @@ src_prepare() {
 	autotools-utils_src_prepare
 	eautoreconf
 }
-
