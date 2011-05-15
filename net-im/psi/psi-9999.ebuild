@@ -81,6 +81,7 @@ pkg_setup() {
 
 src_unpack() {
 	git-2_src_unpack
+	unset EGIT_HAS_SUBMODULES EGIT_NONBARE
 
 	# fetch translations
 	mkdir "${WORKDIR}/psi-l10n"
@@ -93,6 +94,7 @@ src_unpack() {
 				local EGIT_REPO_URI="${LANGS_URI}-${x}"
 				local EGIT_DIR="${EGIT_STORE_DIR}/psi-l10n/${x}"
 			fi
+			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT
 			EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" git-2_src_unpack
 		fi
 	done
