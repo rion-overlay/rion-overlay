@@ -1,26 +1,21 @@
-diff -r d76126b76399 sipwitch-0.7.4/configure.ac
---- a/sipwitch-0.7.4/configure.ac	Tue Mar 16 13:48:49 2010 +0200
-+++ b/sipwitch-0.7.4/configure.ac	Tue Mar 16 14:15:27 2010 +0200
-@@ -354,14 +354,14 @@
- AC_DEFINE_UNQUOTED(DEFAULT_LIBPATH, "$default_libpath", [lib path])
- AC_DEFINE_UNQUOTED(DEFAULT_LIBEXEC, "$default_libexec", [script path])
+--- configure.ac.orig	2011-05-16 00:06:58.000000000 +0300
++++ configure.ac	2011-05-16 00:10:03.000000000 +0300
+@@ -342,13 +342,16 @@
  
--zeroconf=""
--ZEROCONF_LIBS=""
+ zeroconf=""
+ ZEROCONF_LIBS=""
 -if test -z "$zeroconf" ; then
--    PKG_CHECK_MODULES(ZEROCONF, avahi-client > 0.3, [
--        AC_DEFINE(ZEROCONF_AVAHI, 1, [zeroconf avahi client])
--        zeroconf="avahi"
--    ],[zeroconf="$zeroconf"])
--fi
-+#zeroconf=""
-+#ZEROCONF_LIBS=""
-+#if test -z "$zeroconf" ; then
-+#    PKG_CHECK_MODULES(ZEROCONF, avahi-client > 0.3, [
-+#        AC_DEFINE(ZEROCONF_AVAHI, 1, [zeroconf avahi client])
-+#        zeroconf="avahi"
-+#    ],[zeroconf="$zeroconf"])
-+#fi
- 
++AC_ARG_ENABLE(zeroconf,
++    AC_HELP_STRING([--with-zeroconf],[enable zeroconf support]),[
++
++if test  "$enable_zeroconf" != "xNO" ; then
+     PKG_CHECK_MODULES(ZEROCONF, avahi-client > 0.3, [
+         AC_DEFINE(ZEROCONF_AVAHI, 1, [zeroconf avahi client])
+         zeroconf="avahi"
+     ],[zeroconf="$zeroconf"])
+ fi
+-
++])
  AH_BOTTOM([
- #ifndef	HAVE_LOCALTIME_R
+ #ifndef HAVE_LOCALTIME_R
+ #define localtime_r(x, y)   localtime(x)
