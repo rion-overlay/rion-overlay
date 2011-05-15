@@ -9,6 +9,6 @@
  <longdescription>Long description of the package</longdescription> 
 <use>
 	<flag name='socks'>Build witch sock proxy support</flag>
-	<flag name='openssl'>Build witch openssl library as crypt libraru</flag>
+	<flag name='ssl'>Build witch openssl library as crypt libraru</flag>
 </use>
 </pkgmetadata>
