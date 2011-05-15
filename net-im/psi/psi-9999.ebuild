@@ -24,6 +24,13 @@ KEYWORDS=""
 IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
 plugins whiteboarding webkit"
 
+REQUIRED_USE="
+	iconsets? ( extras )
+	plugins? ( extras )
+	powersave? ( extras )
+	webkit? ( extras )
+"
+
 RDEPEND="
 	>=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
 	>=x11-libs/qt-qt3support-4.4:4
@@ -56,11 +63,6 @@ PDEPEND="
 RESTRICT="test"
 
 pkg_setup() {
-	for x in iconsets plugins powersave webkit; do
-		use ${x} && use !extras && \
-			ewarn "USE=${x} is only available in Psi+ and requires USE=extras, ${x} will be disabled."
-	done
-
 	MY_PN=psi
 	if use extras; then
 		MY_PN=psi-plus

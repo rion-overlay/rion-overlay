@@ -3,6 +3,9 @@
 # $Header: $
 
   15 May 2011; Nikoli <nikoli@lavabit.com> psi-9999.ebuild:
+  use REQUIRED_USE instead of ewarn
+
+  15 May 2011; Nikoli <nikoli@lavabit.com> psi-9999.ebuild:
   support emerge with custom EGIT_COMMIT, translations do not have submodules
 
   24 Apr 2011; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20110424.ebuild:
