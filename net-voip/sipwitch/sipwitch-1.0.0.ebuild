@@ -31,7 +31,7 @@ RDEPEND="${COMMON_DEP}"
 
 DOCS=(AUTHORS BUILDS ChangeLog FEATURES INSTALL MODULES README NOTES NEWS TODO
 SUPPORT)
-PATCHES=("${FILESDIR}"/disable_avahi-configure.ac.patch)
+PATCHES=("${FILESDIR}"/disable_avahi-automagic.patch)
 
 src_prepare() {
 	autotools-utils_src_prepare
@@ -45,7 +45,7 @@ src_configure() {
 		--enable-commands \
 		$(use_enable debug) \
 		$(use_enable ssl openssl) \
-		$(use_with avahi zeroconf)
+		$(use_enable avahi zeroconf)
 		)
 	autotools-utils_src_configure
 }
