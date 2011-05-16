@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  -hivex-1.2.4.ebuild:
+  drop old
+
 *hivex-1.2.5 (30 Apr 2011)
 
   30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +hivex-1.2.5.ebuild:
