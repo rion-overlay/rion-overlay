@@ -17,15 +17,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs socks +cxx debug ssl gnutls"
 
+RDEPEND="ssl? ( dev-libs/openssl )
+	gnutls? ( net-libs/gnutls )"
+
 DEPEND="dev-util/pkgconfig
 	doc? ( app-doc/doxygen )
 	${RDEPEND}"
 
-RDEPEND="ssl? ( dev-libs/openssl )
-	gnutls? ( net-libs/gnutls )"
-
 DOCS=(README  NEWS SUPPORT ChangeLog AUTHORS)
 PATCH=("${FILESDIR}"/disable_rtf_gen_doxy.patch)
+
+pkg_pretend() {
+	confutils_use_conflict ssl gnutls
+}
 
 src_prepare() {
 	eautoreconf
@@ -57,15 +61,14 @@ src_configure() {
 	autotools-utils_src_configure
 }
 
-src_test() {
-	emake check
+src_compile() {
+	autotools-utils_src_compile
+	use doc && autotools-utils_src_compile doxy
 }
 
 src_install() {
-
 	autotools-utils_src_install
 	if use doc; then
-		emake DESTDIR="${D}" doxy
 		dohtml doc/html/*
 	fi
 }
