@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>sterkrig@home.no</email>
+ <description>POSIX IPC library for Python</description>
+</maintainer>
+</pkgmetadata>
