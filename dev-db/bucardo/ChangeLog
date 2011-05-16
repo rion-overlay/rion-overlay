@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*bucardo-4.4.4 (16 May 2011)
+
+  16 May 2011; Nickolaj Stjujsckij <sterkrig@home.no> +bucardo-4.4.4.ebuild:
+  Bump version
+
 *bucardo-4.4.3 (03 May 2011)
 
   03 May 2011; Nickolaj Stjujsckij <sterkrig@home.no> +bucardo-4.4.3.ebuild,
