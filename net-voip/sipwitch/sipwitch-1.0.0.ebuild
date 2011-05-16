@@ -15,23 +15,25 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc debug ssl avahi notify static-libs"
+IUSE="doc debug ssl avahi static-libs"
 
 COMMON_DEP=">=dev-libs/ucommon-4.2.0
 	>=net-libs/libeXosip-3.1.0
 	ssl? ( dev-libs/openssl )
 	avahi? ( net-dns/avahi )
-	notify? ( x11-libs/libnotify )"
-
+"
 DEPEND="dev-util/pkgconfig
 	sys-devel/libtool
 	${COMMON_DEP}"
 
-RDEPEND="${COMMON_DEP}"
+RDEPEND="${COMMON_DEP}
+	virtual/cron"
 
 DOCS=(AUTHORS BUILDS ChangeLog FEATURES INSTALL MODULES README NOTES NEWS TODO
 SUPPORT)
-PATCHES=("${FILESDIR}"/disable_avahi-automagic.patch)
+PATCHES=("${FILESDIR}"/disable_avahi-automagic.patch
+"${FILESDIR}"/gentoofu_makefile.patch
+"${FILESDIR}"/sipwitch.init.patch)
 
 src_prepare() {
 	autotools-utils_src_prepare
@@ -43,6 +45,7 @@ src_configure() {
 		--with-pkg-config \
 		--localstatedir=/var/ \
 		--enable-commands \
+		 --with-cgibindir="/usr/share/${P}"
 		$(use_enable debug) \
 		$(use_enable ssl openssl) \
 		$(use_enable avahi zeroconf)
@@ -55,7 +58,6 @@ emake check
 }
 
 src_install() {
-	dodir /var/log/
-	dodir /var/run/"${PN}"
-	autotools-utils_src_install
+	autotools-utils_src_install -j1
+#	newinitd "${FILESDIR}/${PN}".init "${PN}"
 }

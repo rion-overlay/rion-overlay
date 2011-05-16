@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  sipwitch-1.0.0.ebuild, +files/gentoofu_makefile.patch,
+  +files/sipwitch.init.patch, -files/sipwitch.init,
+  files/disable_avahi-automagic.patch, files/sipwitch.confd:
+  add gentoofu patch
+
   15 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -sipwitch-0.9.2.ebuild, -sipwitch-0.10.5.ebuild, sipwitch-1.0.0.ebuild,
   +files/disable_avahi-automagic.patch,
