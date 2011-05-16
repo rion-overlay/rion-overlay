@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=4
 
 inherit eutils
 
@@ -15,11 +15,10 @@ RDEPEND="${DEPEND}"
 SLOT="0"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 
 src_install () {
 	emake DESTDIR="${D}" install || die "install error"
-	mv "${D}"/etc/renattach.conf.ex "${D}"/etc/renattach.conf || die
 	dodoc AUTHORS ChangeLog README INSTALL NEWS
 }

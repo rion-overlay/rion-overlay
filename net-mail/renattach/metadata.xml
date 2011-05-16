@@ -3,10 +3,7 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
+  <email>spamslepnoga@inbox.ru</email>
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
-<use>
-</use>
+
 </pkgmetadata>
