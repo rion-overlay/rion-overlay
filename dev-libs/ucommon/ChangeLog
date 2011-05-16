@@ -4,6 +4,10 @@
 
   16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
   ucommon-4.3.3.ebuild:
+  add ~amd64-linux
+
+  16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  ucommon-4.3.3.ebuild:
   add use block statment
 
   15 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>

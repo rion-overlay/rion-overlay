@@ -14,7 +14,7 @@ SRC_URI="http://www.gnutelephony.org/dist/tarballs/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="doc static-libs socks +cxx debug ssl gnutls"
 
 RDEPEND="ssl? ( dev-libs/openssl )
@@ -25,13 +25,13 @@ DEPEND="dev-util/pkgconfig
 	${RDEPEND}"
 
 DOCS=(README  NEWS SUPPORT ChangeLog AUTHORS)
-PATCH=("${FILESDIR}"/disable_rtf_gen_doxy.patch)
 
 pkg_pretend() {
 	confutils_use_conflict ssl gnutls
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/disable_rtf_gen_doxy.patch
 	eautoreconf
 }
 
