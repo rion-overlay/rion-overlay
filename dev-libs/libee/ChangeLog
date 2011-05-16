@@ -3,6 +3,10 @@
 # $Header: $
 
   16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  libee-0.3.1.ebuild:
+  add ~amd64-linux
+
+  16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
   -libee-0.1.0.ebuild:
   drop old
 
