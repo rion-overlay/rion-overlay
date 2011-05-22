@@ -32,7 +32,7 @@ HTTP_PUSH_MODULE_PV="0.692"
 HTTP_PUSH_MODULE_P="nginx_http_push_module-${HTTP_PUSH_MODULE_PV}"
 
 # http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
-HTTP_CACHE_PURGE_MODULE_PV="1.2"
+HTTP_CACHE_PURGE_MODULE_PV="1.3"
 HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
 
 # HTTP Upload module from Valery Kholodkov
@@ -46,7 +46,7 @@ HTTP_EY_BALANCER_MODULE_P="nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_PV}"
 HTTP_EY_BALANCER_MODULE_SHA1="d373670"
 
 # http_slowfs_cache (http://labs.frickle.com/nginx_ngx_slowfs_cache/, BSD-2 license)
-HTTP_SLOWFS_CACHE_MODULE_PV="1.5"
+HTTP_SLOWFS_CACHE_MODULE_PV="1.6"
 HTTP_SLOWFS_CACHE_MODULE_P="ngx_slowfs_cache-${HTTP_SLOWFS_CACHE_MODULE_PV}"
 
 CHUNKIN_MODULE_PV="0.22rc1"
