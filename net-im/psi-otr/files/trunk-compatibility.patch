@@ -1,0 +1,22 @@
+--- src/PsiOtrPlugin.hpp
++++ src/PsiOtrPlugin.hpp
+@@ -108,5 +108,5 @@
+ 
+     // ToolbarIconAccessor
+-    virtual QList<QVariantHash>* getButtonParam();
++    virtual QList<QVariantHash> getButtonParam();
+     virtual QAction* getAction(QObject* parent, int account,
+                                const QString& contact);
+--- src/PsiOtrPlugin.cpp
++++ src/PsiOtrPlugin.cpp
+@@ -334,8 +334,8 @@
+ //-----------------------------------------------------------------------------
+ 
+-QList<QVariantHash>* PsiOtrPlugin::getButtonParam()
++QList<QVariantHash> PsiOtrPlugin::getButtonParam()
+ {
+-    return 0;
++    return QList<QVariantHash>();
+ }
+ 
+ //-----------------------------------------------------------------------------

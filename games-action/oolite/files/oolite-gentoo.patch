@@ -1,0 +1,33 @@
+--- GNUmakefile.postamble.orig	2011-03-26 22:43:40.561323731 +0500
++++ GNUmakefile.postamble	2011-03-26 22:44:51.512436717 +0500
+@@ -5,9 +5,6 @@
+ #
+ CP_FLAGS                         = -rf
+ 
+-ifeq ($(debug),yes)
+-    EXT                          =.dbg
+-endif
+                                  
+ ifeq ($(findstring -gnu,$(GNUSTEP_HOST_OS)),-gnu)
+     CP_FLAGS                     += -u
+@@ -39,9 +36,6 @@
+ endif
+ 	$(CP) $(CP_FLAGS) src/Cocoa/Info-Oolite.plist $(PROGDIR)/Resources/Info-gnustep.plist
+ 	$(CP) $(CP_FLAGS) $(GNUSTEP_OBJ_DIR_NAME)/$(SRC_BIN) $(PROGDIR)/$(DEST_BIN)
+-ifeq ($(debug),no)
+-	$(STRIP) $(PROGDIR)/$(DEST_BIN)
+-endif
+ ifeq ($(GNUSTEP_HOST_OS),mingw32)
+ 	$(CP) $(CP_FLAGS) deps/Windows-x86-deps/DLLs/*.dll $(PROGDIR)
+ ifeq ($(debug),yes)
+--- libjs.make.orig	2011-03-28 23:07:33.481037703 +0600
++++ libjs.make	2011-03-28 23:07:57.238740691 +0600
+@@ -52,7 +52,7 @@
+ 	cd $(LIBJS_BUILD_DIR) && ../configure $(LIBJS_CONFIG_FLAGS)
+ 	touch $@
+ 
+-.PHONY: LIBJS_SRC
++.NOTPARALLEL: LIBJS_SRC
+ LIBJS_SRC:
+ 	@echo
+ 	@echo "Updating Javascript sources..."
