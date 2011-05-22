@@ -32,8 +32,7 @@ RDEPEND="${COMMON_DEP}
 DOCS=(AUTHORS BUILDS ChangeLog FEATURES INSTALL MODULES README NOTES NEWS TODO
 SUPPORT)
 PATCHES=("${FILESDIR}"/disable_avahi-automagic.patch
-"${FILESDIR}"/gentoofu_makefile.patch
-"${FILESDIR}"/sipwitch.init.patch)
+"${FILESDIR}"/gentoofu_makefile.patch)
 
 src_prepare() {
 	autotools-utils_src_prepare
@@ -59,5 +58,5 @@ emake check
 
 src_install() {
 	autotools-utils_src_install -j1
-#	newinitd "${FILESDIR}/${PN}".init "${PN}"
+	newinitd "${FILESDIR}/${PN}".init "${PN}"
 }

@@ -1,7 +1,7 @@
 diff -r 7d47670cbdaa server/Makefile.am
 --- a/server/Makefile.am	Mon May 16 01:29:11 2011 +0300
-+++ b/server/Makefile.am	Mon May 16 02:13:05 2011 +0300
-@@ -49,6 +49,19 @@
++++ b/server/Makefile.am	Mon May 16 22:15:33 2011 +0300
+@@ -49,6 +49,18 @@
  zeroconf_la_SOURCES = zeroconf.cpp 
  zeroconf_la_LDFLAGS = -module $(MODFLAGS) @ZEROCONF_LIBS@ $(LDADD)
  
@@ -9,19 +9,18 @@ diff -r 7d47670cbdaa server/Makefile.am
 +install-exec-local:  
 +	$(mkinstalldirs) $(DESTDIR)/$(logrotatedir)
 +	$(INSTALL_DATA) sipwitch.log $(DESTDIR)/$(logrotatedir)/sipwitch
-+	$(mkinstalldirs) $(DESTDIR)/$(sysconfdir)/conf.d
 +	$(mkinstalldirs) $(DESTDIR)/$(sysconfdir)/init.d
-+	$(INSTALL_DATA) sipwitch.defaults $(DESTDIR)/$(sysconfdir)/conf.d/sipwitch
 +	$(mkinstalldirs) $(DESTDIR)/$(sysconfdir)/cron.hourly 
 +	$(INSTALL) -m 0755 sipwitch.cron $(DESTDIR)/$(sysconfdir)/cron.hourly/sipwitch 
 +	$(INSTALL) -m 0755 sipwitch.init $(DESTDIR)/$(sysconfdir)/init.d/sipwitch
-+
++	$(mkinstalldirs) $(DESTDIR)/$(sysconfdir)/default
++	$(INSTALL_DATA) sipwitch.defaults $(DESTDIR)/$(sysconfdir)/default/sipwitch 
 +
 +else
  install-exec-local:
  	$(mkinstalldirs) $(DESTDIR)/$(logrotatedir)
  	$(INSTALL_DATA) sipwitch.log $(DESTDIR)/$(logrotatedir)/sipwitch
-@@ -70,4 +83,4 @@
+@@ -70,4 +82,4 @@
  	$(mkinstalldirs) $(DESTDIR)/$(sysconfdir)/cron.hourly 
  	$(INSTALL) -m 0755 sipwitch.cron $(DESTDIR)/$(sysconfdir)/cron.hourly/sipwitch 
  
