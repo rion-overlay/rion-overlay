@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="monochrome"
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="x11-themes/gnome-icon-theme
+	x11-themes/hicolor-icon-theme"
 RESTRICT="binchecks strip"
 
 src_install() {
