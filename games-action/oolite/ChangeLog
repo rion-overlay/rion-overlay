@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*oolite-1.75.2 (23 May 2011)
+
+  23 May 2011; rion <rion4ik@spamogmail.com> -oolite-1.75.1.ebuild,
+  +oolite-1.75.2.ebuild, oolite-9999.ebuild:
+  new version
+
 *oolite-1.75.1 (26 Mar 2011)
 
   26 Mar 2011; Rion <rion4ik@gmail.com> -oolite-1.74.2.ebuild,
