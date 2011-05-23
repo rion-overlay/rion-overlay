@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Generic CRC function"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 
 RDEPEND=""
