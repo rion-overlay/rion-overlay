@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*elementary-icon-theme-2.7.1 (23 May 2011)
+
+  23 May 2011; rion <rion4ik@spamogmail.com>
+  -elementary-icon-theme-2.6-r1.ebuild, +elementary-icon-theme-2.7.1.ebuild:
+  new version
+
 *elementary-icon-theme-2.6-r1 (11 Jan 2011)
 
   11 Jan 2011; Rion <rion4ik@notagmail.com> -elementary-icon-theme-2.5.ebuild,
