@@ -55,7 +55,10 @@ src_compile() {
 src_install() {
 	insinto "${GNUSTEP_LOCAL_ROOT}/Applications"
 	doins -r oolite.app || die "install failed"
-	echo "openapp oolite" > "${T}/oolite"
+
+	# temporary doesn't work #368451
+	# echo "openapp oolite" > "${T}/oolite"
+	echo "openapp /usr/Local/Applications/oolite.app" > "${T}/oolite"
 	dogamesbin "${T}/oolite"
 	prepgamesdirs "${GNUSTEP_LOCAL_ROOT}/Applications"
 	fperms ug+x "${GNUSTEP_LOCAL_ROOT}/Applications/oolite.app/oolite"
