@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*myrulib-0.27.5 (25 May 2011)
+
+  25 May 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.27.5.ebuild:
+  version bump
+
   30 Apr 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.27.4.ebuild,
   +files/myrulib-0.27.4-faxpp.patch, myrulib-9999.ebuild:
   version bump, migrate to EAPI4
