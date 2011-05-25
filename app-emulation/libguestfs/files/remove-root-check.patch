@@ -1,0 +1,38 @@
+--- configure.ac.orig	2010-11-09 07:52:55.000000000 +0200
++++ configure.ac	2010-11-09 07:53:25.000000000 +0200
+@@ -53,16 +53,6 @@
+ ***])
+        ])
+ 
+-dnl Die if the user tries to configure as root, see:
+-dnl https://www.redhat.com/archives/libguestfs/2010-April/msg00098.html
+-AC_MSG_CHECKING([if you are trying to configure as root])
+-AS_IF([test "`id -u`" = 0 ],[
+-            AC_MSG_RESULT([yes])
+-            AC_MSG_FAILURE([Don't run './configure' or 'make' as root.])
+-      ],[
+-            AC_MSG_RESULT([no])
+-      ])
+-
+ dnl Early gnulib initialization.
+ gl_EARLY
+ gl_INIT
+@@ -760,7 +750,7 @@
+ AC_SUBST(JNI_INSTALL_DIR)
+ AC_SUBST(JNI_VERSION_INFO)
+ 
+-AM_CONDITIONAL([HAVE_JAVA],[test -n "$JAVAC"])
++AM_CONDITIONAL([HAVE_JAVA],[test -n "$JAVAC" -a "x$with_java_home" != "xno"])
+ 
+ dnl Check for Haskell (GHC).
+ GHC=no
+--- src/Makefile.am.orig	2010-11-09 07:54:46.000000000 +0200
++++ src/Makefile.am	2010-11-09 07:54:57.000000000 +0200
+@@ -192,7 +192,3 @@
+ all-local: checkroot
+ check-local: checkroot
+ checkroot:
+-	@if [ "`id -u`" = 0 ]; then \
+-	    echo "*** Error: Don't run 'make' or 'make check' as root."; \
+-	    exit 1; \
+-	fi

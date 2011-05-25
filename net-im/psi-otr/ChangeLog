@@ -1,0 +1,32 @@
+# ChangeLog for net-im/psi-otr
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*psi-otr-0.7-r1 (21 Jan 2011)
+
+  21 Jan 2011; Rion <rion4ik@notagmail.com> -psi-otr-0.7.ebuild,
+  +psi-otr-0.7-r1.ebuild, +files/trunk-compatibility.patch:
+  Fixed compatibility with latest psi-plus
+
+*psi-otr-0.7 (07 Jan 2011)
+
+  07 Jan 2011; Rion <rion4ik@gmail.com> -psi-otr-0.6-r1.ebuild,
+  +psi-otr-0.7.ebuild, -files/new-stanza-filter.patch:
+  new version
+
+*psi-otr-0.6-r1 (13 Dec 2010)
+
+  13 Dec 2010; Rion <rion4ik@notagmail.com> -psi-otr-0.6.ebuild,
+  +psi-otr-0.6-r1.ebuild, +files/new-stanza-filter.patch:
+  added patch for new stanza filter compatibility
+
+  28 Oct 2010; Rion <rion4ik@notagmail.com> psi-otr-0.6.ebuild:
+  psi-otr: small fix
+
+  27 Oct 2010; Nikoli <nikoli@lavabit.com> psi-otr-0.6.ebuild:
+  migrate to psiplus-plugin eclass
+
+  27 Oct 2010; Rion <rion4ik@notagmail.com> +psi-otr-0.6.ebuild,
+  +metadata.xml:
+  initial import
+
