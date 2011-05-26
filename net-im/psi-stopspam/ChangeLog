@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*psi-stopspam-0.5.2_pre3843 (26 May 2011)
+
+  26 May 2011; Nikoli <nikoli@lavabit.com> +psi-stopspam-0.5.2_pre3843.ebuild:
+  version bump
+
   24 Apr 2011; Nikoli <nikoli@lavabit.com>
   +psi-stopspam-0.5.2_pre3724.ebuild:
   version bump
