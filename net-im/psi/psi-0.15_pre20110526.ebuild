@@ -6,21 +6,22 @@ EAPI="4"
 
 LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
-EGIT_REPO_URI="git://git.psi-im.org/psi.git"
-EGIT_HAS_SUBMODULES=1
-LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
+inherit eutils qt4-r2 multilib
 
-ESVN_DISABLE_DEPENDENCIES="true"
-ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches"
-ESVN_PROJECT="psiplus"
-
-inherit eutils qt4-r2 multilib git-2 subversion
-
+MY_PV="3928"
 DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
+MY_URI="http://rion-overlay.googlecode.com/files/"
+SRC_URI="${MY_URI}${P}.tar.xz
+	${MY_URI}${PN}-l10n-${PV}.tar.xz
+	extras? ( ${MY_URI}${PN}-patches_r${MY_PV}.tar.xz
+		${MY_URI}${PN}-iconsets-default_r${MY_PV}.tar.xz
+		iconsets? ( ${MY_URI}${PN}-iconsets-extras_r${MY_PV}.tar.xz )
+	)
+"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
 plugins whiteboarding webkit"
 
@@ -46,11 +47,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	extras? (
-		${SUBVERSION_DEPEND}
 		sys-devel/qconf
 	)
 	doc? ( app-doc/doxygen )
 	dev-util/pkgconfig
+	app-arch/xz-utils
 "
 PDEPEND="
 	crypt? ( app-crypt/qca-gnupg:2 )
@@ -70,7 +71,13 @@ pkg_setup() {
 		ewarn "You're about to build heavily patched version of Psi called Psi+."
 		ewarn "It has really nice features but still is under heavy development."
 		ewarn "Take a look at homepage for more info: http://code.google.com/p/psi-dev"
+		ewarn "If you wish to disable some patches just put"
+		ewarn "MY_EPATCH_EXCLUDE=\"list of patches\""
+		ewarn "into /etc/portage/env/${CATEGORY}/${PN} file."
 		echo
+		ewarn "Note: some patches depend on other. So if you disabled some patch"
+		ewarn "and other started to fail to apply, you'll have to disable patches"
+		ewarn "that fail too."
 
 		if use iconsets; then
 			echo
@@ -81,47 +88,21 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	git-2_src_unpack
-	unset EGIT_HAS_SUBMODULES EGIT_NONBARE
-
-	# fetch translations
-	mkdir "${WORKDIR}/psi-l10n"
-	for x in ${LANGS}; do
-		if use linguas_${x}; then
-			if use extras && [ "${x}" = "ru" ]; then
-				local EGIT_REPO_URI="git://mva.name/psi-l10n-${x}"
-				local EGIT_DIR="${EGIT_STORE_DIR}/psiplus-l10n/${x}"
-			else
-				local EGIT_REPO_URI="${LANGS_URI}-${x}"
-				local EGIT_DIR="${EGIT_STORE_DIR}/psi-l10n/${x}"
-			fi
-			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT
-			EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" git-2_src_unpack
-		fi
-	done
-
-	if use extras; then
-		S="${WORKDIR}/patches" subversion_fetch
-		if use iconsets; then
-			subversion_fetch "${ESVN_REPO_URI%patches}iconsets" "iconsets"
-		else
-			for x in activities affiliations clients moods roster system; do
-				ESVN_PROJECT="psiplus/${x}" \
-				subversion_fetch "${ESVN_REPO_URI%patches}iconsets/${x}/default" "iconsets/${x}/default"
-			done
-		fi
-	fi
-}
-
 src_prepare() {
 	if use extras; then
-		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
+		EPATCH_EXCLUDE="${MY_EPATCH_EXCLUDE}
+		" \
+		EPATCH_SOURCE="${WORKDIR}/${PN}-patches_r${MY_PV}/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
-		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
+		use powersave && epatch "${WORKDIR}/${PN}-patches_r${MY_PV}/dev/psi-reduce-power-consumption.patch"
 
-		subversion_wc_info
-		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
+		if use linguas_ru; then
+			pushd "${WORKDIR}/${PN}-l10n-${PV}"
+			mv ru_extras/* ru/
+			popd
+		fi
+
+		sed -e "s/.xxx/.${MY_PV}/" \
 			-i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."
@@ -199,7 +180,7 @@ src_install() {
 	fi
 
 	# install translations
-	cd "${WORKDIR}/psi-l10n"
+	cd "${WORKDIR}/${PN}-l10n-${PV}"
 	insinto /usr/share/${MY_PN}
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
