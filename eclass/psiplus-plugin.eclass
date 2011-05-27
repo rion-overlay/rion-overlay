@@ -6,7 +6,8 @@ MY_PN="${PN#psi-}plugin"
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="subversion"
-	ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/generic/${MY_PN}"
+	PLUGIN_ARCH="${PLUGIN_ARCH:-generic}"
+	ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/${PLUGIN_ARCH}/${MY_PN}"
 fi
 
 inherit qt4-r2 ${SCM}
