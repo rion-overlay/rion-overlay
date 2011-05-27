@@ -7,10 +7,11 @@ die() {
 
 [ ! -d "net-im" ] && die "Please start this script in the overlay root"
 
-PLUGINS=`svn ls http://psi-dev.googlecode.com/svn/trunk/plugins/generic`
+PLUGINS_GENERIC=`svn ls http://psi-dev.googlecode.com/svn/trunk/plugins/generic`
+PLUGINS_UNIX=`svn ls http://psi-dev.googlecode.com/svn/trunk/plugins/unix`
 NEW_PLUGINS=""
 
-for p in $PLUGINS; do
+for p in $PLUGINS_GENERIC $PLUGINS_UNIX; do
   pn=${p/plugin\//}
   [ ! -d "net-im/psi-${pn}" ] && NEW_PLUGINS="${NEW_PLUGINS} ${pn}"
 done
@@ -41,7 +42,7 @@ for pn in $NEW_PLUGINS; do
   echo -n "Enter long desciption for metadata: "
   read longdesc
   mkdir "net-im/psi-${pn}" || die "failed to create plugin's dir"
-  echo "$(cat <<'METACONTENT'
+  echo "$(cat <<METACONTENT
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
@@ -51,30 +52,26 @@ for pn in $NEW_PLUGINS; do
 		<name>Il'nykh Sergey</name>
 	</maintainer>
 	<longdescription lang="en">
+	${longdesc}
+	</longdescription>
+</pkgmetadata>
 METACONTENT
 )" > "net-im/psi-${pn}/metadata.xml"
-  echo "${longdesc}" >> "net-im/psi-${pn}/metadata.xml"
-  echo -e "</longdescription>\n</pkgmetadata>" >> "net-im/psi-${pn}/metadata.xml"
 
-  echo "$(cat <<'EBUILDCONTENT'
+  arch=generic
+  for pu in $PLUGINS_UNIX; do [ "$pu" = "${pn}plugin/" ] && arch=unix; done
+  echo "$(cat <<EBUILDCONTENT
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# \$Header: \$
 
 EAPI="2"
 
+PLUGIN_ARCH="${arch}"
 inherit psiplus-plugin
 
+DESCRIPTION="${desc}"
 
-EBUILDCONTENT
-)" > "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
-
-  echo "DESCRIPTION=\"${desc}\"" >> "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
-  echo "$(cat <<'EBUILDCONTENT'
-HOMEPAGE="http://psi-dev.googlecode.com"
-
-LICENSE="GPL-2"
-SLOT="0"
 KEYWORDS=""
 IUSE=""
 EBUILDCONTENT
