@@ -47,12 +47,9 @@ COMMON_DEPEND="
 	dev-lang/perl
 	virtual/cdrtools
 	>=app-emulation/qemu-kvm-0.13
-	sys-apps/fakeroot
 	sys-apps/file
 	app-emulation/libvirt
 	dev-libs/libxml2:2
-	=dev-util/febootstrap-3*
-	>=sys-apps/fakechroot-2.8
 	app-admin/augeas
 	sys-fs/squashfs-tools
 	perl? ( virtual/perl-ExtUtils-MakeMaker )
@@ -61,7 +58,8 @@ COMMON_DEPEND="
 	doc? ( dev-libs/libxml2 )
 	ocaml? ( dev-lang/ocaml
 		dev-ml/xml-light
-		dev-ml/findlib )
+		dev-ml/findlib
+		dev-ml/pcre-ocaml )
 	ruby? ( dev-lang/ruby
 			dev-ruby/rake )
 	java? ( virtual/jre )
