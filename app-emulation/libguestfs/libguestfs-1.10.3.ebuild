@@ -17,7 +17,7 @@ USE_PHP="php5-2 php5-3"
 PHP_EXT_OPTIONAL_USE="php"
 
 MAIN_ECLAS="autotools bash-completion confutils versionator java-pkg-2
-java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2 ghc-package"
+java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2"
 
 inherit ${MAIN_ECLAS}
 
@@ -34,7 +34,7 @@ SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
+IUSE="fuse +ocaml perl python ruby readline nls php debug doc nls source javadoc"
 
 COMMON_DEPEND="
 	virtual/perl-Getopt-Long
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	ruby? ( dev-lang/ruby
 			dev-ruby/rake )
 	java? ( virtual/jre )
-	haskell? ( dev-lang/ghc )"
+	"
 
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
@@ -86,7 +86,7 @@ pkg_setup() {
 	confutils_use_depend_all javadoc java
 
 	ruby-ng_pkg_setup
-	use haskell && ghc-package_pkg_setup
+#	use haskell && ghc-package_pkg_setup
 }
 
 src_unpack() {
@@ -133,7 +133,6 @@ src_configure() {
 		$(use_enable ocaml) \
 		$(use_enable python) \
 		$(use_enable ruby) \
-		$(use_enable haskell) \
 		$(use_with doc po4a) \
 		$(use_with tools) || die
 
@@ -191,12 +190,4 @@ src_install() {
 
 pkg_preinst() {
 	java-pkg-opt-2_pkg_preinst
-}
-
-pkg_postinst() {
-	use hackell && ghc-package_pkg_postinst
-}
-
-pkg_prerm() {
-	use hackell && ghc-package_pkg_prerm
 }
