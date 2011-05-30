@@ -26,7 +26,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" compile
+	emake CC="$(tc-getCC)" compile i18n
 }
 
 src_install() {
