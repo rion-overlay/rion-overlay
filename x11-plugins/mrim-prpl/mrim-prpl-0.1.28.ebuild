@@ -15,11 +15,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=net-im/pidgin-2.6"
+RDEPEND=">=net-im/pidgin-2.6[gtk]"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-devel/gettext
 "
+
+src_configure() {
+	./configure --gtk || die
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)" compile
