@@ -90,14 +90,17 @@ src_unpack() {
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
 			if use extras && [ "${x}" = "ru" ]; then
-				local EGIT_REPO_URI="git://mva.name/psi-l10n-${x}"
-				local EGIT_DIR="${EGIT_STORE_DIR}/psiplus-l10n/${x}"
+				ESVN_PROJECT="psiplus/psi-l10n/${x}" \
+				S="${WORKDIR}" \
+				subversion_fetch \
+					"http://psi-ru.googlecode.com/svn/branches/psi-plus/" \
+					"psi-l10n/${x}"
 			else
-				local EGIT_REPO_URI="${LANGS_URI}-${x}"
-				local EGIT_DIR="${EGIT_STORE_DIR}/psi-l10n/${x}"
+				unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT
+				EGIT_REPO_URI="${LANGS_URI}-${x}" \
+				EGIT_DIR="${EGIT_STORE_DIR}/psi-l10n/${x}" \
+				EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" git-2_src_unpack
 			fi
-			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT
-			EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" git-2_src_unpack
 		fi
 	done
 
@@ -205,7 +208,9 @@ src_install() {
 		if use linguas_${x}; then
 			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
 			doins "${x}/${PN}_${x}.qm" || die
-			newins "${x}/INFO" "${PN}_${x}.INFO"
+			[ -f "${x}/qt_${x}.qm" ] && doins "${x}/qt_${x}.qm"
+			[ -f "${x}/qt/qt_${x}.qm" ] && doins "${x}/qt/qt_${x}.qm"
+			[ -f "${x}/INFO" ] && newins "${x}/INFO" "${PN}_${x}.INFO"
 		fi
 	done
 }

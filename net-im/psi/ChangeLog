@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 May 2011; rion <rion4ik@spamogmail.com> psi-9999.ebuild:
+  Use ivan101's russian translation instead of mva's one
+
 *psi-0.15_pre20110526 (26 May 2011)
 
   26 May 2011; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20110526.ebuild,
