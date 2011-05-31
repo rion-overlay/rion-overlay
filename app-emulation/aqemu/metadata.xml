@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>andreis.vinogradovs@gmail.com</email>
+</maintainer>
+<use>
+	<flag name='kvm'>Add support kernel virtual mashine</flag>
+	<flag name='spice'>Build witch SPUCEd qemu, use
+	<pkg>app-emulation/qemu-kvm-spice</pkg> </flag>
+
+</use>
+</pkgmetadata>
