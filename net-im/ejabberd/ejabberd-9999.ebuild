@@ -19,6 +19,7 @@ IUSE="captcha debug ldap odbc pam +web zlib ${EJABBERD_MODULES}"
 DEPEND="net-im/exmpp
 	>=net-im/jabber-base-0.01
 	>=dev-lang/erlang-12.2.5[ssl]
+	net-im/exmpp
 	odbc? ( dev-db/unixODBC )
 	ldap? ( =net-nds/openldap-2* )
 	>=dev-libs/openssl-0.9.8e
