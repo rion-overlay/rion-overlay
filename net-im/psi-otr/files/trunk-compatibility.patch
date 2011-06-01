@@ -1,22 +1,11 @@
---- src/PsiOtrPlugin.hpp
-+++ src/PsiOtrPlugin.hpp
-@@ -108,5 +108,5 @@
+--- src/PsiOtrPlugin.cpp.orig	2011-06-01 17:21:57.000000000 +0600
++++ src/PsiOtrPlugin.cpp	2011-06-01 17:22:18.000000000 +0600
+@@ -387,7 +387,7 @@
  
-     // ToolbarIconAccessor
--    virtual QList<QVariantHash>* getButtonParam();
-+    virtual QList<QVariantHash> getButtonParam();
-     virtual QAction* getAction(QObject* parent, int account,
-                                const QString& contact);
---- src/PsiOtrPlugin.cpp
-+++ src/PsiOtrPlugin.cpp
-@@ -334,8 +334,8 @@
- //-----------------------------------------------------------------------------
- 
--QList<QVariantHash>* PsiOtrPlugin::getButtonParam()
-+QList<QVariantHash> PsiOtrPlugin::getButtonParam()
+ QString PsiOtrPlugin::dataDir()
  {
--    return 0;
-+    return QList<QVariantHash>();
+-    return m_applicationInfo->appHomeDir();
++    return m_applicationInfo->appHomeDir(ApplicationInfoAccessingHost::DataLocation);
  }
- 
+     
  //-----------------------------------------------------------------------------

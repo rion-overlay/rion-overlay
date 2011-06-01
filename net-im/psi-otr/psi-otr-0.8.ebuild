@@ -20,4 +20,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/trunk-compatibility.patch" )
+PATCHES=( "${FILESDIR}"/trunk-compatibility.patch )
