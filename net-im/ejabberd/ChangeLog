@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ChangeLog,v 1.65 2009/06/05 13:00:56 pva Exp $
 
+*ejabberd-2.1.7-r9999 (01 Jun 2011)
+
+  01 Jun 2011; Rion <rion4ik@gmail.com> -ejabberd-2.1.6-r9999.ebuild,
+  +ejabberd-2.1.7-r9999.ebuild:
+  version bump
+  s Please enter the ChangeLog message for your changes. Lines starting
+
   23 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru>
   ejabberd-2.1.6-r9999.ebuild:
   fix call EPREFIX in insito
