@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  Digest-CRC-0.16.ebuild:
+  keyword ~amd64-linux
+
 *Digest-CRC-0.16 (22 May 2011)
 
   22 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
