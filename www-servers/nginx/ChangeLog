@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-1.0.4 (03 Jun 2011)
+
+  03 Jun 2011; rion <rion4ik@spamogmail.com> +nginx-1.0.4.ebuild:
+  version bump
+
 *nginx-1.0.2 (19 May 2011)
 
   19 May 2011; rion <rion4ik@spamogmail.com> +nginx-1.0.2.ebuild:
