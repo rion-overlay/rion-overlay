@@ -10,6 +10,7 @@
  <use>
   <flag name="acetamide">Build Acetamide, the IRC protocol support</flag>
   <flag name="chathistory">Build ChatHistory which stories chat history</flag>
+  <flag name="hili">Build HiLi which allows to customize highlight settings in MUCs</flag>
   <flag name="juick">Build plugin for the Juick.com microblogging service</flag>
   <flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
   <flag name="p100q">Build p100q, plugin for psto.net microblogging service</flag>
