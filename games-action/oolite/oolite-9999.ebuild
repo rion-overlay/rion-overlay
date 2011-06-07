@@ -54,14 +54,14 @@ src_compile() {
 }
 
 src_install() {
-	insinto "${GNUSTEP_LOCAL_ROOT}/Applications"
+	install_root="$(gnustep-config --variable=GNUSTEP_LOCAL_APPS)"
+	insinto "${install_root}"
 	doins -r oolite.app || die "install failed"
-	# temporary doesn't work #368451
-	# echo "openapp oolite" > "${T}/oolite"
-	echo "openapp /usr/Local/Applications/oolite.app" > "${T}/oolite"
+
+	echo "openapp oolite" > "${T}/oolite"
 	dogamesbin "${T}/oolite"
-	prepgamesdirs "${GNUSTEP_LOCAL_ROOT}/Applications"
-	fperms ug+x "${GNUSTEP_LOCAL_ROOT}/Applications/oolite.app/oolite"
+	prepgamesdirs "${install_root}"
+	fperms ug+x "${install_root}/oolite.app/oolite"
 	doicon installers/FreeDesktop/oolite-icon.png
 	domenu installers/FreeDesktop/oolite.desktop
 }
