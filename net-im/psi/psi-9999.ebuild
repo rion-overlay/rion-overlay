@@ -33,7 +33,6 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=x11-libs/qt-gui-4.4:4[qt3support,dbus?]
-	x11-libs/qt-qt3support:4
 	>=app-crypt/qca-2.0.2:2
 	whiteboarding? ( x11-libs/qt-svg:4 )
 	spell? (
