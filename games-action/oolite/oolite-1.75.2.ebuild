@@ -4,11 +4,11 @@
 
 EAPI="3"
 
-inherit games
+inherit gnustep-2 games
 
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
-FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0rc1.source.js-only.tbz"
+FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
 SRC_URI="mirror://berlios/oolite-linux/${PN}-dev-source-${PV}.tar.bz2
 	${FF_JS_URI}"
 
@@ -30,29 +30,28 @@ S="${WORKDIR}/${PN}-dev-source-${PV}"
 PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
 
 pkg_setup() {
-	GNUSTEP_MAKEFILES=`gnustep-config --variable=GNUSTEP_MAKEFILES` || \
-		die "Something went wrong. Can't determine location of gnustep makefiles"
-	source "${GNUSTEP_MAKEFILES}/GNUstep.sh"
+	games_pkg_setup
+	gnustep-base_pkg_setup
 }
 
-src_unpack() {
-	base_src_unpack
+src_prepare() {
+	gnustep-base_src_prepare
 	mkdir "${S}"/deps/Cross-platform-deps/mozilla || die
 	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/Cross-platform-deps/mozilla/ || die
 	mv "${WORKDIR}/mozilla-2.0/nsprpub" "${S}"/deps/Cross-platform-deps/mozilla/ || die
 	echo "${FF_JS_URI}" > "${S}"/deps/Cross-platform-deps/mozilla/current.url
-}
-
-src_prepare() {
-	base_src_prepare
-	sed -i -e 's/\r//g' "${S}"/deps/Cocoa-deps/scripts/update-mozilla.sh
+	sed -i -e 's/^\.PHONY: all$/.PHONY: .NOTPARALLEL all/' "${S}"/libjs.make || die
+	sed -i -e 's:\(oolite_LIB_DIRS.*\s\)/\s:\1:' "${S}"/GNUmakefile # remove link to slash
+	sed -i -e 's:.*STRIP.*:	true:' "${S}"/GNUmakefile.postamble
 }
 
 src_compile() {
+	egnustep_env
 	emake -f Makefile $(use debug && echo debug || echo release) || die
 }
 
 src_install() {
+	#gnustep-base_src_install
 	install_root="$(gnustep-config --variable=GNUSTEP_LOCAL_APPS)"
 	insinto "${install_root}"
 	doins -r oolite.app || die "install failed"
