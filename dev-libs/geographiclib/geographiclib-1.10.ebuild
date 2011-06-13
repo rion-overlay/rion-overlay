@@ -6,7 +6,8 @@ EAPI=3
 
 DESCRIPTION="Small set of C++ classes for performing various geographic and geodesic conversions"
 HOMEPAGE="http://geographiclib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+MY_P="GeographicLib-${PV}"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -15,6 +16,8 @@ IUSE="doc"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	emake DESTDIR="${D}" install || die
