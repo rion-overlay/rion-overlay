@@ -11,7 +11,7 @@ HOMEPAGE="http://www.ejabberd.im/"
 EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
 EGIT_BRANCH="2.1.x"
 
-SRC_URI="mod_statsdx? ( mirror://gentoo/2.1.1-mod_statsdx.patch.bz2 )"
+SRC_URI="mod_statsdx? ( mirror://gentoo/ejabberd-mod_statsdx-1080.patch.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -70,6 +70,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	cd ..; epatch "${FILESDIR}/remote-roster.patch"; cd "${S}"
 	use md5 && epatch "${FILESDIR}/auth_md5.patch"
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
@@ -237,6 +238,9 @@ pkg_postinst() {
 
 	SSL_ORGANIZATION="${SSL_ORGANIZATION:-Ejabberd XMPP Server}"
 	install_cert /etc/ssl/ejabberd/server
+	# Fix ssl cert permissions bug #369809
+	chown root:jabber "${EROOT}/etc/ssl/ejabberd/server.pem"
+	chmod 0440 "${EROOT}/etc/ssl/ejabberd/server.pem"
 	if [[ -e ${EROOT}/etc/jabber/ssl.pem ]]; then
 		ewarn
 		ewarn "The location of SSL certificates has changed. If you are"
