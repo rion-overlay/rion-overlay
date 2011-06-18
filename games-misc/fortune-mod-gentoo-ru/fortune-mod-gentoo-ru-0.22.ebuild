@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 DESCRIPTION="Fortune database of quotes from gentoo.ru forum and gentoo@conference.gentoo.ru"
 SRC_URI="http://slepnoga.googlecode.com/files/gentoo-ru-${PV}.gz
@@ -14,14 +14,13 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE=""
 
-RESTRICT="mirror"
 RDEPEND="games-misc/fortune-mod"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_compile() {
 	mv gentoo-ru-${PV} gentoo-ru || die
-	/usr/bin/strfile gentoo-ru || die
+	${EROOT}/usr/bin/strfile gentoo-ru || die
 }
 
 src_install() {
