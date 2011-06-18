@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*fortune-mod-gentoo-ru-0.22 (18 Jun 2011)
+
+  18 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.20.ebuild, -fortune-mod-gentoo-ru-0.21.ebuild,
+  +fortune-mod-gentoo-ru-0.22.ebuild:
+  drop old add mew
+
   06 Apr 2011; <slep@gentoo.org> -fortune-mod-gentoo-ru-0.19.ebuild:
   remove old
 
