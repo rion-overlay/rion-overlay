@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 inherit git-2 autotools
 
@@ -32,9 +32,4 @@ src_prepare() {
 }
 src_configure() {
 	econf $(use_enable dbus) $(use_enable debug) || die "econf failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc README ChangeLog AUTHORS NEWS
 }

@@ -34,8 +34,3 @@ src_prepare() {
 src_configure() {
 	econf $(use_enable dbus) || die "econf failed"
 }
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc README ChangeLog AUTHORS NEWS
-}
