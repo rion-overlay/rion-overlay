@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
-inherit  cmake-utils
+inherit  cmake-utils confutils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators. Using Qt4."
 HOMEPAGE="http://sourceforge.net/projects/aqemu"
@@ -24,6 +24,10 @@ RDEPEND="kvm? ( app-emulation/qemu-kvm[spice?] )
 	x11-libs/qt-xmlpatterns:4"
 
 DOCS="AUTHORS CHANGELOG README TODO"
+
+pkg_pretend() {
+	confutils_use_depend_all spice kvm
+}
 
 src_configure() {
 
