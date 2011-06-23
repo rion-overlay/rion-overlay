@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> aqemu-0.8.1.ebuild:
+  stable on amd64 and x86
+
   23 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   aqemu-0.8.1-r1.ebuild:
   add confuitils block and bunp to EAPI4
