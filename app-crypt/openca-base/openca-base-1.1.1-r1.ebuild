@@ -68,7 +68,8 @@ COMMON_DEP="!app-crypt/openca
 	dev-perl/OpenCA-Tools
 	dev-perl/OpenCA-UI-HTML
 	dev-perl/OpenCA-X509
-	dev-perl/OpenCA-XML-Cache"
+	dev-perl/OpenCA-XML-Cache
+	virtual/editor "
 
 DEPEND="${COMMON_DEP}
 	sys-devel/libtool
