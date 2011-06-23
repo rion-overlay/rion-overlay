@@ -2,7 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+# @ECLASS: psiplus-plugin.eclass 
+# @MAINTAINER:
+# Rion <rion4ik@gmail.com>
+# @BLURB: This eclass provides functions for build all plugin tonet-im/psi
+# package
+# @DESCRIPTION:
+# This eclass provides functions build all plugin tonet-im/psi
+# Original Author: Rion <rion4ik@gmail.com>
+# Purpose: 
+
+###
+# variable declarations
+###
+
+
+
 MY_PN="${PN#psi-}plugin"
+
+###
+# Use scm or not ?
+###
+
+
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="subversion"
@@ -11,6 +33,8 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 fi
 
 inherit qt4-r2 ${SCM}
+
+# general common
 
 HOMEPAGE="http://psi-dev.googlecode.com"
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -26,6 +50,7 @@ SLOT="0"
 DEPEND=">=net-im/psi-0.15_pre20110125[extras,plugins]"
 RDEPEND="${DEPEND}"
 
+# Eclass exported functions
 EXPORT_FUNCTIONS src_prepare src_configure
 
 psiplus-plugin_src_prepare() {
