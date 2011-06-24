@@ -1,0 +1,27 @@
+# ChangeLog for dev-perl/Locales
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> -Locales-0.10.ebuild,
+  -Locales-0.11.ebuild, -Locales-0.13.ebuild:
+  delete old version
+
+*Locales-0.15 ( 24 Mar 2010 )
+
+  24 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> +Locales-0.15.ebuild:
+  bump
+
+  26 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> Locales-0.10.ebuild,
+  Locales-0.11.ebuild, Locales-0.13.ebuild:
+  keyword ~x86
+
+  24 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> +Locales-0.11.ebuild:
+  initial commit
+
+  24 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> +Locales-0.10.ebuild:
+  initial commit
+
+  24 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru> +Locales-0.13.ebuild,
+  +metadata.xml:
+  initial commit
+

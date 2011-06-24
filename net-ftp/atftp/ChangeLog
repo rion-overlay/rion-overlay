@@ -1,0 +1,13 @@
+# ChangeLog for net-ftp/atftp
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*atftp-0.7-r1 (24 Apr 2011)
+
+  24 Apr 2011; <spamslepnoga@inbox.ru> +atftp-0.7-r1.ebuild,
+  +files/atftp-0.7-glibc24.patch, +files/atftp-0.7-password.patch,
+  +files/atftp-0.7-pcre.patch, +files/atftp-0.7-tests.patch,
+  +files/atftp.confd, +files/atftp.init, +metadata.xml:
+  Initial commit in rion overlay, add case-insensetive patch, 
+  needed for Windows(r) RIS/WAIK/WDS
+
