@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
+
+inherit autotools-utils
 
 DESCRIPTION="Library set needed for build sssd"
 HOMEPAGE="https://fedorahosted.org/sssd"
@@ -12,7 +14,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
-IUSE="test"
+IUSE="test static-libs"
 
 RDEPEND="!dev-libs/libcollection
 	!dev-libs/libdhash
@@ -22,10 +24,4 @@ RDEPEND="!dev-libs/libcollection
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 
-src_test() {
-	emake check || die
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-}
+AUTOTOOLS_IN_SOURCE_BUILD=1
