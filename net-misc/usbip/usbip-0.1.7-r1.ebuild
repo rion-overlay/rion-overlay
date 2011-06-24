@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
-inherit autotools toolchain-funcs
+inherit autotools-utils toolchain-funcs linux-info
 
 DESCRIPTION="A general USB device sharing system over IP networks"
 HOMEPAGE="http://usbip.sourceforge.net/"
@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE=""
+IUSE="static-libs"
 
 RDEPEND=">=sys-fs/sysfsutils-2
 		virtual/libusb:0
@@ -24,14 +24,13 @@ RDEPEND=">=sys-fs/sysfsutils-2
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
+AUTOTOOLS_IN_SOURCE_BUILD=1
 S="${WORKDIR}/${P}/src"
-
-pkg_config() {
-	if $(gcc-version) < 4;then
-		eerror "You gcc verision is old"
-		eerror "This package only gcc 4 style"
-		eerror "Please install >gcc-4* "
-	fi
+DOCS=(README)
+pkg_setup() {
+	CONFIG_CHECK="USB_IP_COMMON"
+	CONFIG_CHECK="USB_IP_VHCI_HCD"
+	CONFIG_CHECK="USB_IP_HOST"
 }
 
 src_prepare() {
@@ -40,18 +39,11 @@ src_prepare() {
 
 src_configure() {
 
-econf	--with-usbids-dir=/usr/share/misc/  || die "econf failed"
-}
-
-src_compile() {
-
-	emake all-recursive || die
+	local myeconfargs=( --with-usbids-dir=/usr/share/misc/ )
+	autotools-utils_src_configure
 }
 
 src_install() {
-
-	emake DESTDIR="${D}" install || die " install failed"
-	dodoc README*
-
+	autotools-utils_src_install
 	newinitd "${FILESDIR}/usbip.init" usbip
 }
