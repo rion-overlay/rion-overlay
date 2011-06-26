@@ -75,7 +75,8 @@ src_prepare() {
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
 		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
-		epatch "${WORKDIR}/2.1.1-mod_statsdx.patch"
+		#epatch "${WORKDIR}/2.1.1-mod_statsdx.patch"
+		epatch "${WORKDIR}/ejabberd-mod_statsdx-1080.patch"
 	fi
 
 	# don't install release notes (we'll do this manually)
