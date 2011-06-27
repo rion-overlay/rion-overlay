@@ -10,9 +10,8 @@ EGIT_REPO_URI="git://git.psi-im.org/psi.git"
 EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
 
-ESVN_DISABLE_DEPENDENCIES="true"
-ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/patches"
-ESVN_PROJECT="psiplus"
+PSI_PLUS_URI="git://github.com/psi-plus/main.git"
+PSI_PLUS_ICONSETS_URI="git://github.com/psi-plus/iconsets.git"
 
 inherit eutils qt4-r2 multilib git-2 subversion
 
@@ -104,26 +103,27 @@ src_unpack() {
 	done
 
 	if use extras; then
-		S="${WORKDIR}/patches" subversion_fetch
+		EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/main" \
+		EGIT_SOURCEDIR="${WORKDIR}/psi-plus" \
+		EGIT_REPO_URI="${PSI_PLUS_URI}" git-2_src_unpack
 		if use iconsets; then
-			subversion_fetch "${ESVN_REPO_URI%patches}iconsets" "iconsets"
-		else
-			for x in activities affiliations clients moods roster system; do
-				ESVN_PROJECT="psiplus/${x}" \
-				subversion_fetch "${ESVN_REPO_URI%patches}iconsets/${x}/default" "iconsets/${x}/default"
-			done
+			EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/iconsets" \
+			EGIT_SOURCEDIR="${WORKDIR}/iconsets" \
+			EGIT_REPO_URI="${PSI_PLUS_ICONSETS_URI}" git-2_src_unpack
 		fi
 	fi
 }
 
 src_prepare() {
 	if use extras; then
-		EPATCH_SOURCE="${WORKDIR}/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
+		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
+		use iconsets && { cp -a "${WORKDIR}/iconsets" "${S}" || \
+			die	"failed to copy additional iconsets"; }
+		EPATCH_SOURCE="${WORKDIR}/psi-plus/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
 		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
 
-		subversion_wc_info
-		sed -e "s/.xxx/.${ESVN_WC_REVISION}/" \
+		sed -e "s/.xxx/.$(cd "$S"; git log -1 --pretty=%h)/" \
 			-i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."

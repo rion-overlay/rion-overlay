@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Jun 2011; rion <rion4ik@spamogmail.com> psi-9999.ebuild:
+  Psi+ moved to github
+
   31 May 2011; rion <rion4ik@spamogmail.com> psi-9999.ebuild:
   Use ivan101's russian translation instead of mva's one
 
