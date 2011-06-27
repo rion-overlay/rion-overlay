@@ -16,9 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="kvm vnc spice"
 
 DEPEND="${RDEPEND}"
-RDEPEND="kvm? ( app-emulation/qemu-kvm[spice?] )
-	!kvm? ( >=app-emulation/qemu-0.9.0 )
+RDEPEND="
 	vnc? ( net-libs/libvncserver )
+	virtual/qemu[kvm=,spice=]
 	x11-libs/qt-gui:4
 	x11-libs/qt-test:4
 	x11-libs/qt-xmlpatterns:4"
