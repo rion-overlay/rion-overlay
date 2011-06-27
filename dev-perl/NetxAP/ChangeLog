@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/NetxAP
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*NetxAP-0.02 (30 Mar 2011)
+
+  30 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +NetxAP-0.02.ebuild,
+  +metadata.xml:
+  initila commt, need for otrs
+
