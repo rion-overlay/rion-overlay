@@ -5,7 +5,7 @@
 # @ECLASS: psiplus-plugin.eclass 
 # @MAINTAINER:
 # Rion <rion4ik@gmail.com>
-# @BLURB: This eclass provides functions for build all plugin tonet-im/psi
+# @BLURB: This eclass provides functions for build all plugin to net-im/psi
 # package
 # @DESCRIPTION:
 # This eclass provides functions build all plugin tonet-im/psi
@@ -27,9 +27,10 @@ MY_PN="${PN#psi-}plugin"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="subversion"
+	SCM="git-2"
 	PLUGIN_ARCH="${PLUGIN_ARCH:-generic}"
-	ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/plugins/${PLUGIN_ARCH}/${MY_PN}"
+	EGIT_REPO_URI="git://github.com/psi-plus/plugins.git"
+	EGIT_PROJECT="psi-plus/plugins"
 fi
 
 inherit qt4-r2 ${SCM}
@@ -39,7 +40,7 @@ inherit qt4-r2 ${SCM}
 HOMEPAGE="http://psi-dev.googlecode.com"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
-	S="${WORKDIR}/${MY_PN}"
+	S="${WORKDIR}/plugins"
 else
 	SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
 fi
@@ -54,6 +55,10 @@ RDEPEND="${DEPEND}"
 EXPORT_FUNCTIONS src_prepare src_configure
 
 psiplus-plugin_src_prepare() {
+	if [ "${PV#9999}" != "${PV}" ] ; then
+		S="${S}/${PLUGIN_ARCH}/${MY_PN}"
+		cd "${S}"
+	fi
 	qt4-r2_src_prepare
 
 	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi-plus/plugins/psiplugin.pri#' \
