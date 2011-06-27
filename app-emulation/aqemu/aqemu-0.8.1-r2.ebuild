@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
 inherit  cmake-utils
 
@@ -12,16 +12,18 @@ SRC_URI="mirror://sourceforge/aqemu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="kvm vnc"
+KEYWORDS="~amd64 ~x86"
+IUSE="kvm vnc spice"
 
 DEPEND="${RDEPEND}"
-RDEPEND="kvm? ( app-emulation/qemu-kvm )
-	!kvm? ( >=app-emulation/qemu-0.9.0 )
+RDEPEND="
 	vnc? ( net-libs/libvncserver )
+	virtual/qemu[kvm=,spice=]
 	x11-libs/qt-gui:4
 	x11-libs/qt-test:4
 	x11-libs/qt-xmlpatterns:4"
+
+REQUIRED_USE="spice? ( kvm )"
 
 DOCS="AUTHORS CHANGELOG README TODO"
 
