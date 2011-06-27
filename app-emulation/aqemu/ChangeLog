@@ -2,6 +2,15 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*aqemu-0.8.1-r2 (27 Jun 2011)
+
+  27 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -aqemu-0.8.1-r1.ebuild, +aqemu-0.8.1-r2.ebuild:
+  fix depend on virtual/qemu
+
+  24 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -aqemu-0.8.1.ebuild:
+  proxy in main tree
+
   23 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> aqemu-0.8.1.ebuild:
   stable on amd64 and x86
 
