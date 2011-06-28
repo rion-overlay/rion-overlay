@@ -123,7 +123,7 @@ src_prepare() {
 
 		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
 
-		sed -e "s/.xxx/.$(cd "$S"; git log -1 --pretty=%h)/" \
+		sed -e "s/.xxx/.$(cd "${WORKDIR}/psi-plus"; git describe --tags | cut -d - -f 2)/" \
 			-i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."
@@ -212,4 +212,8 @@ src_install() {
 			[ -f "${x}/INFO" ] && newins "${x}/INFO" "${PN}_${x}.INFO"
 		fi
 	done
+}
+
+pkg_preinst() {
+	true # suppress subversion warnings
 }
