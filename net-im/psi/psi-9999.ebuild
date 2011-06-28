@@ -28,6 +28,7 @@ REQUIRED_USE="
 	plugins? ( extras )
 	powersave? ( extras )
 	webkit? ( extras )
+	whiteboarding? ( extras )
 "
 
 RDEPEND="
