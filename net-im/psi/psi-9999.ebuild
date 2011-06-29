@@ -11,7 +11,7 @@ EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
 
 PSI_PLUS_URI="git://github.com/psi-plus/main.git"
-PSI_PLUS_ICONSETS_URI="git://github.com/psi-plus/iconsets.git"
+PSI_PLUS_RESOURCES_URI="git://github.com/psi-plus/resources.git"
 
 inherit eutils qt4-r2 multilib git-2 subversion
 
@@ -107,9 +107,9 @@ src_unpack() {
 		EGIT_SOURCEDIR="${WORKDIR}/psi-plus" \
 		EGIT_REPO_URI="${PSI_PLUS_URI}" git-2_src_unpack
 		if use iconsets; then
-			EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/iconsets" \
-			EGIT_SOURCEDIR="${WORKDIR}/iconsets" \
-			EGIT_REPO_URI="${PSI_PLUS_ICONSETS_URI}" git-2_src_unpack
+			EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/resources" \
+			EGIT_SOURCEDIR="${WORKDIR}/resources" \
+			EGIT_REPO_URI="${PSI_PLUS_RESOURCES_URI}" git-2_src_unpack
 		fi
 	fi
 }
@@ -117,14 +117,14 @@ src_unpack() {
 src_prepare() {
 	if use extras; then
 		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
-		use iconsets && { cp -a "${WORKDIR}/iconsets" "${S}" || \
+		use iconsets && { cp -a "${WORKDIR}/resources/iconsets" "${S}" || \
 			die	"failed to copy additional iconsets"; }
 		EPATCH_SOURCE="${WORKDIR}/psi-plus/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
-		use powersave && epatch "${WORKDIR}/patches/dev/psi-reduce-power-consumption.patch"
+		use powersave && epatch "${WORKDIR}/psi-plus/patches/dev/psi-reduce-power-consumption.patch"
 
-		sed -e "s/.xxx/.$(cd "${WORKDIR}/psi-plus"; git describe --tags | cut -d - -f 2)/" \
-			-i src/applicationinfo.cpp || die "sed failed"
+		sed -e "s/.xxx/.$(cd "${WORKDIR}/psi-plus"; echo $((`git describe --tags | \
+			cut -d - -f 2`+5000)))/" -i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."
 	fi
@@ -136,6 +136,8 @@ src_configure() {
 	# unable to use econf because of non-standard configure script
 	# disable growl as it is a MacOS X extension only
 	local myconf="
+		--prefix="${EPREFIX}"/usr
+		--qtdir="${EPREFIX}"/usr
 		--disable-bundled-qca
 		--disable-growl
 		--no-separate-debug-info
@@ -143,11 +145,7 @@ src_configure() {
 	use dbus || myconf+=" --disable-qdbus"
 	use debug && myconf+=" --debug"
 	if use spell; then
-		if use enchant; then
-			myconf+=" --disable-aspell"
-		else
-			myconf+=" --disable-enchant"
-		fi
+		use enchant && myconf+=" --disable-aspell" || myconf+=" --disable-enchant"
 	else
 		myconf+=" --disable-aspell --disable-enchant"
 	fi
@@ -158,16 +156,14 @@ src_configure() {
 		use webkit && myconf+=" --enable-webkit"
 	fi
 
-	./configure \
-		--prefix="$EPREFIX"/usr \
-		--qtdir="$EPREFIX"/usr \
-		${myconf} || die
+	einfo "./configure ${myconf}"
+	./configure ${myconf} || die
 
 	eqmake4
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 
 	if use doc; then
 		cd doc
@@ -177,28 +173,26 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install || die "emake install failed"
+	emake INSTALL_ROOT="${D}" install
 
 	# this way the docs will be installed in the standard gentoo dir
 	rm -f "${ED}"/usr/share/${MY_PN}/{COPYING,README}
-	newdoc iconsets/roster/README README.roster || die
-	newdoc iconsets/system/README README.system || die
-	newdoc certs/README README.certs || die
-	dodoc README || die
+	newdoc iconsets/roster/README README.roster
+	newdoc iconsets/system/README README.system
+	newdoc certs/README README.certs
+	dodoc README
 
 	if use extras && use plugins; then
 		insinto /usr/share/${MY_PN}/plugins
-		doins src/plugins/plugins.pri || die
-		doins src/plugins/psiplugin.pri || die
-		doins -r src/plugins/include || die
+		doins src/plugins/plugins.pri
+		doins src/plugins/psiplugin.pri
+		doins -r src/plugins/include
 		sed -i -e "s:target.path.*:target.path = /usr/$(get_libdir)/${MY_PN}/plugins:" \
 			"${ED}"/usr/share/${MY_PN}/plugins/psiplugin.pri \
 			|| die "sed failed"
 	fi
 
-	if use doc; then
-		dohtml -r doc/api || die "dohtml failed"
-	fi
+	use doc && dohtml -r doc/api
 
 	# install translations
 	cd "${WORKDIR}/psi-l10n"
@@ -206,7 +200,7 @@ src_install() {
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
 			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
-			doins "${x}/${PN}_${x}.qm" || die
+			doins "${x}/${PN}_${x}.qm"
 			[ -f "${x}/qt_${x}.qm" ] && doins "${x}/qt_${x}.qm"
 			[ -f "${x}/qt/qt_${x}.qm" ] && doins "${x}/qt/qt_${x}.qm"
 			[ -f "${x}/INFO" ] && newins "${x}/INFO" "${PN}_${x}.INFO"
