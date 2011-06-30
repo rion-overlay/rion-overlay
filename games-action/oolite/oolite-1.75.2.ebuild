@@ -41,7 +41,6 @@ src_prepare() {
 	mv "${WORKDIR}/mozilla-2.0/nsprpub" "${S}"/deps/Cross-platform-deps/mozilla/ || die
 	echo "${FF_JS_URI}" > "${S}"/deps/Cross-platform-deps/mozilla/current.url
 	sed -i -e 's/^\.PHONY: all$/.PHONY: .NOTPARALLEL all/' "${S}"/libjs.make || die
-	sed -i -e 's:\(oolite_LIB_DIRS.*\s\)/\s:\1:' "${S}"/GNUmakefile # remove link to slash
 	sed -i -e 's:.*STRIP.*:	true:' "${S}"/GNUmakefile.postamble
 }
 
