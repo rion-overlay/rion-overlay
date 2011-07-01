@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*myrulib-0.28.6 (01 Jul 2011)
+
+  01 Jul 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.28.6.ebuild,
+  +files/myrulib-0.28.6-syslog.patch, myrulib-9999.ebuild, metadata.xml:
+  version bump, faxpp patch is obsolete, add reader and syslog USE
+
 *myrulib-0.27.5 (25 May 2011)
 
   25 May 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.27.5.ebuild:

@@ -6,4 +6,7 @@
 		<email>nikoli@lavabit.com</email>
 		<name>Nikoli</name>
 	</maintainer>
+	<use>
+		<flag name="reader">Enable internal Cool Reader engine</flag>
+	</use>
 </pkgmetadata>
