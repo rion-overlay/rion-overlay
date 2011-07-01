@@ -21,12 +21,14 @@ RDEPEND=">=dev-libs/poco-1.3.3[mysql?,sqlite?]
 	media-gfx/imagemagick[cxx]
 	>=net-im/pidgin-2.6.0
 	>=net-libs/gloox-1.0
-	dev-python/xmpppy"
+	dev-python/xmpppy
+	<dev-lang/python-3"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/cmake"
 
 PROTOCOL_LIST="aim facebook gg icq irc msn msn_pecan myspace qq simple sipe twitter xmpp yahoo"
+mycmakeargs=( -DPYTHON_EXECUTABLE=/usr/bin/python2 )
 
 pkg_setup() {
 	if ! ( use sqlite || use mysql ); then
