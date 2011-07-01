@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>sterkrig@home.no</email>
+ <description>Trac-based continuous integration framework</description>
+</maintainer>
+<use>
+<flag name='master'>Install Trac plugin</flag>
+</use>
+
+</pkgmetadata>

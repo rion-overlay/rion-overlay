@@ -1,0 +1,29 @@
+# ChangeLog for app-text/myrulib
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*myrulib-0.27.5 (25 May 2011)
+
+  25 May 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.27.5.ebuild:
+  version bump
+
+  30 Apr 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.27.4.ebuild,
+  +files/myrulib-0.27.4-faxpp.patch, myrulib-9999.ebuild:
+  version bump, migrate to EAPI4
+
+  13 Apr 2011; Nikoli <nikoli@lavabit.com> myrulib-0.24.18.ebuild,
+  myrulib-0.26.6.ebuild, myrulib-0.26.9.ebuild, +myrulib-0.26.10.ebuild,
+  myrulib-9999.ebuild:
+  version bump, needs sqlite[fts3]
+
+  26 Feb 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.26.9.ebuild:
+  version bump
+
+  18 Jan 2011; Nikoli <nikoli@lavabit.com> myrulib-0.24.18.ebuild,
+  +myrulib-0.26.6.ebuild, myrulib-9999.ebuild:
+  version bump, stable git branch is obsolete
+
+  18 Dec 2010; Nikoli <nikoli@lavabit.com> +myrulib-0.24.18.ebuild,
+  +myrulib-9999.ebuild, +metadata.xml:
+  initial ebuilds
+

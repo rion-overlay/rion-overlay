@@ -1,0 +1,16 @@
+# ChangeLog for dev-vcs/hg-autopager
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  17 Mar 2011; Nickolaj Stjujsckij <sterkrig@home.no> hg-autopager-9999.ebuild:
+  Fix repoman warnings
+
+  15 Mar 2011; Nickolaj Stjujsckij <sterkrig@home.no> hg-autopager-9999.ebuild:
+  Update homepage, fix Manifest
+
+*hg-autopager-9999 (15 Mar 2011)
+
+  15 Mar 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +hg-autopager-9999.ebuild, +metadata.xml:
+  Add hg-version
+
