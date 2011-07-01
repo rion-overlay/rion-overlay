@@ -1,0 +1,8 @@
+# ChangeLog for x11-themes/chameleon-xcursors
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  23 Sep 2010; Nickolaj Stjujsckij <sterkrig@home.no>
+  +chameleon-xcursors-0.5.ebuild, +metadata.xml:
+  Add Chameleon xcursor theme v.0.5
+

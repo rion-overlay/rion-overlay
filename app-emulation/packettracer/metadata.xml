@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email>
+ <description>Cisco Packet Treiser, network emulation for CCNA course</description>
+</maintainer>
+<longdescription>Packet Tracer is a powerful network simulation program that allows students to experiment with network behavior and ask “what if” questions</longdescription>
+<use>
+<flag name='online-exam'>Allow use <pkg>app-emulation/packettracer</pkg> for online exam</flag>
+</use>
+</pkgmetadata>

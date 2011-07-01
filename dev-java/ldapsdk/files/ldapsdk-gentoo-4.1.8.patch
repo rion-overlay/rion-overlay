@@ -1,0 +1,104 @@
+diff --git a/ldapsdk-4.1.8/build.properties b/ldapsdk-4.1.8/build.properties
+--- a/ldapsdk-4.1.8/build.properties
++++ b/ldapsdk-4.1.8/build.properties
+@@ -6,3 +6,5 @@
+ #
+ # $Id: build.properties,v 1.2 2005/09/23 15:05:54 richm%stanfordalumni.org Exp $
+ # -----------------------------------------------------------------------------
++#ororegexp.jar=
++#jss.jar=
+diff --git a/ldapsdk-4.1.8/build.xml b/ldapsdk-4.1.8/build.xml
+--- a/ldapsdk-4.1.8/build.xml
++++ b/ldapsdk-4.1.8/build.xml
+@@ -66,8 +66,7 @@
+ 
+     <!-- the following is to setup the correct info for sun jsse which
+         is jdk dependent -->
+-    <property name="ssllibs14" value="${basedir}/ldapjdk/lib/jss32_stub.jar"/>
+-    <property name="ssllibs13" value="${basedir}/ldapjdk/lib/jaas.jar:${basedir}/ldapjdk/lib/jnet.jar:${basedir}/ldapjdk/lib/jsse.jar:${basedir}/ldapjdk/lib/jss32_stub.jar"/>
++	<property name="ssllibs14" value="${jss.jar}"/>
+ 
+     <!-- we do not use the users existing classpath and instead build our own
+          comment the following line out if this is not desired -->
+@@ -83,7 +82,7 @@
+    dist-jndi    : will build only the jndi service provider (ldapsp.jar)
+    dist-docs    : will package up all the documentation (ldapdoc.zip)
+ 
+-   build        : will compile the entire sdk but not package
++   bild        : will compile the entire sdk but not package
+    build-jdk    : will compile only the ldap jdk jar
+    build-filter : will compile only the filter classes
+    build-beans  : will compile only the ldap beans
+@@ -184,22 +183,34 @@
+         <!-- Compile the java jdk code from ${src} into ${dest} -->
+         <javac srcdir="${basedir}/ldapjdk/com" destdir="${jdk.dist}"
+             excludes="cvs/**"
+-            classpath="${jsselibs}"
++	    classpath="${jsselibs}"
++	     source="1.4"
++	     target="1.4"
++
+         />
+         <javac srcdir="${basedir}/ldapjdk/netscape" destdir="${jdk.dist}"
+             excludes="cvs/**"
+-            classpath="${jsselibs}"
++	    classpath="${jsselibs}"
++	    source="1.4"
++	    target="1.4"
+         />
+         <javac srcdir="${basedir}/tools" destdir="${jdk.dist}"
+-            excludes="cvs/**"
+-            classpath="${jsselibs}"
++		excludes="cvs/**"
++
++		classpath="${jsselibs}"
++		source="1.4"
++		target="1.4"
++
+         />
+       </target>
+ 
+     <target name="build-filter" depends="init,build-jdk">
+         <javac srcdir="${basedir}/ldapfilter" destdir="${filter.dist}"
+             excludes="cvs/**"
+-            classpath="${jdk.dist}:${jsselibs}"
++	    classpath="${jdk.dist}:${jsselibs}"
++	    source="1.4"
++	    target="1.4"
++
+         />
+       </target>
+ 
+@@ -207,7 +218,10 @@
+         <!-- Compile the java jdk bean code from ${src} into ${dest} -->
+         <javac srcdir="${basedir}/ldapbeans" destdir="${jdk.dist}"
+             excludes="cvs/**"
+-            classpath="${jsselibs}"
++	    classpath="${jsselibs}"
++	    source="1.4"
++	    target="1.4"
++
+         />
+       </target>
+ 
+@@ -215,7 +229,10 @@
+         <!-- Compile the java code from ${src} into ${dest} -->
+         <javac srcdir="${basedir}/ldapsp" destdir="${jndi.dist}"
+             excludes="cvs/**"
+-            classpath="${jsselibs}:${basedir}/ldapsp/lib/jndi.jar"
++	    classpath="${jsselibs}:${basedir}/ldapsp/lib/jndi.jar"
++	    source="1.4"
++	    target="1.4"
++
+         />
+       </target>
+ 
+@@ -230,7 +247,7 @@
+                  author="true"
+                  version="true"
+                  use="true"
+-                 classpath="${basedir}/ldapjdk:${basedir}/ldapjdk/lib/jss32_stub.jar:${basedir}/ldapbeans" >
++		 classpath="${basedir}/ldapjdk:${jss.jar}:${basedir}/ldapbeans">
+         </javadoc>
+ 
+         <javadoc packagenames="com.netscape.jndi.ldap.controls.*"
