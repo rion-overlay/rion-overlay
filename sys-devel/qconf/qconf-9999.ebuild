@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	./configure \
 		--prefix="${EPREFIX}"/usr \
-		--qtdir=/usr/$(get_libdir)/ || die "./configure failed"
+		--qtdir="${EPREFIX}"/usr/$(get_libdir)/ || die "./configure failed"
 	"${EPREFIX}"/usr/bin/qmake \
 		QTDIR="${EPREFIX}"/usr/$(get_libdir) \
 			QMAKE="${EPREFIX}"/usr/bin/qmake \
