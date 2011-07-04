@@ -2,10 +2,8 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-*libpki-0.6.5 (04 Jul 2011)
-
   04 Jul 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
-  +libpki-0.6.5.ebuild:
+  libpki-0.6.5.ebuild, +files/all.patch:
   bump
 
 *libpki-0.6.4 (13 Apr 2011)
