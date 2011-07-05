@@ -6,7 +6,7 @@ EAPI="4"
 SCONS_MIN_VERSION="1.2"
 LANGS=" ca de es fr hu nl pl ru se sk"
 
-[[ ${PV} = *9999* ]] && VCS_ECLASS="git" || VCS_ECLASS=""
+[[ ${PV} = *9999* ]] && VCS_ECLASS="git-2" || VCS_ECLASS=""
 
 inherit scons-utils toolchain-funcs ${VCS_ECLASS}
 
