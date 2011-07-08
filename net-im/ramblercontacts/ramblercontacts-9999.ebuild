@@ -8,7 +8,8 @@ inherit qt4-r2 git-2
 
 DESCRIPTION="Qt4 im client from Rambler, based on Vacuum-IM"
 HOMEPAGE="http://developers.rambler.ru/opensource/contacts/"
-EGIT_REPO_URI="git://github.com/rambler-dev/Rambler-Contacts.git"
+EGIT_REPO_URI="git://github.com/Rambler-ru/Contacts.git"
+EGIT_PROJECT="${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
