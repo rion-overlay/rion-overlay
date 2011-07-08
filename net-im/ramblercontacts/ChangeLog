@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Jul 2011; Nikoli <nikoli@lavabit.com> ramblercontacts-9999.ebuild:
+  update git url
+
 *ramblercontacts-9999 (07 Jul 2011)
 *ramblercontacts-0.3.2.1030_beta (07 Jul 2011)
 
