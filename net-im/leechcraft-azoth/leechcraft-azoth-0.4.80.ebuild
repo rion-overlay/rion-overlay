@@ -14,7 +14,7 @@ IUSE="debug +acetamide +autopaste +chathistory +depester +embedmedia
 BASICDEPEND="=net-misc/leechcraft-core-${PV}
 		>=x11-libs/qt-webkit-4.6.0
 		>=x11-libs/qt-multimedia-4.6.0
-		xoox? ( =net-libs/qxmpp-0.3.44.1[extras] media-libs/speex )"
+		xoox? ( =net-libs/qxmpp-0.3.44.1-r1[extras] media-libs/speex )"
 DEPEND="${BASICDEPEND} >=dev-util/cmake-2.8.4"
 RDEPEND="${BASICDEPEND}"
 
