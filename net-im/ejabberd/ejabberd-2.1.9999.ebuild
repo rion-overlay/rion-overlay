@@ -150,7 +150,7 @@ src_install() {
 	fi
 
 	cd "${WORKDIR}/${P}/doc"
-	dodoc "release_notes_${PV%%_rc*}.txt" || die
+	dodoc release_notes_*.txt || die
 	cd "${S}"
 	insinto "/usr/share/doc/${PF}"
 	doins -r additional_docs || die
