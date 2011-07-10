@@ -9,6 +9,7 @@
  <longdescription>Azoth, the modular IM client for LeechCraft</longdescription> 
  <use>
   <flag name="acetamide">Build Acetamide, the IRC protocol support</flag>
+  <flag name="autoidler">Build support for automatic status changing according to user idle time</flag>
   <flag name="autopaste">Build Autopaste for pasting long texts to pastebins</flag>
   <flag name="chathistory">Build ChatHistory which stories chat history</flag>
   <flag name="depester">Build Depester which enables to ignore MUC participants</flag>
@@ -16,6 +17,7 @@
   <flag name="herbicide">Build Herbicide, a basic antispam plugin</flag>
   <flag name="hili">Build HiLi which allows to customize highlight settings in MUCs</flag>
   <flag name="juick">Build plugin for the Juick.com microblogging service</flag>
+  <flag name="modnok">Build Modnok for in-chat LaTeX formulae rendering</flag>
   <flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
   <flag name="p100q">Build p100q, plugin for psto.net microblogging service</flag>
   <flag name="rosenthal">Build Rosenthal, the spellchecker plugin</flag>
