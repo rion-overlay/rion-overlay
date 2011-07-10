@@ -8,15 +8,22 @@ inherit leechcraft
 
 DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 
-IUSE="debug +acetamide +autopaste +chathistory +depester +embedmedia
-		+herbicide +hili +juick +nativeemoticons +p100q +rosenthal
-		+standardstyles +xoox +xtazy"
+IUSE="debug +acetamide +autoidler +autopaste +chathistory +depester
+		+embedmedia +herbicide +hili +juick +modnok +nativeemoticons
+		+p100q +rosenthal +standardstyles +xoox +xtazy"
 BASICDEPEND="=net-misc/leechcraft-core-${PV}
 		>=x11-libs/qt-webkit-4.6.0
 		>=x11-libs/qt-multimedia-4.6.0
 		xoox? ( =net-libs/qxmpp-9999[extras] media-libs/speex )"
 DEPEND="${BASICDEPEND} >=dev-util/cmake-2.8.4"
-RDEPEND="${BASICDEPEND}"
+RDEPEND="${BASICDEPEND}
+	modnok? (
+		|| (
+			media-gfx/imagemagick
+			media-gfx/graphicsmagick[imagemagick]
+		)
+		virtual/latex-base
+	)"
 
 src_configure() {
 	if use debug ; then
