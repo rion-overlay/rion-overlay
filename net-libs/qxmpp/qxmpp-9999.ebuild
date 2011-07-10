@@ -35,4 +35,5 @@ src_prepare(){
 	else
 		git_src_prepare
 	fi
+	epatch "${FILESDIR}"/00_correct_install_path.patch
 }
