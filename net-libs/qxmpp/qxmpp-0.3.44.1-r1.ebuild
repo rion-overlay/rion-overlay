@@ -20,3 +20,9 @@ DEPEND=">=x11-libs/qt-core-4.5
 		>=x11-libs/qt-gui-4.5
 		media-libs/speex"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	qt4-r2_src_prepare ${A}
+	epatch "${FILESDIR}"/00_correct_install_path.patch
+	epatch "${FILESDIR}"/01_disable_all_but_src.patch
+}
