@@ -14,13 +14,12 @@ IUSE="+themes"
 RDEPEND="themes? ( !net-im/psi-skins-themes )"
 
 src_unpack() {
-	subversion_src_unpack
+	git-2_src_unpack
 
 	if use themes; then
-		ESVN_REPO_URI="http://psi-dev.googlecode.com/svn/trunk/skins/" \
-		ESVN_PROJECT="${MY_PN}-themes" \
-		S="${WORKDIR}/skins" \
-		subversion_fetch
+		EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/resources" \
+		EGIT_SOURCEDIR="${WORKDIR}/resources" \
+		EGIT_REPO_URI="git://github.com/psi-plus/resources.git" git-2_src_unpack
 	fi
 }
 
@@ -28,7 +27,7 @@ src_install() {
 	qt4-r2_src_install
 
 	if use themes; then
-		cd "${WORKDIR}" || die
+		cd "${WORKDIR}/resources" || die
 		insinto /usr/share/psi-plus/skins
 		doins -r skins/*
 	fi
