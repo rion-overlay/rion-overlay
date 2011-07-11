@@ -12,7 +12,7 @@ DESCRIPTION="Autopager extension for Mercurial SCM"
 HOMEPAGE="http://mercurial.selenic.com/wiki/AutopagerExtension"
 SRC_URI=""
 
-EHG_REPO_URI="http://bitheap.org/hg/autopager/"
+EHG_REPO_URI="https://skrattaren@bitbucket.org/brodie/autopager"
 
 LICENSE="as-is"
 SLOT="0"
