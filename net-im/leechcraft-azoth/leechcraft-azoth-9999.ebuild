@@ -8,9 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 
-IUSE="debug +acetamide +autoidler +autopaste +chathistory +depester
-		+embedmedia +herbicide +hili +juick +modnok +nativeemoticons
-		+p100q +rosenthal +standardstyles +xoox +xtazy"
+IUSE="debug +acetamide +adiumstyles +autoidler +autopaste +chathistory
+		+depester +embedmedia +herbicide +hili +juick +modnok
+		+nativeemoticons +p100q +rosenthal +standardstyles +xoox +xtazy"
 BASICDEPEND="=net-misc/leechcraft-core-${PV}
 		>=x11-libs/qt-webkit-4.6.0
 		>=x11-libs/qt-multimedia-4.6.0
@@ -34,6 +34,8 @@ src_configure() {
 
 	local mycmakeargs="
 		`cmake-utils_use_enable acetamide AZOTH_ACETAMIDE`
+		`cmake-utils_use_enable adiumstyles AZOTH_ADIUMSTYLES`
+		`cmake-utils_use_enable autoidler AZOTH_AUTOIDLER`
 		`cmake-utils_use_enable autopaste AZOTH_AUTOPASTE`
 		`cmake-utils_use_enable chathistory AZOTH_CHATHISTORY`
 		`cmake-utils_use_enable depester AZOTH_DEPESTER`
@@ -41,6 +43,7 @@ src_configure() {
 		`cmake-utils_use_enable herbicide AZOTH_HERBICIDE`
 		`cmake-utils_use_enable hili AZOTH_HILI`
 		`cmake-utils_use_enable juick AZOTH_JUICK`
+		`cmake-utils_use_enable modnok AZOTH_MODNOK`
 		`cmake-utils_use_enable nativeemoticons AZOTH_NATIVEEMOTICONS`
 		`cmake-utils_use_enable p100q AZOTH_P100Q`
 		`cmake-utils_use_enable rosenthal AZOTH_ROSENTHAL`
