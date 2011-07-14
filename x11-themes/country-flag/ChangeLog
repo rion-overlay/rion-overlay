@@ -1,0 +1,10 @@
+# ChangeLog for x11-themes/country-flag
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*country-flag-0 (19 Mar 2011)
+
+  19 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +country-flag-0.ebuild,
+  +metadata.xml:
+  initial commit
+

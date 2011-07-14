@@ -1,0 +1,13 @@
+# ChangeLog for www-misc/leechcraft-seekthru
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  22 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +leechcraft-seekthru-9999.ebuild, +metadata.xml:
+  recommit in rion
+
+  13 Feb 2010; G. Rudoy <0xd34df00d@gmail.com>
+  +leechcraft-seekthru-9999.ebuild:
+  Split build for SeekThru plugin.
+
+*leechcraft-seekthru-9999 ( 13 Feb 2010; G. Rudoy )
