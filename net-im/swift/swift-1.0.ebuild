@@ -13,7 +13,7 @@ inherit scons-utils toolchain-funcs ${VCS_ECLASS}
 DESCRIPTION="Qt4 jabber (xmpp) client"
 HOMEPAGE="http://swift.im/"
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://gitorious.org/${PN}/${PN}.git"
+	EGIT_REPO_URI="git://swift.im/${PN}"
 else
 	SRC_URI="http://swift.im/downloads/releases/${P}/${P}.tar.gz"
 fi
