@@ -29,7 +29,7 @@ if [[ "${PV}" == "9999" ]]; then
 	LEECHCRAFT_EXPR="${LEECHCRAFT_EXPR} src_unpack"	
 	KEYWORDS=""
 
-	inherit git
+	inherit git-2
 else
 	SRC_URI="mirror://sourceforge/leechcraft/leechcraft-${PV}.tar.bz2"
 	MY_P='leechcraft'
@@ -63,7 +63,7 @@ fi
 # Standart src_unpack live ebuild
 
 leechcraft_src_unpack() {
-	git_src_unpack
+	git-2_src_unpack
 
 	cd "${S}"
 }
