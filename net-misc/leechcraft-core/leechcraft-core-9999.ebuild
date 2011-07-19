@@ -58,6 +58,7 @@ src_configure() {
 		-DENABLE_SECMAN=OFF
 		-DENABLE_QROSP=OFF
 		-DENABLE_POPISHU=OFF
+		-DENABLE_GLANCE=OFF
 		-DENABLE_SHELLOPEN=OFF"
 	cmake-utils_src_configure
 }
