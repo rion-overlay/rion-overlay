@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Jul 2011; Nickolaj Stjujsckij <sterkrig@home.no> hg-autopager-9999.ebuild:
+  Set mercurial dependency to <1.9 until compatibility issue resolved.
+
   11 Jul 2011; Nickolaj Stjujsckij <sterkrig@home.no> hg-autopager-9999.ebuild:
   Update EHG_REPO_URI
 
