@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-vcs/mercurial"
+DEPEND="<dev-vcs/mercurial-1.9"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
