@@ -26,6 +26,8 @@ RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-misc/leechcraft-dbusmanager-${PV}
 		=net-misc/leechcraft-newlife-${PV}
 		=net-misc/leechcraft-tabpp-${PV}
+		=net-misc/leechcraft-glance-${PV}
+		=net-misc/leechcraft-tabslist-${PV}
 		=net-analyzer/leechcraft-networkmonitor-${PV}
 		=net-p2p/leechcraft-bittorrent-${PV}
 		=net-ftp/leechcraft-lcftp-${PV}
