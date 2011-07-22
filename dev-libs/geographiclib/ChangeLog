@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Jul 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  geographiclib-1.12.ebuild:
+  Change license to MIT
+
 *geographiclib-1.12 (22 Jul 2011)
 
   22 Jul 2011; Nickolaj Stjujsckij <sterkrig@home.no>
