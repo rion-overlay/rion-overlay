@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="Extremely flexible and customizable notifications framework."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

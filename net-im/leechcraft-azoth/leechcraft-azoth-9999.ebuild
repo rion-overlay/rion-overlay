@@ -8,10 +8,13 @@ inherit leechcraft
 
 DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug +acetamide +adiumstyles +autoidler +autopaste +chathistory +crypt
 		+depester +embedmedia +herbicide +hili +juick +lastseen metacontacts
 		+modnok +nativeemoticons +p100q +rosenthal +standardstyles +xoox
 		+xtazy"
+
 BASICDEPEND="=net-misc/leechcraft-core-${PV}
 		>=x11-libs/qt-webkit-4.6.0
 		>=x11-libs/qt-multimedia-4.6.0

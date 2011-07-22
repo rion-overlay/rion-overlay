@@ -8,7 +8,10 @@ inherit confutils leechcraft
 
 DESCRIPTION="Aggregator, the full-featured RSS/Atom feed reader for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug mysql +sqlite postgres"
+
 DEPEND="=net-misc/leechcraft-core-${PV}[postgres?,sqlite?]"
 RDEPEND="${DEPEND}
 		virtual/leechcraft-downloader-http"

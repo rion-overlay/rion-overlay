@@ -1,14 +1,20 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: 22.02.2010 slepnoga v1.002 $
-
-
-# Original author: 0xd34df00d <0xd34df00d@gmail.com> and
-#				   Andrian Nord <NightNord@niifaq.ru>
-
-# Commiter: A.Vinogradov aka slepnoga <slep@vinogradov.lv>
-
-
+#
+# @ECLASS: leechcraft.eclass
+# @MAINTAINER:
+# maksbotan@gentoo.org
+# 0xd34df00d@gmail.com
+# @BLURB: Common functions and setup utilities for the LeechCraft app
+# @DESCRIPTION:
+# The leechcraft eclass contains a common set of functions and steps
+# needed to build LeechCraft core or its plugins.
+# Though this eclass seems to be small at the moment, it seems like a
+# good idea to make all plugins inherit from it, since all plugins
+# have mostly the same configuring/build process.
+# Thanks for original eclass to Andrian Nord <NightNord@niifaq.ru>.
+#
 # Only EAPI >1 supported
 
 case ${EAPI:-0} in
@@ -17,35 +23,23 @@ case ${EAPI:-0} in
 	*) die "Unknown EAPI, Bug eclass maintainers." ;;
 esac
 
-# Exported functions
-# Logic: for live ebuild call standart and src_unpack;
-LEECHCRAFT_EXPR="src_configure"
-
 inherit cmake-utils
 
-if [[ "${PV}" == "9999" ]]; then
+if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
 	EGIT_PROJECT="leechcraft-${PV}"
-	KEYWORDS=""
 
 	inherit git-2
 else
 	SRC_URI="mirror://sourceforge/leechcraft/leechcraft-${PV}.tar.bz2"
 	S="${WORKDIR}/leechcraft-${PV}"
-	KEYWORDS="~amd64 ~x86"
 fi
 
 HOMEPAGE="http://leechcraft.org/"
-
-DEPEND="${DEPEND}
-		!www-client/leechcraft"
-
 LICENSE="GPL-3"
-SLOT="0"
-
 CMAKE_MIN_VERSION="2.8"
 
-EXPORT_FUNCTIONS ${LEECHCRAFT_EXPR}
+EXPORT_FUNCTIONS src_configure
 
 # Set ${S} variable
 
@@ -57,7 +51,7 @@ fi
 
 # @FUNCTION: leechcraft_src_configure
 # @DESCRIPTION:
-# Used for configure leechcraft source.
+# Used to configure leechcraft source.
 # Selects correct build type for LeechCraft sources.
 
 leechcraft_src_configure() {

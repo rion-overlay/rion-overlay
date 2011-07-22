@@ -8,7 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="AnHero, KDE-based crash handler for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}
 	>=kde-base/kdelibs-4.2.0"
 RDEPEND="${DEPEND}"

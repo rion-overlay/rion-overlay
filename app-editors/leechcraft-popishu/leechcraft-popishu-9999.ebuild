@@ -8,7 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="Popishu, the text editor with IDE features for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}
 	>=x11-libs/qscintilla-2.4.3"
 RDEPEND="${DEPEND}"

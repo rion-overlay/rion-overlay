@@ -8,7 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="Full-featured BitTorrent client plugin for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}
 		>=net-libs/rb_libtorrent-0.15.1"
 RDEPEND="${DEPEND}

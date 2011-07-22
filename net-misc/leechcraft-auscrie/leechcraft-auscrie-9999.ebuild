@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="Auscrie, LeechCraft auto screenshooter."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

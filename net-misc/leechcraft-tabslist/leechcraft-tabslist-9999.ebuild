@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="Plugin for LeechCraft for quick navigation between tabs."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

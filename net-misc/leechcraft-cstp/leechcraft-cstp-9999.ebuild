@@ -8,7 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="CSTP, the clean & stupid HTTP implementation for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}
 		virtual/leechcraft-task-show"
