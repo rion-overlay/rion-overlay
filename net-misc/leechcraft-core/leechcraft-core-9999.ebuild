@@ -11,7 +11,10 @@ inherit confutils leechcraft
 
 DESCRIPTION="Core of LeechCraft, the modular network client providing a browser, BitTorrent client and much more."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug +sqlite postgres"
+
 DEPEND=">=dev-libs/boost-1.39
 		>=x11-libs/qt-core-4.6
 		>=x11-libs/qt-gui-4.6

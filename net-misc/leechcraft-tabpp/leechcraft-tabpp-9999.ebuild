@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="Tab++ provides enhanced tab-related features like tab tree for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

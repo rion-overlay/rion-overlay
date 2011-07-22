@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="NetworkMonitor watches HTTP requests in for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

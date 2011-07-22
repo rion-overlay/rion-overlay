@@ -10,9 +10,10 @@ DESCRIPTION="Merge this to pull all official LeechCraft plugins which are consid
 
 HOMEPAGE="http://leechcraft.org/"
 
-LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS=""
 IUSE="kde"
+
 RDEPEND="=net-misc/leechcraft-cstp-${PV}
 		=net-misc/leechcraft-core-${PV}
 		=net-misc/leechcraft-summary-${PV}

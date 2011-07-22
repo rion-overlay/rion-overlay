@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="SecMan is a security and personal data manager for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

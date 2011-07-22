@@ -8,7 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="LCFTP, FTP client for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}
 		>=net-misc/curl-7.19.4"
 RDEPEND="${DEPEND}

@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="Glance, quick thumbnailed overview of opened tabs."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

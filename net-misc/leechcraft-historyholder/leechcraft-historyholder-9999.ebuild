@@ -8,7 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="HistoryHolder keeps track of stuff downloaded in LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}
 		virtual/leechcraft-search-show"

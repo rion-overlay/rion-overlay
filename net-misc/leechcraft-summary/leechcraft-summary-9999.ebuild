@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="Summary which shows all the downloads, events and statuses in LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

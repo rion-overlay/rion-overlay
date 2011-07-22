@@ -8,6 +8,9 @@ inherit leechcraft
 
 DESCRIPTION="New Life imports settings from various other applications into LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"

@@ -8,8 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="EiskaltDC++ ported to LeechCraft."
 
-IUSE="debug"
-IUSE="+emoticons examples javascript lua pcre spell sqlite upnp"
+SLOT="0"
+KEYWORDS=""
+IUSE="debug +emoticons examples javascript lua pcre spell sqlite upnp"
+
 RDEPEND="=net-misc/leechcraft-core-${PV}
 		app-arch/bzip2
 		sys-libs/zlib

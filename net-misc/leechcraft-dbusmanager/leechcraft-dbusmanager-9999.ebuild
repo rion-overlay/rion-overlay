@@ -8,7 +8,10 @@ inherit leechcraft
 
 DESCRIPTION="DBusManager provides some basic D-Bus interoperability for LeechCraft."
 
+SLOT="0"
+KEYWORDS=""
 IUSE="debug"
+
 DEPEND="=net-misc/leechcraft-core-${PV}
 		>=x11-libs/qt-dbus-4.6"
 RDEPEND="${DEPEND}"
