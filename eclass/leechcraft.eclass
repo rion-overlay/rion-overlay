@@ -12,28 +12,26 @@
 # Only EAPI >1 supported
 
 case ${EAPI:-0} in
-        4|3|2) ;;
-		0|1) die "EAPI not supported, bug ebuild mantainer" ;;
-		*) die "Unknown EAPI, Bug eclass maintainers." ;;
+	4|3|2) ;;
+	0|1) die "EAPI not supported, bug ebuild mantainer" ;;
+	*) die "Unknown EAPI, Bug eclass maintainers." ;;
 esac
 
 # Exported functions
 # Logic: for live ebuild call standart and src_unpack;
-LEECHCRAFT_EXPR="src_configure src_install"
+LEECHCRAFT_EXPR="src_configure"
 
 inherit cmake-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
 	EGIT_PROJECT="leechcraft-${PV}"
-	LEECHCRAFT_EXPR="${LEECHCRAFT_EXPR} src_unpack"	
 	KEYWORDS=""
 
 	inherit git-2
 else
 	SRC_URI="mirror://sourceforge/leechcraft/leechcraft-${PV}.tar.bz2"
-	MY_P='leechcraft'
-	S="${WORKDIR}/${MY_P}-${PV}"
+	S="${WORKDIR}/leechcraft-${PV}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -49,7 +47,6 @@ CMAKE_MIN_VERSION="2.8"
 
 EXPORT_FUNCTIONS ${LEECHCRAFT_EXPR}
 
-
 # Set ${S} variable
 
 if [[ ${PN} != "leechcraft-core" ]]; then
@@ -58,20 +55,10 @@ else
 	CMAKE_USE_DIR="${S}/src"
 fi
 
-# @FUNCTION:leechcraft_src_unpack
-# @DESCRIPTION:
-# Standart src_unpack live ebuild
-
-leechcraft_src_unpack() {
-	git-2_src_unpack
-
-	cd "${S}"
-}
-
 # @FUNCTION: leechcraft_src_configure
 # @DESCRIPTION:
-# Use for configure leechcraft source.
-# Build_type is magic :)
+# Used for configure leechcraft source.
+# Selects correct build type for LeechCraft sources.
 
 leechcraft_src_configure() {
 	if use debug ; then
@@ -83,10 +70,3 @@ leechcraft_src_configure() {
 	cmake-utils_src_configure
 }
 
-# @FUNCTION: leechcraft_src_install
-# @DESCRIPTION:
-# Call cmake-utils_src_install :)
-
-leechcraft_src_install() {
-	cmake-utils_src_install
-}

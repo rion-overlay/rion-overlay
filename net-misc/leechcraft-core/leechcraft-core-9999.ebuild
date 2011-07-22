@@ -64,6 +64,6 @@ src_configure() {
 }
 
 src_install() {
-	leechcraft_src_install
+	cmake-utils_src_install
 	make_desktop_entry leechcraft "LeechCraft" leechcraft.png
 }
