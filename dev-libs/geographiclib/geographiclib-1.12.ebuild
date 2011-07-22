@@ -9,7 +9,7 @@ HOMEPAGE="http://geographiclib.sourceforge.net/"
 MY_P="GeographicLib-${PV}"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
-LICENSE="LGPL-3"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
