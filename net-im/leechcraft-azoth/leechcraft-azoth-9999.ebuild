@@ -8,13 +8,16 @@ inherit leechcraft
 
 DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 
-IUSE="debug +acetamide +adiumstyles +autoidler +autopaste +chathistory
-		+depester +embedmedia +herbicide +hili +juick +modnok
-		+nativeemoticons +p100q +rosenthal +standardstyles +xoox +xtazy"
+IUSE="debug +acetamide +adiumstyles +autoidler +autopaste +chathistory +crypt
+		+depester +embedmedia +herbicide +hili +juick +lastseen metacontacts
+		+modnok +nativeemoticons +p100q +rosenthal +standardstyles +xoox
+		+xtazy"
 BASICDEPEND="=net-misc/leechcraft-core-${PV}
 		>=x11-libs/qt-webkit-4.6.0
 		>=x11-libs/qt-multimedia-4.6.0
-		xoox? ( =net-libs/qxmpp-9999[extras] media-libs/speex )"
+		xoox? ( =net-libs/qxmpp-9999[extras] media-libs/speex )
+		crypt? ( app-crypt/qca app-crypt/qca-gnupg )
+		"
 DEPEND="${BASICDEPEND} >=dev-util/cmake-2.8.4"
 RDEPEND="${BASICDEPEND}
 	modnok? (
@@ -33,6 +36,7 @@ src_configure() {
 	fi
 
 	local mycmakeargs="
+		`cmake-utils_use_enable crypt CRYPT`
 		`cmake-utils_use_enable acetamide AZOTH_ACETAMIDE`
 		`cmake-utils_use_enable adiumstyles AZOTH_ADIUMSTYLES`
 		`cmake-utils_use_enable autoidler AZOTH_AUTOIDLER`
@@ -43,6 +47,8 @@ src_configure() {
 		`cmake-utils_use_enable herbicide AZOTH_HERBICIDE`
 		`cmake-utils_use_enable hili AZOTH_HILI`
 		`cmake-utils_use_enable juick AZOTH_JUICK`
+		`cmake-utils_use_enable lastseen AZOTH_LASTSEEN`
+		`cmake-utils_use_enable metacontacts AZOTH_LASTSEEN`
 		`cmake-utils_use_enable modnok AZOTH_MODNOK`
 		`cmake-utils_use_enable nativeemoticons AZOTH_NATIVEEMOTICONS`
 		`cmake-utils_use_enable p100q AZOTH_P100Q`

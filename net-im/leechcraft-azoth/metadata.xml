@@ -18,6 +18,8 @@
   <flag name="herbicide">Build Herbicide, a basic antispam plugin</flag>
   <flag name="hili">Build HiLi which allows to customize highlight settings in MUCs</flag>
   <flag name="juick">Build plugin for the Juick.com microblogging service</flag>
+  <flag name="lastseen">Build plugin for client-side recording of the last online/available time</flag>
+  <flag name="metacontacts">Build plugin for metacontacts support</flag>
   <flag name="modnok">Build Modnok for in-chat LaTeX formulae rendering</flag>
   <flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
   <flag name="p100q">Build p100q, plugin for psto.net microblogging service</flag>
