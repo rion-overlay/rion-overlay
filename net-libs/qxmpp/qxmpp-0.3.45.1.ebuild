@@ -4,16 +4,16 @@
 
 EAPI=3
 
-inherit qt4-r2 subversion git-2
+inherit qt4-r2
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework."
 HOMEPAGE="http://code.google.com/p/qxmpp/"
-ESVN_REPO_URI="http://qxmpp.googlecode.com/svn/trunk/"
-EGIT_REPO_URI="git://github.com/0xd34df00d/qxmpp-dev.git"
+SRC_URI="extras? ( https://github.com/downloads/0xd34df00d/qxmpp-dev/qxmpp-0.3.45.1-extras.tar.bz2 )
+		 !extras? ( https://github.com/downloads/0xd34df00d/qxmpp-dev/qxmpp-0.3.45.1-upstream.tar.bz2 )"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug +extras"
 
 DEPEND=">=x11-libs/qt-core-4.5
@@ -21,17 +21,7 @@ DEPEND=">=x11-libs/qt-core-4.5
 		media-libs/speex"
 RDEPEND="${DEPEND}"
 
-src_unpack(){
-	if ! use extras; then
-		subversion_src_unpack
-	else
-		git-2_src_unpack
-	fi
-}
-
-src_prepare(){
-	if ! use extras; then
-		subversion_src_prepare
-	fi
+src_prepare() {
+	qt4-r2_src_prepare ${A}
 	epatch "${FILESDIR}"/00_correct_install_path.patch
 }
