@@ -4,14 +4,13 @@
 
 EAPI="2"
 
-inherit leechcraft
-
 DESCRIPTION="Merge this to pull all official LeechCraft plugins which are considered to be useful."
 
 HOMEPAGE="http://leechcraft.org/"
 
 SLOT="0"
 KEYWORDS=""
+LICENSE="GPL-3"
 IUSE="kde"
 
 RDEPEND="=net-misc/leechcraft-cstp-${PV}
