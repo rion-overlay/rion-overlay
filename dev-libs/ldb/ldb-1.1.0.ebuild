@@ -35,3 +35,8 @@ pkg_setup() {
 	python_set_active_version 2
 	python_pkg_setup
 }
+
+src_install() {
+	waf-utils_src_install
+	rm "${D}/$(python_get_sitedir)/"_tevent.so
+}
