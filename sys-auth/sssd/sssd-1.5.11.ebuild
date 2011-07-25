@@ -6,7 +6,8 @@ EAPI=3
 
 PYTHON_DEPEND="python? 2:2.6"
 RESTRICT="userpriv"
-inherit python confutils multilib pam linux-info
+
+inherit python multilib pam linux-info autotools-utils
 
 DESCRIPTION="System Security Services Daemon - provide access to identity and authentication"
 HOMEPAGE="http://fedorahosted.org/sssd/"
@@ -15,7 +16,7 @@ SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls doc test +nscd +locator openssl logrotate python"
+IUSE="nls doc test +nscd +locator openssl logrotate python static-libs"
 
 COMMON_DEP="virtual/pam
 	dev-libs/popt
@@ -23,7 +24,7 @@ COMMON_DEP="virtual/pam
 	sys-libs/talloc
 	sys-libs/tdb
 	sys-libs/tevent
-	net-fs/samba[ldb]
+	dev-libs/ldb
 	net-nds/openldap
 	dev-libs/libpcre
 	app-crypt/mit-krb5
@@ -46,46 +47,42 @@ DEPEND="${COMMON_DEP}
 	doc? ( app-doc/doxygen )"
 
 CONFIG_CHECK="~KEYS"
+AUTOTOOLS_IN_SOURCE_BUILD=1
+DOCS=(README)
 
 pkg_setup(){
 	python_set_active_version 2
 
-		if kernel_is 2 4; then
-			echo
-			eerror "This package reqires"
-			eerror "Linux kernel >=2.6.0"
-			ewarn "You enabled keyutils use-flag"
-			ewarn "If You want to build this package on 2.4 series kernel,"
-			ewarn "disable keytils use-flag"
-		fi
-
-		linux-info_pkg_setup
+	linux-info_pkg_setup
 
 #	confutils_use_depend_all semanage selinux
 }
 
+src_prepare() {
+	eautoreconf
+}
+
 src_configure(){
-	econf \
+
+	local myeconfargs=(
 		--localstatedir=/"${EPREFIX}"/var \
 		--enable-nsslibdir=/"${EPREFIX}"/$(get_libdir) \
 		--enable-pammoddir=/"${EPREFIX}"/$(getpam_mod_dir) \
 		--without-selinux \
 		--without-semanage \
-		--disable-static --enable-shared \
+		--with-libnl \
 		$(use_with python python-bindings) \
 		$(use_with nscd) \
 		$(use_enable locator krb5-locator-plugin) \
 		$(use_enable openssl crypto) \
-		$(use_enable nls) \
-		-C  || die "econf failed"
+		$(use_enable nls) )
+
+	autotools-utils_src_configure
 }
 
 src_install(){
-	emake DESTDIR="${ED}" install || die
 
-	#delete la files
-	find "${ED}"/$(get_libdir) -name \*.la -delete
-	find "${ED}"/$(getpam_mod_dir) -name \*.la -delete
+	autotools-utils_src_install
 
 	insinto /"${EPREFIX}"/etc/sssd
 	insopts -m600
@@ -102,12 +99,11 @@ src_install(){
 
 		python_convert_shebangs 2 "${ED}$(python_get_sitedir)/"*.py
 	fi
-	dodoc README
 
 }
 
 src_test() {
-	emake check ||die
+	autotools-utils_src_test
 }
 
 pkg_postinst(){
