@@ -3,11 +3,10 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>@gmail.com</email>
- <description>Description of the maintainership</description> 
+  <email>spamslepnoga@inbox.ru</email>
+ <description>An extensible library that implements an LDAP like API to access remote LDAP
+ servers, or use local tdb databases..</description> 
 </maintainer>
- <longdescription>Long description of the package</longdescription> 
-<use>
- <flag name='gcov'> build witch gcov debug support </flag>
-</use>
+ <longdescription>An extensible library that implements an LDAP like API to access remote LDAP
+ servers, or use local tdb databases.</longdescription> 
 </pkgmetadata>
