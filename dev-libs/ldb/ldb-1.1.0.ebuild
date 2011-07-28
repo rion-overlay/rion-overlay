@@ -46,9 +46,17 @@ src_configure() {
 		--builtin-libraries=NONE ||die
 }
 
+src_compile(){
+	waf-utils_src_compile
+	use doc && doxygen Doxyfile
+}
+
 src_install() {
 	waf-utils_src_install
 	rm "${D}/$(python_get_sitedir)/"_tevent.so
 
-# TODO doxygen install
+	if use doc; then
+		dohtml -r apidocs/html/*
+		doman  apidocs/man/man3/*.3
+	fi
 }
