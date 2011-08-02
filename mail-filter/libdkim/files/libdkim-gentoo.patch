@@ -1,0 +1,120 @@
+diff -Naur libdkim.orig/src/Makefile libdkim/src/Makefile
+--- libdkim.orig/src/Makefile	2009-03-17 17:06:24.000000000 -0500
++++ libdkim/src/Makefile	2009-03-17 17:07:12.000000000 -0500
+@@ -1,15 +1,10 @@
+ # libdkim makefile for UNIX
+ #
+ 
+-#ifdef LINUX
+-CFLAGS  = -c
+-LFLAGS  = 
++DESTDIR ?= /
++
++CFLAGS  += -fPIC
+ LIBS    = -lcrypto -lresolv
+-#else
+-CFLAGS  = -c
+-LFLAGS  = 
+-LIBS    = -lcrypto 
+-#endif
+ 
+ INCL	=  -I /usr/include/openssl/
+ 
+@@ -19,23 +14,34 @@
+ 
+ HDRS = dkim.h dns.h dkimbase.h dkimsign.h dkimverify.h
+ 
+-all: libdkim.a libdkimtest
++all: libdkim.so.1 libdkimtest
+ 
+ libdkim.a: $(OBJS)
+ 	rm -f libdkim.a
+ 	ar cr libdkim.a $(OBJS)
+ 	ranlib libdkim.a
+ 
+-libdkimtest : libdkim.a libdkimtest.o
+-	g++ -olibdkimtest $(LFLAGS) \
+-	       -L . libdkimtest.o $(LIBS) -ldkim
++libdkim.so.1: $(OBJS)
++	$(CXX) -shared -Wl,-soname,$@.1 $(LDFLAGS) $(OBJS) -o $@ $(LIBS)
++	ln -s $@ libdkim.so
++
++.cpp.o:
++	$(CXX) $(CFLAGS) -c $<
++
++libdkimtest : libdkim.so.1 libdkimtest.o
++	$(CXX) -o$@ $(LDFLAGS) \
++	       -L. libdkimtest.o $(LIBS) -ldkim
+ 	
+ libdkimtest.o: libdkimtest.cpp $(HDRS)
+ 
+-.cpp.o:
+-	g++ $(CFLAGS) -c $<
+ 
+ clean:
+-	rm  *.o libdkim.lib libdkimtest
++	rm -f *.o libdkim.{a,so,so.1} libdkimtest
++
++install: all
++	install -D -m 0755 libdkim.so.1 $(DESTDIR)/usr/lib/libdkim.so.1
++	ln -s libdkim.so.1 $(DESTDIR)/usr/lib/libdkim.so
++	install -D -m 0644 dkim.h $(DESTDIR)/usr/include/dkim.h
++	install -D -m 0755 libdkimtest $(DESTDIR)/usr/bin/libdkimtest
+ 
+ 
+diff -Naur libdkim.orig/src/dkim.h libdkim/src/dkim.h
+--- libdkim.orig/src/dkim.h	2009-03-17 17:06:24.000000000 -0500
++++ libdkim/src/dkim.h	2009-03-17 17:06:53.000000000 -0500
+@@ -22,7 +22,6 @@
+ #define DKIM_CALL	WINAPI
+ #else
+ #define DKIM_CALL
+-#define MAKELONG(a,b) ((long)(((unsigned)(a) & 0xffff) | (((unsigned)(b) & 0xffff) << 16)))
+ #endif
+ 
+ 
+@@ -162,6 +161,32 @@
+ 
+ char *DKIM_CALL DKIMGetErrorString( int ErrorCode );
+ 
++#ifndef _WIN32
++/*
++ * macros.h:  Useful macros
++ *
++ * Author:
++ *	Dick Porter (dick@ximian.com)
++ *
++ * (C) 2002 Ximian, Inc.
++ */
++#ifndef _WAPI_MACROS_H_
++#define _WAPI_MACROS_H_
++
++#include <sys/types.h>
++
++#define MAKEWORD(low, high) ((__uint16_t)(((__uint8_t)(low)) | \
++				       ((__uint16_t)((__uint8_t)(high))) << 8))
++#define MAKELONG(low, high) ((__uint32_t)(((__uint16_t)(low)) | \
++				       ((__uint32_t)((__uint16_t)(high))) << 16))
++#define LOWORD(i32) ((__uint16_t)((i32) & 0xFFFF))
++#define HIWORD(i32) ((__uint16_t)(((__uint32_t)(i32) >> 16) & 0xFFFF))
++#define LOBYTE(i16) ((__uint8_t)((i16) & 0xFF))
++#define HIBYTE(i16) ((__uint8_t)(((__uint16_t)(i16) >> 8) & 0xFF))
++
++#endif /* _WAPI_MACROS_H_ */
++#endif
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff -Naur libdkim.orig/src/dkimsign.cpp libdkim/src/dkimsign.cpp
+--- libdkim.orig/src/dkimsign.cpp	2009-03-17 17:06:24.000000000 -0500
++++ libdkim/src/dkimsign.cpp	2009-03-17 17:06:53.000000000 -0500
+@@ -25,8 +25,6 @@
+ #else
+ #define _strnicmp strncasecmp 
+ #define _stricmp strcasecmp 
+-#define LOWORD(l) ((unsigned)(l) & 0xffff)
+-#define HIWORD(l) ((unsigned)(l) >> 16)
+ #endif
+ 
+ #include <string.h>
