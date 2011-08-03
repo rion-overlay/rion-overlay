@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/"pidgin-mrim-fix-build.patch
+	epatch "${FILESDIR}"/pidgin-mrim-fix-build.patch
 }
 
 src_configure() {
