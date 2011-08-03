@@ -4,11 +4,11 @@
 
 EAPI=4
 
-inherit multilib toolchain-funcs subversion
+inherit multilib toolchain-funcs git-2
 
 DESCRIPTION="Mail.Ru agent protocol for pidgin."
 HOMEPAGE="http://code.google.com/p/mrim-prpl/"
-ESVN_REPO_URI="http://mrim-prpl.googlecode.com/svn/trunk/"
+EGIT_REPO_URI="https://code.google.com/p/mrim-prpl/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,10 +21,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
 
-# FIXME upstream build system is broken again
-src_compile() {
-	emake CC="$(tc-getCC)" compile
-}
+# FIXME upstream build system is broken again: does not respect CC
 
 src_install() {
 	emake LIBDIR=$(get_libdir) DESTDIR="${D}" install
