@@ -22,18 +22,19 @@ COMMON_DEP="virtual/pam
 	dev-libs/popt
 	>=dev-libs/ding-libs-0.1.2
 	sys-libs/talloc
-	sys-libs/tdb
+	>=sys-libs/tdb-1.1.3
 	sys-libs/tevent
-	sys-libs/ldb
-	net-nds/openldap
+	>=sys-libs/ldb-0.9.3
+	>=net-nds/openldap-2.4.19
 	dev-libs/libpcre
+	dev-libs/libunistring
 	app-crypt/mit-krb5
 	net-dns/c-ares
 	openssl? ( dev-libs/openssl )
 	!openssl? ( dev-libs/nss )
 	nscd? ( sys-libs/glibc )
 	net-dns/bind-tools
-	dev-libs/cyrus-sasl
+	dev-libs/cyrus-sasl[kerberos]
 	sys-apps/dbus
 	>=sys-devel/gettext-0.17
 	virtual/libintl
@@ -58,7 +59,7 @@ pkg_setup(){
 #	confutils_use_depend_all semanage selinux
 }
 
-src_prepare() {
+src_paarepare() {
 	eautoreconf
 }
 
@@ -105,7 +106,7 @@ src_install(){
 }
 
 src_test() {
-	autotools-utils_src_test
+	CK_TIMEOUT_MULTIPLIER=10	autotools-utils_src_test
 }
 
 pkg_postinst(){
