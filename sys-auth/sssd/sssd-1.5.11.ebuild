@@ -24,7 +24,7 @@ COMMON_DEP="virtual/pam
 	sys-libs/talloc
 	sys-libs/tdb
 	sys-libs/tevent
-	dev-libs/ldb
+	sys-libs/ldb
 	net-nds/openldap
 	dev-libs/libpcre
 	app-crypt/mit-krb5
