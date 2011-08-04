@@ -2,6 +2,15 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.5.11.ebuild,
+  +sssd-1.6.0.ebuild:
+  fix install errors
+
+*sssd-1.6.0 (04 Aug 2011)
+
+  04 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +sssd-1.6.0.ebuild:
+  new major release added
+
   04 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.5.11.ebuild:
   fix ldb depend, ldb in main tree
 
