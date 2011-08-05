@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Aug 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +files/bitten-slave.confd, +files/bitten-slave.initd:
+  Add initscript
+
   30 Mar 2011; Nickolaj Stjujsckij <sterkrig@home.no>
   -files/hg_pull.trac_0.12.patch:
   Drop patch unused since last beta
