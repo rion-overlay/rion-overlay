@@ -86,7 +86,7 @@ src_install(){
 	autotools-utils_src_install
 
 	rm  "${D}/lib64/"libnss_sss.la || die
-
+	rm "${D}"/usr/lib64/ldb/modules/ldb/memberof.la || die
 	insinto /"${EPREFIX}"/etc/sssd
 	insopts -m600
 	doins "${S}"/src/examples/sssd.conf
@@ -110,6 +110,8 @@ src_test() {
 }
 
 pkg_postinst(){
+	ewarn "SSSD will not start if you do not configure any domains."
+
 	elog "You must change your /etc/pam.d if you want to use sssd authorization via PAM"
 	elog "Changes look like these:"
 	elog "auth        sufficient  pam_unix.so try_first_pass likeauth nullok"
