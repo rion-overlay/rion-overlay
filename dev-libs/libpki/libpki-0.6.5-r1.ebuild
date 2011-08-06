@@ -4,7 +4,8 @@
 
 EAPI=4
 
-inherit libtool
+WANT_AUTOCONF="latest"
+inherit libtool autotools  autotools-utils
 
 DESCRIPTION="Provide an easy-to-use PKI library for PKI enabled application development."
 HOMEPAGE="http://www.openca.org/projects/libpki"
@@ -13,41 +14,49 @@ SRC_URI="mirror://sourceforge/project/openca/${PN}/releases/v${PV}/sources/${P}.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples mysql postgres"
+IUSE="examples mysql postgres ssl static-libs ldap"
 
 DEPEND="dev-libs/libxml2
 	dev-libs/openssl
-	net-nds/openldap
+	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql  )
 	postgres? ( dev-db/postgresql-base )"
 
 RDEPEND="${DEPEND}"
+DOCS=(AUTHORS ChangeLog INSTALL NEWS README)
+AUTOTOOLS_IN_SOURCE_BUILD=1
+
+#need internet connections
+RESTRICT="test"
 
 src_prepare() {
-	elibtoolize
+	epatch "${FILESDIR}"/*.patch
+	#elibtoolize
+	eautoreconf
 }
 
 src_configure () {
-	econf \
-		--enable-ldap \
+	local myeconfargs=(
+		$(use_enable ldap) \
+		--with-package-prefix="${EPREFIX}" \
 		$(use_enable mysql) \
 		$(use_enable postgres pg) \
-		--enable-openssl \
 		--disable-kmf \
 		--enable-ecdsa \
-		--disable-openssl-engine || die
+		$(use_enable ssl openssl-engine) \
+		--disable-iphone)
+	autotools-utils_src_configure
 
 #Openss engines need more optional test
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install
+	autotools-utils_src_install
 
 	if use examples; then
 		insinto /usr/share/doc/"${PF}"
 		doins -r examples
 	fi
-	dodoc AUTHORS ChangeLog INSTALL NEWS README
 }
 
 pkg_postinst() {
