@@ -71,6 +71,7 @@ src_configure(){
 		--without-selinux \
 		--without-semanage \
 		--with-libnl \
+		--with-ldb-lib-dir=/"${EPREFIX}"/$(get_libdir)/ldb/modules/ \
 		$(use_with python python-bindings) \
 		$(use_with nscd) \
 		$(use_enable locator krb5-locator-plugin) \
