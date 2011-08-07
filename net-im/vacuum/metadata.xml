@@ -11,6 +11,7 @@
     <flag name="annotations">Enable adding comments to the contacts in the roster</flag>
     <flag name="autostatus">Change the status in accordance with the time of inactivity</flag>
     <flag name="avatars">Enable assigning and displaying avatars</flag>
+    <flag name="birthdayreminder">Reminds about birthdays of your friends</flag>
     <flag name="bitsofbinary">Allow other modules to receive or send a small amount of binary data in XMPP stanza</flag>
     <flag name="bookmarks">Enable creating bookmarks of the Jabber conferences and Web pages</flag>
     <flag name="captchaforms">Perform tests for humanity outside of Web browser</flag>

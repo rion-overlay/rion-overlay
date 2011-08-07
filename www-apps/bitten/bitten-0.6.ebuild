@@ -4,6 +4,12 @@
 
 EAPI="3"
 
+PYTHON_DEPEND="2"
+DISTUTILS_SRC_TEST="setup.py"
+DISTUTILS_GLOBAL_OPTIONS=($(use_with master))
+RESTRICT_PYTHON_ABIS="3.*"
+SUPPORT_PYTHON_ABIS="1"
+
 inherit distutils eutils
 
 DESCRIPTION="Trac-based continuous integration framework"
@@ -17,11 +23,6 @@ IUSE="master test"
 
 SLOT="0"
 
-PYTHON_DEPEND="2"
-DISTUTILS_SRC_TEST="setup.py"
-RESTRICT_PYTHON_ABIS="3.*"
-SUPPORT_PYTHON_ABIS="1"
-
 RDEPEND="master? ( www-apps/trac )"
 
 BDEPEND="
@@ -29,8 +30,10 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	DISTUTILS_GLOBAL_OPTIONS=($(use_with master))
+src_install() {
+	distutils_src_install
+	newinitd "${FILESDIR}"/bitten-slave.initd bitten-slave || die "Installing initscript failed"
+	newconfd "${FILESDIR}"/bitten-slave.confd bitten-slave || die "Installing conf.d/ file failed"
 }
 
 pkg_postinst() {
@@ -40,4 +43,6 @@ pkg_postinst() {
 		elog "    bitten.* = enabled"
 		elog "to your trac.ini file"
 	fi
+	elog "To run bitten-slave via provided init-script, "
+	elog "customize /etc/conf.d/bitten-slave"
 }
