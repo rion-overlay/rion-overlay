@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*OpenCA-UI-HTML-0.9.36 (10 Aug 2011)
+
+  10 Aug 2011; Azamat H. Hackimov <azamat.hackimov@gmail.com>
+  -OpenCA-UI-HTML-0.9.ebuild, +OpenCA-UI-HTML-0.9.36.ebuild:
+  Fixing checksums, bump to 0.9.36
+
   15 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
   OpenCA-UI-HTML-0.9.ebuild:
   eclass clean
