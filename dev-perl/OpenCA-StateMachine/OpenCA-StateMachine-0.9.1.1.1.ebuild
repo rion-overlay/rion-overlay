@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-SRC_VER="1.1.0"
+SRC_VER="1.1.1"
 inherit perl-module
 
 DESCRIPTION="Managing OpenCA config files"
