@@ -5,10 +5,8 @@
 EAPI="2"
 
 inherit psiplus-plugin
-DESCRIPTION="Psi+ plugin for file sharing via jabber disk"
-HOMEPAGE="http://psi-dev.googlecode.com"
 
-LICENSE="GPL-2"
-SLOT="0"
+DESCRIPTION="Psi+ plugin for file sharing via jabber disk"
+
 KEYWORDS=""
 IUSE=""

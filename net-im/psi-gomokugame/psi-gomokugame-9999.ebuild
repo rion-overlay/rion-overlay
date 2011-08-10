@@ -5,10 +5,8 @@
 EAPI="2"
 
 inherit psiplus-plugin
-DESCRIPTION="Gomoku game for Psi+"
-HOMEPAGE="http://psi-dev.googlecode.com"
 
-LICENSE="GPL-2"
-SLOT="0"
+DESCRIPTION="Gomoku game for Psi+"
+
 KEYWORDS=""
 IUSE=""
