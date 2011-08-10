@@ -4,13 +4,13 @@
 
 EAPI="2"
 
-SRC_VER="1.1.0"
+SRC_VER="1.1.1"
 
 inherit perl-module
 
 DESCRIPTION="OpenCA Perl extensions for LDAP"
 SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
 IUSE=""
