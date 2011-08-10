@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*psi-extendedmenu-0.1.0_pre5001 (10 Aug 2011)
+
+  10 Aug 2011; Nikoli <nikoli@lavabit.com>
+  +psi-extendedmenu-0.1.0_pre5001.ebuild:
+  version bump
+
 *psi-extendedmenu-0.1.0_pre3897 (26 May 2011)
 
   26 May 2011; Nikoli <nikoli@lavabit.com>
