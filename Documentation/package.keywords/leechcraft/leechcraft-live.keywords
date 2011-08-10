@@ -4,12 +4,16 @@
 =net-analyzer/leechcraft-networkmonitor-9999 **
 =net-ftp/leechcraft-lcftp-9999 **
 =net-im/leechcraft-azoth-9999 **
+=net-libs/qxmpp-9999 **
+=net-misc/leechcraft-advancednotifications-9999 **
 =net-misc/leechcraft-anhero-9999 **
 =net-misc/leechcraft-auscrie-9999 **
 =net-misc/leechcraft-core-9999 **
 =net-misc/leechcraft-cstp-9999 **
 =net-misc/leechcraft-dbusmanager-9999 **
 =net-misc/leechcraft-full-9999 **
+=net-misc/leechcraft-glance-9999 **
+=net-misc/leechcraft-gmailnotifier-9999 **
 =net-misc/leechcraft-historyholder-9999 **
 =net-misc/leechcraft-kinotify-9999 **
 =net-misc/leechcraft-lackman-9999 **
@@ -17,6 +21,7 @@
 =net-misc/leechcraft-qrosp-9999 **
 =net-misc/leechcraft-summary-9999 **
 =net-misc/leechcraft-tabpp-9999 **
+=net-misc/leechcraft-tabslist-9999 **
 =net-misc/leechcraft-secman-9999 **
 =net-news/leechcraft-aggregator-9999 **
 =net-p2p/leechcraft-bittorrent-9999 **
