@@ -23,10 +23,6 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-src_configure() {
-	econf $(use_enable static-libs static)
-}
-
 src_install() {
 	autotools-utils_src_install
 	rm -rf "${D}"/usr/share/doc/
