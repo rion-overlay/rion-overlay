@@ -54,13 +54,11 @@ COMMON_DEP="!app-crypt/openca
 	dev-perl/OpenCA-CRR
 	dev-perl/OpenCA-Configuration
 	dev-perl/OpenCA-Crypto
-	dev-perl/OpenCA-DB
 	dev-perl/OpenCA-DBI
 	dev-perl/OpenCA-Log
 	dev-perl/OpenCA-LDAP
 	dev-perl/OpenCA-OpenSSL
 	dev-perl/OpenCA-PKCS7
-	dev-perl/OpenCA-RBAC
 	dev-perl/OpenCA-REQ
 	dev-perl/OpenCA-Session
 	dev-perl/OpenCA-StateMachine
