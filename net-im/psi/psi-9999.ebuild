@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.10 2010/11/30 19:24:56 pva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.12 2011/06/30 09:23:16 pva Exp $
 
 EAPI="4"
 
@@ -9,11 +9,9 @@ LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_B
 EGIT_REPO_URI="git://git.psi-im.org/psi.git"
 EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
+PSI_PLUS_URI="git://github.com/psi-plus"
 
-PSI_PLUS_URI="git://github.com/psi-plus/main.git"
-PSI_PLUS_RESOURCES_URI="git://github.com/psi-plus/resources.git"
-
-inherit eutils qt4-r2 multilib git-2 subversion
+inherit eutils qt4-r2 multilib git-2
 
 DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
@@ -44,7 +42,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	extras? (
-		${SUBVERSION_DEPEND}
 		sys-devel/qconf
 	)
 	doc? ( app-doc/doxygen )
@@ -87,44 +84,48 @@ src_unpack() {
 	mkdir "${WORKDIR}/psi-l10n"
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
+			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT EGIT_DIR
 			if use extras && [ "${x}" = "ru" ]; then
-				ESVN_PROJECT="psiplus/psi-l10n/${x}" \
-				S="${WORKDIR}" \
-				subversion_fetch \
-					"http://psi-ru.googlecode.com/svn/branches/psi-plus/" \
-					"psi-l10n/${x}"
+				local EGIT_REPO_URI="git://github.com/Nikoli/psi-plus-ru.git"
 			else
-				unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT
-				EGIT_REPO_URI="${LANGS_URI}-${x}" \
-				EGIT_DIR="${EGIT_STORE_DIR}/psi-l10n/${x}" \
-				EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" git-2_src_unpack
+				local EGIT_REPO_URI="${LANGS_URI}-${x}.git"
 			fi
+			EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" \
+			git-2_src_unpack
 		fi
 	done
 
 	if use extras; then
-		EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/main" \
+		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT EGIT_DIR
+		EGIT_PROJECT="psi-plus/main.git" \
 		EGIT_SOURCEDIR="${WORKDIR}/psi-plus" \
-		EGIT_REPO_URI="${PSI_PLUS_URI}" git-2_src_unpack
+		EGIT_REPO_URI="${PSI_PLUS_URI}/main.git" \
+		git-2_src_unpack
+
 		if use iconsets; then
-			EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/resources" \
+			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT EGIT_DIR
+			EGIT_PROJECT="psi-plus/resources.git" \
 			EGIT_SOURCEDIR="${WORKDIR}/resources" \
-			EGIT_REPO_URI="${PSI_PLUS_RESOURCES_URI}" git-2_src_unpack
+			EGIT_REPO_URI="${PSI_PLUS_URI}/resources.git" \
+			git-2_src_unpack
 		fi
 	fi
 }
 
 src_prepare() {
 	if use extras; then
-		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
-		use iconsets && { cp -a "${WORKDIR}/resources/iconsets" "${S}" || \
-			die	"failed to copy additional iconsets"; }
+		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die
+		if use iconsets; then
+			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die
+		fi
+
 		EPATCH_SOURCE="${WORKDIR}/psi-plus/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
 		use powersave && epatch "${WORKDIR}/psi-plus/patches/dev/psi-reduce-power-consumption.patch"
 
-		sed -e "s/.xxx/.$(cd "${WORKDIR}/psi-plus"; echo $((`git describe --tags | \
-			cut -d - -f 2`+5000)))/" -i src/applicationinfo.cpp || die "sed failed"
+		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && echo $(($(git describe --tags|cut -d - -f 2)+5000)))"
+		sed -e "s/.xxx/.${PSI_PLUS_REVISION}/" \
+			-i src/applicationinfo.cpp || die "sed failed"
 
 		qconf || die "Failed to create ./configure."
 	fi
@@ -136,8 +137,6 @@ src_configure() {
 	# unable to use econf because of non-standard configure script
 	# disable growl as it is a MacOS X extension only
 	local myconf="
-		--prefix="${EPREFIX}"/usr
-		--qtdir="${EPREFIX}"/usr
 		--disable-bundled-qca
 		--disable-growl
 		--no-separate-debug-info
@@ -145,7 +144,11 @@ src_configure() {
 	use dbus || myconf+=" --disable-qdbus"
 	use debug && myconf+=" --debug"
 	if use spell; then
-		use enchant && myconf+=" --disable-aspell" || myconf+=" --disable-enchant"
+		if use enchant; then
+			myconf+=" --disable-aspell"
+		else
+			myconf+=" --disable-enchant"
+		fi
 	else
 		myconf+=" --disable-aspell --disable-enchant"
 	fi
@@ -156,8 +159,10 @@ src_configure() {
 		use webkit && myconf+=" --enable-webkit"
 	fi
 
-	einfo "./configure ${myconf}"
-	./configure ${myconf} || die
+	./configure \
+		--prefix="${EPREFIX}"/usr \
+		--qtdir="${EPREFIX}"/usr \
+		${myconf} || die
 
 	eqmake4
 }
@@ -201,13 +206,7 @@ src_install() {
 		if use linguas_${x}; then
 			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
 			doins "${x}/${PN}_${x}.qm"
-			[ -f "${x}/qt_${x}.qm" ] && doins "${x}/qt_${x}.qm"
-			[ -f "${x}/qt/qt_${x}.qm" ] && doins "${x}/qt/qt_${x}.qm"
 			[ -f "${x}/INFO" ] && newins "${x}/INFO" "${PN}_${x}.INFO"
 		fi
 	done
-}
-
-pkg_preinst() {
-	true # suppress subversion warnings
 }
