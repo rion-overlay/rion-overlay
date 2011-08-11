@@ -16,10 +16,11 @@ SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls doc test +nscd +locator openssl logrotate python static-libs"
+IUSE="nls doc test +nscd +locator openssl logrotate python static-libs selinux"
 
 COMMON_DEP="virtual/pam
 	dev-libs/popt
+	dev-libs/libunistring
 	>=dev-libs/ding-libs-0.1.2
 	sys-libs/talloc
 	sys-libs/tdb
@@ -32,6 +33,7 @@ COMMON_DEP="virtual/pam
 	openssl? ( dev-libs/openssl )
 	!openssl? ( dev-libs/nss )
 	nscd? ( sys-libs/glibc )
+	selinux? ( 	sys-libs/libselinux sys-libs/libsemanage )
 	net-dns/bind-tools
 	dev-libs/cyrus-sasl
 	sys-apps/dbus
@@ -52,10 +54,8 @@ DOCS=(README)
 
 pkg_setup(){
 	python_set_active_version 2
-
+	python_need_rebuild
 	linux-info_pkg_setup
-
-#	confutils_use_depend_all semanage selinux
 }
 
 src_prepare() {
@@ -68,8 +68,8 @@ src_configure(){
 		--localstatedir=/"${EPREFIX}"/var \
 		--enable-nsslibdir=/"${EPREFIX}"/$(get_libdir) \
 		--enable-pammoddir=/"${EPREFIX}"/$(getpam_mod_dir) \
-		--without-selinux \
-		--without-semanage \
+		$(use_with selinux) \
+		$(use_with selinux semanage) \
 		--with-libnl \
 		--with-ldb-lib-dir=/"${EPREFIX}"/$(get_libdir)/ldb/modules/ \
 		$(use_with python python-bindings) \

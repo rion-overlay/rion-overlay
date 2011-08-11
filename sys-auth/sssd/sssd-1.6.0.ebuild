@@ -16,7 +16,7 @@ SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls doc test +nscd +locator openssl logrotate python static-libs"
+IUSE="nls doc test +nscd +locator openssl logrotate python static-libs selinux"
 
 COMMON_DEP="virtual/pam
 	dev-libs/popt
@@ -33,6 +33,7 @@ COMMON_DEP="virtual/pam
 	openssl? ( dev-libs/openssl )
 	!openssl? ( dev-libs/nss )
 	nscd? ( sys-libs/glibc )
+	selinux? ( sys-libs/libselinux sys-libs/libsemanage )
 	net-dns/bind-tools
 	dev-libs/cyrus-sasl[kerberos]
 	sys-apps/dbus
@@ -53,10 +54,8 @@ DOCS=(README)
 
 pkg_setup(){
 	python_set_active_version 2
-
+	python_need_rebuild
 	linux-info_pkg_setup
-
-#	confutils_use_depend_all semanage selinux
 }
 
 src_paarepare() {
@@ -69,8 +68,8 @@ src_configure(){
 		--localstatedir=/"${EPREFIX}"/var \
 		--enable-nsslibdir=/"${EPREFIX}"/$(get_libdir) \
 		--enable-pammoddir=/"${EPREFIX}"/$(getpam_mod_dir) \
-		--without-selinux \
-		--without-semanage \
+		$(use_with selinux) \
+		$(use_with selinux semanage) \
 		--with-libnl \
 		$(use_with python python-bindings) \
 		$(use_with nscd) \
@@ -106,7 +105,7 @@ src_install(){
 }
 
 src_test() {
-	CK_TIMEOUT_MULTIPLIER=10	autotools-utils_src_test
+	autotools-utils_src_test
 }
 
 pkg_postinst(){
