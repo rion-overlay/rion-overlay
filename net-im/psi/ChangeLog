@@ -2,6 +2,20 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*psi-0.15_pre20110810 (10 Aug 2011)
+
+  10 Aug 2011; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20110810.ebuild:
+  add snapshot
+
+  10 Aug 2011; Nikoli <nikoli@lavabit.com> psi-9999.ebuild:
+  1) migrate psi-ru to git and remove subversion eclass
+  2) fix EPREFIX, must not be inside any var:
+  http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/media-video/mplayer/m
+  player-9999.ebuild?r1=1.101&r2=1.102
+  3) do not isntall qt translation, it is part of qt-core package:
+  /usr/share/qt4/translations/qt_*.qm
+  4) cosmetics
+
   27 Jun 2011; rion <rion4ik@spamogmail.com> psi-9999.ebuild:
   Psi+ moved to github
 

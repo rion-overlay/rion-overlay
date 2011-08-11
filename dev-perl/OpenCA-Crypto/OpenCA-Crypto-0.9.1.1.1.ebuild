@@ -7,11 +7,11 @@ EAPI="2"
 inherit perl-module
 
 DESCRIPTION="Perl module to manage the tokens of OpenCA"
-HOMEPAGE="http://search.cpan.org/~madwolf/OpenCA-Crypto-0.9.6"
+HOMEPAGE="http://search.cpan.org/~madwolf/OpenCA-Crypto/"
 SRC_URI="mirror://cpan/authors/id/M/MA/MADWOLF/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""

@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-SRC_VER="1.1.0"
+SRC_VER="1.1.1"
 
 inherit perl-module eutils
 
@@ -24,9 +24,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-openssl"
 isrc_prepare() {
 	perl-module_src_prepare
-
-	sed -i -e /prova.pl/d "${S}"/MANIFEST || die "sed failed"
 	einfo "editing MANIFEST"
-	rm -r "${S}"/prova.pl || die "Not removed prova.pl"
-	einfo "removed prova.pl"
+	sed -i -e /prova.pl/d "${S}"/MANIFEST || die "sed failed"
+	rm -f "${S}"/prova.pl
 }

@@ -4,20 +4,18 @@
 
 EAPI="2"
 
-SRC_VER="1.1.0"
+SRC_VER="1.1.1"
+
 inherit perl-module
 
-DESCRIPTION="HTML OpenCA helper"
+DESCRIPTION="Perl extension for basic handling PKCS#7 Signatures"
 SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 SLOT="0"
 
-DEPEND="virtual/perl-CGI
-		dev-perl/Locale-gettext
-		dev-perl/Digest-SHA1"
-
+DEPEND=">=dev-perl/X500-DN-0.27"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-ui-html"
+S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-pkcs7"

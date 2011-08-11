@@ -4,18 +4,19 @@
 
 EAPI="2"
 
-SRC_VER="1.1.0"
+SRC_VER="1.1.1"
 
 inherit perl-module
 
-DESCRIPTION="Perl extension for basic handling PKCS#7 Signatures"
+DESCRIPTION="Perl extension for support OpenCA CGI session"
 SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 SLOT="0"
 
-DEPEND=">=dev-perl/X500-DN-0.27"
+DEPEND="dev-perl/CGI-Session
+		dev-perl/OpenCA-Log"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-pkcs7"
+S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-session"
