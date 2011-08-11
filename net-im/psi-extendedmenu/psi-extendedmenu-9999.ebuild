@@ -5,10 +5,8 @@
 EAPI="2"
 
 inherit psiplus-plugin
-DESCRIPTION="Psi+ plugin which adds special submenu to contacts"
-HOMEPAGE="http://psi-dev.googlecode.com"
 
-LICENSE="GPL-2"
-SLOT="0"
+DESCRIPTION="Psi+ plugin which adds special submenu to contacts"
+
 KEYWORDS=""
 IUSE=""

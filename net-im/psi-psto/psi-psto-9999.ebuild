@@ -4,10 +4,10 @@
 
 EAPI="2"
 
-inherit psiplus-plugin mercurial
+PLUGIN_DIR="dev"
+inherit psiplus-plugin
 
 DESCRIPTION="Psi plugin for psto.net service"
-EHG_REPO_URI="https://bitbucket.org/werehuman/psi-psto-plugin"
 
 KEYWORDS=""
 IUSE=""

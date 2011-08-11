@@ -4,19 +4,20 @@
 
 EAPI="2"
 
-SRC_VER="1.1.0"
-
+SRC_VER="1.1.1"
 inherit perl-module
 
-DESCRIPTION="Perl extension for support OpenCA CGI session"
+DESCRIPTION="HTML OpenCA helper"
 SRC_URI="mirror://sourceforge/openca/openca-base-${SRC_VER}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 SLOT="0"
 
-DEPEND="dev-perl/CGI-Session
-		dev-perl/OpenCA-Log"
+DEPEND="virtual/perl-CGI
+		dev-perl/Locale-gettext
+		dev-perl/Digest-SHA1"
+
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-session"
+S="${WORKDIR}/openca-base-${SRC_VER}/src/modules/openca-ui-html"
