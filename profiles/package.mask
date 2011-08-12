@@ -1,7 +1,3 @@
-# 12 aug 2001; A.Vinogradov <spamslepnoga@inbox.ru>
-# mask , patch not complete
-=app-misc/hivex-1.2.7
-
 # 5  Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # Mask for testing update process;
 =sys-auth/sssd-1.6.0
