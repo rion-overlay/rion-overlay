@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 	 	test? ( dev-perl/Pod-Coverage
 				dev-perl/Test-Pod-Coverage ) )
 		"
-PATCHES=("${FILESDIR}"/autoconf_fix-${PV}.patch)
+#PATCHES=("${FILESDIR}"/autoconf_fix-${PV}.patch)
 DOCS=(README)
 
 pkg_config() {
