@@ -1,0 +1,34 @@
+# ChangeLog for net-nds/slapi-nis
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*slapi-nis-0.25 (07 Aug 2011)
+
+  07 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +slapi-nis-0.25.ebuild:
+  bump
+
+*slapi-nis-0.24 (30 Apr 2011)
+
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +slapi-nis-0.24.ebuild:
+  bump
+
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -slapi-nis-0.17.ebuild:
+  drop old ebuild
+
+*slapi-nis-0.22 (18 Mar 2011)
+
+  18 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +slapi-nis-0.22.ebuild,
+  metadata.xml:
+  bump
+
+  12 Mar 2010; <slep@gentoo.org> slapi-nis-0.17.ebuild, metadata.xml:
+  more QA fix
+
+  01 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> +slapi-nis-0.17.ebuild,
+  +metadata.xml:
+  initial commit
+
+*slapi-nis-0.17

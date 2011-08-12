@@ -1,0 +1,68 @@
+# ChangeLog for dev-libs/geographiclib
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  10 Aug 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  geographiclib-1.12.ebuild:
+  Let eclass deal with `static-libs` USE-flag
+
+  08 Aug 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  -geographiclib-1.11.ebuild, geographiclib-1.12.ebuild:
+  Drop old version, add "static-libs" USE-flag (thanks to slepnoga)
+
+  22 Jul 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  geographiclib-1.12.ebuild:
+  Change license to MIT
+
+*geographiclib-1.12 (22 Jul 2011)
+
+  22 Jul 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.12.ebuild:
+  Bump to 1.12
+
+  28 Jun 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  -geographiclib-1.9.ebuild, -geographiclib-1.10.ebuild:
+  Drop old versions
+
+*geographiclib-1.11 (28 Jun 2011)
+
+  28 Jun 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.11.ebuild:
+  Bump to 1.11
+
+*geographiclib-1.10 (13 Jun 2011)
+
+  13 Jun 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.10.ebuild:
+  Drop old, bump new
+
+*geographiclib-1.9 (30 May 2011)
+
+  30 May 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.9.ebuild:
+  Bump new version, adjust for new upstream filenaming scheme
+
+  17 Mar 2011; Nickolaj Stjujsckij <sterkrig@home.no> geographiclib-1.8.ebuild:
+  Fix repoman warnings
+
+  24 Feb 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  -geographiclib-1.7.ebuild, geographiclib-1.8.ebuild:
+  Drop 1.7; actually skip docs installing with USE="-doc"
+
+*geographiclib-1.8 (24 Feb 2011)
+
+  24 Feb 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.8.ebuild:
+  Bump version to 1.8
+
+*geographiclib-1.7 (25 Jan 2011)
+
+  25 Jan 2011; Nickolaj Stjujsckij <sterkrig@home.no>
+  -geographiclib-1.2.ebuild, -geographiclib-1.4.ebuild,
+  +geographiclib-1.7.ebuild:
+  Drop old versions, bump to 1.7 (thanks to slepnoga for reminder)
+
+  22 Sep 2010; Nickolaj Stjujsckij <sterkrig@home.no>
+  +geographiclib-1.2.ebuild, +geographiclib-1.4.ebuild:
+  Add GeographicLib (vv. 1.2, 1.4)
+
