@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*hivex-1.2.8 (12 Aug 2011)
+
+  12 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -hivex-1.2.7.ebuild,
+  -files/autoconf_fix-1.2.7.patch, +hivex-1.2.8.ebuild,
+  +files/autoconf_fix-1.2.8.patch:
+  bump, drop old
+
 *hivex-1.2.7 (29 Jul 2011)
 
   29 Jul 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> hivex-1.2.5.ebuild,
