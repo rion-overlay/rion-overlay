@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 
 inherit base autotools-utils  perl-app python
 
-PYTHON_DEPEND="2.6"
+PYTHON_DEPEND="python? 2:2.6"
 
 DESCRIPTION="Library for reading and writing Windows Registry "hive" binary files."
 HOMEPAGE="http://libguestfs.org"
@@ -18,7 +18,7 @@ SRC_URI="http://libguestfs.org/download/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ocaml +readline nls +perl test static-libs"
+IUSE="ocaml readline nls perl python test static-libs"
 
 #LANGS="es fr gu hi kn ml mr nl or pl ru uk pt_BR zh_CN"
 
@@ -26,9 +26,7 @@ IUSE="ocaml +readline nls +perl test static-libs"
 #	IUSE="${IUSE} linguas_${X}"
 #done
 
-RDEPEND="dev-lang/perl
-	virtual/libiconv
-	>=sys-devel/gettext-0.18
+RDEPEND="virtual/libiconv
 	virtual/libintl
 	dev-libs/libxml2:2
 	ocaml? ( dev-lang/ocaml[ocamlopt]
@@ -39,11 +37,12 @@ RDEPEND="dev-lang/perl
 	"
 
 DEPEND="${RDEPEND}
+	dev-lang/perl
 	 perl? (
 	 	test? ( dev-perl/Pod-Coverage
 				dev-perl/Test-Pod-Coverage ) )
 		"
-#PATCHES=("${FILESDIR}"/autoconf_fix-${PV}.patch)
+PATCHES=("${FILESDIR}"/autoconf_fix-${PV}.patch)
 DOCS=(README)
 
 pkg_config() {
@@ -62,6 +61,7 @@ src_configure() {
 		$(use_enable ocaml) \
 		$(use_enable perl) \
 		$(use_enable nls) \
+		$(use_enable python) \
 		--disable-rpath \
 		--enable-gcc-warnings\
 		)
