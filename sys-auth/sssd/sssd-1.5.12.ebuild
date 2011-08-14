@@ -5,7 +5,7 @@
 EAPI=3
 
 PYTHON_DEPEND="python? 2:2.6"
-RESTRICT="userpriv"
+#RESTRICT="userpriv"
 
 inherit python multilib pam linux-info autotools-utils
 
@@ -16,24 +16,23 @@ SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls doc test +nscd +locator openssl logrotate python static-libs selinux"
+IUSE="doc +locator logrotate nls openssl python selinux static-libs test"
 
 COMMON_DEP="virtual/pam
 	dev-libs/popt
-	dev-libs/libunistring
+	>=dev-libs/libunistring-0.9.3
 	>=dev-libs/ding-libs-0.1.2
-	sys-libs/talloc
+	>=sys-libs/talloc-2.0
 	sys-libs/tdb
 	sys-libs/tevent
 	sys-libs/ldb
-	net-nds/openldap
+	>=net-nds/openldap-2.4.19
 	dev-libs/libpcre
-	app-crypt/mit-krb5
-	net-dns/c-ares
+	>=app-crypt/mit-krb5-1.9.1
+	>=net-dns/c-ares-1.7.4
 	openssl? ( dev-libs/openssl )
-	!openssl? ( dev-libs/nss )
-	nscd? ( sys-libs/glibc )
-	selinux? ( 	sys-libs/libselinux sys-libs/libsemanage )
+	!openssl? ( >=dev-libs/nss-3.12.9 )
+	selinux? ( >=sys-libs/libselinux-2.0.94 >=sys-libs/libsemanage-2.0.45 )
 	net-dns/bind-tools
 	dev-libs/cyrus-sasl
 	sys-apps/dbus
@@ -44,13 +43,13 @@ COMMON_DEP="virtual/pam
 RDEPEND="${COMMON_DEP}"
 DEPEND="${COMMON_DEP}
 	test? ( dev-libs/check )
-	dev-libs/libxslt
+	>=dev-libs/libxslt-1.1.26
 	app-text/docbook-xml-dtd:4.4
 	doc? ( app-doc/doxygen )"
 
 CONFIG_CHECK="~KEYS"
 AUTOTOOLS_IN_SOURCE_BUILD=1
-DOCS=(README)
+#DOCS=(README)
 
 pkg_setup(){
 	python_set_active_version 2
@@ -58,25 +57,21 @@ pkg_setup(){
 	linux-info_pkg_setup
 }
 
-src_prepare() {
-	eautoreconf
-}
-
 src_configure(){
 
 	local myeconfargs=(
-		--localstatedir=/"${EPREFIX}"/var \
-		--enable-nsslibdir=/"${EPREFIX}"/$(get_libdir) \
-		--enable-pammoddir=/"${EPREFIX}"/$(getpam_mod_dir) \
-		$(use_with selinux) \
-		$(use_with selinux semanage) \
-		--with-libnl \
-		--with-ldb-lib-dir=/"${EPREFIX}"/$(get_libdir)/ldb/modules/ \
-		$(use_with python python-bindings) \
-		$(use_with nscd) \
-		$(use_enable locator krb5-locator-plugin) \
-		$(use_enable openssl crypto) \
-		$(use_enable nls) )
+		--localstatedir="${EPREFIX}"/var
+		--enable-nsslibdir="${EPREFIX}"/$(get_libdir)
+		--enable-pammoddir="${EPREFIX}"/$(getpam_mod_dir)
+		$(use_with selinux)
+		$(use_with selinux semanage)
+		--with-libnl
+		--with-ldb-lib-dir="${EPREFIX}"/$(get_libdir)/ldb/modules/
+		$(use_with python python-bindings)
+		--without-nscd
+		$(use_enable locator krb5-locator-plugin)
+		$(use_enable openssl crypto)
+		$(use_enable nls ) )
 
 	autotools-utils_src_configure
 }
@@ -85,9 +80,9 @@ src_install(){
 
 	autotools-utils_src_install
 
-	rm  "${D}/lib64/"libnss_sss.la || die
+	rm  "${D}/$(get_libdir)/"libnss_sss.la || die
 
-	insinto /"${EPREFIX}"/etc/sssd
+	insinto /etc/sssd
 	insopts -m600
 	doins "${S}"/src/examples/sssd.conf
 
