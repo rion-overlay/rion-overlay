@@ -1,0 +1,16 @@
+diff --git a/qxmpp.pro b/qxmpp.pro
+index f44ab46..9435623 100644
+--- a/qxmpp.pro
++++ b/qxmpp.pro
+@@ -2,10 +2,7 @@ include(qxmpp.pri)
+ 
+ TEMPLATE = subdirs
+ 
+-SUBDIRS = src \
+-          tests \
+-          examples \
+-          doc
++SUBDIRS = src
+ 
+ CONFIG += ordered
+ 
