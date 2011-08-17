@@ -27,7 +27,7 @@ inherit cmake-utils flag-o-matic
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
-	EGIT_PROJECT="leechcraft-${PV}"
+	EGIT_PROJECT="leechcraft"
 
 	inherit git-2
 else
@@ -45,7 +45,7 @@ EXPORT_FUNCTIONS src_configure
 # Set this to the category of the plugin, if any.
 : ${LC_PCAT:=}
 
-if [[ -n "${LC_PCAT+x}" ]]; then
+if [ "${LC_PCAT+x}" != "x" ]; then
 	CMAKE_USE_DIR="${S}/src/plugins/${LC_PCAT}/${PN#leechcraft-}"
 else
 	if [[ ${PN} != "leechcraft-core" ]]; then
@@ -61,8 +61,6 @@ fi
 # Selects correct build type for LeechCraft sources.
 
 leechcraft_src_configure() {
-	append-flags "-fvisibility=hidden"
-	append-flags "-fno-strict-aliasing"
 	cmake-utils_src_configure
 }
 
