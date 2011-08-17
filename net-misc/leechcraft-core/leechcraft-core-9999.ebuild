@@ -29,11 +29,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
 	local mycmakeargs="-DENABLE_HTTP=OFF
 		-DENABLE_POSHUKU=OFF
 		-DENABLE_TORRENT=OFF
