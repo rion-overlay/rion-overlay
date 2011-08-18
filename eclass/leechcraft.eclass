@@ -23,7 +23,7 @@ case ${EAPI:-0} in
 	*) die "Unknown EAPI, bug eclass maintainers." ;;
 esac
 
-inherit cmake-utils flag-o-matic
+inherit cmake-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
@@ -53,13 +53,3 @@ elif [[ ${PN} != "leechcraft-core" ]]; then
 else
 	CMAKE_USE_DIR="${S}/src"
 fi
-
-# @FUNCTION: leechcraft_src_configure
-# @DESCRIPTION:
-# Used to configure leechcraft source.
-# Selects correct build type for LeechCraft sources.
-
-leechcraft_src_configure() {
-	cmake-utils_src_configure
-}
-
