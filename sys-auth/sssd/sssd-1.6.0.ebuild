@@ -15,7 +15,7 @@ SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="nls doc test +nscd +locator openssl logrotate python static-libs selinux"
 
 COMMON_DEP="virtual/pam
