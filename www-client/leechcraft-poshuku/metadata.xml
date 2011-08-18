@@ -8,5 +8,12 @@
 </maintainer>
  <longdescription>Poshuku, the full-featured web browser plugin for LeechCraft.</longdescription> 
  <use>
-</use>
+  <flag name="cleanweb">Build CleanWeb for ad blocking compatible with Firefox's AdBlock+.</flag>
+  <flag name="fatape">Build FatApe, GreaseMonkey userscripts support layer.</flag>
+  <flag name="filescheme">Build FileScheme for accessing local URLs.</flag>
+  <flag name="fua">Build FUA for faking user agents for different hosts.</flag>
+  <flag name="keywords">Build Keywords for adjusting search shortcuts.</flag>
+  <flag name="onlinebookmarks">Build OnlineBookmarks for syncing bookmarks with social bookmarking services like Read It Later.</flag>
+  <flag name="wyfv">Build WYFV for replacing Flash-based video players on some sites.</flag>
+ </use>
 </pkgmetadata>

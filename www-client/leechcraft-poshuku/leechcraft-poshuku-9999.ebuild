@@ -10,11 +10,12 @@ DESCRIPTION="Poshuku, the full-featured web browser plugin for LeechCraft."
 
 SLOT="0"
 KEYWORDS=""
-IUSE="debug idn +sqlite postgres"
+IUSE="debug +cleanweb +fatape +filescheme +fua +idn +keywords +onlinebookmarks
+		wyfv +sqlite postgres"
 
 DEPEND="=net-misc/leechcraft-core-${PV}[postgres?,sqlite?]
 		>=x11-libs/qt-webkit-4.6
-		>=dev-libs/qjson-0.7.1-r1
+		onlinebookmarks? ( >=dev-libs/qjson-0.7.1-r1 )
 		idn? ( net-dns/libidn )"
 RDEPEND="${DEPEND}
 		virtual/leechcraft-downloader-http"
@@ -24,7 +25,16 @@ pkg_setup() {
 }
 
 src_configure() {
-	local mycmakeargs="$(cmake-utils_use_enable idn IDN)"
+	local mycmakeargs="
+		`cmake-utils_use_enable cleanweb POSHUKU_CLEANWEB`
+		`cmake-utils_use_enable fatape POSHUKU_FATAPE`
+		`cmake-utils_use_enable filescheme POSHUKU_FILESCHEME`
+		`cmake-utils_use_enable fua POSHUKU_FUA`
+		`cmake-utils_use_enable idn IDN`
+		`cmake-utils_use_enable keywords POSHUKU_KEYWORDS`
+		`cmake-utils_use_enable onlinebookmarks POSHUKU_ONLINEBOOKMARKS`
+		`cmake-utils_use_enable wyfv POSHUKU_WYFV`
+		"
 
 	cmake-utils_src_configure
 }
