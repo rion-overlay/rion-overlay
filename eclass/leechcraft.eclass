@@ -19,8 +19,8 @@
 
 case ${EAPI:-0} in
 	4|3|2) ;;
-	0|1) die "EAPI not supported, bug ebuild mantainer" ;;
-	*) die "Unknown EAPI, Bug eclass maintainers." ;;
+	0|1) die "EAPI not supported, bug ebuild mantainer." ;;
+	*) die "Unknown EAPI, bug eclass maintainers." ;;
 esac
 
 inherit cmake-utils flag-o-matic
@@ -40,19 +40,18 @@ LICENSE="GPL-3"
 
 EXPORT_FUNCTIONS src_configure
 
-# @ECLASS-VARIABLE: LC_PCAT
+# @ECLASS-VARIABLE: LEECHCRAFT_PLUGIN_CATEGORY
+# @DEFAULT-UNSET
 # @DESCRIPTION:
 # Set this to the category of the plugin, if any.
-: ${LC_PCAT:=}
+: ${LEECHCRAFT_PLUGIN_CATEGORY:=}
 
-if [ "${LC_PCAT+x}" != "x" ]; then
-	CMAKE_USE_DIR="${S}/src/plugins/${LC_PCAT}/${PN#leechcraft-}"
+if [ "${LEECHCRAFT_PLUGIN_CATEGORY+x}" != "x" ]; then
+	CMAKE_USE_DIR="${S}/src/plugins/${LEECHCRAFT_PLUGIN_CATEGORY}/${PN#leechcraft-}"
+elif [[ ${PN} != "leechcraft-core" ]]; then
+	CMAKE_USE_DIR="${S}/src/plugins/${PN#leechcraft-}"
 else
-	if [[ ${PN} != "leechcraft-core" ]]; then
-		CMAKE_USE_DIR="${S}/src/plugins/${PN#leechcraft-}"
-	else
-		CMAKE_USE_DIR="${S}/src"
-	fi
+	CMAKE_USE_DIR="${S}/src"
 fi
 
 # @FUNCTION: leechcraft_src_configure
