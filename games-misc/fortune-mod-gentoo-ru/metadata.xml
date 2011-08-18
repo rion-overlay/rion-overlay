@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>spamslepnoga@inbox.ru</email></maintainer>
+  <maintainer>
+  <email>semen.maryasin@gmail.com</email>
+ <description></description> 
+</maintainer>
+ <longdescription>Fortune database of quotes from gentoo.ru forum and
+ gentoo@conference.gentoo.ru and more russian gentoo resourses</longdescription> 
+</pkgmetadata>
