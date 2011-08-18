@@ -23,11 +23,11 @@ case ${EAPI:-0} in
 	*) die "Unknown EAPI, Bug eclass maintainers." ;;
 esac
 
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
-	EGIT_PROJECT="leechcraft-${PV}"
+	EGIT_PROJECT="leechcraft"
 
 	inherit git-2
 else
@@ -37,16 +37,22 @@ fi
 
 HOMEPAGE="http://leechcraft.org/"
 LICENSE="GPL-3"
-CMAKE_MIN_VERSION="2.8"
 
 EXPORT_FUNCTIONS src_configure
 
-# Set ${S} variable
+# @ECLASS-VARIABLE: LC_PCAT
+# @DESCRIPTION:
+# Set this to the category of the plugin, if any.
+: ${LC_PCAT:=}
 
-if [[ ${PN} != "leechcraft-core" ]]; then
-	CMAKE_USE_DIR="${S}/src/plugins/${PN#leechcraft-}"
+if [ "${LC_PCAT+x}" != "x" ]; then
+	CMAKE_USE_DIR="${S}/src/plugins/${LC_PCAT}/${PN#leechcraft-}"
 else
-	CMAKE_USE_DIR="${S}/src"
+	if [[ ${PN} != "leechcraft-core" ]]; then
+		CMAKE_USE_DIR="${S}/src/plugins/${PN#leechcraft-}"
+	else
+		CMAKE_USE_DIR="${S}/src"
+	fi
 fi
 
 # @FUNCTION: leechcraft_src_configure
@@ -55,12 +61,6 @@ fi
 # Selects correct build type for LeechCraft sources.
 
 leechcraft_src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
-
 	cmake-utils_src_configure
 }
 
