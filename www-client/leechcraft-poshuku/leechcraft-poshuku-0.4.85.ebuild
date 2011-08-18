@@ -24,12 +24,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
-
 	local mycmakeargs="$(cmake-utils_use_enable idn IDN)"
 
 	cmake-utils_src_configure
