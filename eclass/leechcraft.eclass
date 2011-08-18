@@ -44,7 +44,7 @@ LICENSE="GPL-3"
 # Set this to the category of the plugin, if any.
 : ${LEECHCRAFT_PLUGIN_CATEGORY:=}
 
-if [[ ${LEECHCRAFT_PLUGIN_CATEGORY+x} != "x" ]]; then
+if [[ -n "${LEECHCRAFT_PACKAGE_CATEGORY}" ]]; then
 	CMAKE_USE_DIR="${S}/src/plugins/${LEECHCRAFT_PLUGIN_CATEGORY}/${PN#leechcraft-}"
 elif [[ ${PN} != "leechcraft-core" ]]; then
 	CMAKE_USE_DIR="${S}/src/plugins/${PN#leechcraft-}"
