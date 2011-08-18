@@ -38,15 +38,13 @@ fi
 HOMEPAGE="http://leechcraft.org/"
 LICENSE="GPL-3"
 
-EXPORT_FUNCTIONS src_configure
-
 # @ECLASS-VARIABLE: LEECHCRAFT_PLUGIN_CATEGORY
 # @DEFAULT-UNSET
 # @DESCRIPTION:
 # Set this to the category of the plugin, if any.
 : ${LEECHCRAFT_PLUGIN_CATEGORY:=}
 
-if [ "${LEECHCRAFT_PLUGIN_CATEGORY+x}" != "x" ]; then
+if [[ ${LEECHCRAFT_PLUGIN_CATEGORY+x} != "x" ]]; then
 	CMAKE_USE_DIR="${S}/src/plugins/${LEECHCRAFT_PLUGIN_CATEGORY}/${PN#leechcraft-}"
 elif [[ ${PN} != "leechcraft-core" ]]; then
 	CMAKE_USE_DIR="${S}/src/plugins/${PN#leechcraft-}"
