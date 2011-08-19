@@ -5,15 +5,18 @@
 EAPI="4"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
-inherit autotools-utils
+EGIT_HAS_SUBMODULES=yes
+
+inherit autotools-utils git-2 autotools
 
 DESCRIPTION="Fedora bootstrap scripts"
 HOMEPAGE="http://people.redhat.com/~rjones/febootstrap/"
-SRC_URI="http://people.redhat.com/~rjones/febootstrap/files/${P}.tar.gz"
+EGIT_REPO_URI="git://git.annexia.org/git/febootstrap.git"
+EGIT_PROJECT="febootstrap"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="dev-lang/ocaml[ocamlopt]
@@ -27,5 +30,6 @@ RDEPEND="dev-lang/ocaml[ocamlopt]
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	./gnulib/gnulib-tool --update
 	eautoreconf
 }

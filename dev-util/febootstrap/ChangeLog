@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*febootstrap-9999 (19 Aug 2011)
+*febootstrap-3.8 (19 Aug 2011)
+
+  19 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  febootstrap-3.7.ebuild, +febootstrap-3.8.ebuild, +febootstrap-9999.ebuild:
+  fix more typo,bimp and add live ebuild
+
 *febootstrap-3.4 (30 Apr 2011)
 
   30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>

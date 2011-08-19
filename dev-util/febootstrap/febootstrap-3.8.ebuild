@@ -25,7 +25,3 @@ RDEPEND="dev-lang/ocaml[ocamlopt]
 	>=sys-apps/yum-3.2.21"
 
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	eautoreconf
-}
