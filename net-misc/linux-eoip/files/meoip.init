@@ -1,0 +1,45 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	local IFACE=${RC_SVCNAME#*.}
+	local IFVAR=$(shell_var "${IFACE}")
+
+	need localmount
+        after bootmisc
+        provide net
+        keyword -jail -prefix -vserver
+
+        case "${IFACE}" in
+                lo|lo0);;
+                *) after net.lo net.lo0;;
+        esac
+
+        if [ "$(command -v "depend_${IFVAR}")" = "depend_${IFVAR}" ]; then
+                depend_${IFVAR}
+        fi
+
+        local dep= prov=
+        for dep in need use before after provide keyword; do
+                eval prov=\$rc_${dep}_${IFVAR}
+                if [ -n "${prov}" ]; then
+                        ${dep} ${prov}
+                fi
+        done
+
+}
+
+start() {
+	einfo "Starting Microtic Etbernet over IP tunnel:"
+	start-stop-daemon --start  -b meoip -- /etc/meoip.cfg
+	eend $?
+}
+
+stop() {
+	
+#killall meoip
+eend $?
+}
+

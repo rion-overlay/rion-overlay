@@ -1,0 +1,33 @@
+--- ramblercontacts_v0.3.2.1030_beta_src/src/config.inc	2011-07-05 10:19:58.000000000 +0400
++++ Rambler-Contacts/src/config.inc	2011-07-07 19:26:49.024268215 +0400
+@@ -7,13 +7,17 @@
+ #Configurable values
+ isEmpty(INSTALL_PREFIX) {
+   win32:INSTALL_PREFIX   = "c:"
+-  unix:!macx INSTALL_PREFIX   = /usr/local
++  unix:!macx {
++    INSTALL_PREFIX   = /usr/local
++  }
+   macx: INSTALL_PREFIX   = /Applications
+ }
+ 
+ isEmpty(INSTALL_APP_DIR) {
+   win32:INSTALL_APP_DIR  = ramblercontacts
+-  unix:!macx INSTALL_APP_DIR  = ramblercontacts
++  unix:!macx {
++    INSTALL_APP_DIR  = ramblercontacts
++  }
+   macx: INSTALL_APP_DIR  = ramblercontacts.app
+ }
+ 
+@@ -29,7 +33,9 @@
+ 
+ isEmpty(INSTALL_RES_DIR) {
+   win32:INSTALL_RES_DIR  = .
+-  unix:!macx INSTALL_RES_DIR  = share
++  unix:!macx {
++    INSTALL_RES_DIR  = share
++  }
+   macx: INSTALL_RES_DIR  = Resources
+ }
+ 
