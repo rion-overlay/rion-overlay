@@ -1,41 +1,39 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: Exp $
 
 EAPI=3
 
 PYTHON_DEPEND="python? 2:2.6"
-RESTRICT="userpriv"
 
 inherit python multilib pam linux-info autotools-utils
 
-DESCRIPTION="System Security Services Daemon - provide access to identity and authentication"
+DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="http://fedorahosted.org/sssd/"
 SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
-IUSE="nls doc test +nscd +locator openssl logrotate python static-libs selinux"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc +locator logrotate nls openssl python selinux static-libs test"
 
 COMMON_DEP="virtual/pam
 	dev-libs/popt
+	>=dev-libs/libunistring-0.9.3
 	>=dev-libs/ding-libs-0.1.2
-	sys-libs/talloc
-	>=sys-libs/tdb-1.1.3
+	>=sys-libs/talloc-2.0
+	sys-libs/tdb
 	sys-libs/tevent
-	>=sys-libs/ldb-0.9.3
+	sys-libs/ldb
 	>=net-nds/openldap-2.4.19
 	dev-libs/libpcre
-	dev-libs/libunistring
-	app-crypt/mit-krb5
-	net-dns/c-ares
+	>=app-crypt/mit-krb5-1.9.1
+	>=net-dns/c-ares-1.7.4
 	openssl? ( dev-libs/openssl )
-	!openssl? ( dev-libs/nss )
-	nscd? ( sys-libs/glibc )
-	selinux? ( sys-libs/libselinux sys-libs/libsemanage )
+	!openssl? ( >=dev-libs/nss-3.12.9 )
+	selinux? ( >=sys-libs/libselinux-2.0.94 >=sys-libs/libsemanage-2.0.45 )
 	net-dns/bind-tools
-	dev-libs/cyrus-sasl[kerberos]
+	dev-libs/cyrus-sasl
 	sys-apps/dbus
 	>=sys-devel/gettext-0.17
 	virtual/libintl
@@ -44,13 +42,12 @@ COMMON_DEP="virtual/pam
 RDEPEND="${COMMON_DEP}"
 DEPEND="${COMMON_DEP}
 	test? ( dev-libs/check )
-	dev-libs/libxslt
+	>=dev-libs/libxslt-1.1.26
 	app-text/docbook-xml-dtd:4.4
 	doc? ( app-doc/doxygen )"
 
 CONFIG_CHECK="~KEYS"
 AUTOTOOLS_IN_SOURCE_BUILD=1
-DOCS=(README)
 
 pkg_setup(){
 	python_set_active_version 2
@@ -58,50 +55,44 @@ pkg_setup(){
 	linux-info_pkg_setup
 }
 
-src_paarepare() {
-	eautoreconf
-}
-
 src_configure(){
-
 	local myeconfargs=(
-		--localstatedir=/"${EPREFIX}"/var \
-		--enable-nsslibdir=/"${EPREFIX}"/$(get_libdir) \
-		--enable-pammoddir=/"${EPREFIX}"/$(getpam_mod_dir) \
-		$(use_with selinux) \
-		$(use_with selinux semanage) \
-		--with-libnl \
-		$(use_with python python-bindings) \
-		$(use_with nscd) \
-		$(use_enable locator krb5-locator-plugin) \
-		$(use_enable openssl crypto) \
-		$(use_enable nls) )
+		--localstatedir="${EPREFIX}"/var
+		--enable-nsslibdir="${EPREFIX}"/$(get_libdir)
+		--enable-pammoddir="${EPREFIX}"/$(getpam_mod_dir)
+		$(use_with selinux)
+		$(use_with selinux semanage)
+		--with-libnl
+		--with-ldb-lib-dir="${EPREFIX}"/usr/$(get_libdir)/ldb/modules/ldb
+		$(use_with python python-bindings)
+		--without-nscd
+		$(use_enable locator krb5-locator-plugin)
+		$(use_enable openssl crypto)
+		$(use_enable nls ) )
 
 	autotools-utils_src_configure
 }
 
 src_install(){
-
 	autotools-utils_src_install
 
-	rm  "${D}/lib64/"libnss_sss.la || die
-	rm "${D}"/usr/lib64/ldb/modules/ldb/memberof.la || die
-	insinto /"${EPREFIX}"/etc/sssd
+	rm "${ED}/$(get_libdir)/"libnss_sss.la || die
+	rm "${ED}/usr/$(get_libdir)/"ldb/modules/ldb/*.la || die
+
+	insinto /etc/sssd
 	insopts -m600
 	doins "${S}"/src/examples/sssd.conf
 
 	if use logrotate; then
-		insinto /"${EPREFIX}"/etc/logrotate.d
+		insinto /etc/logrotate.d
 		insopts -m644
 		newins "${S}"/src/examples/logrotate sssd
 	fi
 
 	if use python; then
 		python_clean_installation_image
-
 		python_convert_shebangs 2 "${ED}$(python_get_sitedir)/"*.py
 	fi
-
 }
 
 src_test() {
@@ -109,32 +100,11 @@ src_test() {
 }
 
 pkg_postinst(){
-	ewarn "SSSD will not start if you do not configure any domains."
-
-	elog "You must change your /etc/pam.d if you want to use sssd authorization via PAM"
-	elog "Changes look like these:"
-	elog "auth        sufficient  pam_unix.so try_first_pass likeauth nullok"
-	elog "auth        sufficient  pam_sss.so use_first_pass"
-	elog "auth        required    pam_deny.so"
-	echo
-	elog "account     required    pam_unix.so"
-	elog "account     [default=bad success=ok user_unknown=ignore] pam_sss.so"
-	elog "account     required    pam_permit.so"
-	echo
-	elog "password    sufficient  pam_unix.so try_first_pass use_authtok nullok sha512 shadow"
-	elog "password    sufficient  pam_sss.so use_authtok"
-	elog "password    required    pam_deny.so"
-	elog
-	elog "session     sufficient  pam_sss.so"
-	elog "session     required    pam_unix.so"
-	echo
-	echo
-	elog "Also, if you want use sssd with NSS, you must add 'sss' to entries in"
-	elog "/etc/nsswitch.conf. For exmaple:"
-	elog "passwd:      compat sss"
+	elog "You must set up sssd.conf (default installed into /etc/sssd)"
+	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
+	elog "features. Please see howto in	http://fedorahosted.org/sssd/wiki/HOWTO_Configure_1_0_2"
 
 	use python && python_need_rebuild
-
 	use python && python_mod_optimize SSSDConfig.py ipachangeconf.py
 }
 
