@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit qt4-r2
+inherit multilib qt4-r2
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework."
 HOMEPAGE="http://code.google.com/p/qxmpp/"
