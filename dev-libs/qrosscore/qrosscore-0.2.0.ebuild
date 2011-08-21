@@ -20,14 +20,3 @@ DEPEND=">=x11-libs/qt-core-4.6
 		>=x11-libs/qt-gui-4.6
 		>=x11-libs/qt-script-4.6"
 RDEPEND="${DEPEND}"
-
-CMAKE_MIN_VERSION="2.8"
-
-src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
-	cmake-utils_src_configure
-}

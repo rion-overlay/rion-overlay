@@ -5,9 +5,9 @@
 EAPI=3
 
 EGIT_REPO_URI="git://github.com/0xd34df00d/Qross.git"
-EGIT_PROJECT="qross-${PV}"
+EGIT_PROJECT="qross"
 
-inherit cmake-utils git
+inherit cmake-utils git-2
 
 DESCRIPTION="KDE-free version of Kross (core libraries and Qt Script backend)."
 HOMEPAGE="http://github.com/0xd34df00d/Qross"
@@ -23,13 +23,3 @@ DEPEND=">=x11-libs/qt-core-4.6
 RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${S}/src/qross"
-CMAKE_MIN_VERSION="2.8"
-
-src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
-	cmake-utils_src_configure
-}
