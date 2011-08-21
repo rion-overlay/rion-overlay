@@ -4,17 +4,10 @@
 <herd>no-herd</herd>
 <maintainer>
   <email>sterkrig@myopera.com</email>
-
-
-<description>An eselect module to manage /etc/X11/xorg.conf symlink.</description> 
 </maintainer>
 <upstream>
  <maintainer status="unknown">
-	<email>sterkrig@myopera.com</email>
+  <email>sterkrig@myopera.com</email>
  </maintainer>
 </upstream>
-
- <longdescription>Long description of the package</longdescription> 
-<use>
-</use>
 </pkgmetadata>
