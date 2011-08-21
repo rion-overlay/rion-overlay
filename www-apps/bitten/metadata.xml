@@ -2,7 +2,7 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>sterkrig@home.no</email>
+  <email>sterkrig@myopera.com</email>
  <description>Trac-based continuous integration framework</description>
 </maintainer>
 <use>
