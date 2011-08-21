@@ -3,6 +3,5 @@
 <herd>no-herd</herd>
 <maintainer>
   <email>sterkrig@myopera.com</email>
- <description>Small C++ library for geographic and geodesic calculations</description>
 </maintainer>
 </pkgmetadata>
