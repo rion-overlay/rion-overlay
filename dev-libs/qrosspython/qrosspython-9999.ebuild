@@ -8,7 +8,7 @@ EGIT_REPO_URI="git://github.com/0xd34df00d/Qross.git"
 EGIT_PROJECT="qross-${PV}"
 PYTHON_DEPEND="2"
 
-inherit python cmake-utils git
+inherit python cmake-utils git-2
 
 DESCRIPTION="Python scripting backend for Qross."
 HOMEPAGE="http://github.com/0xd34df00d/Qross"
@@ -22,13 +22,3 @@ DEPEND="=dev-libs/qrosscore-${PV}"
 RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${S}/src/bindings/python/qrosspython"
-CMAKE_MIN_VERSION="2.8"
-
-src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
-	cmake-utils_src_configure
-}
