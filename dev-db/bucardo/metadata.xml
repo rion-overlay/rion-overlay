@@ -3,6 +3,5 @@
 <herd>no-herd</herd>
 <maintainer>
   <email>sterkrig@myopera.com</email>
- <description>Asynchronous PostgreSQL replication system</description>
 </maintainer>
 </pkgmetadata>
