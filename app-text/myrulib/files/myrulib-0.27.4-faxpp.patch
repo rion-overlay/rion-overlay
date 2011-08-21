@@ -1,0 +1,29 @@
+diff --git a/configure b/configure
+index 0b74388..5255644 100755
+--- a/configure
++++ b/configure
+@@ -2185,7 +2185,6 @@ WXWIDGETS_VERSION=2.8.10
+ 
+ 
+ 
+-ac_config_headers="$ac_config_headers faxpp/config.h:3rdparty/faxpp/src/config.h.in"
+ 
+ 
+ ac_aux_dir=
+@@ -9128,16 +9127,6 @@ _ACEOF
+ 
+ cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
+ 
+-# Handling of arguments.
+-for ac_config_target in $ac_config_targets
+-do
+-  case $ac_config_target in
+-    "faxpp/config.h") CONFIG_HEADERS="$CONFIG_HEADERS faxpp/config.h:3rdparty/faxpp/src/config.h.in" ;;
+-    "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+-
+-  *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5 ;;
+-  esac
+-done
+ 
+ 
+ # If the user did not use the arguments to specify the items to instantiate,
