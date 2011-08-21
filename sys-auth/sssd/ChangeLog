@@ -2,6 +2,14 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.6.0.ebuild,
+  metadata.xml:
+  drop openssl flag
+
+  20 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.6.0.ebuild,
+  metadata.xml:
+  sync to tree
+
   15 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -sssd-1.5.11.ebuild,
   -sssd-1.5.12.ebuild:
   in main tree now
