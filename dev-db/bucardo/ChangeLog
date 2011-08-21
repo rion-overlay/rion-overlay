@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Aug 2011; Nikolaj Sjujskij <sterkrig@home.no> metadata.xml:
+  Fix metadata, drop old version
+
 *bucardo-4.4.4 (16 May 2011)
 
   16 May 2011; Nickolaj Stjujsckij <sterkrig@home.no> +bucardo-4.4.4.ebuild:
