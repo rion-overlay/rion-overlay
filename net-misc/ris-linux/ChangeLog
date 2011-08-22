@@ -1,0 +1,10 @@
+# ChangeLog for net-misc/ris-linux
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*ris-linux-0.4 (24 Apr 2011)
+
+  24 Apr 2011; <slep@gentoo.org> +ris-linux-0.4.ebuild, +files/binlsrv.confd,
+  +files/binlsrv.initd, +files/setup.py, +metadata.xml:
+  initial commit
+
