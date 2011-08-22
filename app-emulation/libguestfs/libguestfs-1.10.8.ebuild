@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	virtual/perl-Getopt-Long
 	dev-perl/Sys-Virt
 	>=app-misc/hivex-1.2.1[perl]
+	dev-libs/libconfig
 	dev-perl/libintl-perl
 	dev-perl/String-ShellQuote
 	dev-libs/libpcre
@@ -107,7 +108,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch  "${FILESDIR}/1.8"/1.8.7/*.patch
+	epatch  "${FILESDIR}/1.10"/*.patch
 	java-pkg-opt-2_src_prepare
 	eautoreconf
 
