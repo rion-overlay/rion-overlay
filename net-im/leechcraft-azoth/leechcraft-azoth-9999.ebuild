@@ -11,7 +11,7 @@ DESCRIPTION="Azoth, the modular IM client for LeechCraft."
 SLOT="0"
 KEYWORDS=""
 IUSE="debug +acetamide +adiumstyles +autoidler +autopaste +chathistory +crypt
-		+depester +embedmedia +herbicide +hili +juick +lastseen metacontacts
+		+depester +embedmedia +herbicide +hili +juick +lastseen +metacontacts
 		+modnok +nativeemoticons +p100q +rosenthal +standardstyles +xoox
 		+xtazy"
 
@@ -19,6 +19,7 @@ DEPEND="=net-misc/leechcraft-core-${PV}
 		x11-libs/qt-webkit
 		x11-libs/qt-multimedia
 		xoox? ( =net-libs/qxmpp-9999[extras] media-libs/speex )
+		xtazy? ( x11-libs/qt-dbus )
 		crypt? ( app-crypt/qca app-crypt/qca-gnupg )"
 RDEPEND="${DEPEND}
 	modnok? (
