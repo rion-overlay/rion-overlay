@@ -20,7 +20,7 @@ S="${WORKDIR}"
 
 src_compile() {
 	mv gentoo-ru-${PV} gentoo-ru || die
-	${EROOT}/usr/bin/strfile gentoo-ru || die
+	/usr/bin/strfile gentoo-ru || die
 }
 
 src_install() {

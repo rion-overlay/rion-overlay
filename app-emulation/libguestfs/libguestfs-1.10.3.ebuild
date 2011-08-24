@@ -107,7 +107,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch  "${FILESDIR}/1.8"/*.patch
+	epatch  "${FILESDIR}/1.8"/1.8.7/*.patch
 	java-pkg-opt-2_src_prepare
 	eautoreconf
 
