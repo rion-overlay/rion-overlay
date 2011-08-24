@@ -1,0 +1,108 @@
+# ChangeLog for app-emulation/packettracer
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-521-r3.ebuild:
+  drop old
+
+  17 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  packettracer-521-r3.ebuild:
+  small fix
+
+*packettracer-5218 ( 11 Jun 2010 )
+
+  11 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +packettracer-5218.ebuild:
+  minor version update
+
+  05 Apr 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-521-r2.ebuild:
+  drop old packettracer ebuild
+
+  22 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  packettracer-521-r3.ebuild:
+  pva rewiev #2 :)
+
+  17 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  packettracer-521-r3.ebuild:
+  more fix in app-emulation/packettracer tnx Mellon
+
+  15 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  packettracer-521-r3.ebuild:
+  more install fix
+
+  15 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  packettracer-521-r3.ebuild:
+  neutral doc use flag
+
+  15 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +packettracer-521-r3.ebuild:
+  more fix for pva review
+
+  01 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-521.ebuild, -packettracer-521-r1.ebuild,
+  +packettracer-521-r2.ebuild:
+  fix syntax, thx Mellon ( gentoo.ru )
+
+  07 Feb 2010; <slep@gentoo.org> -packettracer-52.ebuild,
+  +packettracer-521-r1.ebuild:
+  version bump
+
+  19 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +packettracer-521.ebuild:
+  new version
+
+*packettracer-521
+
+  06 Dec 2009; A. Vinogradov <spamslepnoga@inbox.ru> packettracer-52.ebuild:
+  mark stable on x86
+
+  21 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-51-r4.ebuild:
+
+
+  deleted: packettracer-51-r4.ebuild
+
+
+  20 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> packettracer-52.ebuild:
+  fix .desktop file
+
+  09 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  fix longdescprition in metadata
+
+  07 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-51-r3.ebuild:
+  remove old revision
+
+*packettracer-51-r4 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +packettracer-51-r4.ebuild:
+  version bump
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru> metadata.xml:
+  New USE in metadat.xml
+
+*packettracer-52 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-51-r2.ebuild, +packettracer-52.ebuild:
+  New version,rewrite code, new USE
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  -packettracer-51-r2.ebuild:
+  remove old ebuld revision
+
+*packettracer-51 (24 Jul 2009)
+ 
+ 24 Jul 2009; A.Vinogradov <spamslepnoga@inbox.ru>
+  new ebuild, add ~amd64
+  +packettracer-51-r3.ebuild
+
+
+
+ 24 Jul 2009; A.Vinogradov <spamslepnoga@inbox.ru>
+ new ebuild:
+ +packettracer-51-r2.ebuild
+ +metadata.xml
