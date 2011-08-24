@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="Extremely flexible and customizable notifications framework."
+DESCRIPTION="Flexible and customizable notifications framework for LeechCraft."
 
 SLOT="0"
 KEYWORDS=""
