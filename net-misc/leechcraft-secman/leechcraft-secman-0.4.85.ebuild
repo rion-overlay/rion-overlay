@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="SecMan is a security and personal data manager for LeechCraft."
+DESCRIPTION="Security and personal data manager for LeechCraft."
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

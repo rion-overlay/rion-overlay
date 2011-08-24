@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="Kinotify, fancy notifications for LeechCraft."
+DESCRIPTION="Fancy visual notifications for LeechCraft."
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
