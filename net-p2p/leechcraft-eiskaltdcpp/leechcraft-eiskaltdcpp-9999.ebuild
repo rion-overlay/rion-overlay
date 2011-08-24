@@ -32,12 +32,6 @@ DEPEND="=net-misc/leechcraft-core-${PV}
 		dev-util/pkgconfig"
 
 src_configure() {
-	if use debug ; then
-		CMAKE_BUILD_TYPE="RelWithDebInfo"
-	else
-		CMAKE_BUILD_TYPE="Release"
-	fi
-
 	local mycmakeargs=(
 		"$(cmake-utils_use lua LUA_SCRIPT)"
 		"$(cmake-utils_use lua WITH_LUASCRIPTS)"

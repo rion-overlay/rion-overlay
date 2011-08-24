@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>no-herd</herd>
-	<maintainer>
-		<email>0xd34df00d@gmail.com</email>
-		<name>G. Rudoy</name>
-	</maintainer>
-	<longdescription lang="en">
-		leechcraft-eiskaltdcpp is the EiskaltDC++ DC client ported to
-		LeechCraft.
-	</longdescription>
+	<herd>leechcraft</herd>
 	<use>
 		<flag name="emoticons">Install emoticon packs</flag>
 		<flag name="upnp">Forward ports using UPnP</flag>
