@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="Plugin for LeechCraft for quick navigation between tabs."
+DESCRIPTION="Quick navigation between tabs in LeechCraft."
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
