@@ -14,3 +14,9 @@ IUSE="debug"
 
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}"
+
+pkg_postinst() {
+	einfo " + Advanced Notifications supports playing sounds on various"
+	einfo "   events. Install some media playback plugin to enjoy this"
+	einfo "   feature (media-video/leechcraft-lmp will do, for example)."
+}
