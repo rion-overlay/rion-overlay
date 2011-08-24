@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/www-client/leechcraft-poshuku/leechcraft-poshuku-9999.ebuild,v 1.1 2011/08/23 19:16:49 maksbotan Exp $
 
-EAPI="2"
+EAPI="4"
 
-inherit confutils leechcraft
+inherit leechcraft
 
 DESCRIPTION="Poshuku, the full-featured web browser plugin for LeechCraft."
 
@@ -20,9 +20,7 @@ DEPEND="=net-misc/leechcraft-core-${PV}[postgres?,sqlite?]
 RDEPEND="${DEPEND}
 		virtual/leechcraft-downloader-http"
 
-pkg_setup() {
-	confutils_require_any postgres sqlite
-}
+REQUIRED_USE="|| ( sqlite postgres )"
 
 src_configure() {
 	local mycmakeargs="
