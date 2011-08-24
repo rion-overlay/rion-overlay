@@ -18,7 +18,7 @@ IUSE="kvm vnc spice"
 DEPEND="${RDEPEND}"
 
 RDEPEND="!kvm? ( app-emulation/qemu )
-	kvm? ( || ( app-emulation/qemu-kvm[spice?] app-emulation/qemu-kvm-spice ) )
+	kvm? ( app-emulation/qemu-kvm[spice?] )
 	vnc? ( net-libs/libvncserver )
 	x11-libs/qt-gui:4
 	x11-libs/qt-test:4

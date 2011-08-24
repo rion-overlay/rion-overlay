@@ -1,8 +1,0 @@
-# ChangeLog for dev-perl/Net-IMAP-Simple-SSL
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  03 Apr 2011; A. Vinogradov <spamslepnoga@inbox.ru>
-  Net-IMAP-Simple-SSL-1.3.ebuild:
-  keyword ~x86
-

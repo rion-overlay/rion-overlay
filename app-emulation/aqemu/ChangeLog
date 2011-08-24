@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> aqemu-9999.ebuild:
+  fix depends in 9999
+
+  23 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -aqemu-0.8.1-r2.ebuild:
+  drop old ebuild
+
 *aqemu-0.8.1-r2 (27 Jun 2011)
 
   27 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
