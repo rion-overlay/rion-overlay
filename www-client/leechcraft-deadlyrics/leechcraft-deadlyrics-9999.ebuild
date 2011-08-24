@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="DeadLyrics searches for song lyrics and displays them in LeechCraft."
+DESCRIPTION="Searches for song lyrics and displays them in LeechCraft."
 
 SLOT="0"
 KEYWORDS=""
