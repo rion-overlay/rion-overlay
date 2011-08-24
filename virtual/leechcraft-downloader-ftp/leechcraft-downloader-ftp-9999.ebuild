@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-DESCRIPTION="Virtual for plugins providing FTP downloading"
+DESCRIPTION="Virtual for LeechCraft plugins providing FTP support."
 HOMEPAGE=""
 SRC_URI=""
 

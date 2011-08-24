@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-DESCRIPTION="Virtual for plugins providing BitTorrent downloading"
+DESCRIPTION="Virtual for LeechCraft plugins providing BitTorrent support."
 HOMEPAGE=""
 SRC_URI=""
 

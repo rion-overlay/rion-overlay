@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="SeekThru, OpenSearch client for LeechCraft."
+DESCRIPTION="OpenSearch support for LeechCraft."
 
 SLOT="0"
 KEYWORDS=""

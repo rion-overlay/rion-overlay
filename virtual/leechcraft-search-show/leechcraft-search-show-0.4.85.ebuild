@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-DESCRIPTION="Virtual for plugins that can provide search UI and make use of LC's search architecture"
+DESCRIPTION="Virtual for LeechCraft plugins providing UI for search plugins."
 HOMEPAGE=""
 SRC_URI=""
 

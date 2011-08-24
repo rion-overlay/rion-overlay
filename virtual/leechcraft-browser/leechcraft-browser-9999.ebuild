@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-DESCRIPTION="Virtual for plugins providing a web browser"
+DESCRIPTION="Virtual for LeechCraft plugins providing a web browser."
 HOMEPAGE=""
 SRC_URI=""
 
