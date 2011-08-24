@@ -1,19 +1,12 @@
 # ChangeLog for net-im/leechcraft-azoth
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/net-im/leechcraft-azoth/ChangeLog,v 1.1 2011/08/23 19:46:02 maksbotan Exp $
 
-  12 Feb 2011; G. Rudoy <0xd34df00d@gmail.com> leechcraft-azoth-9999.ebuild,
-  metadata.xml:
-  Added flags for acetamide and standardstyles to leechcraft-azoth.
+*leechcraft-azoth-9999 (23 Aug 2011)
+*leechcraft-azoth-0.4.85 (23 Aug 2011)
 
-  25 Jan 2011; G. Rudoy <0xd34df00d@gmail.com> leechcraft-azoth-9999.ebuild:
-  Azoth Xoox migrated to QXmpp.
+  23 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.4.85.ebuild, +leechcraft-azoth-9999.ebuild,
+  +metadata.xml:
+  Copy net-im/leechcraft-azoth from rion-overlay, thanks to 0xd34df00d
 
-  10 Jan 2011; G. Rudoy <0xd34df00d@gmail.com> leechcraft-azoth-9999.ebuild:
-  Updated Azoth ebuild to depend on Gloox if Xoox is enabled.
-
-  27 Dec 2010; G. Rudoy <0xd34df00d@gmail.com>
-  +leechcraft-azoth-9999.ebuild:
-  Azoth IM core.
-
-*leechcraft-azoth-9999
