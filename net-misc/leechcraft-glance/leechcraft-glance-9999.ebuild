@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="Glance, quick thumbnailed overview of opened tabs."
+DESCRIPTION="Glance, quick thumbnailed overview of opened tabs in LeechCraft."
 
 SLOT="0"
 KEYWORDS=""
