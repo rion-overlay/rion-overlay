@@ -6,7 +6,7 @@ EAPI="2"
 
 inherit leechcraft
 
-DESCRIPTION="vGrabber allows to find, stream and save audio and video from VKontakte in LeechCraft."
+DESCRIPTION="Allows to find, stream and save audio and video from VKontakte in LeechCraft."
 
 SLOT="0"
 KEYWORDS=""
@@ -15,3 +15,8 @@ IUSE="debug"
 DEPEND="=net-misc/leechcraft-core-${PV}"
 RDEPEND="${DEPEND}
 		virtual/leechcraft-downloader-http"
+
+pkg_postinst() {
+	einfo "For streaming to work, a suitable media player plugin is"
+	einfo "needed. For example, media-video/leechcraft-lmp will be just fine."
+}
