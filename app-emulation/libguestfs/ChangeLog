@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libguestfs-1.12.4 (25 Aug 2011)
+
+  25 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  files/1.12/configure.ac_all.patch, -libguestfs-1.12.3.ebuild,
+  +libguestfs-1.12.4.ebuild:
+  bump libguest
+
   23 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -files/1.8/1.8.7/configure.ac_all.patch,
   -files/1.8/1.8.7/disable_php_in_makefile.patch, -libguestfs-1.8.7.ebuild,

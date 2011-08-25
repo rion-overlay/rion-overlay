@@ -105,7 +105,7 @@ src_unpack() {
 	unpack  ${SORC_INIRD}.xz || die
 	unpack ${SORC_KERN}.xz || die
 
-#	cp "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
+	cp "${WORKDIR}"/image/* "${S}"/appliance/ || die
 
 }
 
@@ -119,7 +119,7 @@ src_prepare() {
 	fi
 
 
-#	epatch  "${FILESDIR}/1.12"/configure.ac_all.patch
+	epatch  "${FILESDIR}/1.12"/*.patch
 	java-pkg-opt-2_src_prepare
 	eautoreconf
 
@@ -129,6 +129,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export vmchannel_test=no
 	econf  \
 		--with-repo=fedora-12 \
 		--disable-appliance \
@@ -178,7 +179,7 @@ src_install() {
 	rm -fr "${D}/etc"/bash* || die
 
 	insinto /usr/$(get_libdir)/guestfs/
-	doins "${WORKDIR}/image/usr/local/lib/"guestfs/*
+	doins "${WORKDIR}"/image/*
 
 	find "${D}/usr"/$(get_libdir) -name \*.la -delete
 	if use java; then
