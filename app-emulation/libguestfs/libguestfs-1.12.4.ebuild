@@ -8,16 +8,22 @@ WANT_AUTOMAKE="1.11"
 
 JAVA_PKG_OPT_USE="java"
 JAVA_PKG_ALLOW_VM_CHANGE="yes"
-APLANCE_PV="1.7.18"
+
+#APLANCE_PV="1.7.18"
+SORC_KERN="kernel-fc15.2.6.40.guestfish"
+SORC_INIRD="initrd-fc15.2.6.40.guestfish"
+
 PYTHON_DEPEND="python? 2:2.6"
+
 USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
+
 PHP_EXT_NAME="guestfs_php"
 USE_PHP="php5-2 php5-3"
 PHP_EXT_OPTIONAL_USE="php"
 
 MAIN_ECLAS="autotools bash-completion confutils versionator java-pkg-2
-java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2 ghc-package"
+java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2"
 
 inherit ${MAIN_ECLAS}
 
@@ -29,12 +35,13 @@ MY_PV_2="$(get_version_component_range 2)"
 DESCRIPTION="Libguestfs is a library for accessing and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
 SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
-	http://rion-overlay.googlecode.com/files/${PN}-${APLANCE_PV}-x86_64.tar.gz"
+	http://rion-overlay.googlecode.com/files/${SORC_KERN}.xz
+	http://rion-overlay.googlecode.com/files/${SORC_INIRD}.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
+IUSE="fuse +ocaml perl python ruby readline nls php debug doc nls source javadoc"
 
 COMMON_DEPEND="
 	virtual/perl-Getopt-Long
@@ -47,12 +54,9 @@ COMMON_DEPEND="
 	dev-lang/perl
 	virtual/cdrtools
 	>=app-emulation/qemu-kvm-0.13
-	sys-apps/fakeroot
 	sys-apps/file
 	app-emulation/libvirt
 	dev-libs/libxml2:2
-	=dev-util/febootstrap-3*
-	>=sys-apps/fakechroot-2.8
 	app-admin/augeas
 	sys-fs/squashfs-tools
 	perl? ( virtual/perl-ExtUtils-MakeMaker )
@@ -61,11 +65,12 @@ COMMON_DEPEND="
 	doc? ( dev-libs/libxml2 )
 	ocaml? ( dev-lang/ocaml
 		dev-ml/xml-light
-		dev-ml/findlib )
+		dev-ml/findlib
+		dev-ml/pcre-ocaml )
 	ruby? ( dev-lang/ruby
 			dev-ruby/rake )
 	java? ( virtual/jre )
-	haskell? ( dev-lang/ghc )"
+	"
 
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
@@ -88,7 +93,7 @@ pkg_setup() {
 	confutils_use_depend_all javadoc java
 
 	ruby-ng_pkg_setup
-	use haskell && ghc-package_pkg_setup
+#	use haskell && ghc-package_pkg_setup
 }
 
 src_unpack() {
@@ -97,8 +102,14 @@ src_unpack() {
 	cd "${WORKDIR}"
 	mkdir image
 	cd image || die
-	unpack libguestfs-${APLANCE_PV}-x86_64.tar.gz
-	cp "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
+	unpack  ${SORC_INIRD}.xz || die
+	unpack ${SORC_KERN}.xz || die
+
+	cp "${WORKDIR}"/image/* "${S}"/appliance/ || die
+
+}
+
+src_prepare() {
 
 	if use php; then
 		local slot orig_s="${PHP_EXT_S}"
@@ -106,10 +117,9 @@ src_unpack() {
 			cp -r "${orig_s}" "${WORKDIR}/${slot}"
 		done
 	fi
-}
 
-src_prepare() {
-	epatch  "${FILESDIR}/1.8/${PV}"/*.patch
+
+	epatch  "${FILESDIR}/1.12"/*.patch
 	java-pkg-opt-2_src_prepare
 	eautoreconf
 
@@ -119,6 +129,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export vmchannel_test=no
 	econf  \
 		--with-repo=fedora-12 \
 		--disable-appliance \
@@ -135,7 +146,6 @@ src_configure() {
 		$(use_enable ocaml) \
 		$(use_enable python) \
 		$(use_enable ruby) \
-		$(use_enable haskell) \
 		$(use_with doc po4a) \
 		$(use_with tools) || die
 
@@ -169,7 +179,7 @@ src_install() {
 	rm -fr "${D}/etc"/bash* || die
 
 	insinto /usr/$(get_libdir)/guestfs/
-	doins "${WORKDIR}/image/usr/local/lib/"guestfs/*
+	doins "${WORKDIR}"/image/*
 
 	find "${D}/usr"/$(get_libdir) -name \*.la -delete
 	if use java; then
@@ -193,12 +203,4 @@ src_install() {
 
 pkg_preinst() {
 	java-pkg-opt-2_pkg_preinst
-}
-
-pkg_postinst() {
-	use hackell && ghc-package_pkg_postinst
-}
-
-pkg_prerm() {
-	use hackell && ghc-package_pkg_prerm
 }
