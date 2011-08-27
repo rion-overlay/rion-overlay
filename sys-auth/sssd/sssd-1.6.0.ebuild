@@ -47,6 +47,7 @@ DEPEND="${COMMON_DEP}
 
 CONFIG_CHECK="~KEYS"
 AUTOTOOLS_IN_SOURCE_BUILD=1
+PATCHES=("${FILESDIR}"/allow_xdm.patch)
 
 pkg_setup(){
 	python_set_active_version 2
