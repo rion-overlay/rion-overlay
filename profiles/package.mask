@@ -1,3 +1,10 @@
+# 28 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# In main tree now, mask dev version
+dev-libs/qrosscore::rion
+dev-libs/qrosspython::rion
+net-libs/qxmpp::rion
+
+
 # 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # Need more testing and patch
 =app-emulation/libguestfs-1.12.3
