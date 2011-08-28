@@ -1,8 +1,44 @@
 # 28 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # In main tree now, mask dev version
+# plan to removal in 60 day
 dev-libs/qrosscore::rion
 dev-libs/qrosspython::rion
 net-libs/qxmpp::rion
+app-editors/leechcraft-popishu::rion
+media-video/leechcraft-lmp::rion
+net-analyzer/leechcraft-networkmonitor::rion
+net-ftp/leechcraft-lcftp::rion
+net-im/leechcraft-azoth::rion
+net-misc/leechcraft-advancednotifications::rion
+net-misc/leechcraft-anhero::rion
+net-misc/leechcraft-auscrie::rion
+net-misc/leechcraft-core::rion
+net-misc/leechcraft-cstp::rion
+net-misc/leechcraft-dbusmanager::rion
+net-misc/leechcraft-full::rion
+net-misc/leechcraft-glance::rion
+net-misc/leechcraft-historyholder::rion
+net-misc/leechcraft-kinotify::rion
+net-misc/leechcraft-lackman::rion
+net-misc/leechcraft-newlife::rion
+net-misc/leechcraft-qrosp::rion
+net-misc/leechcraft-secman::rion
+net-misc/leechcraft-summary::rion
+net-misc/leechcraft-tabpp::rion
+net-misc/leechcraft-tabslist::rion
+net-news/leechcraft-aggregator::rion
+net-p2p/leechcraft-bittorrent::rion
+net-p2p/leechcraft-eiskaltdcpp::rion
+virtual/leechcraft-browser::rion
+virtual/leechcraft-downloader-http::rion
+virtual/leechcraft-search-show::rion
+virtual/leechcraft-task-show::rion
+virtual/leechcraft-downloader-bittorrent::rion
+virtual/leechcraft-downloader-ftp::rion
+www-client/leechcraft-deadlyrics::rion
+www-client/leechcraft-poshuku::rion
+www-client/leechcraft-vgrabber::rion
+www-misc/leechcraft-seekthru::rion
 
 
 # 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
