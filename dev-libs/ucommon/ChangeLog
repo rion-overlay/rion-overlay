@@ -1,0 +1,46 @@
+# ChangeLog for dev-libs/ucommon
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*ucommon-5.0.5 (07 Aug 2011)
+
+  07 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +ucommon-5.0.5.ebuild:
+  bump
+
+  16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  ucommon-4.3.3.ebuild:
+  add ~amd64-linux
+
+  16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  ucommon-4.3.3.ebuild:
+  add use block statment
+
+  15 May 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -ucommon-4.0.2.ebuild, -ucommon-4.1.0.ebuild:
+  remove old ebuil
+
+*ucommon-4.3.2 (30 Apr 2011)
+
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +ucommon-4.3.2.ebuild:
+  bump
+
+*ucommon-4.1.0 (24 Jan 2011)
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> +ucommon-4.1.0.ebuild:
+  bump
+
+  03 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> -ucommon-2.0.9.ebuild,
+  -ucommon-3.3.5.ebuild, +ucommon-4.0.2.ebuild, metadata.xml:
+  complete clean ebuild's
+
+*ucommon-3.3.5
+
+  05 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru> +ucommon-3.3.5.ebuild:
+  bump
+
+  14 Mar 2010; <slep@gentoo.org> +ucommon-2.0.9.ebuild,
+  +files/disable_rtf_gen_doxy.patch, +metadata.xml:
+  inirial commit
+
