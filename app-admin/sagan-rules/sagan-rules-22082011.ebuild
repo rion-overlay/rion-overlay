@@ -2,26 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
-
-inherit git-2
+EAPI=3
 
 DESCRIPTION="Rules for Sagan log analyzer"
 HOMEPAGE="http://sagan.softwink.com/"
-EGIT_REPO_URI="https://github.com/beave/sagan-rules.git"
+SRC_URI="http://sagan.softwink.com/rules/sagan-rules-current.tar.gz ->
+${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 PDEPEND="app-admin/sagan"
 
-S="${WORKDIR}"/rules
+S=${WORKDIR}/sagan-rules
 
 src_install() {
 	insinto /etc/sagan-rules
-	doins -r ./* || die
+	doins ./*.config
+	doins ./*rules
 }

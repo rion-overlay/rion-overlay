@@ -2,6 +2,16 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*sagan-rules-22082011 (30 Aug 2011)
+
+  30 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +sagan-rules-22082011.ebuild, sagan-rules-999999999999.ebuild:
+  bump
+
+  30 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  sagan-rules-999999999999.ebuild:
+  migrate live from svn to git
+
   25 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -sagan-rules-10212010.ebuild:
   drop old rules
