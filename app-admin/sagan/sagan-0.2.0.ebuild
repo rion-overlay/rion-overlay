@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="smtp mysql postgres prelude +lognorm libdnet pcap"
 
 DEPEND="dev-util/pkgconfig
-	dev-libs/libpcre"
+	${RDEPEND}"
 
 RDEPEND="dev-libs/libpcre
 	app-admin/sagan-rules
@@ -34,7 +34,6 @@ DOCS=(AUTHORS ChangeLog FAQ INSTALL README NEWS TODO)
 pkg_setup() {
 	enewgroup sagan
 	enewuser sagan -1 -1 /dev/null sagan
-	einfo "user sagan created"
 }
 
 src_configure() {
@@ -87,6 +86,7 @@ pkg_postinst() {
 		ewarn "and create home directory manuallu"
 	fi
 
-	einfo "For configuration please read Sagan HOWTOO"
-	einfo "https://wiki.softwink.com/bin/view/Main/SaganHOWTO"
+	einfo "https://wiki.quadrantsec.com/bin/view/Main/SaganHOWTO"
+	einfo ""
+
 }

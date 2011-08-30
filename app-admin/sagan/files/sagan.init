@@ -5,19 +5,20 @@
 
 
 depend() {
-        use logger mysql postgresql
+        use logger mysql postgresql net
         need localmount
 
 }
 
 start() {
         
-	einfo "Starting sagan"
+	ebegin "Starting sagan"
         start-stop-daemon --start  --pidfile /var/run/sagan/sagan.pid /usr/bin/sagan -- --daemon  ${SAGAN_OPTS}  --user ${SAGAN_USER} 
         eend $?
 }
 
 stop() {
+	ebegin " Stopping sagan"
         start-stop-daemon --stop --quiet --pidfile /var/run/sagan/sagan.pid
         eend $?
 
