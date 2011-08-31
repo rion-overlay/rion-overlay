@@ -2,12 +2,8 @@
 # # Distributed under the terms of the GNU General Public License v2
 
 # Sagan daemon configuration file
-#
-# Run in daemon mode
-SAGAN_OPTS=" --daemon "
-#
 # Make debug mode
-# SAGAN_OPTS = "${SAGAN_OPT} --debug "
+# SAGAN_OPTS = " --debug "
 #
-# Run as user, default sagan - so time run as sagan
+# Run as user, default sagan
 SAGAN_USER="sagan"
