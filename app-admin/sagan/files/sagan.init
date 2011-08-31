@@ -13,7 +13,7 @@ depend() {
 start() {
         
 	ebegin "Starting sagan"
-        start-stop-daemon --start  --pidfile /var/run/sagan/sagan.pid /usr/bin/sagan -- --daemon  ${SAGAN_OPTS}  --user ${SAGAN_USER} 
+        start-stop-daemon --start  --pidfile /var/run/sagan/sagan.pid /usr/bin/sagan -- -D  "${SAGAN_OPTS}"  -u "${SAGAN_USER}" 
         eend $?
 }
 

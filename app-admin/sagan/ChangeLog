@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> files/sagan.confd,
+  files/sagan.init:
+  fix init script
+
   30 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sagan-0.2.0.ebuild,
   files/sagan.confd, files/sagan.init:
   fix more typo
