@@ -1,0 +1,2 @@
+#http://dotclear.org/documentation/2.0/admin/install
+# Not write
