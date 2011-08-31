@@ -18,7 +18,7 @@ SRC_URI="http://libguestfs.org/download/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ocaml readline nls perl python test static-libs ruby"
+IUSE="ocaml readline perl python test static-libs ruby"
 
 RDEPEND="virtual/libiconv
 	virtual/libintl
@@ -55,11 +55,11 @@ src_configure() {
 		$(use_with readline)
 		$(use_enable ocaml)
 		$(use_enable perl)
-		$(use_enable nls)
+		--enable-nls
 		$(use_enable python)
 		$(use_enable ruby)
 		--disable-rpath
-		--enable-gcc-warnings)
+		)
 
 		autotools-utils_src_configure
 }
@@ -69,11 +69,9 @@ src_test() {
 }
 
 src_install() {
-	if use nls; then
-		strip-linguas -i po
-		if [ -z "${LINGUAS}" ] ; then
-			LINGUAS=none
-		fi
+	strip-linguas -i po
+	if [ -z "${LINGUAS}" ] ; then
+		LINGUAS=none
 	else
 		LINGUAS=none
 	fi

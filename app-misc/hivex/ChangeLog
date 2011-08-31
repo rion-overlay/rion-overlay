@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -hivex-1.2.5.ebuild,
+  -files/autoconf_fix-1.2.5.patch, -hivex-1.2.8.ebuild,
+  -files/autoconf_fix-1.2.8.patch, hivex-1.3.0.ebuild, hivex-1.3.1.ebuild:
+  fix buils with nls use flag
+
 *hivex-1.3.1 (29 Aug 2011)
 
   29 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +hivex-1.3.1.ebuild:
