@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
 inherit eutils
 
@@ -23,12 +23,13 @@ RDEPEND="!mail-filter/libdkim-exim
 S=${WORKDIR}/${PN}/src
 
 src_prepare() {
+	ecvs_clean
 	# upstream claims to be portable, but isn't very
 	epatch "${FILESDIR}/${PN}-gentoo.patch" || die "epatch failed"
 	epatch "${FILESDIR}/${PN}-extra-options.patch" ||  die "epatch failed"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${ED}" install || die "emake install failed"
 	dodoc ../README || die "Install README failed"
 }
