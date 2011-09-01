@@ -1,4 +1,10 @@
 # 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# need more *.a files in build time and
+# custon dev-libs/nss ebuild
+# violation gentoo build policy
+www-apache/mod_revocator
+
+# 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # no access to current taboll
 # close netacad akk.
 app-emulation/packettracer
