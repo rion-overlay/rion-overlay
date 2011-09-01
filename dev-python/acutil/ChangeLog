@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -acutil-6.1.12.ebuild, -acutil-6.1.13.ebuild, acutil-6.1.15.ebuild:
+  clean code, migrate to EAPI=3
+
 *acutil-6.1.15 (07 Aug 2011)
 
   07 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
