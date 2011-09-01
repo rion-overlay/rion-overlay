@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*gnome-commander-1.2.8.13 (31 Aug 2011)
+
+  31 Aug 2011; rion <rion4ik@spamogmail.com> -gnome-commander-1.2.8.12.ebuild,
+  +gnome-commander-1.2.8.13.ebuild:
+  version bump
+
 *gnome-commander-1.2.8.12 (26 Jul 2011)
 
   26 Jul 2011; rion <rion4ik@spamogmail.com> -gnome-commander-1.2.8.11.ebuild,
