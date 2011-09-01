@@ -4,10 +4,9 @@
 
 EAPI=3
 
-WANT_PYTHON="2.6"
-SUPPORT_PYTHON_ABIS="1"
+WANT_PYTHON="2:2.6"
 
-inherit distutils
+inherit  distutils
 
 DESCRIPTION="Cache-friendly asset management via content-hash-naming"
 HOMEPAGE="http://jderose.fedorapeople.org/assets"
@@ -20,8 +19,4 @@ IUSE=""
 
 DEPEND="dev-python/nose"
 RDEPEND="${DEPEND}"
-
 DOCS="README TODO AUTHORS"
-
-RESTRICT_PYTHON_ABIS="3.*"
-python_enable_pyc
