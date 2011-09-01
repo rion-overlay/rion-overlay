@@ -2,10 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
-
-WANT_AUTOCONF="2.5"
-WANT_AUTOMAKE="1.9"
+EAPI=4
 
 inherit eutils pam autotools confutils
 
@@ -30,6 +27,7 @@ pkg_setup() {
 	confutils_use_conflict ssl gcrypt
 	confutils_require_one ssl gcrypt
 }
+
 src_prepare() {
 	epatch "${FILESDIR}/${PV}"/*.patch
 	sed -e "s|@pam_dir@/security|$(getpam_mod_dir)|" -i Makefile.am || die
@@ -42,6 +40,7 @@ src_configure() {
 
 	econf ${myconf} || die "econf failed"
 }
+
 src_install() {
 	dopammod pam_ccreds.so
 
