@@ -4,15 +4,15 @@
 
 EAPI=4
 
-inherit eutils autotools-utils
+inherit eutils autotools-utils git-2
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="http://sagan.softwink.com/"
-SRC_URI="http://sagan.softwink.com/download/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/beave/sagan.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="smtp mysql postgres prelude +lognorm +libdnet +pcap"
 
 DEPEND="dev-util/pkgconfig
@@ -34,6 +34,10 @@ DOCS=(AUTHORS ChangeLog FAQ INSTALL README NEWS TODO)
 pkg_setup() {
 	enewgroup sagan
 	enewuser sagan -1 -1 /dev/null sagan
+}
+
+src_prepare() {
+	eautoreconf
 }
 
 src_configure() {

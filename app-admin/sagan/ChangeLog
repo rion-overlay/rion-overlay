@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -sagan-0.2.0.ebuild,
+  +sagan-9999.ebuild:
+  remove in tree version, add live ebuild
+
   31 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> files/sagan.confd,
   files/sagan.init:
   fix init script
