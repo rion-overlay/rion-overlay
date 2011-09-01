@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  pam_ccreds-10.ebuild:
+  fix typo, eapi 4
+
   09 Jun 2010; A. Vinogradov <spamslepnoga@inbox.ru> -pam_ccreds-8.ebuild,
   -files/pam_ccreds-8_dependencies.patch:
   remove old
