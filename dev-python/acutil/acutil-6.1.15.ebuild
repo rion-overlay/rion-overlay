@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
-WANT_AUTOMAKE="1.11"
+EAPI=3
+
 PYTHON_DEPEND="2:2.6"
 
-inherit autotools python
+inherit python
 
 DESCRIPTION="Tool for setting up authentication from network services ( Python2 library )"
 HOMEPAGE="http://fedoraproject.org/wiki/SystemConfig/"
@@ -31,13 +31,9 @@ pkg_setup() {
 	python_set_active_version 2
 }
 
-src_prepare() {
-	eautoreconf
-}
-
 src_install() {
 	insinto /$(python_get_sitedir)
-	doins "${S}"/.libs/acutil*
+	doins "${S}"/.libs/acutil*.so
 }
 
 pkg_postinst() {
