@@ -1,3 +1,9 @@
+# 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# no access to current taboll
+# close netacad akk.
+app-emulation/packettracer
+
+
 # 28 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # In main tree now, mask dev version
 # plan to removal in 60 day
