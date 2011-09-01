@@ -6,15 +6,15 @@ EAPI=3
 
 PYTHON_DEPEND="python? 2:2.6"
 
-inherit python multilib pam linux-info autotools-utils
+inherit base python multilib pam linux-info autotools-utils git-2
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="http://fedorahosted.org/sssd/"
-SRC_URI="http://fedorahosted.org/released/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="git://git.fedorahosted.org/sssd.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="doc +locator logrotate nls python selinux static-libs test"
 
 COMMON_DEP="virtual/pam
@@ -46,13 +46,19 @@ DEPEND="${COMMON_DEP}
 	doc? ( app-doc/doxygen )"
 
 CONFIG_CHECK="~KEYS"
-AUTOTOOLS_IN_SOURCE_BUILD=1
+#AUTOTOOLS_IN_SOURCE_BUILD=1
 PATCHES=("${FILESDIR}"/allow_xdm.patch)
 
 pkg_setup(){
 	python_set_active_version 2
 	python_need_rebuild
 	linux-info_pkg_setup
+}
+
+src_prepare() {
+	base_src_prepare
+	eautopoint
+	eautoreconf
 }
 
 src_configure(){
@@ -81,7 +87,7 @@ src_install(){
 
 	insinto /etc/sssd
 	insopts -m600
-	doins "${S}"/src/examples/sssd.conf
+	doins "${S}"/src/examples/sssd-example.conf
 
 	if use logrotate; then
 		insinto /etc/logrotate.d
