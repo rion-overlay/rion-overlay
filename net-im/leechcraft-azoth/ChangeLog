@@ -1,0 +1,12 @@
+# ChangeLog for net-im/leechcraft-azoth
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/leechcraft-azoth/ChangeLog,v 1.1 2011/08/23 19:46:02 maksbotan Exp $
+
+*leechcraft-azoth-9999 (23 Aug 2011)
+*leechcraft-azoth-0.4.85 (23 Aug 2011)
+
+  23 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.4.85.ebuild, +leechcraft-azoth-9999.ebuild,
+  +metadata.xml:
+  Copy net-im/leechcraft-azoth from rion-overlay, thanks to 0xd34df00d
+

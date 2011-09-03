@@ -1,0 +1,46 @@
+--- configure.in.orig	2010-03-16 23:42:24.800581598 +0200
++++ configure.in	2010-03-17 00:35:22.115579496 +0200
+@@ -12,9 +12,6 @@
+ 
+ AC_CANONICAL_SYSTEM
+ 
+-dnl AC_CONFIG_SRCDIR([src/drivers/openssl/pki_x509.c])
+-
+-dnl ifdef ([LT_INIT], [LT_INIT],[AC_PROG_LIBTOOL])
+ AC_PROG_LIBTOOL
+ 
+ AC_PROG_EGREP
+@@ -98,8 +95,8 @@
+ # 
+ # AC_SUBST(DIST_VERSION)
+ 
+-if [[ -f "/etc/issue" ]] ; then
+-   DIST_NAME=`head -n 1 /etc/issue | cut -f 1,1 -d ' '`
++if [[ -f "/etc/gentoo-release" ]] ; then
++   DIST_NAME=`head -n 1 /etc/gentoo-release | cut -f 1,1 -d ' '`
+ else
+    DIST_NAME=`echo ${build_os} | $EGREP -o [[A-Za-z]]+`
+ fi
+@@ -112,8 +109,8 @@
+ if [[ "x$myarch" = "xsolaris" ]] ; then
+ 	DIST_VERSION=`uname -r`
+ else
+-	if [[ -f "/etc/issue" ]] ; then
+-	   DIST_VERSION=`$EGREP -o [[0-9.]]+ /etc/issue | head -n 1`
++	if [[ -f "/etc/gentoo-release" ]] ; then
++	   DIST_VERSION=`cat /etc/gentoo-release |  /bin/sed -e 's/[a-zA-Z ()\\]*//g'`
+ 	else
+ 	   DIST_VERSION=`echo ${build_os} | $EGREP -o [[0-9.]]+`
+ 	fi
+@@ -500,6 +497,11 @@
+ 		def_httpd_group=www;
+ 		def_httpd_fs_prefix=/opt/local/var/www
+ 		;;
++	*entoo)
++		def_httpd_user=apache
++		def_httpd_group=apache
++		def_httpd_fs_prefix=/var/www
++		;;
+ 	*)
+ 		def_httpd_user=nobody;
+ 		;;
