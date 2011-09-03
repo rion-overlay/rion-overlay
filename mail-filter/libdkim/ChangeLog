@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  libdkim-1.0.21.ebuild, files/libdkim-gentoo.patch:
+  fix location to library install from lib to get_libdir
+
   01 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   libdkim-1.0.21.ebuild:
   add ecvs_clean call, epai 4
