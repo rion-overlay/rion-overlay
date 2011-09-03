@@ -1,0 +1,77 @@
+# ChangeLog for app-misc/hivex
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  31 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -hivex-1.2.5.ebuild,
+  -files/autoconf_fix-1.2.5.patch, -hivex-1.2.8.ebuild,
+  -files/autoconf_fix-1.2.8.patch, hivex-1.3.0.ebuild, hivex-1.3.1.ebuild:
+  fix buils with nls use flag
+
+*hivex-1.3.1 (29 Aug 2011)
+
+  29 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +hivex-1.3.1.ebuild:
+  bump hiveh
+
+*hivex-1.3.0 (16 Aug 2011)
+
+  16 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +hivex-1.3.0.ebuild,
+  +files/autoconf_fix-1.3.0.patch, +files/incorrect_format.patch:
+  bump, add upstream patch
+
+*hivex-1.2.8 (12 Aug 2011)
+
+  12 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -hivex-1.2.7.ebuild,
+  -files/autoconf_fix-1.2.7.patch, +hivex-1.2.8.ebuild,
+  +files/autoconf_fix-1.2.8.patch:
+  bump, drop old
+
+*hivex-1.2.7 (29 Jul 2011)
+
+  29 Jul 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> hivex-1.2.5.ebuild,
+  +files/autoconf_fix-1.2.5.patch, +hivex-1.2.7.ebuild,
+  +files/autoconf_fix-1.2.7.patch, -files/autoconf_fix.patch:
+  bump
+
+  29 Jul 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> hivex-1.2.5.ebuild,
+  +files/autoconf_fix-1.2.5.patch, -files/autoconf_fix.patch:
+  add version information to patch
+
+  16 May 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  -hivex-1.2.4.ebuild:
+  drop old
+
+*hivex-1.2.5 (30 Apr 2011)
+
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +hivex-1.2.5.ebuild:
+  bump
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> -hivex-1.2.3-r1.ebuild,
+  -hivex-1.2.3-r2.ebuild:
+  drop old
+
+*hivex-1.2.4 (23 Dec 2010)
+
+  23 Dec 2010; <slep@gentoo.org> +hivex-1.2.4.ebuild:
+  bump
+
+  09 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3-r1.ebuild,
+  +hivex-1.2.3-r2.ebuild:
+  fil localpod install
+
+  01 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3-r1.ebuild:
+  clean and add ~x86 keyword
+
+  23 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> -hivex-1.2.3.ebuild,
+  +hivex-1.2.3-r1.ebuild, files/autoconf_fix.patch:
+  fix configure
+
+  19 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> hivex-1.2.3.ebuild,
+  +files/autoconf_fix.patch:
+  disable biindings due automagic depends
+
+*hivex-1.2.3.ebuild ( 19 Oct 2010 )
+
+  19 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +hivex-1.2.3.ebuild,
+  +metadata.xml:
+  initial commit
+

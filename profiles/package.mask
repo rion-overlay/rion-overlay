@@ -1,0 +1,63 @@
+# 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# need more *.a files in build time and
+# custon dev-libs/nss ebuild
+# violation gentoo build policy
+www-apache/mod_revocator
+
+# 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# no access to current taboll
+# close netacad akk.
+app-emulation/packettracer
+
+
+# 28 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# In main tree now, mask dev version
+# plan to removal in 60 day
+dev-libs/qrosscore
+dev-libs/qrosspython
+net-libs/qxmpp
+app-editors/leechcraft-popishu
+media-video/leechcraft-lmp
+net-analyzer/leechcraft-networkmonitor
+net-ftp/leechcraft-lcftp
+net-im/leechcraft-azoth
+net-misc/leechcraft-advancednotifications
+net-misc/leechcraft-anhero
+net-misc/leechcraft-auscrie
+net-misc/leechcraft-core
+net-misc/leechcraft-cstp
+net-misc/leechcraft-dbusmanager
+net-misc/leechcraft-full
+net-misc/leechcraft-glance
+net-misc/leechcraft-historyholder
+net-misc/leechcraft-kinotify
+net-misc/leechcraft-lackman
+net-misc/leechcraft-newlife
+net-misc/leechcraft-qrosp
+net-misc/leechcraft-secman
+net-misc/leechcraft-summary
+net-misc/leechcraft-tabpp
+net-misc/leechcraft-tabslist
+net-news/leechcraft-aggregator
+net-p2p/leechcraft-bittorrent
+net-p2p/leechcraft-eiskaltdcpp
+virtual/leechcraft-browser
+virtual/leechcraft-downloader-http
+virtual/leechcraft-search-show
+virtual/leechcraft-task-show
+virtual/leechcraft-downloader-bittorrent
+virtual/leechcraft-downloader-ftp
+www-client/leechcraft-deadlyrics
+www-client/leechcraft-poshuku
+www-client/leechcraft-vgrabber
+www-misc/leechcraft-seekthru
+
+
+# 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# Need more testing and patch
+=app-emulation/libguestfs-1.12.3
+
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#mask for work failures
+app-crypt/openca-base
+app-crypt/openca
