@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE=""
 LICENSE="Apache-2.0"
 
-ALLDEPEND="dev-libs/nss[revocator]
+ALLDEPEND="dev-libs/nss
 		dev-libs/nspr
 		net-nds/openldap
 		www-apache/mod_nss"
@@ -30,7 +30,8 @@ need_apache2_2
 APACHE2_MOD_FILE=".libs/libmodrev.so"
 
 src_prepare() {
-	epatch "${FILESDIR}"/respect_ldflags.patch || die
+	epatch "${FILESDIR}"/all.patch || die
+	_elibtoolize
 	eautoreconf
 }
 
