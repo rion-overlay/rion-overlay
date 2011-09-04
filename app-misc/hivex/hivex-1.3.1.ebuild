@@ -5,11 +5,9 @@
 EAPI=3
 
 WANT_AUTOMAKE="1.11"
-AUTOTOOLS_IN_SOURCE_BUILD=1
+PYTHON_DEPEND="python? 2:2.6"
 
 inherit base autotools-utils  perl-app python
-
-PYTHON_DEPEND="python? 2:2.6"
 
 DESCRIPTION="Library for reading and writing Windows Registry "hive" binary files."
 HOMEPAGE="http://libguestfs.org"
@@ -39,6 +37,7 @@ DEPEND="${RDEPEND}
 	"
 PATCHES=("${FILESDIR}"/autoconf_fix-${PV}.patch "${FILESDIR}"/incorrect_format.patch)
 DOCS=(README)
+AUTOTOOLS_IN_SOURCE_BUILD=1
 
 pkg_config() {
 	python_set_active_version 2
