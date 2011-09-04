@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=4
 
 inherit base  eutils confutils
 
@@ -46,12 +46,14 @@ DEPEND="sys-devel/flex
 
 RDEPEND="${CDEPEND}"
 
-pkg_setup() {
+pkg_pretend() {
 	confutils_require_one postfix sendmail
 	confutils_use_conflict postfix sendmail
 	confutils_use_conflict sendmail postfix
 	confutils_use_conflict postfix dkim
+}
 
+pkg_setup() {
 	if use postfix ;then
 		einfo "Checking for postfix group ..."
 		enewgroup postfix 207 || die "problem adding group postfix"
@@ -139,7 +141,7 @@ src_configure() {
 
 src_install() {
 
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${ED}" install || die "install failed"
 
 	if use !postfix;then
 		insinto /usr/share/sendmail-cf/hack/
@@ -152,9 +154,9 @@ src_install() {
 	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
 
 	if use postfix;then
-		echo "USER=postfix" >> "${D}"/etc/conf.d/milter-greylist || die
+		echo "USER=postfix" >> "${ED}"/etc/conf.d/milter-greylist || die
 	else
-		echo "USER=smmsp" >> "${D}"/etc/conf.d/milter-greylist || die
+		echo "USER=smmsp" >> "${ED}"/etc/conf.d/milter-greylist || die
 	fi
 
 	local user="smmsp"
@@ -169,8 +171,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [  -e "${ROOT}"/var/lib/milter-greylist/greylist.db ] ; then
-		touch "${ROOT}"/var/lib/milter-greylist/greylist.db || die
+	if [  -e "${EROOT}"/var/lib/milter-greylist/greylist.db ] ; then
+		touch "${EROOT}"/var/lib/milter-greylist/greylist.db || die
 	fi
 
 	if use !postfix; then
@@ -182,7 +184,7 @@ pkg_postinst() {
 	fi
 
 	if use postfix;then
-		chown postfix "${ROOT}"/var/lib/milter-greylist/greylist.db
+		chown postfix "${EROOT}"/var/lib/milter-greylist/greylist.db
 
 		elog
 		elog " You can enable milter-greylist in your postfix, adding the line:"

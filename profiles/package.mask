@@ -1,3 +1,8 @@
+# 4Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# Dead upstream, not mantained
+# removal in 30 days
+net-mail/queuegraph
+
 # 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # need more *.a files in build time and
 # custon dev-libs/nss ebuild
