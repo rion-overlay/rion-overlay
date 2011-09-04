@@ -6,7 +6,7 @@ EAPI="4"
 
 WANT_AUTOMAKE="1.11"
 
-inherit autotools
+inherit autotools-utils
 
 DESCRIPTION="This package contains the prerequisites for installing OpenCA"
 HOMEPAGE="http://www.openca.org"
@@ -16,30 +16,26 @@ LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug"
+IUSE="debug static-libs"
 
 DEPEND="dev-util/pkgconfig"
 RDEPEND=">=dev-libs/openssl-0.9.7"
 
-src_prepare() {
-
-	eautoreconf
-}
+DOCS=(AUTHORS INSTALL  NEWS README  VERSION)
+AUTOTOOLS_IN_SOURCE_BUILD=1
 
 src_configure () {
-	econf \
-	--with-openca-user=openca \
-	--with-openca-group=openca \
-	$(use_enable debug) || die "econf failed"
+	local myeconfargs=(
+	--with-openca-user=openca
+	--with-openca-group=openca )
+	autotools-utils_src_configure
 }
 
 src_install () {
-
-	emake DESTDIR="${ED}"  install || die "install failed"
+	autotools-utils_src_install
 
 	rm -fr "${ED}"/usr/share/man || die
-
-	dodoc AUTHORS INSTALL  NEWS README  VERSION
+	doman docs/*.1
 }
 
 pkg_setup() {

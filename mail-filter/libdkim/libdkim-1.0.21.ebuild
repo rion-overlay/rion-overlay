@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit eutils
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="A library to verify and create signatures of e-mail headers."
 HOMEPAGE="http://libdkim.sourceforge.net"
@@ -27,6 +27,12 @@ src_prepare() {
 	# upstream claims to be portable, but isn't very
 	epatch "${FILESDIR}/${PN}-gentoo.patch" || die "epatch failed"
 	epatch "${FILESDIR}/${PN}-extra-options.patch" ||  die "epatch failed"
+}
+
+src_compile() {
+	tc-export AR CC CPP CXX RANLIB
+	export LIBDIR=$(get_libdir)
+	emake
 }
 
 src_install() {
