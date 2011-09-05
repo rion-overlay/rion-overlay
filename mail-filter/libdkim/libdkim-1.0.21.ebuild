@@ -25,17 +25,16 @@ S=${WORKDIR}/${PN}/src
 src_prepare() {
 	ecvs_clean
 	# upstream claims to be portable, but isn't very
-	epatch "${FILESDIR}/${PN}-gentoo.patch" || die "epatch failed"
-	epatch "${FILESDIR}/${PN}-extra-options.patch" ||  die "epatch failed"
+	epatch "${FILESDIR}/${PN}-gentoo.patch"
+	epatch "${FILESDIR}/${PN}-extra-options.patch"
 }
 
 src_compile() {
-	tc-export AR CC CPP CXX RANLIB
-	export LIBDIR=$(get_libdir)
-	emake
+	tc-export CXX
+	emake LIBDIR=$(get_libdir)
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install || die "emake install failed"
-	dodoc ../README || die "Install README failed"
+	emake DESTDIR="${ED}" install
+	dodoc ../README
 }
