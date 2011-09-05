@@ -4,7 +4,6 @@
 
 EAPI=4
 
-WANT_AUTOCONF="latest"
 inherit libtool autotools  autotools-utils
 
 DESCRIPTION="Provide an easy-to-use PKI library for PKI enabled application development."
@@ -31,7 +30,6 @@ RESTRICT="test"
 
 src_prepare() {
 	epatch "${FILESDIR}"/*.patch
-	#elibtoolize
 	eautoreconf
 }
 
@@ -46,8 +44,6 @@ src_configure () {
 		$(use_enable ssl openssl-engine) \
 		--disable-iphone)
 	autotools-utils_src_configure
-
-#Openss engines need more optional test
 }
 
 src_install() {
