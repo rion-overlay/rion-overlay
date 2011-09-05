@@ -25,18 +25,6 @@ DEPEND="dev-perl/DateTime
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-src_install() {
-#3	perlinfo
-#	insinto ${VENDOR_LIB}
-#	doins -r lib/*
-#	doins *.xsl
-
-#	dobin *.pl
-
-#	dodoc README.txt CHANGELOG.txt
-	perl-module_src_install
-}
-
 pkg_postinst() {
 einfo "More info: "
 einfo "http://rwmj.wordpress.com/2011/04/17/decoding-the-windows-event-log-using-guestfish/"
