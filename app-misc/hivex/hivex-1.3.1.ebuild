@@ -71,8 +71,6 @@ src_install() {
 	strip-linguas -i po
 	if [ -z "${LINGUAS}" ] ; then
 		LINGUAS=none
-	else
-		LINGUAS=none
 	fi
 
 	autotools-utils_src_install "LINGUAS=""${LINGUAS}"""
