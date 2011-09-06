@@ -6,7 +6,7 @@ EAPI=4
 
 inherit libtool autotools  autotools-utils
 
-DESCRIPTION="Provide an easy-to-use PKI library for PKI enabled application development."
+DESCRIPTION="Provide an easy-to-use PKI library and tools for PKI enabled application development."
 HOMEPAGE="http://www.openca.org/projects/libpki"
 SRC_URI="mirror://sourceforge/project/openca/${PN}/releases/v${PV}/sources/${P}.tar.gz"
 
