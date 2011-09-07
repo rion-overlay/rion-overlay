@@ -2,6 +2,16 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/ChangeLog,v 1.96 2011/07/25 10:21:06 angelos Exp $
 
+*xmlrpc-c-1.27.5-r1 (07 Sep 2011)
+
+  07 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -xmlrpc-c-1.26.00.ebuild, -files/xmlrpc-c-1.26.00/cpp-depends.patch,
+  -files/xmlrpc-c-1.26.00/curl-headers.patch,
+  -files/xmlrpc-c-1.26.00/curl-headers.patch.old,
+  -files/xmlrpc-c-1.26.00/dump-symlinks.patch,
+  -files/xmlrpc-c-1.26.00/dumpvalue.patch, +xmlrpc-c-1.27.5-r1.ebuild:
+  drop old, migrate to cmake
+
 *xmlrpc-c-1.27.5_pre2185 (07 Sep 2011)
 
   07 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
