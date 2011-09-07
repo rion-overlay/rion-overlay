@@ -4,21 +4,20 @@
 
 EAPI=3
 
-WANT_AUTOMAKE="1.11"
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-inherit base autotools-utils  perl-app python
-
 PYTHON_DEPEND="python? 2:2.6"
+
+inherit autotools autotools-utils base perl-app python git-2
 
 DESCRIPTION="Library for reading and writing Windows Registry "hive" binary files."
 HOMEPAGE="http://libguestfs.org"
-SRC_URI="http://libguestfs.org/download/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="git://git.annexia.org/git/hivex.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="ocaml readline perl python test static-libs ruby"
+
+EGIT_HAS_SUBMODULES="yes"
 
 RDEPEND="virtual/libiconv
 	virtual/libintl
@@ -37,8 +36,8 @@ DEPEND="${RDEPEND}
 				dev-perl/Test-Pod-Coverage ) )
 	ruby? ( dev-ruby/rake )
 	"
-PATCHES=("${FILESDIR}"/autoconf_fix-${PV}.patch "${FILESDIR}"/incorrect_format.patch)
 DOCS=(README)
+AUTOTOOLS_IN_SOURCE_BUILD=1
 
 pkg_config() {
 	python_set_active_version 2
@@ -47,6 +46,9 @@ pkg_config() {
 
 src_prepare() {
 	autotools-utils_src_prepare
+	eautopoint
+	_elibtoolize
+	gnulibtolize
 	eautoreconf
 }
 
@@ -72,8 +74,6 @@ src_install() {
 	strip-linguas -i po
 	if [ -z "${LINGUAS}" ] ; then
 		LINGUAS=none
-	else
-		LINGUAS=none
 	fi
 
 	autotools-utils_src_install "LINGUAS=""${LINGUAS}"""
@@ -81,4 +81,36 @@ src_install() {
 	if use perl; then
 		fixlocalpod
 	fi
+}
+
+gnulibtolize() {
+	modules='
+	byteswap
+	c-ctype
+	fcntl
+	full-read
+	full-write
+	gitlog-to-changelog
+	gnu-make
+	gnumakefile
+	ignore-value
+	inttypes
+	maintainer-makefile
+	manywarnings
+	progname
+	strndup
+	vasprintf
+	vc-list-files
+	warnings
+	xstrtol
+	xstrtoll'
+
+./.gnulib//gnulib-tool \
+--libtool                     \
+--avoid=dummy                 \
+--with-tests                  \
+--m4-base=m4                  \
+--source-base=gnulib/lib      \
+--tests-base=gnulib/tests     \
+--import $modules
 }
