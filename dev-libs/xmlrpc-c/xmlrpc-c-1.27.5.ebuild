@@ -6,10 +6,8 @@ EAPI=4
 
 inherit eutils multilib base autotools-utils rpm versionator
 
-MY_PV=$(get_version_component_range 1-3)
-
 DESCRIPTION="A lightweigt RPC library based on XML and HTTP"
-SRC_URI="mirror://fedora-dev/development/rawhide/source/SRPMS/${PN}-${MY_PV}-1700.svn2185.fc17.src.rpm"
+SRC_URI="mirror://fedora-dev/development/rawhide/source/SRPMS/${P}-1700.svn2185.fc17.src.rpm"
 HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
 
 KEYWORDS="~amd64"
@@ -30,8 +28,6 @@ PATCHES=(
 	"${WORKDIR}"/xmlrpc-c-check-vasprintf-return-value.patch
 	"${WORKDIR}"/xmlrpc-c-include-string_int.h.patch
 	)
-
-S="${WORKDIR}"/${PN}-${MY_PV}
 
 unset SRCDIR
 export LC_ALL=C
