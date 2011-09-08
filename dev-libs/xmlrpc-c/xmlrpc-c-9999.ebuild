@@ -4,18 +4,19 @@
 
 EAPI=4
 
-inherit eutils base cmake-utils multilib flag-o-matic
+CMAKE_VERBOSE=yes
+inherit eutils base cmake-utils multilib flag-o-matic git-2 subversion
 
 DESCRIPTION="A lightweigt RPC library based on XML and HTTP"
-SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz
-		http://rion-overlay.googlecode.com/files/${P}.patch.tar.xz"
 HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
+EGIT_REPO_URI="git://pkgs.fedoraproject.org/xmlrpc-c.git"
+ESVN_REPO_URI="https://xmlrpc-c.svn.sourceforge.net/svnroot/xmlrpc-c/advanced"
 
 # Note - patchset homepage - http://pkgs.fedoraproject.org/gitweb/?p=xmlrpc-c.git
 #
 
-KEYWORDS="~amd64"
-IUSE="curl cxx tools cgi +abyss"
+KEYWORDS=""
+IUSE="+curl cxx +tools cgi +abyss"
 LICENSE="BSD"
 SLOT="0"
 
@@ -23,17 +24,24 @@ DEPEND="dev-libs/libxml2
 	curl? ( net-misc/curl[kerberos] )"
 RDEPEND="${DEPEND}"
 
+EGIT_SOURCEDIR="${WORKDIR}/patch"
+
+
 pkg_pretend() {
 	if ! use curl ; then
 		ewarn "Curl support disabled: No client library will be be built"
 	fi
 }
 
-src_prepare() {
-#	EPATCH_EXCLUDE="xmlrpc-c-cmake.patch" 
-	EPATCH_OPTS="-g0 -E --no-backup-if-mismatch -p1" EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" epatch || die
-#	EPATCH_OPTS="-g0 -E --no-backup-if-mismatch -p1" epatch "${WORKDIR}/patch"/xmlrpc-c-cmake.patch || die
+src_unpack() {
+	subversion_src_unpack
+	git-2_src_unpack
 }
+
+src_prepare() {
+	EPATCH_OPTS="-g0 -E --no-backup-if-mismatch -p1" EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" epatch || die
+}
+
 
 src_configure() {
 	append-flags "-Wno-uninitialized -Wno-unknown-pragmas -Wno-unused-result"
