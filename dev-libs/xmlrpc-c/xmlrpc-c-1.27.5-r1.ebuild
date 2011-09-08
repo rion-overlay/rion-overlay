@@ -27,16 +27,16 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	EPATCH_FORCE="yes"	EPATCH_SUFFIX="patch" epatch || die
-	# TODO fix cmake patch location
-	cp -fr b/* .
+#	EPATCH_EXCLUDE="xmlrpc-c-cmake.patch" 
+	EPATCH_OPTS="-g0 -E --no-backup-if-mismatch -p1" EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" epatch || die
+#	EPATCH_OPTS="-g0 -E --no-backup-if-mismatch -p1" epatch "${WORKDIR}/patch"/xmlrpc-c-cmake.patch || die
 }
 
 src_configure() {
 	append-flags "-Wno-uninitialized -Wno-unknown-pragmas -Wno-unused-result"
 
 	local mycmakeargs=(
-		-D_lib=/usr/$(get_libdir)
+		-D_lib=$(get_libdir)
 		-DENABLE_LIBXML2_BACKEND=ON
 		-DBUILD_SHARED_LIBS=ON
 		$(cmake-utils_use_enable tools)
