@@ -30,9 +30,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-#	EPATCH_EXCLUDE="xmlrpc-c-cmake.patch" 
 	EPATCH_OPTS="-g0 -E --no-backup-if-mismatch -p1" EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" epatch || die
-#	EPATCH_OPTS="-g0 -E --no-backup-if-mismatch -p1" epatch "${WORKDIR}/patch"/xmlrpc-c-cmake.patch || die
 }
 
 src_configure() {
