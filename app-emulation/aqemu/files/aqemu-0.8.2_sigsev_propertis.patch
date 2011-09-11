@@ -1,0 +1,45 @@
+X-Git-Url: http://aqemu.git.sourceforge.net/git/gitweb.cgi?p=aqemu%2Faqemu;a=blobdiff_plain;f=Device_Manager_Widget.cpp;h=671930a152de6bf98b9218df7cb9cb1ca29e570d;hp=7288bafc6887841b94dd846a9df523205aa72a22;hb=182975dadb7ac9fc8e851ed638dd6998002ff536;hpb=e556f7389842f07df346f2cb8d96ea8f85acb26a
+
+diff --git a/Device_Manager_Widget.cpp b/Device_Manager_Widget.cpp
+index 7288baf..671930a 100644
+--- a/Device_Manager_Widget.cpp
++++ b/Device_Manager_Widget.cpp
+@@ -981,9 +981,10 @@ void Device_Manager_Widget::on_actionDelete_triggered()
+ 		{
+ 			if( ui.Devices_List->currentItem()->data(512).toString() == "device" + QString::number(fx) )
+ 			{
+-				finded = true;
+-				
+ 				Storage_Devices.removeAt( fx );
++				ui.Devices_List->takeItem( ui.Devices_List->currentRow() );
++				finded = true;
++				break;
+ 			}
+ 		}
+ 		
+@@ -993,10 +994,24 @@ void Device_Manager_Widget::on_actionDelete_triggered()
+ 					 "Incorrect Device!" );
+ 			return;
+ 		}
++		else
++		{
++			// Rename items
++			for( int ix = 0, count = 0; ix < ui.Devices_List->count(); ++ix )
++			{
++				if( ui.Devices_List->item(ix)->data(512).toString().contains("device") )
++				{
++					ui.Devices_List->item(ix)->setData( 512, QString("device%1").arg(count) );
++					++count;
++				}
++			}
++			
++			emit Device_Changet();
++			return;
++		}
+ 	}
+ 	
+ 	ui.Devices_List->takeItem( ui.Devices_List->currentRow() );
+-	
+ 	emit Device_Changet();
+ }
+ 
