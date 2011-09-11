@@ -1,0 +1,71 @@
+# 6 Sep 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# mask for remowal in 60 day
+# not nedeed , unmantained
+dev-perl/Class-DBI-MSSQL
+dev-perl/Async-Interrupt
+dev-perl/Color-Calc
+dev-perl/Config-JSON
+dev-perl/Net-Citadel
+dev-perl/GD-SecurityImage
+dev-perl/POE-Component-Client-HTTP
+dev-perl/POE-Component-Client-Keepalive
+dev-perl/CSS-Minifier-XS
+dev-perl/CSS-Packer
+dev-perl/DBIx-OO
+dev-perl/Digest-SHA-PurePerl
+dev-perl/Dynarch
+dev-perl/Color-Calc
+dev-perl/Graphics-ColorNames-WWW
+dev-perl/JavaScript-Minifier-XS
+dev-perl/JavaScript-Packer
+dev-perl/Locales
+dev-perl/MasonX-Interp-WithCallbacks
+dev-perl/Net-IMAP-Client
+dev-perl/Net-Subnets
+dev-perl/MasonX-Interp-WithCallbacks
+dev-perl/Params-CallbackRequest
+dev-perl/POE-Component-Client-DNS
+dev-perl/Test-POE-Server-TCP
+dev-perl/Regexp-Common-Email-Address
+dev-perl/String-Random
+dev-perl/Template-Alloy
+dev-perl/Test-File-Contents
+dev-perl/Test-File
+dev-perl/Test-MockModule
+dev-perl/Test-POE-Server-TCP
+dev-perl/Text-Diff-HTML
+dev-perl/Text-WordDiff
+dev-perl/Tie-CPHash
+dev-perl/Time-Format
+dev-perl/Weather-Com
+dev-perl/XML-FeedPP
+dev-perl/XML-TreePP
+www-apps/dotclear
+media-sound/freqtweak
+
+# 4 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# Dead upstream, not mantained
+# removal in 30 days
+net-mail/queuegraph
+app-misc/lcpackgen
+
+# 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# need more *.a files in build time and
+# custon dev-libs/nss ebuild
+# violation gentoo build policy
+# Use private NSS API
+www-apache/mod_revocator
+
+# 1 Sep 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# no access to current taboll
+# close netacad akk.
+app-emulation/packettracer
+
+# 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# Need more testing and patch
+=app-emulation/libguestfs-1.12.3
+
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#mask for work failures
+app-crypt/openca-base
+app-crypt/openca
