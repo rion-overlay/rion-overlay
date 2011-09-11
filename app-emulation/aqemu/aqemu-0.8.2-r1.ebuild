@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-emulation/aqemu/aqemu-0.8.2.ebuild,v 1.1 2011/07/29 12:06:37 maksbotan Exp $
 
-EAPI="2"
+EAPI=4
 
 inherit  cmake-utils
 
@@ -24,9 +24,10 @@ RDEPEND="kvm? ( app-emulation/qemu-kvm )
 	x11-libs/qt-xmlpatterns:4"
 
 DOCS="AUTHORS CHANGELOG README TODO"
+PATCHES=("${FILESDIR}"/aqemu-0.8.2_sigsev_propertis.patch)
 
 src_configure() {
-	local mycmakeargs=" -DCMAKE_VERBOSE_MAKEFILE=OFF"
+	local mycmakeargs=" -DMAN_PAGE_COMPRESSOR="" "
 	if use vnc; then
 		mycmakeargs+=" -DWITHOUT_EMBEDDED_DISPLAY=OFF "
 	else

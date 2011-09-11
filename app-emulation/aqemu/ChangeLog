@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*aqemu-0.8.2-r1 (11 Sep 2011)
+
+  11 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -aqemu-0.8.2.ebuild,
+  +aqemu-0.8.2-r1.ebuild, +files/aqemu-0.8.2_sigsev_propertis.patch:
+  add patch from git - fix segfault
+
   23 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> aqemu-9999.ebuild:
   fix depends in 9999
 
