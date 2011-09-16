@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/ChangeLog,v 1.96 2011/07/25 10:21:06 angelos Exp $
 
+  16 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -xmlrpc-c-1.27.5.ebuild:
+  delete old xmlrpc
+
 *xmlrpc-c-1.27.06 (14 Sep 2011)
 
   14 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
