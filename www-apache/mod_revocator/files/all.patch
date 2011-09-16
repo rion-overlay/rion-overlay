@@ -1,0 +1,220 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,3 +1,4 @@
++ACLOCAL_AMFLAGS=-I m4
+ lib_LTLIBRARIES = librevocation.la libmodrev.la
+ 
+ librevocation_la_SOURCES = revocation.cpp crlmanager.cpp rinst.cpp rslot.cpp anchor.cpp constants.c rtoken.cpp rsession.cpp robject.cpp rfind.cpp http-client.cpp ldap-client.cpp exec-client.cpp client.cpp nsprstub.cpp rev_core.cpp revhelper.cpp encode.cpp unescape.cpp 
+@@ -7,54 +8,58 @@
+ 
+ libmodrev_la_SOURCES = mod_rev.c
+ 
+-libmodrev_la_LDFLAGS = -module -avoid-version
++libmodrev_la_LDFLAGS = $(LDFLAGS) -module -avoid-version
+ 
+-INCLUDES = -I@apache_inc@ @nspr_inc@ @nss_inc@ @apr_inc@ -Imozilla/security/nss/lib/base @ldapsdk_inc@ -Imozilla/security/nss/lib/ckfw
+-LIBS = @ldapsdk_lib@ @nspr_lib@ @nss_lib@ @ldapsdk_libs_ssl@ -lssl3 -lsmime3 -lnss3 -lnssb @ldapsdk_libs@ -lplc4 -lplds4 -lnspr4 -lpthread -ldl
++INCLUDES = -I@apache_inc@ @nspr_inc@ @nss_inc@ @apr_inc@ -I/usr/include/nss -Imozilla/security/nss/lib/base @ldapsdk_inc@  -Imozilla/security/nss/lib/ckfw
++#LIBS = @ldapsdk_lib@ @nspr_lib@ @nss_lib@ @ldapsdk_libs_ssl@ -lssl3 -lsmime3 -lnss3 -lnssb @ldapsdk_libs@ -lplc4 -lplds4 -lnspr4 -lpthread -ldl
++LIBS = @ldapsdk_lib@ @nspr_lib@ @nss_lib@ @ldapsdk_libs_ssl@ -lssl3 -lsmime3 -lnss3  @ldapsdk_libs@ -lplc4 -lplds4 -lnspr4 -lpthread -ldl
++
+ DEFS = -D__REVOCATION_IMPLEMENTATION__=1 @extra_cppflags@
+ 
+ # Remove nsprstub.o from libnssckfw.a so we can use our own stub, then
+ # relink after the "main" link using the C++ compiler. On Solaris ar
+ # fails if the object isn't in the library, so be very careful about
+ # removing it.
+-all-local: libnssckfw2.a relink ldapget crlhelper
++#all-local: libnssckfw2.a relink ldapget crlhelper
+ 
+-libnssckfw2.a:
+-	cp @nss_lib_dir@/libnssckfw.a libnssckfw2.a
+-	files=`ar -t libnssckfw2.a | awk ' /nsprstub.o/ { print } '`; \
+-	if test X$$files = Xnsprstub.o; then \
+-	     ar -d libnssckfw2.a nsprstub.o; \
+-	fi
++all-local: relink ldapget crlhelper
++
++#libnssckfw2.a:
++#	cp @nss_lib_dir@/libnssckfw.a libnssckfw2.a
++#	files=`ar -t libnssckfw2.a | awk ' /nsprstub.o/ { print } '`; \
++#	if test X$$files = Xnsprstub.o; then \
++#	     ar -d libnssckfw2.a nsprstub.o; \
++#	fi
+ 
+ # The environment variable $CRUNTIME needs to be set to -library=Crun
+ # on Solaris systems.
+-relink: librevocation.la libnssckfw2.a
++relink: librevocation.la 
+ #	rm -f .libs/librevocation.so.$(LIB_VERSION)
+ #	$(CXX) $(SHARED_LINK) -Wl,-soname,librevocation.so.0 $(am_librevocation_la_OBJECTS) $(LIBS) libnssckfw2.a -lnssb -o .libs/librevocation.so.$(LIB_VERSION) $(CRUNTIME)
+ 	rm -f .libs/librevocation.so*
+ 	$(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+ 	$(CXXFLAGS) $(librevocation_la_LDFLAGS) $(LDFLAGS) -o librevocation.la \
+-	-rpath $(libdir) $(librevocation_la_OBJECTS) $(librevocation_la_LIBADD) $(LIBS) libnssckfw2.a -lnssb
++	-rpath $(libdir) $(librevocation_la_OBJECTS) $(librevocation_la_LIBADD) $(LIBS) -lssl3 -lsmime3 -lnss3 
+ 
+ install-exec-local: all-local
+-	install -m 755 ldapget $(bindir)
+-	install -m 755 crlhelper $(bindir)
++	install -D -m 755 ldapget $(DESTDIR)/$(bindir)
++	install -D -m 755 crlhelper $(DESTDIR)/$(bindir)
+ 
+-clean-local:
+-	-rm -f libnssckfw2.a ldapget crlhelper
++#clean-local:
++#	-rm -f libnssckfw2.a ldapget crlhelper
+ 
+ # Unit test program for fetching data from LDAP URLs. The average user won't
+ # need to compile or execute this but it is useful enough to keep around.
+ # This uses the local .libs directory to link against, assuming that the
+ # revocation library been installed globally yet.
+ ldaptest:
+-	$(CXX) $(CXXFLAGS) ldaptest.cpp client.o ldap-client.o unescape.o -o ldaptest $(INCLUDES) $(LIBS) -L .libs/ -lrevocation
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) ldaptest.cpp client.o ldap-client.o unescape.o -o ldaptest $(INCLUDES) $(LIBS) -L .libs/ -lrevocation
+ 
+ # This program is used to retrieve data from an LDAP URL and return the
+ # attribute data over stdout. It is used in conjunction with an exec:// URL
+ ldapget: ldapget.cpp relink
+-	$(CXX) $(CXXFLAGS) ldapget.cpp client.o ldap-client.o http-client.o unescape.o -o ldapget $(INCLUDES) $(LIBS) libnssckfw2.a -L .libs/ -lrevocation
++	$(CXX) $(CXXFLAGS) $(LDFLAGS)  ldapget.cpp client.o ldap-client.o http-client.o unescape.o -o ldapget $(INCLUDES) $(LIBS)  -L .libs/ -lrevocation
+ 
+ crlhelper: crlhelper.cpp relink
+-	$(CXX) $(CXXFLAGS) crlhelper.cpp client.o ldap-client.o http-client.o unescape.o -o crlhelper $(INCLUDES) $(LIBS) libnssckfw2.a -L .libs/ -lrevocation
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) crlhelper.cpp client.o ldap-client.o http-client.o unescape.o -o crlhelper $(INCLUDES) $(LIBS)  -L .libs/ -lrevocation
+diff --git a/configure.in b/configure.in
+--- a/configure.in
++++ b/configure.in
+@@ -3,6 +3,8 @@
+ 
+ # Automake initialization
+ AM_INIT_AUTOMAKE(mod_revocator, 1.0)
++LT_INIT
++AC_CONFIG_MACRO_DIR([m4])
+ 
+ # Add a test for a compiler.
+ AC_PROG_CXX
+@@ -102,53 +104,6 @@
+ 
+ AC_CHECKING(for NSPR)
+ 
+-# check for --with-nspr
+-AC_MSG_CHECKING(for --with-nspr)
+-AC_ARG_WITH(nspr, [  --with-nspr=PATH        Netscape Portable Runtime (NSPR) directory],
+-[
+-  if test -e "$withval"/include/nspr.h
+-  then
+-    AC_MSG_RESULT([using $withval])
+-    NSPRDIR=$withval
+-    nspr_inc="-I$NSPRDIR/include"
+-    nspr_lib="-L$NSPRDIR/lib"
+-  else
+-    echo
+-    AC_MSG_ERROR([$withval not found])
+-  fi
+-],
+-AC_MSG_RESULT(no))
+-
+-# check for --with-nspr-inc
+-AC_MSG_CHECKING(for --with-nspr-inc)
+-AC_ARG_WITH(nspr-inc, [  --with-nspr-inc=PATH    Netscape Portable Runtime (NSPR) include file directory],
+-[
+-  if test -e "$withval"/nspr.h
+-  then
+-    AC_MSG_RESULT([using $withval])
+-    nspr_inc="-I$withval"
+-  else
+-    echo
+-    AC_MSG_ERROR([$withval not found])
+-  fi
+-],
+-AC_MSG_RESULT(no))
+-
+-# check for --with-nspr-lib
+-AC_MSG_CHECKING(for --with-nspr-lib)
+-AC_ARG_WITH(nspr-lib, [  --with-nspr-lib=PATH    Netscape Portable Runtime (NSPR) library directory],
+-[
+-  if test -d "$withval"
+-  then
+-    AC_MSG_RESULT([using $withval])
+-    nspr_lib="-L$withval"
+-  else
+-    echo
+-    AC_MSG_ERROR([$withval not found])
+-  fi
+-],
+-AC_MSG_RESULT(no))
+-
+ # if NSPR is not found yet, try pkg-config
+ 
+ # last resort
+@@ -167,55 +122,6 @@
+ 
+ AC_CHECKING(for NSS)
+ 
+-# check for --with-nss
+-AC_MSG_CHECKING(for --with-nss)
+-AC_ARG_WITH(nss, [  --with-nss=PATH         Network Security Services (NSS) directory],
+-[
+-  if test -e "$withval"/include/nss.h
+-  then
+-    AC_MSG_RESULT([using $withval])
+-    NSSDIR=$withval
+-    nss_inc="-I$NSSDIR/include"
+-    nss_lib="-L$NSSDIR/lib"
+-    nss_lib_dir="$NSSDIR/lib"
+-  else
+-    echo
+-    AC_MSG_ERROR([$withval not found])
+-  fi
+-],
+-AC_MSG_RESULT(no))
+-
+-# check for --with-nss-inc
+-AC_MSG_CHECKING(for --with-nss-inc)
+-AC_ARG_WITH(nss-inc, [  --with-nss-inc=PATH     Network Security Services (NSS) include directory],
+-[
+-  if test -e "$withval"/nss.h
+-  then
+-    AC_MSG_RESULT([using $withval])
+-    nss_inc="-I$withval"
+-  else
+-    echo
+-    AC_MSG_ERROR([$withval not found])
+-  fi
+-],
+-AC_MSG_RESULT(no))
+-
+-# check for --with-nss-lib
+-AC_MSG_CHECKING(for --with-nss-lib)
+-AC_ARG_WITH(nss-lib, [  --with-nss-lib=PATH     Network Security Services (NSS) library directory],
+-[
+-  if test -e "$withval"/libnss3.so
+-  then
+-    AC_MSG_RESULT([using $withval])
+-    nss_lib="-L$withval"
+-    nss_lib_dir="$withval"
+-  else
+-    echo
+-    AC_MSG_ERROR([$withval/libnss3.so not found])
+-  fi
+-],
+-AC_MSG_RESULT(no))
+-
+ # if NSS is not found yet, try pkg-config
+ 
+ # last resort
+@@ -328,11 +234,6 @@
+     ldapsdk_libs="-lldap"
+ fi
+ 
+-if ! test -e "$nss_lib_dir"/libnssb.a
+-then
+-  AC_MSG_ERROR([NSS is installed but the PKCS11 development package is missing. Need libnssb.a])
+-fi
+-
+ # Substitute values 
+ AC_SUBST(SHARED_LINK)
+ AC_SUBST(APXS)

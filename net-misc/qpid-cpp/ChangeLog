@@ -1,0 +1,11 @@
+# ChangeLog for net-misc/qpid-cpp
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*qpid-cpp-0.10 (04 Sep 2011)
+
+  04 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +qpid-cpp-0.10.ebuild, +files/qpid-cpp.init, +files/qpidd.conf,
+  +files/qpidd.etc-conf, +files/qpidd.policy, +metadata.xml:
+  initial commit
+
