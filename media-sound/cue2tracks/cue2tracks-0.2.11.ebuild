@@ -17,17 +17,18 @@ IUSE="flake mac mp3 tta shorten wavpack vorbis"
 
 SLOT="0"
 
-DEPEND="flake? ( media-sound/flake )
+DEPEND="
+	>=media-sound/shntool-3.0.0[mac?]
+	app-shells/bash
+	media-libs/flac
+	app-cdr/cuetools
+	flake? ( media-sound/flake )
 	mac? ( media-sound/mac media-sound/apetag )
 	tta? ( media-sound/ttaenc )
 	shorten? ( media-sound/shorten )
 	wavpack? ( media-sound/wavpack media-sound/apetag )
 	mp3? ( media-sound/lame media-sound/id3v2 )
 	vorbis? ( media-sound/vorbis-tools )"
-RDEPEND=">=media-sound/shntool-3.0.0[mac?]
-	app-shells/bash
-	media-libs/flac
-	app-cdr/cuetools"
 
 src_prepare () {
 	epatch "${FILESDIR}/remove_shell_check.patch"
