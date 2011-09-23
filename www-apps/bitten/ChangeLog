@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Sep 2011; Nikolaj Sjujscij <sterkrig@myopera.com> bitten-0.6.ebuild:
+  Add `src_prepare` with `epatch_user`
+
   05 Aug 2011; Nickolaj Stjujsckij <sterkrig@home.no>
   +files/bitten-slave.confd, +files/bitten-slave.initd:
   Add initscript
