@@ -30,6 +30,10 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	epatch_user
+}
+
 src_install() {
 	distutils_src_install
 	newinitd "${FILESDIR}"/bitten-slave.initd bitten-slave || die "Installing initscript failed"
