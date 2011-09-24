@@ -20,6 +20,12 @@ RDEPEND="x11-themes/gnome-icon-theme
 	x11-themes/hicolor-icon-theme"
 RESTRICT="binchecks strip"
 
+src_prepare() {
+	cd "${WORKDIR}/${PN}/elementary" || die
+	rm -rf "status/48/untitled folder"
+	rm -rf "panel/48/temp"
+}
+
 src_install() {
 	insinto /usr/share/icons
 	cd "${WORKDIR}/${PN}"
