@@ -2,11 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
+
+inherit autotools
 
 DESCRIPTION="Very simple layout switcher"
 HOMEPAGE="http://github.com/qnikst/kbdd"
-SRC_URI="http://cloud.github.com/downloads/qnikst/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/qnikst/kbdd/tarball/v${PV} -> ${PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,11 +23,14 @@ DEPEND="dev-libs/glib
 			)"
 RDEPEND="${DEPEND}"
 
-src_configure() {
-	econf $(use_enable dbus) || die "econf failed"
+S="${WORKDIR}"
+
+src_prepare() {
+	cd "${WORKDIR}"/qnikst-kbdd-*
+	S=$(pwd)
+	eautoreconf
 }
 
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc README ChangeLog AUTHORS NEWS
+src_configure() {
+	econf $(use_enable dbus) || die "econf failed"
 }
