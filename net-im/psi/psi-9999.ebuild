@@ -39,7 +39,6 @@ RDEPEND="
 	)
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	extras? ( webkit? ( x11-libs/qt-webkit:4 ) )
-	app-arch/unzip
 "
 DEPEND="${RDEPEND}
 	extras? (
