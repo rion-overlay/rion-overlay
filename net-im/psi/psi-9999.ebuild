@@ -86,7 +86,7 @@ src_unpack() {
 		if use linguas_${x}; then
 			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT EGIT_DIR
 			if use extras && [ "${x}" = "ru" ]; then
-				local EGIT_REPO_URI="git://github.com/Nikoli/psi-plus-ru.git"
+				local EGIT_REPO_URI="git://github.com/ivan101/psi-plus-ru.git"
 			else
 				local EGIT_REPO_URI="${LANGS_URI}-${x}.git"
 			fi
