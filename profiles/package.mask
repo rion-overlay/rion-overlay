@@ -1,3 +1,7 @@
+# 1 Oct 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
+# Need more test
+app-emulation/virt-manager::rion
+
 # 6 Sep 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
 # mask for remowal in 60 day
 # not nedeed , unmantained
