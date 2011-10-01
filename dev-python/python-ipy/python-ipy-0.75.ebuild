@@ -13,7 +13,7 @@ SRC_URI="http://github.com/haypo/python-ipy/zipball/IPy-0.75 -> ${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
