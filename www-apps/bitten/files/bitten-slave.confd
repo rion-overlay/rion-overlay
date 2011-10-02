@@ -1,0 +1,31 @@
+# Distributed under the terms of the GNU General Public License v2
+
+# bitten-slave daemon options
+# see `bitten-slave -h` for help
+
+# run as user
+USER=root
+
+# bitten-main URL
+BITTEN_URL="<your-trac-address>/builds"
+
+SLAVE_OPTIONS=""
+# Uncomment needed options and set them
+
+# Set builder name
+#SLAVE_OPTIONS="${SLAVE_OPTIONS} --name gentoo-builder"
+
+# Authentication
+#SLAVE_OPTIONS="${SLAVE_OPTIONS} --user=USER --password=PASSWORD"
+
+# Working directory
+#SLAVE_OPTIONS="${SLAVE_OPTIONS} --work-dir=/tmp"
+
+# Logging
+#SLAVE_OPTIONS="${SLAVE_OPTIONS} --log=/var/log/bitten.log"
+
+# Add anything you want as well
+#SLAVE_OPTIONS=""
+
+# vim: filetype=sh
+

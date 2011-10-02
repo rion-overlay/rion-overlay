@@ -1,0 +1,10 @@
+# ChangeLog for sys-libs/libuser
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*libuser-0.57.1 (30 Sep 2011)
+
+  30 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libuser-0.57.1.ebuild, +metadata.xml:
+  initial commit
+
