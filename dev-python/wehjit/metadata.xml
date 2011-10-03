@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>@gmail.com</email>
+ <description>Description of the maintainership</description> 
+</maintainer>
+ <longdescription>wehjit is a Python library for for building XHTML widgets for
+ web applications and web pages.  It encapsulates the XHTML (a Genshi XML template), CSS, and
+ JavaScript for each widget into a plugin.</longdescription> 
+<use>
+</use>
+</pkgmetadata>
