@@ -11,7 +11,7 @@ HOMEPAGE="http://super-tux.sourceforge.net"
 SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="2"
 KEYWORDS="~amd64"
 IUSE="opengl curl debug"
 
