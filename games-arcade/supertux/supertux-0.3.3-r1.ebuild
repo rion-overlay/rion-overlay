@@ -23,8 +23,12 @@ RDEPEND="media-libs/libsdl[joystick]
 	x11-libs/libXt
 	media-libs/glew
 	opengl? ( virtual/opengl )
-	curl? ( <net-misc/curl-7.21.7 )"
+	curl? ( >=net-misc/curl-7.21.7 )"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch ${FILESDIR}/${PV}-notypes.patch
+}
 
 src_configure() {
 	local mycmakeargs="-DWERROR=OFF \
