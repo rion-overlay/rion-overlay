@@ -1,0 +1,11 @@
+# ChangeLog for media-sound/vkplayer
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*vkplayer-0.08.14 (10 Oct 2011)
+
+  10 Oct 2011; Azamat H. Hackimov <azamat.hackimov@gmail.com> 
+  +vkplayer-0.08.14.ebuild, +metadata.xml:
+  vkplayer from http://www.gentoo.ru/node/23937, initial ebuild based on
+  eegorov's one.
+
