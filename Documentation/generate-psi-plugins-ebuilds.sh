@@ -7,8 +7,12 @@ die() {
 
 [ ! -d "net-im" ] && die "Please start this script in the overlay root"
 
-PLUGINS_GENERIC=`svn ls http://psi-dev.googlecode.com/svn/trunk/plugins/generic`
-PLUGINS_UNIX=`svn ls http://psi-dev.googlecode.com/svn/trunk/plugins/unix`
+list_plugins() {
+  wget -O- https://github.com/psi-plus/plugins/tree/master/$1 2>/dev/null | grep -oE '>\w+plugin/<' | while read -r v; do echo ${v:1:-8}; done
+}
+
+PLUGINS_GENERIC=`list_plugins generic`
+PLUGINS_UNIX=`list_plugins unix`
 NEW_PLUGINS=""
 
 for p in $PLUGINS_GENERIC $PLUGINS_UNIX; do
