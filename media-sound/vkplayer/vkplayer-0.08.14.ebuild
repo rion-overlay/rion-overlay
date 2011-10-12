@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="x11-libs/qt-core:4
 	x11-libs/qt-gui:4
-	|| ( x11-libs/qt-phonon:4 kde-base/phonon-kde:4 )
+	|| ( x11-libs/qt-phonon:4 kde-base/phonon-kde:4 media-libs/phonon )
 	x11-libs/qt-script:4"
 
 RDEPEND=${DEPEND}
