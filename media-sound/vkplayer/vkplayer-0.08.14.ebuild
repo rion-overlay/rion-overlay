@@ -4,6 +4,7 @@
 
 EAPI=4
 
+LANGS="ru uk"
 inherit qt4-r2 versionator
 
 MY_PV=$(replace_version_separator 2 '-')
@@ -20,7 +21,6 @@ DEPEND="x11-libs/qt-core:4
 	x11-libs/qt-gui:4
 	|| ( x11-libs/qt-phonon:4 kde-base/phonon-kde:4 media-libs/phonon )
 	x11-libs/qt-script:4"
-
 RDEPEND=${DEPEND}
 
 IUSE="debug"
@@ -34,5 +34,9 @@ src_prepare() {
 src_install() {
 	qt4-r2_src_install
 	insinto /usr/share/${PN}/translations
-	doins src/translations/*.qm
+	for l in ${LANGS}; do
+		if use linguas_${l}; then
+			doins src/translations/${PN}_${l}.qm
+		fi
+	done
 }

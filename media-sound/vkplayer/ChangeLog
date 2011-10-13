@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Oct 2011; Azamat H. Hackimov <azamat.hackimov@gmail.com>
+  vkplayer-0.08.14.ebuild, metadata.xml:
+  LANGS support, metadata cleanup.
+
   12 Oct 2011; Nikolaj Sjujskij <sterkrig@myopera.com> vkplayer-0.08.14.ebuild:
   Add media-libs/phonon to list of alternative Phonons
 
