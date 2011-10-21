@@ -17,14 +17,14 @@ EAPI="3"
 GENTOO_DEPEND_ON_PERL="no"
 
 # http_headers_more (http://github.com/agentzh/headers-more-nginx-module, BSD license)
-HTTP_HEADERS_MORE_MODULE_PV="0.15rc3"
+HTTP_HEADERS_MORE_MODULE_PV="0.16rc3"
 HTTP_HEADERS_MORE_MODULE_P="ngx-http-headers-more-${HTTP_HEADERS_MORE_MODULE_PV}"
-HTTP_HEADERS_MORE_MODULE_SHA1="5fac223"
+HTTP_HEADERS_MORE_MODULE_SHA1="be6a17e"
 
 # http_passenger (http://www.modrails.com/, MIT license)
 # TODO: currently builds some stuff in src_configure
-PASSENGER_PV="3.0.7"
-USE_RUBY="ruby18"
+PASSENGER_PV="3.0.9"
+USE_RUBY="ruby18 ree18"
 RUBY_OPTIONAL="yes"
 
 # http_push (http://pushmodule.slact.net/, MIT license)
@@ -32,7 +32,7 @@ HTTP_PUSH_MODULE_PV="0.692"
 HTTP_PUSH_MODULE_P="nginx_http_push_module-${HTTP_PUSH_MODULE_PV}"
 
 # http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
-HTTP_CACHE_PURGE_MODULE_PV="1.3"
+HTTP_CACHE_PURGE_MODULE_PV="1.4"
 HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
 
 # HTTP Upload module from Valery Kholodkov
@@ -43,14 +43,14 @@ HTTP_UPLOAD_MODULE_P="nginx_upload_module-${HTTP_UPLOAD_MODULE_PV}"
 # ey-balancer/maxconn module (https://github.com/ry/nginx-ey-balancer, as-is)
 HTTP_EY_BALANCER_MODULE_PV="0.0.6"
 HTTP_EY_BALANCER_MODULE_P="nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_PV}"
-HTTP_EY_BALANCER_MODULE_SHA1="d373670"
+HTTP_EY_BALANCER_MODULE_SHA1="afccd5c"
 
 # http_slowfs_cache (http://labs.frickle.com/nginx_ngx_slowfs_cache/, BSD-2 license)
 HTTP_SLOWFS_CACHE_MODULE_PV="1.6"
 HTTP_SLOWFS_CACHE_MODULE_P="ngx_slowfs_cache-${HTTP_SLOWFS_CACHE_MODULE_PV}"
 
-CHUNKIN_MODULE_PV="0.22rc1"
-CHUNKIN_MODULE_SHA1="b0a3ee3"
+CHUNKIN_MODULE_PV="0.22rc2"
+CHUNKIN_MODULE_SHA1="b46dd27"
 
 inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
 
