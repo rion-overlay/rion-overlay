@@ -27,7 +27,7 @@ stop() {
 	fi
 
 	ebegin "Stopping nginx"
-	start-stop-daemon --stop --pidfile /var/run/nginx.pid
+	start-stop-daemon --stop --pidfile /var/run/nginx.pid -R SIGTERM/10
 	eend $? "Failed to stop nginx"
 
 	rm -f /var/run/nginx.pid
