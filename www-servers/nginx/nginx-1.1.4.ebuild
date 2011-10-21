@@ -43,7 +43,7 @@ HTTP_UPLOAD_MODULE_P="nginx_upload_module-${HTTP_UPLOAD_MODULE_PV}"
 # ey-balancer/maxconn module (https://github.com/ry/nginx-ey-balancer, as-is)
 HTTP_EY_BALANCER_MODULE_PV="0.0.6"
 HTTP_EY_BALANCER_MODULE_P="nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_PV}"
-HTTP_EY_BALANCER_MODULE_SHA1="afccd5c"
+HTTP_EY_BALANCER_MODULE_SHA1="d373670"
 
 # http_slowfs_cache (http://labs.frickle.com/nginx_ngx_slowfs_cache/, BSD-2 license)
 HTTP_SLOWFS_CACHE_MODULE_PV="1.6"
