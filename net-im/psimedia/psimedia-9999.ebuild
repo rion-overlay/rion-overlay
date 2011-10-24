@@ -4,11 +4,11 @@
 
 EAPI=2
 
-inherit qt4-r2 multilib eutils subversion
+inherit qt4-r2 multilib eutils git-2
 
 DESCRIPTION="Psi plugin for voice/video calls"
 HOMEPAGE="http://delta.affinix.com/psimedia/"
-ESVN_REPO_URI="http://delta.affinix.com/svn/trunk/psimedia"
+EGIT_REPO_URI="git://github.com/psi-plus/psimedia.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -40,24 +40,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/pkgconfig
 "
 
-src_unpack() {
-	subversion_src_unpack
-
-	S="${WORKDIR}/patches" \
-	ESVN_PROJECT="${PN}/patches" \
-	subversion_fetch \
-		"http://psi-dev.googlecode.com/svn/trunk/patches/psimedia"
-}
-
 src_prepare() {
-	use extras && {
-		epatch "${WORKDIR}"/patches/* || die
-	} || {
-		epatch "${WORKDIR}"/patches/*-psimedia-2.6.38-compilation-fix.diff || die
-	}
-
-	subversion_src_prepare
-
 	sed -e '/^TEMPLATE/a CONFIG += ordered' -i psimedia.pro || die
 	# Don't build demo if we don't need that.
 	if use !demo; then
