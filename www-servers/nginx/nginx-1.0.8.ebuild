@@ -616,7 +616,7 @@ src_install() {
 # http_upload_progress
 	if use nginx_modules_http_upload_progress; then
 		docinto "${HTTP_UPLOAD_PROGRESS_MODULE_P}"
-		dodoc "${WORKDIR}"/"masterzen-nginx-upload-progress-nginx-module-${HTTP_UPLOAD_PROGRESS_MODULE_SHA1}"/README
+		dodoc "${WORKDIR}"/"masterzen-nginx-upload-progress-module-${HTTP_UPLOAD_PROGRESS_MODULE_SHA1}"/README
 	fi
 
 # http_ey_balancer
