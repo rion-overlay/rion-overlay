@@ -9,7 +9,7 @@ HOMEPAGE="http://jquery.com/"
 SRC_URI="http://code.jquery.com/${P}.min.js"
 
 LICENSE="MIT GPL-2"
-SLOT="1.5"
+SLOT="1.6"
 KEYWORDS="~amd64"
 IUSE=""
 
