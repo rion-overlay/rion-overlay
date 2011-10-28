@@ -616,7 +616,7 @@ src_install() {
 # http_upload_progress
 	if use nginx_modules_http_upload_progress; then
 		docinto "${HTTP_UPLOAD_PROGRESS_MODULE_P}"
-		dodoc "${WORKDIR}"/"masterzen-nginx-upload-progress-nginx-module-${HTTP_UPLOAD_PROGRESS_MODULE_SHA1}"/README
+		dodoc "${WORKDIR}"/"masterzen-nginx-upload-progress-module-${HTTP_UPLOAD_PROGRESS_MODULE_SHA1}"/README
 	fi
 
 # http_ey_balancer
@@ -724,7 +724,7 @@ src_install() {
 # http_slowfs_cache
 	if use nginx_modules_http_slowfs_cache; then
 		docinto "${HTTP_SLOWFS_CACHE_MODULE_P}"
-		dodoc "${WORKDIR}"/"${HTTP_SLOWFS_CACHE_MODULE_P}"/{CHANGES,README.md}
+		dodoc "${WORKDIR}"/"${HTTP_SLOWFS_CACHE_MODULE_P}"/{CHANGES,README}
 	fi
 
 # http_passenger
