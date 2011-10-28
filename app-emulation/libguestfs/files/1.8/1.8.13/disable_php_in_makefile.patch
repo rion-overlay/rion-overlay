@@ -1,0 +1,19 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -57,9 +57,12 @@
+ if HAVE_HASKELL
+ SUBDIRS += haskell
+ endif
+-if HAVE_PHP
+-SUBDIRS += php
+-endif
++
++# use Gentoo way to compile/install php extension
++# due slot  system
++#if HAVE_PHP
++#SUBDIRS += php
++#endif
+ 
+ # Unconditional because nothing is built yet.
+ SUBDIRS += csharp

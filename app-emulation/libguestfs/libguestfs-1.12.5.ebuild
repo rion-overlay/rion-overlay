@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 
 WANT_AUTOMAKE="1.11"
 
@@ -19,10 +19,10 @@ USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
 
 PHP_EXT_NAME="guestfs_php"
-USE_PHP="php5-2 php5-3"
+USE_PHP="php5-3"
 PHP_EXT_OPTIONAL_USE="php"
 
-MAIN_ECLAS="autotools bash-completion confutils versionator java-pkg-2
+MAIN_ECLAS="autotools bash-completion-r1 confutils versionator java-pkg-2
 java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2"
 
 inherit ${MAIN_ECLAS}
@@ -117,7 +117,6 @@ src_prepare() {
 			cp -r "${orig_s}" "${WORKDIR}/${slot}"
 		done
 	fi
-
 
 	epatch  "${FILESDIR}/1.12"/*.patch
 	java-pkg-opt-2_src_prepare
