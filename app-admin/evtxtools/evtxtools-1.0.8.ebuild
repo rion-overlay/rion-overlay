@@ -18,7 +18,6 @@ IUSE=""
 
 DEPEND="dev-perl/DateTime
 	dev-perl/Digest-CRC
-	dev-perl/DateTime
 	dev-perl/Carp-Assert
 	dev-perl/Data-Hexify"
 
