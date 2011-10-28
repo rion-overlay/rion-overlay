@@ -13,7 +13,7 @@ PYTHON_DEPEND="python? 2:2.6"
 USE_RUBY="ruby18"
 RUBY_OPTIONAL="yes"
 PHP_EXT_NAME="guestfs_php"
-USE_PHP="php5-2 php5-3"
+USE_PHP="php5-3"
 PHP_EXT_OPTIONAL_USE="php"
 
 MAIN_ECLAS="autotools bash-completion-r1 confutils versionator java-pkg-2
