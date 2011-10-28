@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Oct 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  libguestfs-1.8.12.ebuild, libguestfs-1.10.8.ebuild, libguestfs-1.12.4.ebuild,
+  libguestfs-1.12.5.ebuild:
+  update deprection warning for bash-comp. eclass, migrate to EAPI=4
+
 *libguestfs-1.12.5 (29 Aug 2011)
 
   29 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
