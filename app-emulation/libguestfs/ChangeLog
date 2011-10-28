@@ -2,6 +2,20 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libguestfs-1.8.13 (28 Oct 2011)
+
+  28 Oct 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/1.8/1.8.13/configure_ac_automagic.patch, libguestfs-1.8.12.ebuild,
+  +libguestfs-1.8.13.ebuild, +libguestfs-1.10.9.ebuild,
+  +files/1.8/1.8.13/disable_php_in_makefile.patch:
+  bump 1.8 tree
+
+*libguestfs-1.10.9 (28 Oct 2011)
+
+  28 Oct 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libguestfs-1.10.9.ebuild:
+  bump 1.10 tree
+
   28 Oct 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   libguestfs-1.8.12.ebuild, libguestfs-1.10.8.ebuild, libguestfs-1.12.4.ebuild,
   libguestfs-1.12.5.ebuild:
