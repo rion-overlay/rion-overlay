@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>Il'nykh Sergey</name>
+	</maintainer>
+	<longdescription lang="en">Psi skins plugin
+	</longdescription>
+	<use>
+		<flag name="themes">Pull in themes via <pkg>net-im/psi-skins-themes</pkg></flag>
+	</use>
+</pkgmetadata>
