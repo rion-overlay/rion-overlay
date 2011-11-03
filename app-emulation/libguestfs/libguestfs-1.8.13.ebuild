@@ -34,7 +34,7 @@ SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
+IUSE="bash-completion fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
 
 COMMON_DEPEND="
 	virtual/perl-Getopt-Long
@@ -120,6 +120,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export vmchannel_test=no
 	econf  \
 		--with-repo=fedora-12 \
 		--disable-appliance \
@@ -162,7 +163,7 @@ src_install() {
 
 	dodoc BUGS HACKING README RELEASE-NOTES TODO
 
-	if use bash-completion;then
+	if use bash-completion ;then
 	dobashcompletion \
 	"${D}/etc"/bash_completion.d/guestfish-bash-completion.sh
 	fi

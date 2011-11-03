@@ -34,7 +34,7 @@ SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
+IUSE="bash-completion fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
 
 COMMON_DEPEND="
 	virtual/perl-Getopt-Long
