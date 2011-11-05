@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="3"
 
 WANT_AUTOMAKE="1.11"
 
@@ -47,6 +47,7 @@ COMMON_DEPEND="
 	app-arch/cpio
 	dev-lang/perl
 	virtual/cdrtools
+	dev-libs/libconfig
 	>=app-emulation/qemu-kvm-0.13
 	sys-apps/file
 	app-emulation/libvirt
