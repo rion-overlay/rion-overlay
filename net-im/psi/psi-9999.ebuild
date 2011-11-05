@@ -84,7 +84,7 @@ src_unpack() {
 	mkdir "${WORKDIR}/psi-l10n"
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
-			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT EGIT_DIR
+			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
 			if use extras && [ "${x}" = "ru" ]; then
 				local EGIT_REPO_URI="git://github.com/ivan101/psi-plus-ru.git"
 			else
@@ -96,14 +96,14 @@ src_unpack() {
 	done
 
 	if use extras; then
-		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT EGIT_DIR
+		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
 		EGIT_PROJECT="psi-plus/main.git" \
 		EGIT_SOURCEDIR="${WORKDIR}/psi-plus" \
 		EGIT_REPO_URI="${PSI_PLUS_URI}/main.git" \
 		git-2_src_unpack
 
 		if use iconsets; then
-			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT EGIT_DIR
+			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
 			EGIT_PROJECT="psi-plus/resources.git" \
 			EGIT_SOURCEDIR="${WORKDIR}/resources" \
 			EGIT_REPO_URI="${PSI_PLUS_URI}/resources.git" \
