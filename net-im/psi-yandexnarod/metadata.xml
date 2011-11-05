@@ -7,6 +7,6 @@
 		<name>Il'nykh Sergey</name>
 	</maintainer>
 	<longdescription lang="en">
-	This plugin os port to Psi+ of QutIM plugin http://qutim.org/forum/viewtopic.php?f=62&t=711. It add file transfer via narod.yandex.ru feature to Psi+. Also it allows to manage list of files on server.
+	This plugin is port to Psi+ of QutIM plugin. It adds file transfer via narod.yandex.ru feature to Psi+. Also it allows to manage list of files on server.
 	</longdescription>
 </pkgmetadata>
