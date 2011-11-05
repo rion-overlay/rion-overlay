@@ -69,9 +69,9 @@ METACONTENT
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
-EAPI="2"
+EAPI="4"
 
-PLUGIN_ARCH="${arch}"
+PLUGIN_DIR="${arch}"
 inherit psiplus-plugin
 
 DESCRIPTION="${desc}"
@@ -95,7 +95,7 @@ done
 
 ####### Add new ebuild to package.keywords and set #######
 echo "net-im/psi-${pn} **" >> Documentation/package.keywords/psi/psi.keywords
-echo "net-im/psi-${pn}" >> sets/psiplus 
+echo "net-im/psi-${pn}" >> sets/psiplus
 ##########################################################
 
 echo
