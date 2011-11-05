@@ -4,15 +4,15 @@
 
 EAPI="4"
 
-inherit qt4-r2 multilib eutils git-2
+inherit qt4-r2 multilib eutils
 
 DESCRIPTION="Psi plugin for voice/video calls"
 HOMEPAGE="http://delta.affinix.com/psimedia/"
-EGIT_REPO_URI="git://github.com/psi-plus/psimedia.git"
+SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="demo extras"
 
 COMMON_DEPEND="
@@ -38,6 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	sys-devel/qconf
 	dev-util/pkgconfig
+	app-arch/xz-utils
 "
 
 src_prepare() {
