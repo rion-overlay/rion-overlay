@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*psi-translate-0.4.0_pre5004 (05 Nov 2011)
+
+  05 Nov 2011; Nikoli <nikoli@lavabit.com> +psi-translate-0.4.0_pre5004.ebuild:
+  version bump
+
   05 Nov 2011; Nikoli <nikoli@lavabit.com> psi-translate-9999.ebuild:
   update to EAPI4
 
