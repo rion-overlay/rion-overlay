@@ -310,8 +310,9 @@ src_prepare() {
 	if use nginx_modules_http_passenger; then
 		cd "${WORKDIR}"/passenger-"${PASSENGER_PV}";
 
-		epatch "${FILESDIR}"/passenger-3.0.9-gentoo.patch
-		epatch "${FILESDIR}"/passenger-3.0.9-ldflags.patch
+		epatch "${FILESDIR}"/passenger-"${PASSENGER_PV}"-gentoo.patch
+		epatch "${FILESDIR}"/passenger-"${PASSENGER_PV}"-ldflags.patch
+		epatch "${FILESDIR}"/passenger-"${PASSENGER_PV}"-contenthandler.patch
 
 		sed -i -e "s:/usr/share/doc/phusion-passenger:/usr/share/doc/${P}:" \
 		-e "s:/usr/lib/phusion-passenger/agents:/usr/libexec/passenger/agents:" lib/phusion_passenger.rb || die

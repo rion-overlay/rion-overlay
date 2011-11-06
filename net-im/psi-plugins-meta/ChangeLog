@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Nov 2011; Nikoli <nikoli@lavabit.com> psi-plugins-meta-9999.ebuild:
+  update to EAPI4
+
   20 Oct 2010; Nikoli <nikoli@lavabit.com> psi-plugins-meta-9999.ebuild,
   metadata.xml:
   fix metatada.xml, add plugins, depend at live versions, cosmetics
