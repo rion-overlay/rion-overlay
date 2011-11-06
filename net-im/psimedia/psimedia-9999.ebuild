@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI="4"
 
 inherit qt4-r2 multilib eutils git-2
 
@@ -51,7 +51,7 @@ src_prepare() {
 
 src_configure() {
 	qconf
-	# qconf generaged configure script...
+	# qconf generated configure script...
 	./configure --no-separate-debug-info || die
 
 	eqmake4
@@ -64,11 +64,11 @@ src_install() {
 		pname="psi"
 	fi
 	insinto /usr/$(get_libdir)/${pname}/plugins
-	doins gstprovider/libgstprovider.so || die
+	doins gstprovider/libgstprovider.so
 
 	if use demo; then
 		exeinto /usr/$(get_libdir)/${PN}
-		newexe demo/demo ${PN} || die
+		newexe demo/demo ${PN}
 
 		# Create /usr/bin/psimedia
 		cat <<-EOF > "demo/${PN}"
@@ -78,6 +78,6 @@ src_install() {
 		/usr/$(get_libdir)/${PN}/${PN}
 		EOF
 
-		dobin demo/${PN} || die
+		dobin demo/${PN}
 	fi
 }

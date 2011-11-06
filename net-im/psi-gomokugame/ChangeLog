@@ -2,6 +2,15 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*psi-gomokugame-0.1.0_pre5004 (05 Nov 2011)
+
+  05 Nov 2011; Nikoli <nikoli@lavabit.com>
+  +psi-gomokugame-0.1.0_pre5004.ebuild:
+  version bump
+
+  05 Nov 2011; Nikoli <nikoli@lavabit.com> psi-gomokugame-9999.ebuild:
+  update to EAPI4
+
 *psi-gomokugame-0.1.0_pre5003 (10 Aug 2011)
 
   10 Aug 2011; Nikoli <nikoli@lavabit.com>
