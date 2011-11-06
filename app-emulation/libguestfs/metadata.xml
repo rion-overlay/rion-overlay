@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
+<herd>mantainer-wanted</herd>
 <maintainer>
   <email>spamslepnoga@inbox.ru</email>
- <description>Libguestfs is a library for accessing and modifying virtual
- machine (VM) disk images</description> 
+  <name>Andreis Vinogradovs</name>
+ <description>Libguestfs is a library and tool set for accessing and modifying virtual
+ 		machine (VM) disk images
+ </description> 
 </maintainer>
 <use>
 <flag name="fuse">Enable mount image support via fuse</flag>
 <flag name="javadoc">Install java docs</flag>
 <flag name="haskell">Install GCH binding</flag>
-
 </use>
 </pkgmetadata>

@@ -33,8 +33,9 @@ SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
+# Upstream NOT supported 32-bit version, keyword in own risk
 KEYWORDS="~amd64"
-IUSE="bash-completion fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
+IUSE="fuse +ocaml perl python ruby haskell readline nls php debug doc nls source javadoc"
 
 COMMON_DEPEND="
 	virtual/perl-Getopt-Long
@@ -78,16 +79,18 @@ RDEPEND="${COMMON_DEPEND}
 PHP_EXT_S="${S}/php/extension"
 
 pkg_setup() {
-	java-pkg-opt-2_pkg_setup
+	use java && java-pkg-opt-2_pkg_setup
 
-	python_set_active_version 2
-	python_pkg_setup
-	python_need_rebuild
+	if use python; then
+		python_set_active_version 2
+		python_pkg_setup
+		python_need_rebuild
+	fi
 
 	confutils_use_depend_all source java
 	confutils_use_depend_all javadoc java
 
-	ruby-ng_pkg_setup
+	use ruby && ruby-ng_pkg_setup
 	use haskell && ghc-package_pkg_setup
 }
 
@@ -95,23 +98,29 @@ src_unpack() {
 	unpack ${P}.tar.gz
 
 	cd "${WORKDIR}"
-	mkdir image
+	mkdir image || die
 	cd image || die
 	unpack libguestfs-${APLANCE_PV}-x86_64.tar.gz
-	#mkdir "${S}"/appliance/ || die
+	#mkdir "${S}"/appliance/ || die - WTF ? this reqire in eapi=4 and not
+	#require in eapi=3
 	cp "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
 
+	# code from follow eclass - php-ext-source-r2
+	# not inherit it becase USE level inheritnit implimented in portage
+	# 10 year age ;)
 	if use php; then
 		local slot orig_s="${PHP_EXT_S}"
 		for slot in $(php_get_slots); do
-			cp -r "${orig_s}" "${WORKDIR}/${slot}"
+			cp -r "${orig_s}" "${WORKDIR}/${slot}" || die
 		done
 	fi
 }
 
 src_prepare() {
-	epatch  "${FILESDIR}/1.8/${PV}"/*.patch
-	java-pkg-opt-2_src_prepare
+	epatch  "${FILESDIR}/1.8/${PV}"/configure_ac_automagic.patch
+	epatch  "${FILESDIR}/1.8/${PV}"/disable_php_in_makefile.patch
+
+	use java && java-pkg-opt-2_src_prepare
 	eautoreconf
 
 	if use php; then
@@ -120,7 +129,15 @@ src_prepare() {
 }
 
 src_configure() {
+
+	# Disable feature test for kvm for more reason
+	# i.e: not loaded module in __build__ time,
+	# build server not supported kvm, etc. ...
+	#
+	# In fact, this feature is virtio support and required 
+	# configured kernel.
 	export vmchannel_test=no
+
 	econf  \
 		--with-repo=fedora-12 \
 		--disable-appliance \
@@ -139,7 +156,7 @@ src_configure() {
 		$(use_enable ruby) \
 		$(use_enable haskell) \
 		$(use_with doc po4a) \
-		$(use_with tools) || die
+		$(use_with tools)
 
 	    if use php; then
 			php-ext-source-r2_src_configure
@@ -149,6 +166,7 @@ src_configure() {
 
 src_compile() {
 	emake  || die
+
 	if use php; then
 		php-ext-source-r2_src_compile
 	fi
@@ -163,17 +181,14 @@ src_install() {
 
 	dodoc BUGS HACKING README RELEASE-NOTES TODO
 
-	if use bash-completion ;then
-	dobashcompletion \
-	"${D}/etc"/bash_completion.d/guestfish-bash-completion.sh
-	fi
+	dobashcomp "${D}/etc"/bash_completion.d/guestfish-bash-completion.sh
 
 	rm -fr "${D}/etc"/bash* || die
 
 	insinto /usr/$(get_libdir)/guestfs/
 	doins "${WORKDIR}/image/usr/local/lib/"guestfs/*
 
-	find "${D}/usr"/$(get_libdir) -name \*.la -delete
+	find "${D}" -name '*.la' -exec rm -f '{}' +
 	if use java; then
 		java-pkg_newjar  java/${P}.jar ${PN},jar
 		rm  -fr  "${D}/usr"/share/java
@@ -185,7 +200,8 @@ src_install() {
 			java-pkg_dojavadoc java/api
 		fi
 	fi
-	fixlocalpod
+
+	use perl && fixlocalpod
 	python_clean_installation_image -q
 
 	if use php; then
@@ -194,7 +210,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	java-pkg-opt-2_pkg_preinst
+	use java && java-pkg-opt-2_pkg_preinst
 }
 
 pkg_postinst() {

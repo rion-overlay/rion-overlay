@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Nov 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  libguestfs-1.8.13.ebuild, metadata.xml:
+  pva improwed
+
 *libguestfs-1.14.0 (28 Oct 2011)
 *libguestfs-1.12.8 (28 Oct 2011)
 
