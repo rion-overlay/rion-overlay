@@ -116,10 +116,9 @@ HTTP_ICONV_MODULE_SHA1="4e71946"
 #HTTP_SET_CCONV_MODULE_SHA1=""
 
 # NginX Featured mecached module (http://labs.frickle.com/nginx_ngx_postgres, BSD-2)
-HTTP_POSTGRES_MODULE_PV="0.9rc1"
-# !!!!!! автор обещал завтра (27.10) запилить 0.9 версию, в которой починит сорку с >=1.1.4
+HTTP_POSTGRES_MODULE_PV="0.9rc2"
 HTTP_POSTGRES_MODULE_P="ngx_postgres-${HTTP_POSTGRES_MODULE_PV}"
-HTTP_POSTGRES_MODULE_SHA1="f28923c"
+HTTP_POSTGRES_MODULE_SHA1="5cb9d09"
 
 # NginX coolkit module (http://labs.frickle.com/nginx_ngx_coolkit/, BSD-2)
 HTTP_COOLKIT_MODULE_PV="1.0"
@@ -301,7 +300,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	sed -i 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make
+	sed -i -e 's/ make/ \\$(MAKE)/' "${S}"/auto/lib/perl/make
+
+	sed -i -e "s|\(NGX_MAX_ERROR_STR\)   2048|\1 4096|" "${S}"/src/core/ngx_log.h
 
 	if use nginx_modules_http_ey_balancer; then
 		epatch "${FILESDIR}"/nginx-1.x-ey-balancer.patch
