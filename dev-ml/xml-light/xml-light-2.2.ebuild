@@ -15,13 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND="dev-lang/ocaml"
-RDEPEND="${DEPEND}"
+DEPEND="dev-lang/ocaml
+	doc? ( dev-ml/ocaml-doc )"
+RDEPEND="dev-lang/ocaml"
 
 S="${WORKDIR}/${PN}"
 
 src_compile() {
-	make  || die  # Will fail in 1st run ... FIXME
+	emake  ||die
 }
 
 src_install() {
@@ -29,6 +30,7 @@ src_install() {
 	emake INSTALLDIR="${D}"/usr/$(get_libdir)/ocaml install || die
 	dodoc  README
 	if use doc; then
+		emake doc
 		dohtml doc/*
 	fi
 }

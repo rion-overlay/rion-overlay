@@ -1,0 +1,21 @@
+# ChangeLog for dev-python/python-nss
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-nss/ChangeLog,v 1.2 2011/10/31 20:01:46 maksbotan Exp $
+
+*python-nss-0.12 (12 Nov 2011)
+
+  12 Nov 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +python-nss-0.12.ebuild, +metadata.xml:
+  bump
+
+*python-nss-0.8-r1 (31 Oct 2011)
+
+  31 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +python-nss-0.8-r1.ebuild:
+  Fix docs processing in src_install. Thanks to Arfrever.
+
+*python-nss-0.8 (30 Oct 2011)
+
+  30 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +python-nss-0.8.ebuild,
+  +files/gentoo_lib_name.patch, +metadata.xml:
+  Add dev-python/python-nss, thanks to slepnoga. Bug #305881
+

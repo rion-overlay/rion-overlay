@@ -16,7 +16,7 @@ PHP_EXT_NAME="guestfs_php"
 USE_PHP="php5-3"
 PHP_EXT_OPTIONAL_USE="php"
 
-MAIN_ECLAS="autotools bash-completion-r1 confutils versionator java-pkg-2
+MAIN_ECLAS="autotools bash-completion-r1 confutils versionator
 java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2 ghc-package"
 
 inherit ${MAIN_ECLAS}
