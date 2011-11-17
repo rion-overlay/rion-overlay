@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND="=dev-libs/nss-3.12*
+DEPEND="dev-libs/nss
 	dev-libs/nspr
 	doc? ( dev-python/docutils
 			dev-python/epydoc )"
@@ -27,6 +27,11 @@ DEPEND="=dev-libs/nss-3.12*
 RDEPEND="${DEPEND}"
 
 DOCS="README doc/ChangeLog"
+
+src_prepare() {
+	# RHB #754750 ; bgo #390869	
+	epatch "${FILESDIR}/python-nss-0.12-rsapssparams.patch"
+}
 
 src_install() {
 	distutils_src_install
