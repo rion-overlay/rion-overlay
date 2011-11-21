@@ -20,3 +20,9 @@ DEPEND="
 	net-libs/libotr
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	psiplus-plugin_src_prepare
+	sed -i -e "s@tidy/tidy\\.h@tidy.h@" -e "s@tidy/buffio\\.h@buffio.h@" \
+		./src/HtmlTidy.hpp
+}
