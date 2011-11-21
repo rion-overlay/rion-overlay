@@ -6,10 +6,11 @@ EAPI="4"
 
 inherit psiplus-plugin
 
-MY_PN="${PN}"
+MY_PN="otrplugin"
+S="${WORKDIR}/${MY_PN}"
 DESCRIPTION="OTR Plugin for Psi"
 HOMEPAGE="http://public.tfh-berlin.de/~s30935/"
-SRC_URI="http://public.tfh-berlin.de/~s30935/files/${P}.tar.gz"
+SRC_URI="http://psi-dev.googlecode.com/files/${MY_PN}-${PV}-src.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -19,5 +20,3 @@ DEPEND="
 	net-libs/libotr
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=( "${FILESDIR}"/trunk-compatibility.patch )
