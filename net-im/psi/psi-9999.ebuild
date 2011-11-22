@@ -6,7 +6,7 @@ EAPI="4"
 
 LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
-EGIT_REPO_URI="git://git.psi-im.org/psi.git"
+EGIT_REPO_URI="git://github.com/psi-im/psi.git"
 EGIT_HAS_SUBMODULES=1
 LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
 PSI_PLUS_URI="git://github.com/psi-plus"
