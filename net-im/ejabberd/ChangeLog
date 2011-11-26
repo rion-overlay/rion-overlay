@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ChangeLog,v 1.65 2009/06/05 13:00:56 pva Exp $
 
+  26 Nov 2011; Rion <rion4ik@gmail.com> ejabberd-2.1.9999.ebuild,
+  ejabberd-9999.ebuild:
+  synced with portage
+
 *ejabberd-2.1.8-r9999 (16 Jun 2011)
 
   16 Jun 2011; rion <rion4ik@spamogmail.com> -ejabberd-2.1.7-r9999.ebuild,
