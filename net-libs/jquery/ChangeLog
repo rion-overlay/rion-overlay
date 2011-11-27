@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Nov 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> metadata.xml:
+  fix metadata email, thn euscan
+
 *jquery-1.7 (06 Nov 2011)
 
   06 Nov 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +jquery-1.7.ebuild,
