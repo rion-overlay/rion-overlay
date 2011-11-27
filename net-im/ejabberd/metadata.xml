@@ -4,7 +4,7 @@
 <pkgmetadata>
 <herd>net-im</herd>
 <maintainer>
-  <email>mva@mva.name rion@gmail.com</email>
+  <email>rion@gmail.com</email>
 </maintainer>
 <longdescription> Free and Open Source distributed fault-tolerant Jabber server. It's mostly written in Erlang, and works on many platforms.</longdescription>
 <use>
