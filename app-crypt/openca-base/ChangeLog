@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Nov 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> metadata.xml:
+  fix metadata email, thn euscan
+
   10 Aug 2011; Azamat H. Hackimov <azamat.hackimov@gmail.com>
   openca-base-1.1.1-r1.ebuild:
   Remove old deps.
