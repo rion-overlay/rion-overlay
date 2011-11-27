@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: pva Exp $
 
-EAPI=3
+EAPI=4
 
 inherit eutils multilib pam ssl-cert git-2 subversion
 
@@ -75,7 +75,6 @@ src_prepare() {
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
 		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
-		#epatch "${WORKDIR}/2.1.1-mod_statsdx.patch"
 		epatch "${WORKDIR}/ejabberd-mod_statsdx-1080.patch"
 	fi
 
@@ -135,29 +134,27 @@ src_configure() {
 }
 
 src_compile() {
-	emake $(use debug && echo debug=true ejabberd_debug=true) || die "compiling ejabberd core failed"
+	emake $(use debug && echo debug=true ejabberd_debug=true)
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install || die "install failed"
+	emake DESTDIR="${ED}" install
 
 	# Pam helper module permissions
 	# http://www.process-one.net/docs/ejabberd/guide_en.html
 	if use pam; then
 		pamd_mimic_system xmpp auth account || die "Cannot create pam.d file"
-		fowners root:jabber "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam" || die
-		fperms 4750 "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam" || die "Cannot adjust epam permissions"
+		fowners root:jabber "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam"
+		fperms 4750 "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam"
 	fi
 
 	cd "${WORKDIR}/${P}/doc"
-	dodoc release_notes_*.txt || die
+	dodoc release_notes_*.txt
 	cd "${S}"
-	insinto "/usr/share/doc/${PF}"
-	doins -r additional_docs || die
-	# fixme: it is dodoc -r should be here, but it will be only in EAPI=4
+	dodoc -r additional_docs
 	#dodir /var/lib/ejabberd
-	newinitd "${FILESDIR}/${PN}-3.initd" ${PN} || die "Cannot install init.d script"
-	newconfd "${FILESDIR}/${PN}-3.confd" ${PN} || die "Cannot install conf.d file"
+	newinitd "${FILESDIR}/${PN}-3.initd" ${PN}
+	newconfd "${FILESDIR}/${PN}-3.confd" ${PN}
 }
 
 pkg_preinst() {

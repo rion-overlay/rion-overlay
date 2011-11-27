@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
 inherit eutils multilib pam ssl-cert autotools git-2
 
@@ -26,7 +26,8 @@ DEPEND="net-im/exmpp
 	zlib? ( sys-libs/zlib )"
 #>=sys-apps/shadow-4.1.4.2-r3 - fixes bug in su that made ejabberdctl unworkable.
 RDEPEND="${DEPEND}
-	>=sys-apps/shadow-4.1.4.2-r3"
+	>=sys-apps/shadow-4.1.4.2-r3
+	 pam? ( virtual/pam )"
 
 # paths in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
@@ -92,26 +93,26 @@ src_configure() {
 }
 
 src_compile() {
-	emake $(use debug && echo debug=true ejabberd_debug=true) || die "compiling ejabberd core failed"
+	emake $(use debug && echo debug=true ejabberd_debug=true)
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install || die "install failed"
+	emake DESTDIR="${ED}" install
 
 	# Pam helper module permissions
 	# http://www.process-one.net/docs/ejabberd/guide_en.html
 	if use pam; then
 		pamd_mimic_system xmpp auth account || die "Cannot create pam.d file"
-		fowners root:jabber "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam" || die
-		fperms 4750 "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam" || die "Cannot adjust epam permissions"
+		fowners root:jabber "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam"
+		fperms 4750 "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam"
 	fi
 
 	cd "${WORKDIR}/${P}/doc"
-	dodoc "release_notes_${RNOTES_VER}.txt" || die
+	dodoc release_notes_*.txt
 
 	#dodir /var/lib/ejabberd
-	newinitd "${FILESDIR}/${PN}-3.initd" ${PN} || die "Cannot install init.d script"
-	newconfd "${FILESDIR}/${PN}-3.confd" ${PN} || die "Cannot install conf.d file"
+	newinitd "${FILESDIR}/${PN}-3.initd" ${PN}
+	newconfd "${FILESDIR}/${PN}-3.confd" ${PN}
 }
 
 pkg_postinst() {
@@ -189,6 +190,9 @@ pkg_postinst() {
 
 	SSL_ORGANIZATION="${SSL_ORGANIZATION:-Ejabberd XMPP Server}"
 	install_cert /etc/ssl/ejabberd/server
+	# Fix ssl cert permissions bug #369809
+	chown root:jabber "${EROOT}/etc/ssl/ejabberd/server.pem"
+	chmod 0440 "${EROOT}/etc/ssl/ejabberd/server.pem"
 	if [[ -e ${EROOT}/etc/jabber/ssl.pem ]]; then
 		ewarn
 		ewarn "The location of SSL certificates has changed. If you are"

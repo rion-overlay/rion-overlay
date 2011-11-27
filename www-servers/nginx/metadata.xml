@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-	<email>mva@mva.name</email>
+	<email>rion@gmail.com</email>
 </maintainer>
 <use>
 	<flag name='aio'>Enable aio support</flag>
