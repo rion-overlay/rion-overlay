@@ -1,0 +1,11 @@
+# ChangeLog for app-emulation/virt-manager
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*virt-manager-0.9.0-r1 (01 Oct 2011)
+
+  01 Oct 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/virt-manager-0.8.7-vcpu-stats.patch, +virt-manager-0.9.0-r1.ebuild,
+  +metadata.xml:
+  unblock tui intreface and it depends
+
