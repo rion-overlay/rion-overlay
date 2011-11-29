@@ -4,7 +4,6 @@
 
 EAPI="4"
 
-PLUGIN_DIR="unix"
 inherit psiplus-plugin
 
 DESCRIPTION="Psi plugin for settings some status during video watching"
