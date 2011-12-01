@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-libpng15.patch
+
 	# for sure
 	rm -rf \
 		3rdparty/bzip2 \
