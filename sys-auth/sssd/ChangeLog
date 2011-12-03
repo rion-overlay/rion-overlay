@@ -1,0 +1,94 @@
+# ChangeLog for sys-auth/sssd
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*sssd-9999 (01 Sep 2011)
+
+  01 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -sssd-1.5.13.ebuild,
+  -sssd-1.6.1.ebuild, +sssd-9999.ebuild:
+  add live, drop in_tree version
+
+*sssd-1.6.1 (31 Aug 2011)
+*sssd-1.5.13 (31 Aug 2011)
+
+  31 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +sssd-1.5.13.ebuild,
+  -sssd-1.6.0.ebuild, +sssd-1.6.1.ebuild:
+  bump
+
+  27 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.6.0.ebuild,
+  +files/allow_xdm.patch:
+  add patch for allow autologin user in kde
+
+  21 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.6.0.ebuild,
+  metadata.xml:
+  drop openssl flag
+
+  20 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.6.0.ebuild,
+  metadata.xml:
+  sync to tree
+
+  15 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -sssd-1.5.11.ebuild,
+  -sssd-1.5.12.ebuild:
+  in main tree now
+
+  14 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.5.12.ebuild:
+  fix more typo
+
+  11 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.5.11.ebuild,
+  sssd-1.5.12.ebuild:
+  add selinux use
+
+*sssd-1.5.12 (07 Aug 2011)
+
+  07 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +sssd-1.5.12.ebuild:
+  bump 1.5 version
+
+  04 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.5.11.ebuild,
+  +sssd-1.6.0.ebuild:
+  fix install errors
+
+*sssd-1.6.0 (04 Aug 2011)
+
+  04 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +sssd-1.6.0.ebuild:
+  new major release added
+
+  04 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.5.11.ebuild:
+  fix ldb depend, ldb in main tree
+
+*sssd-1.5.11 (24 Jul 2011)
+
+  24 Jul 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -sssd-1.5.7.ebuild,
+  -sssd-1.5.8.ebuild, +sssd-1.5.11.ebuild:
+  bump, drop old
+
+*sssd-1.5.8 (07 Jun 2011)
+
+  07 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -sssd-1.5.0.ebuild,
+  -sssd-1.5.4.ebuild, +sssd-1.5.8.ebuild:
+  bump drop old
+
+*sssd-1.5.7 (30 Apr 2011)
+
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +sssd-1.5.7.ebuild:
+  bump
+
+*sssd-1.5.4 (12 Apr 2011)
+
+  12 Apr 2011; <slep@gentoo.org> +sssd-1.5.4.ebuild:
+  bump
+
+  17 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> sssd-1.5.0.ebuild:
+  replace depend ldb witch samba[ldb]
+
+  17 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> -sssd-1.4.1.ebuild:
+  remove old ebuild
+
+*sssd-1.5.0 (12 Feb 2011)
+
+  12 Feb 2011; A. Vinogradov <spamslepnoga@inbox.ru> +sssd-1.5.0.ebuild:
+  bump major version
+
+  01 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru> +sssd-1.4.1.ebuild,
+  +metadata.xml:
+  initial rekommit from my dew overlay
+

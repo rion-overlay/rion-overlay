@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/Sys-Virt
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*Sys-Virt-0.9.7 (19 Nov 2011)
+
+  19 Nov 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +Sys-Virt-0.9.7.ebuild, +metadata.xml:
+  bump
+
