@@ -19,10 +19,7 @@ IUSE="doc sqlite"
 
 RDEPEND="sqlite? ( dev-db/sqlite:3 )
 	app-arch/bzip2
-	|| (
-		app-arch/lzma-utils
-		app-arch/xz-utils
-	)
+	app-arch/xz-utils
 	dev-vcs/cvs"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/docutils )"
