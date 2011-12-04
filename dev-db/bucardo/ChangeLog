@@ -1,0 +1,26 @@
+# ChangeLog for dev-db/bucardo
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  21 Aug 2011; Nikolaj Sjujskij <sterkrig@home.no> metadata.xml:
+  Fix metadata, drop old version
+
+*bucardo-4.4.4 (16 May 2011)
+
+  16 May 2011; Nickolaj Stjujsckij <sterkrig@home.no> +bucardo-4.4.4.ebuild:
+  Bump version
+
+*bucardo-4.4.3 (03 May 2011)
+
+  03 May 2011; Nickolaj Stjujsckij <sterkrig@home.no> +bucardo-4.4.3.ebuild,
+  +files/bucardo-destdir.patch:
+  Bump version, add patch for proper installation to $DESTDIR
+
+  09 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> -bucardo-4.4.0.ebuild,
+  +bucardo-4.4.0-r1.ebuild, files/bucardo:
+  Remove useless definition of `restart` in init-script
+
+  01 Nov 2010; Nickolaj Stjujsckij <sterkrig@home.no> +bucardo-4.4.0.ebuild,
+  +files/bucardo, +metadata.xml:
+  Initial commit
+

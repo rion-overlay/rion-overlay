@@ -1,0 +1,9 @@
+# ChangeLog for media-sound/dcaenc
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*dcaenc-1 (07 Oct 2011)
+
+  07 Oct 2011; rion <rion4ik@spamogmail.com> +dcaenc-1.ebuild, +metadata.xml:
+  initial version
+

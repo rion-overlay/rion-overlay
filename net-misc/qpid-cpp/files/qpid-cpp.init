@@ -1,0 +1,40 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+
+[[ $QPID_DATA_DIR ]] || QPID_DATA_DIR="/var/lib/qpidd"
+[[ $PIDFILE ]] || PIDFILE="/var/run/qpidd.pid"
+[[ $QPIDD_USER ]] || QPIDD_USER="root"
+
+
+depend() {
+	use net logger corosync openib clvmd saslauthd lvm
+	need localmount
+	provide qpidd
+
+}
+
+start() {
+	ebegin "Starting qpidd: AMPQ Broker"
+	start-stop-daemon --start --quiet  --user $QPIDD_USER  --exec  /usr/sbin/qpidd -- --data-dir $QPID_DATA_DIR --daemon $QPIDD_OPTIONS --pid-dir /var/run/
+	eend $?
+
+
+}
+
+stop() {
+	ebegin "Stopping qpidd: AMPQ Broker"
+	#start-stop-daemon --stop --quiet  --pidfile `qpidd -c  --pid-dir /var/run/`
+	killall5 -15  `pidof qpidd` 
+
+	eend $?
+
+}
+
+reload() {
+	svc_stop
+	sleep 4
+	svc_start
+}
