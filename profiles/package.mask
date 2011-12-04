@@ -4,13 +4,9 @@
 # Try using app-misc/qmetro
 app-misc/metromap
 
-# 1 Oct 2011;  A.Vinogradov <spamslepnoga@inbox.ru>
-# Need more test
-app-emulation/virt-manager
-
 # 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # Need more testing and patch
-=app-emulation/libguestfs-1.12.3
+=app-emulation/libguestfs-1.12*
 
 # 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 #mask for work failures
