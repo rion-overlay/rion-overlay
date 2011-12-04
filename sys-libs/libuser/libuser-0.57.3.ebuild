@@ -8,7 +8,7 @@ PYTHON_DEPEND="2:2.6"
 
 inherit base autotools-utils python
 
-DESCRIPTION="The libuser library implements a standardized interface for manipulating and administering user and group accounts."
+DESCRIPTION="The libuser library implements a standardized interface for manipulating user and group accounts."
 HOMEPAGE="https://fedorahosted.org/libuser"
 SRC_URI="https://fedorahosted.org/releases/l/i/${PN}/${P}.tar.xz"
 

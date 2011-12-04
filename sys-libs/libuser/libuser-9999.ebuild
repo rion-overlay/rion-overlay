@@ -8,7 +8,7 @@ PYTHON_DEPEND="2:2.6"
 
 inherit autotools autotools-utils python mercurial
 
-DESCRIPTION="The libuser library implements a standardized interface for manipulating and administering user and group accounts."
+DESCRIPTION="The libuser library implements a standardized interface for manipulating user and group accounts."
 HOMEPAGE="https://fedorahosted.org/libuser"
 EHG_REPO_URI="http://hg.fedorahosted.org/hg/libuser/"
 
@@ -19,7 +19,6 @@ IUSE="ldap +popt sasl selinux nls"
 
 COMMON_DEPEND="dev-libs/glib:2
 	>=sys-devel/gettext-0.17
-	dev-util/gtk-doc
 	virtual/pam
 	ldap? ( net-nds/openldap )
 	popt? ( dev-libs/popt )
@@ -29,6 +28,7 @@ COMMON_DEPEND="dev-libs/glib:2
 
 DEPEND="
 	sys-devel/bison
+	dev-util/gtk-doc
 	${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
