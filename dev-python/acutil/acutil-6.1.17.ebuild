@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 RDEPEND="dev-perl/XML-Parser
-	!app-admin/authconfig
 	dev-libs/popt
 	dev-libs/newt"
 
