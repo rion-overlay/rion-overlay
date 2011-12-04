@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libuser-0.57.1.ebuild, libuser-0.57.3.ebuild, libuser-9999.ebuild:
+  drop old, fix more tupo
+
 *libuser-9999 (04 Dec 2011)
 
   04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
