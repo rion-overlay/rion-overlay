@@ -16,4 +16,3 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
-

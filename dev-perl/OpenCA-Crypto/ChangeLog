@@ -3,6 +3,10 @@
 # $Header: $
 
   04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  OpenCA-Crypto-0.9.6.ebuild, metadata.xml:
+  fix metadat, typo in Openca-Crypto
+
+  04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   +OpenCA-Crypto-0.9.6.ebuild, metadata.xml:
   bump Openca-Crypto-
 
