@@ -6,7 +6,7 @@ app-misc/metromap
 
 # 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # Need more testing and patch
-=app-emulation/libguestfs-1.12*
+>=app-emulation/libguestfs-1.12.0
 
 # 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
 #mask for work failures
