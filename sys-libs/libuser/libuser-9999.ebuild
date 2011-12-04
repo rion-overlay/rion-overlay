@@ -6,24 +6,27 @@ EAPI="3"
 
 PYTHON_DEPEND="2:2.6"
 
-inherit base autotools-utils python
+inherit autotools autotools-utils python mercurial
 
 DESCRIPTION="The libuser library implements a standardized interface for manipulating and administering user and group accounts."
 HOMEPAGE="https://fedorahosted.org/libuser"
-SRC_URI="https://fedorahosted.org/releases/l/i/${PN}/${P}.tar.xz"
+EHG_REPO_URI="http://hg.fedorahosted.org/hg/libuser/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 SLOT="0"
 IUSE="ldap +popt sasl selinux nls"
+
 COMMON_DEPEND="dev-libs/glib:2
 	>=sys-devel/gettext-0.17
+	dev-util/gtk-doc
 	virtual/pam
 	ldap? ( net-nds/openldap )
 	popt? ( dev-libs/popt )
 	sasl? ( dev-libs/cyrus-sasl
 		  ldap? ( net-nds/openldap[sasl] ) )
 	selinux? ( sys-libs/libselinux )"
+
 DEPEND="
 	sys-devel/bison
 	${COMMON_DEPEND}"
@@ -36,6 +39,23 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 pkg_setup() {
 	python_set_active_version 2
 	python_need_rebuild
+}
+
+src_unpack() {
+	mercurial_src_unpack
+}
+
+src_prepare() {
+	#mkdir -p ${S}/{m4,admin}
+	#gtkdocize --docdir docs/reference
+	#_elibtoolize --install --force
+	#eautopoint
+	#eautoreconf
+
+	eautopoint
+	gtkdocize --docdir docs/reference
+	eautoreconf
+
 }
 
 src_configure() {
