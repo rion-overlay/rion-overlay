@@ -2,6 +2,14 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libuser-0.57.3-r1 (04 Dec 2011)
+
+  04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libuser-0.57.3.ebuild, +libuser-0.57.3-r1.ebuild,
+  +files/libuser-0.57.3-wait_for_slapd.patch,
+  +files/disable_doc_build_in_default.patch, metadata.xml:
+  disable sglm build, add upstream test patch
+
   04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -libuser-0.57.1.ebuild, libuser-0.57.3.ebuild, libuser-9999.ebuild:
   drop old, fix more tupo

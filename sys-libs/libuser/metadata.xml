@@ -4,6 +4,14 @@
 <maintainer>
  <email>spamslepnoga@inbox.ru</email>
 </maintainer>
+<longdescription>
+The libuser library implements a standardized interface for manipulating
+and administering user and group accounts.  The library uses pluggable
+back-ends to interface to its data sources.
+
+Sample applications modeled after those included with the shadow password
+suite are included.
+</longdescription>
 <use>
 <flag name='popt'>Use <pkg>dev-libs/popt</pkg> as commandlain parser</flag>
 </use>
