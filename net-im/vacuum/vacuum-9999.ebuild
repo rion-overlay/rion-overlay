@@ -65,6 +65,7 @@ src_configure() {
 		-DINSTALL_SDK=ON
 		-DLANGS="${langs}"
 		-DINSTALL_DOCS=OFF
+		-DFORCE_BUNDLED_MINIZIP=ON
 	)
 
 	for x in ${PLUGINS}; do
