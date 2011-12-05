@@ -1,9 +1,3 @@
-# Nikoli <nikoli@lavabit.com> (24 Oct 2011)
-# Does not work with current stable, upstream is dead.
-# Removal in 30 days
-# Try using app-misc/qmetro
-app-misc/metromap
-
 # 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # Need more testing and patch
 >=app-emulation/libguestfs-1.12.0
