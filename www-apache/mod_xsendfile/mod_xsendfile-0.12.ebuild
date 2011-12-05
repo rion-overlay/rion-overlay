@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:  $
 
-EAPI="3"
+EAPI="4"
 
 inherit apache-module
 
 DESCRIPTION="Apache2 module that processes X-SENDFILE headers registered by the original output handler"
-HOMEPAGE="http://tn123.ath.cx/mod_xsendfile/"
-SRC_URI="http://tn123.ath.cx/mod_xsendfile/${P}.tar.gz"
+HOMEPAGE="https://tn123.org/mod_xsendfile/"
+SRC_URI="https://tn123.org/mod_xsendfile/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
