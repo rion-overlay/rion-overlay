@@ -4,15 +4,15 @@
 
 EAPI="4"
 
-inherit apache-module
+inherit git-2 apache-module
 
 DESCRIPTION="Apache2 module that processes X-SENDFILE headers registered by the original output handler"
 HOMEPAGE="https://tn123.org/mod_xsendfile/"
-SRC_URI="https://tn123.org/mod_xsendfile/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/nmaier/mod_xsendfile.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="${DEPEND}"
