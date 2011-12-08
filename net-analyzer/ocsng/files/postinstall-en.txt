@@ -1,0 +1,15 @@
+0. Create a new MySQL database:
+mysqladmin create <database>
+
+1. Check the apache example config files under /usr/share/webapps/${PN}/${PV}/conf (USE="vhosts")
+or /var/www/localhost/htdocs/${PN}/conf and configure apache.
+
+2 Restart apache.
+
+3. Edit ${VHOST_ROOT}/${P}/config.php and set database settings.
+
+4. Login to
+http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/admin/install/install.php
+and follow the directions.
+
+5. Don't forget to delete or remove permissions from the install.php file when you're done!
