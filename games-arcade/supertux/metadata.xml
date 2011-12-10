@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer>
+  <name>Misbakh-Soloviev Vadim A.</name>
   <email>mva@mva.name</email>
 </maintainer>
 <use>
