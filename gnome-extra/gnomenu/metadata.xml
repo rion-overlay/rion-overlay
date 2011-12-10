@@ -4,7 +4,8 @@
 <herd>no-herd</herd>
 <maintainer>
   <email>rion4ik@gmail.com</email>
- <description>overlay maintainer and gnomenu project commiter</description> 
+  <name>rion</name>
+  <description>overlay maintainer and gnomenu project commiter</description> 
 </maintainer>
  <longdescription>A consolidated menu for gnome that brings eye candy to the
  world of the Gnome menu's. Fully functional menu , supports themes , for a

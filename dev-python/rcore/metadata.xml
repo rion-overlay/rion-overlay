@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<herd>no-herd</herd>
 	<maintainer>
-		<email>rion4ik@notagmail.com</email>
-		<name>Rion</name>
+		<email>rion4ik@gmail.com</email>
+		<name>rion</name>
 	</maintainer>
 	<longdescription>Rion's core package which includes various tools used by rion's projects</longdescription>
 	<use>

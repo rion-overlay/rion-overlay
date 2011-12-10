@@ -4,7 +4,7 @@
 	<herd>net-im</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Il'nykh Sergey</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription lang="en">
 	This plugin is port to Psi+ of QutIM plugin. It adds file transfer via narod.yandex.ru feature to Psi+. Also it allows to manage list of files on server.

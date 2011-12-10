@@ -4,6 +4,7 @@
 <herd>gnome</herd>
 <maintainer>
   <email>rion4ik@gmail.com</email>
+  <name>rion</name>
 </maintainer>
  <longdescription>Total commander clone</longdescription> 
 <use>

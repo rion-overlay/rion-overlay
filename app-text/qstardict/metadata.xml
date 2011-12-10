@@ -4,6 +4,7 @@
 	<herd>no-herd</herd>
 	<maintainer>
 	  <email>rion4ik@gmail.com</email>
+	  <name>rion</name>
 	  <description>one of developers</description>
 	</maintainer>
 	<longdescription>Cool stardict clone written with Qt</longdescription>

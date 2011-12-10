@@ -4,7 +4,7 @@
 	<herd>net-im</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Il'nykh Sergey</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription lang="en">Psi plugin to save logs of conference to file.
 	</longdescription>

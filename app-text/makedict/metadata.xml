@@ -4,7 +4,7 @@
 <herd>no-herd</herd>
 <maintainer>
   <email>rion4ik@gmail.com</email>
- <description>Sergey Ilinyh</description> 
+  <name>rion</name>
 </maintainer>
  <longdescription>Utility for conversion various types of dictionaries</longdescription> 
 <use>

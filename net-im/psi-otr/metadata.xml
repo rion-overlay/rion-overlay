@@ -4,7 +4,7 @@
 	<herd>net-im</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Il'nykh Sergey</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription lang="en">Jabber and Off-the-Record Messaging allows to
 	encrypt messages before send. This plugin do that for Psi
