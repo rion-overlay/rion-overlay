@@ -4,7 +4,7 @@
 	<herd>net-im</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Il'nykh Sergey</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription lang="en">
 Easy chess plugin for Psi based on special type of xmpp messages

@@ -4,7 +4,7 @@
 	<herd>net-im</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Il'nykh Sergey</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription lang="en">
 Plugin allows to show small popup near tray or any other coner when PEPs of contacts such as tune, mood and others change.

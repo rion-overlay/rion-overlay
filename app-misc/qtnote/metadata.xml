@@ -4,7 +4,7 @@
 	<herd>no-herd</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Rion</name>
+		<name>rion</name>
 		<description>qnote developer</description>
 	</maintainer>
 	<longdescription>Note-taking application written in clean Qt as very simple tomboy replacement. This application will never have all tomboy functionality. It was created only to make quick notes</longdescription>

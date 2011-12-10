@@ -53,7 +53,7 @@ for pn in $NEW_PLUGINS; do
 	<herd>net-im</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Il'nykh Sergey</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription lang="en">
 	${longdesc}

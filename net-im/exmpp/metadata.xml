@@ -5,6 +5,7 @@
 <herd>net-im</herd>
 <maintainer>
   <email>rion4ik@gmail.com</email>
+  <name>rion</name>
 </maintainer>
 <longdescription>standalone XMPP library used by ejabberd and written with erlang</longdescription>
 </pkgmetadata>

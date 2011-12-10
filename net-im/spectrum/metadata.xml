@@ -4,6 +4,7 @@
 <herd>net-im</herd>
 <maintainer>
   <email>rion4ik@gmail.com</email>
+  <name>rion</name>
 </maintainer>
   <longdescription>Bunch of XMPP transports (all-in-one) based in libpurple (Pidgin project)</longdescription>
 <use>

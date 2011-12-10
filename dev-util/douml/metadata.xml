@@ -4,7 +4,7 @@
 	<herd>no-herd</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Rion</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription>Born as a fork of BoUML, it is a UML 2 modelling tool capable of round-trip, reverse engineering and code generation. Supports class, state and other diagrams, C++, Java, Python, PHP, IDL code generation. It can also export to XMI.</longdescription>
 </pkgmetadata>

@@ -4,6 +4,7 @@
 	<herd>freedesktop</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
+		<name>rion</name>
 	</maintainer>
 <use>
   <flag name="monochrome">Monochrome addon for opaque light panels</flag>
