@@ -1,0 +1,225 @@
+                           Cisco Packet Tracer
+                        Software License Agreement
+
+IMPORTANT: PLEASE READ THIS CISCO PACKET TRACER SOFTWARE LICENSE AGREEMENT (THE
+"AGREEMENT") CAREFULLY.  DOWNLOADING, INSTALLING OR USING THE CISCO PACKET 
+TRACER SOFTWARE CONSTITUTES ACCEPTANCE OF THIS AGREEMENT.  IF YOU DO NOT AGREE
+TO ALL OF THE TERMS OF THIS AGREEMENT, THEN CISCO SYSTEMS, INC. ("CISCO") IS 
+UNWILLING TO LICENSE THE SOFTWARE TO YOU AND YOU ARE NOT AUTHORIZED TO 
+DOWNLOAD, INSTALL OR USE THE SOFTWARE.  
+
+I.      DISTRIBUTION RIGHTS.  The terms in this Section I ("Distribution 
+Rights") of the Agreement apply solely to any Cisco Networking Academy 
+instructor, administrator or other person or entity approved in writing by 
+Cisco Systems, Inc. (each, an "Instructor") to distribute and use the Cisco 
+Packet Tracer software and related documentation (collectively, the "Software")
+in accordance with the terms and conditions of this Agreement.   
+
+        Subject to the terms and conditions of the End User License Agreement 
+        set forth in Section II below (the "EULA"), Cisco grants Instructor a 
+        limited, nonexclusive, nontransferable license to distribute the 
+        Software using the Permitted Distribution Methods (defined below), 
+        during the term of the Agreement to Permitted End Users (defined below)
+        solely as reasonably necessary to provide networking training or 
+        instruction in accordance with the terms and conditions of the 
+        Agreement.  The Permitted Distribution Methods are:  (i) distribution 
+        via a password protected website (WAN distribution), Local Area Network
+        (LAN distribution) or FTP server; or (ii) distribution via CD's or 
+        other tangible media containing the Software.  Instructor shall not 
+        remove the EULA from the Software.  Instructor shall use reasonable 
+        efforts to ensure Permitted End Users comply with the EULA.  Permitted
+        End Users are students, faculty or alumni of Cisco Networking Academy
+        or such other individuals or entities approved in writing by Cisco.  
+        Instructors shall not make any copies or duplicates of the Software 
+        except as reasonably necessary to exercise the rights granted 
+        hereunder.  Except to the extent set forth herein, no distribution, 
+        marketing or other transfer of the Software is permitted.  Without 
+        limiting the generality of the foregoing, the Software may not be 
+        copied, licensed, sub-licensed, sold or otherwise distributed in 
+        exchange for any fee or value-in-kind.
+        
+        Instructor acknowledges and agrees that Cisco retains sole and 
+        exclusive title and ownership to the Software, including all copies 
+        thereof, all Cisco trademarks, designations, logos and other branding 
+        for the Software and all intellectual property rights in or to any of 
+        the foregoing. 
+        
+        Cisco may terminate the Distribution Rights granted hereunder for any
+        reason or no reason on five (5) business days notice.  Unless earlier
+        terminated as set forth in the preceding sentence, the term of this 
+        Agreement shall continue until Instructor is no longer a Cisco 
+        Networking Academy instructor, administrator or other person or entity
+        approved in writing by Cisco to exercise the rights set forth in this 
+        Agreement.  
+        
+II.     The following End User License Agreement or "EULA" shall apply to all 
+users of the Software:          
+
+                         End User License Agreement 
+BY DOWNLOADING OR INSTALLING THE SOFTWARE YOU ARE BINDING YOURSELF AND/OR THE 
+ENTITY THAT YOU REPRESENT (COLLECTIVELY, "USER") TO THIS END USER LICENSE 
+AGREEMENT ("EULA").  The following terms of this EULA govern access to and use
+of the Software.
+
+License. Conditioned upon compliance with the terms and conditions of this 
+EULA, Cisco Systems, Inc. ("Cisco") grants to User a royalty free, personal, 
+nonexclusive, nontransferable and revocable license to use the Cisco Packet 
+Tracer software and related documentation (collectively, the "Software") solely
+to create, display or run network simulations using files with suffixes ".pkt" 
+or ".pka" (collectively, "Activities") in connection with Cisco Networking 
+Academy or for such other purpose(s) approved by Cisco in writing.   No license
+is granted for any other purpose and there are no implied licenses in this 
+EULA.  
+
+General Limitations. This is a license, not a transfer of title, to the 
+Software and Cisco retains ownership of all copies of the Software.  User 
+acknowledges and agrees that Cisco and/or its suppliers own all right, title
+and interest in and to the Software, including without limitation, any and all
+copyrights, patents, trade secrets, trademarks and other intellectual property
+rights therein.  Cisco has the exclusive right to apply for or register any 
+patents, mask work rights, copyrights, or such other proprietary protections 
+with respect to the Software.  User will not earn or acquire any rights or 
+licenses under any copyrights, patents, trade secrets, trademarks or other 
+intellectual property rights on account of this EULA.  Except as otherwise 
+expressly provided under this EULA, User shall have no right, and User 
+specifically agrees not to:
+
+        (i) transfer, assign or sublicense its license rights to any other 
+        person or entity, and User acknowledges that any attempted transfer,
+        assignment, sublicense or use shall be void;
+        
+        (ii) make error corrections to or otherwise modify or adapt the 
+        Software or create derivative works (excluding Activities) based upon
+        the Software, or permit third parties to do the same;
+        
+        (iii) reverse engineer or decompile, decrypt, disassemble or otherwise
+        reduce the Software to human-readable form, except to the extent 
+        otherwise expressly permitted under applicable law notwithstanding this
+        restriction;
+        
+        (iv) use or permit the Software to be used to perform services for 
+        third parties, whether on a service bureau or time sharing basis or 
+        otherwise, without the express written authorization of Cisco; or
+        
+        (v) disclose, provide, or otherwise make available trade secrets 
+        contained within the Software in any form to any third party without 
+        the prior written consent of Cisco.  User shall implement reasonable 
+        security measures to protect such trade secrets.  
+        
+To the extent required by law, and at User's written request, Cisco shall 
+provide User with the interface information needed to achieve interoperability
+between the Software and another independently created program, on payment of 
+Cisco's applicable fee, if any. User shall observe strict obligations of 
+confidentiality with respect to such interface information and shall use such 
+interface information in compliance with any reasonable terms and conditions 
+upon which Cisco makes such interface information available.
+
+Software, Upgrades and Additional Copies. For purposes of this EULA, "Software"
+shall include (and the terms and conditions of this EULA shall apply to) 
+computer programs, as provided to User by Cisco or an authorized agent and any 
+upgrades, updates, bug fixes or modified versions thereto (collectively, 
+"Upgrades") or backup copies of the Software permitted hereunder.  
+NOTWITHSTANDING ANY OTHER PROVISION OF THIS EULA: (1) USER HAS NO LICENSE OR 
+RIGHT TO USE ANY UPGRADES OR ADDITIIONAL COPIES UNLESS USER, AT THE TIME OF 
+ACQUIRING SUCH COPY OR UPGRADE, ALREADY HOLDS A VALID LICENSE TO THE ORIGINAL 
+SOFTWARE; AND (2) THE MAKING AND USE OF ADDITIONAL COPIES IS LIMITED TO 
+NECESSARY BACKUP PURPOSES ONLY.
+
+Proprietary Notices. User agrees to maintain and reproduce all copyright and 
+other proprietary notices on all copies, in any form, of the Software in the 
+same form and manner that such copyright and other proprietary notices are 
+included on the Software. Except as expressly authorized in this EULA, User 
+shall not make any copies or duplicates of any Software without the prior 
+written permission of Cisco.
+
+Term and Termination.  Provided User complies with the terms and conditions 
+of this EULA, the license granted herein shall remain in effect for so long 
+as User remains a Permitted End User, as determined by Cisco in its sole 
+discretion.  User may terminate this EULA and the license at any time by 
+destroying all copies of the Software. User's rights under this EULA will 
+terminate immediately without notice from Cisco if User fails to comply with 
+any provision of this EULA. Upon termination, User shall destroy all copies of
+Software in its possession or control. All confidentiality obligations of User
+and all limitations of liability and disclaimers and restrictions of warranty 
+shall survive termination of this EULA. In addition, the provisions of the 
+sections titled "U.S. Government End User Purchasers" and "General Terms 
+Applicable to the Limited Warranty Statement and Software License" shall 
+survive termination of this EULA.
+
+Export.  The Software, including technical data, may be subject to U.S. export
+control laws, including the U.S. Export Administration Act and its associated 
+regulations, and may be subject to export or import regulations in other 
+countries. User agrees to comply strictly with all such regulations and 
+acknowledges that it has the responsibility to obtain licenses to export, 
+re-export, or import the Software.
+
+U.S. Government End User Purchasers. The Software qualifies as "commercial 
+items," as that term is defined at Federal Acquisition Regulation ("FAR") 
+(48 C.F.R.) 2.101, consisting of "commercial computer software" and "commercial 
+computer software documentation" as such terms are used in FAR 12.212. 
+Consistent with FAR 12.212 and DoD FAR Supp. 227.7202-1 through 227.7202-4, and
+notwithstanding any other FAR or other contractual clause to the contrary in 
+any agreement into which this EULA may be incorporated, User may provide to 
+Government end user or, if this agreement is direct, Government end user will 
+acquire, the Software with only those rights set forth in this EULA. Use of 
+the Software constitutes agreement by the Government that the Software and 
+related documentation are "commercial computer software" and "commercial 
+computer software documentation," and constitutes acceptance of the rights and
+restrictions herein.
+
+No Warranty
+THE SOFTWARE FURNISHED UNDER THIS EULA IS PROVIDED ON AN "AS IS" BASIS, WITHOUT
+ANY WARRANTIES OR REPRESENTATIONS OF ANY KIND, WHETHER EXPRESS, IMPLIED OR 
+STATUTORY; INCLUDING, WITHOUT LIMITATION, WARRANTIES OF QUALITY, PERFORMANCE, 
+NONINFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. NOR ARE 
+THERE ANY WARRANTIES CREATED BY A COURSE OF DEALING, COURSE OF PERFORMANCE OR 
+TRADE USAGE. CISCO DOES NOT WARRANT THAT THE SOFTWARE WILL MEET USER'S NEEDS OR
+WILL BE FREE FROM ERRORS, OR THAT THE OPERATION OF THE SOFTWARE WILL BE 
+UNINTERRUPTED. THE FOREGOING EXCLUSIONS AND DISCLAIMERS ARE AN ESSENTIAL PART 
+OF THIS EULA AND FORMED THE BASIS FOR DETERMINING THE FEES CHARGED FOR THE 
+SOFTWARE.  
+
+Disclaimer of Liabilities. REGARDLESS OF WHETHER ANY REMEDY SET FORTH HEREIN 
+FAILS OF ITS ESSENTIAL PURPOSE OR OTHERWISE, IN NO EVENT WILL CISCO OR ITS 
+SUPPLIERS BE LIABLE FOR ANY LOST REVENUE, PROFIT, OR LOST OR DAMAGED DATA, 
+NETWORK FAILURE, BUSINESS INTERRUPTION, LOSS OF CAPITAL, OR FOR SPECIAL, 
+INDIRECT, CONSEQUENTIAL, INCIDENTAL, OR PUNITIVE DAMAGES HOWEVER CAUSED AND 
+REGARDLESS OF THE THEORY OF LIABILITY OR WHETHER ARISING OUT OF THE USE OF OR 
+INABILITY TO USE SOFTWARE OR OTHERWISE AND EVEN IF CISCO OR ITS SUPPLIERS OR 
+LICENSORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. In no event 
+shall Cisco's or its suppliers' or licensors' liability to User, whether in 
+contract, tort (including negligence), breach of warranty, or otherwise, exceed
+the price paid by User for the Software that gave rise to the claim or if the 
+Software is part of another Product, the price paid for such other Product. 
+BECAUSE SOME STATES OR JURISDICTIONS DO NOT ALLOW LIMITATION OR EXCLUSION OF
+CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+
+User agrees that the limitations of liability and disclaimers set forth herein 
+will apply regardless of whether User has accepted the Software or any other 
+product or service delivered by Cisco. User acknowledges and agrees that Cisco 
+has granted the licenses and entered into this relationship in reliance upon 
+the disclaimers of warranty and the limitations of liability set forth herein, 
+that the same reflect an allocation of risk between the parties (including the 
+risk that a contract remedy may fail of its essential purpose and cause 
+consequential loss), and that the same form an essential basis of the bargain 
+between the parties.
+
+General.  The EULA shall be governed by and construed in accordance with the 
+laws of the State of California, without reference to or application of 
+choice of law rules or principles. The United Nations Convention on the 
+International Sale of Goods shall not apply. If any portion hereof is found to
+be void or unenforceable, the remaining provisions of the EULA shall remain in
+full force and effect. Except as expressly provided herein, this EULA 
+constitutes the entire agreement between the parties with respect to the 
+license of the Software and supersedes any conflicting or additional terms 
+contained in any purchase order or elsewhere, all of which terms are excluded.
+This EULA has been written in the English language, and the parties agree that
+the English version will govern. User waives any rights User may have under 
+the law of User's country or province to have this EULA written in any language
+other than English. 
+
+Cisco, Cisco Systems, and the Cisco Systems logo are registered trademarks of 
+Cisco Systems, Inc. in the U.S. and certain other countries.  Any other 
+trademarks mentioned in this document are the property of their respective 
+owners.
+
