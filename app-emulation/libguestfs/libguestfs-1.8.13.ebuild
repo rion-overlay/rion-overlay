@@ -61,15 +61,14 @@ COMMON_DEPEND="
 	readline? ( sys-libs/readline )
 	doc? ( dev-libs/libxml2 )
 	ocaml? ( dev-lang/ocaml
-		dev-ml/xml-light
-		dev-ml/findlib )
+		dev-ml/findlib
+		dev-ml/xml-light )
 	ruby? ( dev-lang/ruby
 			dev-ruby/rake )
 	java? ( virtual/jre )
 	haskell? ( dev-lang/ghc )"
 
 DEPEND="${COMMON_DEPEND}
-	dev-util/gperf
 	java? ( >=virtual/jdk-1.6
 		source? ( app-arch/zip ) )
 	doc? ( app-text/po4a )"
@@ -148,15 +147,14 @@ src_configure() {
 		$(use_enable java) \
 		$(use_enable nls) \
 		$(use_with readline) \
-		$(use_enable ocaml-viewer) \
+		$(use_enable ocaml ocaml-viewer) \
 		$(use_enable perl) \
 		$(use_enable fuse) \
 		$(use_enable ocaml) \
 		$(use_enable python) \
 		$(use_enable ruby) \
 		$(use_enable haskell) \
-		$(use_with doc po4a) \
-		$(use_with tools)
+		$(use_with doc po4a)
 
 	    if use php; then
 			php-ext-source-r2_src_configure
@@ -214,9 +212,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use hackell && ghc-package_pkg_postinst
+	use haskell && ghc-package_pkg_postinst
 }
 
 pkg_prerm() {
-	use hackell && ghc-package_pkg_prerm
+	use haskell && ghc-package_pkg_prerm
 }
