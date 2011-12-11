@@ -33,3 +33,7 @@ src_prepare() {
 	./gnulib/gnulib-tool --update
 	eautoreconf
 }
+
+src_compile() {
+	autotools-utils_src-compile -j1
+}
