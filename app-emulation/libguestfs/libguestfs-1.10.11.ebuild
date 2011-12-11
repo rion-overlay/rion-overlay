@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="4"
 
 WANT_AUTOMAKE="1.11"
 
@@ -16,8 +16,8 @@ PHP_EXT_NAME="guestfs_php"
 USE_PHP="php5-3"
 PHP_EXT_OPTIONAL_USE="php"
 
-MAIN_ECLAS="autotools bash-completion-r1 confutils versionator
-java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2 ghc-package"
+MAIN_ECLAS="autotools bash-completion-r1 confutils versionator java-pkg-2
+java-pkg-opt-2 perl-module python ruby-ng php-ext-source-r2"
 
 inherit ${MAIN_ECLAS}
 
@@ -33,42 +33,41 @@ SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-# Upstream NOT supported 32-bit version, keyword in own risk
 KEYWORDS="~amd64"
-IUSE="fuse +ocaml perl python ruby haskell +readline nls php debug doc nls source javadoc"
+IUSE="fuse +ocaml perl python ruby readline nls php debug doc nls source javadoc"
 
 COMMON_DEPEND="
 	virtual/perl-Getopt-Long
-	>=dev-perl/Sys-Virt-0.2.4
+	dev-perl/Sys-Virt
 	>=app-misc/hivex-1.2.1[perl]
+	dev-libs/libconfig
 	dev-perl/libintl-perl
 	dev-perl/String-ShellQuote
 	dev-libs/libpcre
 	app-arch/cpio
 	dev-lang/perl
-	app-cdr/cdrkit
-	>=app-emulation/qemu-kvm-0.13[qemu_user_targets_x86_64,qemu_softmmu_targets_x86_64]
-	sys-apps/fakeroot
+	virtual/cdrtools
+	>=app-emulation/qemu-kvm-0.13
 	sys-apps/file
 	app-emulation/libvirt
 	dev-libs/libxml2:2
-	=dev-util/febootstrap-3*
-	>=sys-apps/fakechroot-2.8
-	>=app-admin/augeas-0.7.1
+	app-admin/augeas
 	sys-fs/squashfs-tools
 	perl? ( virtual/perl-ExtUtils-MakeMaker )
 	fuse? ( sys-fs/fuse )
 	readline? ( sys-libs/readline )
 	doc? ( dev-libs/libxml2 )
 	ocaml? ( dev-lang/ocaml
+		dev-ml/xml-light
 		dev-ml/findlib
-		dev-ml/xml-light )
+		dev-ml/pcre-ocaml )
 	ruby? ( dev-lang/ruby
 			dev-ruby/rake )
 	java? ( virtual/jre )
-	haskell? ( dev-lang/ghc )"
+	"
 
 DEPEND="${COMMON_DEPEND}
+	dev-util/gperf
 	java? ( >=virtual/jdk-1.6
 		source? ( app-arch/zip ) )
 	doc? ( app-text/po4a )"
@@ -78,48 +77,39 @@ RDEPEND="${COMMON_DEPEND}
 PHP_EXT_S="${S}/php/extension"
 
 pkg_setup() {
-	use java && java-pkg-opt-2_pkg_setup
+	java-pkg-opt-2_pkg_setup
 
-	if use python; then
-		python_set_active_version 2
-		python_pkg_setup
-		python_need_rebuild
-	fi
+	python_set_active_version 2
+	python_pkg_setup
+	python_need_rebuild
 
 	confutils_use_depend_all source java
 	confutils_use_depend_all javadoc java
 
-	use ruby && ruby-ng_pkg_setup
-	use haskell && ghc-package_pkg_setup
+	ruby-ng_pkg_setup
+#	use haskell && ghc-package_pkg_setup
 }
 
 src_unpack() {
 	unpack ${P}.tar.gz
 
 	cd "${WORKDIR}"
-	mkdir image || die
+	mkdir image
 	cd image || die
 	unpack libguestfs-${APLANCE_PV}-x86_64.tar.gz
-	#mkdir "${S}"/appliance/ || die - WTF ? this reqire in eapi=4 and not
-	#require in eapi=3
 	cp "${WORKDIR}"/image/usr/local/lib/guestfs/* "${S}"/appliance/ || die
 
-	# code from follow eclass - php-ext-source-r2
-	# not inherit it becase USE level inheritnit implimented in portage
-	# 10 year age ;)
 	if use php; then
 		local slot orig_s="${PHP_EXT_S}"
 		for slot in $(php_get_slots); do
-			cp -r "${orig_s}" "${WORKDIR}/${slot}" || die
+			cp -r "${orig_s}" "${WORKDIR}/${slot}"
 		done
 	fi
 }
 
 src_prepare() {
-	epatch  "${FILESDIR}/1.8/${PV}"/configure_ac_automagic.patch
-	epatch  "${FILESDIR}/1.8/${PV}"/disable_php_in_makefile.patch
-
-	use java && java-pkg-opt-2_src_prepare
+	epatch  "${FILESDIR}/1.10"/*.patch
+	java-pkg-opt-2_src_prepare
 	eautoreconf
 
 	if use php; then
@@ -128,15 +118,6 @@ src_prepare() {
 }
 
 src_configure() {
-
-	# Disable feature test for kvm for more reason
-	# i.e: not loaded module in __build__ time,
-	# build server not supported kvm, etc. ...
-	#
-	# In fact, this feature is virtio support and required 
-	# configured kernel.
-	export vmchannel_test=no
-
 	econf  \
 		--with-repo=fedora-12 \
 		--disable-appliance \
@@ -147,14 +128,14 @@ src_configure() {
 		$(use_enable java) \
 		$(use_enable nls) \
 		$(use_with readline) \
-		$(use_enable ocaml ocaml-viewer) \
+		$(use_enable ocaml-viewer) \
 		$(use_enable perl) \
 		$(use_enable fuse) \
 		$(use_enable ocaml) \
 		$(use_enable python) \
 		$(use_enable ruby) \
-		$(use_enable haskell) \
-		$(use_with doc po4a)
+		$(use_with doc po4a) \
+		$(use_with tools) || die
 
 	    if use php; then
 			php-ext-source-r2_src_configure
@@ -164,7 +145,6 @@ src_configure() {
 
 src_compile() {
 	emake  || die
-
 	if use php; then
 		php-ext-source-r2_src_compile
 	fi
@@ -179,14 +159,17 @@ src_install() {
 
 	dodoc BUGS HACKING README RELEASE-NOTES TODO
 
-	dobashcomp "${D}/etc"/bash_completion.d/guestfish-bash-completion.sh
+	if use bash-completion;then
+	dobashcompletion \
+	"${D}/etc"/bash_completion.d/guestfish-bash-completion.sh
+	fi
 
 	rm -fr "${D}/etc"/bash* || die
 
 	insinto /usr/$(get_libdir)/guestfs/
 	doins "${WORKDIR}/image/usr/local/lib/"guestfs/*
 
-	find "${D}" -name '*.la' -exec rm -f '{}' +
+	find "${D}/usr"/$(get_libdir) -name \*.la -delete
 	if use java; then
 		java-pkg_newjar  java/${P}.jar ${PN},jar
 		rm  -fr  "${D}/usr"/share/java
@@ -198,8 +181,7 @@ src_install() {
 			java-pkg_dojavadoc java/api
 		fi
 	fi
-
-	use perl && fixlocalpod
+	fixlocalpod
 	python_clean_installation_image -q
 
 	if use php; then
@@ -208,13 +190,5 @@ src_install() {
 }
 
 pkg_preinst() {
-	use java && java-pkg-opt-2_pkg_preinst
-}
-
-pkg_postinst() {
-	use haskell && ghc-package_pkg_postinst
-}
-
-pkg_prerm() {
-	use haskell && ghc-package_pkg_prerm
+	java-pkg-opt-2_pkg_preinst
 }
