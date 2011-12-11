@@ -3,6 +3,25 @@
 # $Header: $
 
   11 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/1.8/1.8.15/configure_ac_automagic.patch, -libguestfs-1.8.12.ebuild,
+  -libguestfs-1.8.13.ebuild, +libguestfs-1.8.15.ebuild,
+  +files/1.8/1.8.15/disable_php_in_makefile.patch, -libguestfs-1.10.8.ebuild:
+  drop old
+
+  11 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/1.8/1.8.15/configure_ac_automagic.patch, -libguestfs-1.8.12.ebuild,
+  +libguestfs-1.8.15.ebuild, -libguestfs-1.10.8.ebuild,
+  +files/1.8/1.8.15/disable_php_in_makefile.patch:
+  bump
+
+*libguestfs-1.8.15 (11 Dec 2011)
+
+  11 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libguestfs-1.8.12.ebuild, +libguestfs-1.8.15.ebuild,
+  -libguestfs-1.10.8.ebuild:
+  bump
+
+  11 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   libguestfs-1.8.13.ebuild, metadata.xml:
   small fix 
 
