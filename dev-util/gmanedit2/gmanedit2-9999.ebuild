@@ -18,3 +18,9 @@ IUSE=""
 
 DEPEND="x11-libs/gtksourceview:2.0"
 RDEPEND="${DEPEND}"
+
+src_prepare()
+{
+	epatch "$FILESDIR"/*.patch
+	gnome2_src_prepare
+}
