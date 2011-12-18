@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> sssd-1.6.4.ebuild:
+  small fix in sssd
+
 *sssd-1.6.4 (18 Dec 2011)
 
   18 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +sssd-1.6.4.ebuild,

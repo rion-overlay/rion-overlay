@@ -6,7 +6,7 @@ EAPI=4
 
 PYTHON_DEPEND="python? 2:2.6"
 
-inherit confutils python multilib pam linux-info autotools-utils
+inherit python multilib pam linux-info autotools-utils
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="http://fedorahosted.org/sssd/"
@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="glib doc +locator logrotate netlink nls python +libunistring selinux test"
 
-#REQUIRED_USE="( glib? ( !libunistring ) libunistring? ( !glib ) )"
-#( || (libunistring glib) )"
+REQUIRED_USE="^^ ( glib libunistring )"
 
 COMMON_DEP="
 	virtual/pam
@@ -53,17 +52,14 @@ DEPEND="${COMMON_DEP}
 	doc? ( app-doc/doxygen )"
 
 CONFIG_CHECK="~KEYS"
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-pkg_pretend() {
-	confutils_require_one glib libunistring
-	confutils_require_any glib libunistring
-}
+#AUTOTOOLS_IN_SOURCE_BUILD=1
 
 pkg_setup(){
-	python_set_active_version 2
-	python_pkg_setup
-	python_need_rebuild
+	if use python; then
+		python_set_active_version 2
+		python_pkg_setup
+		python_need_rebuild
+	fi
 	linux-info_pkg_setup
 }
 
@@ -127,7 +123,6 @@ pkg_postinst(){
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
 	elog "features. Please see howto in	http://fedorahosted.org/sssd/wiki/HOWTO_Configure_1_0_2"
 
-	use python && python_need_rebuild
 	use python && python_mod_optimize SSSDConfig.py ipachangeconf.py
 }
 
