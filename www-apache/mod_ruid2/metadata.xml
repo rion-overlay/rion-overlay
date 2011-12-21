@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+<email>spamslepnoga@inbox.ru</email>
+<description>a suexec module for apache which takes advantage of POSIX.1e capabilities</description> 
+</maintainer>
+
+<longdescription>With this module, all httpd process run under user's access
+right, not nobody or apache. mod_ruid2 is similar to mod_suid2, but has better performance than mod_suid2 because it
+doesn`t need to kill httpd children after one request. It makes use of kernel capabilites
+and after receiving a new request suids again. If you want to run apache modules, i.e.
+WebDAV, PHP, and so on under user's right, this module is useful.</longdescription> 
+
+</pkgmetadata>

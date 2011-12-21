@@ -1,0 +1,14 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+#
+# Mantainer A.Vinogradovs <spamslepnoga@inbox.ru>
+
+
+# Defaults for qpidd initscript
+# sourced by /etc/init.d/qpidd
+# installed at /etc/conf.d/qpidd by the maintainer scripts
+
+# Additional options that are passed to the Daemon.
+#DAEMON_OPTS=""
+
