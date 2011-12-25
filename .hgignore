@@ -1,4 +1,4 @@
-metadata/*
+metadata/cache/*
 .svn
 hgcia.py
 .*.swp
