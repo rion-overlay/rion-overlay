@@ -1,0 +1,4 @@
+metadata/cache/*
+.svn
+hgcia.py
+.*.swp

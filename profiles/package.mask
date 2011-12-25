@@ -1,0 +1,12 @@
+# 11 Dec 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# Need more patch and test
+>dev-util/febootstrap-3.9
+
+# 13 Aug 2011; A.Vinogradov <spamslepnoga@inbox.ru>
+# Need more testing and patch
+>=app-emulation/libguestfs-1.10.0
+
+# 13 Sep 2010; A.Vinogradov <spamslepnoga@inbox.ru>
+#mask for work failures
+app-crypt/openca-base
+app-crypt/openca
