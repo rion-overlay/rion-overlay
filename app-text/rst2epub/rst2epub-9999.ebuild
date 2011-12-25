@@ -12,7 +12,7 @@ inherit distutils mercurial
 DESCRIPTION="reStructuredText documents to epub files convertor"
 HOMEPAGE="https://bitbucket.org/wierob/rst2epub/"
 SRC_URI=""
-EHG_REPO_URI="https://bitbucket.org/wierob/rst2epub"
+EHG_REPO_URI="https://bitbucket.org/skrattaren/rst2epub"
 
 LICENSE="MIT"
 SLOT="0"
