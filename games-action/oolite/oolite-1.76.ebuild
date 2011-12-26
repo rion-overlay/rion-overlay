@@ -9,7 +9,8 @@ inherit gnustep-2 games
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
 FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
-SRC_URI="mirror://berlios/oolite-linux/${PN}-dev-source-${PV}.tar.bz2
+MY_P="${PN}-source-${PV}"
+SRC_URI="mirror://berlios/oolite-linux/${MY_P}.tar.bz2
 	${FF_JS_URI}"
 
 LICENSE="GPL-2"
@@ -26,7 +27,7 @@ RDEPEND="virtual/opengl
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make"
 
-S="${WORKDIR}/${PN}-dev-source-${PV}"
+S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
 
 pkg_setup() {
