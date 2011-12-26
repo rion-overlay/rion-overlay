@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*ucommon-5.1.0 (26 Dec 2011)
+
+  26 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -ucommon-5.0.5.ebuild, -ucommon-5.0.6.ebuild, -ucommon-5.0.7.ebuild,
+  +ucommon-5.1.0.ebuild:
+  bump ucommon, clean old
+
 *ucommon-5.0.7 (05 Dec 2011)
 
   05 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
