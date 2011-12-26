@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pkgmetadata>
 <maintainer>
-	<email>Andrei Vinogradov spamslepnoga@inbox.ru</email>
+	<email>spamslepnoga@inbox.ru</email>
+	<name>Andreis Vinogradovs</name>
  <description>Open Source CRM</description>
 </maintainer>
 <use>
