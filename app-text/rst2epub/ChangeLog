@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Dec 2011; Nikolaj Sjujskij <sterkrig@myopera.com> rst2epub-9999.ebuild:
+  Restrict Python ABIs
+
   25 Dec 2011; Nikolaj Sjujskij <sterkrig@myopera.com> rst2epub-9999.ebuild:
   Update repo URI
 
