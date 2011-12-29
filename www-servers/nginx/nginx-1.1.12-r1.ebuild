@@ -202,7 +202,7 @@ REQUIRED_USE="	nginx_modules_http_lua? ( nginx_modules_http_ndk )
 		nginx_modules_http_array_var? ( nginx_modules_http_ndk )"
 #		nginx_modules_http_set_cconv? ( nginx_modules_http_ndk )
 
-IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam +pcre perftools rrd ssl vim-syntax +luajit"
+IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam +pcre pcre-jit perftools rrd ssl vim-syntax +luajit"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -249,6 +249,7 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	libatomic? ( dev-libs/libatomic_ops )"
 PDEPEND="vim-syntax? ( app-vim/nginx-syntax )"
+REQUIRED_USE="pcre-jit? ( pcre )"
 
 S="${WORKDIR}/${PN}-${PV}"
 
@@ -331,6 +332,7 @@ src_configure() {
 	use ipv6 && myconf="${myconf} --with-ipv6"
 	use libatomic && myconf="${myconf} --with-libatomic"
 	use pcre && myconf="${myconf} --with-pcre"
+	use pcre-jit  && myconf+=" --with-pcre-jit"
 
 	# HTTP modules
 	for mod in $NGINX_MODULES_STD; do
