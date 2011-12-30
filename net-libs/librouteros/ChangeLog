@@ -1,0 +1,11 @@
+# ChangeLog for net-libs/librouteros
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
+# $Header: $
+
+*librouteros-1.1.2 (30 Dec 2011)
+
+  30 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/disable_werror.patch, +librouteros-1.1.2.ebuild, +metadata.xml:
+  initial commit - libreouteros for collectd monitoring system
+
