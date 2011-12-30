@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*vacuum-spellchecker-0.0.3.28 (30 Dec 2011)
+
+  30 Dec 2011; Nikoli <nikoli@lavabit.com>
+  +vacuum-spellchecker-0.0.3.28.ebuild:
+  version bump
+
   10 Apr 2011; Nikoli <nikoli@lavabit.com> +vacuum-spellchecker-9999.ebuild,
   +metadata.xml:
   initial ebuild
