@@ -75,6 +75,7 @@
 		<flag name='collectd_plugins_processes'>Build the processes input plugin (statistics about processes)</flag> 
 		<flag name='collectd_plugins_protocols'>Build the protocols input plugin (network protocols)</flag> 
 		<flag name='collectd_plugins_python'>Build the python language binding plugin (embeds a Python interpreter into collectd for writing plugins)</flag> 
+		<flag name='collectd_plugins_routeros'>Build the RouterOS ( mikrotik ) API monitoring plugin</flag>
 		<flag name='collectd_plugins_rrdcached'>Build the rrdcached input/output plugin (connects to rrdcached and submits updates for RRD files)</flag> 
 		<flag name='collectd_plugins_rrdtool'>Build the rrdtool output plugin (writes values to RRD-files)</flag>
 		<flag name='collectd_plugins_sensors'>Build the sensors input plugin (uses lm-sensors to read hardware sensors)</flag> 
