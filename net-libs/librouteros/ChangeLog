@@ -3,6 +3,10 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+  30 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  librouteros-1.1.2.ebuild:
+  ~x86 keyword, thank's maksbotan for testing
+
 *librouteros-1.1.2 (30 Dec 2011)
 
   30 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>

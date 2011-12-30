@@ -12,7 +12,7 @@ SRC_URI="http://verplant.org/librouteros/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug static-libs"
 
 DEPEND="dev-libs/libgcrypt"
