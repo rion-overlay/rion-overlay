@@ -1,0 +1,123 @@
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -219,12 +219,18 @@
+     if test -f /etc/arch-release; then
+         DISTRO=ARCHLINUX
+     fi
++    if test -f /etc/gentoo-release; then
++              DISTRO=GENTOO
++    fi
++
+     AC_MSG_RESULT([$DISTRO])
+     AC_SUBST([DISTRO])
+ fi
+ 
+ dnl Check for rpcgen and XDR library.  rpcgen is optional.
+ AC_CHECK_PROG([RPCGEN],[rpcgen],[rpcgen],[no])
++AS_IF([test "xRPCGEN" = "xno"], [AC_MSG_WARN([rpcgen not installed])],[])
++
+ AM_CONDITIONAL([HAVE_RPCGEN],[test "x$RPCGEN" != "xno"])
+ AC_CHECK_LIB([portablexdr],[xdrmem_create],[],[
+         AC_SEARCH_LIBS([xdrmem_create],[rpc xdr nsl])
+@@ -279,10 +285,14 @@
+ 
+ dnl Check for optional xmllint.
+ AC_CHECK_PROG([XMLLINT],[xmllint],[xmllint],[no])
++AS_IF([test "xXMLLINT" = "xno"], [AC_MSG_WARN([xmllint not installed])],[])
++
+ AM_CONDITIONAL([HAVE_XMLLINT],[test "x$XMLLINT" != "xno"])
+ 
+ dnl po4a for translating man pages and POD files (optional).
+ AC_CHECK_PROG([PO4A],[po4a],[po4a],[no])
++AS_IF([test "xPO4A" = "xno"], [AC_MSG_WARN([po4a not installed])],[])
++
+ AM_CONDITIONAL([HAVE_PO4A], [test "x$PO4A" != "xno"])
+ 
+ dnl Check for db_dump, db_load (optional).
+@@ -421,7 +431,7 @@
+                  AC_DEFINE([HAVE_LIBMAGIC],[1],[libmagic found at compile time.])
+                 ], [])
+         ],
+-        [AC_MSG_WARN([libmagic not found, some core features will be disabled])])
++        [AC_MSG_ERROR([libmagic not found, some core features will be disabled])])
+ 
+ dnl libvirt (highly recommended)
+ PKG_CHECK_MODULES([LIBVIRT], [libvirt],
+@@ -429,7 +439,7 @@
+          AC_SUBST([LIBVIRT_LIBS])
+          AC_DEFINE([HAVE_LIBVIRT],[1],[libvirt found at compile time.])
+         ],
+-        [AC_MSG_WARN([libvirt not found, some core features will be disabled])])
++        [AC_MSG_ERROR([libvirt not found, some core features will be disabled])])
+ AM_CONDITIONAL([HAVE_LIBVIRT],[test "x$LIBVIRT_LIBS" != "x"])
+ 
+ dnl libxml2 (highly recommended)
+@@ -438,7 +448,7 @@
+          AC_SUBST([LIBXML2_LIBS])
+          AC_DEFINE([HAVE_LIBXML2],[1],[libxml2 found at compile time.])
+         ],
+-        [AC_MSG_WARN([libxml2 not found, some core features will be disabled])])
++        [AC_MSG_ERROR([libxml2 not found, some core features will be disabled])])
+ AM_CONDITIONAL([HAVE_LIBXML2],[test "x$LIBXML2_LIBS" != "x"])
+ 
+ dnl libconfig (highly recommended)
+@@ -447,7 +457,7 @@
+          AC_SUBST([LIBCONFIG_LIBS])
+          AC_DEFINE([HAVE_LIBCONFIG],[1],[libconfig found at compile time.])
+         ],
+-        [AC_MSG_WARN([libconfig not found, some features will be disabled])])
++        [AC_MSG_ERROR([libconfig not found, some features will be disabled])])
+ AM_CONDITIONAL([HAVE_LIBCONFIG],[test "x$LIBCONFIG_LIBS" != "x"])
+ 
+ dnl hivex library (highly recommended)
+@@ -603,12 +613,14 @@
+     [test "x$RAKE" != "xno" && test -n "$HAVE_LIBRUBY"])
+ 
+ dnl Check for Java.
+-AC_ARG_WITH(java_home,
+-    [AS_HELP_STRING([--with-java-home],
+-        [specify path to JDK directory @<:@default=check@:>@])],
+-    [],
+-    [with_java_home=check])
+ 
++AC_ARG_ENABLE([java],
++       AS_HELP_STRING([--enable-java], [Disable Java language bindings]),
++        [enable_java=no],
++       [enable_java=yes])
++
++AS_IF([test "x$enable_java" = "xyes"],
++       [
+ if test "x$with_java_home" != "xno"; then
+     if test "x$with_java_home" != "xyes" && test "x$with_java_home" != "xcheck"
+     then
+@@ -740,7 +752,8 @@
+ AC_SUBST(JNI_INSTALL_DIR)
+ AC_SUBST(JNI_VERSION_INFO)
+ 
+-AM_CONDITIONAL([HAVE_JAVA],[test -n "$JAVAC"])
++])
++AM_CONDITIONAL([HAVE_JAVA],[test -n "$JAVAC" && test "x$enable_java" != "xno"])
+ 
+ dnl Check for Haskell (GHC).
+ GHC=no
+@@ -784,7 +797,7 @@
+             fi
+         done
+         if test "x$missing_perl_modules" = "xyes"; then
+-            AC_MSG_WARN([some Perl modules required to compile the Perl virt-* tools are missing])
++            AC_MSG_ERROR([some Perl modules required to compile the Perl virt-* tools are missing])
+         fi
+         ])
+ 
+@@ -797,8 +810,9 @@
+ 
+ dnl Replace libtool with a wrapper that clobbers dependency_libs in *.la files
+ dnl http://lists.fedoraproject.org/pipermail/devel/2010-November/146343.html
+-LIBTOOL='bash $(top_srcdir)/libtool-kill-dependency_libs.sh $(top_builddir)/libtool'
++#LIBTOOL='bash $(top_srcdir)/libtool-kill-dependency_libs.sh $(top_builddir)/libtool'
+ AC_SUBST([LIBTOOL])
++LT_INIT
+ 
+ dnl Run in subdirs.
+ if test "x$enable_daemon" = "xyes"; then

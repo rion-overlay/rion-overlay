@@ -1,0 +1,23 @@
+# ChangeLog for app-admin/collectd
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  30 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> metadata.xml:
+  fix manifest
+
+*collectd-5.0.1 (30 Dec 2011)
+*collectd-5.0.0-r2 (30 Dec 2011)
+
+  30 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/collectd-4.10.1-libiptc.patch, +files/collectd-4.10.1-libperl.patch,
+  +files/collectd-4.10.1-noowniptc.patch,
+  +files/collectd-4.10.2-libnotify-0.7.patch,
+  +files/collectd-4.10.2-libocci.patch, +files/collectd-4.10.2-nohal.patch,
+  +files/collectd-4.10.3-lt.patch, +files/collectd-4.10.3-werror.patch,
+  +collectd-5.0.0-r2.ebuild, +files/collectd-5.0.0-varnish.patch,
+  +files/collectd-5.0.0-yajl2-2.patch, +files/collectd-5.0.0-yajl2.patch,
+  +collectd-5.0.1.ebuild, +files/collectd-5.0.1-varnish.patch,
+  +files/collectd.confd, +files/collectd.initd, +files/logrotate,
+  +metadata.xml:
+  recommit from main tree, add routeros plugin
+
