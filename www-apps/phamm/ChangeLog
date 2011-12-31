@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> phamm-0.5.19.ebuild:
+  small typo
+
 *phamm-0.5.19 (31 Dec 2011)
 
   31 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> phamm-0.5.18.ebuild,

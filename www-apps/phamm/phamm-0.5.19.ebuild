@@ -40,6 +40,7 @@ pkg_setup() {
 }
 
 src_unpack() {
+
 if use minimal && \
 ( use isp-schema  ||  use amavis-schema  ||  use dns-schema  || use samba || use ftp-schema || use radius ) ; then
 
@@ -75,7 +76,9 @@ if use !minimal;then
 fi
 
 }
+
 src_install() {
+
 webapp_src_preinst
 
 	dodoc CHANGELOG COPYRIGHT INSTALL LIB_FUNCTIONS
