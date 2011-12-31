@@ -12,7 +12,7 @@ inherit webapp depend.php
 DESCRIPTION="LDAP web front-end written on PHP"
 HOMEPAGE="http://www.phamm.org/"
 
-SRC_URI="http://open.rhx.it/phamm/old_release/${P}.tar.gz
+SRC_URI="http://open.rhx.it/phamm/${P}.tar.gz
 		!minimal? (
 isp-schema?	( http://open.rhx.it/phamm/schema/ISPEnv2.schema -> ISPEnv2-phamm.schema )
 amavis-schema? ( http://open.rhx.it/phamm/schema/amavis.schema -> amavis-phamm.schema )
@@ -40,6 +40,7 @@ pkg_setup() {
 }
 
 src_unpack() {
+
 if use minimal && \
 ( use isp-schema  ||  use amavis-schema  ||  use dns-schema  || use samba || use ftp-schema || use radius ) ; then
 
@@ -75,7 +76,9 @@ if use !minimal;then
 fi
 
 }
+
 src_install() {
+
 webapp_src_preinst
 
 	dodoc CHANGELOG COPYRIGHT INSTALL LIB_FUNCTIONS
