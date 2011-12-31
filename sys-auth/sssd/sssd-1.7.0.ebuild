@@ -99,7 +99,7 @@ src_install(){
 
 	insinto /etc/sssd
 	insopts -m600
-	doins "${S}"/src/examples/sssd.conf
+	doins "${S}"/src/examples/sssd-example.conf
 
 	if use logrotate; then
 		insinto /etc/logrotate.d
