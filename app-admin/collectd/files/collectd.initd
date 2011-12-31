@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-admin/collectd/files/collectd.initd,v 1.5 2011/08/25 21:02:37 dilfridge Exp $
 
