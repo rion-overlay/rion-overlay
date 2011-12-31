@@ -12,7 +12,7 @@ inherit webapp depend.php
 DESCRIPTION="LDAP web front-end written on PHP"
 HOMEPAGE="http://www.phamm.org/"
 
-SRC_URI="http://open.rhx.it/phamm/old_release/${P}.tar.gz
+SRC_URI="http://open.rhx.it/phamm/${P}.tar.gz
 		!minimal? (
 isp-schema?	( http://open.rhx.it/phamm/schema/ISPEnv2.schema -> ISPEnv2-phamm.schema )
 amavis-schema? ( http://open.rhx.it/phamm/schema/amavis.schema -> amavis-phamm.schema )
