@@ -49,7 +49,6 @@ COMMON_DEPEND="
 	sys-apps/file
 	app-emulation/libvirt
 	dev-libs/libxml2:2
-	=dev-util/febootstrap-3*
 	>=sys-apps/fakechroot-2.8
 	>=app-admin/augeas-0.7.1
 	sys-fs/squashfs-tools
@@ -113,8 +112,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch  "${FILESDIR}/1.8/${PV}"/configure_ac_automagic.patch
-	epatch  "${FILESDIR}/1.8/${PV}"/disable_php_in_makefile.patch
+	epatch  "${FILESDIR}/1.8/${PV}"/000*.patch
 
 	use java && java-pkg-opt-2_src_prepare
 	eautoreconf

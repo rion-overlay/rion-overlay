@@ -1,8 +1,14 @@
+# HG changeset patch
+# User Andreis Vinogradovs <spamslepnoga@inbox.ru>
+# Date 1325421041 -7200
+# Node ID ba14909c0a95bf9879e6df25d8128d1cf9a75252
+# Parent  c9bc634a526984160a40b70f71895de0a855f4c0
+configure_ac_automagic.patch
+
 diff --git a/configure.ac b/configure.ac
-index d072e81..cf7228e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -217,6 +217,10 @@ if test "x$enable_appliance" = "xyes"; then
+@@ -217,6 +217,10 @@
      if test -f /etc/arch-release; then
          DISTRO=ARCHLINUX
      fi
@@ -13,7 +19,7 @@ index d072e81..cf7228e 100644
      AC_MSG_RESULT([$DISTRO])
      AC_SUBST([DISTRO])
  fi
-@@ -416,7 +420,7 @@ AC_CHECK_LIB([magic],[magic_file],
+@@ -461,7 +465,7 @@
                   AC_DEFINE([HAVE_LIBMAGIC],[1],[libmagic found at compile time.])
                  ], [])
          ],
@@ -22,7 +28,7 @@ index d072e81..cf7228e 100644
  
  dnl Check for PCRE (highly recommended)
  PKG_CHECK_MODULES([PCRE], [libpcre],
-@@ -424,7 +428,7 @@ PKG_CHECK_MODULES([PCRE], [libpcre],
+@@ -469,7 +473,7 @@
           AC_SUBST([PCRE_LIBS])
           AC_DEFINE([HAVE_PCRE],[1],[PCRE found at compile time.])
          ],
@@ -31,7 +37,7 @@ index d072e81..cf7228e 100644
  
  dnl libvirt (highly recommended)
  PKG_CHECK_MODULES([LIBVIRT], [libvirt],
-@@ -441,7 +445,7 @@ PKG_CHECK_MODULES([LIBXML2], [libxml-2.0],
+@@ -486,7 +490,7 @@
           AC_SUBST([LIBXML2_LIBS])
           AC_DEFINE([HAVE_LIBXML2],[1],[libxml2 found at compile time.])
          ],
@@ -40,7 +46,7 @@ index d072e81..cf7228e 100644
  AM_CONDITIONAL([HAVE_LIBXML2],[test "x$LIBXML2_LIBS" != "x"])
  
  dnl hivex library (highly recommended)
-@@ -609,13 +613,13 @@ AS_IF([test "x$enable_ruby" != "xno"],
+@@ -654,13 +658,13 @@
  AM_CONDITIONAL([HAVE_RUBY],
      [test "x$RAKE" != "xno" && test -n "$HAVE_LIBRUBY"])
  
@@ -60,7 +66,7 @@ index d072e81..cf7228e 100644
  if test "x$with_java_home" != "xno"; then
      if test "x$with_java_home" != "xyes" && test "x$with_java_home" != "xcheck"
      then
-@@ -711,7 +715,6 @@ if test "x$with_java_home" != "xno"; then
+@@ -756,7 +760,6 @@
              fi
          fi
          AC_MSG_RESULT([$JNI_CFLAGS])
@@ -68,7 +74,7 @@ index d072e81..cf7228e 100644
          dnl Need extra version flag?
          AC_MSG_CHECKING([extra javac flags])
          JAVAC_FLAGS=
-@@ -746,8 +749,8 @@ AC_SUBST(JAVAC_FLAGS)
+@@ -791,8 +794,8 @@
  AC_SUBST(JAR_INSTALL_DIR)
  AC_SUBST(JNI_INSTALL_DIR)
  AC_SUBST(JNI_VERSION_INFO)
@@ -79,7 +85,7 @@ index d072e81..cf7228e 100644
  
  dnl Check for Haskell (GHC).
  GHC=no
-@@ -804,8 +807,12 @@ AC_SUBST(MAX_PROC_NR)
+@@ -849,8 +852,12 @@
  
  dnl Replace libtool with a wrapper that clobbers dependency_libs in *.la files
  dnl http://lists.fedoraproject.org/pipermail/devel/2010-November/146343.html
