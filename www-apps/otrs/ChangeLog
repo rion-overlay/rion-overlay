@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Jan 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> -otrs-2.4.11.ebuild:
+  drop old otrs
+
 *otrs-2.4.12 (08 Dec 2011)
 
   08 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +otrs-2.4.12.ebuild,
