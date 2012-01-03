@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -57,9 +57,6 @@
+ if HAVE_HASKELL
+ SUBDIRS += haskell
+ endif
+-if HAVE_PHP
+-SUBDIRS += php
+-endif
+ 
+ # Unconditional because nothing is built yet.
+ SUBDIRS += csharp

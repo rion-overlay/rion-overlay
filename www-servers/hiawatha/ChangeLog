@@ -1,0 +1,11 @@
+# ChangeLog for www-servers/hiawatha
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*hiawatha-7.8.2 (08 Dec 2011)
+
+  08 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +hiawatha-7.8.2.ebuild, +files/hiawatha.init, +files/php-fcgi_hiawatha.init,
+  +metadata.xml:
+  recommit from my owerlay
+
