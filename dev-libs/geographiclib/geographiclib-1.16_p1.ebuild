@@ -11,7 +11,7 @@ inherit autotools-utils
 DESCRIPTION="Small set of C++ classes for performing various geographic and geodesic conversions"
 HOMEPAGE="http://geographiclib.sourceforge.net/"
 MY_P="GeographicLib-${PV}"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P/_p/-pl}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +21,7 @@ IUSE="doc static-libs"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P%_p[^digit]*}"
 
 src_install() {
 	autotools-utils_src_install
