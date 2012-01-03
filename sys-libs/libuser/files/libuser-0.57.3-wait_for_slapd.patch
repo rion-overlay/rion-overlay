@@ -1,0 +1,101 @@
+# HG changeset patch
+# User Miloslav Trmač <mitr@redhat.com>
+# Date 1317734450 -7200
+# Node ID 748913706e6a78f934489cc24e88e20965eed742
+# Parent  4efd04928ae217db09806d4c8d47a1336f8ba782
+Use common code to wait for slapd, wait up to 30 seconds
+
+diff -r 4efd04928ae2 -r 748913706e6a ChangeLog
+--- a/ChangeLog	Tue Oct 04 12:56:32 2011 +0200
++++ b/ChangeLog	Tue Oct 04 15:20:50 2011 +0200
+@@ -1,5 +1,10 @@
+ 2011-10-04  Miloslav Trmač  <mitr@redhat.com>
+ 
++	* tests/test_utils.sh: New file.
++	* tests/default_pw_test
++	* tests/ldap_test: Use common wait_for_slapd, also increasing the
++	timeout to 30 seconds.
++
+ 	* po/*.po (many): Mark an invalid translation as fuzzy.
+ 
+ 	* configure.in: Release 0.57.3.
+diff -r 4efd04928ae2 -r 748913706e6a tests/default_pw_test
+--- a/tests/default_pw_test	Tue Oct 04 12:56:32 2011 +0200
++++ b/tests/default_pw_test	Tue Oct 04 15:20:50 2011 +0200
+@@ -20,6 +20,7 @@
+ # Author: Miloslav Trmač <mitr@redhat.com>
+ 
+ srcdir=$srcdir/tests
++. $srcdir/test_utils.sh
+ 
+ workdir=$(pwd)/test_default_pw
+ 
+@@ -100,7 +101,7 @@
+ 	    # FIXME: path
+ 	    /usr/sbin/slapd -h ldap://127.0.0.1:"$ldap_port"/ \
+ 		-f "$workdir"/slapd.conf &
+-	    sleep 3 # Time for slapd to initialize
++	    wait_for_slapd "$workdir"/slapd.pid
+ 	    slapd_pid=$(cat "$workdir"/slapd.pid)
+ 	    trap 'status=$?; kill $slapd_pid; rm -rf "$workdir"; exit $status' 0
+ 	    ldapadd -h 127.0.0.1 -p "$ldap_port" -f "$srcdir/ldap_skel.ldif" -x \
+diff -r 4efd04928ae2 -r 748913706e6a tests/ldap_test
+--- a/tests/ldap_test	Tue Oct 04 12:56:32 2011 +0200
++++ b/tests/ldap_test	Tue Oct 04 15:20:50 2011 +0200
+@@ -20,6 +20,7 @@
+ # Author: Miloslav Trmac <mitr@redhat.com>
+ 
+ srcdir=$srcdir/tests
++. $srcdir/test_utils.sh
+ 
+ workdir=$(pwd)/test_ldap
+ 
+@@ -51,7 +52,7 @@
+ ldap_port=$(tests/alloc_port) # This is racy, but much better than a static port
+ # FIXME: path
+ /usr/sbin/slapd -h ldap://127.0.0.1:"$ldap_port"/ -f "$workdir"/slapd.conf &
+-sleep 3 # Time for slapd to initialize
++wait_for_slapd "$workdir"/slapd.pid
+ slapd_pid=$(cat "$workdir"/slapd.pid)
+ trap 'status=$?; kill $slapd_pid; rm -rf "$workdir"; exit $status' 0
+ ldapadd -h 127.0.0.1 -p "$ldap_port" -f "$srcdir/ldap_skel.ldif" -x \
+diff -r 4efd04928ae2 -r 748913706e6a tests/test_utils.sh
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/tests/test_utils.sh	Tue Oct 04 15:20:50 2011 +0200
+@@ -0,0 +1,36 @@
++#! /bin/sh
++# Shared utilities for test suites
++#
++# Copyright (c) 2004, 2010 Red Hat, Inc. All rights reserved.
++#
++# This is free software; you can redistribute it and/or modify it under
++# the terms of the GNU Library General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful, but
++# WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# General Public License for more details.
++#
++# You should have received a copy of the GNU Library General Public
++# License along with this program; if not, write to the Free Software
++# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++#
++# Author: Miloslav Trmač <mitr@redhat.com>
++
++# Wait for slapd to start and write its pid into $1
++wait_for_slapd() {
++    counter=0
++    while [ "$counter" -lt 30 ]; do
++	printf "\rWaiting for slapd: $counter..."
++	counter=$(expr "$counter" + 1)
++	if [ -s "$1" ]; then
++	    echo
++	    return
++	fi
++	sleep 1
++    done
++    echo
++    echo "Timeout waiting for slapd" >&2
++}
