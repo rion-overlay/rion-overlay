@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*glpi-0.80.6 (04 Jan 2012)
+
+  04 Jan 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> +glpi-0.80.6.ebuild:
+  bump
+
 *glpi-0.80.2 (08 Dec 2011)
 
   08 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> +glpi-0.80.2.ebuild,
