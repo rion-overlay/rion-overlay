@@ -4,7 +4,7 @@
 	<herd>no-herd</herd>
 	<maintainer>
 		<email>rion4ik@gmail.com</email>
-		<name>Rion</name>
+		<name>rion</name>
 	</maintainer>
 	<longdescription>Notification daemon which accepts messages sent by XML-RPC and and resends them to subscribers by XMPP. In the future its planned to support more protocols</longdescription>
 </pkgmetadata>
