@@ -3,8 +3,8 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-	<email>jmbsvicetto@gentoo.org</email>
-	<name>Jorge Manuel B. S. Vicetto</name>
+	<email>rion4ik@gmail.com</email>
+	<name>rion</name>
 </maintainer>
 <longdescription>Cairo-dock is a kind of dock applet, which doesn't depend on any gnome package.</longdescription>
 </pkgmetadata>
