@@ -1,0 +1,10 @@
+# ChangeLog for net-p2p/verlihub
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*verlihub-9999 (18 Jan 2012)
+
+  18 Jan 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +verlihub-9999.ebuild:
+  initial commit
+
