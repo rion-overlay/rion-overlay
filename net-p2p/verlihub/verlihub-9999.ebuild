@@ -4,9 +4,10 @@
 
 EAPI=4
 
-#WANT_CMAKE="2.6"
+CMAKE_MIN_VERSION="2.6"
+PYTHON_DEPEND="python? 2:2.6"
 
-inherit git-2 cmake-utils
+inherit git-2 cmake-utils python
 
 DESCRIPTION="VerliHub is a Direct Connect protocol server (Hub)"
 HOMEPAGE="http://www.verlihub-project.org"
@@ -16,7 +17,7 @@ EGIT_PROJECT="verlihub/verlihub"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="geoip forbid +plugman python lua debug"
+IUSE="geoip +forbid chatroom +iplog isp +plugman messenger stats replacer floodprot python lua debug"
 
 DEPEND="dev-libs/libpcre
 	geoip? ( dev-libs/geoip )
@@ -41,6 +42,16 @@ RDEPEND="
 	!net-libs/stats
 	!net-libs/python"
 
+DOCS=(INSTALL TODO)
+
+pkg_setup() {
+	if use python; then
+		python_pkg_setup
+		python_set_active_version 2
+		python_need_rebuild
+	fi
+}
+
 src_unpack() {
 	git-2_src_unpack
 }
@@ -51,7 +62,14 @@ src_configure() {
 		$(cmake-utils_use_with plugman PLUGMAN)
 		$(cmake-utils_use_with lua  LUA)
 		$(cmake-utils_use_with python PYTHON)
-
+		$(cmake-utils_use_with forbid FORBID)
+		$(cmake-utils_use_with chatroom CHATROOM)
+		$(cmake-utils_use_with iplog IPLOG)
+		$(cmake-utils_use_with isp ISP)
+		$(cmake-utils_use_with messenger MESSENGER)
+		$(cmake-utils_use_with stats STATS)
+		$(cmake-utils_use_with replacer REPLACER)
+		$(cmake-utils_use_with floodprot FLOODPROT)
 		)
 	cmake-utils_src_configure
 }
