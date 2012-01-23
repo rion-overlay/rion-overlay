@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>rion</name>
+	</maintainer>
+	<longdescription>Born as a fork of BoUML, it is a UML 2 modelling tool capable of round-trip, reverse engineering and code generation. Supports class, state and other diagrams, C++, Java, Python, PHP, IDL code generation. It can also export to XMI.</longdescription>
+</pkgmetadata>
