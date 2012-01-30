@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa"
 
 DEPEND="alsa? ( media-libs/alsa-lib )"
-RDEPEND="alsa? ( media-libs/alsa-lib[alsa_pcm_plugins_extplug] )"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	eautoreconf
