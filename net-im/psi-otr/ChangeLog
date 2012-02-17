@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*psi-otr-9999 (17 Feb 2012)
+
+  17 Feb 2012; rion <rion4ik@gmail.com> +psi-otr-9999.ebuild:
+  Added vcs version
+
   05 Nov 2011; Nikoli <nikoli@lavabit.com> psi-otr-0.8.ebuild:
   update to EAPI4
 
