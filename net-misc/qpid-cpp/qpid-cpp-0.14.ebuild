@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=4
 
-PYTHON_DEPEND="2:2.4"
-#WANT_AUTOMAKE="1.9"
+PYTHON_DEPEND="2:2.7"
 
-inherit autotools-utils python eutils
+inherit autotools-utils python
 
 DESCRIPTION="A cross-platform Enterprise Messaging system which implements the Advanced Message Queuing Protocol"
 HOMEPAGE="http://qpid.apache.org"
@@ -16,7 +15,7 @@ SRC_URI="mirror://apache/qpid/${PV}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cpg libcman sasl xml infiniband ssl static-libs test"
+IUSE="cpg libcman sasl static-libs xml infiniband ssl test"
 
 COMMON_DEP="libcman? ( sys-cluster/cman-lib )
 	cpg? ( sys-cluster/openais )
@@ -26,7 +25,8 @@ COMMON_DEP="libcman? ( sys-cluster/cman-lib )
 			dev-libs/xqilla[faxpp] )
 	ssl? ( dev-libs/nss )
 	infiniband? ( sys-infiniband/libibverbs
-				sys-infiniband/librdmacm )"
+				sys-infiniband/librdmacm )
+	sys-apps/util-linux"
 
 DEPEND="sys-apps/help2man
 	test? ( dev-util/valgrind )
@@ -36,41 +36,36 @@ RDEPEND="${COMMON_DEP}"
 
 S="${WORKDIR}/qpidc-${PV}"
 DOCS=(DESIGN INSTALL README.txt RELEASE_NOTES SSL)
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
 pkg_setup() {
-	enewgroup qpidd
-	enewuser qpidd -1 -1 -1 qpidd
+#	enewgroup qpidd
+#	enewuser qpidd -1 -1 -1 qpidd
 
 	python_pkg_setup
 	python_set_active_version 2
 }
 
-src_prepare() {
-	eautoreconf
-}
-
 src_configure() {
-
 	local myeconfargs=(
 		--without-swig
 		--without-doxygen
 		--with-help2man
+		--disable-warnings
 		$(use_with cpg)
 		$(use_with libcman)
 		$(use_with sasl)
 		$(use_with xml)
 		$(use_with infiniband rdma)
 		$(use_with ssl)
-		$(use_enable test valgrind)
-		--localstatedir=/var )
-
+		$(use_enable test valgrind) 
+		--with-pic
+		--localstatedir=/var
+		--with-poller )
 	autotools-utils_src_configure
 }
 
 src_install() {
 
-	autotools-utils_src_install -j1
+	autotools-utils_src_install
 
 	newinitd "${FILESDIR}/${PN}".init  qpidd
 	newconfd "${FILESDIR}"/qpidd.etc-conf qpidd
