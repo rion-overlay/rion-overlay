@@ -1,0 +1,159 @@
+--- a/external/collectd/5.0.0-r2-gen2/configure.in	
++++ a/external/collectd/5.0.0-r2-gen2/configure.in	
+@@ -3959,9 +3959,17 @@ then
+ 	CPPFLAGS="$CPPFLAGS $with_libvarnish_cflags"
+ 	#LDFLAGS="$LDFLAGS $with_libvarnish_libs"
+ 
+-	AC_CHECK_LIB(varnishapi, VSL_OpenStats,
++### Varnish 2 ###
++#	AC_CHECK_LIB(varnishapi, VSL_OpenStats,
++#		     [with_libvarnish="yes"],
++#		     [with_libvarnish="no (symbol VSL_OpenStats not found)"],
++#		     [$with_libvarnish_libs])
++
++### Varnish 3 ###
++# Replaced VSL_OpenStats with VSC_Main
++	AC_CHECK_LIB(varnishapi, VSC_Main,
+ 		     [with_libvarnish="yes"],
+-		     [with_libvarnish="no (symbol VSL_OpenStats not found)"],
++		     [with_libvarnish="no (symbol VSC_Main not found)"],
+ 		     [$with_libvarnish_libs])
+ 
+ 	CPPFLAGS="$SAVE_CPPFLAGS"
+--- a/external/collectd/5.0.0-r2-gen2/src/varnish.c	
++++ a/external/collectd/5.0.0-r2-gen2/src/varnish.c	
+@@ -127,12 +127,17 @@ 
+  * esi_errors           ESI parse errors (unlock)                 Y
+  * }}}
+  */
++// enable the Varnish 3 interface.
++#define VARNISH3
+ #include "collectd.h"
+ #include "common.h"
+ #include "plugin.h"
+ #include "configfile.h"
+ 
+ #include <varnish/varnishapi.h>
++#ifdef VARNISH3
++#include <varnish/vsc.h>
++#endif
+ 
+ /* {{{ user_config_s */
+ struct user_config_s {
+@@ -204,7 +209,11 @@ static int varnish_submit_derive (const char *plugin_instance, /* {{{ */
+ 	return (varnish_submit (plugin_instance, category, type, type_instance, value));
+ } /* }}} int varnish_submit_derive */
+ 
++#ifdef VARNISH3
++static void varnish_monitor (const user_config_t *conf, struct VSC_C_main *VSL_stats)
++#else
+ static void varnish_monitor (const user_config_t *conf, struct varnish_stats *VSL_stats) /* {{{ */
++#endif
+ {
+ 	if (conf->collect_cache)
+ 	{
+@@ -229,7 +238,11 @@ static void varnish_monitor (const user_config_t *conf, struct varnish_stats *VS
+ 	if (conf->collect_esi)
+ 	{
+ 		/* Objects ESI parsed (unlock) */
++#ifdef VARNISH3
++		varnish_submit_derive (conf->instance, "esi", "total_operations", "warnings", VSL_stats->esi_warnings);
++#else
+ 		varnish_submit_derive (conf->instance, "esi", "total_operations", "parsed", VSL_stats->esi_parse);
++#endif
+ 		/* ESI parse errors (unlock)   */
+ 		varnish_submit_derive (conf->instance, "esi", "total_operations", "error",  VSL_stats->esi_errors);
+ 	}
+@@ -250,8 +263,13 @@ static void varnish_monitor (const user_config_t *conf, struct varnish_stats *VS
+ 		varnish_submit_derive (conf->instance, "backend", "connections", "was-closed"   , VSL_stats->backend_toolate);
+ 		/* Backend conn. recycles      */
+ 		varnish_submit_derive (conf->instance, "backend", "connections", "recycled"     , VSL_stats->backend_recycle);
++#ifdef VARNISH3
++		/* Backend conn. retries       */
++		varnish_submit_derive (conf->instance, "backend", "connections", "retries"      , VSL_stats->backend_retry);
++#else
+ 		/* Backend conn. unused        */
+ 		varnish_submit_derive (conf->instance, "backend", "connections", "unused"       , VSL_stats->backend_unused);
++#endif
+ 	}
+ 
+ 	if (conf->collect_fetch)
+@@ -300,6 +318,10 @@ static void varnish_monitor (const user_config_t *conf, struct varnish_stats *VS
+ 		varnish_submit_derive (conf->instance, "shm", "total_operations", "cycles"    , VSL_stats->shm_cycles);
+ 	}
+ 
++#ifdef VARNISH3
++	/* sm & sma stats seem to have gone away. The SMA stuff looks like it may
++	   have been moved into another structure somewhere else. */
++#else
+ 	if (conf->collect_sm)
+ 	{
+ 		/* allocator requests */
+@@ -325,6 +347,7 @@ static void varnish_monitor (const user_config_t *conf, struct varnish_stats *VS
+ 		/* SMA bytes free */
+ 		varnish_submit_derive (conf->instance,  "sma", "total_bytes", "free" ,          VSL_stats->sma_bfree);
+ 	}
++#endif
+ 
+ 	if (conf->collect_sms)
+ 	{
+@@ -368,10 +391,17 @@ static void varnish_monitor (const user_config_t *conf, struct varnish_stats *VS
+ 		varnish_submit_derive (conf->instance, "workers", "total_threads", "failed",      VSL_stats->n_wrk_failed);
+ 		/* worker threads limited */
+ 		varnish_submit_derive (conf->instance, "workers", "total_threads", "limited",     VSL_stats->n_wrk_max);
++#ifdef VARNISH3
++		/* work requests queue length */
++		varnish_submit_derive (conf->instance, "workers", "total_requests", "queue_length",VSL_stats->n_wrk_lqueue);
++ 		/* queued work requests */
++		varnish_submit_derive (conf->instance, "workers", "total_requests", "queued",     VSL_stats->n_wrk_queued);
++#else
+ 		/* queued work requests */
+ 		varnish_submit_derive (conf->instance, "workers", "total_requests", "queued",     VSL_stats->n_wrk_queue);
+ 		/* overflowed work requests */
+ 		varnish_submit_derive (conf->instance, "workers", "total_requests", "overflowed", VSL_stats->n_wrk_overflow);
++#endif
+ 		/* dropped work requests */
+ 		varnish_submit_derive (conf->instance, "workers", "total_requests", "dropped",    VSL_stats->n_wrk_drop);
+ 	}
+@@ -379,7 +409,12 @@ static void varnish_monitor (const user_config_t *conf, struct varnish_stats *VS
+ 
+ static int varnish_read (user_data_t *ud) /* {{{ */
+ {
++#ifdef VARNISH3
++	struct VSM_data *vd;
++	struct VSC_C_main *VSL_stats;
++#else
+ 	struct varnish_stats *VSL_stats;
++#endif
+ 	user_config_t *conf;
+ 
+ 	if ((ud == NULL) || (ud->data == NULL))
+@@ -387,15 +422,28 @@ static int varnish_read (user_data_t *ud) /* {{{ */
+ 
+ 	conf = ud->data;
+ 
++#ifdef VARNISH3
++	vd = VSM_New();
++	VSC_Setup(vd);
++	if(conf->instance) VSM_n_Arg(vd, conf->instance);
++	if(VSC_Open(vd, 1) || (VSL_stats = VSC_Main(vd))==NULL)
++#else
+ 	VSL_stats = VSL_OpenStats (conf->instance);
+ 	if (VSL_stats == NULL)
++#endif
+ 	{
++#ifdef VARNISH3
++		VSM_Delete(vd);
++#endif
+ 		ERROR ("Varnish plugin : unable to load statistics");
+ 
+ 		return (-1);
+ 	}
+ 
+ 	varnish_monitor (conf, VSL_stats);
++#ifdef VARNISH3
++	VSM_Delete(vd);
++#endif
+ 
+     return (0);
+ } /* }}} */
