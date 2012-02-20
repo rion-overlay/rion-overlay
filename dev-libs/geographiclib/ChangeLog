@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*geographiclib-1.18 (20 Feb 2012)
+
+  20 Feb 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +geographiclib-1.18.ebuild:
+  Bump new, remove old
+
 *geographiclib-1.17 (23 Jan 2012)
 
   23 Jan 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
