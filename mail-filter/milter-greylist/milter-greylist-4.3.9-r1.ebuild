@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=4
 
 inherit base  eutils confutils
 
@@ -13,39 +13,47 @@ SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 bind +ssl ldap geoip spf dkim drac +p0f spamassassin sendmail dnsrbl postfix curl"
+IUSE="ipv6 bind +ssl ldap geoip spf dkim drac-p +p0f spamassassin sendmail dnsrbl postfix curl"
 
-COMMON_DEP="net-mail/mailbase
+CDEPEND="net-mail/mailbase
 	sendmail? (
 		mail-mta/sendmail
 		!!mail-filter/libmilter
 		dkim? (
-			mail-filter/libdkim ) )
-	sys-libs/db
-	p0f? ( net-analyzer/p0f )
+			mail-filter/libdkim
+			)
+			)
+	<sys-libs/db-5.0.0
+	p0f? ( =net-analyzer/p0f-2* )
 	bind? ( net-dns/bind[ipv6?] )
 	ssl? ( dev-libs/openssl )
 	ldap? ( net-nds/openldap[ipv6?] )
 	curl? ( net-misc/curl[ipv6?] )
 	geoip? ( dev-libs/geoip )
 	spf? ( mail-filter/libspf2 )
-	postfix? (  >=mail-mta/postfix-2.5[ipv6?]
-				mail-filter/libmilter[ipv6?] )
-	drac? ( mail-client/drac )
-	spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )"
+	postfix? (
+				>=mail-mta/postfix-2.5[ipv6?]
+				mail-filter/libmilter[ipv6?]
+				)
+	drac-p? ( mail-client/drac )
+	spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )
+	"
 DEPEND="sys-devel/flex
 	sys-devel/bison
 	dev-util/pkgconfig
-	${COMMON_DEP}"
+	${CDEPEND}
+	"
 
-RDEPEND="${COMMON_DEP}"
+RDEPEND="${CDEPEND}"
 
-pkg_setup() {
+pkg_pretend() {
 	confutils_require_one postfix sendmail
 	confutils_use_conflict postfix sendmail
 	confutils_use_conflict sendmail postfix
 	confutils_use_conflict postfix dkim
+}
 
+pkg_setup() {
 	if use postfix ;then
 		einfo "Checking for postfix group ..."
 		enewgroup postfix 207 || die "problem adding group postfix"
@@ -95,6 +103,8 @@ sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/
 
 sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greylist.db"|'\
 					-i greylist2.conf || die "fix db file location  failed"
+
+	ecvs_clean
 }
 
 src_configure() {
@@ -115,11 +125,13 @@ src_configure() {
 
 	econf \
 		--with-db \
+		--enable-mx \
 		--disable-rpath \
 		--with-libmilter \
 		--with-conffile="/etc/mail/${PN}.conf" \
 		--with-dumpfile="/var/lib/${PN}/${PN}.db" \
-		$(use_enable drac) \
+		--with-thread-safe-resolver \
+		$(use_enable drac-p drac) \
 		$(use_enable p0f) \
 		$(use_enable spamassassin) \
 		$(use_enable dnsrbl) \
@@ -129,7 +141,7 @@ src_configure() {
 
 src_install() {
 
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${ED}" install || die "install failed"
 
 	if use !postfix;then
 		insinto /usr/share/sendmail-cf/hack/
@@ -142,9 +154,9 @@ src_install() {
 	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
 
 	if use postfix;then
-		echo "USER=postfix" >> "${D}"/etc/conf.d/milter-greylist || die
+		echo "USER=postfix" >> "${ED}"/etc/conf.d/milter-greylist || die
 	else
-		echo "USER=smmsp" >> "${D}"/etc/conf.d/milter-greylist || die
+		echo "USER=smmsp" >> "${ED}"/etc/conf.d/milter-greylist || die
 	fi
 
 	local user="smmsp"
@@ -159,8 +171,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [  -e "${ROOT}"/var/lib/milter-greylist/greylist.db ] ; then
-		touch "${ROOT}"/var/lib/milter-greylist/greylist.db || die
+	if [  -e "${EROOT}"/var/lib/milter-greylist/greylist.db ] ; then
+		touch "${EROOT}"/var/lib/milter-greylist/greylist.db || die
 	fi
 
 	if use !postfix; then
@@ -172,7 +184,7 @@ pkg_postinst() {
 	fi
 
 	if use postfix;then
-		chown postfix "${ROOT}"/var/lib/milter-greylist/greylist.db
+		chown postfix "${EROOT}"/var/lib/milter-greylist/greylist.db
 
 		elog
 		elog " You can enable milter-greylist in your postfix, adding the line:"
