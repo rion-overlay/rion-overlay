@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make"
 
 S="${WORKDIR}/${PN}-dev-source-${PV}"
-ESVN_PATCHES="${PN}-gentoo.patch"
+ESVN_PATCHES="${PN}-gentoo.patch ${PN}-clang.patch"
 
 pkg_setup() {
 	GNUSTEP_MAKEFILES=`gnustep-config --variable=GNUSTEP_MAKEFILES` || \
