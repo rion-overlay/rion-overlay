@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make"
 
 S="${WORKDIR}/${MY_P}"
-PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
+PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" "${FILESDIR}/${PN}-clang.patch" )
 
 pkg_setup() {
 	games_pkg_setup
@@ -36,6 +36,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	base_src_prepare
 	gnustep-base_src_prepare
 	mkdir "${S}"/deps/Cross-platform-deps/mozilla || die
 	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/Cross-platform-deps/mozilla/ || die

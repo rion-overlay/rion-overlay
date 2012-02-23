@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Feb 2012; rion <rion4ik@gmail.com> oolite-1.76.ebuild, oolite-9999.ebuild,
+  +files/oolite-clang.patch:
+  Added patch for clang compatibility
+
 *oolite-1.76 (26 Dec 2011)
 
   26 Dec 2011; rion <rion4ik@gmail.com> -oolite-1.75.3.ebuild,
