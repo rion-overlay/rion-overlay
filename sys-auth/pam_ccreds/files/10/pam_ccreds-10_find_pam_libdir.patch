@@ -1,0 +1,42 @@
+--- Makefile.am.orig	2010-01-31 03:34:30.380483435 +0200
++++ Makefile.am	2010-01-31 03:36:59.219484417 +0200
+@@ -11,15 +11,15 @@
+ pam_ccreds_so_LDFLAGS = @pam_ccreds_so_LDFLAGS@
+ 
+ cc_test_SOURCES = cc_test.c
+-cc_test_LDFLAGS = -Wl,-rpath -Wl,$(libdir)/security
++cc_test_LDFLAGS = -Wl,-rpath -Wl,@pam_dir@/security
+ cc_test_LDADD = pam_ccreds.so -lpam -lpam_misc
+ 
+ cc_dump_SOURCES = cc_dump.c
+-cc_dump_LDFLAGS = -Wl,-rpath -Wl,$(libdir)/security
++cc_dump_LDFLAGS = -Wl,-rpath -Wl,@pam_dir@/security
+ cc_dump_LDADD = pam_ccreds.so -lpam -lpam_misc
+ 
+ ccreds_chkpwd_SOURCES = ccreds_chkpwd.c
+-ccreds_chkpwd_LDFLAGS = -Wl,-rpath -Wl,$(libdir)/security
++ccreds_chkpwd_LDFLAGS = -Wl,-rpath -Wl,@pam_dir@/security
+ ccreds_chkpwd_LDADD = pam_ccreds.so -lpam -lpam_misc
+ 
+ DEFS = @DEFS@
+@@ -36,15 +36,15 @@
+ 
+ install-exec-local: pam_ccreds.so
+ 	@$(NORMAL_INSTALL)
+-	$(mkinstalldirs) $(DESTDIR)$(libdir)/security
++	$(mkinstalldirs) $(DESTDIR)@pam_dir@/security
+ if EXTENSION_SO
+-	$(INSTALL_PROGRAM) -o root -g root pam_ccreds.so $(DESTDIR)$(libdir)/security/pam_ccreds.so
++	$(INSTALL_PROGRAM) -o root -g root pam_ccreds.so $(DESTDIR)@pam_dir@/security/pam_ccreds.so
+ else
+ if EXTENSION_1
+-	$(INSTALL_PROGRAM) -o root -g root pam_ccreds.so $(DESTDIR)$(libdir)/security/libpam_ccreds.1
++	$(INSTALL_PROGRAM) -o root -g root pam_ccreds.so $(DESTDIR)@pam_dir@/security/libpam_ccreds.1
+ else
+-	$(INSTALL_PROGRAM) -o root -g root pam_ccreds.so $(DESTDIR)$(libdir)/security/pam_ccreds.so.1
+-	(cd $(DESTDIR)$(libdir)/security; rm -f pam_ccreds.so; ln -s pam_ccreds.so.1 pam_ccreds.so)
++	$(INSTALL_PROGRAM) -o root -g root pam_ccreds.so $(DESTDIR)@pam_dir@/security/pam_ccreds.so.1
++	(cd $(DESTDIR)@pam_dir@/security; rm -f pam_ccreds.so; ln -s pam_ccreds.so.1 pam_ccreds.so)
+ endif
+ endif
+ 

@@ -1,0 +1,26 @@
+# HG changeset patch
+# User Andreis Vinogradovs <spamslepnoga@inbox.ru>
+# Date 1325421062 -7200
+# Node ID 8d969d9324fa8f1f5384037627d5478e33be5d47
+# Parent  ba14909c0a95bf9879e6df25d8128d1cf9a75252
+disable_php_in_makefile
+
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -57,9 +57,12 @@
+ if HAVE_HASKELL
+ SUBDIRS += haskell
+ endif
+-if HAVE_PHP
+-SUBDIRS += php
+-endif
++
++# use Gentoo way to compile/install php extension
++# due slot  system
++#if HAVE_PHP
++#SUBDIRS += php
++#endif
+ 
+ # Unconditional because nothing is built yet.
+ SUBDIRS += csharp

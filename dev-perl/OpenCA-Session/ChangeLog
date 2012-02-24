@@ -1,0 +1,24 @@
+# ChangeLog for dev-perl/OpenCA-Session
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*OpenCA-Session-0.9.2 (10 Aug 2011)
+
+  10 Aug 2011; Azamat H. Hackimov <azamat.hackimov@gmail.com>
+  -OpenCA-Session-0.9.ebuild, +OpenCA-Session-0.9.2.ebuild:
+  Fixing checksums, bump to 0.9.2.
+
+  14 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-Session-0.9.ebuild:
+  eclass clean
+
+  11 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  OpenCA-Session-0.9.ebuild:
+  stable in x86
+
+*OpenCA-Session-0.9 (06 Aug 2009)
+
+  06 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +OpenCA-Session-0.9.ebuild, +metadata.xml:
+  Initial recommit in my-dev overlay
+
