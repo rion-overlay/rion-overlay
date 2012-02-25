@@ -4,6 +4,10 @@
 
   25 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   regina-rexx-3.6.ebuild:
+  QA - nvalid eclass
+
+  25 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  regina-rexx-3.6.ebuild:
   more fix in regina-rexx ;)
 
 *regina-rexx-3.6 (25 Feb 2012)
