@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit toolchain-funcs autotools
+inherit toolchain-funcs
 
 DESCRIPTION="Portable Rexx interpreter"
 HOMEPAGE="http://regina-rexx.sourceforge.net"
