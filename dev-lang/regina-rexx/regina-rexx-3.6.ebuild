@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-lang/regina-rexx/regina-rexx-3.4.ebuild,v 1.2 2009/07/23 23:27:45 vostorga Exp $
 
