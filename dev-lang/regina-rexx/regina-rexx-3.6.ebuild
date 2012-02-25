@@ -1,10 +1,10 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/regina-rexx/regina-rexx-3.4.ebuild,v 1.2 2009/07/23 23:27:45 vostorga Exp $
+# $Header:  $
 
-inherit toolchain-funcs
+EAPI=2
 
-WANT_AUTOCONF="2.1"
+inherit toolchain-funcs autotools
 
 DESCRIPTION="Portable Rexx interpreter"
 HOMEPAGE="http://regina-rexx.sourceforge.net"
@@ -18,15 +18,18 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-S=${WORKDIR}/Regina-${PV}
+S="${WORKDIR}/Regina-REXX-${PV}"
 
-src_compile() {
-	econf || die "econf failed"
+src_configure() {
+	econf || die
 	sed -i \
 		-e 's|-$(INSTALL) -m 755 -c ./rxstack.init.d $(STARTUPDIR)/rxstack||' \
 		-e "s|/usr/share/regina|${D}/usr/share/regina|" \
-		Makefile || die
-	emake CC=$(tc-getCC) -j1 || die "make problem"
+	Makefile || die
+}
+
+src_compile() {
+	emake CC=$(tc-getCC) -j1  || die "make problem"
 }
 
 src_install() {
@@ -38,7 +41,7 @@ src_install() {
 	dodoc BUGS HACKERS.txt README.Unix README_SAFE TODO
 
 	# Fix Shebang line in example scripts
-	sed -e 's:/var/tmp/portage/dev-lang/regina-rexx-3.3/image::' \
+	sed -e 's:/var/tmp/portage/dev-lang/regina-rexx-3.6/image::' \
 		-i "${D}"/usr/share/regina/regina/*.rexx || die
 }
 

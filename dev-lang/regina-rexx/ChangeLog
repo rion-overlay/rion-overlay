@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-lang/regina-rexx/ChangeLog,v 1.24 2009/07/23 23:27:45 vostorga Exp $
 
+  25 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  regina-rexx-3.6.ebuild:
+  more fix in regina-rexx ;)
+
 *regina-rexx-3.6 (25 Feb 2012)
 
   25 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
