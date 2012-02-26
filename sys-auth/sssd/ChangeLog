@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> metadata.xml:
+  fix email in metadata
+
 *sssd-1.7.0 (31 Dec 2011)
 
   31 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> -sssd-1.6.4.ebuild,
