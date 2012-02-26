@@ -3,10 +3,8 @@
 # $Header: $
 
 EAPI="4"
-#AUTOTOOLS_IN_SOURCE_BUILD=1
-#WANT_AUTOMAKE=1.10
 
-inherit autotools-utils confutils
+inherit autotools-utils
 
 DESCRIPTION="Portable C++ runtime for threads and sockets"
 HOMEPAGE="http://www.gnu.org/software/commoncpp"
@@ -15,20 +13,15 @@ SRC_URI="http://www.gnutelephony.org/dist/tarballs/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
-IUSE="doc static-libs socks +cxx debug ssl gnutls"
+IUSE="doc static-libs socks +cxx debug ssl"
 
-RDEPEND="ssl? ( dev-libs/openssl )
-	gnutls? ( net-libs/gnutls )"
+RDEPEND="ssl? ( dev-libs/openssl )"
 
 DEPEND="dev-util/pkgconfig
 	doc? ( app-doc/doxygen )
 	${RDEPEND}"
 
 DOCS=(README  NEWS SUPPORT ChangeLog AUTHORS)
-
-pkg_pretend() {
-	confutils_use_conflict ssl gnutls
-}
 
 src_prepare() {
 	epatch "${FILESDIR}"/disable_rtf_gen_doxy.patch
@@ -38,16 +31,12 @@ src_prepare() {
 src_configure() {
 
 	local myconf=""
-	if use !ssl && use !gnutls; then
+	if use !ssl;  then
 		myconf=" --with-sslstack=nossl "
 	fi
 
 	if use ssl; then
 		myconf=" --with-sslstack=ssl "
-	fi
-
-	if use gnutls; then
-		myconf=" --with-sslstack=gnu "
 	fi
 
 	local myeconfargs=(
