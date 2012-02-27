@@ -23,9 +23,9 @@ USE_RUBY="ruby18 ree18 jruby"
 RUBY_OPTIONAL="yes"
 
 # http_uploadprogress (https://github.com/masterzen/nginx-upload-progress-module, BSD-2 license)
-HTTP_UPLOAD_PROGRESS_MODULE_PV="0.8.3"
+HTTP_UPLOAD_PROGRESS_MODULE_PV="0.8.4"
 HTTP_UPLOAD_PROGRESS_MODULE_P="ngx_upload_progress-${HTTP_UPLOAD_PROGRESS_MODULE_PV}"
-HTTP_UPLOAD_PROGRESS_MODULE_SHA1="c7c663f"
+HTTP_UPLOAD_PROGRESS_MODULE_SHA1="82b35fc"
 
 # http_headers_more (http://github.com/agentzh/headers-more-nginx-module, BSD license)
 HTTP_HEADERS_MORE_MODULE_PV="0.16rc3"
@@ -45,10 +45,10 @@ HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
 HTTP_UPLOAD_MODULE_PV="2.2.0"
 HTTP_UPLOAD_MODULE_P="nginx_upload_module-${HTTP_UPLOAD_MODULE_PV}"
 
-# ey-balancer/maxconn module (https://github.com/ry/nginx-ey-balancer, as-is)
-HTTP_EY_BALANCER_MODULE_PV="0.0.6"
+# ey-balancer/maxconn module (https://github.com/msva/nginx-ey-balancer, as-is)
+HTTP_EY_BALANCER_MODULE_PV="0.0.7"
 HTTP_EY_BALANCER_MODULE_P="nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_PV}"
-HTTP_EY_BALANCER_MODULE_SHA1="d373670"
+HTTP_EY_BALANCER_MODULE_SHA1="3189cf3"
 
 # NginX DevKit module (https://github.com/simpl/ngx_devel_kit, BSD)
 HTTP_NDK_MODULE_PV="0.2.17rc2"
@@ -152,7 +152,7 @@ SRC_URI="http://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_push? ( http://pushmodule.slact.net/downloads/${HTTP_PUSH_MODULE_P}.tar.gz )
 	nginx_modules_http_cache_purge? ( http://labs.frickle.com/files/${HTTP_CACHE_PURGE_MODULE_P}.tar.gz )
 	nginx_modules_http_upload? ( http://www.grid.net.ru/nginx/download/${HTTP_UPLOAD_MODULE_P}.tar.gz )
-	nginx_modules_http_ey_balancer? ( https://github.com/ry/nginx-ey-balancer/tarball/v${HTTP_EY_BALANCER_MODULE_PV} -> ${HTTP_EY_BALANCER_MODULE_P}.tar.gz )
+	nginx_modules_http_ey_balancer? ( https://github.com/msva/nginx-ey-balancer/tarball/v${HTTP_EY_BALANCER_MODULE_PV} -> ${HTTP_EY_BALANCER_MODULE_P}.tar.gz )
 	nginx_modules_http_ndk? ( https://github.com/simpl/ngx_devel_kit/tarball/v${HTTP_NDK_MODULE_PV} -> ${HTTP_NDK_MODULE_P}.tar.gz )
 	nginx_modules_http_lua? ( https://github.com/chaoslawful/lua-nginx-module/tarball/v${HTTP_LUA_MODULE_PV} -> ${HTTP_LUA_MODULE_P}.tar.gz )
 	nginx_modules_http_drizzle? ( https://github.com/chaoslawful/drizzle-nginx-module/tarball/v${HTTP_DRIZZLE_MODULE_PV} -> ${HTTP_DRIZZLE_MODULE_P}.tar.gz )
@@ -500,7 +500,7 @@ src_configure() {
 # http_ey_balancer
 	if use nginx_modules_http_ey_balancer; then
 		http_enabled=1
-		myconf="${myconf} --add-module=${WORKDIR}/ry-nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_SHA1}"
+		myconf="${myconf} --add-module=${WORKDIR}/msva-nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_SHA1}"
 	fi
 # http_slowfs_cache
 	if use nginx_modules_http_slowfs_cache; then
@@ -626,7 +626,7 @@ src_install() {
 # http_ey_balancer
 	if use nginx_modules_http_ey_balancer; then
 		docinto "${HTTP_EY_BALANCER_MODULE_P}"
-		dodoc "${WORKDIR}"/"ry-nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_SHA1}"/README
+		dodoc "${WORKDIR}"/"msva-nginx-ey-balancer-${HTTP_EY_BALANCER_MODULE_SHA1}"/README
 	fi
 
 # http_ndk
