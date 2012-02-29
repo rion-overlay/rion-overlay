@@ -7,7 +7,7 @@ EAPI=3
 inherit apache-module
 
 DESCRIPTION="mod_ruid2 is a suexec module for apache which takes advantage of POSIX.1e capabilities"
-HOMEPAGE="mirror://sourceforge/"
+HOMEPAGE="http://sourceforge.net/projects/mod-ruid/"
 LICENSE="Apache-2.0"
 SRC_URI="mirror://sourceforge/mod-ruid/${P}.tar.bz2"
 
