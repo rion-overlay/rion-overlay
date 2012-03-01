@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>rion</name>
+	</maintainer>
+	<longdescription>Notification daemon which accepts messages sent by XML-RPC and and resends them to subscribers by XMPP. In the future its planned to support more protocols</longdescription>
+</pkgmetadata>
