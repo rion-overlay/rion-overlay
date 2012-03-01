@@ -4,6 +4,10 @@
 
   01 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
   geographiclib-1.18-r1.ebuild:
+  Clean up python and autotools stuff
+
+  01 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  geographiclib-1.18-r1.ebuild:
   Remove `inherit autotools`, for autotools-utils provides eautoreconf
 
 *geographiclib-1.18-r1 (01 Mar 2012)
