@@ -5,10 +5,12 @@
 EAPI=4
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
+AUTOTOOLS_AUTORECONF=1
 
 SUPPORT_PYTHON_ABIS="1"
+PYTHON_DEPEND="python? *"
 
-inherit autotools-utils python distutils
+inherit autotools-utils distutils
 
 DESCRIPTION="Small set of C++ classes for performing various geographic and geodesic conversions"
 HOMEPAGE="http://geographiclib.sourceforge.net/"
@@ -23,17 +25,17 @@ IUSE="doc python static-libs"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/strip_py_from_mkfile.patch )
+
 S="${WORKDIR}/${MY_P%_p[^digit]*}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/strip_py_from_mkfile.patch
-	eautoreconf
+	autotools-utils_src_prepare
 }
 
 src_compile() {
 	autotools-utils_src_compile
 	if use python; then
-		local Sbak="${S}"
 		cd "${S}/python"
 		distutils_src_compile
 		cd "${S}"
@@ -44,7 +46,6 @@ src_install() {
 	autotools-utils_src_install
 	rm -rf "${D}"/usr/share/doc/
 	if use python; then
-		local Sbak="${S}"
 		cd "${S}/python"
 		distutils_src_install
 		cd "${S}"
