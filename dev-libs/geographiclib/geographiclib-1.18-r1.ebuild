@@ -8,7 +8,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 
 SUPPORT_PYTHON_ABIS="1"
 
-inherit autotools autotools-utils python distutils
+inherit autotools-utils python distutils
 
 DESCRIPTION="Small set of C++ classes for performing various geographic and geodesic conversions"
 HOMEPAGE="http://geographiclib.sourceforge.net/"
