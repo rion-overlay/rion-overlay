@@ -2,6 +2,13 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*geographiclib-1.18-r1 (01 Mar 2012)
+
+  01 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +geographiclib-1.18-r1.ebuild, +files/strip_py_from_mkfile.patch,
+  metadata.xml:
+  Drop 1.17, bump revision: add USE="python", fix python module installation
+
 *geographiclib-1.18 (20 Feb 2012)
 
   20 Feb 2012; Nikolaj Sjujskij <sterkrig@myopera.com>

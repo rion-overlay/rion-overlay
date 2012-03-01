@@ -6,7 +6,9 @@ EAPI=4
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit autotools-utils
+SUPPORT_PYTHON_ABIS="1"
+
+inherit autotools autotools-utils python distutils
 
 DESCRIPTION="Small set of C++ classes for performing various geographic and geodesic conversions"
 HOMEPAGE="http://geographiclib.sourceforge.net/"
@@ -16,16 +18,37 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P/_p/-pl}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc static-libs"
+IUSE="doc python static-libs"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P%_p[^digit]*}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/strip_py_from_mkfile.patch
+	eautoreconf
+}
+
+src_compile() {
+	autotools-utils_src_compile
+	if use python; then
+		local Sbak="${S}"
+		cd "${S}/python"
+		distutils_src_compile
+		cd "${S}"
+	fi
+}
+
 src_install() {
 	autotools-utils_src_install
 	rm -rf "${D}"/usr/share/doc/
+	if use python; then
+		local Sbak="${S}"
+		cd "${S}/python"
+		distutils_src_install
+		cd "${S}"
+	fi
 	if use doc; then
 		dohtml -r doc/* || die "Installing HTML documentation failed"
 	fi
