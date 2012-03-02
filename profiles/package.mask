@@ -1,3 +1,7 @@
+# 02 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+# Mask for removal (unused and unmaintained upstream)
+dev-python/python-xklavier
+
 # 11 Dec 2011; A.Vinogradov <spamslepnoga@inbox.ru>
 # Need more patch and test
 >dev-util/febootstrap-3.9
