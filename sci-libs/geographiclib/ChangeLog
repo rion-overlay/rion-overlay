@@ -1,6 +1,11 @@
-# ChangeLog for dev-libs/geographiclib
+# ChangeLog for sci-libs/geographiclib
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  02 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +geographiclib-1.18-r1.ebuild, +files/strip_py_from_mkfile.patch,
+  +metadata.xml:
+  Move from dev-libs to sci-libs
 
   01 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
   geographiclib-1.18-r1.ebuild:
