@@ -28,9 +28,9 @@ HTTP_UPLOAD_PROGRESS_MODULE_P="ngx_upload_progress-${HTTP_UPLOAD_PROGRESS_MODULE
 HTTP_UPLOAD_PROGRESS_MODULE_SHA1="82b35fc"
 
 # http_headers_more (http://github.com/agentzh/headers-more-nginx-module, BSD license)
-HTTP_HEADERS_MORE_MODULE_PV="0.16rc3"
+HTTP_HEADERS_MORE_MODULE_PV="0.16"
 HTTP_HEADERS_MORE_MODULE_P="ngx-http-headers-more-${HTTP_HEADERS_MORE_MODULE_PV}"
-HTTP_HEADERS_MORE_MODULE_SHA1="be6a17e"
+HTTP_HEADERS_MORE_MODULE_SHA1="de77fd2"
 
 # http_push (http://pushmodule.slact.net/, MIT license)
 HTTP_PUSH_MODULE_PV="0.692"
