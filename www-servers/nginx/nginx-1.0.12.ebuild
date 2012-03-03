@@ -574,9 +574,9 @@ src_install() {
 	keepdir /var/log/"${PN}" /var/tmp/"${PN}"/{client,proxy,fastcgi,scgi,uwsgi}
 
 	dosbin objs/nginx
-	newinitd "${FILESDIR}"/nginx.init-r2 nginx
+	newinitd "${FILESDIR}"/nginx.initd nginx
 
-	cp "${FILESDIR}"/nginx.conf-r4 conf/nginx.conf
+	cp "${FILESDIR}"/nginx.conf conf/nginx.conf
 	rm conf/win-utf conf/koi-win conf/koi-utf
 
 	dodir /etc/"${PN}"
