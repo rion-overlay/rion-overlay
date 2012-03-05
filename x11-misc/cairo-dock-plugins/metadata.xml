@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<use>
+	<flag name="xfce">Enables the integration in <pkg>xfce-base/xfce4</pkg> desktop.</flag>
+    <flag name="ical">Enable support for dev-libs/libical</flag>
+	<flag name="gmenu">Enables gmenu applet</flag>
+	<flag name="terminal">Enables terminal applet</flag>
+	<flag name="webkit">Enables Weblet applet</flag>
+	<flag name="xklavier">Enables keyboard-indicator applet</flag>
+	<flag name="disks">Enables disks applet</flag>
+	<flag name="doncky">Enables doncky applet</flag>
+	<flag name="network-monitor">Enables network-monitor applet</flag>
+	<flag name="scooby">Enables scooby do applet</flag>
+	<flag name="vala">Enables vala interface</flag>
+</use>
+<herd>no-herd</herd>
+<maintainer>
+	<email>rion4ik@gmail.com</email>
+	<name>rion</name>
+</maintainer>
+<longdescription>Cairo-dock-plugins offers plugins for cairo-dock.</longdescription>
+</pkgmetadata>
