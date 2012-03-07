@@ -109,7 +109,7 @@ CDEPEND="
 									>=dev-libs/apr-util-1.4.1[openssl] ) )"
 
 DEPEND="${DEPEND}
-		${CEPEND}
+		${CEPEND}	
 	>=dev-libs/openssl-1.0
 	apache2_modules_deflate? ( sys-libs/zlib )
 	>=dev-libs/libpcre-8.0"
