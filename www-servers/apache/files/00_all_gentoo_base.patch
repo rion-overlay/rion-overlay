@@ -1,0 +1,36 @@
+diff --git a/Makefile.in b/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -14,7 +14,7 @@
+ 
+ sbin_PROGRAMS   = $(PROGRAM_NAME)
+ TARGETS         = $(sbin_PROGRAMS) $(shared_build) $(other_targets)
+-INSTALL_TARGETS = install-conf install-htdocs install-error install-icons \
++INSTALL_TARGETS =  install-htdocs install-error install-icons \
+ 	install-other install-cgi install-include install-suexec install-build \
+ 	install-man
+ 
+diff --git a/include/httpd.h b/include/httpd.h
+--- a/include/httpd.h
++++ b/include/httpd.h
+@@ -152,7 +152,7 @@
+ 
+ /** The path to the suExec wrapper, can be overridden in Configuration */
+ #ifndef SUEXEC_BIN
+-#define SUEXEC_BIN  HTTPD_ROOT "/bin/suexec"
++#define SUEXEC_BIN "/usr/bin/suexec"
+ #endif
+ 
+ /** The timeout for waiting for messages */
+diff --git a/server/core.c b/server/core.c
+--- a/server/core.c
++++ b/server/core.c
+@@ -3152,7 +3152,7 @@
+         ap_add_version_component(pconf, AP_SERVER_BASEPRODUCT "/" AP_SERVER_MAJORVERSION);
+     }
+     else {
+-        ap_add_version_component(pconf, AP_SERVER_BASEVERSION " (" PLATFORM ")");
++        ap_add_version_component(pconf, AP_SERVER_BASEVERSION " (Gentoo)");
+     }
+ 
+     /*
