@@ -2,10 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>andreis.vinogradovs@gmail.com</email>
-	</maintainer>
-	<maintainer>
-		<email>pva@gentoo.org</email>
+		<email>spamslepnoga@inbox.ru</email>
 	</maintainer>
 	<longdescription>
 		The Apache HTTP Server Project is an effort to develop and maintain an

@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/www-servers/apache/ChangeLog,v 1.177 2012/03/05 08:17:32 patrick Exp $
 
+  07 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> apache-2.4.1.ebuild,
+  metadata.xml:
+  new major version - recommit from main tree 
+
   05 Mar 2012; Patrick Lauer <patrick@gentoo.org> apache-2.2.21-r1.ebuild,
   apache-2.2.21-r2.ebuild:
   Setting EAPI explicitly, #405911
