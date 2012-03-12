@@ -2,6 +2,21 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libguestfs-1.17.14 (12 Mar 2012)
+
+  12 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/1.17/0001-configure_ac_automagic.patch,
+  -files/1.8/1.8.15/0001-configure_ac_automagic_patch.patch,
+  -files/1.8/1.8.15/0002-disable_php_in_makefile.patch,
+  +libguestfs-1.17.14.ebuild, +files/env.file,
+  -files/1.8/1.8.15/0003-hivex_to_hard_error.patch,
+  -files/1.10/configure.ac_all.patch,
+  -files/1.10/disable_php_in_makefile.patch,
+  -files/1.12/disable_php_in_makefile.patch, -libguestfs-1.8.16.ebuild,
+  -libguestfs-1.12.10.ebuild, -files/1.12/configure.ac_all.patch,
+  -libguestfs-1.10.11.ebuild, -libguestfs-1.14.7.ebuild, metadata.xml:
+  bump libguest
+
   26 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> metadata.xml:
   fix email in metadata - libguest 
 
