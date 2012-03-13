@@ -18,7 +18,7 @@ MY_PV_2="$(get_version_component_range 2)"
 
 [[ $(( $(get_version_component_range 2) % 2 )) -eq 0 ]] && SD="stable" || SD="development"
 
-DESCRIPTION=" for accessing and modifying virtual machine (VM) disk images"
+DESCRIPTION="Tools for accessing, inspect  and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
 SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
 	http://rion-overlay.googlecode.com/files/${APPL_P}.tar.xz"
@@ -86,19 +86,8 @@ pkg_pretend() {
 }
 
 pkg_setup () {
-	if [[ ${MERGE_TYPE} = "source" ]]; then
-		linux-info_get_any_version
-		if kernel_is 2 6; then
-			if [ "$( gcc-major-version )" -eq "34" ] ; then
-				echo
-				ewarn "Kernel at least 2.6.34 not support virtio interface"
-				ewarn "Libguest required it"
-			fi
-		fi
 		CONFIG_CHECK="~KVM ~VIRTIO"
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
-	fi
-
 }
 
 src_prepare() {
