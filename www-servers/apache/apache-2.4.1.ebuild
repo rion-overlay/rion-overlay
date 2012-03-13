@@ -3,9 +3,10 @@
 # $Header: $
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20120213"
+GENTOO_PATCHSTAMP="20120308"
 GENTOO_DEVELOPER="jmbsvicetto"
-GENTOO_PATCHNAME="gentoo-apache-2.2.21-r2"
+GENTOO_PATCHNAME="gentoo-apache-2.4.1"
+GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="peruser prefork"

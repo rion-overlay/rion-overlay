@@ -59,10 +59,11 @@ inherit autotools-utils eutils flag-o-matic multilib ssl-cert
 # @DESCRIPTION:
 # This variable should contain the entire filename of patch tarball.
 # Defaults to the name of the patchset, with a datestamp.
-[[ -n "$GENTOO_PATCH_A" ]] || GENTOO_PATCH_A="${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
+[[ -n "$GENTOO_PATCH_A" ]] ||
+GENTOO_PATCH_A="${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.xz"
 
 SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
-http://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
+http://rion-overlay.googlecode.com/files/${GENTOO_PATCH_A}"
 
 # @VARIABLE: IUSE_MPMS_FORK
 # @DESCRIPTION:
@@ -424,12 +425,15 @@ apache-24_src_prepare() {
 		"${GENTOO_PATCHDIR}"/{conf/httpd.conf,init/*,patches/config.layout} \
 		|| die "libdir sed failed"
 
-	epatch ${FILESDIR}/00*.patch
+	epatch ${GENTOO_PATCHDIR}/patches/00*.patch
 	epatch ${FILESDIR}/apache-tools-2.4.1-Makefile.patch
 	epatch "${GENTOO_PATCHDIR}"/patches/01*.patch
+	#epatch "${GENTOO_PATCHDIR}"/patches/03*.patch
 	epatch "${GENTOO_PATCHDIR}"/patches/10*.patch
+	
 	#epatch "${GENTOO_PATCHDIR}"/patches/20*.patch
 	#epatch "${GENTOO_PATCHDIR}"/patches/21*.patch
+	ewarn "Nonstandart MPM modules disabled in this time"
 	# setup the filesystem layout config
 	cat "${GENTOO_PATCHDIR}"/patches/config.layout >> "${S}"/config.layout || \
 		die "Failed preparing config.layout!"
