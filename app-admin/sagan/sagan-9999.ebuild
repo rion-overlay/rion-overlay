@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/beave/sagan.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="smtp mysql postgres prelude +lognorm +libdnet +pcap"
+IUSE="smtp snortsam mysql postgres prelude +lognorm +libdnet +pcap"
 
 DEPEND="dev-util/pkgconfig
 	${RDEPEND}"
@@ -26,9 +26,13 @@ RDEPEND="dev-libs/libpcre
 	postgres? ( dev-db/postgresql-base )
 	prelude? ( dev-libs/libprelude )
 	lognorm? ( dev-libs/liblognorm )
-	libdnet? ( dev-libs/libdnet )"
+	libdnet? ( dev-libs/libdnet )
+	snortsam? ( net-analyzer/snortsam )
+	"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
+AUTOTOOLS_AUTORECONF=1
+
 DOCS=(AUTHORS ChangeLog FAQ INSTALL README NEWS TODO)
 
 pkg_setup() {
@@ -37,7 +41,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eautoreconf
+	autotools-utils_src_prepare
 }
 
 src_configure() {
@@ -48,7 +52,9 @@ src_configure() {
 		$(use_enable prelude )
 		$(use_enable lognorm)
 		$(use_enable libdnet)
-		$(use_enable pcap libpcap) )
+		$(use_enable pcap libpcap)
+		$(use_enable snortsam)
+		)
 
 	autotools-utils_src_configure
 }
