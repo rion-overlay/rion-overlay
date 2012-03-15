@@ -22,12 +22,12 @@ DEPEND="sys-apps/lm_sensors
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" SYSCONFDIR="/etc" PREFIX="/usr" || die
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" SYSCONFDIR="/etc" PREFIX="/usr"
 }
 
 src_install() {
-	newinitd contribute/gentoo/files/lpmd.initd lpmd || die
-	dosbin lpmd || die
+	newinitd contribute/gentoo/files/lpmd.initd lpmd
+	dosbin lpmd
 	insinto /etc/
-	newins "${S}"/lpmd.lua lpmd.lua
+	doins lpmd.lua
 }
