@@ -22,7 +22,8 @@ DEPEND="sys-apps/lm_sensors
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" SYSCONFDIR="/etc" PREFIX="/usr"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" \
+			SYSCONFDIR="${EPREFIX}/etc" PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {
