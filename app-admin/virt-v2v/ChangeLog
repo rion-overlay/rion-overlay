@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> metadata.xml:
+  fix metadata email
+
   17 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -virt-v2v-0.8.1.ebuild:
   remove old virt-v2v
