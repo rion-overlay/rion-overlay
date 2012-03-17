@@ -315,6 +315,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/passenger-"${PASSENGER_PV}"-gentoo.patch
 		epatch "${FILESDIR}"/passenger-"${PASSENGER_PV}"-ldflags.patch
 		epatch "${FILESDIR}"/passenger-"${PASSENGER_PV}"-contenthandler.patch
+		epatch "${FILESDIR}"/passenger-"${PASSENGER_PV}"-math.patch
 
 		sed -i -e "s:/usr/share/doc/phusion-passenger:/usr/share/doc/${P}:" \
 		-e "s:/usr/lib/phusion-passenger/agents:/usr/libexec/passenger/agents:" lib/phusion_passenger.rb || die
