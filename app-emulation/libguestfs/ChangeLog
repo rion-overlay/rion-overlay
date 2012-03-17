@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libguestfs-1.17.18.ebuild:
+  dron in tree version
+
 *libguestfs-1.17.18 (16 Mar 2012)
 *libguestfs-1.16.10 (16 Mar 2012)
 
