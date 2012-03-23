@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libguestfs-1.17.21 (23 Mar 2012)
+
+  23 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libguestfs-1.17.21.ebuild:
+  bump linguest
+
 *libguestfs-1.17.20 (21 Mar 2012)
 *libguestfs-1.16.11 (21 Mar 2012)
 
