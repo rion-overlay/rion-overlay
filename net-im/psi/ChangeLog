@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*psi-0.15_pre20120326 (26 Mar 2012)
+
+  26 Mar 2012; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20120326.ebuild:
+  new snapshot
+
 *psi-0.15_pre20111105 (05 Nov 2011)
 
   05 Nov 2011; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20111105.ebuild:
