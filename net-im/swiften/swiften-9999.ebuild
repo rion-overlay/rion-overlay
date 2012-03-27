@@ -69,7 +69,6 @@ src_compile() {
 		docbook_xsl="${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets"
 		docbook_xml="${EPREFIX}/usr/share/sgml/docbook/xml-dtd-4.5"
 		swiften_dll=1
-		SWIFTEN_LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 		Swiften
 	)
 
@@ -81,7 +80,8 @@ src_test() {
 }
 
 src_install() {
-	escons "${scons_vars[@]}" SWIFTEN_INSTALLDIR="${ED}/usr" "${ED}/usr"
+	escons "${scons_vars[@]}" SWIFTEN_INSTALLDIR="${ED}/usr" \
+		SWIFTEN_LIBDIR="${ED}/usr/$(get_libdir)" "${ED}/usr"
 
 	use doc && dohtml "Documentation/SwiftenDevelopersGuide/Swiften Developers Guide.html"
 }
