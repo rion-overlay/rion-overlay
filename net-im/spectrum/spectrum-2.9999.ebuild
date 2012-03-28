@@ -24,19 +24,19 @@ SLOT="0"
 KEYWORDS=""
 
 IUSE_PLUGINS="frotz irc purple skype smstools"
-IUSE="debug doc libev mysql postgres sqlite staticport symlinks test tools ${IUSE_PLUGINS}"
+IUSE="debug doc libev log mysql postgres sqlite staticport symlinks test tools ${IUSE_PLUGINS}"
 
 RDEPEND="net-im/swiften
 	dev-libs/popt
 	dev-libs/openssl
-	dev-libs/log4cxx
+	log? ( dev-libs/log4cxx )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-libs/libpqxx )
 	sqlite? ( dev-db/sqlite:3 )
 	frotz? ( dev-libs/protobuf )
 	irc? ( net-im/communi dev-libs/protobuf )
 	purple? ( >=net-im/pidgin-2.6.0 dev-libs/protobuf )
-	skype? ( dev-libs/dbus-glib dev-libs/protobuf )
+	skype? ( dev-libs/dbus-glib x11-base/xorg-server[xvfb] dev-libs/protobuf )
 	libev? ( dev-libs/libev dev-libs/protobuf )"
 
 DEPEND="${RDEPEND}
@@ -53,6 +53,7 @@ PROTOCOL_LIST="aim facebook gg icq irc msn msn_pecan myspace qq simple sipe twit
 pkg_setup() {
 	CMAKE_IN_SOURCE_BUILD=1
 	use debug && CMAKE_BUILD_TYPE=Debug
+	MYCMAKEARGS="-DLIB_INSTALL_DIR=$(get_libdir)"
 }
 
 src_prepare() {
@@ -64,6 +65,7 @@ src_prepare() {
 	use purple || { sed -i -e '/find_package(purple)/d' CMakeLists.txt || die; }
 	use libev || { sed -i -e 's/find_package(event)/set(HAVE_EVENT FALSE)/' CMakeLists.txt || die; }
 	use irc || { sed -i -e 's/find_package(Communi)/set(IRC_FOUND, FALSE)/' CMakeLists.txt || die; }
+	use log || { sed -i -e 's/find_package(log4cxx)/set(LOG4CXX_FOUND, FALSE)/' CMakeLists.txt || die; }
 
 	base_src_prepare
 }
