@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-[[ ${PV} = *9999* ]] && VCS_ECLASS="git" || VCS_ECLASS=""
+[[ ${PV} = *9999* ]] && VCS_ECLASS="git-2" || VCS_ECLASS=""
 
 inherit cmake-utils ${VCS_ECLASS}
 
