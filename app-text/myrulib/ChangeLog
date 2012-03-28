@@ -1,0 +1,67 @@
+# ChangeLog for app-text/myrulib
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  01 Dec 2011; Nikoli <nikoli@lavabit.com> -myrulib-0.28.8.ebuild,
+  -myrulib-0.28.9.ebuild, -myrulib-0.28.10.ebuild,
+  -files/myrulib-0.28.10-fix-configure.patch, myrulib-0.28.11.ebuild,
+  +files/myrulib-0.28.11-libpng15.patch:
+  support libpng-1.5, remove old
+
+*myrulib-0.28.11 (22 Nov 2011)
+
+  22 Nov 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.28.11.ebuild:
+  version bump
+
+*myrulib-0.28.10 (11 Nov 2011)
+
+  11 Nov 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.28.10.ebuild,
+  +files/myrulib-0.28.10-fix-configure.patch, myrulib-9999.ebuild:
+  version bump
+
+*myrulib-0.28.9 (03 Sep 2011)
+
+  03 Sep 2011; Nikoli <nikoli@lavabit.com> -myrulib-0.24.18.ebuild,
+  -myrulib-0.26.6.ebuild, -myrulib-0.26.9.ebuild, -myrulib-0.26.10.ebuild,
+  -myrulib-0.27.4.ebuild, -files/myrulib-0.27.4-faxpp.patch,
+  -myrulib-0.27.5.ebuild, -myrulib-0.28.6.ebuild,
+  -files/myrulib-0.28.6-syslog.patch, +myrulib-0.28.9.ebuild:
+  version bump, remove old
+
+*myrulib-0.28.8 (06 Aug 2011)
+
+  06 Aug 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.28.8.ebuild,
+  myrulib-9999.ebuild:
+  version bump, add icu USE
+
+*myrulib-0.28.6 (01 Jul 2011)
+
+  01 Jul 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.28.6.ebuild,
+  +files/myrulib-0.28.6-syslog.patch, myrulib-9999.ebuild, metadata.xml:
+  version bump, faxpp patch is obsolete, add reader and syslog USE
+
+*myrulib-0.27.5 (25 May 2011)
+
+  25 May 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.27.5.ebuild:
+  version bump
+
+  30 Apr 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.27.4.ebuild,
+  +files/myrulib-0.27.4-faxpp.patch, myrulib-9999.ebuild:
+  version bump, migrate to EAPI4
+
+  13 Apr 2011; Nikoli <nikoli@lavabit.com> myrulib-0.24.18.ebuild,
+  myrulib-0.26.6.ebuild, myrulib-0.26.9.ebuild, +myrulib-0.26.10.ebuild,
+  myrulib-9999.ebuild:
+  version bump, needs sqlite[fts3]
+
+  26 Feb 2011; Nikoli <nikoli@lavabit.com> +myrulib-0.26.9.ebuild:
+  version bump
+
+  18 Jan 2011; Nikoli <nikoli@lavabit.com> myrulib-0.24.18.ebuild,
+  +myrulib-0.26.6.ebuild, myrulib-9999.ebuild:
+  version bump, stable git branch is obsolete
+
+  18 Dec 2010; Nikoli <nikoli@lavabit.com> +myrulib-0.24.18.ebuild,
+  +myrulib-9999.ebuild, +metadata.xml:
+  initial ebuilds
+

@@ -1,0 +1,188 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -76,9 +76,6 @@
+ if HAVE_HASKELL
+ SUBDIRS += haskell
+ endif
+-if HAVE_PHP
+-SUBDIRS += php
+-endif
+ if HAVE_ERLANG
+ SUBDIRS += erlang erlang/examples
+ endif
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -353,11 +353,16 @@
+ if test -f /etc/arch-release; then
+     DISTRO=ARCHLINUX
+ fi
++if test -f /etc/gentoo-release; then
++    DISTRO=GENTOO
++fi
++
+ AC_MSG_RESULT([$DISTRO])
+ AC_SUBST([DISTRO])
+ 
+ dnl Check for rpcgen and XDR library.  rpcgen is optional.
+ AC_CHECK_PROG([RPCGEN],[rpcgen],[rpcgen],[no])
++AS_IF([test "xRPCGEN" = "xno"], [AC_MSG_ERROR([rpcgen not installed])],[])
+ AM_CONDITIONAL([HAVE_RPCGEN],[test "x$RPCGEN" != "xno"])
+ AC_CHECK_LIB([portablexdr],[xdrmem_create],[],[
+         AC_SEARCH_LIBS([xdrmem_create],[rpc xdr nsl])
+@@ -375,9 +380,10 @@
+          AC_CHECK_FUNCS([aug_load aug_defvar aug_defnode])
+          LIBS="$old_LIBS"
+         ],
+-        [AC_MSG_WARN([augeas not found, some core features will be disabled])])
++        [AC_MSG_ERROR([augeas not found, some core features will be disabled])])
+ 
+ dnl Check for libselinux (optional).
++dnl TODO selinux triplet
+ AC_CHECK_HEADERS([selinux/selinux.h])
+ AC_CHECK_LIB([selinux],[setexeccon],[
+         have_libselinux="$ac_cv_header_selinux_selinux_h"
+@@ -397,7 +403,7 @@
+ dnl Check for systemtap/DTrace userspace probes (optional).
+ dnl http://sourceware.org/systemtap/wiki/AddingUserSpaceProbingToApps
+ AC_CHECK_HEADERS([sys/sdt.h])
+-dnl AC_CHECK_PROG([DTRACE],[dtrace],[dtrace],[no])
++AC_CHECK_PROG([DTRACE],[dtrace],[dtrace],[no])
+ 
+ dnl Check for cpio which isn't in the default Pardus install amazingly.
+ AC_CHECK_PROG([CPIO],[cpio],[cpio],[no])
+@@ -448,11 +454,17 @@
+ 
+ dnl Check for optional xmllint.
+ AC_CHECK_PROG([XMLLINT],[xmllint],[xmllint],[no])
++AS_IF([test "xXMLLINT" = "xno"], [AC_MSG_ERROR([xmllint not installed])],[])
+ AM_CONDITIONAL([HAVE_XMLLINT],[test "x$XMLLINT" != "xno"])
+ 
+ dnl po4a for translating man pages and POD files (optional).
+ AC_CHECK_PROG([PO4A],[po4a],[po4a],[no])
+-AM_CONDITIONAL([HAVE_PO4A], [test "x$PO4A" != "xno"])
++AC_ARG_ENABLE([doc],
++       AS_HELP_STRING([--enable-doc], [Enable generation translating man pages and doc]),
++       [enable_doc=no],
++       [enable_doc=yes])
++AS_IF([test "xPO4A" = "xno"], [AC_MSG_WARN([po4a not installed])],[])	
++AM_CONDITIONAL([HAVE_PO4A],[test "x$PO4A" != "xno" && test "x$enable_doc" != "xno"])
+ 
+ dnl Check for db_dump, db_load (optional).
+ AC_CHECK_PROGS([DB_DUMP],
+@@ -598,6 +610,8 @@
+         [])
+ 
+ dnl Readline.
++dnl TODO - add ncurses LDFLGS separately
++dnl build --without-redline in fact broken with -lncurses not inherited
+ AC_ARG_WITH([readline],
+     [AS_HELP_STRING([--with-readline],
+         [support fancy command line editing @<:@default=check@:>@])],
+@@ -624,6 +638,7 @@
+ 
+ dnl For i18n.
+ AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_VERSION([0.18])
+ 
+ dnl Check for PCRE (required)
+ PKG_CHECK_MODULES([PCRE], [libpcre])
+@@ -635,7 +650,7 @@
+                  AC_DEFINE([HAVE_LIBMAGIC],[1],[libmagic found at compile time.])
+                 ], [])
+         ],
+-        [AC_MSG_WARN([libmagic not found, some core features will be disabled])])
++        [AC_MSG_ERROR([libmagic not found, some core features will be disabled])])
+ 
+ dnl libvirt (highly recommended)
+ PKG_CHECK_MODULES([LIBVIRT], [libvirt],
+@@ -643,7 +658,7 @@
+          AC_SUBST([LIBVIRT_LIBS])
+          AC_DEFINE([HAVE_LIBVIRT],[1],[libvirt found at compile time.])
+         ],
+-        [AC_MSG_WARN([libvirt not found, some core features will be disabled])])
++        [AC_MSG_ERROR([libvirt not found, some core features will be disabled])])
+ AM_CONDITIONAL([HAVE_LIBVIRT],[test "x$LIBVIRT_LIBS" != "x"])
+ 
+ dnl libxml2 (highly recommended)
+@@ -652,7 +667,7 @@
+          AC_SUBST([LIBXML2_LIBS])
+          AC_DEFINE([HAVE_LIBXML2],[1],[libxml2 found at compile time.])
+         ],
+-        [AC_MSG_WARN([libxml2 not found, some core features will be disabled])])
++        [AC_MSG_ERROR([libxml2 not found, some core features will be disabled])])
+ AM_CONDITIONAL([HAVE_LIBXML2],[test "x$LIBXML2_LIBS" != "x"])
+ 
+ dnl libconfig (highly recommended)
+@@ -661,7 +676,7 @@
+          AC_SUBST([LIBCONFIG_LIBS])
+          AC_DEFINE([HAVE_LIBCONFIG],[1],[libconfig found at compile time.])
+         ],
+-        [AC_MSG_WARN([libconfig not found, some features will be disabled])])
++        [AC_MSG_ERROR([libconfig not found, some features will be disabled])])
+ AM_CONDITIONAL([HAVE_LIBCONFIG],[test "x$LIBCONFIG_LIBS" != "x"])
+ 
+ dnl hivex library (highly recommended)
+@@ -672,7 +687,7 @@
+          AC_SUBST([HIVEX_LIBS])
+          AC_DEFINE([HAVE_HIVEX],[1],[hivex library found at compile time.])
+         ],
+-        [AC_MSG_WARN([hivex not found, some core features will be disabled])])
++        [AC_MSG_ERROR([hivex not found, some core features will be disabled])])
+ AM_CONDITIONAL([HAVE_HIVEX],[test "x$HIVEX_LIBS" != "x"])
+ 
+ dnl FUSE is optional to build the FUSE module.
+@@ -827,11 +842,13 @@
+     [test "x$RAKE" != "xno" && test -n "$HAVE_LIBRUBY"])
+ 
+ dnl Check for Java.
+-AC_ARG_WITH(java_home,
+-    [AS_HELP_STRING([--with-java-home],
+-        [specify path to JDK directory @<:@default=check@:>@])],
+-    [],
+-    [with_java_home=check])
++AC_ARG_ENABLE([java],
++       AS_HELP_STRING([--enable-java], [Disable Java language bindings]),
++        [enable_java=no],
++       [enable_java=yes])
++
++AS_IF([test "x$enable_java" = "xyes"],
++	[
+ 
+ if test "x$with_java_home" != "xno"; then
+     if test "x$with_java_home" != "xyes" && test "x$with_java_home" != "xcheck"
+@@ -967,8 +984,8 @@
+ AC_SUBST(JNI_INSTALL_DIR)
+ AC_SUBST(JNI_VERSION_INFO)
+ 
+-AM_CONDITIONAL([HAVE_JAVA],[test -n "$JAVAC"])
+-
++])
++AM_CONDITIONAL([HAVE_JAVA],[test -n "$JAVAC" && test "x$enable_java" != "xno"])
+ dnl Check for Haskell (GHC).
+ GHC=no
+ AC_ARG_ENABLE([haskell],
+@@ -1081,8 +1098,9 @@
+ 
+ dnl Replace libtool with a wrapper that clobbers dependency_libs in *.la files
+ dnl http://lists.fedoraproject.org/pipermail/devel/2010-November/146343.html
+-LIBTOOL='bash $(top_srcdir)/libtool-kill-dependency_libs.sh $(top_builddir)/libtool'
++dnl LIBTOOL='bash $(top_srcdir)/libtool-kill-dependency_libs.sh $(top_builddir)/libtool'
+ AC_SUBST([LIBTOOL])
++LT_INIT
+ 
+ dnl Produce output files.
+ AC_CONFIG_HEADERS([config.h])
+diff --git a/inspector/Makefile.am b/inspector/Makefile.am
+--- a/inspector/Makefile.am
++++ b/inspector/Makefile.am
+@@ -37,7 +37,7 @@
+ 
+ CLEANFILES = stamp-virt-inspector.pod
+ 
+-docdir = @docdir@
++docdir = @docdir@/examples
+ dist_doc_DATA = \
+ 	virt-inspector.rng \
+ 	$(EXAMPLE_XML)

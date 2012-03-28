@@ -1,0 +1,13 @@
+diff --git a/Swiften/SConscript b/Swiften/SConscript
+index c12d3b2..9c28129 100644
+--- a/Swiften/SConscript
++++ b/Swiften/SConscript
+@@ -240,7 +240,7 @@ if env["SCONS_STAGE"] == "build" :
+ 		env.MergeFlags(env["GCONF_FLAGS"])
+ 	if ARGUMENTS.get("swiften_dll", False) :
+ 		if myenv["PLATFORM"] == "posix" :
+-			myenv.Append(LINKFLAGS = ["-Wl,-soname,libSwiften.so.$SWIFTEN_VERSION_MAJOR"])
++			myenv.Append(LINKFLAGS = " -Wl,-soname,libSwiften.so.$SWIFTEN_VERSION_MAJOR")
+ 			myenv["SHLIBSUFFIX"] = ""
+ 		elif myenv["PLATFORM"] == "darwin" :
+ 			myenv.Append(LINKFLAGS = ["-Wl,-install_name,libSwiften.so.$SWIFTEN_VERSION_MAJOR", "-Wl,-compatibility_version,${SWIFTEN_VERSION_MAJOR}.${SWIFTEN_VERSION_MINOR}", "-Wl,-current_version,${SWIFTEN_VERSION_MAJOR}.${SWIFTEN_VERSION_MINOR}"])
