@@ -18,7 +18,7 @@ IUSE="+icu reader syslog"
 
 RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	>=dev-libs/faxpp-0.4
+	dev-libs/libxml2
 	dev-db/sqlite:3[fts3,icu?]
 	app-arch/bzip2
 	icu? ( dev-libs/icu )

@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -18,7 +18,7 @@ IUSE="+icu reader syslog"
 
 RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	>=dev-libs/faxpp-0.4
+	dev-libs/libxml2
 	dev-db/sqlite:3[fts3,icu?]
 	app-arch/bzip2
 	icu? ( dev-libs/icu )
@@ -34,8 +34,6 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libpng15.patch
-
 	# for sure
 	rm -rf \
 		3rdparty/bzip2 \
