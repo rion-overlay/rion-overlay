@@ -30,6 +30,4 @@ src_prepare() {
 
 	sed -i -e 's,src/zlib/,,' src/zip/zip.h src/zip/unzip.h || die
 	rm -r src/zlib/ || die
-
-	iconv -f cp1251 -t utf8 rc/qmetro.desktop -o rc/qmetro.desktop || die
 }
