@@ -5,6 +5,8 @@
 EAPI=4
 
 PYTHON_DEPEND="2:2.7"
+AUTOTOOLS_AUTORECONF=1
+AUTOTOOLS_IN_SOURCE_BUILD=1
 
 inherit autotools-utils python
 
@@ -36,12 +38,18 @@ RDEPEND="${COMMON_DEP}"
 
 S="${WORKDIR}/qpidc-${PV}"
 DOCS=(DESIGN INSTALL README.txt RELEASE_NOTES SSL)
+
 pkg_setup() {
 #	enewgroup qpidd
 #	enewuser qpidd -1 -1 -1 qpidd
 
 	python_pkg_setup
 	python_set_active_version 2
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/${PV}"/*.patch
+	autotools-utils_src_prepare
 }
 
 src_configure() {

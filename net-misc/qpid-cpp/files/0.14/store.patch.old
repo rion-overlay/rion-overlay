@@ -1,0 +1,10 @@
+--- store-0.14.4494/lib/jrnl/rrfc.cpp	2012-02-17 09:16:36.622404738 -0500
++++ store-0.14.4494/lib/jrnl/rrfc.cpp	2012-02-17 09:31:32.947715009 -0500
+@@ -35,6 +35,7 @@
+ 
+ #include <cerrno>
+ #include <fcntl.h>
++#include <unistd.h>
+ #include "jrnl/jerrno.hpp"
+ #include "jrnl/jexception.hpp"
+ 
