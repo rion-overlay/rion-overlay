@@ -1,8 +1,3 @@
-# 03 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
-# Mask for removal (unused and unmaintained upstream)
-# Use media-sound/split2flac from main tree
-media-sound/cue2tracks
-
 # 02 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
 # Mask for removal (unused and unmaintained upstream)
 dev-python/python-xklavier
