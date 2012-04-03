@@ -4,14 +4,13 @@
 
 EAPI=2
 
-inherit subversion cmake-utils eutils games
+inherit git-2 cmake-utils eutils games
 
-DESCRIPTION="A game similar to Super Mario Bros."
+DESCRIPTION="Classic 2D jump'n run sidescroller game in a style similar to the original Super Mario Bros."
 HOMEPAGE="http://super-tux.sourceforge.net"
 SRC_URI=""
 
-ESVN_REPO_URI="http://supertux.lethargik.org/svn/supertux/trunk/supertux"
-ESVN_PROJECT="${PN}"
+EGIT_URI="https://code.google.com/p/supertux/"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -25,6 +24,7 @@ RDEPEND="media-libs/libsdl[joystick]
 	media-libs/openal
 	media-libs/glew
 	x11-libs/libXt
+	dev-games/physfs
 	opengl? ( virtual/opengl )
 	curl? ( net-misc/curl )"
 DEPEND="${RDEPEND}"
