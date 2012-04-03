@@ -31,4 +31,5 @@ src_install() {
 	dosbin lpmd
 	insinto /etc/
 	doins lpmd.lua
+	newdoc contribute/my_current_config.lua sample_config.lua
 }
