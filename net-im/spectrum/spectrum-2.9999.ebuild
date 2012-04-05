@@ -71,7 +71,18 @@ src_prepare() {
 	base_src_prepare
 }
 
-pkg_postinst () {
+src_install() {
+	cmake-utils_src_install
+
+	keepdir "${EPREFIX}"/var/lib/spectrum2
+	keepdir "${EPREFIX}"/var/log/spectrum2
+	keepdir "${EPREFIX}"/var/run/spectrum2
+}
+
+pkg_postinst() {
 	# Set correct rights
 	chown jabber:jabber -R "/etc/spectrum2"
+	chown jabber:jabber "${EPREFIX}"/var/lib/spectrum2
+	chown jabber:jabber "${EPREFIX}"/var/log/spectrum2
+	chown jabber:jabber "${EPREFIX}"/var/run/spectrum2
 }
