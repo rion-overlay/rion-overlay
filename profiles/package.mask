@@ -1,0 +1,3 @@
+# 7 Apr 2012; A.Vinogradovs
+# masked for removal
+dev-cpp/libvmime
