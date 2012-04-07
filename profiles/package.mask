@@ -1,3 +1,5 @@
 # 7 Apr 2012; A.Vinogradovs
-# masked for removal
+# masked for removal QA and treeclean
 dev-cpp/libvmime
+dev-ruby/xmpp4r-simple
+
