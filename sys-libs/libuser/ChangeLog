@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libuser-0.57.6 (07 Apr 2012)
+
+  07 Apr 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libuser-0.57.6.ebuild:
+  bump
+
 *libuser-0.57.4 (19 Feb 2012)
 
   19 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
