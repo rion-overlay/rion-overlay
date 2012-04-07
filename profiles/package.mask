@@ -12,3 +12,9 @@ net-misc/htbstat
 net-wireless/zapwireless
 sys-auth/pam_ccreds
 
+
+#  7 Apr 2012; A.Vinogradovs
+# License invalid
+# remowal in 10 day
+media-sound/dcaenc
+net-im/exmpp

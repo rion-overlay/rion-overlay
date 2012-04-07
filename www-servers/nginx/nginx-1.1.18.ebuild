@@ -36,10 +36,6 @@ HTTP_HEADERS_MORE_MODULE_SHA1="de77fd2"
 HTTP_PUSH_MODULE_PV="0.692"
 HTTP_PUSH_MODULE_P="nginx_http_push_module-${HTTP_PUSH_MODULE_PV}"
 
-# http_ctpp2 (http://ngx-ctpp.vbart.ru/ (ru) http://ngx-ctpp.vbart.info/ (en), BSD license)
-HTTP_CTPP_MODULE_PV="0.5"
-HTTP_CTPP_MODULE_P="ngx_ctpp2-${HTTP_CTPP_MODULE_PV}"
-
 # http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
 HTTP_CACHE_PURGE_MODULE_PV="1.5"
 HTTP_CACHE_PURGE_MODULE_P="ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
@@ -154,7 +150,6 @@ SRC_URI="http://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_headers_more? ( https://github.com/agentzh/headers-more-nginx-module/tarball/v${HTTP_HEADERS_MORE_MODULE_PV} -> ${HTTP_HEADERS_MORE_MODULE_P}.tar.gz )
 	nginx_modules_http_passenger? ( mirror://rubyforge/passenger/passenger-${PASSENGER_PV}.tar.gz )
 	nginx_modules_http_push? ( http://pushmodule.slact.net/downloads/${HTTP_PUSH_MODULE_P}.tar.gz )
-	nginx_modules_http_ctpp? ( http://dl.vbart.ru/ngx-ctpp/${HTTP_CTPP_MODULE_P}.tar.gz )
 	nginx_modules_http_cache_purge? ( http://labs.frickle.com/files/${HTTP_CACHE_PURGE_MODULE_P}.tar.gz )
 	nginx_modules_http_upload? ( http://www.grid.net.ru/nginx/download/${HTTP_UPLOAD_MODULE_P}.tar.gz )
 	nginx_modules_http_ey_balancer? ( https://github.com/msva/nginx-ey-balancer/tarball/v${HTTP_EY_BALANCER_MODULE_PV} -> ${HTTP_EY_BALANCER_MODULE_P}.tar.gz )
@@ -196,7 +191,7 @@ NGINX_MODULES_3RD="http_cache_purge http_headers_more http_passenger http_push
 http_upload http_ey_balancer http_slowfs_cache http_ndk http_lua http_form_input
 http_echo http_memc http_drizzle http_rds_json http_postgres http_coolkit
 http_auth_request http_set_misc http_srcache http_supervisord http_array_var
-http_xss http_iconv http_upload_progress http_ctpp"
+http_xss http_iconv http_upload_progress"
 # http_set_cconv"
 
 REQUIRED_USE="	nginx_modules_http_lua? ( nginx_modules_http_ndk )
@@ -234,7 +229,6 @@ CDEPEND="
 	nginx_modules_http_gzip_static? ( sys-libs/zlib )
 	nginx_modules_http_image_filter? ( media-libs/gd[jpeg,png] )
 	nginx_modules_http_perl? ( >=dev-lang/perl-5.8 )
-	nginx_modules_http_ctpp? ( www-apps/ctpp2 )
 	nginx_modules_http_rewrite? ( >=dev-libs/libpcre-4.2 )
 	nginx_modules_http_secure_link? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_xslt? ( dev-libs/libxml2 dev-libs/libxslt )
@@ -444,12 +438,6 @@ src_configure() {
 		myconf="${myconf} --add-module=${WORKDIR}/passenger-${PASSENGER_PV}/ext/nginx"
 	fi
 
-# http_ctpp
-	if use nginx_modules_http_push; then
-		http_enabled=1
-		myconf="${myconf} --add-module=${WORKDIR}/${HTTP_CTPP_MODULE_P}"
-	fi
-
 # http_supervisord
 	if use nginx_modules_http_supervisord; then
 		http_enabled=1
@@ -611,12 +599,6 @@ src_install() {
 	if use nginx_modules_http_push; then
 		docinto "${HTTP_PUSH_MODULE_P}"
 		dodoc "${WORKDIR}"/"${HTTP_PUSH_MODULE_P}"/{changelog.txt,protocol.txt,README}
-	fi
-
-# http_ctpp
-	if use nginx_modules_http_ctpp; then
-		docinto "${HTTP_CTPP_MODULE_P}"
-		dodoc "${WORKDIR}"/"${HTTP_CTPP_MODULE_P}"/{CHANGELOG-ru,README}
 	fi
 
 # http_cache_purge
