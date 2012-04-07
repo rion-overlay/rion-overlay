@@ -19,15 +19,19 @@ IUSE="ldap +popt sasl selinux nls test"
 COMMON_DEPEND="dev-libs/glib:2
 	virtual/pam
 	ldap? ( net-nds/openldap )
-	test? ( net-nds/openldap[-minimal] )
 	popt? ( dev-libs/popt )
 	sasl? ( dev-libs/cyrus-sasl
 		  ldap? ( net-nds/openldap[sasl] ) )
-	selinux? ( sys-libs/libselinux )"
+	selinux? ( sys-libs/libselinux )
+	"
+
 DEPEND="
 	>=sys-devel/gettext-0.17
 	sys-devel/bison
-	${COMMON_DEPEND}"
+	test? ( net-nds/openldap[-minimal] )
+	${COMMON_DEPEND}
+	"
+
 RDEPEND="${COMMON_DEPEND}"
 
 DOCS=(README NEWS TODO)
@@ -40,7 +44,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/disable_doc_build_in_default.patch
-	epatch "${FILESDIR}"/libuser-0.57.3-wait_for_slapd.patch
+#	epatch "${FILESDIR}"/libuser-0.57.3-wait_for_slapd.patch
 	eautoreconf
 }
 

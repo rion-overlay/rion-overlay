@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Apr 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libuser-0.57.3-r1.ebuild, -files/libuser-0.57.3-wait_for_slapd.patch,
+  -libuser-0.57.4.ebuild, libuser-0.57.6.ebuild:
+  drop old, fix QA
+
 *libuser-0.57.6 (07 Apr 2012)
 
   07 Apr 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
