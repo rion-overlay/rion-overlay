@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Apr 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> psi-otr-9999.ebuild:
+  mask live ebuild
+
 *psi-otr-9999 (17 Feb 2012)
 
   17 Feb 2012; rion <rion4ik@gmail.com> +psi-otr-9999.ebuild:

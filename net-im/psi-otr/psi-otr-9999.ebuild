@@ -10,7 +10,7 @@ inherit psiplus-plugin
 DESCRIPTION="OTR Plugin for Psi"
 HOMEPAGE="http://public.tfh-berlin.de/~s30935/"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="
