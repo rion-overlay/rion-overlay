@@ -10,7 +10,7 @@ DESCRIPTION="fast and scalable XMPP library written in Erlang/OTP"
 HOMEPAGE="https://support.process-one.net/doc/display/EXMPP"
 EGIT_REPO_URI="git://git.process-one.net/exmpp/mainline.git"
 
-LICENSE="EPL"
+LICENSE="ErlPL-1.1"
 SLOT="0"
 KEYWORDS=""
 IUSE="examples doc"

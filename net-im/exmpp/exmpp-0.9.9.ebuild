@@ -10,7 +10,7 @@ DESCRIPTION="fast and scalable XMPP library written in Erlang/OTP"
 HOMEPAGE="https://support.process-one.net/doc/display/EXMPP"
 SRC_URI="http://download.process-one.net/exmpp/${P}.tar.gz"
 
-LICENSE="EPL"
+LICENSE="ErlPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples doc"
