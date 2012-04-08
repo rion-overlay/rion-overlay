@@ -18,3 +18,22 @@ sys-auth/pam_ccreds
 # remowal in 10 day
 media-sound/dcaenc
 net-im/exmpp
+# unmantained, broken  packages
+app-admin/ldapimport
+app-admin/saslfinger
+app-admin/sigar
+dev-cpp/libvmime
+dev-libs/libpki
+dev-python/acutil
+dev-python/python-krbV
+net-misc/linux-eoip
+net-misc/qpid-cpp
+net-voip/sipwitch
+sys-libs/libuser
+www-apache/mod_antiloris
+www-apache/mod_perlite
+www-apache/mod_ruid2
+www-apps/ctpp2
+www-servers/hiawatha
+x11-themes/country-flag
+
