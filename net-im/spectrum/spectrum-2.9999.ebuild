@@ -74,6 +74,7 @@ src_prepare() {
 src_install() {
 	cmake-utils_src_install
 
+	newinitd "${FILESDIR}"/spectrum2.initd spectrum
 	keepdir "${EPREFIX}"/var/lib/spectrum2
 	keepdir "${EPREFIX}"/var/log/spectrum2
 	keepdir "${EPREFIX}"/var/run/spectrum2
