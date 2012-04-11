@@ -55,7 +55,6 @@ pkg_setup() {
 	CMAKE_IN_SOURCE_BUILD=1
 	use debug && CMAKE_BUILD_TYPE=Debug
 	MYCMAKEARGS="-DLIB_INSTALL_DIR=$(get_libdir)"
-	PATCHES=( "${FILESDIR}/find-libcommuni.patch" )
 }
 
 src_prepare() {
