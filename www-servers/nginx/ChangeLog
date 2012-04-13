@@ -2,6 +2,13 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-1.1.19 (13 Apr 2012)
+*nginx-1.1.15 (13 Apr 2012)
+
+  13 Apr 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +nginx-1.1.15.ebuild, +nginx-1.1.19.ebuild:
+  bump due CVE-2012-2089 problem - mp4 buffer overflow
+
 *nginx-1.1.17 (16 Mar 2012)
 *nginx-1.0.14 (16 Mar 2012)
 
