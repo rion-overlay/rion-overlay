@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=">=virtual/perl-ExtUtils-MakeMaker-6.32
+		dev-perl/boolean
 		dev-perl/DBI
 		dev-perl/DBD-Pg
 		>=dev-perl/DBIx-Safe-1.2.4"
