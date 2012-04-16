@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+<maintainer>
+  <email>sterkrig@myopera.com</email>
+ <description>Trac-based continuous integration framework</description>
+</maintainer>
+<use>
+<flag name='master'>Install Trac plugin</flag>
+</use>
+
+</pkgmetadata>
