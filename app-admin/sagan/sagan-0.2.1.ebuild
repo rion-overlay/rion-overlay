@@ -1,25 +1,25 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sagan/sagan-0.2.0-r1.ebuild,v 1.3 2012/04/07 17:56:55 maekke Exp $
 
 EAPI=4
 
-inherit eutils autotools-utils git-2
+inherit eutils autotools-utils
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="http://sagan.softwink.com/"
-EGIT_REPO_URI="https://github.com/beave/sagan.git"
+SRC_URI="http://sagan.softwink.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="smtp snort mysql postgres prelude +lognorm +libdnet +pcap"
+KEYWORDS="~amd64 ~x86"
+IUSE="smtp mysql postgres prelude snort lognorm +libdnet +pcap"
 
 DEPEND="dev-util/pkgconfig
 	${RDEPEND}"
 
 RDEPEND="dev-libs/libpcre
-	app-admin/sagan-rules
+	app-admin/sagan-rules[lognorm?]
 	smtp? ( net-libs/libesmtp )
 	pcap? ( net-libs/libpcap )
 	mysql? ( virtual/mysql )
@@ -27,21 +27,15 @@ RDEPEND="dev-libs/libpcre
 	prelude? ( dev-libs/libprelude )
 	lognorm? ( dev-libs/liblognorm )
 	libdnet? ( dev-libs/libdnet )
-	snort? ( net-analyzer/snortsam )
+	snort? ( >=net-analyzer/snortsam-2.50 )
 	"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
-AUTOTOOLS_AUTORECONF=1
-
 DOCS=(AUTHORS ChangeLog FAQ INSTALL README NEWS TODO)
 
 pkg_setup() {
 	enewgroup sagan
 	enewuser sagan -1 -1 /dev/null sagan
-}
-
-src_prepare() {
-	autotools-utils_src_prepare
 }
 
 src_configure() {
@@ -70,33 +64,26 @@ src_install() {
 	keepdir /var/log/sagan
 	keepdir /var/run/sagan
 
-	mkfifo -m 0640 "${D}"/var/run/sagan.fifo
-	chown sagan.root "${D}"/var/run/sagan.fifo
+	mkfifo -m 0640 "${ED}"/var/run/sagan.fifo
+	chown sagan.root "${ED}"/var/run/sagan.fifo
 
-	touch "${D}"/var/log/sagan/sagan.log
-	chown sagan.sagan "${D}"/var/log/sagan/sagan.log
+	touch "${ED}"/var/log/sagan/sagan.log
+	chown sagan.sagan "${ED}"/var/log/sagan/sagan.log
 
 	newinitd "${FILESDIR}"/sagan.init sagan
 	newconfd "${FILESDIR}"/sagan.confd sagan
 
-	insinto /usr/share/doc/${P}/examples
+	insinto /usr/share/doc/${EP}/examples
 	doins -r extra/*
 }
 
 pkg_postinst() {
-
 	if use smtp; then
-		ewarn "You have smtp use flag"
-		ewarn "If you plan on using Sagan with the libesmtp (E-mail),"
-		ewarn "the Sagan user will need a valid, user writeable home directory."
-		ewarn "for security reason, ebuild create sagan user's with /dev/null"
-		ewarn "home"
-		ewarn "run as root "
-		ewarn " chsh -s /bin/bash sagan"
-		ewarn "and create home directory manuallu"
+		ewarn "You have enabled smtp use flag. If you plan on using Sagan with"
+		ewarn "email, create valid writable home directory for user 'sagan'"
+		ewarn "For security reasons it was created with /dev/null home directory"
 	fi
 
-	einfo "https://wiki.quadrantsec.com/bin/view/Main/SaganHOWTO"
-	einfo ""
-
+	einfo "For configuration assistance see"
+	einfo "http://wiki.quadrantsec.com/bin/view/Main/SaganHOWTO"
 }
