@@ -13,7 +13,7 @@ SRC_URI="http://sagan.softwink.com/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="smtp mysql postgres prelude snort lognorm +libdnet +pcap"
+IUSE="smtp mysql postgres prelude snort +lognorm +libdnet +pcap"
 
 DEPEND="dev-util/pkgconfig
 	${RDEPEND}"
