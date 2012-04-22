@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI=3
 
 inherit git-2 cmake-utils eutils games
 
@@ -10,7 +10,7 @@ DESCRIPTION="Classic 2D jump'n run sidescroller game in a style similar to the o
 HOMEPAGE="http://super-tux.sourceforge.net"
 SRC_URI=""
 
-EGIT_URI="https://code.google.com/p/supertux/"
+EGIT_REPO_URI="https://code.google.com/p/supertux/"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}"
 DOCS="README TODO WHATSNEW.txt data/credits.txt"
 
 src_unpack() {
-	subversion_src_unpack
+	git-2_src_unpack
 }
 
 src_configure() {
