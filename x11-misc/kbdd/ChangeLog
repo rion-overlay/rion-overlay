@@ -2,6 +2,13 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*kbdd-0.5.2 (27 Apr 2012)
+*kbdd-0.6.1 (27 Apr 2012)
+
+  27 Apr 2012; Nikolaj Sjujskij <sterkrig@myopera.com> +kbdd-0.5.2.ebuild,
+  +kbdd-0.6.1.ebuild, -kbdd-0.5.1.ebuild, -kbdd-0.6.ebuild:
+  x11-misc/kbdd: bump 0.5.2 and 0.6.2 compatible with new glib.h
+
 *kbdd-0.5.1 (26 Sep 2011)
 
   26 Sep 2011; Nikolaj Sjujscij <sterkrig@myopera.com> +kbdd-0.5.1.ebuild:
