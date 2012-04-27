@@ -30,11 +30,7 @@ src_prepare()
 	sed -i -e "s:/usr:${EPREFIX}/usr:" \
 		skypetab-ng.pro || die
 
+	use amd64 && multilib_toolchain_setup x86
 	qt4-r2_src_prepare
 }
 
-src_configure()
-{
-	use amd64 && multilib_toolchain_setup x86
-	qt4-r2_src_configure
-}
