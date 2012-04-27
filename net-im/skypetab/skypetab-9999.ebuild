@@ -15,9 +15,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
-	!amd64? ( x11-libs/qt-core
-		x11-libs/qt-gui )
+DEPEND="x11-libs/qt-core
+	x11-libs/qt-gui
 	amd64? ( app-emulation/emul-linux-x86-qtlibs )"
 RDEPEND="${DEPEND}
 	net-im/skype"
