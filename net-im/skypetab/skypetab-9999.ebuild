@@ -35,13 +35,6 @@ src_prepare()
 
 src_configure()
 {
-	if use amd64; then
-		export CONF_LIBDIR_OVERRIDE="lib32"
-		qmake skypetab-ng.pro QMAKE_LIBDIR_QT="${EPREFIX}"/usr/$(get_libdir)/qt4 \
-		                QMAKE_LIBDIR_X11="${EPREFIX}"/usr/$(get_libdir) \
-						QMAKE_STRIP= \
-						-spec linux-g++-32
-	else
-		qt4-r2_src_configure
-	fi
+	use amd64 && multilib_toolchain_setup x86
+	qt4-r2_src_configure
 }
