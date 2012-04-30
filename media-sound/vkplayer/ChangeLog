@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*vkplayer-0.08.16.4 (30 Apr 2012)
+
+  30 Apr 2012; Maxim Koltsov <maksbotan@gentoo.org> +vkplayer-0.08.16.4.ebuild:
+  Bump media-sound/vkplayer to 0.08.16.4, adopting changes from megabaks' stuff
+  overlay
+
 *vkplayer-0.08.15 (16 Jan 2012)
 
   16 Jan 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
