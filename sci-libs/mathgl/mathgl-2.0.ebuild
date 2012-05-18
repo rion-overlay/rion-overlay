@@ -4,8 +4,6 @@
 
 EAPI="4"
 
-WX_GTK_VER=2.8
-
 # TODO
 #PYTHON_DEPEND="python? 2"
 #SUPPORT_PYTHON_ABIS="1"
@@ -30,7 +28,7 @@ for x in ${LANGS}; do
 done
 
 RDEPEND="
-	media-libs/libpng
+	media-libs/libpng:0
 	>=sys-libs/zlib-1.2.7
 	opengl? ( virtual/opengl )
 	gif? ( media-libs/giflib )
@@ -39,7 +37,6 @@ RDEPEND="
 	hdf5? ( >=sci-libs/hdf5-1.8[mpi=] )
 	jpeg? ( virtual/jpeg )
 	qt4? ( x11-libs/qt-gui:4 )
-	wxwidgets? ( x11-libs/wxGTK:2.8 )
 	!sci-visualization/udav
 "
 DEPEND="${RDEPEND}
@@ -51,27 +48,38 @@ src_prepare() {
 	sed -e "s/enable-/ENABLE_/g" -i "${S}/CMakeLists.txt"
 }
 
-# Parallel build unhappy
-MAKEOPTS="${MAKEOPTS} -j1"
+#MAKEOPTS="${MAKEOPTS} -j1"
 
 src_configure() {
+	if use wxwidgets; then
+		WX_GTK_VER="2.8"
+		need-wxwidgets unicode
+	fi
 	mycmakeargs=(
 		$(cmake-utils_use_enable double-precision double)
-#		$(cmake-utils_use_enable ltdl) TODO
 		$(cmake-utils_use_enable threads pthread)
-		$(cmake-utils_use_enable gsl gsl)
-		$(cmake-utils_use_enable jpeg jpeg)
-		$(cmake-utils_use_enable gif gif)
+		$(cmake-utils_use_enable gsl)
+		$(cmake-utils_use_enable jpeg)
+		$(cmake-utils_use_enable gif)
 		$(cmake-utils_use_enable hdf5 hdf5_18)
-		$(cmake-utils_use_enable opengl opengl)
-		$(cmake-utils_use_enable glut glut)
-#		$(cmake-utils_use_enable fltk fltk) TODO
+		$(cmake-utils_use_enable opengl)
+		$(cmake-utils_use_enable glut)
 		$(cmake-utils_use_enable qt4 qt)
-#		$(cmake-utils_use_enable python python) TODO
-#		$(cmake-utils_use_enable octave) TODO
 		$(cmake-utils_use_enable doc)
+		$(cmake-utils_use_enable wxwidgets wx)
 	)
+# TODO
+#		$(cmake-utils_use_enable ltdl)
+#		$(cmake-utils_use_enable fltk)
+#		$(cmake-utils_use_enable python)
+#		$(cmake-utils_use_enable octave)
+
 	cmake-utils_src_configure
+}
+
+src_compile() {
+# Parallel build unhappy
+	cmake-utils_src_make -j1
 }
 
 src_install() {
