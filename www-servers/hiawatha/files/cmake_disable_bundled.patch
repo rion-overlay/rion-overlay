@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -84,19 +84,19 @@
+ set(CPACK_SOURCE_IGNORE_FILES "/build/")
+ include(CPack)
+ 
+-# PolarSSL
+-if(ENABLE_SSL)
+-	option(USE_SHARED_POLARSSL_LIBRARY "Build PolarSSL as a shared library." ON)
+-	set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_FULL_LIBDIR}/hiawatha)
+-	set(LIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/hiawatha)
+-	add_subdirectory(polarssl)
+-	set(POLARSSL_LIBRARY "polarssl")
+-endif()
+ 
+ # Hiawatha
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ if(ENABLE_SSL)
+-	include_directories(polarssl/include)
++	#include_directories(polarssl/include)
++	FIND_PATH(POLAR_SSL_INCLUDE polarssl/md5.h) 
++	FIND_LIBRARY( POLARSSL 
++		NAMES	polarssl
++		PATH /usr/include)
++	set(POLARSSL_LIBRARY "polarssl")
++
++#	include_directories()
++
+ endif()
+ if(ENABLE_XSLT)
+ 	include_directories(${LIBXML2_INCLUDE_DIR} ${LIBXSLT_INCLUDE_DIR})
