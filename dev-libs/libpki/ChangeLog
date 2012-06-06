@@ -1,0 +1,34 @@
+# ChangeLog for dev-libs/libpki
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*libpki-0.6.7 (16 Mar 2012)
+
+  16 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libpki-0.6.7.ebuild, metadata.xml:
+  bump libpki
+
+  06 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  libpki-0.6.5-r1.ebuild:
+  fix description
+
+  05 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  libpki-0.6.5-r1.ebuild:
+  fix typo
+
+*libpki-0.6.5-r1 (06 Aug 2011)
+
+  06 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libpki-0.6.4.ebuild, -libpki-0.6.5.ebuild, +libpki-0.6.5-r1.ebuild,
+  +files/configure_in.patch, +files/makefile.patch, -files/all.patch:
+  fix configure patch, split patch, remove old
+
+  04 Jul 2011; Andreis Vinogradovs <<spamslepnoga@inbox.ru>>
+  libpki-0.6.5.ebuild, +files/all.patch:
+  bump
+
+*libpki-0.6.4 (13 Apr 2011)
+
+  13 Apr 2011; <slep@gentoo.org> +libpki-0.6.4.ebuild, +metadata.xml:
+  initial commit
+
