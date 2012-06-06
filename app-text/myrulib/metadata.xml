@@ -6,6 +6,7 @@
 		<name>Nikoli</name>
 	</maintainer>
 	<use>
+		<flag name="links">Include links to the online collections</flag>
 		<flag name="reader">Enable internal Cool Reader engine</flag>
 	</use>
 </pkgmetadata>
