@@ -16,7 +16,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE="dbus doc elibc_FreeBSD"
 
 COMMON_DEPEND=">=dev-lang/lua-5.1
