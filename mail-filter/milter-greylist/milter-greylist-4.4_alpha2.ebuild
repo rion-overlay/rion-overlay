@@ -2,13 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
 inherit base  eutils confutils
 
+MY_PV="4.4a2"
 DESCRIPTION="Milter-greylist is a stand-alone milter that implements the greylist filtering method"
 HOMEPAGE="http://hcpnet.free.fr/milter-greylist"
-SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
+SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${PN}-${MY_PV}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
