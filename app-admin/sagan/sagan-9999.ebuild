@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils autotools-utils git-2
+inherit eutils autotools-utils git-2 user
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="http://sagan.softwink.com/"
