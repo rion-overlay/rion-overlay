@@ -79,7 +79,7 @@ src_install() {
 	newinitd "${FILESDIR}"/sagan.init sagan
 	newconfd "${FILESDIR}"/sagan.confd sagan
 
-	insinto /usr/share/doc/${P}/examples
+	insinto /usr/share/doc/${PF}/examples
 	doins -r extra/*
 }
 
