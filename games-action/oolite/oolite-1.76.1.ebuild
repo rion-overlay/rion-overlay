@@ -25,10 +25,10 @@ RDEPEND="virtual/opengl
 		app-accessibility/espeak"
 
 DEPEND="${RDEPEND}
-		gnustep-base/gnustep-make"
+		gnustep-base/gnustep-make[-libobjc2]"
 
 S="${WORKDIR}/${MY_P}"
-PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" "${FILESDIR}/${PN}-clang.patch" )
+PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
 
 pkg_setup() {
 	games_pkg_setup
@@ -44,6 +44,8 @@ src_prepare() {
 	echo "${FF_JS_URI}" > "${S}"/deps/Cross-platform-deps/mozilla/current.url
 	sed -i -e 's/^\.PHONY: all$/.PHONY: .NOTPARALLEL all/' "${S}"/libjs.make || die
 	sed -i -e 's:.*STRIP.*:	true:' "${S}"/GNUmakefile.postamble
+	sed -i -e '/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions' \
+		"${S}"/GNUmakefile || die
 }
 
 src_compile() {
