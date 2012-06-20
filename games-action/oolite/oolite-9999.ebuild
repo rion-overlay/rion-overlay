@@ -15,7 +15,7 @@ ESVN_REPO_URI="svn://svn.berlios.de/oolite-linux/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="${IUSE} debug"
 
 RDEPEND="virtual/opengl
@@ -41,7 +41,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	base_src_prepare
+	subversion_src_prepare
 	gnustep-base_src_prepare
 	mkdir "${S}"/deps/Cross-platform-deps/mozilla || die
 	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/Cross-platform-deps/mozilla/ || die
