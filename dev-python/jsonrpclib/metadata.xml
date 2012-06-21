@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<maintainer>
-		<email>rion4ik@gmail.com</email>
-		<name>rion</name>
-	</maintainer>
-	<longdescription>This library implements the JSON-RPC 2.0 proposed specification in pure Python. It is designed to be as compatible with the syntax of xmlrpclib as possible (it extends where possible), so that projects using xmlrpclib could easily be modified to use JSON and experiment with the differences.</longdescription>
-</pkgmetadata>
