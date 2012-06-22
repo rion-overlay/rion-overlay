@@ -16,27 +16,33 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="xcomposite"
+IUSE="xext"
 
 RDEPEND="
-	dev-libs/dbus-glib
-	dev-libs/libxml2
-	x11-libs/cairo
-	x11-libs/gtk+:2
-	gnome-base/librsvg
-	x11-libs/gtkglext
-	x11-libs/libXrender
-	net-misc/curl
-	xcomposite? (
-		x11-libs/libXcomposite
-		x11-libs/libXinerama
-		x11-libs/libXtst
-	)
+    dev-libs/dbus-glib
+    dev-libs/libxml2
+    x11-libs/cairo
+    gnome-base/librsvg
+    x11-libs/pango
+    virtual/glu
+    x11-libs/libXrender
+    net-misc/curl
+    xext? (
+        x11-libs/libXcomposite
+        x11-libs/libXinerama
+        x11-libs/libXtst
+    )
 "
+
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 "
+
+src_prepare() {
+	sed -i -e '/set (libdir/aset (libdir "${CMAKE_INSTALL_LIBDIR}")' CMakeLists.txt
+	bzr_src_prepare
+}
 
 pkg_postinst() {
 	ewarn "THIS IS A LIVE EBUILD, SO YOU KNOW THE RISKS !"
