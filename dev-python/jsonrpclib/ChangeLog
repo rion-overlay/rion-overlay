@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/jsonrpclib
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*jsonrpclib-9999 (18 Jan 2012)
-
-  18 Jan 2012; rion <rion4ik@gmail.com> +jsonrpclib-9999.ebuild, +metadata.xml:
-  initial import
-
