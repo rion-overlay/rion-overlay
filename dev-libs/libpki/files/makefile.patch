@@ -1,0 +1,63 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -41,7 +41,7 @@
+ 
+ PTHREAD_MYDEFS		= @PTHREAD_MYDEFS@
+ 
+-ACLOCAL_AMFLAGS = -I m4
++#ACLOCAL_AMFLAGS = -I m4
+ 
+ #AUTOMAKE_OPTIONS = no-dependencies
+ SUBDIRS = src docs etc
+diff --git a/etc/Makefile.am b/etc/Makefile.am
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -25,36 +25,36 @@
+ 
+ install-data-local:
+ 	@$(NORMAL_INSTALL) ; \
+-        $(mkinstalldirs) $(DESTDIR)$(exec_prefix)/etc/libpki; \
+-        $(mkinstalldirs) $(DESTDIR)$(exec_prefix)/etc/libpki/hsm.d; \
+-        $(mkinstalldirs) $(DESTDIR)$(exec_prefix)/etc/libpki/token.d; \
+-        $(mkinstalldirs) $(DESTDIR)$(exec_prefix)/etc/libpki/store.d; \
+-        $(mkinstalldirs) $(DESTDIR)$(exec_prefix)/etc/libpki/profile.d; \
++        $(mkinstalldirs) $(DESTDIR)$(eprefix)/etc/libpki; \
++        $(mkinstalldirs) $(DESTDIR)$(eprefix)/etc/libpki/hsm.d; \
++        $(mkinstalldirs) $(DESTDIR)$(eprefix)/etc/libpki/token.d; \
++        $(mkinstalldirs) $(DESTDIR)$(eprefix)/etc/libpki/store.d; \
++        $(mkinstalldirs) $(DESTDIR)$(eprefix)/etc/libpki/profile.d; \
+         for file in $(PROFILES) ; do \
+             if test -f $$file; then \
+-              $(INSTALL_DATA) $$file $(DESTDIR)$(exec_prefix)/etc/libpki/profile.d; \
++              $(INSTALL_DATA) $$file $(DESTDIR)$(eprefix)/etc/libpki/profile.d; \
+             fi \
+           done
+ 	@for file in $(TOKENS) ; do \
+             if test -f $$file; then \
+-              $(INSTALL_DATA) $$file $(DESTDIR)$(exec_prefix)/etc/libpki/token.d; \
++              $(INSTALL_DATA) $$file $(DESTDIR)$(eprefix)/etc/libpki/token.d; \
+             fi \
+           done
+ 	@for file in $(HSMS) ; do \
+             if test -f $$file; then \
+-              $(INSTALL_DATA) $$file $(DESTDIR)$(exec_prefix)/etc/libpki/hsm.d; \
++              $(INSTALL_DATA) $$file $(DESTDIR)$(eprefix)/etc/libpki/hsm.d; \
+             fi \
+           done
+ 	@for file in $(STORES) ; do \
+             if test -f $$file; then \
+-              $(INSTALL_DATA) $$file $(DESTDIR)$(exec_prefix)/etc/libpki/store.d; \
++              $(INSTALL_DATA) $$file $(DESTDIR)$(eprefix)/etc/libpki/store.d; \
+             fi \
+           done
+ 	@for file in $(CONFIGS) ; do \
+             if test -f $$file; then \
+-              $(INSTALL_DATA) $$file $(DESTDIR)$(exec_prefix)/etc/libpki; \
++              $(INSTALL_DATA) $$file $(DESTDIR)$(eprefix)/etc/libpki; \
+             fi \
+           done
+-	@$(INSTALL_DATA) $(PKI_CONFIG) $(DESTDIR)$(exec_prefix)/etc
++	@$(INSTALL_DATA) $(PKI_CONFIG) $(DESTDIR)$(eprefix)/etc
+ 
+ 
