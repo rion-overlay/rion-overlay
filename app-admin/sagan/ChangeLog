@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Jun 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> sagan-9999.ebuild:
+  install doc's to , not ; close #421477
+
   12 Jun 2012; <slep@gentoo.org> -sagan-0.2.1.ebuild:
   drop old
 
