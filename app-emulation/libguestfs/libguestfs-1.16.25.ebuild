@@ -20,8 +20,8 @@ MY_PV_2="$(get_version_component_range 2)"
 
 DESCRIPTION="Tools for accessing, inspect  and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
-SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
-	http://rion-overlay.googlecode.com/files/${APPL_P}.tar.xz"
+SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
+#	http://rion-overlay.googlecode.com/files/${APPL_P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
@@ -69,13 +69,14 @@ COMMON_DEPEND="
 	"
 
 DEPEND="${COMMON_DEPEND}
+	sys-apps/sed
 	dev-util/gperf
 	doc? ( app-text/po4a )
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )
 	"
 RDEPEND="${COMMON_DEPEND}"
 
-PATCHES=(${FILESDIR}/1.17/*.patch)
+PATCHES=("${FILESDIR}"/1.17/0002-configure_ac_automagic.patch  )
 
 DOCS=(AUTHORS BUGS HACKING README RELEASE-NOTES ROADMAP TODO)
 
