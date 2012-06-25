@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jun 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libguestfs-1.16.25.ebuild, -libguestfs-1.17.43.ebuild:
+  remove old
+
 *libguestfs-1.18.2 (25 Jun 2012)
 
   25 Jun 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
