@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/cairo-dock-plug-ins/3.0/${PV}/+download/${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="alsa disks doncky gmenu gnome kde network-monitor scooby webkit xfce
 ical xklavier terminal python ruby mono vala"
