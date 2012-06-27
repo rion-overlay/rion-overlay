@@ -2,6 +2,13 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*mathgl-2.0.2 (27 Jun 2012)
+
+  27 Jun 2012; egor.y.egorov +mathgl-2.0.2.ebuild, metadata.xml:
+  sci-libs/mathgl-2.0.2 with IUSE=octave bump. #168
+  sci-libs/mathgl with USE=octave masked in main tree. Please add
+  'sci-libs/mathgl -octave' into /etc/portage/profile/package.use.mask
+
 *mathgl-2.0 (17 May 2012)
 
   17 May 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> +mathgl-2.0.ebuild,

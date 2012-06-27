@@ -6,5 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="double-precision">Enable double precision in MathGL library</flag>
+		<flag name="octave">Add bindings for sci-mathematics/octave</flag>
 	</use>
 </pkgmetadata>
