@@ -1,0 +1,10 @@
+# ChangeLog for x11-plugins/pidgin-gpg
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*pidgin-gpg-0.9 (06 Apr 2012)
+
+  06 Apr 2012; Azamat H. Hackimov <azamat.hackimov@gmail.com>
+  +pidgin-gpg-0.9.ebuild, +metadata.xml:
+  [x11-plugins/pidgin-gpg] Запрос с http://www.gentoo.ru/node/25157
+
