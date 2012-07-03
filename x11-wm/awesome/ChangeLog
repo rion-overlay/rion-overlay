@@ -3,7 +3,11 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+  03 Jul 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +files/awesome-backtrace.patch, +files/awesome-convert-path.patch,
+  -files/awesome-3.4.2-backtrace.patch, awesome-3.4.9999.ebuild:
+  Pull patches and changes from main Portage tree
+
   07 Jun 2012; Nikolaj Sjujskij <sterkrig@myopera.com> -Manifest,
   awesome-3.4.9999.ebuild:
   x11-wm/awesome: drop Manifest and KEYWORDS
-
