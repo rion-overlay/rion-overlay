@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 		sys-devel/qconf
 	)
 	doc? ( app-doc/doxygen )
-	dev-util/pkgconfig
+	virtual/pkgconfig
 "
 PDEPEND="
 	crypt? ( app-crypt/qca-gnupg:2 )

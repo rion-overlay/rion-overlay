@@ -28,7 +28,7 @@ ALL_DEPEND="app-text/gnome-doc-utils
 	taglib? ( media-libs/taglib )"
 DEPEND="${ALL_DEPEND}
 		dev-util/intltool
-		dev-util/pkgconfig"
+		virtual/pkgconfig"
 RDEPEND="${ALL_DEPEND}"
 
 DOCS="AUTHORS BUGS ChangeLog NEWS README TODO"

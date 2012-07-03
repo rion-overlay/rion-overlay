@@ -37,7 +37,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	sys-devel/qconf
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	app-arch/xz-utils
 "
 

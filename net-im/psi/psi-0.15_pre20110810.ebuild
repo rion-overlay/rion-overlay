@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 		sys-devel/qconf
 	)
 	doc? ( app-doc/doxygen )
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	app-arch/xz-utils
 "
 PDEPEND="
