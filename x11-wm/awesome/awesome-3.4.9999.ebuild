@@ -37,7 +37,7 @@ DEPEND="${COMMON_DEPEND}
 	>=app-text/asciidoc-8.4.5
 	app-text/xmlto
 	dev-util/gperf
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	media-gfx/imagemagick[png]
 	>=x11-proto/xcb-proto-1.5
 	>=x11-proto/xproto-7.0.15
@@ -80,7 +80,11 @@ src_unpack() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${PN}-3.4.2-backtrace.patch"
+		"${FILESDIR}/${PN}-backtrace.patch"
+
+	# bug  #408025
+	epatch "${FILESDIR}/${PN}-convert-path.patch"
+
 	epatch_user
 }
 
