@@ -22,7 +22,7 @@ COMMON_DEP=">=dev-libs/ucommon-4.2.0
 	ssl? ( dev-libs/openssl )
 	avahi? ( net-dns/avahi )
 "
-DEPEND="dev-util/pkgconfig
+DEPEND="virtual/pkgconfig
 	sys-devel/libtool
 	${COMMON_DEP}"
 

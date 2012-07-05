@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="smtp snort mysql postgres prelude +lognorm +libdnet +pcap"
 
-DEPEND="dev-util/pkgconfig
+DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
 RDEPEND="dev-libs/libpcre
