@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND=">=net-im/pidgin-2.6"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	sys-devel/gettext
 "
 

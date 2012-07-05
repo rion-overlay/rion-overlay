@@ -17,7 +17,7 @@ IUSE="lua"
 
 RDEPEND="lua? ( dev-lang/lua )"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 src_configure() {
 	econf $(use_with lua)

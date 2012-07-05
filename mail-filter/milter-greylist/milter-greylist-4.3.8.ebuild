@@ -35,7 +35,7 @@ COMMON_DEP="net-mail/mailbase
 	spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )"
 DEPEND="sys-devel/flex
 	sys-devel/bison
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	${COMMON_DEP}"
 
 RDEPEND="${COMMON_DEP}"

@@ -40,7 +40,7 @@ CDEPEND="net-mail/mailbase
 	"
 DEPEND="sys-devel/flex
 	sys-devel/bison
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	${CDEPEND}
 	"
 

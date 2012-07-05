@@ -20,7 +20,7 @@ RDEPEND="
 	x11-libs/libpciaccess
 "
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	sys-devel/bison
 	sys-devel/flex
 "

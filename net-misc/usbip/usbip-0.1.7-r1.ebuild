@@ -22,7 +22,7 @@ RDEPEND=">=sys-fs/sysfsutils-2
 		sys-apps/tcp-wrappers"
 
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 S="${WORKDIR}/${P}/src"

@@ -21,7 +21,7 @@ RDEPEND="
 	geoip? ( dev-libs/geoip )
 "
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
+	virtual/pkgconfig
 "
 
 src_configure() {
