@@ -1,5 +1,5 @@
 net-im/psi[plugins]
-net-im/psimedia
+net-im/psimedia[extras]
 net-im/psi-attention
 net-im/psi-autoreply
 net-im/psi-birthdayreminder
