@@ -6,6 +6,7 @@ net-im/psi-captchaforms::rion **
 net-im/psi-chess::rion **
 net-im/psi-cleaner::rion **
 net-im/psi-conferencelogger::rion **
+net-im/psi-clientswitcher::rion **
 net-im/psi-extendedoptions::rion **
 net-im/psi-gmailservice::rion **
 net-im/psi-historykeeper::rion **
