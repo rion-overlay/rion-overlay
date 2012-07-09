@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}
 PDEPEND="
 	crypt? ( app-crypt/qca-gnupg:2 )
 	jingle? (
-		net-im/psimedia
+		net-im/psimedia[extras?]
 		app-crypt/qca-ossl:2
 	)
 	ssl? ( app-crypt/qca-ossl:2 )
