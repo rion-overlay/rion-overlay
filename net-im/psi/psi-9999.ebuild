@@ -81,19 +81,26 @@ src_unpack() {
 	unset EGIT_HAS_SUBMODULES EGIT_NONBARE
 
 	# fetch translations
-	mkdir "${WORKDIR}/psi-l10n"
-	for x in ${LANGS}; do
-		if use linguas_${x}; then
-			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
-			if use extras && [ "${x}" = "ru" ]; then
-				local EGIT_REPO_URI="git://github.com/ivan101/psi-plus-ru.git"
-			else
-				local EGIT_REPO_URI="${LANGS_URI}-${x}.git"
-			fi
-			EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" \
-			git-2_src_unpack
-		fi
-	done
+
+	unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
+	EGIT_REPO_URI="git://github.com/tehnick/psi-plus-i18n.git"
+	EGIT_SOURCEDIR="${WORKDIR}/psi-l10n"
+	git-2_src_unpack
+
+	# original translations server is down so psi+ translations used above
+	#mkdir "${WORKDIR}/psi-l10n"
+	#for x in ${LANGS}; do
+	#	if use linguas_${x}; then
+	#		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
+	#		if use extras && [ "${x}" = "ru" ]; then
+	#			local EGIT_REPO_URI="git://github.com/ivan101/psi-plus-ru.git"
+	#		else
+	#			local EGIT_REPO_URI="${LANGS_URI}-${x}.git"
+	#		fi
+	#		EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" \
+	#		git-2_src_unpack
+	#	fi
+	#done
 
 	if use extras; then
 		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
@@ -200,13 +207,15 @@ src_install() {
 	use doc && dohtml -r doc/api
 
 	# install translations
-	cd "${WORKDIR}/psi-l10n"
+	cd "${WORKDIR}/psi-l10n/translations"
 	insinto /usr/share/${MY_PN}
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
-			lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
-			doins "${x}/${PN}_${x}.qm"
-			[ -f "${x}/INFO" ] && newins "${x}/INFO" "${PN}_${x}.INFO"
+			#lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
+			#doins "${x}/${PN}_${x}.qm"
+			#[ -f "${x}/INFO" ] && newins "${x}/INFO" "${PN}_${x}.INFO"
+			lrelease "${PN}_${x}.ts" || die "lrelease ${x} failed"
+			doins "${PN}_${x}.qm"
 		fi
 	done
 }
