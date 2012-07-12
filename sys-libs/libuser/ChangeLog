@@ -1,0 +1,51 @@
+# ChangeLog for sys-libs/libuser
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  07 Apr 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libuser-0.57.3-r1.ebuild, -files/libuser-0.57.3-wait_for_slapd.patch,
+  -libuser-0.57.4.ebuild, libuser-0.57.6.ebuild:
+  drop old, fix QA
+
+*libuser-0.57.6 (07 Apr 2012)
+
+  07 Apr 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libuser-0.57.6.ebuild:
+  bump
+
+*libuser-0.57.4 (19 Feb 2012)
+
+  19 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libuser-0.57.4.ebuild:
+  bump libuser
+
+*libuser-0.57.3-r1 (04 Dec 2011)
+
+  04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libuser-0.57.3.ebuild, +libuser-0.57.3-r1.ebuild,
+  +files/libuser-0.57.3-wait_for_slapd.patch,
+  +files/disable_doc_build_in_default.patch, metadata.xml:
+  disable sglm build, add upstream test patch
+
+  04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -libuser-0.57.1.ebuild, libuser-0.57.3.ebuild, libuser-9999.ebuild:
+  drop old, fix more tupo
+
+*libuser-9999 (04 Dec 2011)
+
+  04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libuser-9999.ebuild:
+  add live
+
+*libuser-0.57.3 (03 Dec 2011)
+
+  03 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libuser-0.57.3.ebuild:
+  bump
+
+*libuser-0.57.1 (30 Sep 2011)
+
+  30 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libuser-0.57.1.ebuild, +metadata.xml:
+  initial commit
+

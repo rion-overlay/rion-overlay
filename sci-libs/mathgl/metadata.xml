@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>egor.y.egorov@gmail.com</email>
+	</maintainer>
+	<use>
+		<flag name="double-precision">Enable double precision in MathGL library</flag>
+		<flag name="octave">Add bindings for sci-mathematics/octave</flag>
+	</use>
+</pkgmetadata>
