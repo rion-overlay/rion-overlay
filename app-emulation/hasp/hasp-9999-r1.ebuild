@@ -83,8 +83,8 @@ src_install() {
 
 	if use lpt ; then
 		linux-mod_src_install || die
-		dodir /etc/udev/rules.d
-		insinto /etc/udev/rules.d
+		dodir /lib/udev/rules.d
+		insinto /lib/udev/rules.d
 		doins "${FILESDIR}"/55-lpt-hardlock.rules
 	fi
 }

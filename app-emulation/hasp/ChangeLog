@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Jul 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> hasp-3.3_p2.ebuild,
+  hasp-9999.ebuild, hasp-9999-r1.ebuild:
+  Install udev-rules into /lib/udev instead of /etc/udev.
+
   18 Jul 2012; Egor Y. Egorov <egor.y.egorov@gmail.com>
   +files/55-lpt-hardlock.rules, hasp-3.3_p2.ebuild, hasp-9999.ebuild,
   hasp-9999-r1.ebuild:
