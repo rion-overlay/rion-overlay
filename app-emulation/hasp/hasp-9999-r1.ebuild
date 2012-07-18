@@ -20,6 +20,7 @@ MODNAME="aksparlnx"
 [[ ${ARCH} == "amd64" ]] && MY_ARCH="x86_64"
 [[ ${ARCH} == "x86" ]] && MY_ARCH="i386"
 
+REQUIRED_USE="lpt? ( kernel_linux )"
 DEPEND="${RDEPEND}"
 
 QA_PREBUILT="usr/sbin/aksusbd usr/sbin/haspdemo usr/sbin/winehasp
@@ -82,12 +83,8 @@ src_install() {
 
 	if use lpt ; then
 		linux-mod_src_install || die
-	fi
-}
-
-pkg_postinst() {
-	if use lpt ; then
-		[ -c /lib/udev/devices/Hardlock ] || mknod /lib/udev/devices/Hardlock c 42 0
-		[ -c /lib/udev/devices/Hardlock ] && chmod 666 /lib/udev/devices/Hardlock
+		dodir /etc/udev/rules.d
+		insinto /etc/udev/rules.d
+		doins "${FILESDIR}"/55-lpt-hardlock.rules
 	fi
 }
