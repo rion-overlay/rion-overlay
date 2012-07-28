@@ -1,19 +1,8 @@
-From 96b73f67247fc174aa1a84c847d25014da37d4fd Mon Sep 17 00:00:00 2001
-From: Badlop <badlop@process-one.net>
-Date: Mon, 17 Jan 2011 11:46:14 +0100
-Subject: [PATCH] Partial support XEP-xxxx: Remote Roster Management (EJAB-1381)
-
----
- doc/guide.tex           |   14 ++++++-
- src/mod_roster.erl      |  100 ++++++++++++++++++++++++++++++++++++++++++++--
- src/mod_roster_odbc.erl |  101 ++++++++++++++++++++++++++++++++++++++++++++--
- 3 files changed, 203 insertions(+), 12 deletions(-)
-
 diff --git a/doc/guide.tex b/doc/guide.tex
-index 0ae3053..d538df9 100644
+index ca60f37..3c65e76 100644
 --- a/doc/guide.tex
 +++ b/doc/guide.tex
-@@ -3937,6 +3937,15 @@ It also supports Roster Versioning (\xepref{0237}).
+@@ -4059,6 +4059,15 @@ It also supports Roster Versioning (\xepref{0237}).
  Options:
  \begin{description}
  \iqdiscitem{Roster Management (\ns{jabber:iq:roster})}
@@ -29,7 +18,7 @@ index 0ae3053..d538df9 100644
    \titem{\{versioning, false|true\}} \ind{options!versioning}Enables
    Roster Versioning.
    This option is disabled by default.
-@@ -3951,12 +3960,13 @@ Options:
+@@ -4073,12 +4082,13 @@ Options:
    you must disable this option.
  \end{description}
  
@@ -46,10 +35,10 @@ index 0ae3053..d538df9 100644
   ]}.
  \end{verbatim}
 diff --git a/src/mod_roster.erl b/src/mod_roster.erl
-index 90c4601..254f8ab 100644
+index 65d5c09..6ad13e5 100644
 --- a/src/mod_roster.erl
 +++ b/src/mod_roster.erl
-@@ -123,6 +123,8 @@ stop(Host) ->
+@@ -130,6 +130,8 @@ stop(Host) ->
  			  ?MODULE, webadmin_user, 50),
      gen_iq_handler:remove_iq_handler(ejabberd_sm, Host, ?NS_ROSTER).
  
@@ -58,9 +47,9 @@ index 90c4601..254f8ab 100644
  
  process_iq(From, To, IQ) ->
      #iq{sub_el = SubEl} = IQ,
-@@ -281,12 +283,13 @@ item_to_xml(Item) ->
-     {xmlelement, "item", Attrs4, SubEls}.
- 
+@@ -443,12 +445,13 @@ get_roster_by_jid_t(LUser, LServer, LJID, odbc) ->
+             end
+     end.
  
 -process_iq_set(From, To, #iq{sub_el = SubEl} = IQ) ->
 +process_iq_set(From, To, #iq{sub_el = SubEl, id = Id} = IQ) ->
@@ -75,24 +64,24 @@ index 90c4601..254f8ab 100644
      JID1 = jlib:string_to_jid(xml:get_attr_s("jid", Attrs)),
      #jid{user = User, luser = LUser, lserver = LServer} = From,
      case JID1 of
-@@ -308,7 +311,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
- 						groups = [],
- 						xs = []}
- 			       end,
+@@ -458,7 +461,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
+ 	    LJID = jlib:jid_tolower(JID1),
+ 	    F = fun() ->
+                         Item = get_roster_by_jid_t(LUser, LServer, LJID),
 -			Item1 = process_item_attrs(Item, Attrs),
 +			Item1 = process_item_attrs_managed(Item, Attrs, Managed),
  			Item2 = process_item_els(Item1, Els),
  			case Item2#roster.subscription of
  			    remove ->
-@@ -316,6 +319,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
+@@ -466,6 +469,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
  			    _ ->
- 				mnesia:write(Item2)
+                                 update_roster_t(LUser, LServer, LJID, Item2)
  			end,
 +			send_itemset_to_managers(From, Item2, Managed),
  			%% If the item exist in shared roster, take the
  			%% subscription information from there:
  			Item3 = ejabberd_hooks:run_fold(roster_process_item,
-@@ -341,7 +345,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
+@@ -491,7 +495,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
  		    ok
  	    end
      end;
@@ -101,7 +90,7 @@ index 90c4601..254f8ab 100644
      ok.
  
  process_item_attrs(Item, [{Attr, Val} | Attrs]) ->
-@@ -1098,3 +1102,89 @@ us_to_list({User, Server}) ->
+@@ -1495,3 +1499,89 @@ us_to_list({User, Server}) ->
  webadmin_user(Acc, _User, _Server, Lang) ->
      Acc ++ [?XE("h3", [?ACT("roster/", "Roster")])].
  
@@ -191,153 +180,3 @@ index 90c4601..254f8ab 100644
 +    true;
 +is_managed_from_id(_Id) ->
 +    false.
-diff --git a/src/mod_roster_odbc.erl b/src/mod_roster_odbc.erl
-index 4159614..b6a5fef 100644
---- a/src/mod_roster_odbc.erl
-+++ b/src/mod_roster_odbc.erl
-@@ -113,6 +113,8 @@ stop(Host) ->
- 			  ?MODULE, webadmin_user, 50),
-     gen_iq_handler:remove_iq_handler(ejabberd_sm, Host, ?NS_ROSTER).
- 
-+process_iq(From, To, IQ) when ((From#jid.luser == "") andalso (From#jid.lresource == "")) ->
-+    process_iq_manager(From, To, IQ);
- 
- process_iq(From, To, IQ) ->
-     #iq{sub_el = SubEl} = IQ,
-@@ -306,12 +308,13 @@ item_to_xml(Item) ->
-     {xmlelement, "item", Attrs, SubEls}.
- 
- 
--process_iq_set(From, To, #iq{sub_el = SubEl} = IQ) ->
-+process_iq_set(From, To, #iq{sub_el = SubEl, id = Id} = IQ) ->
-     {xmlelement, _Name, _Attrs, Els} = SubEl,
--    lists:foreach(fun(El) -> process_item_set(From, To, El) end, Els),
-+    Managed = is_managed_from_id(Id),
-+    lists:foreach(fun(El) -> process_item_set(From, To, El, Managed) end, Els),
-     IQ#iq{type = result, sub_el = []}.
- 
--process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
-+process_item_set(From, To, {xmlelement, _Name, Attrs, Els}, Managed) ->
-     JID1 = jlib:string_to_jid(xml:get_attr_s("jid", Attrs)),
-     #jid{user = User, luser = LUser, lserver = LServer} = From,
-     case JID1 of
-@@ -347,7 +350,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
- 						 name = ""}
- 				       end
- 			       end,
--			Item1 = process_item_attrs(Item, Attrs),
-+			Item1 = process_item_attrs_managed(Item, Attrs, Managed),
- 			Item2 = process_item_els(Item1, Els),
- 			case Item2#roster.subscription of
- 			    remove ->
-@@ -357,6 +360,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
- 				ItemGroups = groups_to_string(Item2),
- 				odbc_queries:update_roster(LServer, Username, SJID, ItemVals, ItemGroups)
- 			end,
-+			send_itemset_to_managers(From, Item2, Managed),
- 			%% If the item exist in shared roster, take the
- 			%% subscription information from there:
- 			Item3 = ejabberd_hooks:run_fold(roster_process_item,
-@@ -382,7 +386,7 @@ process_item_set(From, To, {xmlelement, _Name, Attrs, Els}) ->
- 		    ok
- 	    end
-     end;
--process_item_set(_From, _To, _) ->
-+process_item_set(_From, _To, _, _Managed) ->
-     ok.
- 
- process_item_attrs(Item, [{Attr, Val} | Attrs]) ->
-@@ -1197,3 +1201,90 @@ us_to_list({User, Server}) ->
- 
- webadmin_user(Acc, _User, _Server, Lang) ->
-     Acc ++ [?XE("h3", [?ACT("roster/", "Roster")])].
-+
-+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-+
-+%% Implement http://jkaluza.fedorapeople.org/remote-roster.html#sect-id188012
-+
-+%% Handle 2.3 and 2.5
-+
-+process_iq_manager(From, To, IQ) ->
-+    %% Check what access is allowed for From to To
-+    MatchDomain = From#jid.lserver,
-+    case is_domain_managed(MatchDomain, To#jid.lserver) of
-+	true ->
-+	    process_iq_manager2(MatchDomain, To, IQ);
-+	false ->
-+	    #iq{sub_el = SubEl} = IQ,
-+	    IQ#iq{type = error, sub_el = [SubEl, ?ERR_BAD_REQUEST]}
-+    end.
-+
-+process_iq_manager2(MatchDomain, To, IQ) ->
-+    %% If IQ is SET, filter the input IQ
-+    IQFiltered = maybe_filter_request(MatchDomain, IQ),
-+    %% Call the standard function with reversed JIDs
-+    IdInitial = IQFiltered#iq.id,
-+    ResIQ = process_iq(To, To, IQFiltered#iq{id = "roster-remotely-managed"}),
-+    %% Filter the output IQ
-+    filter_stanza(MatchDomain, ResIQ#iq{id = IdInitial}).
-+
-+is_domain_managed(ContactHost, UserHost) ->
-+    Managers = gen_mod:get_module_opt(UserHost, ?MODULE, managers, []),
-+    lists:member(ContactHost, Managers).
-+
-+maybe_filter_request(MatchDomain, IQ) when IQ#iq.type == set ->
-+    filter_stanza(MatchDomain, IQ);
-+maybe_filter_request(_MatchDomain, IQ) ->
-+    IQ.
-+
-+filter_stanza(_MatchDomain, #iq{sub_el = []} = IQ) ->
-+    IQ;
-+filter_stanza(MatchDomain, #iq{sub_el = [SubEl | _]} = IQ) ->
-+    #iq{sub_el = SubElFiltered} = IQRes =
-+	filter_stanza(MatchDomain, IQ#iq{sub_el = SubEl}),
-+    IQRes#iq{sub_el = [SubElFiltered]};
-+filter_stanza(MatchDomain, #iq{sub_el = SubEl} = IQ) ->
-+    {xmlelement, Type, Attrs, Items} = SubEl,
-+    ItemsFiltered = lists:filter(
-+		      fun(Item) ->
-+			      is_item_of_domain(MatchDomain, Item) end, Items),
-+    SubElFiltered = {xmlelement, Type, Attrs, ItemsFiltered},
-+    IQ#iq{sub_el = SubElFiltered}.
-+
-+is_item_of_domain(MatchDomain, {xmlelement, _, Attrs, _}) ->
-+    lists:any(fun(Attr) -> is_jid_of_domain(MatchDomain, Attr) end, Attrs);
-+is_item_of_domain(_MatchDomain, {xmlcdata, _}) ->
-+    false.
-+
-+is_jid_of_domain(MatchDomain, {"jid", JIDString}) ->
-+    case jlib:string_to_jid(JIDString) of
-+	JID when JID#jid.lserver == MatchDomain -> true;
-+	_ -> false
-+    end;
-+is_jid_of_domain(_, _) ->
-+    false.
-+
-+%% Handle 2.5
-+process_item_attrs_managed(Item, Attrs, true) ->
-+    process_item_attrs_ws(Item, Attrs);
-+process_item_attrs_managed(Item, _Attrs, false) ->
-+    process_item_attrs(Item, _Attrs).
-+
-+%% Handle 2.4
-+send_itemset_to_managers(_From, _Item, true) ->
-+    ok;
-+send_itemset_to_managers(From, Item, false) ->
-+    {_, UserHost} = Item#roster.us,
-+    {_ContactUser, ContactHost, _ContactResource} = Item#roster.jid,
-+
-+    %% Check if the component is an allowed manager
-+    IsManager = is_domain_managed(ContactHost, UserHost),
-+    case IsManager of
-+	true -> push_item("", ContactHost, "", From, Item);
-+	false -> ok
-+    end.
-+
-+is_managed_from_id("roster-remotely-managed") ->
-+    true;
-+is_managed_from_id(_Id) ->
-+    false.
--- 
-1.7.2.3
-
