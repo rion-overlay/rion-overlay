@@ -131,8 +131,11 @@ src_prepare() {
 		use powersave && epatch "${WORKDIR}/psi-plus/patches/dev/psi-reduce-power-consumption.patch"
 
 		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && echo $(($(git describe --tags|cut -d - -f 2)+5000)))"
-		sed -e "s/.xxx/.${PSI_PLUS_REVISION}/" \
-			-i src/applicationinfo.cpp || die "sed failed"
+		use webkit && {
+			echo "0.15.${PSI_PLUS_REVISION}-webkit (@@DATE@@)" > version
+		} || {
+			echo "0.15.${PSI_PLUS_REVISION} (@@DATE@@)" > version
+		}
 
 		qconf || die "Failed to create ./configure."
 	fi
