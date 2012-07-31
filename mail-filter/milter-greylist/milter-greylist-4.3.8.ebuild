@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-inherit base  eutils confutils
+inherit base  eutils confutils user
 
 DESCRIPTION="Milter-greylist is a stand-alone milter that implements the greylist filtering method"
 HOMEPAGE="http://hcpnet.free.fr/milter-greylist"
@@ -29,7 +29,7 @@ COMMON_DEP="net-mail/mailbase
 	curl? ( net-misc/curl[ipv6?] )
 	geoip? ( dev-libs/geoip )
 	spf? ( mail-filter/libspf2 )
-	postfix? (  >=mail-mta/postfix-2.5[ipv6?]
+	postfix? (  >=mail-mta/postfix-2.5
 				mail-filter/libmilter[ipv6?] )
 	drac? ( mail-client/drac )
 	spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )"

@@ -20,7 +20,7 @@ for mod in ${MODULES}; do
 	IUSE="${IUSE} xtables_addons_${mod}"
 done
 
-DEPEND=">=net-firewall/iptables-1.4.3"
+DEPEND=">=net-firewall/iptables-1.4.5"
 
 RDEPEND="${DEPEND}
 	xtables_addons_ipset6? (
