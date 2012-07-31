@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/ChangeLog,v 1.28 2012/06/19 21:02:06 jer Exp $
 
+*xtables-addons-1.44 (31 Jul 2012)
+
+  31 Jul 2012; <slepnoga@inbox.ru> +xtables-addons-1.44.ebuild:
+  bump
+
 *xtables-addons-1.43 (12 Jul 2012)
 
   12 Jul 2012; <slepnoga@inbox.ru> +xtables-addons-1.43.ebuild, +metadata.xml:
