@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="4"
 
-inherit base  eutils confutils
+inherit base  eutils confutils user
 
 MY_PV="4.4a2"
 DESCRIPTION="Milter-greylist is a stand-alone milter that implements the greylist filtering method"

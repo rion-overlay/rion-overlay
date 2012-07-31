@@ -1,6 +1,9 @@
 # ChangeLog for mail-filter/milter-greylist
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  31 Jul 2012; <slepnoga@inbox.ru> milter-greylist-4.3.8.ebuild:
+  fix ipv6 use flag in postfix depends, add user eclass
 
 *milter-greylist-4.3.9 (30 Apr 2011)
 
