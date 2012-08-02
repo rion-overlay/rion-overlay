@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-# TODO
+# TODO USE=python
 #PYTHON_DEPEND="python? 2"
 #SUPPORT_PYTHON_ABIS="1"
 #RESTRICT_PYTHON_ABIS="3.* 2.7-pypy-* *-jython"
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 
 LANGS="ru"
 
-IUSE="+doc double-precision gif glut +gsl hdf5 jpeg mpi +opengl qt4 threads wxwidgets"
+IUSE="+doc double-precision gif glut +gsl hdf5 jpeg mpi octave +opengl qt4 threads wxwidgets"
 
 for x in ${LANGS}; do
 	IUSE+=" linguas_${x}"
@@ -31,6 +31,7 @@ RDEPEND="
 	media-libs/libpng:0
 	>=sys-libs/zlib-1.2.7
 	opengl? ( virtual/opengl )
+	octave? ( sci-mathematics/octave )
 	gif? ( media-libs/giflib )
 	glut? ( media-libs/freeglut )
 	gsl? ( sci-libs/gsl )
@@ -42,13 +43,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( app-text/texi2html virtual/texi2dvi )
 "
-
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix_hardcoded_paths.patch
+	epatch "${FILESDIR}"/${PN}-2.0-fix_hardcoded_paths.patch
 	sed -e "s/enable-/ENABLE_/g" -i "${S}/CMakeLists.txt"
+	echo "" > "${S}"/lang/install.m || die
 }
-
-#MAKEOPTS="${MAKEOPTS} -j1"
 
 src_configure() {
 	if use wxwidgets; then
@@ -67,19 +66,14 @@ src_configure() {
 		$(cmake-utils_use_enable qt4 qt)
 		$(cmake-utils_use_enable doc)
 		$(cmake-utils_use_enable wxwidgets wx)
+		$(cmake-utils_use_enable octave)
 	)
 # TODO
 #		$(cmake-utils_use_enable ltdl)
 #		$(cmake-utils_use_enable fltk)
 #		$(cmake-utils_use_enable python)
-#		$(cmake-utils_use_enable octave)
 
 	cmake-utils_src_configure
-}
-
-src_compile() {
-# Parallel build unhappy
-	cmake-utils_src_make -j1
 }
 
 src_install() {
@@ -90,4 +84,31 @@ src_install() {
 			use "linguas_${lang}" && doins "udav/udav_${lang}.qm"
 		done
 	fi
+	if use octave ; then
+		insinto "/usr/share/${PN}/octave/"
+		doins "${CMAKE_BUILD_DIR}/lang/${PN}.tar.gz" || die
+	fi
 }
+
+pkg_postinst() {
+	if use octave; then
+		octave <<-EOF
+		pkg install /usr/share/${PN}/octave/${PN}.tar.gz
+		EOF
+	fi
+# TODO USE=python
+#	use python && python_mod_optimize ${PN}.py
+}
+
+pkg_prerm() {
+	if use octave; then
+		octave <<-EOF
+		pkg uninstall ${PN}
+		EOF
+	fi
+}
+
+# TODO USE=python
+#pkg_postrm() {
+#	use python && python_mod_cleanup ${PN}.py
+#}
