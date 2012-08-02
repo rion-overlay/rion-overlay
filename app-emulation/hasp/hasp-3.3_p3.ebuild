@@ -8,7 +8,7 @@ inherit eutils rpm linux-info linux-mod systemd
 
 DESCRIPTION="Hardware Against Software Piracy for access to parallel and usb keys"
 HOMEPAGE="http://www.etersoft.ru"
-SRC_URI="http://ftp.etersoft.ru/pub/Etersoft/HASP/3.3/sources/x86_64/Debian/6.0/haspd-3.3-eter2debian.src.rpm"
+SRC_URI="http://ftp.etersoft.ru/pub/Etersoft/HASP/3.3/sources/x86_64/Gentoo/2011/haspd-3.3-eter3gentoo.src.rpm"
 
 LICENSE="Etersoft"
 SLOT="0"
@@ -42,10 +42,6 @@ pkg_setup() {
 			BUILD_PARAMS="KERNSRC=${KERNEL_DIR}" BUILD_TARGETS="kernel24" || die
 		fi
 	fi
-	if use usb; then
-		CONFIG_CHECK="${CONFIG_CHECK} ~USB_DEVICEFS"
-	fi
-	linux-info_pkg_setup
 }
 
 src_unpack() {
@@ -90,6 +86,6 @@ src_install() {
 		linux-mod_src_install || die
 		dodir /lib/udev/rules.d
 		insinto /lib/udev/rules.d
-		doins "${FILESDIR}"/55-lpt-hardlock.rules
+		doins "${FILESDIR}"/80-{lpt-hardlock,hasp}.rules || die
 	fi
 }
