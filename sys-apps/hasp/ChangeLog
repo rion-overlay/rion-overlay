@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Aug 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> hasp-3.3_p3.ebuild,
+  hasp-9999.ebuild, hasp-9999-r1.ebuild:
+  Fix udev.rules installation
+
   03 Aug 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> +files/80-hasp.rules,
   +hasp-9999-r1.ebuild, +files/80-lpt-hardlock.rules, +hasp-3.3_p3.ebuild,
   +hasp-9999.ebuild, +files/aksusbd.init, +files/hasp.service,
