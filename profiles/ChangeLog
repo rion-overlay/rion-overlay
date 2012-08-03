@@ -16,6 +16,9 @@
  mask stub ebuild 
  =app-emulation/cedega-000133
 
+  03 Aug 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> +updates/3Q-2012:
+  move hasp from app-emulation to sys-apps category
+
   7 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>packages.mask:
   mask for force testing cmake build system
   =net-p2p/eiskaltdc-9999
