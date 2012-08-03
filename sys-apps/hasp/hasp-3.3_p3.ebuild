@@ -86,6 +86,11 @@ src_install() {
 		linux-mod_src_install || die
 		dodir /lib/udev/rules.d
 		insinto /lib/udev/rules.d
-		doins "${FILESDIR}"/80-{lpt-hardlock,hasp}.rules || die
+		doins "${FILESDIR}"/80-lpt-hardlock.rules
+	fi
+	if use usb ; then
+		dodir /lib/udev/rules.d
+		insinto /lib/udev/rules.d
+		doins "${FILESDIR}"/80-hasp.rules
 	fi
 }

@@ -89,6 +89,6 @@ src_install() {
 		linux-mod_src_install || die
 		dodir /lib/udev/rules.d
 		insinto /lib/udev/rules.d
-		doins "${FILESDIR}"/55-lpt-hardlock.rules
+		doins "${FILESDIR}"/80-lpt-hardlock.rules
 	fi
 }
