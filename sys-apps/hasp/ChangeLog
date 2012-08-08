@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*hasp-3.3_p3-r1 (08 Aug 2012)
+
+  08 Aug 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> -hasp-3.3_p3.ebuild,
+  +hasp-3.3_p3-r1.ebuild:
+  Use pkg-config to get udev rules directory
+
   03 Aug 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> hasp-3.3_p3.ebuild,
   hasp-9999.ebuild, hasp-9999-r1.ebuild:
   Fix udev.rules installation

@@ -82,15 +82,10 @@ src_install() {
 		newinitd "${FILESDIR}"/hasplmd.init hasplmd
 	fi
 
-	if use lpt ; then
-		linux-mod_src_install || die
-		dodir /lib/udev/rules.d
-		insinto /lib/udev/rules.d
-		doins "${FILESDIR}"/80-lpt-hardlock.rules
-	fi
-	if use usb ; then
-		dodir /lib/udev/rules.d
-		insinto /lib/udev/rules.d
-		doins "${FILESDIR}"/80-hasp.rules
-	fi
+	use lpt && linux-mod_src_install
+	local udevrulesdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)/rules.d"
+	dodir ${udevrulesdir}
+	insinto ${udevrulesdir}
+	use lpt && doins "${FILESDIR}"/80-lpt-hardlock.rules
+	use usb && doins "${FILESDIR}"/80-hasp.rules
 }
