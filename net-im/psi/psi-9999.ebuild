@@ -147,7 +147,6 @@ src_configure() {
 	# unable to use econf because of non-standard configure script
 	# disable growl as it is a MacOS X extension only
 	local myconf="
-		--disable-bundled-qca
 		--disable-growl
 		--no-separate-debug-info
 	"
