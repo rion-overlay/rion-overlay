@@ -1,0 +1,11 @@
+--- makefile.orig	2011-07-01 10:58:54.000000000 +0300
++++ makefile	2011-07-01 10:59:22.000000000 +0300
+@@ -17,7 +17,7 @@
+ 
+ $(TOOLS_BIN): %: $(TOOLS_SRC)/%.o $(COMMON_OBJ)
+ 	@echo linking $@ ...
+-	@$(CXX) $(CXXFLAGS) -o $@ $< $(COMMON_OBJ)
++	@$(CXX) $(CXXFLAGS) $(LDFAGS) -o $@ $< $(COMMON_OBJ)
+ 
+ clean:
+ 	@$(RM) -fv $(TOOLS_BIN) $(TOOLS_SRC)/*.o $(COMMON_OBJ)
