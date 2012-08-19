@@ -20,7 +20,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-arch/unzip
-	virtual/libiconv
 "
 
 DOCS="AUTHORS README"
