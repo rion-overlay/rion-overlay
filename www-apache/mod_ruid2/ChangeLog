@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*mod_ruid2-0.9.5 (21 Aug 2012)
+
+  21 Aug 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  +mod_ruid2-0.9.5.ebuild:
+  bump
+
   29 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   mod_ruid2-0.9.1.ebuild, mod_ruid2-0.9.4.ebuild, metadata.xml:
   fix more typo
