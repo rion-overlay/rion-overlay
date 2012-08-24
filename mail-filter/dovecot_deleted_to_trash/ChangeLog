@@ -1,0 +1,9 @@
+# ChangeLog for mail-filter/dovecot_deleted_to_trash
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Aug 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  dovecot_deleted_to_trash-0.3.ebuild, +files/fix_names_and_destdir.patch:
+  add new patch to fix install dir and plugin names ( add digit for properly
+  load) 
+
