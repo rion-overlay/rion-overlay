@@ -186,4 +186,5 @@ pkg_postinst() {
 
 	elog "Config  files for milter-greylist /etc/milter-greylist/milter-greylist.conf"
 	elog "Please edit it - default config not works and bad."
+    elog "For more info see http://milter-greylist.wikidot.com/"
 }
