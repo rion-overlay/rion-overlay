@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Aug 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -milter-greylist-4.3.8.ebuild:
+  drop old
+
   31 Jul 2012; <slepnoga@inbox.ru> milter-greylist-4.3.8.ebuild:
   fix ipv6 use flag in postfix depends, add user eclass
 
