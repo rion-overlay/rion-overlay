@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
-inherit base  eutils confutils user
+inherit base eutils user
 
 DESCRIPTION="Milter-greylist is a stand-alone milter that implements the greylist filtering method"
 HOMEPAGE="http://hcpnet.free.fr/milter-greylist"
@@ -46,61 +46,55 @@ DEPEND="sys-devel/flex
 
 RDEPEND="${CDEPEND}"
 
-pkg_setup() {
-	confutils_require_one postfix sendmail
-	confutils_use_conflict postfix sendmail
-	confutils_use_conflict sendmail postfix
-	confutils_use_conflict postfix dkim
+REQUIRED_USE="|| (
+			sendmail? ( || ( !postfix ) ( sendmail ) )
+			postfix?  ( || ( !sendmail ) ( postfix ) )
+				)
+				( ^^ ( postfix sendmail ) )"
 
+pkg_setup() {
 	if use postfix ;then
 		einfo "Checking for postfix group ..."
-		enewgroup postfix 207 || die "problem adding group postfix"
+		enewgroup postfix 207
 
 		einfo "Checking for postdrop group ..."
-		enewgroup postdrop 208 || die "problem adding group postdrop"
+		enewgroup postdrop 208
 
 		einfo "Checking for postfix user ..."
-		enewuser postfix 207 -1 /var/spool/postfix postfix,mail \
-				|| die "problem adding user postfix"
+		enewuser postfix 207 -1 /var/spool/postfix postfix,mail
 	else
 
 		einfo "checking for smmsp group...    create if missing."
-		enewgroup smmsp 209 || die "problem adding group smmsp"
+		enewgroup smmsp 209
 
 		einfo "checking for smmsp user...     create if missing."
-		enewuser smmsp 209 -1 /var/spool/mqueue smmsp \
-		 || die "problem adding user smmsp"
+		enewuser smmsp 209 -1 /var/spool/mqueue smmsp
 	fi
+
 }
 
 src_prepare() {
-
-	sed  -e "/CONFFILE/s/greylist.conf/greylist2.conf/" -i Makefile.in \
-								|| die "sed makefile failed"
-	elog "Makefile fixed "
+	sed  -e "/CONFFILE/s/greylist.conf/greylist2.conf/" -i Makefile.in
 
 	if use drac; then
-		sed -i -e  \
-			's|"/usr/local/etc/drac.db/"|"/var/lib/drac/drac.db"|' \
-	 									greylist2.conf || die "sed drac failed"
+	sed -i -e  \
+			's|"/usr/local/etc/drac.db/"|"/var/lib/drac/drac.db"|' greylist2.conf
 	else
-
-		sed -i -e 's/#nodrac/nodrac/' greylist2.conf || die "sed nodrac failed"
+		sed -i -e 's/#nodrac/nodrac/' greylist2.conf
 	fi
 
-	if use postfix; then
-		sed -e 's/#user\ "smmsp"/user\ "postfix"/' -i greylist2.conf \
-											|| die "add postfix user failed"
-	fi
+#	if use postfix; then
+#		sed -e 's/#user\ "smmsp"/user\ "milter"/' -i greylist2.conf \							
+#	fi
 
 sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
-		-i greylist2.conf || die "socket fix failed"
+		-i greylist2.conf
 
 sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
-	-i milter-greylist.m4 || die "sed in milter-greylist.m4 failed"
+	-i milter-greylist.m4
 
 sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greylist.db"|'\
-					-i greylist2.conf || die "fix db file location  failed"
+					-i greylist2.conf
 
 	ecvs_clean
 }
@@ -108,14 +102,14 @@ sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greyli
 src_configure() {
 	local myconf=""
 
-	if use postfix ;then
-		myconf+="--with-user=postfix "
-	else
-		myconf+="--with-user=smmsp "
-	fi
+#	if use postfix ;then
+#		myconf+="--with-user=postfix "
+#	else
+#		myconf+="--with-user=smmsp "
+#	fi
 	use bind	&& myconf+=" --with-libbind"
 	use spf		&& myconf+=" --with-libspf2"
-	use dkim	&& myconf+=" --with-libdkim"
+	use dkim	&& myconf+=" --with-libdkim=/usr/lib64/"
 	use geoip	&& myconf+=" --with-libGeoIP"
 	use ssl		&& myconf+=" --with-openssl"
 	use ldap	&& myconf+=" --with-openldap"
@@ -134,12 +128,12 @@ src_configure() {
 		$(use_enable spamassassin) \
 		$(use_enable dnsrbl) \
 		$(use_enable postfix) \
-		${myconf} || die "myconf failed"
+		${myconf}
 }
 
 src_install() {
 
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${ED}" install || die "install failed"
 
 	if use !postfix;then
 		insinto /usr/share/sendmail-cf/hack/
@@ -152,9 +146,9 @@ src_install() {
 	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
 
 	if use postfix;then
-		echo "USER=postfix" >> "${D}"/etc/conf.d/milter-greylist || die
+		echo "USER=postfix" >> "${ED}"/etc/conf.d/milter-greylist || die
 	else
-		echo "USER=smmsp" >> "${D}"/etc/conf.d/milter-greylist || die
+		echo "USER=smmsp" >> "${ED}"/etc/conf.d/milter-greylist || die
 	fi
 
 	local user="smmsp"
@@ -169,8 +163,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [  -e "${ROOT}"/var/lib/milter-greylist/greylist.db ] ; then
-		touch "${ROOT}"/var/lib/milter-greylist/greylist.db || die
+	if [  -e "${EROOT}"/var/lib/milter-greylist/greylist.db ] ; then
+		touch "${EROOT}"/var/lib/milter-greylist/greylist.db
 	fi
 
 	if use !postfix; then
