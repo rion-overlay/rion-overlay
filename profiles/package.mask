@@ -1,6 +1,6 @@
 # 28 Aug 2012; A. Vinogradovs
 # mask dev version
->=mail-filter/milter-greylist-4.4
+>=mail-filter/milter-greylist-4.3.9999
 
 # 7 Apr 2012; A.Vinogradovs
 # masked for removal QA and treeclean
