@@ -30,6 +30,7 @@
     <flag name="iqauth">Enable logging on Jabber servers withous SASL authentication support</flag>
     <flag name="jabbersearch">Enable searching contacts in Jabber networks</flag>
     <flag name="messagearchiver">Enable saving the communication history both locally and on the server</flag>
+    <flag name="messagecarbons">Allows to keep all user IM clients engaged in a conversation</flag>
     <flag name="multiuserchat">Enable Jabber multi-user conferences</flag>
     <flag name="pepmanager">Allows other plugins to recieve and publish PEP events</flag>
     <flag name="privacylists">Enable blocking the undesirable contacts</flag>

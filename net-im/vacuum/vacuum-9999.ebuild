@@ -14,8 +14,8 @@ ESVN_REPO_URI="http://vacuum-im.googlecode.com/svn/trunk"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-PLUGINS=" adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver multiuserchat pepmanager privacylists privatestorage registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries"
-IUSE="${PLUGINS// / +} vcs-revision"
+PLUGINS=" adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries"
+IUSE="${PLUGINS// / +} spell vcs-revision"
 for x in ${LANGS}; do
 	IUSE+=" linguas_${x}"
 done
@@ -31,6 +31,7 @@ REQUIRED_USE="
 	filemessagearchive? ( messagearchiver )
 	filestreamsmanager? ( datastreamsmanager )
 	filetransfer? ( filestreamsmanager datastreamsmanager )
+	messagecarbons? ( servicediscovery )
 	pepmanager? ( servicediscovery )
 	registration? ( dataforms )
 	remotecontrol? ( commands dataforms )
@@ -43,9 +44,11 @@ RDEPEND="
 	>=x11-libs/qt-gui-4.5:4
 	>=dev-libs/openssl-0.9.8k
 	adiummessagestyle? ( >=x11-libs/qt-webkit-4.5:4 )
+	spell? ( app-text/hunspell )
 	net-dns/libidn
 	x11-libs/libXScrnSaver
 	sys-libs/zlib[minizip]
+	!net-im/vacuum-spellchecker
 "
 DEPEND="${RDEPEND}"
 
@@ -53,7 +56,7 @@ DOCS="AUTHORS CHANGELOG README TRANSLATORS"
 
 src_prepare() {
 	# Force usage of system libraries
-	rm -rf src/thirdparty/{idn,minizip,zlib}
+	rm -rf src/thirdparty/{idn,hunspell,minizip,zlib}
 }
 
 src_configure() {
@@ -74,6 +77,7 @@ src_configure() {
 	for x in ${PLUGINS}; do
 		mycmakeargs+=( "$(cmake-utils_use ${x} PLUGIN_${x})" )
 	done
+	mycmakeargs+=( "$(cmake-utils_use spell PLUGIN_spellchecker)" )
 
 	if use vcs-revision; then
 		subversion_wc_info # eclass is broken
