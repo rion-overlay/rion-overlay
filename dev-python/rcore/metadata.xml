@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>rion</name>
+	</maintainer>
+	<longdescription>Rion's core package which includes various tools used by rion's projects</longdescription>
+	<use>
+		<flag name='sql'>Install required dependencies to work database</flag>
+	</use>
+</pkgmetadata>

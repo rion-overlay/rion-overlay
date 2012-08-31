@@ -1,0 +1,40 @@
+# 28 Aug 2012; A. Vinogradovs
+# mask dev version
+>=mail-filter/milter-greylist-4.3.9999
+
+# 7 Apr 2012; A.Vinogradovs
+# masked for removal QA and treeclean
+dev-cpp/libvmime
+dev-ruby/xmpp4r-simple
+
+#  7 Apr 2012; A.Vinogradovs
+#removal in 30 day
+net-nds/slapi-nis
+net-misc/usbip
+net-misc/dlan-linux
+net-misc/htbstat
+net-wireless/zapwireless
+sys-auth/pam_ccreds
+
+
+#  7 Apr 2012; A.Vinogradovs
+# remowal in 10 day
+# unmantained, broken  packages
+app-admin/ldapimport
+app-admin/saslfinger
+app-admin/sigar
+dev-cpp/libvmime
+dev-libs/libpki
+dev-python/acutil
+dev-python/python-krbV
+<=net-misc/linux-eoip-0.3
+net-misc/qpid-cpp
+net-voip/sipwitch
+sys-libs/libuser
+www-apache/mod_antiloris
+www-apache/mod_perlite
+www-apache/mod_ruid2
+www-apps/ctpp2
+www-servers/hiawatha
+x11-themes/country-flag
+

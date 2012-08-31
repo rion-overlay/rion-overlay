@@ -1,0 +1,16 @@
+# ChangeLog for net-misc/linux-eoip
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*linux-eoip-0.5 (31 Aug 2012)
+
+  31 Aug 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  +linux-eoip-0.5.ebuild:
+  bump
+
+  27 Nov 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> metadata.xml:
+  fix metatda
+
+  24 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru> files/meoip.init:
+  add init
+
