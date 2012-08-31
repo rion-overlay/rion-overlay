@@ -27,7 +27,7 @@ dev-cpp/libvmime
 dev-libs/libpki
 dev-python/acutil
 dev-python/python-krbV
-net-misc/linux-eoip
+<=net-misc/linux-eoip-0.3
 net-misc/qpid-cpp
 net-voip/sipwitch
 sys-libs/libuser
