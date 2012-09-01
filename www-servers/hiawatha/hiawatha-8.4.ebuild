@@ -6,24 +6,27 @@ EAPI=4
 
 CMAKE_MIN_VERSION="2.8.4"
 
+M_P="monitor-0.5"
+
 inherit cmake-utils
 
 DESCRIPTION="Advanced and secure webserver"
 HOMEPAGE="http://www.hiawatha-webserver.org"
 SRC_URI="http://www.hiawatha-webserver.org/files/${P}.tar.gz
-	monitor? ( http://www.hiawatha-webserver.org/files/monitor-0.3.tar.gz )"
+	monitor? ( http://www.hiawatha-webserver.org/files/${M_P}.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug +cache chroot +command ipv6 monitor ssl toolkit xslt"
+IUSE="debug +cache chroot +command ipv6 monitor rproxy ssl toolkit xslt"
 
-DEPEND="ssl?  ( net-libs/polarssl )
-	 	xslt? ( dev-libs/libxslt
-	 		dev-libs/libxml2 )
-		monitor? ( 	virtual/cron
-					=dev-lang/php-5*[mysql]
-					virtual/mysql )
+DEPEND="
+	ssl?  ( net-libs/polarssl )
+	xslt? ( dev-libs/libxslt
+	 	dev-libs/libxml2 )
+	monitor? ( 	virtual/cron
+		=dev-lang/php-5*[mysql]
+		virtual/mysql )
 		"
 
 RDEPEND="${DEPEND}"
@@ -31,14 +34,14 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="monitor? ( xslt )"
 # monitor and xslt depend own
 
-PATCHES=("${FILESDIR}"/cmake_disable_bundled.patch)
+PATCHES=("${FILESDIR}"/cmake_disable_bundled-r1.patch)
 
 src_unpack() {
 	unpack ${P}.tar.gz
 
 	if use monitor; then
 		mkdir "${WORKDIR}"/monitor
-		unpack monitor-0.3.tar.gz
+		unpack ${M_P}.tar.gz
 	fi
 }
 
@@ -48,6 +51,9 @@ src_configure() {
 	else
 		CMAKE_BUILD_TYPE="Gentoo"
 	fi
+	if use kernel_linux; then
+		myargs=" -DENABLE_LOADCHECK=ON "
+	fi
 
 	mycmakeargs=(
 		$(cmake-utils_use_enable cache CACHE)
@@ -56,6 +62,7 @@ src_configure() {
 		$(cmake-utils_use_enable ipv6 IPV6)
 		$(cmake-utils_use_enable debug DEBUG)
 		$(cmake-utils_use_enable monitor MONITOR)
+		$(cmake-utils_use_enable rproxy RPROXY)
 		$(cmake-utils_use_enable ssl SSL)
 		$(cmake-utils_use_enable toolkit TOOLKIT)
 		$(cmake-utils_use_enable xslt XSLT)
@@ -64,6 +71,7 @@ src_configure() {
 		-DWEBROOT_DIR:STRING=/var/www/hiawatha
 		-DWORK_DIR:STRING=/var/lib/hiawatha
 		-DCONFIG_DIR:STRING=/etc/hiawatha
+		${myargs}
 		)
 	cmake-utils_src_configure
 }
@@ -75,11 +83,12 @@ src_install() {
 	newinitd "${FILESDIR}"/php-fcgi_hiawatha.init  hiawatha_php-fcgi
 
 	keepdir /var/l{ib,og}/hiawatha
-
-	insinto /usr/share/"${PN}"/monitor
-	doins -r "${WORKDIR}"/monitor/*
-	newdoc "${WORKDIR}"/monitor/README README.monitor
-	newdoc "${WORKDIR}"/monitor/ChangeLog ChangeLog.monitor
+	if use monitor; then
+		insinto /usr/share/"${PN}"/monitor
+		doins -r "${WORKDIR}"/monitor/*
+		newdoc "${WORKDIR}"/monitor/README README.monitor
+		newdoc "${WORKDIR}"/monitor/ChangeLog ChangeLog.monitor
+	fi
 }
 
 pkg_postinst() {
