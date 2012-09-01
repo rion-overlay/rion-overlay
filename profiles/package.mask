@@ -17,6 +17,5 @@ sys-libs/libuser
 www-apache/mod_antiloris
 www-apache/mod_perlite
 www-apache/mod_ruid2
-www-servers/hiawatha
 x11-themes/country-flag
 
