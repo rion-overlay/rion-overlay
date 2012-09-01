@@ -13,28 +13,20 @@ SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 bind +ssl ldap geoip spf dkim drac-p +p0f spamassassin sendmail dnsrbl postfix curl"
+IUSE="ipv6 bind ldap geoip spf drac-p +p0f spamassassin sendmail postfix curl"
 
-CDEPEND="net-mail/mailbase
-	sendmail? (
-		mail-mta/sendmail
-		!!mail-filter/libmilter
-		dkim? (
-			mail-filter/libdkim
-			)
-			)
+CDEPEND="
+	dev-libs/openssl
+	net-mail/mailbase
+	sendmail? ( !!mail-filter/libmilter )
 	<sys-libs/db-5.0.0
 	p0f? ( net-analyzer/p0f )
 	bind? ( net-dns/bind[ipv6?] )
-	ssl? ( dev-libs/openssl )
 	ldap? ( net-nds/openldap[ipv6?] )
 	curl? ( net-misc/curl[ipv6?] )
 	geoip? ( dev-libs/geoip )
 	spf? ( mail-filter/libspf2 )
-	postfix? (
-				>=mail-mta/postfix-2.5
-				mail-filter/libmilter[ipv6?]
-				)
+	postfix? ( mail-filter/libmilter[ipv6?] )
 	drac-p? ( mail-client/drac )
 	spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )
 	"
@@ -50,7 +42,8 @@ REQUIRED_USE="|| (
 			sendmail? ( || ( !postfix ) ( sendmail ) )
 			postfix?  ( || ( !sendmail ) ( postfix ) )
 				)
-				( ^^ ( postfix sendmail ) )"
+				( ^^ ( postfix sendmail ) )
+				"
 
 pkg_setup() {
 	if use postfix ;then
@@ -102,16 +95,11 @@ sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greyli
 src_configure() {
 	local myconf=""
 
-#	if use postfix ;then
-#		myconf+="--with-user=postfix "
-#	else
-#		myconf+="--with-user=smmsp "
-#	fi
+		myconf+="--with-user=milter "
+	
 	use bind	&& myconf+=" --with-libbind"
 	use spf		&& myconf+=" --with-libspf2"
-	use dkim	&& myconf+=" --with-libdkim=/usr/lib64/"
 	use geoip	&& myconf+=" --with-libGeoIP"
-	use ssl		&& myconf+=" --with-openssl"
 	use ldap	&& myconf+=" --with-openldap"
 	use curl	&& myconf+=" --with-libcurl"
 
@@ -120,20 +108,21 @@ src_configure() {
 		--enable-mx \
 		--disable-rpath \
 		--with-libmilter \
+		--with-openssl \
 		--with-conffile="/etc/mail/${PN}.conf" \
 		--with-dumpfile="/var/lib/${PN}/${PN}.db" \
 		--with-thread-safe-resolver \
 		$(use_enable drac-p drac) \
 		$(use_enable p0f) \
 		$(use_enable spamassassin) \
-		$(use_enable dnsrbl) \
+		--enable-dnsrbl \
 		$(use_enable postfix) \
 		${myconf}
 }
 
 src_install() {
 
-	emake DESTDIR="${ED}" install || die "install failed"
+	emake DESTDIR="${ED}" install
 
 	if use !postfix;then
 		insinto /usr/share/sendmail-cf/hack/
@@ -146,9 +135,9 @@ src_install() {
 	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
 
 	if use postfix;then
-		echo "USER=postfix" >> "${ED}"/etc/conf.d/milter-greylist || die
+		echo "USER=postfix" >> "${ED}"/etc/conf.d/milter-greylist
 	else
-		echo "USER=smmsp" >> "${ED}"/etc/conf.d/milter-greylist || die
+		echo "USER=smmsp" >> "${ED}"/etc/conf.d/milter-greylist
 	fi
 
 	local user="smmsp"
