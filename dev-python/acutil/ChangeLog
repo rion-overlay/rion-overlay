@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*acutil-6.2.3 (01 Sep 2012)
+
+  01 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> +acutil-6.2.3.ebuild:
+  bump authconfig
+
 *acutil-6.2.1 (29 Feb 2012)
 
   29 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
@@ -83,4 +88,3 @@
   29 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
   +files/5.4.10-Makefile.patch, +acutil-5.4.10.ebuild, +metadata.xml:
   initial commit
-
