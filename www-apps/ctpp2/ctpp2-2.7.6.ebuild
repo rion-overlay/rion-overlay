@@ -9,7 +9,7 @@ inherit cmake-utils
 
 DESCRIPTION="CTPP is a tool separating data processing (business logic) from data presentation."
 HOMEPAGE="http://ctpp.havoc.ru/ http://ctpp.havoc.ru/en/"
-SRC_URI="http://ctpp.havoc.ru/download/ctpp2-2.7.1.tar.gz"
+SRC_URI="http://ctpp.havoc.ru/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2"
