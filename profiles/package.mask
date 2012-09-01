@@ -17,5 +17,4 @@ sys-libs/libuser
 www-apache/mod_antiloris
 www-apache/mod_perlite
 www-apache/mod_ruid2
-x11-themes/country-flag
 
