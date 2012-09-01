@@ -8,7 +8,7 @@ inherit autotools-utils
 
 DESCRIPTION="Advanced and secure webserver"
 HOMEPAGE="http://www.hiawatha-webserver.org"
-SRC_URI="http://www.hiawatha-webserver.org/files/${P}.tar.gz"
+SRC_URI="http://www.hiawatha-webserver.org/files/${PN}-7/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
