@@ -139,7 +139,7 @@ HTTP_SLOWFS_CACHE_MODULE_P="ngx_slowfs_cache-${HTTP_SLOWFS_CACHE_MODULE_PV}"
 CHUNKIN_MODULE_PV="0.22rc2"
 CHUNKIN_MODULE_SHA1="b46dd27"
 
-inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic
+inherit eutils ssl-cert toolchain-funcs perl-module ruby-ng flag-o-matic user
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://sysoev.ru/nginx/
@@ -182,7 +182,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif fastcgi
-geo gzip limit_req limit_zone map memcached proxy referer rewrite scgi ssi
+geo gzip limit_req limit_conn map memcached proxy referer rewrite scgi ssi
 split_clients upstream_ip_hash userid uwsgi"
 NGINX_MODULES_OPT="addition dav degradation flv geoip gzip_static image_filter
 mp4 perl random_index realip secure_link stub_status sub xslt"
@@ -202,7 +202,7 @@ REQUIRED_USE="	nginx_modules_http_lua? ( nginx_modules_http_ndk )
 		nginx_modules_http_array_var? ( nginx_modules_http_ndk )"
 #		nginx_modules_http_set_cconv? ( nginx_modules_http_ndk )
 
-IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam +pcre pcre-jit perftools rrd ssl vim-syntax +luajit"
+IUSE="aio chunk debug +http +http-cache ipv6 libatomic pam +pcre pcre-jit selinux perftools rrd ssl vim-syntax +luajit"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -222,6 +222,7 @@ done
 
 CDEPEND="
 	pcre? ( >=dev-libs/libpcre-4.2 )
+	selinux? ( sec-policy/selinux-nginx )
 	ssl? ( dev-libs/openssl )
 	http-cache? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_geo? ( dev-libs/geoip )
