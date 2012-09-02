@@ -20,3 +20,10 @@ DEPEND="${RDEPEND}"
 PATCHES=("${FILESDIR}"/fix_names_and_destdir.patch )
 
 S="${WORKDIR}"
+
+src_install() {
+	base-src_install
+
+	insinto /etc/dovecot/conf.d
+	doins "${WORKDIR}"/29-delete-to-trash.conf
+}
