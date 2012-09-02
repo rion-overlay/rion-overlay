@@ -3,6 +3,11 @@
 # $Header: $
 
 <<<<<<< local
+
+  02 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  milter-greylist-4.3.9.ebuild, +files/build_cumulative.patch, metadata.xml:
+  add first generation patch to fix buil process
+
   26 Aug 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -milter-greylist-4.3.8.ebuild:
   drop old

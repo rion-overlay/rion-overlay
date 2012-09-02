@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit base eutils user
+inherit base eutils user flag-o-matic autotools
 
 DESCRIPTION="Milter-greylist is a stand-alone milter that implements the greylist filtering method"
 HOMEPAGE="http://hcpnet.free.fr/milter-greylist"
@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.espci.fr/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 bind ldap geoip spf drac-p +p0f spamassassin sendmail postfix curl"
+IUSE="ipv6 bind ldap geoip spf p0f spamassassin sendmail postfix curl"
 
 CDEPEND="
 	dev-libs/openssl
@@ -27,9 +27,9 @@ CDEPEND="
 	geoip? ( dev-libs/geoip )
 	spf? ( mail-filter/libspf2 )
 	postfix? ( mail-filter/libmilter[ipv6?] )
-	drac-p? ( mail-client/drac )
-	spamassassin? ( mail-filter/spamassassin[ipv6,ldap?] )
+	spamassassin? ( mail-filter/spamassassin )
 	"
+#	drac-p? ( mail-client/drac )
 DEPEND="sys-devel/flex
 	sys-devel/bison
 	virtual/pkgconfig
@@ -37,6 +37,8 @@ DEPEND="sys-devel/flex
 	"
 
 RDEPEND="${CDEPEND}"
+
+PATCHES=("${FILESDIR}"/*.patch)
 
 REQUIRED_USE="|| (
 			sendmail? ( || ( !postfix ) ( sendmail ) )
@@ -46,39 +48,15 @@ REQUIRED_USE="|| (
 				"
 
 pkg_setup() {
-	if use postfix ;then
-		einfo "Checking for postfix group ..."
-		enewgroup postfix 207
-
-		einfo "Checking for postdrop group ..."
-		enewgroup postdrop 208
-
-		einfo "Checking for postfix user ..."
-		enewuser postfix 207 -1 /var/spool/postfix postfix,mail
-	else
-
-		einfo "checking for smmsp group...    create if missing."
-		enewgroup smmsp 209
-
-		einfo "checking for smmsp user...     create if missing."
-		enewuser smmsp 209 -1 /var/spool/mqueue smmsp
-	fi
+		enewgroup milter
+		enewuser milter  -1 -1 /var/lib/milter milter
 
 }
 
 src_prepare() {
 	sed  -e "/CONFFILE/s/greylist.conf/greylist2.conf/" -i Makefile.in
 
-	if use drac; then
-	sed -i -e  \
-			's|"/usr/local/etc/drac.db/"|"/var/lib/drac/drac.db"|' greylist2.conf
-	else
-		sed -i -e 's/#nodrac/nodrac/' greylist2.conf
-	fi
-
-#	if use postfix; then
-#		sed -e 's/#user\ "smmsp"/user\ "milter"/' -i greylist2.conf \							
-#	fi
+	sed -i -e 's/#nodrac/nodrac/' greylist2.conf
 
 sed -e 's|"/var/milter-greylist/milter-greylist.sock"|"/var/run/milter-greylist/milter-greylist.sock"|'\
 		-i greylist2.conf
@@ -90,13 +68,15 @@ sed -e 's|"/var/milter-greylist/greylist.db"|"/var/lib/db/milter-greylist/greyli
 					-i greylist2.conf
 
 	ecvs_clean
+	base_src_prepare
+	eautoconf
 }
 
 src_configure() {
 	local myconf=""
 
 		myconf+="--with-user=milter "
-	
+
 	use bind	&& myconf+=" --with-libbind"
 	use spf		&& myconf+=" --with-libspf2"
 	use geoip	&& myconf+=" --with-libGeoIP"
@@ -112,12 +92,17 @@ src_configure() {
 		--with-conffile="/etc/mail/${PN}.conf" \
 		--with-dumpfile="/var/lib/${PN}/${PN}.db" \
 		--with-thread-safe-resolver \
-		$(use_enable drac-p drac) \
 		$(use_enable p0f) \
 		$(use_enable spamassassin) \
 		--enable-dnsrbl \
 		$(use_enable postfix) \
 		${myconf}
+
+}
+
+src_compile() {
+	append-cflags -no-strict-aliasing -no-unused-function
+	emake -j1
 }
 
 src_install() {
@@ -134,19 +119,10 @@ src_install() {
 	newinitd "${FILESDIR}"/gentoo.initd milter-greylist
 	newconfd  "${FILESDIR}"/gentoo.confd milter-greylist
 
-	if use postfix;then
-		echo "USER=postfix" >> "${ED}"/etc/conf.d/milter-greylist
-	else
-		echo "USER=smmsp" >> "${ED}"/etc/conf.d/milter-greylist
-	fi
-
-	local user="smmsp"
-	use postfix && user="postfix"
-
-	diropts -m750 --owner=$user
+	diropts -m750 --owner=milter
 	dodir /var/run/milter-greylist/
 
-	diropts -m770 --owner=$user
+	diropts -m770 --owner=milter
 	dodir /var/lib/milter-greylist/
 	keepdir /var/lib/milter-greylist/
 }
@@ -165,8 +141,6 @@ pkg_postinst() {
 	fi
 
 	if use postfix;then
-		chown postfix "${ROOT}"/var/lib/milter-greylist/greylist.db
-
 		elog
 		elog " You can enable milter-greylist in your postfix, adding the line:"
 		elog " smtpd_milters = unix:/var/run/milter-greylist/milter-greylist.sock "
