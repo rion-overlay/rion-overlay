@@ -2,8 +2,14 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*dovecot_deleted_to_trash-0.3-r1 (02 Sep 2012)
+
+  02 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +dovecot_deleted_to_trash-0.3-r1.ebuild, +files/29-delete-to-trash.conf,
+  -dovecot_deleted_to_trash-0.3.ebuild:
+  add sample config file to dovecot_deleted_to_trash ebuild
+
   24 Aug 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
   dovecot_deleted_to_trash-0.3.ebuild, +files/fix_names_and_destdir.patch:
   add new patch to fix install dir and plugin names ( add digit for properly
   load) 
-
