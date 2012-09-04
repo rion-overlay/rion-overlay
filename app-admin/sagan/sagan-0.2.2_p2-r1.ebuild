@@ -1,25 +1,27 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sagan/sagan-0.2.1-r1.ebuild,v 1.1 2012/06/19 14:18:17 maksbotan Exp $
 
 EAPI=4
 
-inherit eutils autotools-utils git-2 user
+MY_PV="0.2.2-r2"
+inherit eutils autotools-utils user
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="http://sagan.softwink.com/"
-EGIT_REPO_URI="https://github.com/beave/sagan.git"
+SRC_URI="http://sagan.softwink.com/download/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="smtp snort mysql postgres prelude +lognorm +libdnet +pcap"
+KEYWORDS="~amd64 ~x86"
+IUSE="smtp mysql postgres prelude snort +lognorm +libdnet +pcap"
 
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
-RDEPEND="dev-libs/libpcre
-	app-admin/sagan-rules
+RDEPEND="
+	dev-libs/libpcre
+	app-admin/sagan-rules[lognorm?]
 	smtp? ( net-libs/libesmtp )
 	pcap? ( net-libs/libpcap )
 	mysql? ( virtual/mysql )
@@ -27,21 +29,16 @@ RDEPEND="dev-libs/libpcre
 	prelude? ( dev-libs/libprelude )
 	lognorm? ( dev-libs/liblognorm )
 	libdnet? ( dev-libs/libdnet )
-	snort? ( net-analyzer/snortsam )
+	snort? ( >=net-analyzer/snortsam-2.50 )
 	"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
-AUTOTOOLS_AUTORECONF=1
-
 DOCS=(AUTHORS ChangeLog FAQ INSTALL README NEWS TODO)
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_setup() {
 	enewgroup sagan
 	enewuser sagan -1 -1 /dev/null sagan
-}
-
-src_prepare() {
-	autotools-utils_src_prepare
 }
 
 src_configure() {
@@ -70,11 +67,11 @@ src_install() {
 	keepdir /var/log/sagan
 	keepdir /run/sagan
 
-	mkfifo -m 0640 "${D}"/run/sagan.fifo
-	chown sagan.root "${D}"/run/sagan.fifo
+	mkfifo -m 0640 "${ED}"/run/sagan.fifo
+	chown sagan.root "${ED}"/run/sagan.fifo
 
-	touch "${D}"/var/log/sagan/sagan.log
-	chown sagan.sagan "${D}"/var/log/sagan/sagan.log
+	touch "${ED}"/var/log/sagan/sagan.log
+	chown sagan.sagan "${ED}"/var/log/sagan/sagan.log
 
 	newinitd "${FILESDIR}"/sagan.init sagan
 	newconfd "${FILESDIR}"/sagan.confd sagan
@@ -84,19 +81,12 @@ src_install() {
 }
 
 pkg_postinst() {
-
 	if use smtp; then
-		ewarn "You have smtp use flag"
-		ewarn "If you plan on using Sagan with the libesmtp (E-mail),"
-		ewarn "the Sagan user will need a valid, user writeable home directory."
-		ewarn "for security reason, ebuild create sagan user's with /dev/null"
-		ewarn "home"
-		ewarn "run as root "
-		ewarn " chsh -s /bin/bash sagan"
-		ewarn "and create home directory manuallu"
+		ewarn "You have enabled smtp use flag. If you plan on using Sagan with"
+		ewarn "email, create valid writable home directory for user 'sagan'"
+		ewarn "For security reasons it was created with /dev/null home directory"
 	fi
 
-	einfo "https://wiki.quadrantsec.com/bin/view/Main/SaganHOWTO"
-	einfo ""
-
+	einfo "For configuration assistance see"
+	einfo "http://wiki.quadrantsec.com/bin/view/Main/SaganHOWTO"
 }
