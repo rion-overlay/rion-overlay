@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*communi-1.1.1 (05 Sep 2012)
+
+  05 Sep 2012; rion <rion4ik@gmail.com> -communi-1.0.0.ebuild,
+  +communi-1.1.1.ebuild:
+  version bump
+
 *communi-1.0.0 (27 Mar 2012)
 
   27 Mar 2012; rion <rion4ik@gmail.com> +communi-1.0.0.ebuild, +metadata.xml:
