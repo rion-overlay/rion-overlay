@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Sep 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  milter-greylist-4.4_alpha2.ebuild:
+  update
+
 <<<<<<< local
 
   02 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
