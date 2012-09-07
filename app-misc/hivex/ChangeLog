@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-misc/hivex/ChangeLog,v 1.17 2012/06/21 18:35:22 maksbotan Exp $
 
+  07 Sep 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com> -Manifest,
+  -hivex-1.3.6.ebuild:
+  drop old hivex
+
 *hivex-1.3.6 (21 Jun 2012)
 
   21 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org>
@@ -97,4 +101,3 @@
   +files/autoconf_fix-1.3.0.patch, +hivex-1.3.1.ebuild,
   +files/incorrect_format.patch, +metadata.xml:
   Copy app-misc/hivex from rion-overlay, thanks to slepnoga. Bug #342217
-
