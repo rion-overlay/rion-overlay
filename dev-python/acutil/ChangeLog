@@ -1,0 +1,90 @@
+# ChangeLog for dev-python/acutil
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*acutil-6.2.3 (01 Sep 2012)
+
+  01 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> +acutil-6.2.3.ebuild:
+  bump authconfig
+
+*acutil-6.2.1 (29 Feb 2012)
+
+  29 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +acutil-6.2.1.ebuild:
+  bump acutils
+
+*acutil-6.1.17 (04 Dec 2011)
+
+  04 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -acutil-6.1.15.ebuild, +acutil-6.1.17.ebuild, metadata.xml:
+  bump acutil
+
+  01 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -acutil-6.1.12.ebuild, -acutil-6.1.13.ebuild, acutil-6.1.15.ebuild:
+  clean code, migrate to EAPI=3
+
+*acutil-6.1.15 (07 Aug 2011)
+
+  07 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +acutil-6.1.15.ebuild:
+  bump
+
+  30 Apr 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -acutil-6.1.11.ebuild:
+  remove old
+
+*acutil-6.1.13 (21 Mar 2011)
+
+  21 Mar 2011; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.13.ebuild:
+  bump
+
+*acutil-6.1.12 (24 Jan 2011)
+
+  24 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.12.ebuild:
+  bump
+
+  16 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> -acutil-6.1.6.ebuild,
+  -acutil-6.1.10.ebuild:
+  drop old
+
+*acutil-6.1.11 ( 6 Oct 2010 )
+
+  16 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.11.ebuild:
+  bump
+
+*acutil-6.1.10 (04 Oct 2010)
+
+  04 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.10.ebuild:
+  bump
+
+  19 Jul 2010; <slep@gentoo.org> -acutil-5.4.14.ebuild,
+  -acutil-6.1.1.ebuild, acutil-6.1.6.ebuild:
+  fix eclass deprecations warning
+
+  19 Jul 2010; <slep@gentoo.org> -acutil-5.4.14.ebuild,
+  -acutil-6.1.1.ebuild:
+  remove outdated eduild
+
+*acutil-6.1.6
+
+  07 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.6.ebuild:
+  bump
+
+  27 Mar 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-6.1.1.ebuild:
+  version bump
+
+*acutil-6.1.1 ( 27 Mar 2010 )
+
+  02 Feb 2010; <slep@gentoo.org> -acutil-5.4.12.ebuild,
+  acutil-5.4.14.ebuild:
+  fix QA using python eclass
+
+  12 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-5.4.14.ebuild:
+  add acutil-5.4.14.ebuild
+
+  21 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru> +acutil-5.4.12.ebuild:
+  version bump
+
+  29 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +files/5.4.10-Makefile.patch, +acutil-5.4.10.ebuild, +metadata.xml:
+  initial commit
