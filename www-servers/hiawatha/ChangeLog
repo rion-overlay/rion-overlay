@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -hiawatha-7.8.2.ebuild, -hiawatha-8.4.ebuild:
+  drop old
+
 *hiawatha-8.5 (11 Sep 2012)
 
   11 Sep 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
