@@ -1,0 +1,20 @@
+# 28 Aug 2012; A. Vinogradovs
+# mask dev version
+>=mail-filter/milter-greylist-4.3.9999
+
+#  1 Sep 2012; A.Vinogradovs
+# remowal in 10 day
+# unmantained, broken  packages
+app-admin/ldapimport
+app-admin/saslfinger
+app-admin/sigar
+dev-libs/libpki
+dev-python/acutil
+dev-python/python-krbV
+net-misc/qpid-cpp
+net-voip/sipwitch
+sys-libs/libuser
+www-apache/mod_antiloris
+www-apache/mod_perlite
+www-apache/mod_ruid2
+
