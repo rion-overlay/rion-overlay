@@ -83,7 +83,7 @@ src_unpack() {
 	# fetch translations
 
 	unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
-	EGIT_REPO_URI="git://github.com/tehnick/psi-plus-i18n.git"
+	EGIT_REPO_URI="git://github.com/psi-plus/psi-plus-l10n.git"
 	EGIT_SOURCEDIR="${WORKDIR}/psi-l10n"
 	git-2_src_unpack
 

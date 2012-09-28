@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Sep 2012; rion <rion4ik@gmail.com> psi-9999.ebuild:
+  psi langs repo changed
+
 *psi-0.15_pre20120326 (26 Mar 2012)
 
   26 Mar 2012; Nikoli <nikoli@lavabit.com> +psi-0.15_pre20120326.ebuild:
