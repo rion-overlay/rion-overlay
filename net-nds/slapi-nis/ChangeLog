@@ -2,6 +2,17 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -slapi-nis-0.22.ebuild, -slapi-nis-0.24.ebuild, -slapi-nis-0.25.ebuild,
+  -slapi-nis-0.26.ebuild, -slapi-nis-0.28.ebuild, -slapi-nis-0.36.ebuild:
+  clean old  slapi-nis
+
+*slapi-nis-0.42 (01 Sep 2012)
+
+  01 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +slapi-nis-0.42.ebuild:
+  bump slapi-nis
+
 *slapi-nis-0.36 (03 Feb 2012)
 
   03 Feb 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>

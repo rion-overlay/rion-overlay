@@ -11,9 +11,6 @@
 	 <flag name='dnsrbl'>Add dnsrbl blacklist support </flag>
 	 <flag name='bind'>Use <pkg>net-dns/bind-tools</pkg> resolver instead glibc
 	 resolver</flag>
-	 <flag name='dkim'>Add DomainKeys Identified Mail support </flag>
-	 <flag name='drac-p'>Add support for POP-before-SMTP AAA, use<pkg>mail-client/drac</pkg></flag>
-	 <flag name='drac'>Add support for POP-before-SMTP AAA, use<pkg>mail-client/drac</pkg></flag>
 	 <flag name='p0f'>Add support for OS type detection's.
 	 Use<pkg>net-analyzer/p0f</pkg></flag>
 	 <flag name='spamassassin'>Add spamassasin plugin</flag>

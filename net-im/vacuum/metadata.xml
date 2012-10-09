@@ -30,6 +30,7 @@
     <flag name="iqauth">Enable logging on Jabber servers withous SASL authentication support</flag>
     <flag name="jabbersearch">Enable searching contacts in Jabber networks</flag>
     <flag name="messagearchiver">Enable saving the communication history both locally and on the server</flag>
+    <flag name="messagecarbons">Allows to keep all user IM clients engaged in a conversation</flag>
     <flag name="multiuserchat">Enable Jabber multi-user conferences</flag>
     <flag name="pepmanager">Allows other plugins to recieve and publish PEP events</flag>
     <flag name="privacylists">Enable blocking the undesirable contacts</flag>
@@ -47,5 +48,8 @@
     <flag name="vcard">Enable obtaining peer's personal contact information</flag>
     <flag name="xmppuriqueries">Allow other plugins to handle XMPP URI queries</flag>
     <flag name="vcs-revision">Add VCS revision to version number, INSECURE.</flag>
+    <flag name="aspell">Select <pkg>app-text/aspell</pkg> spell checker backend</flag>
+    <flag name="enchant">Select <pkg>app-text/enchant</pkg> spell checker backend</flag>
+    <flag name="hunspell">Select <pkg>app-text/hunspell</pkg> spell checker backend</flag>
   </use>
 </pkgmetadata>

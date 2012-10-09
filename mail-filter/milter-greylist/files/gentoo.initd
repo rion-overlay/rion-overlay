@@ -3,7 +3,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: Exp $
 
+
+extra_commands="restart"
+
+
 depend() {
+	need netmount
 	use logger dns dovecot openldap dkim-filter dns p0f dracd sendmail
 	provide postfix_greylist
 }

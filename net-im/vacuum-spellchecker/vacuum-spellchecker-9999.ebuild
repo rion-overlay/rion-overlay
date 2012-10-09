@@ -22,7 +22,8 @@ for x in ${LANGS}; do
 done
 
 RDEPEND="
-	>=net-im/vacuum-1.1.0
+	>=net-im/vacuum-1.2.0
+	!>=net-im/vacuum-1.3.0
 	app-text/enchant
 "
 DEPEND="${RDEPEND}"

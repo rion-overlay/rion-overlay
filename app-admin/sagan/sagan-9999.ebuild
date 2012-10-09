@@ -65,13 +65,13 @@ src_install() {
 	diropts -g sagan -o sagan -m 775
 
 	dodir /var/log/sagan
-	dodir /var/run/sagan
+	dodir /run/sagan
 
 	keepdir /var/log/sagan
-	keepdir /var/run/sagan
+	keepdir /run/sagan
 
-	mkfifo -m 0640 "${D}"/var/run/sagan.fifo
-	chown sagan.root "${D}"/var/run/sagan.fifo
+	mkfifo -m 0640 "${D}"/run/sagan.fifo
+	chown sagan.root "${D}"/run/sagan.fifo
 
 	touch "${D}"/var/log/sagan/sagan.log
 	chown sagan.sagan "${D}"/var/log/sagan/sagan.log

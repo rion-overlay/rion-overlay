@@ -2,15 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer>
- <email>spamslepnoga@inbox.ru</email>
+ <email>andreis.vinogradovs@gmail.com</email>
  <name>Andrei Vinogradov</name>
 </maintainer>
 <use>
 <flag name='cache'>Enable cache feature</flag>
 <flag name='chroot'>Install chroot script</flag>
 <flag name='command'>Enable command chennel</flag>
-<flag name='monitor'> </flag>
+<flag name='monitor'>install php files used to monitor ( load, uconnection, etc..) your hiawtha </flag>
 <flag name='toolkit'>Enable tootkit - install wigvam</flag>
 <flag name='xslt'>Enable XSLT processor</flag>
+<flag name='rproxy'>Enable reverse proxy support</flag>
+
 </use>
 </pkgmetadata>
