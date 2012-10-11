@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Oct 2012; rion <rion4ik@gmail.com> psi-9999.ebuild:
+  get rid of 5000 hack
+
   28 Sep 2012; rion <rion4ik@gmail.com> psi-9999.ebuild:
   psi langs repo changed
 
