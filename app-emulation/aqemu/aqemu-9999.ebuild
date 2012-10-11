@@ -13,19 +13,17 @@ EGIT_REPO_URI="git://aqemu.git.sourceforge.net/gitroot/aqemu/aqemu"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="kvm vnc spice"
+IUSE="vnc spice"
 
-DEPEND="${RDEPEND}"
-
-RDEPEND="!kvm? ( app-emulation/qemu )
-	kvm? ( app-emulation/qemu-kvm[spice?] )
+RDEPEND="app-emulation/qemu[spice?]
 	vnc? ( net-libs/libvncserver )
 	x11-libs/qt-gui:4
 	x11-libs/qt-test:4
 	x11-libs/qt-xmlpatterns:4"
 
+DEPEND="${RDEPEND}"
+
 DOCS="AUTHORS CHANGELOG README TODO"
-REQUIRED_USE="spice? ( kvm )"
 
 src_unpack() {
 	git-2_src_unpack

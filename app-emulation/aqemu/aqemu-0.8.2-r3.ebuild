@@ -13,15 +13,15 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="kvm vnc"
+IUSE="vnc"
 
-DEPEND="${RDEPEND}"
-RDEPEND="kvm? ( app-emulation/qemu-kvm )
-	!kvm? ( >=app-emulation/qemu-0.9.0 )
+RDEPEND="app-emulation/qemu
 	vnc? ( net-libs/libvncserver )
 	x11-libs/qt-gui:4
 	x11-libs/qt-test:4
 	x11-libs/qt-xmlpatterns:4"
+
+DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS CHANGELOG README TODO"
 PATCHES=(
