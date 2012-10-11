@@ -1,0 +1,15 @@
+# ChangeLog for sys-cluster/ploop
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ploop/ChangeLog,v 1.2 2012/07/17 05:23:08 pva Exp $
+
+*ploop-1.4 (17 Jul 2012)
+
+  17 Jul 2012; Peter Volkov <pva@gentoo.org> +ploop-1.4.ebuild:
+  Version bump. Fixed multilib issue.
+
+*ploop-1.2 (03 May 2012)
+
+  03 May 2012; Peter Volkov <pva@gentoo.org> +ploop-1.2.ebuild,
+  +files/ploop-1.2-soname.patch, +metadata.xml:
+  Initial import. New tool from parallels. Enjoy!
+
