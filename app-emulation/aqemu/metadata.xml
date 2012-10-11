@@ -5,7 +5,6 @@
   <email>andreis.vinogradovs@gmail.com</email>
 </maintainer>
 <use>
-	<flag name='kvm'>Add support kernel virtual mashine</flag>
 	<flag name='spice'>Build witch SPICEd qemu</flag>
 </use>
 </pkgmetadata>
