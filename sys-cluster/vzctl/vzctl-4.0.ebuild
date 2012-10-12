@@ -35,7 +35,7 @@ src_prepare() {
 
 	local udevdir=/lib/udev
 	has_version sys-fs/udev && udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
-	sed -i -e "s:/lib/udev:${udevdir}:" src/lib/dev.c || die
+	sed -i -e "s:/usr/lib/udev:${udevdir}:" src/lib/dev.c || die 
 }
 
 src_configure() {
