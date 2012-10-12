@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-cluster/vzctl/ChangeLog,v 1.93 2012/08/11 13:57:38 ssuominen Exp $
 
+  12 Oct 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  vzctl-4.0.ebuild:
+  fix udev lib locations in vzctl
+
 *vzctl-4.0 (11 Okt 2012)
 
   11 Oct 2012; Andreis Vinogradovs <andreis.vinogradovs@gmail.com> +vzctl-4.0.ebuild:
@@ -528,4 +532,3 @@
   +files/vzctl-2.7.0-gentoo_etc_vz.patch, +files/vz.initd, +metadata.xml,
   +vzctl-2.7.0.21.ebuild:
   Initial release. thx to kir
-
