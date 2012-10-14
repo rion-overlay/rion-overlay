@@ -42,4 +42,16 @@ K_EXTRAEINFO="This openvz kernel uses RHEL6 patchset instead of vanilla kernel.
 This patchset considered to be more stable and security supported by upstream,
 but for us RHEL6 patchset is very fragile and fails to build in many
 configurations so if you have problems use config files from openvz team
-http://wiki.openvz.org/Download/kernel/rhel6/042stab${OVZ_KV}"
+http://wiki.openvz.org/Download/kernel/rhel6/042stab${OVZ_KV}
+
+For info in next paragraph, see
+http://bugzilla.openvz.org/show_bug.cgi?id=2012#1
+
+In general, RHEL kernels are very sensitive to compiler version and therefore
+should be compiled by RHEL compiler, otherwise there might be stability issues,
+sometimes as bad as this case.
+
+In so opnion, please install and build this kernel with sys-devel/gcc:4.4
+
+Please , do NOT bug in Gentoo bugzila, if you build this kernel with
+>=sys-devel/gcc-4.5 , send bug to upstream bugzilla "
