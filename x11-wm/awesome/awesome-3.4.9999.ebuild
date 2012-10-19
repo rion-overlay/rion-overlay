@@ -17,7 +17,7 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus doc elibc_FreeBSD"
+IUSE="dbus doc elibc_FreeBSD gnome"
 
 COMMON_DEPEND=">=dev-lang/lua-5.1
 	dev-libs/libev
@@ -60,7 +60,7 @@ RDEPEND="${COMMON_DEPEND}
 RDEPEND="${RDEPEND}
 	|| (
 	( x11-apps/xwininfo
-	  || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	  || ( media-gfx/imagemagick[X] media-gfx/graphicsmagick[imagemagick,X] )
 	)
 	x11-misc/habak
 	media-gfx/feh
@@ -123,4 +123,17 @@ src_install() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN} || die
+
+	# GNOME-based awesome
+	if use gnome ; then
+		# GNOME session
+		insinto /usr/share/gnome-session/sessions
+		doins "${FILESDIR}/${PN}-gnome.session" || die
+		# Application launcher
+		insinto /usr/share/applications
+		doins "${FILESDIR}/${PN}-gnome.desktop" || die
+		# X Session
+		insinto /usr/share/xsessions/
+		doins "${FILESDIR}/${PN}-gnome-xsession.desktop" || die
+	fi
 }
