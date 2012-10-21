@@ -1,10 +1,10 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libguestfs/libguestfs-1.17.26.ebuild,v 1.1 2012/04/08 18:24:12 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libguestfs/libguestfs-1.17.43.ebuild,v 1.2 2012/10/09 21:17:16 cardoe Exp $
 
 EAPI="4"
 
-APLANCE_PV="1.18.2"
+APLANCE_PV="1.17.14"
 APPL_P="appliance-${APLANCE_PV}"
 
 AUTOTOOLS_AUTORECONF=1
@@ -21,7 +21,7 @@ MY_PV_2="$(get_version_component_range 2)"
 DESCRIPTION="Tools for accessing, inspect  and modifying virtual machine (VM) disk images"
 HOMEPAGE="http://libguestfs.org/"
 SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz
-	http://libguestfs.org/download/binaries/appliance/${APPL_P}.tar.xz"
+	http://rion-overlay.googlecode.com/files/${APPL_P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	app-arch/cpio
 	dev-lang/perl
 	app-cdr/cdrkit
-	>=app-emulation/qemu-kvm-1.0[qemu_user_targets_x86_64,qemu_softmmu_targets_x86_64]
+	>=app-emulation/qemu-1.0[qemu_user_targets_x86_64,qemu_softmmu_targets_x86_64]
 	sys-apps/fakeroot
 	sys-apps/file
 	app-emulation/libvirt

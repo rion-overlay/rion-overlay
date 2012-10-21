@@ -10,6 +10,12 @@
 	<email>maksbotan@gentoo.org</email>
 	<name>Maxim Koltsov</name>
 </maintainer>
+<maintainer>
+	<email>rich@annexia.org</email>
+	<name>Richard Jones</name>
+	<description>Upstream - please CC on bugs that concerns upstream</description>
+</maintainer>
+
 <longdescription>Libguestfs is a library and tool set for accessing and 
 modifying virtual machine (VM) disk images</longdescription>
 <use>

@@ -1,10 +1,13 @@
 # ChangeLog for app-emulation/libguestfs
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libguestfs/ChangeLog,v 1.22 2012/10/09 21:17:16 cardoe Exp $
 
-  25 Jun 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
-  -libguestfs-1.16.25.ebuild, -libguestfs-1.17.43.ebuild:
-  remove old
+  09 Oct 2012; Doug Goldstein <cardoe@gentoo.org> libguestfs-1.16.25.ebuild,
+  libguestfs-1.17.43.ebuild, libguestfs-1.18.2.ebuild:
+  Update to reflect app-emulation/qemu-kvm -> app-emulation/qemu move.
+
+  26 Jun 2012; Agostino Sarubbo <ago@gentoo.org> metadata.xml:
+  Add Richard Jones as upstream in metadata.xml
 
 *libguestfs-1.18.2 (25 Jun 2012)
 
