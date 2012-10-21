@@ -1,0 +1,41 @@
+# ChangeLog for dev-python/posix_ipc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*posix_ipc-0.9.4 (09 Oct 2012)
+
+  09 Oct 2012; Nikolaj Sjujskij <sterkrig@myopera.com> +posix_ipc-0.9.4.ebuild:
+  Drop old, bump new
+
+  10 Feb 2012; Nikolaj Sjujskij <sterkrig@myopera.com> posix_ipc-0.9.2.ebuild,
+  posix_ipc-0.9.3.ebuild:
+  Drop Python 2.4 support as it dropped from tree
+
+*posix_ipc-0.9.3 (10 Jan 2012)
+
+  10 Jan 2012; Nikolaj Sjujskij <sterkrig@myopera.com> +posix_ipc-0.9.3.ebuild:
+  Bump new, remove old, use EAPI=4
+
+*posix_ipc-0.9.2 (07 Nov 2011)
+
+  07 Nov 2011; Nikolaj Sjujskij <sterkrig@myopera.com> +posix_ipc-0.9.2.ebuild:
+  Version bump
+
+*posix_ipc-0.9.1 (08 Apr 2011)
+
+  08 Apr 2011; Nikolaj Sjujskij <sterkrig@myopera.com> +posix_ipc-0.9.1.ebuild:
+  Drop old, add new
+
+*posix_ipc-0.9.0 (25 Jan 2011)
+
+  25 Jan 2011; Nikolaj Sjujskij <sterkrig@myopera.com> +posix_ipc-0.9.0.ebuild:
+  Add v0.9.0
+
+  14 Oct 2010; Nikolaj Sjujskij <sterkrig@myopera.com>
+  posix-ipc-0.8.1.ebuild:
+  Add `examples` use flag; rename to dev-python/posix_ipc
+
+  22 Sep 2010; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +posix-ipc-0.8.1.ebuild, +metadata.xml:
+  Add Python module for POSIX IPC
+

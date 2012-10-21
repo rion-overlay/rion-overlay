@@ -1,0 +1,36 @@
+# ChangeLog for dev-libs/libcgroup
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcgroup/ChangeLog,v 1.4 2012/10/07 08:57:15 pacho Exp $
+
+*libcgroup-0.38 (11 Oct 2012)
+
+  11 Oct 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  +libcgroup-0.38.ebuild:
+  libcgroup - add stable tarboll
+
+*libcgroup-0.39_rc1 (11 Oct 2012)
+
+  11 Oct 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  +libcgroup-0.39_rc1.ebuild, metadata.xml:
+  bunp
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> libcgroup-0.37-r2.ebuild:
+  inherit eutils for epatch
+
+*libcgroup-0.37-r2 (14 May 2011)
+
+  14 May 2011; Steve Arnold <nerdboy@gentoo.org> -libcgroup-0.37-r1.ebuild,
+  +libcgroup-0.37-r2.ebuild:
+  Fixed bogus USE flag handling for static-libs (closes bug #366727).
+
+*libcgroup-0.37-r1 (05 Mar 2011)
+
+  05 Mar 2011; Steve Arnold <nerdboy@gentoo.org> +libcgroup-0.37-r1.ebuild,
+  +files/libcgroup-0.37-wildcard-substitutions.patch, +files/cgconfig.confd,
+  +files/cgconfig.initd, +files/cgred.confd, +files/cgred.initd,
+  +metadata.xml:
+  New ebuild for managing kernel control groups. Based on several ebuilds 
+  from the overlay, bugzilla, and hparker.  Works for me...

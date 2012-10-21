@@ -1,0 +1,16 @@
+
+
+  14 Oct 2012; <slep@gentoo.org> openvz-sources-2.6.32.61.2.ebuild:
+  add info to build gcc-4.4
+
+*openvz-sources-2.6.32.61.2 (11 Sep 2012)
+
+  11 Sep 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  +openvz-sources-2.6.32.61.2.ebuild:
+  bump
+
+*openvz-sources-2.6.32.59.7 (13 Aug 2012)
+
+  13 Aug 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  +openvz-sources-2.6.32.59.7.ebuild, +metadata.xml:
+  bump
