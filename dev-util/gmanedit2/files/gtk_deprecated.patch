@@ -1,0 +1,11 @@
+diff -r 08173bc063cf src/main.c
+--- a/src/main.c	Sun Mar 27 17:03:34 2011 +0200
++++ b/src/main.c	Fri Dec 16 17:32:10 2011 +0500
+@@ -36,7 +36,6 @@
+ 
+     add_pixmap_directory (DATADIR G_DIR_SEPARATOR_S "pixmaps");
+ 
+-    gtk_set_locale ();
+     gtk_init (&argc, &argv);
+ 
+     /*

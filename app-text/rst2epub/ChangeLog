@@ -1,0 +1,27 @@
+# ChangeLog for app-text/rst2epub
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*rst2epub-99999999 (02 Mar 2012)
+
+  02 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +rst2epub-99999999.ebuild:
+  Rename live ebuild due to date-versioned snapshot (9999 -> 99999999)
+
+*rst2epub-20120114 (02 Mar 2012)
+
+  02 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +rst2epub-20120114.ebuild:
+  Migrate to original author's EHG_SRC, add snapshot, drop KEYWORDS for 9999
+
+  26 Dec 2011; Nikolaj Sjujskij <sterkrig@myopera.com> rst2epub-9999.ebuild:
+  Restrict Python ABIs
+
+  25 Dec 2011; Nikolaj Sjujskij <sterkrig@myopera.com> rst2epub-9999.ebuild:
+  Update repo URI
+
+*rst2epub-9999 (25 Dec 2011)
+
+  25 Dec 2011; Nikolaj Sjujskij <sterkrig@myopera.com> +rst2epub-9999.ebuild:
+  Initial hg-version
+
