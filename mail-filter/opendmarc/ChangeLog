@@ -1,0 +1,17 @@
+# ChangeLog for mail-filter/opendmarc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  24 Oct 2012; <slep@gentoo.org> opendmarc-0.2.2.ebuild,
+  -files/configure_ac.patch:
+  drop unneded patch
+
+  23 Oct 2012; <slep@gentoo.org> opendmarc-0.2.2.ebuild,
+  +files/configure_ac.patch, +files/opendmarc.init:
+  add init script
+
+*opendmarc-0.2.2 (22 Oct 2012)
+
+  22 Oct 2012; <slep@gentoo.org> +opendmarc-0.2.2.ebuild, +metadata.xml:
+  initial commit
+
