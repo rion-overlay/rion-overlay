@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*opendmarc-1.0.0 (28 Oct 2012)
+
+  28 Oct 2012;  <slep@gentoo.org> +opendmarc-1.0.0.ebuild,
+  -opendmarc-0.2.2.ebuild:
+  bump opendmarc
+
   24 Oct 2012; <slep@gentoo.org> opendmarc-0.2.2.ebuild,
   -files/configure_ac.patch:
   drop unneded patch
@@ -14,4 +20,3 @@
 
   22 Oct 2012; <slep@gentoo.org> +opendmarc-0.2.2.ebuild, +metadata.xml:
   initial commit
-
