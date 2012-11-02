@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/opendmarc/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="mysql"
 
 CDEPEND="
