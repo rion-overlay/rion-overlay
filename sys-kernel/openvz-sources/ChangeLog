@@ -1,4 +1,9 @@
 
+*openvz-sources-2.6.32.63.2 (03 Nov 2012)
+
+  03 Nov 2012;  <slep@gentoo.org> +openvz-sources-2.6.32.63.2.ebuild,
+  -openvz-sources-2.6.32.59.7.ebuild, -openvz-sources-2.6.32.61.2.ebuild:
+  bump openvz kernel
 
   14 Oct 2012; <slep@gentoo.org> openvz-sources-2.6.32.61.2.ebuild:
   add info to build gcc-4.4
