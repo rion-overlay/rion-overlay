@@ -101,7 +101,7 @@ src_configure() {
 }
 
 src_compile() {
-	append-cflags -no-strict-aliasing -no-unused-function
+	append-cflags -Wno-strict-aliasing -Wno-unused-function
 	emake -j1
 }
 
