@@ -73,6 +73,13 @@ src_configure() {
 	autotools-utils_src_configure
 }
 
+src_test() {
+	# Use mount cgroup to build directory
+	# sandbox restricted to trivial build,
+	# possible kill Diego tanderbox ;)
+	true
+}
+
 src_install() {
 	autotools-utils_src_install
 	prune_libtool_files --all
