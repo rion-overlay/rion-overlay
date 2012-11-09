@@ -102,7 +102,7 @@ src_configure() {
 
 src_compile() {
 	append-cflags -Wno-strict-aliasing -Wno-unused-function
-	emake -j1
+	V=0 emake -j1
 }
 
 src_install() {
