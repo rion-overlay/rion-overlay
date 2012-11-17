@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*hiawatha-8.6 (17 Nov 2012)
+
+  17 Nov 2012; <slep@gentoo.org> +hiawatha-8.6.ebuild:
+  bump masked
+
   16 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
   -hiawatha-7.8.2.ebuild, -hiawatha-8.4.ebuild:
   drop old
