@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-fs/vzquota/ChangeLog,v 1.28 2009/07/07 12:34:13 pva Exp $
 
+  17 Nov 2012;  <slep@gentoo.org> metadata.xml, vzquota-3.1.ebuild:
+  vzquota stable on amd64
+
 *vzquota-3.1 (11 Oct 2012)
 
   11 Oct 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
@@ -120,4 +123,3 @@
   23 Sep 2005; Benedikt Boehm <hollow@gentoo.org> +metadata.xml,
   +vzquota-2.7.0.7.ebuild:
   initial ebuild, thx to kir
-

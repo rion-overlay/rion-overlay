@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/libcgroup/ChangeLog,v 1.4 2012/10/07 08:57:15 pacho Exp $
 
+  17 Nov 2012; <slep@gentoo.org> libcgroup-0.38.ebuild:
+  stable on amd64 and x86
+
+  17 Nov 2012; <slep@gentoo.org> libcgroup-0.38.ebuild:
+  fix more typo in ebuild, drop ppc KEYWORD
+
   09 Nov 2012;  <slep@gentoo.org> libcgroup-0.39_rc1.ebuild:
   disable test in libcgroup ebuild - see my cooment in my bad inglish
 
