@@ -27,7 +27,7 @@ KERNEL_URI="mirror://kernel/linux/kernel/v${KV_MAJOR}.${KV_MINOR}/linux-${OKV}.t
 inherit kernel-2
 #detect_version
 
-KEYWORDS="~amd64 ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc64 ~sparc x86"
 IUSE=""
 
 DESCRIPTION="Kernel sources with OpenVZ patchset"
