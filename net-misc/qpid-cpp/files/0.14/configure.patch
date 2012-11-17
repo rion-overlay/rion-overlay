@@ -1,0 +1,10 @@
+--- cpp/configure.ac	2011-06-07 15:32:01.000000000 -0400
++++ cpp/configure.ac	2011-09-20 17:02:20.996275528 -0400
+@@ -66,7 +66,6 @@
+ 	# CFLAGS/CXXFLAGS. In any case it's been in gcc for a long time (since 2.95 at least)
+ 	if test "${enableval}" = yes; then
+         COMPILER_FLAGS="-Werror"
+-	    gl_COMPILER_FLAGS(-pedantic)
+ 	    gl_COMPILER_FLAGS(-Wall)
+ 	    gl_COMPILER_FLAGS(-Wextra)
+ 	    gl_COMPILER_FLAGS(-Wno-shadow)
