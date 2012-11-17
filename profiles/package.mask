@@ -2,11 +2,6 @@
 # mask dev version
 >=mail-filter/milter-greylist-4.3.9999
 
-#  1 Sep 2012; A.Vinogradovs
-# remowal in 10 day
-# unmantained, broken  packages
-app-admin/sigar
-dev-libs/libpki
-net-misc/qpid-cpp
-net-voip/sipwitch
-sys-libs/libuser
+# 17 Nov 2012 ; A.Vinogradovs
+# mask due dependencis in not tree
+>=www-servers/hiawatha-8.6
