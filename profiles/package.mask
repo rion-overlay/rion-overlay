@@ -1,7 +1,3 @@
-# 28 Aug 2012; A. Vinogradovs
-# mask dev version
->=mail-filter/milter-greylist-4.3.9999
-
 # 17 Nov 2012 ; A.Vinogradovs
 # mask due dependencis in not tree
 >=www-servers/hiawatha-8.6
