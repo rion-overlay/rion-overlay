@@ -1,8 +1,9 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipset/ipset-6.13.ebuild,v 1.1 2012/08/20 05:19:02 robbat2 Exp $
+# $Header: $
 
 EAPI="4"
+
 inherit autotools linux-info linux-mod
 
 # Maintainer: with version bump take a look on:
@@ -17,8 +18,11 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="modules"
 
-RDEPEND=">=net-firewall/iptables-1.4.4
-	net-libs/libmnl"
+RDEPEND="
+	>=net-firewall/iptables-1.4.5
+	net-libs/libmnl
+	"
+
 DEPEND="${RDEPEND}"
 
 # configurable from outside, e.g. /etc/make.conf
@@ -104,8 +108,8 @@ src_install() {
 		linux-mod_src_install
 	fi
 
-	newinitd ${FILESDIR}/ipset.initd-r2 ${PN}
-	newconfd ${FILESDIR}/ipset.confd ${PN}
+	newinitd "${FILESDIR}"/ipset.initd-r2 "${PN}"
+	newconfd "${FILESDIR}"/ipset.confd "${PN}"
 	keepdir /var/lib/ipset
 	find "${ED}" \( -name '*.la' -o -name '*.a' \) -exec rm -f '{}' +
 }
