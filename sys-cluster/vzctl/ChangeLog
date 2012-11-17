@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-cluster/vzctl/ChangeLog,v 1.93 2012/08/11 13:57:38 ssuominen Exp $
 
+  17 Nov 2012;  <slep@gentoo.org> vzctl-4.1.ebuild:
+  vzctl - stable on amd64
+
 *vzctl-4.1 (09 Nov 2012)
 
   09 Nov 2012;  <slep@gentoo.org> +vzctl-4.1.ebuild, metadata.xml:

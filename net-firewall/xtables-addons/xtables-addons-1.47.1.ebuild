@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/xtables-addons-1.39.ebuild,v 1.2 2012/06/19 21:02:06 jer Exp $
+# $Header: $
 
 EAPI="4"
 inherit eutils linux-info linux-mod multilib
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="modules"
 
-MODULES="quota2 psd pknock lscan length2 ipv4options ipset6 ipp2p iface gradm geoip fuzzy condition tee tarpit sysrq steal rawnat logmark ipmark echo dnetmap dhcpmac delude checksum chaos account"
+MODULES="quota2 psd pknock lscan length2 ipv4options ipp2p iface gradm geoip fuzzy condition tee tarpit sysrq steal rawnat logmark ipmark echo dnetmap dhcpmac delude checksum chaos account"
 
 for mod in ${MODULES}; do
 	IUSE="${IUSE} xtables_addons_${mod}"
@@ -23,10 +23,7 @@ done
 DEPEND=">=net-firewall/iptables-1.4.5"
 
 RDEPEND="${DEPEND}
-	xtables_addons_ipset6? (
-		!net-firewall/ipset
-		net-libs/libmnl
-	)
+	net-libs/libmnl
 	xtables_addons_geoip? (
 		app-arch/unzip
 		dev-perl/Text-CSV_XS
@@ -75,6 +72,8 @@ pkg_setup()	{
 		kernel_is -lt 2 6 29 && die "${PN} requires kernel version >= 2.6.29"
 		XA_check4internal_module tee "2 6 35" NETFILTER_XT_TARGET_TEE
 		XA_check4internal_module checksum "2 6 36" NETFILTER_XT_TARGET_CHECKSUM
+		kernel_is -qt 3 6 99 && die "Support to larger to 3 3 7+ kernel version
+		in this tree. Please use 2.x version"
 	fi
 }
 
