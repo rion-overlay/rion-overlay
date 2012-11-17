@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Nov 2012; rion <rion4ik@gmail.com> files/spectrum2.initd,
+  spectrum-2.9999.ebuild:
+  Fixed start of service after reboot
+
 *spectrum-1.4.8 (26 Jul 2011)
 
   26 Jul 2011; rion <rion4ik@spamogmail.com> -spectrum-1.4.7.ebuild,

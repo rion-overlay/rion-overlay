@@ -74,10 +74,11 @@ src_prepare() {
 src_install() {
 	cmake-utils_src_install
 
-	newinitd "${FILESDIR}"/spectrum2.initd spectrum
+	cat "${FILESDIR}"/spectrum2.initd | sed "s:EPREFIX:${EPREFIX}:" > \
+		"${WORKDIR}/initd"
+	newinitd "${WORKDIR}/initd" spectrum
 	keepdir "${EPREFIX}"/var/lib/spectrum2
 	keepdir "${EPREFIX}"/var/log/spectrum2
-	keepdir "${EPREFIX}"/var/run/spectrum2
 }
 
 pkg_postinst() {
@@ -85,5 +86,4 @@ pkg_postinst() {
 	chown jabber:jabber -R "/etc/spectrum2"
 	chown jabber:jabber "${EPREFIX}"/var/lib/spectrum2
 	chown jabber:jabber "${EPREFIX}"/var/log/spectrum2
-	chown jabber:jabber "${EPREFIX}"/var/run/spectrum2
 }
