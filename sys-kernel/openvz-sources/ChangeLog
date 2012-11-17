@@ -1,4 +1,7 @@
 
+  17 Nov 2012;  <slep@gentoo.org> openvz-sources-2.6.32.63.2.ebuild:
+  openvz - stable on amd64 and x86
+
 *openvz-sources-2.6.32.63.2 (03 Nov 2012)
 
   03 Nov 2012;  <slep@gentoo.org> +openvz-sources-2.6.32.63.2.ebuild,
