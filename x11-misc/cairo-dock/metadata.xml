@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+	<email>rion4ik@gmail.com</email>
+	<name>rion</name>
+</maintainer>
+<use>
+	<flag name="xext">Enables support for some X11 extensions</flag>
+</use>
+<longdescription>Cairo-dock is a kind of dock applet, which doesn't depend on any gnome package.</longdescription>
+</pkgmetadata>
+

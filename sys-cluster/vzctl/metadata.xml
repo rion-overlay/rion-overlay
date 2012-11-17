@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>andreis.vinogradovs@gmail.com</email>
+	</maintainer>
+<use>
+<flag name='ploop'>Add support to ploop devices</flag>
+<flag name='download'>Download VE templates from openvz.org repository in you request</flag>
+<flag name='cgroup'>Add support to Linux kernel cgroup subsytem - use it flag to vanilla kerner if you have manage varios resource in VE;</flag>
+</use>
+</pkgmetadata>
