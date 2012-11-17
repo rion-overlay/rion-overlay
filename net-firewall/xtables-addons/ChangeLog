@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/ChangeLog,v 1.28 2012/06/19 21:02:06 jer Exp $
 
+  17 Nov 2012; <slep@gentoo.org> metadata.xml:
+  add my email to mantainer section in metadata
+
 *xtables-addons-2.0 (16 Nov 2012)
 
   16 Nov 2012;  <slep@gentoo.org> +xtables-addons-2.0.ebuild:
