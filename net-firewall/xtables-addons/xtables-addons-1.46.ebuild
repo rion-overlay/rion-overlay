@@ -11,10 +11,10 @@ SRC_URI="mirror://sourceforge/xtables-addons/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="modules"
 
-MODULES="quota2 psd pknock lscan length2 ipv4options ipp2p iface gradm geoip fuzzy condition tee tarpit sysrq steal rawnat logmark ipmark echo dnetmap dhcpmac delude checksum chaos account"
+MODULES="quota2 psd pknock lscan length2 ipv4options ipp2p iface gradm geoip fuzzy condition  checksum tarpit tee  sysrq steal rawnat logmark ipmark echo dnetmap dhcpmac delude chaos account"
 
 for mod in ${MODULES}; do
 	IUSE="${IUSE} xtables_addons_${mod}"
@@ -54,7 +54,7 @@ XA_check4internal_module() {
 	fi
 }
 
-pkg_setup()	{
+pkg_pretend()	{
 	if use modules; then
 		get_version
 		check_modules_supported
@@ -69,9 +69,10 @@ pkg_setup()	{
 		if use xtables_addons_ipset6 && kernel_is -lt 2 6 35; then
 			die "${PN} with ipset requires kernel version >= 2.6.35"
 		fi
-		kernel_is -lt 2 6 29 && die "${PN} requires kernel version >= 2.6.29"
+		kernel_is -lt 2 6 36 && die "${PN} requires kernel version >= 2.6.36"
 		XA_check4internal_module tee "2 6 35" NETFILTER_XT_TARGET_TEE
 		XA_check4internal_module checksum "2 6 36" NETFILTER_XT_TARGET_CHECKSUM
+
 	fi
 }
 

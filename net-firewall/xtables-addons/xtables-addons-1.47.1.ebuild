@@ -72,7 +72,7 @@ pkg_setup()	{
 		kernel_is -lt 2 6 29 && die "${PN} requires kernel version >= 2.6.29"
 		XA_check4internal_module tee "2 6 35" NETFILTER_XT_TARGET_TEE
 		XA_check4internal_module checksum "2 6 36" NETFILTER_XT_TARGET_CHECKSUM
-		kernel_is -qt 3 6 99 && die "Support to larger to 3 3 7+ kernel version
+		kernel_is -qt 3 7 && die "Support to larger to 3 3 7+ kernel version
 		in this tree. Please use 2.x version"
 	fi
 }
