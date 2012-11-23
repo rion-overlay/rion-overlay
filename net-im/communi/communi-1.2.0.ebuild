@@ -6,7 +6,7 @@ EAPI=4
 
 inherit qt4-r2
 
-DESCRIPTION="cross-platform IRC client library written with Qt"
+DESCRIPTION="A cross-platform IRC framework written with Qt 4"
 HOMEPAGE="https://github.com/communi/communi"
 SRC_URI="https://github.com/communi/communi/tarball/v${PV} -> ${P}.tar.gz"
 
