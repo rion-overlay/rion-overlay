@@ -21,7 +21,9 @@ for mod in ${MODULES}; do
 	IUSE="${IUSE} xtables_addons_${mod}"
 done
 
-DEPEND=">=net-firewall/iptables-1.4.5"
+DEPEND="
+	>=net-firewall/iptables-1.4.5
+	>sys-kernel/linux-headers-3.6"
 
 RDEPEND="${DEPEND}
 	net-libs/libmnl
