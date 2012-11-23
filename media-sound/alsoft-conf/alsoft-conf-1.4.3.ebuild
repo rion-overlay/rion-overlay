@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="4"
 
 WANT_CMAKE="always"
 inherit cmake-utils
@@ -20,7 +20,3 @@ DEPEND="x11-libs/qt-core:4
 		x11-libs/qt-gui:4"
 
 RDEPEND="${DEPEND}"
-
-src_install() {
-	dobin "${CMAKE_BUILD_DIR}/${PN}"
-}
