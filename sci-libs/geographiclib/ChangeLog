@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Dec 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  geographiclib-1.26.ebuild, geographiclib-1.27.ebuild:
+  Fix installation/removal with and without Python support  Thanks to maksbotan
+
 *geographiclib-1.27 (30 Nov 2012)
 
   30 Nov 2012; Nikolaj Sjujskij <sterkrig@myopera.com>

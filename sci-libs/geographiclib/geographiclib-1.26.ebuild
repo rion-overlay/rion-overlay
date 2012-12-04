@@ -54,3 +54,15 @@ src_install() {
 		dohtml -r doc/* || die "Installing HTML documentation failed"
 	fi
 }
+
+pkg_postinst() {
+	if use python; then
+		distutils_pkg_postinst;
+	fi
+}
+
+pkg_postrm() {
+	if use python; then
+		distutils_pkg_postrm;
+	fi
+}
