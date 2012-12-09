@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 IUSE=""
-RDEPEND="=net-mail/dovecot-2.1*"
+RDEPEND="=net-mail/dovecot-2.1*
+	!!<net-mail/dovecot-2.1.0"
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}"/fix_names_and_destdir.patch )
 

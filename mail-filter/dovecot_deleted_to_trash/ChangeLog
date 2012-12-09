@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/mail-filter/dovecot_deleted_to_trash/ChangeLog,v 1.1 2012/09/06 17:35:27 maksbotan Exp $
 
+  09 Dec 2012;  <slep@gentoo.org> dovecot_deleted_to_trash-0.3-r20.ebuild:
+  delete to trash to 2.1 series dovecot
+
 *dovecot_deleted_to_trash-0.3-r20 (16 Nov 2012)
 
   16 Nov 2012; <slep@gentoo.org> +files/29-delete-to-trash.conf,
