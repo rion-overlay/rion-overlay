@@ -1,4 +1,9 @@
 
+*openvz-sources-2.6.32.65.3 (09 Dec 2012)
+
+  09 Dec 2012;  <slep@gentoo.org> +openvz-sources-2.6.32.65.3.ebuild:
+  bump openvz kernel
+
   17 Nov 2012;  <slep@gentoo.org> openvz-sources-2.6.32.63.2.ebuild:
   openvz - stable on amd64 and x86
 
