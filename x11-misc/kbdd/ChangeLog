@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Dec 2012; Nikolaj Sjujskij <sterkrig@myopera.com> -kbdd-0.6.2.ebuild:
+  Drop 0.6
+
 *kbdd-0.7 (12 Dec 2012)
 
   12 Dec 2012; Nikolaj Sjujskij <sterkrig@myopera.com> +kbdd-0.7.ebuild:
