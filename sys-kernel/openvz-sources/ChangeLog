@@ -1,4 +1,10 @@
 
+
+*openvz-sources-2.6.32.68.8 (21 Dec 2012)
+
+  21 Dec 2012; <slep@gentoo.org> +openvz-sources-2.6.32.68.8.ebuild:
+  bump openvz
+
 *openvz-sources-2.6.32.65.3 (09 Dec 2012)
 
   09 Dec 2012;  <slep@gentoo.org> +openvz-sources-2.6.32.65.3.ebuild:
