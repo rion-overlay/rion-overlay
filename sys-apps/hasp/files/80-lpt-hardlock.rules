@@ -1,0 +1,2 @@
+ACTION=="add", DEVPATH=="/module/aksparlnx", RUN+="/bin/mknod -m 0666 /dev/Hardlock c 42 0"
+ACTION=="remove", DEVPATH=="/module/aksparlnx", RUN+="/bin/rm /dev/Hardlock"

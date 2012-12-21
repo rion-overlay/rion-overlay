@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend () {
+    need net localmount
+    after aksusbd 
+    use hasplm hasplmd
+}
+
+start() {
+	ebegin "Starting Wine HASP support"
+	eval start-stop-daemon --start --quiet --pidfile /var/run/winehasp.pid --exec /usr/sbin/winehasp --
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Wine HASP support"
+	start-stop-daemon --stop --quiet --pidfile /var/run/winehasp.pid --exec /usr/sbin/winehasp
+	eend $?
+}

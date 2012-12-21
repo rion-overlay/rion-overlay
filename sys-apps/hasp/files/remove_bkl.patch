@@ -1,0 +1,112 @@
+From 58855f3f0c692d19f474c6cb952dde902ddfc215 Mon Sep 17 00:00:00 2001
+From: Pavel Shilovsky <piastry@etersoft.ru>
+Date: Wed, 7 Dec 2011 13:55:50 +0400
+Subject: [PATCH] replace the BLK with a local lock for kernels >= v2.6.39
+
+---
+ aksparlnx/Makefile    |    8 +++++++-
+ aksparlnx/aksparpub.c |   31 ++++++++++++++++++++++++++-----
+ 2 files changed, 33 insertions(+), 6 deletions(-)
+
+diff --git a/aksparlnx/Makefile b/aksparlnx/Makefile
+index d74e314..6bbf510 100644
+--- a/aksparlnx/Makefile
++++ b/aksparlnx/Makefile
+@@ -27,7 +27,9 @@ CFLAGS.x86_64 = $(LINUX_COPTS) $(LINUX_AMD64_OPTS) $(LINUX_AMD64_KERN_OPTS)
+ OUR_CFLAGS        += $(CFLAGS.$(TARGETARCH))
+ 
+ help:
+-	@echo "usage:	$(MAKE) KERNSRC=kernelsourcedir kernel26"
++	@echo "usage:	$(MAKE) KERNSRC=kernelsourcedir kernel3"
++	@echo "		build 3.x version"
++	@echo "	$(MAKE) KERNSRC=kernelsourcedir kernel26"
+ 	@echo "		build 2.6.x version"
+ 	@echo "	$(MAKE) KERNSRC=kernelsourcedir kernel24"
+ 	@echo "		build 2.4.x version"
+@@ -41,6 +43,10 @@ obj-m        = aksparlnx.o
+ 
+ aksparlnx-objs     =  aksparpub.o api.o
+ 
++# ------------------------------ 3.x --------------------------------
++
++kernel3: kernel26
++
+ # ------------------------------ 2.6.x ------------------------------
+ 
+ EXTRA_CFLAGS := $(MODULE_DEFINES) $(HLMOD_DEFINES)
+diff --git a/aksparlnx/aksparpub.c b/aksparlnx/aksparpub.c
+index b85d0b5..7465350 100644
+--- a/aksparlnx/aksparpub.c
++++ b/aksparlnx/aksparpub.c
+@@ -58,7 +58,7 @@
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < 0x2060E
+ #include <linux/ioctl32.h>
+ #endif
+-#if defined(__x86_64__) && LINUX_VERSION_CODE >= 0x2060E
++#if defined(__x86_64__) && LINUX_VERSION_CODE >= 0x2060E && LINUX_VERSION_CODE < KERNEL_VERSION(2,6,39)
+ #include <linux/smp_lock.h>
+ #endif
+ #ifndef LINUX
+@@ -124,10 +124,13 @@ static char hardlock[] = "aksparlnx";
+ 
+ #ifdef DECLARE_MUTEX
+ static DECLARE_MUTEX(hl_sem);
++static DECLARE_MUTEX(hl_ioctl_sem);
+ #elif defined(DEFINE_SEMAPHORE)
+ static DEFINE_SEMAPHORE(hl_sem);
++static DEFINE_SEMAPHORE(hl_ioctl_sem);
+ #else
+ static struct semaphore hl_sem = MUTEX;
++static struct semaphore hl_ioctl_sem = MUTEX;
+ #endif
+ 
+ static struct _porttabentry hl_pports[MAX_HL_PORTS]/* = { [0 ... MAX_HL_PORTS-1 ] = { 0, 0, NULL, 0 } }*/;
+@@ -257,24 +260,42 @@ static int hl_ioctl32(unsigned int fd, unsigned int cmd, unsigned long arg, stru
+ #endif
+ #if defined(__x86_64__) && LINUX_VERSION_CODE >= 0x2060E
+ 
++static void hl_ioctl_lock(void)
++{
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39)
++       lock_kernel();
++#else
++       down(&hl_ioctl_sem);
++#endif
++}
++
++static void hl_ioctl_unlock(void)
++{
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39)
++       unlock_kernel();
++#else
++       up(&hl_ioctl_sem);
++#endif
++}
++
+ static long hl_compat_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ {
+     long ret;
+ 
+     switch(cmd) {
+         case HLAPI_CALL:
+-            lock_kernel();
++            hl_ioctl_lock();
+             ret = hl_api_ioctl(file, cmd, arg, USER32);
+-            unlock_kernel();
++            hl_ioctl_unlock();
+             break;
+         default:
+-            lock_kernel();
++            hl_ioctl_lock();
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
+             ret = hl_unlocked_ioctl(file, cmd, arg);
+ #else
+             ret = hl_ioctl(file->f_dentry->d_inode, file, cmd, arg);
+ #endif
+-            unlock_kernel();
++            hl_ioctl_unlock();
+             break;
+     }
+     return ret;
+-- 
+1.7.8.4
