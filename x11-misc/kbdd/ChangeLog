@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  21 Dec 2012; Nikolaj Sjujskij <sterkrig@myopera.com> -kbdd-0.5.2.ebuild,
+  -kbdd-0.7.ebuild:
+  Drop non-live ebuilds (moved to Portage tree)
+
   14 Dec 2012; Nikolaj Sjujskij <sterkrig@myopera.com> -kbdd-0.6.2.ebuild:
   Drop 0.6
 
