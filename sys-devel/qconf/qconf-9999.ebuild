@@ -4,11 +4,11 @@
 
 EAPI="4"
 
-inherit subversion
+inherit multilib git-2
 
 DESCRIPTION="Qt ./configure generation util"
 HOMEPAGE="http://delta.affinix.com/qconf/"
-ESVN_REPO_URI="https://delta.affinix.com/svn/trunk/qconf"
+EGIT_REPO_URI="git://github.com/psi-plus/qconf.git"
 
 LICENSE="GPL-2"
 SLOT="0"
