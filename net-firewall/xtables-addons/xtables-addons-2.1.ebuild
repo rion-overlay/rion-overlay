@@ -3,7 +3,6 @@
 # $Header: $
 
 EAPI="4"
-
 inherit eutils linux-info linux-mod multilib
 
 DESCRIPTION="extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)"
@@ -15,15 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="modules"
 
-MODULES="quota2 psd pknock lscan length2 ipv4options ipp2p iface gradm geoip fuzzy condition tarpit sysrq steal rawnat logmark ipmark echo dnetmap dhcpmac delude chaos account"
+MODULES="quota2 psd pknock lscan length2 ipv4options ipp2p iface gradm geoip fuzzy condition tee tarpit sysrq steal rawnat logmark ipmark echo dnetmap dhcpmac delude checksum chaos account"
 
 for mod in ${MODULES}; do
 	IUSE="${IUSE} xtables_addons_${mod}"
 done
 
-DEPEND="
-	>=net-firewall/iptables-1.4.5
-	>sys-kernel/linux-headers-3.6"
+DEPEND=">=net-firewall/iptables-1.4.5"
 
 RDEPEND="${DEPEND}
 	net-libs/libmnl
@@ -38,6 +35,24 @@ DEPEND="${DEPEND}
 	virtual/linux-sources"
 
 SKIP_MODULES=""
+
+# XA_kernel_check tee "2 6 26"
+XA_check4internal_module() {
+	local mod=${1}
+	local version=${2}
+	local kconfigname=${3}
+
+	if use xtables_addons_${mod} && kernel_is -gt ${version}; then
+		ewarn "${kconfigname} should be provided by the kernel. Skipping its build..."
+		if ! linux_chkconfig_present ${kconfigname}; then
+			ewarn "Please enable ${kconfigname} target in your kernel
+			configuration or disable checksum module in ${PN}."
+		fi
+		# SKIP_MODULES in case we need to disable building of everything
+		# like having this USE disabled
+		SKIP_MODULES+=" ${mod}"
+	fi
+}
 
 pkg_setup()	{
 	if use modules; then
@@ -54,7 +69,12 @@ pkg_setup()	{
 		if use xtables_addons_ipset6 && kernel_is -lt 2 6 35; then
 			die "${PN} with ipset requires kernel version >= 2.6.35"
 		fi
-		kernel_is -lt 3 7 0 && die "${PN} requires kernel version >= 3.7"
+		kernel_is -lt 2 6 29 && die "${PN} requires kernel version >= 2.6.29"
+		XA_check4internal_module tee "2 6 35" NETFILTER_XT_TARGET_TEE
+		XA_check4internal_module checksum "2 6 36" NETFILTER_XT_TARGET_CHECKSUM
+		kernel_is -qt 3 7 && die "Support to larger to 3 3 7+ kernel version
+		in this tree. Please use 2.x version"
+
 	fi
 }
 
