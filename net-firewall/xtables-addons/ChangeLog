@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/ChangeLog,v 1.28 2012/06/19 21:02:06 jer Exp $
 
+*xtables-addons-2.1 (27 Dec 2012)
+
+  27 Dec 2012; <slep@gentoo.org> -xtables-addons-2.0.ebuild,
+  +xtables-addons-2.1.ebuild:
+  bump 2.x seriae, unmask
+
   23 Nov 2012;  <slep@gentoo.org> xtables-addons-2.0.ebuild:
   add dependency from linux-headers-3.7 to 2.0 due it's depend on it
 
