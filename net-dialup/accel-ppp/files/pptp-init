@@ -3,19 +3,18 @@
 # Distributed under the terms of the GNU General Public License, v2 or later
 # $Header: $
 
+pidfile="${PID}"
+command="/usr/sbin/accel-pppd"
+command_args="${ACCEL_PPPD_OPTS} -p ${PID}"
+
+
+
 depend() {
-	need net
+        need net
 }
 
-start() {
-	ebegin "Starting accel-pppd"
-	start-stop-daemon --start --quiet --exec /usr/sbin/accel-pppd -- ${ACCEL_PPPD_OPTS} -p ${PID}
-	eend $?
-}
 
-stop() {
-	ebegin "Stopping pptpd"
-	start-stop-daemon --stop --quiet --pidfile  ${PID}
-	result=$?
-	eend $result
+start_pre() {
+        checkpath -d /run/accel-ppp/
+
 }
