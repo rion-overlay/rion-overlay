@@ -1,0 +1,16 @@
+# ChangeLog for net-misc/libteam
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*libteam-0_rc8448186 (23 Sep 2012)
+
+  23 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libteam-0_rc8448186.ebuild, libteam-9999.ebuild, +files/teamd.sh:
+  add snapshot
+
+*libteam-9999 (24 Mar 2012)
+
+  24 Mar 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +libteam-9999.ebuild:
+  initial commit
+
