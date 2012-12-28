@@ -4,15 +4,26 @@
 
 EAPI="4"
 
-inherit cmake-utils
+case "${PV}" in *.9999*) VCS=bzr ;; *) VCS="" ;; esac
+
+inherit cmake-utils versionator ${VCS}
 
 DESCRIPTION="Official plugins for cairo-dock"
 HOMEPAGE="https://launchpad.net/cairo-dock-plug-ins/"
-SRC_URI="https://launchpad.net/cairo-dock-plug-ins/3.0/${PV}/+download/${P}.tar.gz"
+MPV=$(get_version_component_range 1-2)
+case "${PV}" in
+	*.9999*)
+		EBZR_REPO_URI="lp:cairo-dock-plug-ins"
+		EBZR_BRANCH="${MPV}"
+		;;
+	*)
+		SRC_URI="https://launchpad.net/cairo-dock-plug-ins/${MPV}/${PV}/+download/${P}.tar.gz"
+		KEYWORDS="~amd64 ~x86"
+		;;
+esac
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 IUSE="alsa disks doncky gmenu gnome kde network-monitor scooby webkit xfce
 ical xklavier terminal python ruby mono vala"
