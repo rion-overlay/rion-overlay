@@ -64,6 +64,8 @@ src_configure() {
 			else
 				mycmakeargs+=( "-DNETSNMP=FALSE" )
 		fi
+# -DLOG_FILE=
+# -DLOG_TCP=
 
 		cmake-utils_src_configure
 }
