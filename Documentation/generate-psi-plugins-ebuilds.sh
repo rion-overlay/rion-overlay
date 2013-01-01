@@ -65,7 +65,7 @@ METACONTENT
   arch=generic
   for pu in $PLUGINS_UNIX; do [ "$pu" = "${pn}plugin/" ] && arch=unix; done
   echo "$(cat <<EBUILDCONTENT
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
@@ -82,7 +82,7 @@ EBUILDCONTENT
 )" >> "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
 
   echo "# ChangeLog for net-im/psi-${pn}
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # \$Header: \$
 
   `LANG=C date "+%d %b %Y"`; $USER <$USER@bots.ru> ChangeLog:
