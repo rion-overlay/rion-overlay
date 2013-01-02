@@ -49,9 +49,7 @@ http://bugzilla.openvz.org/show_bug.cgi?id=2012#1
 
 In general, RHEL kernels are very sensitive to compiler version and therefore
 should be compiled by RHEL compiler, otherwise there might be stability issues,
-sometimes as bad as this case.
+sometimes as bad as this case."
 
-In so opnion, please install and build this kernel with sys-devel/gcc:4.4
-
-Please , do NOT bug in Gentoo bugzila, if you build this kernel with
->=sys-devel/gcc-4.5 , send bug to upstream bugzilla "
+K_EXTRAEWARN="This kernel is stable only when built with gcc-4.5.x and is known
+to oops in random places if built with newer compilers."

@@ -1,4 +1,7 @@
 
+  02 Jan 2013;  <slep@gentoo.org> -openvz-sources-2.6.32.63.2.ebuild,
+  -openvz-sources-2.6.32.65.3.ebuild, openvz-sources-2.6.32.68.8.ebuild:
+  drop old. rewrite gcc warning
 
 *openvz-sources-2.6.18.028.101.1 (02 Jan 2013)
 
