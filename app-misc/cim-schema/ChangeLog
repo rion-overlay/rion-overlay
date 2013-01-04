@@ -3,6 +3,10 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+  04 Jan 2013;  <slep@gentoo.org> cim-schema-2.32.0.ebuild,
+  cim-schema-2.34.0.ebuild:
+  slotted cim-schema
+
 *cim-schema-2.32.0 (04 Jan 2013)
 *cim-schema-2.34.0 (04 Jan 2013)
 
