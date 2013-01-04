@@ -15,7 +15,7 @@ doc?
 ( http://dmtf.org/sites/default/files/cim/cim_schema_v${MY_VER}/cim_schema_${PV}Experimental-Doc.zip )"
 
 LICENSE="DMTF"
-SLOT="0"
+SLOT="${PV}"
 KEYWORDS="~amd64"
 IUSE="doc"
 
@@ -24,9 +24,20 @@ RDEPEND=""
 
 S="${WORKDIR}"
 
+src_prepare() {
+
+	for i in `find . -name "*.mof"`; do
+		sed -i -e 's/\r//g' $i
+	done
+}
+
 src_install() {
-	insinto /usr/share/mof
+
+	insinto /usr/share/mof/cim-"${PV}"/
 	doins -r ./*
+
+	dosym cim-"${PV}" /usr/share/mof/cim-current
+	dosym cim_schema_"${PV}".mof  /usr/share/mof/cim-current/CIM_Schema.mof
 
 	if use doc; then
 		dohtml ./*.html
