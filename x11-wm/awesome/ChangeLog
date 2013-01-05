@@ -1,0 +1,20 @@
+# ChangeLog for x11-wm/awesome
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
+# $Header: $
+
+*awesome-3.4.14 (05 Jan 2013)
+*awesome-9999 (05 Jan 2013)
+
+  05 Jan 2013; Nikolaj Sjujskij <sterkrig@myopera.com> +awesome-3.4.14.ebuild,
+  +awesome-9999.ebuild, -awesome-3.4.9999.ebuild:
+  x11-wm/awesome: drop 3.4.9999, add up-to-date 9999 and 3.4.14
+
+  03 Jul 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +files/awesome-backtrace.patch, +files/awesome-convert-path.patch,
+  -files/awesome-3.4.2-backtrace.patch, awesome-3.4.9999.ebuild:
+  Pull patches and changes from main Portage tree
+
+  07 Jun 2012; Nikolaj Sjujskij <sterkrig@myopera.com> -Manifest,
+  awesome-3.4.9999.ebuild:
+  x11-wm/awesome: drop Manifest and KEYWORDS

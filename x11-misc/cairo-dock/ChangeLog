@@ -1,0 +1,136 @@
+# ChangeLog for x11-misc/cairo-dock
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*cairo-dock-3.1.9999 (28 Dec 2012)
+*cairo-dock-3.1.2 (28 Dec 2012)
+
+  28 Dec 2012; rion <rion4ik@gmail.com> -cairo-dock-3.0.2.ebuild,
+  +cairo-dock-3.1.2.ebuild, +cairo-dock-3.1.9999.ebuild:
+  version bump
+
+*cairo-dock-3.0.9999 (19 Jun 2012)
+*cairo-dock-3.0.2 (19 Jun 2012)
+
+  19 Jun 2012; rion <rion4ik@gmail.com> +cairo-dock-3.0.2.ebuild,
+  +cairo-dock-3.0.9999.ebuild, metadata.xml:
+  version bump
+
+*cairo-dock-2.3.9999 (25 Jun 2011)
+
+  25 Jun 2011; Rion <rion4ik@gmail.com> +cairo-dock-2.3.9999.ebuild,
+  +metadata.xml:
+  version bump
+
+*cairo-dock-2.2.0.4 (30 Oct 2010)
+
+  30 Oct 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +cairo-dock-2.2.0.4.ebuild, +files/cairo-dock-2.2.0.4-rpath.patch,
+  metadata.xml:
+  Added cairo-dock-2.2.0.4 and dropped the glitz use flag from metadata.xml.
+
+*cairo-dock-2.1.3.9 (30 Apr 2010)
+
+  30 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -cairo-dock-1.6.3.1.ebuild, -cairo-dock-2.0.8.2.ebuild,
+  -files/cairo-dock-2.0.8.2-safe-cflags.patch, +cairo-dock-2.1.3.9.ebuild,
+  cairo-dock-9999.ebuild, files/cairo-dock-missing-header.patch,
+  +files/cairo-dock-pot-fix.patch, +files/cairo-dock-safe-cflags.patch:
+  Dropped old versions. Updated SRC_URI and HOMEPAGE.
+  Added initial ebuilds for 2.1.3.9 release and live (9999) version. Thanks
+  to maksbotan in #gentoo-desktop-effects,
+  Dustin Polke <gentoobugsie.20.dsurawicz AT spamgourmet DOT com> and Doktor
+  Notor <notordoktor AT gmail DOT com> in bug 295287.
+
+  03 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Updated the homepage for the project.
+
+  03 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild, metadata.xml:
+  Dropped the glitz use flag as it has been deprecated by upstream - thanks
+  to matttbe.
+  Updated maintainers.
+
+  14 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Port live ebuild to bazar repository (see upstream) many thanks to Joe R
+  <rusbasapastaman@gmail.com> for his work.
+
+  30 Aug 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-2.0.8.2.ebuild:
+  Use alphabetical order and whitespace.
+
+  30 Aug 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Added missing depend on x11-libs/glext.
+
+*cairo-dock-2.0.8.2 (28 Aug 2009)
+
+  28 Aug 2009; Romain Perier <mrpouet@gentoo.org>
+  +cairo-dock-1.6.3.1.ebuild, +cairo-dock-2.0.8.2.ebuild,
+  +files/cairo-dock-2.0.8.2-safe-cflags.patch, +cairo-dock-9999.ebuild,
+  +files/cairo-dock-missing-header.patch, +metadata.xml:
+  Version bump to 2.0.8.2, new branch, import from my developer overlay.
+  Clean-up some QA warnings in 1.6.3.1 ebuild, catogory changed.
+
+  08 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-1.6.3.1.ebuild, cairo-dock-9999.ebuild:
+  To build cairo-dock with glitz, we need cairo built with glitz.
+
+  21 Dec 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-1.6.3.1.ebuild:
+  Added ~amd64 keywords.
+
+*cairo-dock-1.6.3.1 (20 Dec 2008)
+
+  20 Dec 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/cairo-dock-missing-header.patch, metadata.xml,
+  +cairo-dock-1.6.3.1.ebuild:
+  Added cairo-dock-1.6.3.1 - thanks to Bill Smith <sememmon@gmail.com> for
+  the ebuild.
+
+  01 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Added a local src_compile until the gnome team can fix the gnome2 eclass.
+
+  20 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Removed the call to glib-gettextize to prevent the compilation issues with
+  intltool-0.4.5.
+
+  26 Sep 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -cairo-dock-9999-r1.ebuild, cairo-dock-9999.ebuild:
+  Bumped to EAPI-2.
+
+  13 Sep 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Call eautoreconf after intltoolize and removed double pkg_setup.
+
+*cairo-dock-9999-r1 (18 Aug 2008)
+
+  18 Aug 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +cairo-dock-9999-r1.ebuild, cairo-dock-9999.ebuild:
+  Move EAPI-2_pre1 support to a new masked 9999-r1 ebuild. Converted 9999 to
+  EAPI-1.
+
+  03 Aug 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Dropped keywords.
+
+  03 Aug 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Added glitz use flag description to metadata.xml.
+
+  30 Jul 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cairo-dock-9999.ebuild:
+  Updated EAPI to 2_pre1 as a result of the update in portage-2.2_rc5.
+
+*cairo-dock-9999 (30 Jul 2008)
+
+  30 Jul 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +metadata.xml, +cairo-dock-9999.ebuild:
+  Initial import of cairo-dock. Many thanks to Jupiter for the initial
+  ebuild and Bill Smith (Sememmon) for the continued "pestering", testing
+  and updates to the ebuild.
+
