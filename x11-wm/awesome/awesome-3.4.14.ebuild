@@ -1,22 +1,18 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.4.13.ebuild,v 1.1 2012/09/30 14:14:21 matsuu Exp $
 
 EAPI="3"
 CMAKE_MIN_VERSION="2.8"
-
-EGIT_REPO_URI="git://git.naquadah.org/awesome.git"
-EGIT_BRANCH="3.4"
-
-inherit git-2 cmake-utils eutils
+inherit cmake-utils eutils
 
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="http://awesome.naquadah.org/"
-SRC_URI=""
+SRC_URI="http://awesome.naquadah.org/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="dbus doc elibc_FreeBSD gnome"
 
 COMMON_DEPEND=">=dev-lang/lua-5.1
@@ -73,10 +69,6 @@ RDEPEND="${RDEPEND}
 	)"
 
 DOCS="AUTHORS BUGS PATCHES README STYLE"
-
-src_unpack() {
-	git-2_src_unpack
-}
 
 src_prepare() {
 	epatch \
