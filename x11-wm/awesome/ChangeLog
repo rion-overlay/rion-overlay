@@ -3,6 +3,10 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+  06 Jan 2013; Nikolaj Sjujskij <sterkrig@myopera.com> -Manifest,
+  -awesome-3.4.14.ebuild:
+  x11-wm/awesome: drop 3.4.14 (in tree)
+
 *awesome-3.4.14 (05 Jan 2013)
 *awesome-9999 (05 Jan 2013)
 
