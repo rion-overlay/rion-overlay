@@ -11,7 +11,8 @@ inherit cmake-utils mercurial
 MY_PN="${PN/vacuum-/}"
 DESCRIPTION="Kinetic popup notifications for vacuum"
 HOMEPAGE="http://code.google.com/p/vacuum-im"
-EHG_REPO_URI="https://${MY_PN}.vacuum-plugins.googlecode.com/hg/"
+EHG_REPO_URI="https://code.google.com/p/vacuum-plugins.${MY_PN}/"
+EHG_REVISION="${MY_PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
