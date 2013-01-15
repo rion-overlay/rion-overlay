@@ -2,6 +2,10 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Jan 2013; Maxim Koltsov <maksbotan@gentoo.org> -posix_ipc-0.9.3.ebuild,
+  posix_ipc-0.9.4.ebuild:
+  dev-python/posix_ipc: move to new eclass, clean old version
+
 *posix_ipc-0.9.4 (09 Oct 2012)
 
   09 Oct 2012; Nikolaj Sjujskij <sterkrig@myopera.com> +posix_ipc-0.9.4.ebuild:
@@ -38,4 +42,3 @@
   22 Sep 2010; Nikolaj Sjujskij <sterkrig@myopera.com>
   +posix-ipc-0.8.1.ebuild, +metadata.xml:
   Add Python module for POSIX IPC
-
