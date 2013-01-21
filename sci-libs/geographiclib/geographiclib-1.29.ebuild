@@ -8,6 +8,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 AUTOTOOLS_AUTORECONF=1
 
 PYTHON_COMPAT=( python{2_5,2_6,2_7,3_1,3_2,3_3} )
+DISTUTILS_OPTIONAL="true"
 
 inherit autotools-utils distutils-r1
 
