@@ -40,9 +40,9 @@ src_configure() {
 src_compile() {
 	autotools-utils_src_compile
 	if use python; then
-		cd "${S}/python"
+		pushd "${S}/python"
 		distutils-r1_src_compile
-		cd "${S}"
+		popd
 	fi
 }
 
@@ -50,9 +50,9 @@ src_install() {
 	autotools-utils_src_install
 	rm -rf "${D}"/usr/share/doc/
 	if use python; then
-		cd "${S}/python"
+		pushd "${S}/python"
 		distutils-r1_src_install
-		cd "${S}"
+		popd
 	fi
 	if use doc; then
 		dohtml -r doc/* || die "Installing HTML documentation failed"
