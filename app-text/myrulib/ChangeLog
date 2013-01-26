@@ -2,6 +2,12 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*myrulib-0.29.12 (26 Jan 2013)
+
+  26 Jan 2013; Nikoli <nikoli@lavabit.com> +myrulib-0.29.12.ebuild,
+  -myrulib-0.29.7.ebuild, -myrulib-0.29.9.ebuild:
+  myrulib: version bump
+
 *myrulib-0.29.11 (06 Nov 2012)
 
   06 Nov 2012; Nikoli <nikoli@lavabit.com> +myrulib-0.29.11.ebuild:
@@ -87,4 +93,3 @@
   18 Dec 2010; Nikoli <nikoli@lavabit.com> +myrulib-0.24.18.ebuild,
   +myrulib-9999.ebuild, +metadata.xml:
   initial ebuilds
-
