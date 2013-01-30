@@ -20,7 +20,6 @@ COMMON_DEPEND="
 	media-libs/gstreamer:0.10
 	media-libs/gst-plugins-base:0.10
 	media-libs/gst-plugins-good:0.10
-	>=dev-libs/liboil-0.3
 	>=x11-libs/qt-gui-4.4:4
 	>=media-libs/speex-1.2_rc1
 "
