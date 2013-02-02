@@ -13,7 +13,7 @@ inherit bash-completion-r1 elisp-common eutils distutils mercurial
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="http://mercurial.selenic.com/"
 EHG_REPO_URI="http://selenic.com/repo/hg"
-EHG_REVISION="default"
+EHG_REVISION="stable"
 
 LICENSE="GPL-2"
 SLOT="0"
