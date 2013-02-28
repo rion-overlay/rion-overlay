@@ -2,6 +2,12 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*geographiclib-1.30 (28 Feb 2013)
+
+  28 Feb 2013; Nikolaj Sjujskij <sterkrig@myopera.com>
+  +geographiclib-1.30.ebuild:
+  Bump new, drop old
+
   22 Jan 2013; Nikolaj Sjujskij <sterkrig@myopera.com>
   geographiclib-1.29.ebuild:
   sci-libs/geographiclib: use pushd/popd instead of cd
