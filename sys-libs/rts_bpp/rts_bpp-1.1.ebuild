@@ -21,3 +21,13 @@ pkg_setup() {
 	S="${WORKDIR}/${PN}"
 	linux-mod_pkg_setup
 }
+
+src_prepare() {
+	sed -i -e "s/\$(shell uname -r)/$KV_FULL/g" \
+		"${S}"/Makefile || die "sed makefile"
+	kernel_is -ge 3 8 && {
+		sed -i -e "s/__devinit//" -e "s/__devexit//" \
+		-e 's/ _p(\(.*\))/ \1/' rtsx.c \
+		|| die "sed rtsx.c";
+	}
+}
