@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE=""
 #RESTRICT="test strip"
 
-DEPEND="x11-libs/qt-core"
+DEPEND="dev-qt/qtcore"
 RDEPEND="${DEPEND}"
 
 src_configure() {

@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="x11-libs/qt-qt3support
-	x11-libs/qt-sql"
+DEPEND="dev-qt/qtqt3support
+	dev-qt/qtsql"
 RDEPEND="${DEPEND}"
 
 src_prepare() {

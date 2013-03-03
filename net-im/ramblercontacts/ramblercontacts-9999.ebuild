@@ -17,9 +17,9 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
-	>=x11-libs/qt-core-4.7:4[ssl]
-	>=x11-libs/qt-gui-4.7:4
-	>=x11-libs/qt-webkit-4.7:4
+	>=dev-qt/qtcore-4.7:4[ssl]
+	>=dev-qt/qtgui-4.7:4
+	>=dev-qt/qtwebkit-4.7:4
 	net-dns/libidn
 	x11-libs/libXScrnSaver
 "

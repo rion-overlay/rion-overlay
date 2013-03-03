@@ -24,7 +24,7 @@ done
 
 RDEPEND="
 	>=net-im/vacuum-1.1.0
-	x11-libs/qt-webkit:4
+	dev-qt/qtwebkit:4
 "
 DEPEND="${RDEPEND}"
 

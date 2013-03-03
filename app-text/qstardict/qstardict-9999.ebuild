@@ -18,10 +18,10 @@ IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
 IUSE="dbus nls ${IUSE_PLUGINS}"
 
-RDEPEND="x11-libs/qt-gui
-	dbus? ( x11-libs/qt-dbus )
+RDEPEND="dev-qt/qtgui
+	dbus? ( dev-qt/qtdbus )
 	dev-libs/glib:2
-	plugin_swac? ( x11-libs/qt-sql )"
+	plugin_swac? ( dev-qt/qtsql )"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {

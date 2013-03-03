@@ -17,7 +17,7 @@ IUSE="icu test"
 
 COMMON_DEPEND="icu? ( dev-libs/icu )"
 DEPEND="${COMMON_DEPEND}
-	test? ( x11-libs/qt-test )"
+	test? ( dev-qt/qttest )"
 RDEPEND="${COMMON_DEPEND}"
 
 src_unpack() {

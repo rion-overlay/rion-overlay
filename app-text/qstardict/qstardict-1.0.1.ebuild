@@ -18,8 +18,8 @@ IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
 IUSE="dbus nls ${IUSE_PLUGINS}"
 
-RDEPEND="x11-libs/qt-gui
-	dbus? ( x11-libs/qt-dbus )
+RDEPEND="dev-qt/qtgui
+	dbus? ( dev-qt/qtdbus )
 	dev-libs/glib:2"
 DEPEND="${RDEPEND}"
 

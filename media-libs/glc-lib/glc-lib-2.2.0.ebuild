@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-DEPEND="x11-libs/qt-opengl:4
+DEPEND="dev-qt/qtopengl:4
 	sys-libs/zlib
 	virtual/glu"
 

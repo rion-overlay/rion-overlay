@@ -42,10 +42,10 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=x11-libs/qt-core-4.5:4[ssl]
-	>=x11-libs/qt-gui-4.5:4
+	>=dev-qt/qtcore-4.5:4[ssl]
+	>=dev-qt/qtgui-4.5:4
 	>=dev-libs/openssl-0.9.8k
-	adiummessagestyle? ( >=x11-libs/qt-webkit-4.5:4 )
+	adiummessagestyle? ( >=dev-qt/qtwebkit-4.5:4 )
 	spell? (
 		aspell? ( app-text/aspell )
 		enchant? ( app-text/enchant )
