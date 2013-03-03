@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="x11-libs/qt-gui"
+DEPEND="dev-qt/qtgui"
 RDEPEND="${DEPEND}"
 
 src_configure() {

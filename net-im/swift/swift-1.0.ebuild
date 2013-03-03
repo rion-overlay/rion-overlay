@@ -34,8 +34,8 @@ RDEPEND="
 	>=dev-libs/openssl-0.9.8g
 	>=net-dns/libidn-1.10
 	>=x11-libs/libXScrnSaver-1.2
-	>=x11-libs/qt-gui-4.5:4
-	>=x11-libs/qt-webkit-4.5:4
+	>=dev-qt/qtgui-4.5:4
+	>=dev-qt/qtwebkit-4.5:4
 	dev-libs/libxml2
 	>=dev-libs/expat-2.0.1
 	sys-libs/zlib

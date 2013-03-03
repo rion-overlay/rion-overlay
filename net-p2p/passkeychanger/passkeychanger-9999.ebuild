@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="debug"
 
-RDEPEND="x11-libs/qt-gui:4"
+RDEPEND="dev-qt/qtgui:4"
 DEPEND="${RDEPEND}"
 
 src_install() {

@@ -17,8 +17,8 @@ IUSE="aqua debug doc examples"
 RESTRICT="test"
 
 DEPEND="sys-devel/qconf
-		x11-libs/qt-core:4[debug?]"
-RDEPEND="x11-libs/qt-core:4[debug?]"
+		dev-qt/qtcore:4[debug?]"
+RDEPEND="dev-qt/qtcore:4[debug?]"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-pcfilespath.patch

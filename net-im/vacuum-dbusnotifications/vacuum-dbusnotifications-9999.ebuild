@@ -24,7 +24,7 @@ done
 
 RDEPEND="
 	>=net-im/vacuum-1.1.0
-	>=x11-libs/qt-gui-4.5:4[dbus]
+	>=dev-qt/qtgui-4.5:4[dbus]
 "
 DEPEND="${RDEPEND}"
 

@@ -17,10 +17,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="x11-libs/qt-core:4
-	x11-libs/qt-gui:4
-	|| ( x11-libs/qt-phonon:4 kde-base/phonon-kde:4 media-libs/phonon )
-	x11-libs/qt-script:4"
+DEPEND="dev-qt/qtcore:4
+	dev-qt/qtgui:4
+	|| ( dev-qt/qtphonon:4 kde-base/phonon-kde:4 media-libs/phonon )
+	dev-qt/qtscript:4"
 RDEPEND=${DEPEND}
 
 IUSE="debug"
