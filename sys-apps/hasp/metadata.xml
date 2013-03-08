@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<longdescription>
+HASP - Hardware Against Software Piracy
+The package contains
+
+	* The required software for accessing HASP and Hardlock keys from Aladdin
+
+	  Supports parallel HASP keys, Hardlock keys, USB HASP keys.
+      It contains kernel module which required when using parallel port keys
+	  and USB daemon which is general required to access the HASP/Hardlock key.
+
+	 * The Smartkey key server for Linux (Smartkey 3 USB/LPT keys) from Eutron
+
+	 * The SafeNet USB key server and license server for keys from SafeNet Sentinel
+
+The RPM package prepared in Etersoft for WINE@Etersoft project.
+Please send any comments to hasp@etersoft.ru
+
+Copyright 1985-2008 Aladdin Knowledge Systems http://www.aladdin.com
+Copyright 2006-2007 Eutron SPA http://www.smartkey.eutron.com
+Copyright 2006-2006 SafeNet Sentinel http://www.safenet-inc.com
+</longdescription>
+	<maintainer>
+		<email>egor.y.egorov@gmail.com</email>
+	</maintainer>
+	<use>
+		<flag name='lpt'>Install kernel module for LPT-keys</flag>
+		<flag name='net_hasp'>Install binaries for use HASP-keys on network</flag>
+		<flag name='wine'>Install winehasp binary and init-script</flag>
+		<flag name='demo'>Install demo binaries</flag>
+	</use>
+</pkgmetadata>
