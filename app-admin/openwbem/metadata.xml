@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>andreis.vinogradovs@gmail.com</email>
+</maintainer>
+<use>
+<flag name='association-traversal'> </flag>
+<flag name='digest'> </flag>
+<flag name='cmpi'> </flag>
+<flag name='valgrind'> </flag>
+
+</use>
+</pkgmetadata>
