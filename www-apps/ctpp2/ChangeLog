@@ -2,6 +2,13 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*ctpp2-2.8.3-r1 (11 Mar 2013)
+
+  11 Mar 2013;  <slep@gentoo.org> +ctpp2-2.8.3-r1.ebuild,
+  +files/gcc4.7_getcwd.patch, -ctpp2-2.7.6.ebuild, -ctpp2-2.8.2.ebuild,
+  -ctpp2-2.8.3.ebuild, -ctpp2-2.8.ebuild:
+  add gcc4.7 patch, drop old
+
 *ctpp2-2.8.3 (04 Jan 2013)
 
   04 Jan 2013;  <slep@gentoo.org> +ctpp2-2.8.3.ebuild:
