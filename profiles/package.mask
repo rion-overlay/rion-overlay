@@ -1,4 +1,5 @@
 # 11 marta 2013; A. Vinogradov
 # Mask due failure build with >=gcc-4.6
 # died mantainer
+# removal 25.03.2013
 =games-arcade/supertux-0.3*::rion
