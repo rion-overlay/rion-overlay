@@ -8,7 +8,7 @@ inherit eutils rpm linux-info linux-mod systemd
 
 DESCRIPTION="Hardware Against Software Piracy for access to parallel and usb keys"
 HOMEPAGE="http://www.etersoft.ru"
-SRC_URI="http://ftp.etersoft.ru/pub/Etersoft/HASP/3.3/sources/Gentoo/2019/haspd-3.3-eter5gentoo.src.rpm"
+SRC_URI="http://ftp.etersoft.ru/pub/Etersoft/HASP/3.3/sources/Gentoo/2009/haspd-3.3-eter5gentoo.src.rpm"
 
 LICENSE="Etersoft"
 SLOT="0"
