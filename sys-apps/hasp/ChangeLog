@@ -2,6 +2,10 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Mar 2013; Egor Y. Egorov <egor.y.egorov@gmail.com> hasp-3.3_p5.ebuild,
+  +files/remove-udev-rule-for-old-kernels.patch:
+  Remove udev rule for old kernels
+
   12 Mar 2013; Egor Y. Egorov <egor.y.egorov@gmail.com> hasp-3.3_p5.ebuild:
   Fix typo in SRC_URI
 

@@ -49,6 +49,10 @@ src_unpack() {
 	unpack ./haspd-3.3.tar
 }
 
+src_prepare() {
+	epatch "${FILESDIR}/remove-udev-rule-for-old-kernels.patch"
+}
+
 src_compile() {
 	if use lpt ; then
 		cd "${S}/${MODNAME}"
