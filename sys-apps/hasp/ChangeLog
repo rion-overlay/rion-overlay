@@ -2,6 +2,12 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*hasp-3.3_p5 (12 Mar 2013)
+
+  12 Mar 2013; Egor Y. Egorov <egor.y.egorov@gmail.com> -files/80-hasp.rules,
+  -hasp-3.3_p3-r1.ebuild, +hasp-3.3_p5.ebuild:
+  sys-apps/hasp version bump. Issue 176
+
   08 Aug 2012; Egor Y. Egorov <egor.y.egorov@gmail.com> -hasp-9999.ebuild,
   -hasp-9999-r1.ebuild:
   In git version 3.2: too old. Removed live-ebuilds.
