@@ -1,0 +1,30 @@
+diff -ur glc_lib_orig/GLC_lib.pro glc_lib/GLC_lib.pro
+--- glc_lib_orig/GLC_lib.pro	2012-08-15 12:32:37.000000000 +0700
++++ glc_lib/GLC_lib.pro	2012-08-15 12:33:50.746129870 +0700
+@@ -482,3 +482,4 @@
+ INSTALLS += target
+ INSTALLS +=include
+ 
++LIBS += -lGLU
+diff -ur glc_lib_orig/shading/glc_material.cpp glc_lib/shading/glc_material.cpp
+--- glc_lib_orig/shading/glc_material.cpp	2011-06-19 17:16:32.000000000 +0700
++++ glc_lib/shading/glc_material.cpp	2012-08-15 12:33:35.108090269 +0700
+@@ -27,6 +27,7 @@
+ #include "../glc_factory.h"
+ 
+ #include <QtDebug>
++#include <GL/glu.h>
+ 
+ // Class chunk id
+ quint32 GLC_Material::m_ChunkId= 0xA703;
+diff -ur glc_lib_orig/viewport/glc_camera.h glc_lib/viewport/glc_camera.h
+--- glc_lib_orig/viewport/glc_camera.h	2011-06-19 17:16:32.000000000 +0700
++++ glc_lib/viewport/glc_camera.h	2012-08-15 12:33:35.108090269 +0700
+@@ -31,6 +31,7 @@
+ #include "../maths/glc_matrix4x4.h"
+ 
+ #include "../glc_config.h"
++#include <GL/glu.h>
+ 
+ //////////////////////////////////////////////////////////////////////
+ //! \class GLC_Camera

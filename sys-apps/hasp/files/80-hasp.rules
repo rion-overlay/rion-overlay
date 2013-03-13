@@ -1,0 +1,3 @@
+# Aladdin HASP udev rules
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0529", ATTRS{idProduct}=="0001", MODE="664", ENV{HASP}="1", SYMLINK+="aks/hasp/%n", RUN+="/usr/sbin/aksusbd -c $root/aks/hasp/$number"
+ACTION=="remove", ENV{HASP}=="1", RUN+="/usr/sbin/aksusbd -r $root/aks/hasp/$number"
