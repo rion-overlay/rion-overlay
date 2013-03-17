@@ -3,6 +3,9 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+  17 Mar 2013;  <slep@gentoo.org> sblim-sfcc-2.2.5.ebuild:
+  dev-libs/sblim-sfcc: ~x86
+
 *sblim-sfcc-2.2.5 (04 Jan 2013)
 
   04 Jan 2013;  <slep@gentoo.org> +metadata.xml, +sblim-sfcc-2.2.5.ebuild:

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/sblim/${PN}/${P}.tar.bz2"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
