@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 PYTHON_DEPEND="python? 2:2.7"
 RESTRICT_PYTHON_ABIS="3.* *-jython"
@@ -15,8 +15,9 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="+cim debug examples +eventing ipv6 java pam perl python plugins ruby ssl +server"
+KEYWORDS="~amd64 ~x86"
+IUSE="+cim debug examples +eventing ipv6 java pam perl python plugins ruby ssl
++server test"
 
 RDEPEND="
 	cim? ( dev-libs/sblim-sfcc )
