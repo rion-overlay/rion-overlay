@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_DEPEND="python? 2:2.7"
 RESTRICT_PYTHON_ABIS="3.* *-jython"
 
-inherit python cmake-utils ssl-cert
+inherit python cmake-utils ssl-cert java-pkg-2 java-utils-2
 
 DESCRIPTION="Opensource Implementation of WS-Management Client"
 HOMEPAGE="http://sourceforge.net/projects/openwsman"
