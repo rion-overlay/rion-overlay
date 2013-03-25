@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>rion4ik@gmail.com</email>
+		<name>rion</name>
+	</maintainer>
+	<longdescription>dcaenc is a Free Software (LGPL-licensed) encoder for the DTS Coherent Acoustics audio format. It may be useful if you want to create a DTS CD or a DTS soundtrack for a DVD from a 6-channel PCM wav file using linux. Another use case is related to real-time encoding of multichannel PCM audio output from arbitrary linux applications for transmission over SPDIF.</longdescription>
+</pkgmetadata>
