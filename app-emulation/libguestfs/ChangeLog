@@ -3,6 +3,9 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+  26 Mar 2013;  <slep@gentoo.org> libguestfs-9999.ebuild:
+  app-emulation/libguestfs: enable ocaml by default due generator require it
+
 *libguestfs-9999 (26 Mar 2013)
 
   26 Mar 2013;  <slep@gentoo.org> +libguestfs-9999.ebuild, +metadata.xml:
