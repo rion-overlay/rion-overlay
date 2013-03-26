@@ -1,0 +1,62 @@
+diff --git a/Makefile.in b/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -68,8 +68,7 @@
+ 
+ VPATH=		${SRCDIR}
+ 
+-all:		milter-greylist rc-bsd.sh rc-redhat.sh \
+-		rc-solaris.sh rc-debian.sh rc-gentoo.sh rc-suse.sh
++all:		milter-greylist
+ 
+ milter-greylist:	${OBJ}
+ 	${CC} -o milter-greylist ${OBJ} ${LDFLAGS} ${LIBS}
+@@ -80,18 +79,6 @@
+ 
+ sed_subst = "s|@BINDIR[@]|${BINDIR}|g; s|@SBINDIR[@]|${SBINDIR}|g; s|@USER[@]|${USER}|g"
+ 
+-rc-bsd.sh:      rc-bsd.sh.in
+-	${SED} ${sed_subst} ${SRCDIR}/rc-bsd.sh.in > rc-bsd.sh
+-rc-redhat.sh:    rc-redhat.sh.in
+-	${SED} ${sed_subst} ${SRCDIR}/rc-redhat.sh.in > rc-redhat.sh
+-rc-solaris.sh:    rc-solaris.sh.in
+-	${SED} ${sed_subst} ${SRCDIR}/rc-solaris.sh.in > rc-solaris.sh
+-rc-debian.sh:    rc-debian.sh.in
+-	${SED} ${sed_subst} ${SRCDIR}/rc-debian.sh.in > rc-debian.sh
+-rc-gentoo.sh:    rc-gentoo.sh.in
+-	${SED} ${sed_subst} ${SRCDIR}/rc-gentoo.sh.in > rc-gentoo.sh
+-rc-suse.sh:	 rc-suse.sh.in
+-	${SED} ${sed_subst} ${SRCDIR}/rc-suse.sh.in > rc-suse.sh
+ 
+ install-daemon-to-bin: milter-greylist
+ 	${INSTALL} -d -m 755 ${DESTDIR}${BINDIR}
+@@ -130,15 +117,13 @@
+ 		echo "	================================================"; \
+ 	) || ${TRUE}
+ 
+-install: install-daemon-to-bin install-man install-conf install-db
++install: install-daemon-to-bin install-man
+ 
+ depend:
+ 	${MKDEP} ${CPPFLAGS} ${CFLAGS} ${SRC}
+ 
+ clean:
+-	${RM} -f milter-greylist ${OBJ} ${GENSRC} \
+-	rc-redhat.sh rc-bsd.sh rc-solaris.sh rc-debian.sh rc-gentoo.sh \
+-	rc-suse.sh
++	${RM} -f milter-greylist ${OBJ} ${GENSRC} 
+ 
+ realclean:	clean
+ 	${RM} -Rf Makefile config.h config.log config.status \
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -117,7 +117,7 @@
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS([arpa/inet.h fcntl.h netinet/in.h stdlib.h string.h strings.h sys/socket.h sys/time.h syslog.h unistd.h sys/param.h netdb.h getopt.h sys/cdefs.h arpa/nameser.h stdbool.h])
++AC_CHECK_HEADERS([arpa/inet.h fcntl.h netinet/in.h stdlib.h string.h strings.h sys/socket.h sys/time.h syslog.h unistd.h sys/param.h netdb.h getopt.h sys/cdefs.h arpa/nameser.h stdbool.h  fcntl.h sys/stat.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_TYPE_PID_T
