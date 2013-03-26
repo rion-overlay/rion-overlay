@@ -20,7 +20,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0/9999"
 
 KEYWORDS=""
-IUSE="erlang +fuse debug ocaml doc +perl ruby static-libs
+IUSE="erlang +fuse debug +ocaml doc +perl ruby static-libs
 selinux systemtap introspection inspect-icons lua"
 
 # Failires - doc
@@ -60,6 +60,8 @@ COMMON_DEPEND="
 		)
 	selinux? ( sys-libs/libselinux  sys-libs/libsemanage )
 	systemtap? ( dev-util/systemtap )
+	dev-lang/ocaml[ocamlopt]
+	dev-ml/findlib[ocamlopt]
 	ocaml? ( dev-lang/ocaml[ocamlopt]
 			dev-ml/findlib[ocamlopt]
 			dev-ml/ocaml-gettext
