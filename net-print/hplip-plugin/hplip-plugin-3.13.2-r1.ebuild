@@ -4,7 +4,7 @@
 
 #http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/
 
-EAPI="3"
+EAPI=5
 
 inherit eutils multilib unpacker
 
@@ -16,8 +16,10 @@ LICENSE="hplip-plugin"
 SLOT="0"
 IUSE=""
 
-RDEPEND="~net-print/hplip-${PV}
-	sys-fs/udev"
+RDEPEND="
+	~net-print/hplip-${PV}
+	virtual/udev
+	"
 DEPEND=""
 
 HPLIP_HOME=/usr/share/hplip
