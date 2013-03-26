@@ -2,6 +2,14 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*hplip-plugin-3.13.2-r1 (26 Mar 2013)
+*hplip-plugin-3.13.3-r1 (26 Mar 2013)
+
+  26 Mar 2013;  <slep@gentoo.org> +hplip-plugin-3.13.2-r1.ebuild,
+  +hplip-plugin-3.13.3-r1.ebuild, -hplip-plugin-3.12.11.ebuild:
+  net-print/hplip-plugin: EAPI3 -> 5; sys-fs/udev -> virtual/udev, drop old (
+  not hplip in tree )
+
 *hplip-plugin-3.13.3 (25 Mar 2013)
 
   25 Mar 2013; rion <rion4ik@gmail.com> +hplip-plugin-3.13.3.ebuild:
@@ -17,4 +25,3 @@
   07 Jan 2013; rion <rion4ik@gmail.com> +hplip-plugin-3.12.11.ebuild,
   +metadata.xml:
   initial import
-
