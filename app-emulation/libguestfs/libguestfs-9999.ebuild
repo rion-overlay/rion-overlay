@@ -6,7 +6,9 @@ EAPI="5"
 
 WANT_LIBTOOL=latest
 AUTOTOOLS_AUTORECONF=1
+AUTOTOOLIZE=yes
 AUTOTOOLS_IN_SOURCE_BUILD=1
+
 EGIT_HAS_SUBMODULES=1
 
 inherit  bash-completion-r1 autotools-utils versionator eutils \
@@ -82,7 +84,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	app-emulation/libguestfs-appliance
 	"
-DOCS=(AUTHORS BUGS ChangeLog HACKING README  ROADMAP TODO)
+#DOCS=(AUTHORS BUGS ChangeLog HACKING README  ROADMAP TODO)
 
 pkg_setup () {
 		CONFIG_CHECK="~KVM ~VIRTIO"
@@ -90,7 +92,20 @@ pkg_setup () {
 }
 
 src_prepare() {
-	./bootstrap
+        if [[ ${PV} = *9999* ]]; then
+
+                # git checkouts require bootstrapping to create the configure
+                # script.
+                # Additionally the submodules must be cloned to the right
+                # locations
+                # bug #377279
+                ./autogen.sh || die "bootstrap failed"
+                (
+                        git submodule status | sed 's/^[ +-]//;s/ .*//'
+                        git hash-object bootstrap.conf
+                ) >.git-module-status
+        fi
+	
 }
 
 src_configure() {
