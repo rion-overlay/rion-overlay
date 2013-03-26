@@ -66,12 +66,12 @@ src_install() {
 }
 
 pkg_postinst() {
-    echo "# hplip.state - HPLIP runtime persistent variables." > /var/lib/hp/hplip.state
+	echo "# hplip.state - HPLIP runtime persistent variables." > /var/lib/hp/hplip.state
 	echo "" >> /var/lib/hp/hplip.state
 	echo "[plugin]" >> /var/lib/hp/hplip.state
-    echo "installed=1" >> /var/lib/hp/hplip.state
-    echo "eula=1" >> /var/lib/hp/hplip.state
-	echo "version = ${PV}" >> /var/lib/hp/hplip.state 
+	echo "installed=1" >> /var/lib/hp/hplip.state
+	echo "eula=1" >> /var/lib/hp/hplip.state
+	echo "version = ${PV}" >> /var/lib/hp/hplip.state
 }
 
 pkg_postrm() {
