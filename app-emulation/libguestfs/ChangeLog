@@ -1,0 +1,15 @@
+# ChangeLog for app-emulation/libguestfs
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
+# $Header: $
+
+  27 Mar 2013;  <slep@gentoo.org> libguestfs-9999.ebuild:
+  app-emulation/libguestfs: update live libguest
+
+  26 Mar 2013;  <slep@gentoo.org> libguestfs-9999.ebuild:
+  app-emulation/libguestfs: enable ocaml by default due generator require it
+
+*libguestfs-9999 (26 Mar 2013)
+
+  26 Mar 2013;  <slep@gentoo.org> +libguestfs-9999.ebuild, +metadata.xml:
+  app-emulation/libguestfs: add livea ebuild, enable lua flag

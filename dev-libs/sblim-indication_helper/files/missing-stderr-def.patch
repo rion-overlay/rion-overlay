@@ -1,0 +1,12 @@
+diff -up sblim-indication_helper-0.4.2/ind_helper.h.org sblim-indication_helper-0.4.2/ind_helper.h
+--- sblim-indication_helper-0.4.2/ind_helper.h.org	2009-11-19 10:35:45.000000000 -0600
++++ sblim-indication_helper-0.4.2/ind_helper.h	2009-11-19 10:36:05.000000000 -0600
+@@ -13,7 +13,7 @@
+  * Author:       Konrad Rzeszutek <konradr@us.ibm.com>
+  * Date  :	      09/20/2004
+  */
+-
++#include <stdio.h>
+ #include <cmpift.h>
+ 
+ typedef unsigned int Uint32;
