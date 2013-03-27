@@ -1,0 +1,10 @@
+# ChangeLog for sys-kernel/openvz-sources
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
+# $Header: $
+
+*openvz-sources-2.6.32.72.10 (20 Jan 2013)
+
+  20 Jan 2013;  <slep@gentoo.org> +metadata.xml,
+  +openvz-sources-2.6.32.72.10.ebuild:
+  bump openvz

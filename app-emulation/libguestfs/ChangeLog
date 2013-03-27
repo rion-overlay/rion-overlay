@@ -1,0 +1,27 @@
+# ChangeLog for app-emulation/libguestfs
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
+# $Header: $
+
+*libguestfs-1.20.4-r1 (27 Mar 2013)
+
+  27 Mar 2013;  <slep@gentoo.org>
+  +files/1.20/0001_add_gentoo_names_to_configure.patch,
+  +files/1.20/0002_add_gentooway_to_remove_la_files.patch,
+  +files/1.20/0003_add_doc_more_option.patch,
+  +files/1.20/0004_add_icoutils_configure_drop_automagic.patch,
+  +files/1.20/0005_enable_gtk_docs_in_broken_autotools-utils-eclass.patch,
+  +files/1.20/0103_disable_php_bindings_makefile.patch,
+  +libguestfs-1.20.4-r1.ebuild:
+  bump to add more new flag and QA fix
+
+  27 Mar 2013;  <slep@gentoo.org> libguestfs-9999.ebuild:
+  app-emulation/libguestfs: update live libguest
+
+  26 Mar 2013;  <slep@gentoo.org> libguestfs-9999.ebuild:
+  app-emulation/libguestfs: enable ocaml by default due generator require it
+
+*libguestfs-9999 (26 Mar 2013)
+
+  26 Mar 2013;  <slep@gentoo.org> +libguestfs-9999.ebuild, +metadata.xml:
+  app-emulation/libguestfs: add livea ebuild, enable lua flag

@@ -1,0 +1,38 @@
+diff -ur glc_lib_orig/3rdparty/quazip/quazip.cpp glc_lib/3rdparty/quazip/quazip.cpp
+--- glc_lib_orig/3rdparty/quazip/quazip.cpp	2011-06-19 17:16:30.000000000 +0700
++++ glc_lib/3rdparty/quazip/quazip.cpp	2012-08-15 12:39:34.296994129 +0700
+@@ -283,3 +283,13 @@
+     return QString();
+   return fileNameCodec->toUnicode(fileName.constData());
+ }
++
++void QuaZip::setFileNameCodec(QTextCodec *fileNameCodec)
++{
++  this->fileNameCodec=fileNameCodec;
++}
++
++void QuaZip::setFileNameCodec(const char *fileNameCodecName)
++{
++  fileNameCodec=QTextCodec::codecForName(fileNameCodecName);
++}
+\ В конце файла нет новой строки
+diff -ur glc_lib_orig/3rdparty/quazip/quazip.h glc_lib/3rdparty/quazip/quazip.h
+--- glc_lib_orig/3rdparty/quazip/quazip.h	2011-06-19 17:16:30.000000000 +0700
++++ glc_lib/3rdparty/quazip/quazip.h	2012-08-15 12:40:33.896143467 +0700
+@@ -180,14 +180,12 @@
+      * example, file names with cyrillic letters will be in \c IBM866
+      * encoding.
+      **/
+-    void setFileNameCodec(QTextCodec *fileNameCodec)
+-    {this->fileNameCodec=fileNameCodec;}
++    void setFileNameCodec(QTextCodec *fileNameCodec);
+     /// Sets the codec used to encode/decode file names inside archive.
+     /** \overload
+      * Equivalent to calling setFileNameCodec(QTextCodec::codecForName(codecName));
+      **/
+-    void setFileNameCodec(const char *fileNameCodecName)
+-    {fileNameCodec=QTextCodec::codecForName(fileNameCodecName);}
++    void setFileNameCodec(const char *fileNameCodecName);
+     /// Returns the codec used to encode/decode comments inside archive.
+     QTextCodec* getFileNameCodec()const {return fileNameCodec;}
+     /// Sets the codec used to encode/decode comments inside archive.
