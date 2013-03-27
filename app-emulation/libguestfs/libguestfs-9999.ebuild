@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-WANT_LIBTOOL=latest
+#WANT_LIBTOOL=latest
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLIZE=yes
 AUTOTOOLS_IN_SOURCE_BUILD=1
@@ -22,10 +22,8 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0/9999"
 
 KEYWORDS=""
-IUSE="erlang +fuse debug +ocaml doc +perl ruby static-libs
+IUSE="erlang +fuse debug +ocaml +perl ruby static-libs
 selinux systemtap introspection inspect-icons lua"
-
-# Failires - doc
 
 COMMON_DEPEND="
 	sys-libs/ncurses
@@ -69,16 +67,17 @@ COMMON_DEPEND="
 			dev-ml/ocaml-gettext
 			)
 	erlang? ( dev-lang/erlang )
+	ruby? ( dev-lang/ruby )
 	inspect-icons? ( media-libs/netpbm
 			media-gfx/icoutils
 			)
 	virtual/acl
 	sys-libs/libcap
+	app-text/po4a
 	"
 
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
-	doc? ( app-text/po4a )
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )
 	"
 RDEPEND="${COMMON_DEPEND}
@@ -92,6 +91,8 @@ pkg_setup () {
 }
 
 src_prepare() {
+	epatch_user
+
         if [[ ${PV} = *9999* ]]; then
 
                 # git checkouts require bootstrapping to create the configure
@@ -99,13 +100,12 @@ src_prepare() {
                 # Additionally the submodules must be cloned to the right
                 # locations
                 # bug #377279
-                ./autogen.sh || die "bootstrap failed"
+                ./bootstrap || die "bootstrap failed"
                 (
                         git submodule status | sed 's/^[ +-]//;s/ .*//'
                         git hash-object bootstrap.conf
                 ) >.git-module-status
         fi
-	
 }
 
 src_configure() {
@@ -131,7 +131,6 @@ src_configure() {
 		$(use_enable ocaml)
 		$(use_enable ruby)
 		--disable-haskell
-		$(use_enable doc)
 		$(use_enable introspection gobject)
 		$(use_enable erlang)
 		$(use_enable systemtap probes)
@@ -150,6 +149,7 @@ src_test() {
 }
 
 src_install() {
+	rm -rf ${S}/usr/man
 	strip-linguas -i po
 	autotools-utils_src_install "LINGUAS=""${LINGUAS}"""
 
