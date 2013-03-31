@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/vacuum/vacuum-9999.ebuild,v 1.5 2012/08/01 07:49:23 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/vacuum/vacuum-9999.ebuild,v 1.6 2012/10/08 17:44:54 pinkbyte Exp $
 
 EAPI="4"
 LANGS="de pl ru uk"
@@ -78,6 +78,7 @@ src_configure() {
 		-DLANGS="${langs}"
 		-DINSTALL_DOCS=OFF
 		-DFORCE_BUNDLED_MINIZIP=OFF
+		-DPLUGIN_statistics=OFF
 	)
 
 	for x in ${PLUGINS}; do
