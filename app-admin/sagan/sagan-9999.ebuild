@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 inherit eutils autotools-utils git-2 user
 
@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/beave/sagan.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="smtp snort mysql postgres prelude +lognorm +libdnet +pcap"
+IUSE="smtp snort +lognorm +libdnet +pcap +websense"
 
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
@@ -22,12 +22,12 @@ RDEPEND="dev-libs/libpcre
 	app-admin/sagan-rules
 	smtp? ( net-libs/libesmtp )
 	pcap? ( net-libs/libpcap )
-	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql-base )
-	prelude? ( dev-libs/libprelude )
 	lognorm? ( dev-libs/liblognorm )
 	libdnet? ( dev-libs/libdnet )
 	snort? ( net-analyzer/snortsam )
+	websense? ( net-misc/curl 
+				dev-libs/json-c 
+				)
 	"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
@@ -40,20 +40,14 @@ pkg_setup() {
 	enewuser sagan -1 -1 /dev/null sagan
 }
 
-src_prepare() {
-	autotools-utils_src_prepare
-}
-
 src_configure() {
 	 local myeconfargs=(
-		$(use_enable mysql)
-		$(use_enable postgres postgresql)
 		$(use_enable smtp esmtp)
-		$(use_enable prelude )
 		$(use_enable lognorm)
 		$(use_enable libdnet)
 		$(use_enable pcap libpcap)
 		$(use_enable snort snortsam)
+		$(use_enable websense)
 		)
 
 	autotools-utils_src_configure
