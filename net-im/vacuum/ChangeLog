@@ -2,6 +2,9 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Mar 2013; Nikoli <nikoli@lavabit.com> vacuum-9999.ebuild:
+  vacuum: disable statistics plugin
+
   05 Oct 2012; Nikoli <nikoli@lavabit.com> vacuum-9999.ebuild, metadata.xml:
   support selecting spellchecker backends
 
@@ -41,4 +44,3 @@
   18 Oct 2010; Nikoli <nikoli@lavabit.com> +vacuum-9999.ebuild,
   +metadata.xml:
   initial import
-

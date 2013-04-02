@@ -35,7 +35,7 @@ QA_PRESTRIPPED="
 
 # License does not allow us to redistribute the "source" package
 RESTRICT="mirror"
-
+S="$WORKDIR"
 src_unpack() {
 	unpack_makeself "hplip-${PV}-plugin.run" || die 'unpack failed'
 }
