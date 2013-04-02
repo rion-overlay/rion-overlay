@@ -25,7 +25,7 @@ SLOT="0/${MY_PV_1}"
 
 KEYWORDS="~amd64"
 IUSE="erlang +fuse debug ocaml doc +perl ruby static-libs
-selinux systemtap introspection inspect-icons"
+selinux systemtap introspection inspect-icons test lua"
 
 # Failires - doc
 
@@ -74,6 +74,7 @@ COMMON_DEPEND="
 			)
 	virtual/acl
 	sys-libs/libcap
+	lua? ( dev-lang/lua )
 	"
 
 DEPEND="${COMMON_DEPEND}
@@ -109,6 +110,7 @@ src_configure() {
 	export vmchannel_test=no
 
 	local myeconfargs=(
+		$(use_enable test gcc-warnings)
 		--disable-appliance
 		--disable-daemon
 		--with-extra="-gentoo"
@@ -125,7 +127,7 @@ src_configure() {
 		$(use_enable introspection gobject)
 		$(use_enable erlang)
 		$(use_enable systemtap probes)
-		--disable-lua
+		$(use_enable lua)
 	)
 	autotools-utils_src_configure
 }
