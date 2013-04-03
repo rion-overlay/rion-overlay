@@ -2,6 +2,11 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Apr 2013; Nikoli <nikoli@lavabit.com>
+  -files/myrulib-0.28.11-libpng15.patch, -myrulib-0.28.11.ebuild,
+  -myrulib-0.29.11.ebuild, myrulib-0.29.12.ebuild, myrulib-9999.ebuild:
+  myrulib: update sqlite dep, rm old
+
 *myrulib-0.29.12 (26 Jan 2013)
 
   26 Jan 2013; Nikoli <nikoli@lavabit.com> +myrulib-0.29.12.ebuild,
