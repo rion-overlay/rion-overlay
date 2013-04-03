@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/vacuum/vacuum-9999.ebuild,v 1.6 2012/10/08 17:44:54 pinkbyte Exp $
 
-EAPI="4"
+EAPI="5"
 LANGS="de pl ru uk"
 
 inherit cmake-utils subversion
@@ -12,7 +12,7 @@ HOMEPAGE="http://code.google.com/p/vacuum-im"
 ESVN_REPO_URI="http://vacuum-im.googlecode.com/svn/trunk"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/25" # subslot = libvacuumutils soname version
 KEYWORDS=""
 PLUGINS=" adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries"
 SPELLCHECKER_BACKENDS="aspell +enchant hunspell"
