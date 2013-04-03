@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI=5
 
 LANGS="pl ru uk"
 
@@ -22,11 +22,9 @@ for x in ${LANGS}; do
 done
 
 RDEPEND="
-	>=net-im/vacuum-1.1.0
+	>=net-im/vacuum-1.1.0:=
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/hg"
 
 src_configure() {
 	# linguas
@@ -39,6 +37,5 @@ src_configure() {
 		-DINSTALL_LIB_DIR="$(get_libdir)"
 		-DLANGS="${langs}"
 	)
-
 	cmake-utils_src_configure
 }
