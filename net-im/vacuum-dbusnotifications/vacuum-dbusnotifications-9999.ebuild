@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=5
 
 LANGS="ru"
 
@@ -12,7 +12,6 @@ MY_PN="${PN/vacuum-/}"
 DESCRIPTION="DBus popup notifications for vacuum"
 HOMEPAGE="http://code.google.com/p/vacuum-im"
 EHG_REPO_URI="https://code.google.com/p/vacuum-plugins.${MY_PN}/"
-EHG_REVISION="${MY_PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,12 +22,10 @@ for x in ${LANGS}; do
 done
 
 RDEPEND="
-	>=net-im/vacuum-1.1.0
+	>=net-im/vacuum-1.3.0:=
 	>=dev-qt/qtgui-4.5:4[dbus]
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/hg"
 
 src_configure() {
 	# linguas
@@ -41,6 +38,5 @@ src_configure() {
 		-DINSTALL_LIB_DIR="$(get_libdir)"
 		-DLANGS="${langs}"
 	)
-
 	cmake-utils_src_configure
 }

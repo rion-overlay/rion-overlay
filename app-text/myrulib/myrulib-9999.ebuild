@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 WX_GTK_VER="2.8"
 
 inherit eutils wxwidgets git-2
@@ -19,7 +19,7 @@ IUSE="+icu +links reader syslog"
 RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	dev-libs/libxml2
-	dev-db/sqlite:3[fts3,icu?]
+	dev-db/sqlite:3[fts3(+),icu?]
 	app-arch/bzip2
 	icu? ( dev-libs/icu )
 	reader? (
