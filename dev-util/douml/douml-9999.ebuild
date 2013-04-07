@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-qt/qtqt3support
+DEPEND="dev-qt/qt3support
 	dev-qt/qtsql"
 RDEPEND="${DEPEND}"
 
