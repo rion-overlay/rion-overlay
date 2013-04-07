@@ -1,0 +1,125 @@
+--- a/wxmlgetvalue
++++ b/wxmlgetvalue
+@@ -3,7 +3,7 @@
+ MYNAME=`basename $0`
+ MYPATH=${0%/*}
+ NODATEDUMP=1
+-. ${MYPATH}/wsl-functions
++  . /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   ${WSCOLORERR}
+--- a/wsl-functions
++++ b/wsl-functions
+@@ -575,7 +575,11 @@
+     if [ -z "${FORMATDISPLAY}" ] || [ ${XsLTSTAT} -ne 0 ] || [ ${ISSOAP} -ne 0 ]; then
+       cat ${vFile} ; echo
+     else
+-      cat ${vFile} | sed 's/^\s*//g' | tr -d '\n' | xsltproc ${MYPATH}/wsl-ws2textc.xsl -
++      if [ -e /usr/share/wsl/wsl-ws2textc.xsl ]; then
++        cat ${vFile} | sed 's/^\s*//g' | tr -d '\n' | xsltproc /usr/share/wsl/wsl-ws2textc.xsl -
++      else
++        cat ${vFile} | sed 's/^\s*//g' | tr -d '\n' | xsltproc ${MYPATH}/wsl-ws2textc.xsl -
++      fi
+     fi
+     $WSCOLORNORM
+   fi
+--- a/viwsl
++++ b/viwsl
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+ # source function library
+-. ${0%/*}/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ vi ${HOME}/${MYCONFIG}
+ 
+--- a/wsl
++++ b/wsl
+@@ -38,7 +38,7 @@
+ KEEPHISTORY=0
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
+--- a/wslcred
++++ b/wslcred
+@@ -37,7 +37,7 @@
+ KEEPHISTORY=0
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
+--- a/wslenum
++++ b/wslenum
+@@ -35,7 +35,7 @@
+ MYNAME=`basename $0`
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
+--- a/wslecn
++++ b/wslecn
+@@ -35,7 +35,7 @@
+ MYNAME=`basename $0`
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
+--- a/wslget
++++ b/wslget
+@@ -35,7 +35,7 @@
+ MYNAME=`basename $0`
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
+--- a/wslid
++++ b/wslid
+@@ -35,7 +35,7 @@
+ MYNAME=`basename $0`
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
+--- a/wslinvoke
++++ b/wslinvoke
+@@ -36,7 +36,7 @@
+ WSENUMMAXELEM=512
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
+--- a/wslput
++++ b/wslput
+@@ -36,7 +36,7 @@
+ WSENUMMAXELEM=512
+ 
+ # source function library
+-. /etc/wsl/wsl-functions
++. /usr/share/wsl/wsl-functions
+ 
+ usage() {
+   fUsageheader
