@@ -71,13 +71,19 @@ src_install() {
 	dodoc CONTRIBUTORS README doc/*.txt || die
 	cp hgweb*.cgi "${ED}"/usr/share/doc/${PF}/ || die
 
+	if use emacs; then
+		elisp-install ${PN} contrib/mercurial.el* || die "elisp-install failed!"
+		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
+	fi
+
 	dobin hgeditor || die
 	dobin contrib/hgk || die
 	dobin contrib/hg-ssh || die
 
-	rm -f contrib/hgk contrib/hg-ssh || die
+	RM_CONTRIB=(hgk hg-ssh bash-completion zsh_completion wix buildrpm plan9
+				*.el mercurial.spec)
+	for f in ${RM_CONTRIB[@]}; do rm -rf contrib/$f; done
 
-	rm -f contrib/bash_completion || die
 	cp -r contrib "${ED}"/usr/share/doc/${PF}/ || die
 	doman doc/*.? || die
 
@@ -85,11 +91,6 @@ src_install() {
 HG="${EPREFIX}/usr/bin/hg"
 EOF
 	doenvd "${T}/80mercurial" || die
-
-	if use emacs; then
-		elisp-install ${PN} contrib/mercurial.el* || die "elisp-install failed!"
-		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
-	fi
 
 	insinto /etc/mercurial/hgrc.d
 	doins "${FILESDIR}/cacerts.rc"
