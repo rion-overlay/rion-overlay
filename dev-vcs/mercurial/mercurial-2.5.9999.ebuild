@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/mercurial-9999.ebuild,v 1.17 2013/01/02 08:32:19 djc Exp $
+# $Header: $
 
 EAPI=3
 PYTHON_DEPEND="2"
@@ -71,13 +71,21 @@ src_install() {
 	dodoc CONTRIBUTORS README doc/*.txt || die
 	cp hgweb*.cgi "${ED}"/usr/share/doc/${PF}/ || die
 
+	if use emacs; then
+		elisp-install ${PN} contrib/mercurial.el* || die "elisp-install failed!"
+		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
+	fi
+
 	dobin hgeditor || die
 	dobin contrib/hgk || die
 	dobin contrib/hg-ssh || die
 
-	rm -f contrib/hgk contrib/hg-ssh || die
+	local RM_CONTRIB=(hgk hg-ssh bash_completion zsh_completion wix buildrpm plan9
+		              *.el mercurial.spec)
+	for f in ${RM_CONTRIB[@]}; do
+		rm -rf contrib/$f || die
+	done
 
-	rm -f contrib/bash_completion || die
 	cp -r contrib "${ED}"/usr/share/doc/${PF}/ || die
 	doman doc/*.? || die
 
@@ -85,11 +93,6 @@ src_install() {
 HG="${EPREFIX}/usr/bin/hg"
 EOF
 	doenvd "${T}/80mercurial" || die
-
-	if use emacs; then
-		elisp-install ${PN} contrib/mercurial.el* || die "elisp-install failed!"
-		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
-	fi
 
 	insinto /etc/mercurial/hgrc.d
 	doins "${FILESDIR}/cacerts.rc"
