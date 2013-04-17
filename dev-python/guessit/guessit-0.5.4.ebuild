@@ -22,9 +22,8 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}"/*.patch )
+
 python_test() {
-	local i
-	for i in tests/test_*.py; do
-		"${PYTHON}" "${i}" || die "Tests fail with ${EPYTHON}"
-	done
+	esetup.py test
 }
