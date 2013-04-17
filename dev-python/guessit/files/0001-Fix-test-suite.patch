@@ -1,0 +1,57 @@
+From 0a3c9af394d0ac89efea40482f388800bec45585 Mon Sep 17 00:00:00 2001
+From: Maxim Koltsov <maksbotan@gentoo.org>
+Date: Wed, 17 Apr 2013 11:43:31 +0400
+Subject: [PATCH] Fix test suite  * Do not import '*' from unittest, fixes test
+ running  * Add __init__.py in tests package and make setup.py run tests
+
+---
+ setup.py             | 3 ++-
+ tests/__init__.py    | 1 +
+ tests/guessittest.py | 4 ++--
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+ create mode 100644 tests/__init__.py
+
+diff --git a/setup.py b/setup.py
+index deee110..81f907d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -65,7 +65,8 @@ args = dict(name = 'guessit',
+             include_package_data=True,
+             install_requires = requires,
+             entry_points=entry_points,
+-            extras_require = { 'language_detection':  ['guess-language>=0.2'] }
++            extras_require = { 'language_detection':  ['guess-language>=0.2'] },
++            test_suite = 'tests'
+             )
+ 
+ 
+diff --git a/tests/__init__.py b/tests/__init__.py
+new file mode 100644
+index 0000000..8b13789
+--- /dev/null
++++ b/tests/__init__.py
+@@ -0,0 +1 @@
++
+diff --git a/tests/guessittest.py b/tests/guessittest.py
+index c56b6ca..a469a60 100644
+--- a/tests/guessittest.py
++++ b/tests/guessittest.py
+@@ -21,7 +21,7 @@
+ from __future__ import unicode_literals
+ from guessit import base_text_type, u
+ from guessit.slogging import setupLogging
+-from unittest import *
++from unittest import TestCase, TestLoader
+ 
+ import yaml, logging, sys, os
+ from os.path import *
+@@ -138,4 +138,4 @@ class TestGuessit(TestCase):
+         log.info('SUMMARY: Guessed correctly %d out of %d filenames' % (correct, total))
+ 
+         self.assertTrue(correct == total,
+-                        msg='Correct: %d < Total: %d' % (correct, total))
+\ No newline at end of file
++                        msg='Correct: %d < Total: %d' % (correct, total))
+-- 
+1.8.1.5
+
