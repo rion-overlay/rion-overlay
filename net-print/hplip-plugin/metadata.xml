@@ -5,5 +5,9 @@
 		<email>rion4ik@gmail.com</email>
 		<name>rion</name>
 	</maintainer>
+	<maintainer>
+		<email>nikoli@lavabit.com</email>
+		<name>Nikoli</name>
+	</maintainer>
 	<longdescription>Proprietary plugin for HP printers. Enables some extra functions</longdescription>
 </pkgmetadata>
