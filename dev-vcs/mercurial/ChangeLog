@@ -2,6 +2,9 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Apr 2013; Nikolaj Sjujskij <sterkrig@myopera.com> ChangeLog:
+  2.6 in stable branch
+
   12 Apr 2013; Nikolaj Sjujskij <sterkrig@myopera.com>
   mercurial-2.5.9999.ebuild:
   Migrate dev-vcs/mercurial-2.5.9999 to ditutils-r1 and EAPI 5
