@@ -93,19 +93,19 @@ pkg_setup () {
 src_prepare() {
 	epatch_user
 
-        if [[ ${PV} = *9999* ]]; then
+	if [[ ${PV} = *9999* ]]; then
 
-                # git checkouts require bootstrapping to create the configure
-                # script.
-                # Additionally the submodules must be cloned to the right
-                # locations
-                # bug #377279
-                ./bootstrap || die "bootstrap failed"
-                (
-                        git submodule status | sed 's/^[ +-]//;s/ .*//'
-                        git hash-object bootstrap.conf
-                ) >.git-module-status
-        fi
+	# git checkouts require bootstrapping to create the configure
+	# script.
+	# Additionally the submodules must be cloned to the right
+	# locations
+	# bug #377279
+		./bootstrap || die "bootstrap failed"
+		(
+			git submodule status | sed 's/^[ +-]//;s/ .*//'
+			git hash-object bootstrap.conf
+			) >.git-module-status
+	fi
 }
 
 src_configure() {
@@ -149,7 +149,7 @@ src_test() {
 }
 
 src_install() {
-	rm -rf ${S}/usr/man
+	rm -rf "${S}"/usr/man
 	strip-linguas -i po
 	autotools-utils_src_install "LINGUAS=""${LINGUAS}"""
 
