@@ -3,6 +3,12 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+*libguestfs-1.20.6 (20 Apr 2013)
+
+  20 Apr 2013; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  +libguestfs-1.20.6.ebuild:
+  app-emulation/libguestfs: bump add lua use
+
 *libguestfs-1.20.4-r1 (27 Mar 2013)
 
   27 Mar 2013;  <slep@gentoo.org>
