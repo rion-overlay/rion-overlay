@@ -22,7 +22,8 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
-PATCHES=( "${FILESDIR}"/*.patch )
+# tests are fixed in next release
+RESTRICT="test"
 
 python_test() {
 	esetup.py test
