@@ -15,11 +15,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="icu test"
 
-COMMON_DEPEND="dev-qt/qtcore
-	icu? ( dev-libs/icu )"
-DEPEND="${COMMON_DEPEND}
+RDEPEND="dev-qt/qtcore
+	dev-libs/uchardet
+	icu? ( dev-libs/icu )
+	!icu? ( dev-libs/uchardet )"
+
+DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest )"
-RDEPEND="${COMMON_DEPEND}"
+
+src_prepare() {
+	UCHD="${S}"/src/3rdparty/uchardet-0.0.1/uchardet.pri
+	echo "CONFIG *= link_pkgconfig" > "$UCHD"
+	echo "PKGCONFIG += uchardet" >> "$UCHD"
+	qt4-r2_src_prepare
+}
 
 src_configure() {
 	eqmake4 communi.pro -config no_examples \
