@@ -1,0 +1,20 @@
+Index: mrim-prpl-0.1.28/message.c
+#http://code.google.com/p/mrim-prpl/issues/detail?id=65
+===================================================================
+--- mrim-prpl-0.1.28.orig/message.c
++++ mrim-prpl-0.1.28/message.c
+@@ -48,8 +48,13 @@ void mrim_message_offline(PurpleConnecti
+ 			gchar* msg_decoded=NULL;
+ 			gsize len_decoded=0;
+ 			gsize len_correct=0;
++			gchar* buf=NULL;
++
++			g_strstrip(encoding);
++			buf = g_ascii_strdown (encoding, -1);
++			g_free (encoding);
++			encoding = buf;
+ 
+-			encoding = g_ascii_tolower( *g_strstrip(encoding) ); // TODO test
+ 			if(encoding && g_strcmp0(encoding,"base64")==0)
+ 			{
+ 				msg_decoded = (gchar*) purple_base64_decode(msg, &len_decoded); // Allowed?=
