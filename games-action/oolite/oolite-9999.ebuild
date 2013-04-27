@@ -53,6 +53,7 @@ src_prepare() {
 		"${S}"/GNUmakefile || die
 	subversion_wc_info
 	sed "s/SVNREVISION :=.*/SVNREVISION := ${ESVN_WC_REVISION}/" -i Makefile
+	sed "/void png_error/d" -i src/Core/Materials/OOPNGTextureLoader.m 
 }
 
 src_compile() {
