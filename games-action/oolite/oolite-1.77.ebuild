@@ -46,6 +46,7 @@ src_prepare() {
 	sed -i -e 's:.*STRIP.*:	true:' "${S}"/GNUmakefile.postamble
 	sed -i -e '/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions' \
 		"${S}"/GNUmakefile || die
+	sed "/void png_error/d" -i src/Core/Materials/OOPNGTextureLoader.m
 }
 
 src_compile() {
