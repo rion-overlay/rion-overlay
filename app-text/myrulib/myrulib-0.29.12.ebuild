@@ -21,10 +21,10 @@ RDEPEND="
 	dev-libs/libxml2
 	dev-db/sqlite:3[fts3(+),icu?]
 	app-arch/bzip2
-	icu? ( dev-libs/icu )
+	icu? ( dev-libs/icu:= )
 	reader? (
 		media-libs/freetype:2
-		media-libs/libpng
+		media-libs/libpng:=
 		virtual/jpeg
 		sys-libs/zlib
 	)
