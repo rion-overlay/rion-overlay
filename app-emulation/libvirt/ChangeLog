@@ -3,6 +3,12 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+*libvirt-1.0.4 (01 May 2013)
+
+  01 May 2013; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  +libvirt-1.0.4.ebuild:
+  app-emulation/libvirt: bump forked libvird wia hyper-v drivers
+
 *libvirt-1.0.3-r1 (17 Mar 2013)
 
   17 Mar 2013;  <slep@gentoo.org> +files/libvirtd.confd-r4,
