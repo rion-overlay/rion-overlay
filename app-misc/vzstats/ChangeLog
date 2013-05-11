@@ -3,6 +3,12 @@
 # ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
 # $Header: $
 
+*vzstats-0.3.2 (11 May 2013)
+
+  11 May 2013; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  +vzstats-0.3.2.ebuild, metadata.xml:
+  app-misc/vzstats: Bump
+
 *vzstats-0.2.1 (01 May 2013)
 
   01 May 2013; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
