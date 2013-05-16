@@ -2,31 +2,36 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="5"
 
-inherit eutils qt4-r2 confutils subversion
+case $PV in *9999*) VCS_ECLASS="subversion" ;; *) VCS_ECLASS="" ;; esac
+
+inherit eutils qt4-r2 confutils ${VCS_ECLASS}
 
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
-ESVN_REPO_URI="https://qstardict.svn.sourceforge.net/svnroot/qstardict/trunk"
 LICENSE="GPL-2"
+if [ -n "${VCS_ECLASS}" ]; then
+	KEYWORDS=""
+	ESVN_REPO_URI="https://qstardict.svn.sourceforge.net/svnroot/qstardict/trunk"
+else
+	KEYWORDS="amd64 ~ia64 x86"
+	SRC_URI="http://qstardict.ylsoftware.com/files/${P}.tar.bz2"
+	PATCHES="${FILESDIR}/glib.patch"
+fi
 SLOT="0"
-KEYWORDS=""
 
 PLUGINS="stardict swac web"
 IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
 IUSE="dbus nls ${IUSE_PLUGINS}"
+REQUIRED_USE="|| ( ${IUSE_PLUGINS} )"
 
-RDEPEND="dev-qt/qtgui
-	dbus? ( dev-qt/qtdbus )
+RDEPEND="dev-qt/qtgui:=
+	dbus? ( dev-qt/qtdbus:= )
 	dev-libs/glib:2
-	plugin_swac? ( dev-qt/qtsql )"
+	plugin_swac? ( dev-qt/qtsql:= )"
 DEPEND="${RDEPEND}"
-
-pkg_setup() {
-	confutils_require_any ${IUSE_PLUGINS}
-}
 
 src_configure() {
 	local eplugins=()
@@ -36,7 +41,7 @@ src_configure() {
 
 	QMAKE_FLAGS=(
 		ENABLED_PLUGINS="${eplugins[@]}"
-		LIB_DIR="/usr/$(get_libdir)/${PN}"
+		LIB_DIR="${EPREFIX}/usr/$(get_libdir)/${PN}"
 	)
 	if ! use dbus; then
 		QMAKE_FLAGS+=(NO_DBUS=1)
