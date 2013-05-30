@@ -6,10 +6,12 @@ EAPI="4"
 
 LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
-EGIT_REPO_URI="git://github.com/psi-im/psi.git"
 EGIT_HAS_SUBMODULES=1
-LANGS_URI="git://pv.et-inf.fho-emden.de/git/psi-l10n"
+PSI_URI="git://github.com/psi-im"
 PSI_PLUS_URI="git://github.com/psi-plus"
+EGIT_REPO_URI="${PSI_URI}/psi.git"
+PSI_LANGS_URI="${PSI_URI}/psi-translations.git"
+PSI_PLUS_LANGS_URI="${PSI_PLUS_URI}/psi-plus-l10n.git"
 
 inherit eutils qt4-r2 multilib git-2
 
@@ -81,26 +83,14 @@ src_unpack() {
 	unset EGIT_HAS_SUBMODULES EGIT_NONBARE
 
 	# fetch translations
-
 	unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
-	EGIT_REPO_URI="git://github.com/psi-plus/psi-plus-l10n.git"
+	if use extras; then
+		EGIT_REPO_URI="${PSI_PLUS_LANGS_URI}"
+	else
+		EGIT_REPO_URI="${PSI_LANGS_URI}"
+	fi
 	EGIT_SOURCEDIR="${WORKDIR}/psi-l10n"
 	git-2_src_unpack
-
-	# original translations server is down so psi+ translations used above
-	#mkdir "${WORKDIR}/psi-l10n"
-	#for x in ${LANGS}; do
-	#	if use linguas_${x}; then
-	#		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
-	#		if use extras && [ "${x}" = "ru" ]; then
-	#			local EGIT_REPO_URI="git://github.com/ivan101/psi-plus-ru.git"
-	#		else
-	#			local EGIT_REPO_URI="${LANGS_URI}-${x}.git"
-	#		fi
-	#		EGIT_SOURCEDIR="${WORKDIR}/psi-l10n/${x}" \
-	#		git-2_src_unpack
-	#	fi
-	#done
 
 	if use extras; then
 		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
@@ -181,7 +171,6 @@ src_compile() {
 
 	if use doc; then
 		cd doc
-		mkdir -p api # 259632
 		make api_public || die "make api_public failed"
 	fi
 }
@@ -209,15 +198,17 @@ src_install() {
 	use doc && dohtml -r doc/api
 
 	# install translations
-	cd "${WORKDIR}/psi-l10n/translations"
+	cd "${WORKDIR}/psi-l10n"
 	insinto /usr/share/${MY_PN}
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
-			#lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
-			#doins "${x}/${PN}_${x}.qm"
-			#[ -f "${x}/INFO" ] && newins "${x}/INFO" "${PN}_${x}.INFO"
-			lrelease "${PN}_${x}.ts" || die "lrelease ${x} failed"
-			doins "${PN}_${x}.qm"
+			if use extras; then
+				lrelease "translations/${PN}_${x}.ts" || die "lrelease ${x} failed"
+				doins "translations/${PN}_${x}.qm"
+			else
+				lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
+				doins "${x}/${PN}_${x}.qm"
+			fi
 		fi
 	done
 }
