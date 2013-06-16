@@ -22,6 +22,8 @@ RDEPEND="virtual/cron
 	dev-perl/Sys-CPU
 	dev-perl/Sys-MemInfo"
 
+S="${WORKDIR}/${PN}"
+
 src_install() {
 	dodir /usr/share/logwatch/lib
 	dodir /usr/share/logwatch/scripts/services
