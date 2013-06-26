@@ -57,6 +57,7 @@ src_install() {
 		newexe ${plugin} ${plugin/-${hplip_arch}}
 	done
 
+	mkdir -p "${ED}/var/lib/hp/"
 	cat >> "${ED}/var/lib/hp/hplip.state" << _EOF_
 [plugin]
 installed = 1
