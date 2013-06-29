@@ -1,0 +1,71 @@
+# mailgraph.pl patch to show separately postscreen rejects
+# Birta Levente (levi@birkosan.com) - http://www.birkosan.com
+---- ./mailgraph.pl.orig	2007-08-29 12:06:01.000000000 +0300
++++ ./mailgraph.pl	2012-05-07 14:54:22.000000000 +0300
+@@ -381,7 +381,7 @@
+ my $rrd_virus = "mailgraph_virus.rrd";
+ my $year;
+ my $this_minute;
+-my %sum = ( sent => 0, received => 0, bounced => 0, rejected => 0, virus => 0, spam => 0 );
++my %sum = ( sent => 0, received => 0, bounced => 0, rejected => 0, virus => 0, spam => 0, postscreen => 0 );
+ my $rrd_inited=0;
+ 
+ my %opt = ();
+@@ -395,6 +395,7 @@
+ sub event_rejected($);
+ sub event_virus($);
+ sub event_spam($);
++sub event_postscreen($);
+ sub init_rrd($);
+ sub update($);
+ 
+@@ -548,6 +549,7 @@
+ 		RRDs::create($rrd_virus, '--start', $m, '--step', $rrdstep,
+ 				'DS:virus:ABSOLUTE:'.($rrdstep*2).':0:U',
+ 				'DS:spam:ABSOLUTE:'.($rrdstep*2).':0:U',
++				'DS:postscreen:ABSOLUTE:'.($rrdstep*2).':0:U',
+ 				"RRA:AVERAGE:0.5:$day_steps:$realrows",   # day
+ 				"RRA:AVERAGE:0.5:$week_steps:$realrows",  # week
+ 				"RRA:AVERAGE:0.5:$month_steps:$realrows", # month
+@@ -632,6 +634,14 @@
+ 				event($time, 'rejected');
+ 			}
+ 		}
++		elsif($prog eq 'postscreen') {
++			if($text =~ /NOQUEUE: reject:/) {
++				event($time, 'postscreen');
++			}
++			elsif($text =~ /DISCONNECT/) {
++				event($time, 'postscreen');
++			}
++		}
+ 	}
+ 	elsif($prog eq 'sendmail' or $prog eq 'sm-mta') {
+ 		if($text =~ /\bmailer=local\b/ ) {
+@@ -870,14 +880,14 @@
+ 	return 1 if $m == $this_minute;
+ 	return 0 if $m < $this_minute;
+ 
+-	print "update $this_minute:$sum{sent}:$sum{received}:$sum{bounced}:$sum{rejected}:$sum{virus}:$sum{spam}\n" if $opt{verbose};
++	print "update $this_minute:$sum{sent}:$sum{received}:$sum{bounced}:$sum{rejected}:$sum{virus}:$sum{spam}:$sum{postscreen}\n" if $opt{verbose};
+ 	RRDs::update $rrd, "$this_minute:$sum{sent}:$sum{received}:$sum{bounced}:$sum{rejected}" unless $opt{'only-virus-rrd'};
+-	RRDs::update $rrd_virus, "$this_minute:$sum{virus}:$sum{spam}" unless $opt{'only-mail-rrd'};
++	RRDs::update $rrd_virus, "$this_minute:$sum{virus}:$sum{spam}:$sum{postscreen}" unless $opt{'only-mail-rrd'};
+ 	if($m > $this_minute+$rrdstep) {
+ 		for(my $sm=$this_minute+$rrdstep;$sm<$m;$sm+=$rrdstep) {
+-			print "update $sm:0:0:0:0:0:0 (SKIP)\n" if $opt{verbose};
++			print "update $sm:0:0:0:0:0:0:0 (SKIP)\n" if $opt{verbose};
+ 			RRDs::update $rrd, "$sm:0:0:0:0" unless $opt{'only-virus-rrd'};
+-			RRDs::update $rrd_virus, "$sm:0:0" unless $opt{'only-mail-rrd'};
++			RRDs::update $rrd_virus, "$sm:0:0:0" unless $opt{'only-mail-rrd'};
+ 		}
+ 	}
+ 	$this_minute = $m;
+@@ -887,6 +897,7 @@
+ 	$sum{rejected}=0;
+ 	$sum{virus}=0;
+ 	$sum{spam}=0;
++	$sum{postscreen}=0;
+ 	return 1;
+ }
+ 
