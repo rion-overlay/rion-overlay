@@ -2,6 +2,12 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.191 2013/04/02 15:05:58 pinkbyte Exp $
 
+*openvz-sources-2.6.18.028.107.2 (03 Jul 2013)
+
+  03 Jul 2013; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  +openvz-sources-2.6.18.028.107.2.ebuild:
+  sys-kernel/openvz-sources: bump
+
 *openvz-sources-2.6.18.028.107.1 (01 May 2013)
 
   01 May 2013; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
