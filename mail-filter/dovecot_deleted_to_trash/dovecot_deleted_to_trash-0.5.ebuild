@@ -7,20 +7,26 @@ EAPI=5
 inherit toolchain-funcs base
 
 DESCRIPTION="Deleted to trash IMAP plugin for Dovecot"
-HOMEPAGE="http://wiki.dovecot.org/Plugins/deleted-to-trash"
-SRC_URI="http://wiki2.dovecot.org/Plugins/deleted-to-trash?action=AttachFile&do=get&target=deleted-to-trash-plugin_${PV}_for_dovecot_2.1.tar -> ${PF}.tar"
+HOMEPAGE="https://github.com/lexbrugman/dovecot_deleted_to_trash"
+SRC_URI="http://rion-overlay.googlecode.com/files/dovecot_deleted_to_trash-0.5.tar.bz2"
 
 LICENSE="ZLIB"
 KEYWORDS="~amd64 ~x86"
-SLOT="0/1"
+SLOT="0"
 
 IUSE=""
 RDEPEND="=net-mail/dovecot-2.1*
-	!!<net-mail/dovecot-2.1.0"
-DEPEND="${RDEPEND}"
+	!!<net-mail/dovecot-2.1.0
+	!!<=mail-filter/dovecot_deleted_to_trash-0.3
+	"
+
+DEPEND="${RDEPEND}
+	app-arch/unzip
+	"
+
 PATCHES=( "${FILESDIR}"/fix_names_and_destdir.patch )
 
-S="${WORKDIR}"
+#S="${WORKDIR}"
 
 src_compile() {
 	tc-export CC

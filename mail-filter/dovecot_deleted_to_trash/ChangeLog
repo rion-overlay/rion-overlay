@@ -2,6 +2,13 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/mail-filter/dovecot_deleted_to_trash/ChangeLog,v 1.1 2012/09/06 17:35:27 maksbotan Exp $
 
+*dovecot_deleted_to_trash-0.5 (10 Jul 2013)
+
+  10 Jul 2013; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  +dovecot_deleted_to_trash-0.5.ebuild,
+  -dovecot_deleted_to_trash-0.3-r20.ebuild:
+  mail-filter/dovecot_deleted_to_trash: bump dovecot_deleted_to_trash
+
   13 Jan 2013; <slep@gentoo.org> +dovecot_deleted_to_trash-0.3.ebuild:
   add eapi 5 and sublotting
 
