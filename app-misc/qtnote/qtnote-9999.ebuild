@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=5
 
-inherit subversion qt4-r2
+inherit qt4-r2 git-2
 
 DESCRIPTION="Qt note-taking application compatible with tomboy"
 HOMEPAGE="http://code.google.com/p/qtnote"
-ESVN_REPO_URI="http://qtnote.googlecode.com/svn/trunk"
+EGIT_REPO_URI="https://github.com/Ri0n/QtNote"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -18,10 +18,6 @@ IUSE=""
 DEPEND="dev-qt/qtgui"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	subversion_src_unpack
-}
-
 src_configure() {
-	eqmake4 ${PN}.pro PREFIX=/usr
+	eqmake4 ${PN}.pro PREFIX="${EPREFIX}/usr"
 }
