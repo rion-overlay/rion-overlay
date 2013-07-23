@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<longdescription>
+GUI for Modem Manager daemon, capable to read and send SMS,
+send USSD requests, display modem informaion.
+</longdescription>
+<maintainer>
+	<email>egor.y.egorov@gmail.com</email>
+</maintainer>
+</pkgmetadata>
