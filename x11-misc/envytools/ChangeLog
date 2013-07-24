@@ -1,6 +1,9 @@
-# ChangeLog for rion-overlay/envytools
+# ChangeLog for x11-misc/envytools
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  24 Jul 2013; Nikoli <nikoli@lavabit.com> envytools-9999.ebuild, metadata.xml:
+  new home and deps
 
 *envytools-9999 (17 Nov 2011)
 
