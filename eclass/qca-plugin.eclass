@@ -11,12 +11,12 @@
 # @DESCRIPTION:
 # This eclass will be used to build all svn qca plugins
 
-inherit eutils qt4-r2 subversion
+inherit eutils qt4-r2 git-2
 
 IUSE="debug"
 SLOT="2"
-ESVN_REPO_URI="svn://anonsvn.kde.org/home/kde/trunk/kdesupport/qca"
-ESVN_PROJECT="qca"
+EGIT_REPO_URI="git://anongit.kde.org/qca"
+EGIT_PROJECT="qca"
 DEPEND=">=app-crypt/qca-${PV}[debug?]"
 RDEPEND="${DEPEND}"
 
