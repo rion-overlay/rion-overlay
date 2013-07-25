@@ -3,7 +3,6 @@
 # $Header: $
 
 EAPI="4"
-PLUGIN_DIR="dev"
 
 inherit psiplus-plugin
 
