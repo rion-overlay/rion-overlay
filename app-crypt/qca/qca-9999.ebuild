@@ -4,11 +4,11 @@
 
 EAPI="2"
 
-inherit eutils multilib qt4-r2 subversion
+inherit eutils multilib qt4-r2 git-2
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="http://delta.affinix.com/qca/"
-ESVN_REPO_URI="svn://anonsvn.kde.org/home/kde/trunk/kdesupport/qca"
+EGIT_REPO_URI="git://anongit.kde.org/qca"
 
 LICENSE="LGPL-2"
 SLOT="2"
