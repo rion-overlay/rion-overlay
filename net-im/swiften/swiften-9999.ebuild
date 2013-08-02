@@ -8,7 +8,7 @@ LANGS=" ca de es fr hu nl pl ru se sk"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git-2" || VCS_ECLASS=""
 
-inherit scons-utils toolchain-funcs ${VCS_ECLASS}
+inherit eutils scons-utils toolchain-funcs ${VCS_ECLASS}
 
 DESCRIPTION="Just a perfect C++ XMPP library"
 HOMEPAGE="http://swift.im/"
