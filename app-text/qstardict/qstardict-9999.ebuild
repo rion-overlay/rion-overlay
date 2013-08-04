@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-case $PV in *9999*) VCS_ECLASS="subversion" ;; *) VCS_ECLASS="" ;; esac
+case $PV in *9999*) VCS_ECLASS="git-2" ;; *) VCS_ECLASS="" ;; esac
 
 inherit eutils qt4-r2 confutils ${VCS_ECLASS}
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://qstardict.ylsoftware.com/"
 LICENSE="GPL-2"
 if [ -n "${VCS_ECLASS}" ]; then
 	KEYWORDS=""
-	ESVN_REPO_URI="https://qstardict.svn.sourceforge.net/svnroot/qstardict/trunk"
+	EGIT_REPO_URI="https://github.com/therussianphysicist/qstardict"
 else
 	KEYWORDS="amd64 ~ia64 x86"
 	SRC_URI="http://qstardict.ylsoftware.com/files/${P}.tar.bz2"
