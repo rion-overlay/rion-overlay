@@ -23,7 +23,8 @@ done
 
 RDEPEND="
 	>=net-im/vacuum-1.3.0:=
-	>=dev-qt/qtgui-4.5:4[dbus]
+	>=dev-qt/qtcore-4.5:4
+	>=dev-qt/qtdbus-4.5:4
 "
 DEPEND="${RDEPEND}"
 
