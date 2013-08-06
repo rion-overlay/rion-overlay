@@ -32,7 +32,8 @@ REQUIRED_USE="
 
 RDEPEND="
 	net-dns/libidn
-	|| ( ~dev-qt/qtgui-4.8.4:4[dbus?] >=dev-qt/qtgui-4.8.5:4 )
+	>=dev-qt/qtgui-4.4:4
+	dbus? ( >=dev-qt/qtdbus-4.4:4 )
 	>=app-crypt/qca-2.0.2:2
 	|| ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 )
 	whiteboarding? ( dev-qt/qtsvg:4 )
