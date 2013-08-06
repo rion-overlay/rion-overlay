@@ -1,0 +1,58 @@
+# ChangeLog for www-servers/hiawatha
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*hiawatha-9.0 (30 Mar 2013)
+
+  30 Mar 2013;  <slep@gentoo.org> +hiawatha-9.0.ebuild:
+  www-servers/hiawatha: bump
+
+*hiawatha-8.8.1 (23 Mar 2013)
+
+  23 Mar 2013;  <slep@gentoo.org> +hiawatha-8.8.1.ebuild:
+  www-servers/hiawatha: bump
+
+*hiawatha-8.8 (17 Mar 2013)
+
+  17 Mar 2013;  <slep@gentoo.org> +hiawatha-8.8.ebuild:
+  www-servers/hiawatha: bump
+
+*hiawatha-8.7 (10 Feb 2013)
+
+  10 Feb 2013;  <slep@gentoo.org> +hiawatha-8.7.ebuild:
+  bump hiawatha
+
+*hiawatha-8.6 (17 Nov 2012)
+
+  17 Nov 2012; <slep@gentoo.org> +hiawatha-8.6.ebuild:
+  bump masked
+
+  16 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -hiawatha-7.8.2.ebuild, -hiawatha-8.4.ebuild:
+  drop old
+
+*hiawatha-8.5 (11 Sep 2012)
+
+  11 Sep 2012; Andreis Vinogradovs<andreis.vinogradovs@gmail.com>
+  +hiawatha-8.5.ebuild, metadata.xml:
+  bump hiawhata
+
+*hiawatha-8.4 (01 Sep 2012)
+
+  01 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +files/cmake_disable_bundled-r1.patch, +hiawatha-8.4.ebuild,
+  -hiawatha-8.0.ebuild, hiawatha-7.8.2.ebuild, metadata.xml:
+  clean and bump ebuil, drop bundled polarssl
+
+*hiawatha-8.0 (03 Feb 2012)
+
+  03 Feb 2012; <spamslepnoga@inbox.ru> +hiawatha-8.0.ebuild,
+  +files/cmake_disable_bundled.patch:
+  bump
+
+*hiawatha-7.8.2 (08 Dec 2011)
+
+  08 Dec 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +hiawatha-7.8.2.ebuild, +files/hiawatha.init, +files/php-fcgi_hiawatha.init,
+  +metadata.xml:
+  recommit from my owerlay
