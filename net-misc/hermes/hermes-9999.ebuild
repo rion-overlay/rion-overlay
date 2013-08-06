@@ -25,7 +25,7 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-lang/python[sqlite]
 	dev-python/ply
-	ssl? ( >=dev-python/twisted-8.2.0[crypt] )
+	ssl? ( >=dev-python/twisted-core-8.2.0[crypt] )
 	>=dev-python/twisted-words-8.2.0
 	>=dev-python/twisted-names-8.2.0
 	>=dev-python/twisted-web-8.2.0

@@ -20,7 +20,7 @@ KEYWORDS=""
 IUSE="sql"
 
 RDEPEND="${DEPEND}
-	>=dev-python/twisted-8.2.0[crypt]
+	>=dev-python/twisted-core-8.2.0[crypt]
 	>=dev-python/twisted-web-8.2.0
 	dev-python/inotifyx
 	sql? ( dev-python/sqlalchemy )"
