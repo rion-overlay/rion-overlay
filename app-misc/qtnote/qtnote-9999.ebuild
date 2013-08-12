@@ -7,7 +7,7 @@ EAPI=5
 inherit qt4-r2 git-2
 
 DESCRIPTION="Qt note-taking application compatible with tomboy"
-HOMEPAGE="http://code.google.com/p/qtnote"
+HOMEPAGE="http://ri0n.github.io/QtNote/"
 EGIT_REPO_URI="https://github.com/Ri0n/QtNote"
 
 LICENSE="GPL-3"
