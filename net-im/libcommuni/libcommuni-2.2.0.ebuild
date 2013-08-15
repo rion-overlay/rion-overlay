@@ -7,8 +7,8 @@ EAPI=4
 inherit qt4-r2
 
 DESCRIPTION="A cross-platform IRC framework written with Qt 4"
-HOMEPAGE="https://github.com/communi/communi"
-SRC_URI="https://github.com/communi/communi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://communi.github.io/"
+SRC_URI="https://github.com/communi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake4 communi.pro -config no_examples \
+	eqmake4 libcommuni.pro -config no_examples \
 		$(use icu || echo "-config no_icu") \
 		$(use test || echo "-config no_tests")
 }
