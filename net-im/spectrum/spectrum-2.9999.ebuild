@@ -68,6 +68,8 @@ src_prepare() {
 	use irc || { sed -i -e 's/find_package(Communi)/set(IRC_FOUND, FALSE)/' CMakeLists.txt || die; }
 	use log || { sed -i -e 's/find_package(log4cxx)/set(LOG4CXX_FOUND, FALSE)/' CMakeLists.txt || die; }
 
+	sed -i -e "/#include <IrcUtil>/d" backends/libcommuni/session.cpp
+
 	base_src_prepare
 }
 
