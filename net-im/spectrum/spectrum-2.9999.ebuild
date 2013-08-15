@@ -35,7 +35,7 @@ RDEPEND="net-im/jabber-base
 	postgres? ( dev-libs/libpqxx )
 	sqlite? ( dev-db/sqlite:3 )
 	frotz? ( dev-libs/protobuf )
-	irc? ( net-im/communi dev-libs/protobuf )
+	irc? ( net-im/libcommuni dev-libs/protobuf )
 	purple? ( >=net-im/pidgin-2.6.0 dev-libs/protobuf )
 	skype? ( dev-libs/dbus-glib x11-base/xorg-server[xvfb] dev-libs/protobuf )
 	libev? ( dev-libs/libev dev-libs/protobuf )"
