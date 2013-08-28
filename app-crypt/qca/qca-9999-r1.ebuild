@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.0.2-r2.ebuild,v 1.6 2009/07/21 16:52:41 armin76 Exp $
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils multilib cmake-utils git-2
 
@@ -13,20 +13,30 @@ EGIT_REPO_URI="git://anongit.kde.org/qca"
 LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS=""
-IUSE="aqua debug doc examples qt4 qt5"
+IUSE="aqua debug doc examples +qt4 qt5 test"
 RESTRICT="test"
 
-DEPEND="dev-qt/qtcore:4[debug?]"
-RDEPEND="dev-qt/qtcore:4[debug?]"
+RDEPEND="qt4? ( dev-qt/qtcore:4[debug?] )
+	qt5? ( dev-qt/qtcore:5[debug?] )"
+DEPEND="${RDEPEND} qt4? ( dev-qt/qttest:4[debug?] )
+	qt5? ( dev-qt/qttest:5[debug?] )"
+REQUIRED_USE="|| ( qt4 qt5 )"
 
 src_prepare() {
 	use aqua && sed -i \
 		-e "s|QMAKE_LFLAGS_SONAME =.*|QMAKE_LFLAGS_SONAME = -Wl,-install_name,|g" \
 		src/src.pro
 
-	use qt4 && MYCMAKEARGS+="-DQT4_BUILD=1"
-
 	cmake-utils_src_prepare
+}
+
+src_configure()
+{
+	local mycmakeargs=( "-DPKGCONFIG_INSTALL_PREFIX=${EPREFIX}/usr/$(get_libdir)/pkgconfig"
+		-DQC_CERTSTORE_PATH="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt )
+	use qt4 && mycmakeargs+=("-DQT4_BUILD=1")
+	use test || mycmakeargs+=("-DBUILD_TESTS=OFF")
+	cmake-utils_src_configure
 }
 
 #src_configure() {
