@@ -54,13 +54,7 @@ src_prepare() {
 
 src_install() {
 	cmake-utils_src_install
-	#emake INSTALL_ROOT="${D}" install || die "emake install failed"
 	dodoc README TODO || die "dodoc failed"
-
-#	cat <<-EOF > "${WORKDIR}"/44qca2
-#	LDPATH="${EPREFIX}/usr/${_libdir}/qca2"
-#	EOF
-#	doenvd "${WORKDIR}"/44qca2 || die
 
 	if use doc; then
 		dohtml "${S}"/apidocs/html/* || die "Failed to install documentation"
@@ -70,9 +64,4 @@ src_install() {
 		insinto /usr/share/doc/${PF}/
 		doins -r "${S}"/examples || die "Failed to install examples"
 	fi
-
-	# add the proper rpath for packages that do CONFIG += crypto
-	echo "QMAKE_RPATHDIR += \"${EPREFIX}/usr/${_libdir}/qca2\"" >> \
-		"${D%/}${EPREFIX}/usr/share/qt4/mkspecs/features/crypto.prf" \
-		|| die "failed to add rpath to crypto.prf"
 }
