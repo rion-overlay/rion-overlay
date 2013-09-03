@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-PLUGIN_DIR="generic"
+PLUGIN_DIR="unix"
 inherit psiplus-plugin
 
 DESCRIPTION="Psi+ Gnome 3 support plugin"

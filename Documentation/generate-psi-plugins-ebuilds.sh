@@ -63,7 +63,9 @@ METACONTENT
 )" > "net-im/psi-${pn}/metadata.xml"
 
   arch=generic
-  for pu in $PLUGINS_UNIX; do [ "$pu" = "${pn}plugin/" ] && arch=unix; done
+  for pu in $PLUGINS_UNIX; do [ "$pu" = "${pn}plugin" ] && arch=unix; done
+  dirvar=""
+  [ "$arch" != "generic" ] && dirvar="PLUGIN_DIR=\"${arch}\""
   echo "$(cat <<EBUILDCONTENT
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
@@ -71,7 +73,7 @@ METACONTENT
 
 EAPI="4"
 
-PLUGIN_DIR="${arch}"
+${dirvar}
 inherit psiplus-plugin
 
 DESCRIPTION="${desc}"
