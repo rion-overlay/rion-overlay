@@ -8,7 +8,7 @@ die() {
 [ ! -d "net-im" ] && die "Please start this script in the overlay root"
 
 list_plugins() {
-  wget -O- https://github.com/psi-plus/plugins/tree/master/$1 2>/dev/null | grep -oE '>\w+plugin/<' | while read -r v; do echo ${v:1:-8}; done
+  wget -O- https://github.com/psi-plus/plugins/tree/master/$1 2>/dev/null | grep -oE '>\w+plugin<' | while read -r v; do echo ${v:1:-7}; done
 }
 
 PLUGINS_GENERIC=`list_plugins generic`
@@ -94,7 +94,7 @@ EBUILDCONTENT
 done
 
 ####### Add new ebuild to package.keywords and set #######
-echo "net-im/psi-${pn} **" >> Documentation/package.keywords/psi/psi.keywords
+echo "net-im/psi-${pn}::rion **" >> Documentation/package.keywords/psi/psi.keywords
 echo "net-im/psi-${pn}" >> sets/psiplus
 ##########################################################
 
