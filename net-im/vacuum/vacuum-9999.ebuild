@@ -45,6 +45,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-qt/qtcore-4.8:4[ssl]
 	>=dev-qt/qtgui-4.8:4
+	dev-qt/qtlockedfile
 	>=dev-libs/openssl-1.0.0
 	adiummessagestyle? ( >=dev-qt/qtwebkit-4.8:4 )
 	spell? (
