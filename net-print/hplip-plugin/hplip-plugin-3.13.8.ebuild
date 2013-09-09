@@ -2,11 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-#http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/
+EAPI="5"
 
-EAPI=5
-
-inherit eutils multilib unpacker
+inherit udev unpacker
 
 DESCRIPTION="Proprietary plugins and firmware for HPLIP"
 HOMEPAGE="http://hplipopensource.com/hplip-web/index.html"
@@ -14,18 +12,20 @@ SRC_URI="http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hp
 
 LICENSE="hplip-plugin"
 SLOT="0"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
 	~net-print/hplip-${PV}
 	virtual/udev
-	"
+"
 DEPEND=""
+
+S=${WORKDIR}
 
 HPLIP_HOME=/usr/share/hplip
 
 # Binary prebuilt package
-KEYWORDS="-* ~amd64 ~x86"
 QA_PRESTRIPPED="
 /usr/share/hplip/scan/plugins/bb_marvell.so
 /usr/share/hplip/scan/plugins/bb_soapht.so
@@ -35,23 +35,16 @@ QA_PRESTRIPPED="
 
 # License does not allow us to redistribute the "source" package
 RESTRICT="mirror"
-S="$WORKDIR"
-src_unpack() {
-	unpack_makeself "hplip-${PV}-plugin.run" || die 'unpack failed'
-}
 
-src_prepare() {
-	sed -i -e 's/SYSFS/ATTR/g' *.rules || die
+src_unpack() {
+	unpack_makeself "hplip-${PV}-plugin.run"
 }
 
 src_install() {
 	local hplip_arch=$(use amd64 && echo 'x86_64' || echo 'x86_32')
 
-	insinto /$(get_libdir)/udev/rules.d
-	doins *.rules || die
-
 	insinto "${HPLIP_HOME}"/data/firmware
-	doins *.fw.gz || die
+	doins *.fw.gz
 
 	for plugin in *-${hplip_arch}.so; do
 		local plugin_type=prnt
@@ -61,19 +54,14 @@ src_install() {
 		esac
 
 		exeinto "${HPLIP_HOME}"/${plugin_type}/plugins
-		newexe ${plugin} ${plugin/-${hplip_arch}} || die "failed to install ${plugin}"
+		newexe ${plugin} ${plugin/-${hplip_arch}}
 	done
-}
 
-pkg_postinst() {
-	echo "# hplip.state - HPLIP runtime persistent variables." > /var/lib/hp/hplip.state
-	echo "" >> /var/lib/hp/hplip.state
-	echo "[plugin]" >> /var/lib/hp/hplip.state
-	echo "installed=1" >> /var/lib/hp/hplip.state
-	echo "eula=1" >> /var/lib/hp/hplip.state
-	echo "version = ${PV}" >> /var/lib/hp/hplip.state
-}
-
-pkg_postrm() {
-	sed -ri 's/(installed|eula)=1/\1=0/' /var/lib/hp/hplip.state
+	mkdir -p "${ED}/var/lib/hp/"
+	cat >> "${ED}/var/lib/hp/hplip.state" << _EOF_
+[plugin]
+installed = 1
+eula = 1
+version = ${PV}
+_EOF_
 }
