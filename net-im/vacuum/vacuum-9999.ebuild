@@ -12,7 +12,7 @@ HOMEPAGE="http://code.google.com/p/vacuum-im"
 ESVN_REPO_URI="http://vacuum-im.googlecode.com/svn/trunk"
 
 LICENSE="GPL-3"
-SLOT="0/28" # subslot = libvacuumutils soname version
+SLOT="0/29" # subslot = libvacuumutils soname version
 KEYWORDS=""
 PLUGINS=" adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries"
 SPELLCHECKER_BACKENDS="aspell +enchant hunspell"
@@ -48,6 +48,7 @@ RDEPEND="
 	dev-qt/qtlockedfile
 	>=dev-libs/openssl-1.0.0
 	adiummessagestyle? ( >=dev-qt/qtwebkit-4.8:4 )
+	filemessagearchive? ( >=dev-qt/qtsql-4.8:4[sqlite] )
 	spell? (
 		aspell? ( app-text/aspell )
 		enchant? ( app-text/enchant )
