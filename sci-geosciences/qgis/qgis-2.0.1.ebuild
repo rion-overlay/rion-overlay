@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/qgis/qgis-1.8.0.ebuild,v 1.4 2013/09/05 19:04:17 mgorny Exp $
+# $Header: Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples gps grass gsl postgres python spatialite test"
+IUSE="examples gps grass gsl mapserver postgres python spatialite test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -36,8 +36,12 @@ RDEPEND="
 	dev-qt/qtsvg:4
 	dev-qt/qtsql:4
 	dev-qt/qtwebkit:4
-	x11-libs/qwt:5[svg]
+	|| (
+		( =x11-libs/qwt-6.0*[svg] >=x11-libs/qwtpolar-1 )
+		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
+	)
 	grass? ( >=sci-geosciences/grass-6.4.0_rc6[python?] )
+	mapserver? ( dev-libs/fcgi )
 	postgres? ( >=dev-db/postgresql-base-8.4 )
 	python? (
 		dev-python/PyQt4[X,sql,svg,${PYTHON_USEDEP}]
@@ -48,7 +52,6 @@ RDEPEND="
 		dev-db/sqlite:3
 		dev-db/spatialite
 	)"
-#	!bundled-libs? ( <x11-libs/qwtpolar-1 )
 
 DEPEND="${RDEPEND}
 	sys-devel/bison
@@ -69,12 +72,12 @@ src_configure() {
 		"-DQGIS_LIB_SUBDIR=$(get_libdir)"
 		"-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis"
 		"-DWITH_INTERNAL_SPATIALITE=OFF"
-#		"-DWITH_INTERNAL_QWTPOLAR=$(usex bundled-libs "ON" "OFF")"
 		"-DWITH_INTERNAL_QWTPOLAR=OFF"
 		"-DPEDANTIC=OFF"
 		"-DWITH_APIDOC=OFF"
 		$(cmake-utils_use_with postgres POSTGRESQL)
 		$(cmake-utils_use_with grass GRASS)
+		$(cmake-utils_use_with mapserver MAPSERVER)
 		$(cmake-utils_use_with python BINDINGS)
 		$(cmake-utils_use python BINDINGS_GLOBAL_INSTALL)
 		$(cmake-utils_use_with spatialite SPATIALITE)
@@ -82,6 +85,13 @@ src_configure() {
 		$(cmake-utils_use_enable test TESTS)
 		$(usex grass "-DGRASS_PREFIX=/usr/" "")
 	)
+	if has_version '>=x11-libs/qwtpolar-1' &&  has_version 'x11-libs/qwt:5' ; then
+		elog "Both >=x11-libs/qwtpolar-1 and x11-libs/qwt:5 installed. Force build with qwt6"
+		mycmakeargs+=(
+			"-DQWT_INCLUDE_DIR=/usr/include/qwt6"
+			"-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6.so"
+		)
+	fi
 
 	cmake-utils_src_configure
 }
