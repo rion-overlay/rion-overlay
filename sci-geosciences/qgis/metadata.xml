@@ -12,6 +12,7 @@
 </longdescription>
   <use>
     <flag name="grass">Add support for <pkg>sci-geosciences/grass</pkg></flag>
+    <flag name="mapserver">Determines whether mapserver should be built</flag>
     <flag name="spatialite">Add support for <pkg>dev-db/spatialite</pkg></flag>
   </use>
 </pkgmetadata>
