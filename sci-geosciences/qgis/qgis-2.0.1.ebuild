@@ -46,6 +46,8 @@ RDEPEND="
 	python? (
 		dev-python/PyQt4[X,sql,svg,${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
+		dev-python/qscintilla-python[${PYTHON_USEDEP}]
+		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		${PYTHON_DEPS}
 	)
 	spatialite? (
