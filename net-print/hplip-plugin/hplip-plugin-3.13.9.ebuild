@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
+QA_PREBUILT="*"
+
 RDEPEND="
 	~net-print/hplip-${PV}
 	virtual/udev
