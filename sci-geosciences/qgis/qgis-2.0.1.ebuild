@@ -65,6 +65,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-python-pyc.patch
+	epatch "${FILESDIR}"/${P}-offline_editing_plugin_depend_on_spatialite.patch
 }
 
 src_configure() {
