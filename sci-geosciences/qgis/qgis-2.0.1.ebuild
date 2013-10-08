@@ -74,7 +74,6 @@ src_configure() {
 		"-DBUILD_SHARED_LIBS=ON"
 		"-DQGIS_LIB_SUBDIR=$(get_libdir)"
 		"-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis"
-		"-DWITH_INTERNAL_SPATIALITE=OFF"
 		"-DWITH_INTERNAL_QWTPOLAR=OFF"
 		"-DPEDANTIC=OFF"
 		"-DWITH_APIDOC=OFF"
@@ -88,6 +87,13 @@ src_configure() {
 		$(cmake-utils_use_enable test TESTS)
 		$(usex grass "-DGRASS_PREFIX=/usr/" "")
 	)
+
+	if use spatialite ; then
+		mycmakeargs+=( "-DWITH_INTERNAL_SPATIALITE=OFF" )
+	else
+		mycmakeargs+=( "-DWITH_INTERNAL_SPATIALITE=ON" )
+	fi
+
 	if has_version '>=x11-libs/qwtpolar-1' &&  has_version 'x11-libs/qwt:5' ; then
 		elog "Both >=x11-libs/qwtpolar-1 and x11-libs/qwt:5 installed. Force build with qwt6"
 		mycmakeargs+=(

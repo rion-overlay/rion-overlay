@@ -2,6 +2,9 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild:
+  Use internal spatialite with USE=-spatialite
+
   08 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild,
   +files/qgis-2.0.1-offline_editing_plugin_depend_on_spatialite.patch:
   Fix build with USE=-spatialite
