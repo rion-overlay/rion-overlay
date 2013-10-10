@@ -2,6 +2,11 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild,
+  +files/qgis-2.0.1-fix-build-with-sip-4.15_part1.patch,
+  +files/qgis-2.0.1-fix-build-with-sip-4.15_part2.patch:
+  Apply upstream patches to build with sip-4.15
+
   08 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild:
   Use internal spatialite with USE=-spatialite
 
