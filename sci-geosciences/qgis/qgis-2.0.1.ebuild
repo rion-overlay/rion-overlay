@@ -66,8 +66,8 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-python-pyc.patch
 	epatch "${FILESDIR}"/${P}-offline_editing_plugin_depend_on_spatialite.patch
-	epatch "${FILESDIR}"/${P}-qgis-2.0.1-fix-build-with-sip-4.15_part1.patch
-	epatch "${FILESDIR}"/${P}-qgis-2.0.1-fix-build-with-sip-4.15_part2.patch
+	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part1.patch
+	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part2.patch
 }
 
 src_configure() {
