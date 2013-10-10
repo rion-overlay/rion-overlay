@@ -66,6 +66,8 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-python-pyc.patch
 	epatch "${FILESDIR}"/${P}-offline_editing_plugin_depend_on_spatialite.patch
+	epatch "${FILESDIR}"/${P}-qgis-2.0.1-fix-build-with-sip-4.15_part1.patch
+	epatch "${FILESDIR}"/${P}-qgis-2.0.1-fix-build-with-sip-4.15_part2.patch
 }
 
 src_configure() {
@@ -83,6 +85,7 @@ src_configure() {
 		$(cmake-utils_use_with python BINDINGS)
 		$(cmake-utils_use python BINDINGS_GLOBAL_INSTALL)
 		$(cmake-utils_use_with spatialite SPATIALITE)
+		$(cmake-utils_use_with spatialite PYSPATIALITE)
 		$(cmake-utils_use_with gsl GSL)
 		$(cmake-utils_use_enable test TESTS)
 		$(usex grass "-DGRASS_PREFIX=/usr/" "")
