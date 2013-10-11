@@ -22,56 +22,56 @@ DEPEND="${RDEPEND} qt4? ( dev-qt/qttest:4[debug?] )
 	qt5? ( dev-qt/qttest:5[debug?] )"
 REQUIRED_USE="|| ( qt4 qt5 )"
 
-src_prepare() {
-	use aqua && sed -i \
-		-e "s|QMAKE_LFLAGS_SONAME =.*|QMAKE_LFLAGS_SONAME = -Wl,-install_name,|g" \
-		src/src.pro
-
-	cmake-utils_src_prepare
+wrap_stage() {
+	stage=$1
+	for qt in qt4 qt5; do
+		use $qt && {
+			BUILD_DIR="${WORKDIR}/${PN}-${qt}-build" \
+			QT=$qt $stage
+		}
+	done
 }
 
 src_configure()
 {
-	local mycmakeargs=( "-DPKGCONFIG_INSTALL_PREFIX=${EPREFIX}/usr/$(get_libdir)/pkgconfig"
-		-DQC_CERTSTORE_PATH="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt )
-	use qt4 && mycmakeargs+=("-DQT4_BUILD=1")
-	use test || mycmakeargs+=("-DBUILD_TESTS=OFF")
-	cmake-utils_src_configure
+	my_configure() {
+		local mycmakeargs=(
+			-DCMAKE_INSTALL_PREFIX="${MYPREFIX}"
+			"-DPKGCONFIG_INSTALL_PREFIX=${EPREFIX}/usr/$(get_libdir)/pkgconfig"
+			-DQC_CERTSTORE_PATH="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt
+			-DQCA_MAN_INSTALL_DIR="${EPREFIX}/usr/share/man"
+		)
+		[ "$QT" = qt4 ] && mycmakeargs+=("-DQT4_BUILD=1")
+		[ "$QT" = qt5 ] && mycmakeargs+=("-DQCA_SUFFIX=qt5")
+		use test || mycmakeargs+=("-DBUILD_TESTS=OFF")
+		cmake-utils_src_configure
+	}
+	wrap_stage my_configure
 }
 
-#src_configure() {
-#	use prefix || EPREFIX=
-#
-#	_libdir=$(get_libdir)
-#
-#	# Ensure proper rpath
-#	export EXTRA_QMAKE_RPATH="${EPREFIX}/usr/${_libdir}/qca2"
-#	qconf
-#	./configure \
-#		--prefix="${EPREFIX}"/usr \
-#		--qtdir="${EPREFIX}"/usr \
-#		--includedir="${EPREFIX}"/usr/include/qca2 \
-#		--libdir="${EPREFIX}"/usr/${_libdir}/qca2 \
-#		--certstore-path="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt \
-#		--no-separate-debug-info \
-#		--disable-tests \
-#		--$(use debug && echo debug || echo release) \
-#		--no-framework \
-#		|| die "configure failed"
-#
-#	eqmake4
-#}
+src_compile()
+{
+	wrap_stage cmake-utils_src_compile
+}
+
+src_test()
+{
+	wrap_stage enable_cmake-utils_src_test
+}
 
 src_install() {
-	cmake-utils_src_install
-	dodoc README TODO || die "dodoc failed"
+	my_install() {
+		cmake-utils_src_install
+		dodoc README TODO || die "dodoc failed"
 
-	if use doc; then
-		dohtml "${S}"/apidocs/html/* || die "Failed to install documentation"
-	fi
+		if use doc; then
+			dohtml "${S}"/apidocs/html/* || die "Failed to install documentation"
+		fi
 
-	if use examples; then
-		insinto /usr/share/doc/${PF}/
-		doins -r "${S}"/examples || die "Failed to install examples"
-	fi
+		if use examples; then
+			insinto /usr/share/doc/${PF}/
+			doins -r "${S}"/examples || die "Failed to install examples"
+		fi
+	}
+	wrap_stage my_install
 }
