@@ -26,7 +26,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/expat
 	sci-geosciences/gpsbabel
-	>=sci-libs/gdal-1.6.1[geos,python?]
+	>=sci-libs/gdal-1.6.1[geos,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
 	gsl? ( sci-libs/gsl )
 	sci-libs/libspatialindex
@@ -68,6 +68,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-offline_editing_plugin_depend_on_spatialite.patch
 	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part1.patch
 	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part2.patch
+	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part3.patch
 }
 
 src_configure() {
@@ -135,6 +136,13 @@ pkg_postinst() {
 		elog "If you don't intend to use an external PostGIS server"
 		elog "you should install:"
 		elog "   dev-db/postgis"
+	else
+		if use python ; then
+			elog "Support of dev-db/postgresql-base is disabled."
+			elog "But some installed python-plugins needs import psycopg2 module."
+			elog "If you do not need this modules just disable them in main menu."
+			elog "Or you need to set USE=postgres"
+		fi
 	fi
 
 	gnome2_icon_cache_update
