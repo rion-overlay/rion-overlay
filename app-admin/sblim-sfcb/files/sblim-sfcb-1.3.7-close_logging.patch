@@ -1,0 +1,19 @@
+diff -up sblim-sfcb-1.3.7/cimcClientSfcbLocal.c.orig sblim-sfcb-1.3.7/cimcClientSfcbLocal.c
+--- sblim-sfcb-1.3.7/cimcClientSfcbLocal.c.orig	2010-05-11 09:08:17.709465965 +0200
++++ sblim-sfcb-1.3.7/cimcClientSfcbLocal.c	2010-05-11 09:11:10.133456342 +0200
+@@ -209,7 +209,6 @@ static CMPIStatus releaseClient(Client *
+   if (cl->connection) CMRelease(cl->connection);
+ 
+   free(cl);
+-  closeLogging();
+   return rc;
+ }
+ 
+@@ -1618,6 +1617,7 @@ int localConnect(ClientEnv* ce, CMPIStat
+ static void* release(ClientEnv* ce)
+ {
+    void *lib=ce->hdl;
++   closeLogging();
+    CONNECT_LOCK();
+    if (localConnectCount > 0) localConnectCount -= 1;
+    if (localConnectCount == 0) {

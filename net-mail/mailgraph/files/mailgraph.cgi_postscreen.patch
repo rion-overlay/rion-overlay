@@ -1,0 +1,30 @@
+# mailgraph.cgi patch to show separately postscreen rejects
+# Birta Levente (levi@birkosan.com) - http://www.birkosan.com
+--- ./mailgraph.cgi.orig	2007-08-29 12:06:01.000000000 +0300
++++ ./mailgraph.cgi		2012-05-07 15:00:01.000000000 +0300
+@@ -34,6 +34,7 @@
+ 	bounced  => '000000',
+ 	virus    => 'DDBB00',
+ 	spam     => '999999',
++	postscreen => '00FF00',
+ );
+ 
+ sub rrd_graph(@)
+@@ -137,6 +138,17 @@
+ 		'GPRINT:rspam:AVERAGE:avg\: %5.2lf msgs/min',
+ 		'GPRINT:rmspam:MAX:max\: %4.0lf msgs/min\l',
+ 
++		"DEF:postscreen=$rrd_virus:postscreen:AVERAGE",
++                "DEF:mpostscreen=$rrd_virus:postscreen:MAX",
++                "CDEF:rpostscreen=postscreen,60,*",
++                "CDEF:dpostscreen=postscreen,UN,0,postscreen,IF,$step,*",
++                "CDEF:spostscreen=PREV,UN,dpostscreen,PREV,IF,dpostscreen,+",
++                "CDEF:rmpostscreen=mpostscreen,60,*",
++                "STACK:rpostscreen#$color{postscreen}:Postscreen  ",
++                'GPRINT:spostscreen:MAX:total\: %8.0lf msgs',
++                'GPRINT:rpostscreen:AVERAGE:avg\: %5.2lf msgs/min',
++                'GPRINT:rmpostscreen:MAX:max\: %4.0lf msgs/min\l',
++
+ 		"DEF:rejected=$rrd:rejected:AVERAGE",
+ 		"DEF:mrejected=$rrd:rejected:MAX",
+ 		"CDEF:rrejected=rejected,60,*",

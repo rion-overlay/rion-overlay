@@ -1,0 +1,96 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI=5
+
+inherit eutils autotools-utils git-2 user
+
+DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
+HOMEPAGE="http://sagan.softwink.com/"
+EGIT_REPO_URI="https://github.com/beave/sagan.git"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS=""
+IUSE="smtp snort +lognorm +libdnet +pcap +websense"
+
+DEPEND="virtual/pkgconfig
+	${RDEPEND}"
+
+RDEPEND="dev-libs/libpcre
+	app-admin/sagan-rules
+	smtp? ( net-libs/libesmtp )
+	pcap? ( net-libs/libpcap )
+	lognorm? ( dev-libs/liblognorm )
+	libdnet? ( dev-libs/libdnet )
+	snort? ( net-analyzer/snortsam )
+	websense? ( net-misc/curl 
+				dev-libs/json-c 
+				)
+	"
+
+AUTOTOOLS_IN_SOURCE_BUILD=1
+AUTOTOOLS_AUTORECONF=1
+
+DOCS=(AUTHORS ChangeLog FAQ INSTALL README NEWS TODO)
+
+pkg_setup() {
+	enewgroup sagan
+	enewuser sagan -1 -1 /dev/null sagan
+}
+
+src_configure() {
+	 local myeconfargs=(
+		$(use_enable smtp esmtp)
+		$(use_enable lognorm)
+		$(use_enable libdnet)
+		$(use_enable pcap libpcap)
+		$(use_enable snort snortsam)
+		$(use_enable websense)
+		)
+
+	autotools-utils_src_configure
+}
+
+src_install() {
+	autotools-utils_src_install
+
+	diropts -g sagan -o sagan -m 775
+
+	dodir /var/log/sagan
+	dodir /run/sagan
+
+	keepdir /var/log/sagan
+	keepdir /run/sagan
+
+	mkfifo -m 0640 "${D}"/run/sagan.fifo
+	chown sagan.root "${D}"/run/sagan.fifo
+
+	touch "${D}"/var/log/sagan/sagan.log
+	chown sagan.sagan "${D}"/var/log/sagan/sagan.log
+
+	newinitd "${FILESDIR}"/sagan.init sagan
+	newconfd "${FILESDIR}"/sagan.confd sagan
+
+	insinto /usr/share/doc/${PF}/examples
+	doins -r extra/*
+}
+
+pkg_postinst() {
+
+	if use smtp; then
+		ewarn "You have smtp use flag"
+		ewarn "If you plan on using Sagan with the libesmtp (E-mail),"
+		ewarn "the Sagan user will need a valid, user writeable home directory."
+		ewarn "for security reason, ebuild create sagan user's with /dev/null"
+		ewarn "home"
+		ewarn "run as root "
+		ewarn " chsh -s /bin/bash sagan"
+		ewarn "and create home directory manuallu"
+	fi
+
+	einfo "https://wiki.quadrantsec.com/bin/view/Main/SaganHOWTO"
+	einfo ""
+
+}
