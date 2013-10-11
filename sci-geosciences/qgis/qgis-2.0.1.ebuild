@@ -26,7 +26,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/expat
 	sci-geosciences/gpsbabel
-	>=sci-libs/gdal-1.6.1[geos,python?]
+	>=sci-libs/gdal-1.6.1[geos,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
 	gsl? ( sci-libs/gsl )
 	sci-libs/libspatialindex
@@ -68,6 +68,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-offline_editing_plugin_depend_on_spatialite.patch
 	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part1.patch
 	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part2.patch
+	epatch "${FILESDIR}"/${P}-fix-build-with-sip-4.15_part3.patch
 }
 
 src_configure() {
