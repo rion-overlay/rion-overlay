@@ -136,6 +136,13 @@ pkg_postinst() {
 		elog "If you don't intend to use an external PostGIS server"
 		elog "you should install:"
 		elog "   dev-db/postgis"
+	else
+		if use python ; then
+			elog "Support of dev-db/postgresql-base is disabled."
+			elog "But some installed python-plugins needs import psycopg2 module."
+			elog "If you do not need this modules just disable them in main menu."
+			elog "Or you need to set USE=postgres"
+		fi
 	fi
 
 	gnome2_icon_cache_update
