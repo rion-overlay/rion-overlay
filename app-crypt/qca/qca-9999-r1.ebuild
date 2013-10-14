@@ -16,11 +16,14 @@ KEYWORDS=""
 IUSE="aqua debug doc examples +qt4 qt5 test"
 RESTRICT="test"
 
-RDEPEND="qt4? ( dev-qt/qtcore:4[debug?] )
+RDEPEND=">=dev-libs/openssl-0.9.6
+	qt4? ( dev-qt/qtcore:4[debug?] )
 	qt5? ( dev-qt/qtcore:5[debug?] )"
 DEPEND="${RDEPEND} qt4? ( dev-qt/qttest:4[debug?] )
 	qt5? ( dev-qt/qttest:5[debug?] )"
 REQUIRED_USE="|| ( qt4 qt5 )"
+
+PROVIDE="app-crypt/qca-ossl"
 
 wrap_stage() {
 	stage=$1
