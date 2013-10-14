@@ -9,7 +9,7 @@ HOMEPAGE="http://rion-overlay.googlecode.com"
 SRC_URI=""
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="2"
 KEYWORDS=""
 IUSE=""
 
