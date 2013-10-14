@@ -23,8 +23,6 @@ DEPEND="${RDEPEND} qt4? ( dev-qt/qttest:4[debug?] )
 	qt5? ( dev-qt/qttest:5[debug?] )"
 REQUIRED_USE="|| ( qt4 qt5 )"
 
-PROVIDE="app-crypt/qca-ossl"
-
 wrap_stage() {
 	stage=$1
 	for qt in qt4 qt5; do
