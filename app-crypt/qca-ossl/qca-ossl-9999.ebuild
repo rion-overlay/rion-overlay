@@ -8,10 +8,10 @@ DESCRIPTION="Fake qca-ossl package"
 HOMEPAGE="http://rion-overlay.googlecode.com"
 SRC_URI=""
 
-LICENSE="MIT"
+LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS=""
 IUSE=""
 
-DEPEND=""
+DEPEND=">=app-crypt/qca-9999-r1:2"
 RDEPEND="${DEPEND}"
