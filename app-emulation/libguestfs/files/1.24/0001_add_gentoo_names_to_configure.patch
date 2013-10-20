@@ -1,7 +1,7 @@
 diff --git a/configure.ac b/configure.ac
 --- a/configure.ac
 +++ b/configure.ac
-@@ -384,6 +384,11 @@
+@@ -482,6 +482,11 @@
          DISTRO=UBUNTU
      fi
  fi
