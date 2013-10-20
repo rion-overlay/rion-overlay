@@ -1,7 +1,7 @@
 diff --git a/Makefile.am b/Makefile.am
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -79,9 +79,6 @@
+@@ -88,9 +88,6 @@
  if HAVE_HASKELL
  SUBDIRS += haskell
  endif
