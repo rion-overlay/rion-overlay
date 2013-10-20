@@ -1,0 +1,9 @@
+--- a/viwsl
++++ b/viwsl
+@@ -3,5 +3,5 @@
+ # source function library
+ . /usr/share/wsl/wsl-functions
+ 
+-vi ${HOME}/${MYCONFIG}
++sensible-editor ${HOME}/${MYCONFIG}
+ 

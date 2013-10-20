@@ -1,0 +1,36 @@
+# ChangeLog for sci-geosciences/qgis
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  11 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild:
+  Add the notice when USE="-postgres python"
+
+  11 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild,
+  +files/qgis-2.0.1-fix-build-with-sip-4.15_part3.patch:
+  Fix depend for sci-libs/gdal with PYTHON_USEDEP
+
+  10 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild,
+  +files/qgis-2.0.1-fix-build-with-sip-4.15_part1.patch,
+  +files/qgis-2.0.1-fix-build-with-sip-4.15_part2.patch:
+  Apply upstream patches to build with sip-4.15
+
+  08 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild:
+  Use internal spatialite with USE=-spatialite
+
+  08 Oct 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild,
+  +files/qgis-2.0.1-offline_editing_plugin_depend_on_spatialite.patch:
+  Fix build with USE=-spatialite
+
+  30 Sep 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild:
+  Fix missing depends
+
+  27 Sep 2013; eegorov <egor.y.egorov@gmail.com> qgis-2.0.1.ebuild,
+  metadata.xml:
+  Fix missing depends on x11-libs/qwtpolar. Add optional build mapserver
+
+*qgis-2.0.1 (26 Sep 2013)
+
+  26 Sep 2013; eegorov <egor.y.egorov@gmail.com> +qgis-2.0.1.ebuild,
+  +files/qgis-2.0.1-no-python-pyc.patch, +metadata.xml:
+  Bump sci-geosciences/qgis version to 2.0.1
+
