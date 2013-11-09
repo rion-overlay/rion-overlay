@@ -1,0 +1,198 @@
+diff -ur phatch-0.2.7_old/phatch/core/pil.py phatch-0.2.7/phatch/core/pil.py
+--- phatch-0.2.7_old/phatch/core/pil.py	2010-03-12 12:29:26.000000000 +0530
++++ phatch-0.2.7/phatch/core/pil.py	2011-06-25 14:27:36.487002576 +0530
+@@ -180,8 +180,8 @@
+             metadata.InfoZexif: image}
+         #check format -> readable/writable metadata with pyexiv2
+         if exif and exif.is_readable_format(image.format):
+-            self.pyexiv2 = pyexiv2.Image(path)
+-            self.pyexiv2.readMetadata()
++            self.pyexiv2 = pyexiv2.ImageMetadata(path)
++            self.pyexiv2.read()
+             self.writable_exif = exif.is_writable_format_exif(image.format)
+             self.writable_iptc = exif.is_writable_format_exif(image.format)
+             self.writable = self.writable_exif or self.writable_iptc
+diff -ur phatch-0.2.7_old/phatch/lib/imageTable.py phatch-0.2.7/phatch/lib/imageTable.py
+--- phatch-0.2.7_old/phatch/lib/imageTable.py	2010-03-12 12:29:26.000000000 +0530
++++ phatch-0.2.7/phatch/lib/imageTable.py	2011-06-24 21:01:51.826422823 +0530
+@@ -356,8 +356,8 @@
+         for image, image_changes in changes:
+             # try to save to image file
+             try:
+-                exiv2_image = pyexiv2.Image(image.filename)
+-                exiv2_image.readMetadata()
++                exiv2_image = pyexiv2.ImageMetadata(image.filename)
++                exiv2_image.read()
+                 for key, value in image_changes.items():
+                     exiv2_key = str(key.replace(SEPARATOR, '.'))
+                     if value:
+diff -ur phatch-0.2.7_old/phatch/lib/metadata.py phatch-0.2.7/phatch/lib/metadata.py
+--- phatch-0.2.7_old/phatch/lib/metadata.py	2010-03-12 12:29:26.000000000 +0530
++++ phatch-0.2.7/phatch/lib/metadata.py	2011-06-25 14:29:13.460944234 +0530
+@@ -931,8 +931,8 @@
+         """
+         format = imtools.get_format(os.path.splitext(filename)[-1][1:])
+         if cls._pyexiv2.is_readable_format(format):
+-            source = cls.pyexiv2.Image(filename)
+-            source.readMetadata()
++            source = cls.pyexiv2.ImageMetadata(filename)
++            source.read()
+             if all:
+                 source.cacheAllExifTags()
+                 source.cacheAllIptcTags()
+@@ -1130,7 +1130,7 @@
+ 
+     def _extract_others(self):
+         """Extract all other vars"""
+-        self._extract_others_from_keys(self._source.exifKeys())
++        self._extract_others_from_keys(self._source.exif_keys)
+ 
+     regex = re.compile('^Exif|^orientation$')
+     type = 'Exif'
+@@ -1170,7 +1170,7 @@
+ 
+     def _extract_others(self):
+         """Extract all other vars"""
+-        self._extract_others_from_keys(self._source.iptcKeys())
++        self._extract_others_from_keys(self._source.iptc_keys)
+ 
+     type = 'Iptc'
+     regex = re.compile('^Iptc_')
+diff -ur phatch-0.2.7_old/phatch/lib/openImage.py phatch-0.2.7/phatch/lib/openImage.py
+--- phatch-0.2.7_old/phatch/lib/openImage.py	2010-03-12 12:29:26.000000000 +0530
++++ phatch-0.2.7/phatch/lib/openImage.py	2011-06-24 21:01:51.831423953 +0530
+@@ -77,8 +77,8 @@
+ def open_image_exif_thumb(uri):
+     if pyexiv2:
+         try:
+-            pyexiv2_image = pyexiv2.Image(uri)
+-            pyexiv2_image.readMetadata()
++            pyexiv2_image = pyexiv2.ImageMetadata(uri)
++            pyexiv2_image.read()
+             thumb_data = pyexiv2_image.getThumbnailData()
+             if thumb_data:
+                 return imtools.open_image_data(thumb_data)
+diff -ur phatch-0.2.7_old/phatch/lib/_pyexiv2.py phatch-0.2.7/phatch/lib/_pyexiv2.py
+--- phatch-0.2.7_old/phatch/lib/_pyexiv2.py	2010-03-12 12:29:26.000000000 +0530
++++ phatch-0.2.7/phatch/lib/_pyexiv2.py	2011-06-25 13:45:49.054578121 +0530
+@@ -103,8 +103,7 @@
+     #verify if there are tags which might break exiv2
+     broken_tag = None
+ 
+-    for tag in list(source_pyexiv2_image.exifKeys()) + \
+-        list(source_pyexiv2_image.iptcKeys()):
++    for tag in list(source_pyexiv2_image.exif_keys + source_pyexiv2_image.iptc_keys):
+         if RE_BROKEN.match(tag):
+             broken_tag = RE_BROKEN
+             break
+@@ -147,21 +146,25 @@
+     :type thumbdata: string
+     """
+     #read target
+-    target = pyexiv2.Image(target)
+-    target.readMetadata()
++    target = pyexiv2.ImageMetadata(target)
++    target.read()
+     warnings = []
+     written = False
++    #print broken_tag
+     #copy exif metadata
+     if (not source_format or source_format in READ_EXIF) and \
+         (not target_format or target_format in WRITE_EXIF):
+-        for tag in source_pyexiv2_image.exifKeys():
++        for tag in source_pyexiv2_image.exif_keys:
+             if not(broken_tag and broken_tag.match(tag)):
+                 try:
+                     #the following is more or less the same as
+                     #target[tag] = source_pyexiv2_image[tag]
+                     #but prevents conversions
+-                    target._Image__setExifTag(tag,
+-                        source_pyexiv2_image._Image__getExifTag(tag)[1])
++                    #target._Image__setExifTag(tag,
++                    #     source_pyexiv2_image._Image__getExifTag(tag)[1])
++                    #targetMessage = '%s %s' % (tag, source_pyexiv2_image[tag].raw_value)
++                    #print targetMessage
++                    target[tag] = pyexiv2.ExifTag(tag,source_pyexiv2_image[tag].value);
+                     written = True
+                 except Exception, message:
+                     message = '%s: %s' % (tag, message)
+@@ -169,9 +172,9 @@
+     #copy iptc metadata
+     if (not source_format or source_format in READ_IPTC) and \
+         (not target_format or target_format in WRITE_IPTC):
+-        for tag in source_pyexiv2_image.iptcKeys():
++        for tag in source_pyexiv2_image.iptc_keys:
+             try:
+-                target[tag] = source_pyexiv2_image[tag]
++                target[tag] = pyexiv2.IptcTag(tag, source_pyexiv2_image[tag].value);
+                 written = True
+             except Exception, message:
+                 message = '%s: %s' % (tag, message)
+@@ -180,14 +183,14 @@
+     if (not source_format or source_format in READ_COMMENT) and \
+         (not target_format or target_format in WRITE_COMMENT):
+         try:
+-            target.setComment(source_pyexiv2_image.getComment())
++            target.comment = (source_pyexiv2_image.comment)
+             written = True
+         except Exception, message:
+             warnings.append(message)
+     warnings.append(write_thumbdata(target, thumbdata))
+     #save metadata (this might rise an exception)
+     if written:
+-        target.writeMetadata()
++        target.write()
+     return '\n'.join(warnings)
+ 
+ 
+@@ -200,6 +203,8 @@
+     return format
+ 
+ 
++# This method won't work. There is no method in pyexiv2 metadata
++# called getThumbnailData.
+ def read_thumbdata(image):
+     try:
+         return image.getThumbnailData()
+@@ -211,7 +216,9 @@
+     if (thumbdata is None):
+         return ''
+     try:
+-        image.setThumbnailData(thumbdata)
++        #print "setting thumbdata"
++        image.exif_thumbnail.data = thumbdata
++        #image.setThumbnailData(thumbdata)
+         return ''
+     except Exception, message:
+         return unicode(message)
+@@ -234,7 +241,7 @@
+ def flush(image, thumbdata):
+     warnings = [write_thumbdata(image, thumbdata)]
+     try:
+-        image.writeMetadata()
++        image.write()
+     except Exception, message:
+         warnings.append(unicode(message))
+     return '\n'.join(warnings)
+diff -ur phatch-0.2.7_old/tests/test_suite/utils.py phatch-0.2.7/tests/test_suite/utils.py
+--- phatch-0.2.7_old/tests/test_suite/utils.py	2010-03-12 12:29:26.000000000 +0530
++++ phatch-0.2.7/tests/test_suite/utils.py	2011-06-24 21:01:51.834424631 +0530
+@@ -168,12 +168,12 @@
+     """Compare images metadata"""
+     try:
+         import pyexiv2
+-        image1 = pyexiv2.Image(image1_path)
+-        image1.readMetadata()
+-        image2 = pyexiv2.Image(image2_path)
+-        image2.readMetadata()
+-        metadata1 = sorted([(key, image1[key]) for key in image1.exifKeys()])
+-        metadata2 = sorted([(key, image2[key]) for key in image2.exifKeys()])
++        image1 = pyexiv2.ImageMetaData(image1_path)
++        image1.read()
++        image2 = pyexiv2.ImageMetaData(image2_path)
++        image2.read()
++        metadata1 = sorted([(key, image1[key]) for key in image1.exif_keys])
++        metadata2 = sorted([(key, image2[key]) for key in image2.exif_keys])
+         return metadata1 == metadata2
+     except IOError:
+         return True
