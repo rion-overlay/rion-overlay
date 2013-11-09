@@ -19,13 +19,12 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave
+IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver
 plugins whiteboarding webkit"
 
 REQUIRED_USE="
 	iconsets? ( extras )
 	plugins? ( extras )
-	powersave? ( extras )
 	webkit? ( extras )
 "
 
