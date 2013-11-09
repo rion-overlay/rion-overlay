@@ -6,14 +6,13 @@ EAPI=5
 
 LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
-EGIT_HAS_SUBMODULES=1
 PSI_URI="git://github.com/psi-im"
 PSI_PLUS_URI="git://github.com/psi-plus"
 EGIT_REPO_URI="${PSI_URI}/psi.git"
 PSI_LANGS_URI="${PSI_URI}/psi-translations.git"
 PSI_PLUS_LANGS_URI="${PSI_PLUS_URI}/psi-plus-l10n.git"
 
-inherit eutils qt4-r2 multilib git-2
+inherit eutils qt4-r2 multilib git-r3
 
 DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
@@ -81,32 +80,29 @@ pkg_setup() {
 }
 
 src_unpack() {
-	git-2_src_unpack
-	unset EGIT_HAS_SUBMODULES EGIT_NONBARE
+	git-r3_src_unpack
 
 	# fetch translations
-	unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
+	unset EGIT_BRANCH EGIT_COMMIT
 	if use extras; then
 		EGIT_REPO_URI="${PSI_PLUS_LANGS_URI}"
 	else
 		EGIT_REPO_URI="${PSI_LANGS_URI}"
 	fi
-	EGIT_SOURCEDIR="${WORKDIR}/psi-l10n"
-	git-2_src_unpack
+	EGIT_CHECKOUT_DIR="${WORKDIR}/psi-l10n"
+	git-r3_src_unpack
 
 	if use extras; then
-		unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
-		EGIT_PROJECT="psi-plus/main.git" \
-		EGIT_SOURCEDIR="${WORKDIR}/psi-plus" \
+		unset EGIT_BRANCH EGIT_COMMIT
+		EGIT_CHECKOUT_DIR="${WORKDIR}/psi-plus" \
 		EGIT_REPO_URI="${PSI_PLUS_URI}/main.git" \
-		git-2_src_unpack
+		git-r3_src_unpack
 
 		if use iconsets; then
-			unset EGIT_MASTER EGIT_BRANCH EGIT_COMMIT EGIT_PROJECT
-			EGIT_PROJECT="psi-plus/resources.git" \
-			EGIT_SOURCEDIR="${WORKDIR}/resources" \
+			unset EGIT_BRANCH EGIT_COMMIT
+			EGIT_CHECKOUT_DIR="${WORKDIR}/resources" \
 			EGIT_REPO_URI="${PSI_PLUS_URI}/resources.git" \
-			git-2_src_unpack
+			git-r3_src_unpack
 		fi
 	fi
 }
