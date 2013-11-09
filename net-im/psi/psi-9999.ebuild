@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-9999.ebuild,v 1.12 2011/06/30 09:23:16 pva Exp $
 
-EAPI="4"
+EAPI=5
 
 LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
@@ -120,8 +120,6 @@ src_prepare() {
 
 		EPATCH_SOURCE="${WORKDIR}/psi-plus/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
-		use powersave && epatch "${WORKDIR}/psi-plus/patches/dev/psi-reduce-power-consumption.patch"
-
 		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 2)"
 		use webkit && {
 			echo "0.16.${PSI_PLUS_REVISION}-webkit (@@DATE@@)" > version
@@ -131,8 +129,6 @@ src_prepare() {
 
 		qconf || die "Failed to create ./configure."
 	fi
-
-	rm -rf third-party/qca # We use system libraries. Remove after patching, some patches may affect qca.
 }
 
 src_configure() {
