@@ -3,9 +3,9 @@ index ca60f37..3c65e76 100644
 --- a/doc/guide.tex
 +++ b/doc/guide.tex
 @@ -4059,6 +4059,15 @@ It also supports Roster Versioning (\xepref{0237}).
- Options:
  \begin{description}
  \iqdiscitem{Roster Management (\ns{jabber:iq:roster})}
+ \dbtype
 +  \titem{\{managers, [Domainname]\}} \ind{options!managers}
 +  List of components (or servers) that can manage users rosters using
 +  \footahref{http://jkaluza.fedorapeople.org/remote-roster.html}{XEP-xxxx: Remote Roster Management}.

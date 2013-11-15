@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: pva Exp $
 
-EAPI=4
+EAPI=5
 
-inherit eutils multilib pam ssl-cert git-2 subversion
+inherit eutils multilib pam ssl-cert systemd git-r3 subversion
 
 DESCRIPTION="The Erlang Jabber Daemon"
-HOMEPAGE="http://www.ejabberd.im/"
-EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
+HOMEPAGE="http://www.ejabberd.im/ https://github.com/processone/ejabberd/"
+EGIT_REPO_URI="https://github.com/processone/ejabberd"
 EGIT_BRANCH="2.1.x"
 
-SRC_URI="mod_statsdx? ( mirror://gentoo/ejabberd-mod_statsdx-1080.patch.gz )"
+SRC_URI="mod_statsdx? ( http://dev.gentoo.org/~radhermit/dist/${PN}-mod_statsdx-1118.patch.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -32,7 +32,7 @@ DEPEND=">=net-im/jabber-base-0.01
 #>=sys-apps/shadow-4.1.4.2-r3 - fixes bug in su that made ejabberdctl unworkable.
 RDEPEND="${DEPEND}
 	>=sys-apps/shadow-4.1.4.2-r3
-	 pam? ( virtual/pam )"
+	pam? ( virtual/pam )"
 
 # paths in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
@@ -48,11 +48,12 @@ pkg_setup() {
 
 src_unpack() {
 	default
-	git-2_src_unpack
+	git-r3_src_unpack
 	S="${S}/src"
 	cd "${S}"
 	mkdir additional_docs
 	for MODULE in ${EJABBERD_MODULES_ADDITIONAL}; do
+	# FIXME they are no in https://github.com/processone/ejabberd-contrib
 	if use ${MODULE}; then
 		MODULE=${MODULE/postgres/pgsql}
 		MODULE=${MODULE/xmlrpc/ejabberd_xmlrpc}
@@ -75,7 +76,7 @@ src_prepare() {
 	if use mod_statsdx; then
 		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
 		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
-		epatch "${WORKDIR}/ejabberd-mod_statsdx-1080.patch"
+		EPATCH_OPTS="-p2" epatch "${WORKDIR}"/${PN}-mod_statsdx-1118.patch
 	fi
 
 	# don't install release notes (we'll do this manually)
@@ -138,7 +139,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install
+	default
 
 	# Pam helper module permissions
 	# http://www.process-one.net/docs/ejabberd/guide_en.html
@@ -153,8 +154,13 @@ src_install() {
 	cd "${S}"
 	dodoc -r additional_docs
 	#dodir /var/lib/ejabberd
-	newinitd "${FILESDIR}/${PN}-3.initd" ${PN}
-	newconfd "${FILESDIR}/${PN}-3.confd" ${PN}
+	newinitd "${FILESDIR}"/${PN}-3.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}-3.confd ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_dotmpfilesd "${FILESDIR}"/${PN}.tmpfiles.conf
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/${PN}.logrotate ${PN}
 }
 
 pkg_preinst() {
@@ -162,28 +168,31 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	elog "For configuration instructions, please see"
-	elog "/usr/share/doc/${PF}/html/guide.html, or the online version at"
-	elog "http://www.process-one.net/en/ejabberd/docs/guide_en/"
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		elog "For configuration instructions, please see"
+		elog "/usr/share/doc/${PF}/html/guide.html, or the online version at"
+		elog "http://www.process-one.net/en/ejabberd/docs/guide_en/"
 
-	if ! use web ; then
-		ewarn
-		ewarn "The web USE flag is off, this has disabled the web admin interface."
-		ewarn
+		if ! use web ; then
+			ewarn
+			ewarn "The web USE flag is off, this has disabled the web admin interface."
+			ewarn
+		fi
+
+		elog
+		elog '===================================================================='
+		elog 'Quick Start Guide:'
+		elog '1) Add output of `hostname -f` to /etc/jabber/ejabberd.cfg line 91'
+		elog '   {hosts, ["localhost", "thehost"]}.'
+		elog '2) Add an admin user to /etc/jabber/ejabberd.cfg line 360'
+		elog '   {acl, admin, {user, "theadmin", "thehost"}}.'
+		elog '3) Start the server'
+		elog '   # /etc/init.d/ejabberd start (for openRC)'
+		elog '	 # systemctl start ejabberd (for Systemd)'
+		elog '4) Register the admin user'
+		elog '   # /usr/sbin/ejabberdctl register theadmin thehost thepassword'
+		elog '5) Log in with your favourite jabber client or using the web admin'
 	fi
-
-	elog
-	elog '===================================================================='
-	elog 'Quick Start Guide:'
-	elog '1) Add output of `hostname -f` to /etc/jabber/ejabberd.cfg line 91'
-	elog '   {hosts, ["localhost", "thehost"]}.'
-	elog '2) Add an admin user to /etc/jabber/ejabberd.cfg line 360'
-	elog '   {acl, admin, {user, "theadmin", "thehost"}}.'
-	elog '3) Start the server'
-	elog '   # /etc/init.d/ejabberd start'
-	elog '4) Register the admin user'
-	elog '   # /usr/sbin/ejabberdctl register theadmin thehost thepassword'
-	elog '5) Log in with your favourite jabber client or using the web admin'
 
 	# Upgrading from ejabberd-2.0.x:
 	if grep -E '^[^#]*EJABBERD_NODE=' "${EROOT}/etc/conf.d/ejabberd" >/dev/null 2>&1; then
