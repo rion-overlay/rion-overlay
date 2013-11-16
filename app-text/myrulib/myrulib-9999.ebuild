@@ -20,6 +20,7 @@ RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	dev-libs/libxml2
 	dev-db/sqlite:3[fts3(+),icu?]
+	dev-db/wxsqlite3:${WX_GTK_VER}
 	app-arch/bzip2
 	icu? ( dev-libs/icu:= )
 	reader? (
@@ -39,6 +40,7 @@ src_prepare() {
 		3rdparty/bzip2 \
 		3rdparty/faxpp \
 		3rdparty/sqlite3 \
+		3rdparty/wxsqlite3 \
 	|| die
 }
 
@@ -48,5 +50,8 @@ src_configure() {
 		$(use_with links) \
 		$(use_with reader) \
 		$(use_with syslog) \
+		--without-bzip2 \
+		--without-sqlite \
+		--without-wxsqlite \
 		--without-strip
 }
