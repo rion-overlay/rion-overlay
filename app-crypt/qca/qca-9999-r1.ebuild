@@ -13,10 +13,12 @@ EGIT_REPO_URI="git://anongit.kde.org/qca"
 LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS=""
-IUSE="aqua debug doc examples +qt4 qt5 test"
+IUSE="aqua debug doc examples gpg +qt4 qt5 sasl ssl test"
 RESTRICT="test"
 
-RDEPEND=">=dev-libs/openssl-0.9.6
+RDEPEND="gpg? ( app-crypt/gnupg )
+	sasl? ( dev-libs/cyrus-sasl )
+	ssl? ( >=dev-libs/openssl-0.9.6 )
 	qt4? ( dev-qt/qtcore:4[debug?] )
 	qt5? ( dev-qt/qtcore:5[debug?] )"
 DEPEND="${RDEPEND} qt4? ( dev-qt/qttest:4[debug?] )
@@ -41,10 +43,14 @@ src_configure()
 			"-DPKGCONFIG_INSTALL_PREFIX=${EPREFIX}/usr/$(get_libdir)/pkgconfig"
 			-DQC_CERTSTORE_PATH="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt
 			-DQCA_MAN_INSTALL_DIR="${EPREFIX}/usr/share/man"
+			-DBUILD_PLUGINS=none
 		)
 		[ "$QT" = qt4 ] && mycmakeargs+=("-DQT4_BUILD=1")
 		[ "$QT" = qt5 ] && mycmakeargs+=("-DQCA_SUFFIX=qt5")
 		use test || mycmakeargs+=("-DBUILD_TESTS=OFF")
+		use ssl && mycmakeargs+=("-DWITH_ossl_PLUGIN=yes")
+		use gpg && mycmakeargs+=("-DWITH_gnupg_PLUGIN=yes")
+		use sasl && mycmakeargs+=("-DWITH_cyrus-sasl_PLUGIN=yes")
 		cmake-utils_src_configure
 	}
 	wrap_stage my_configure
