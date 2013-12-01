@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://anongit.kde.org/qca"
 LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS=""
-IUSE="aqua debug doc examples gpg logger pkcs11 +qt4 qt5 sasl softstore ssl test wincrypto"
+IUSE="aqua botan debug doc examples gpg gcrypt logger nss pkcs11 +qt4 qt5 sasl softstore ssl test wincrypto"
 RESTRICT="test"
 
 RDEPEND="botan? ( dev-libs/botan )
