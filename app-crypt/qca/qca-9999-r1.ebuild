@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://anongit.kde.org/qca"
 LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS=""
-IUSE="aqua botan debug doc examples gpg gcrypt logger nss pkcs11 +qt4 qt5 sasl softstore ssl test wincrypto"
+IUSE="aqua botan debug doc examples gpg gcrypt logger nss pkcs11 +qt4 qt5 sasl softstore ssl test"
 RESTRICT="test"
 
 RDEPEND="botan? ( dev-libs/botan )
@@ -61,7 +61,7 @@ src_configure()
 		use sasl && mycmakeargs+=("-DWITH_cyrus-sasl_PLUGIN=yes")
 		use softstore && mycmakeargs+=("-DWITH_softstore_PLUGIN=yes")
 		use ssl && mycmakeargs+=("-DWITH_ossl_PLUGIN=yes")
-		use wincrypto && mycmakeargs+=("-DWITH_wincrypto_PLUGIN=yes")
+		#use wincrypto && mycmakeargs+=("-DWITH_wincrypto_PLUGIN=yes")
 		cmake-utils_src_configure
 	}
 	wrap_stage my_configure
