@@ -13,12 +13,16 @@ EGIT_REPO_URI="git://anongit.kde.org/qca"
 LICENSE="LGPL-2"
 SLOT="2"
 KEYWORDS=""
-IUSE="aqua debug doc examples gpg +qt4 qt5 sasl ssl test"
+IUSE="aqua debug doc examples gpg logger pkcs11 +qt4 qt5 sasl softstore ssl test wincrypto"
 RESTRICT="test"
 
-RDEPEND="gpg? ( app-crypt/gnupg )
+RDEPEND="botan? ( dev-libs/botan )
+	gpg? ( app-crypt/gnupg )
+	gcrypt? ( dev-libs/libgcrypt )
+	nss? ( dev-libs/nss )
 	sasl? ( dev-libs/cyrus-sasl )
-	ssl? ( >=dev-libs/openssl-0.9.6 )
+	ssl? ( dev-libs/openssl )
+	pkcs11? ( dev-libs/pkcs11-helper )
 	qt4? ( dev-qt/qtcore:4[debug?] )
 	qt5? ( dev-qt/qtcore:5[debug?] )"
 DEPEND="${RDEPEND} qt4? ( dev-qt/qttest:4[debug?] )
@@ -48,9 +52,16 @@ src_configure()
 		[ "$QT" = qt4 ] && mycmakeargs+=("-DQT4_BUILD=1")
 		[ "$QT" = qt5 ] && mycmakeargs+=("-DQCA_SUFFIX=qt5")
 		use test || mycmakeargs+=("-DBUILD_TESTS=OFF")
-		use ssl && mycmakeargs+=("-DWITH_ossl_PLUGIN=yes")
+		use botan && mycmakeargs+=("-DWITH_botan_PLUGIN=yes")
+		use gcrypt && mycmakeargs+=("-DWITH_gcrypt_PLUGIN=yes")
 		use gpg && mycmakeargs+=("-DWITH_gnupg_PLUGIN=yes")
+		use logger && mycmakeargs+=("-DWITH_logger_PLUGIN=yes")
+		use nss && mycmakeargs+=("-DWITH_nss_PLUGIN=yes")
+		use pkcs11 && mycmakeargs+=("-DWITH_pkcs11_PLUGIN=yes")
 		use sasl && mycmakeargs+=("-DWITH_cyrus-sasl_PLUGIN=yes")
+		use softstore && mycmakeargs+=("-DWITH_softstore_PLUGIN=yes")
+		use ssl && mycmakeargs+=("-DWITH_ossl_PLUGIN=yes")
+		use wincrypto && mycmakeargs+=("-DWITH_wincrypto_PLUGIN=yes")
 		cmake-utils_src_configure
 	}
 	wrap_stage my_configure
