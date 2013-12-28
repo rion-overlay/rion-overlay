@@ -49,6 +49,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.0.0
 	adiummessagestyle? ( >=dev-qt/qtwebkit-4.8:4 )
 	filemessagearchive? ( >=dev-qt/qtsql-4.8:4[sqlite] )
+	messagearchiver? ( >=dev-qt/qtsql-4.8:4[sqlite] )
 	spell? (
 		aspell? ( app-text/aspell )
 		enchant? ( app-text/enchant )

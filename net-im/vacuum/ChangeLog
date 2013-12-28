@@ -3,6 +3,9 @@
 # $Header: $
 
   28 Dec 2013; Nikoli <nikoli@gmx.us> vacuum-9999.ebuild:
+  vacuum: messagearchiver needs qt+sqlite now
+
+  28 Dec 2013; Nikoli <nikoli@gmx.us> vacuum-9999.ebuild:
   vacuum: update subslot
 
   21 Sep 2013; Nikoli <nikoli@gmx.us> vacuum-9999.ebuild:
