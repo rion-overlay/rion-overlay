@@ -1,0 +1,21 @@
+Index: ind_helper.c
+===================================================================
+--- ind_helper.c.orig
++++ ind_helper.c
+@@ -19,6 +19,7 @@
+ #include <config.h>
+ #include <cmpimacs.h>
+ 
++#include <stdint.h>
+ #include <pthread.h>
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+@@ -1287,7 +1288,7 @@
+   pthread_detach (thread_id);
+   IND_HLP_DEBUG ("_worker exited.");
+ 
+-  pthread_exit ((void *) rc);
++  pthread_exit ((void *)(intptr_t) rc);
+ }
+ 
+ /**

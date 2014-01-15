@@ -1,0 +1,1 @@
+qstardict-9999.ebuild
