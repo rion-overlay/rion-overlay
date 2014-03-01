@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-misc/hivex/hivex-1.3.2-r1.ebuild,v 1.1 2011/12/01 17:26:53 maksbotan Exp $
 
-EAPI=4
+EAPI=5
 
-WANT_AUTOMAKE="1.11"
+WANT_AUTOMAKE="1.14"
 AUTOTOOLS_IN_SOURCE_BUILD=1
 EGIT_HAS_SUBMODULES=yes
 
-PYTHON_DEPEND="python? 2:2.6"
+PYTHON_DEPEND="python? 2:2.7"
 inherit base autotools-utils perl-app python git-2
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
