@@ -11,6 +11,7 @@ PSI_PLUS_URI="git://github.com/psi-plus"
 EGIT_REPO_URI="${PSI_URI}/psi.git"
 PSI_LANGS_URI="${PSI_URI}/psi-translations.git"
 PSI_PLUS_LANGS_URI="${PSI_PLUS_URI}/psi-plus-l10n.git"
+EGIT_MIN_CLONE_TYPE="single"
 
 inherit eutils qt4-r2 multilib git-r3
 
@@ -19,12 +20,13 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver
+IUSE="crypt dbus debug doc enchant extras jingle iconsets spell sql ssl xscreensaver
 plugins whiteboarding webkit"
 
 REQUIRED_USE="
 	iconsets? ( extras )
 	plugins? ( extras )
+	sql? ( extras )
 	webkit? ( extras )
 "
 
@@ -40,7 +42,13 @@ RDEPEND="
 		!enchant? ( app-text/aspell )
 	)
 	xscreensaver? ( x11-libs/libXScrnSaver )
-	extras? ( webkit? ( dev-qt/qtwebkit:4 ) )
+	extras? (
+		webkit? ( dev-qt/qtwebkit:4 )
+		sql? (
+			dev-qt/qtsql:4 
+			dev-libs/qjson 
+		)
+	)
 "
 DEPEND="${RDEPEND}
 	extras? (
@@ -112,10 +120,16 @@ src_prepare() {
 		if use iconsets; then
 			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die
 		fi
-
-		EPATCH_SOURCE="${WORKDIR}/psi-plus/patches/" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
+		
+		PATCHES_DIR="${WORKDIR}/psi-plus/patches"
+		EPATCH_SOURCE="${PATCHES_DIR}" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
 		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 2)"
+		
+		if use sql; then
+			epatch "${PATCHES_DIR}/dev/psi-new-history.patch" || die "patching with ${SQLPATCH} failed"
+		fi
+		
 		use webkit && {
 			echo "0.16.${PSI_PLUS_REVISION}-webkit (@@DATE@@)" > version
 		} || {
