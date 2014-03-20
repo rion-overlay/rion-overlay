@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-misc/hivex/hivex-1.3.7-r1.ebuild,v 1.1 2013/03/31 09:03:29 maksbotan Exp $
 
@@ -8,7 +8,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 AUTOTOOLS_AUTORECONF=1
 WANT_AUTOMAKE=1.13
 
-USE_RUBY="ruby18"
+USE_RUBY="ruby19"
 RUBY_OPTIONAL=yes
 PYTHON_DEPEND="python? 2:2.6"
 SUPPORT_PYTHON_ABIS=1
@@ -57,11 +57,6 @@ pkg_setup() {
 
 src_unpack() {
 	default
-}
-
-iisrc_prepare() {
-	base_src_prepare
-	eautomake
 }
 
 src_configure() {
