@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples gps grass gsl mapserver postgres python spatialite test"
+IUSE="examples grass gsl mapserver postgres python spatialite test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -44,7 +44,7 @@ RDEPEND="
 	mapserver? ( dev-libs/fcgi )
 	postgres? ( >=dev-db/postgresql-base-8.4 )
 	python? (
-		dev-python/PyQt4[X,sql,svg,${PYTHON_USEDEP}]
+		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
 		dev-python/qscintilla-python[${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )

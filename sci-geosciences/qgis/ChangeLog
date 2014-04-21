@@ -3,6 +3,9 @@
 # $Header: $
 
   21 Apr 2014; eegorov <egor.y.egorov@gmail.com> qgis-2.2.0.ebuild:
+  Drop USE=gps. Fix dev-python/PyQt4[webkit] dependency: #476460
+
+  21 Apr 2014; eegorov <egor.y.egorov@gmail.com> qgis-2.2.0.ebuild:
   Fix x11-libs/qwt dependency. Thanks to Luis Ressel
 
 *qgis-2.2.0 (24 Feb 2014)
