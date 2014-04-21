@@ -37,7 +37,7 @@ RDEPEND="
 	dev-qt/qtsql:4
 	dev-qt/qtwebkit:4
 	|| (
-		( =x11-libs/qwt-6.0*[svg] >=x11-libs/qwtpolar-1 )
+		( x11-libs/qwt:6[svg] >=x11-libs/qwtpolar-1 )
 		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
 	)
 	grass? ( >=sci-geosciences/grass-6.4.0_rc6[python?] )
