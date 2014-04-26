@@ -35,10 +35,12 @@ RDEPEND="net-im/jabber-base
 	postgres? ( dev-libs/libpqxx )
 	sqlite? ( dev-db/sqlite:3 )
 	frotz? ( dev-libs/protobuf )
-	irc? ( net-im/libcommuni dev-libs/protobuf )
+	irc? ( <net-im/libcommuni-3 dev-libs/protobuf )
 	purple? ( >=net-im/pidgin-2.6.0 dev-libs/protobuf )
 	skype? ( dev-libs/dbus-glib x11-base/xorg-server[xvfb] dev-libs/protobuf )
 	libev? ( dev-libs/libev dev-libs/protobuf )"
+
+# TODO unlock libcommuni-3 when merged https://github.com/hanzz/libtransport/pull/50
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -68,9 +70,7 @@ src_prepare() {
 	use irc || { sed -i -e 's/find_package(Communi)/set(IRC_FOUND, FALSE)/' CMakeLists.txt || die; }
 	use log || { sed -i -e 's/find_package(log4cxx)/set(LOG4CXX_FOUND, FALSE)/' CMakeLists.txt || die; }
 
-	sed -i -e "/#include <IrcUtil>/d" backends/libcommuni/session.cpp
-
-	base_src_prepare
+	cmake-utils_src_prepare
 }
 
 src_install() {
