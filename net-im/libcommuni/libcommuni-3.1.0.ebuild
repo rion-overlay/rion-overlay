@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 inherit qt4-r2
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/communi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="icu test"
 
 RDEPEND="dev-qt/qtcore
@@ -31,6 +31,6 @@ src_prepare() {
 
 src_configure() {
 	eqmake4 libcommuni.pro -config no_examples -config no_rpath \
-		$(use icu || echo "-config no_icu") \
+		$(use icu && echo "-config icu" || echo "-config no_icu") \
 		$(use test || echo "-config no_tests")
 }
