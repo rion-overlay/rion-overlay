@@ -138,6 +138,7 @@ src_prepare() {
 
 		qconf || die "Failed to create ./configure."
 	fi
+	epatch_user
 }
 
 src_configure() {
