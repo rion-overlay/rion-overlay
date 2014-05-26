@@ -49,7 +49,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=net-im/psi-0.15_pre20110125[extras,plugins]"
+DEPEND=">=net-im/psi-9999[extras,plugins]"
 RDEPEND="${DEPEND}"
 
 # Eclass exported functions
