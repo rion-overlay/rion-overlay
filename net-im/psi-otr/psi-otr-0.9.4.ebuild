@@ -12,7 +12,7 @@ DESCRIPTION="OTR Plugin for Psi"
 HOMEPAGE="http://public.tfh-berlin.de/~s30935/"
 SRC_URI="http://psi-dev.googlecode.com/files/${MY_PN}-${PV}-src.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="
