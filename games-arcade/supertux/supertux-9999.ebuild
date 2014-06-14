@@ -1,8 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=3
+
+CMAKE_IN_SOURCE_BUILD=1
 
 inherit git-2 cmake-utils eutils games
 
@@ -29,7 +31,7 @@ RDEPEND="media-libs/libsdl[joystick]
 	curl? ( net-misc/curl )"
 DEPEND="${RDEPEND}"
 
-DOCS="README TODO WHATSNEW.txt data/credits.txt"
+DOCS="TODO WHATSNEW.txt data/credits.txt"
 
 src_unpack() {
 	git-2_src_unpack
