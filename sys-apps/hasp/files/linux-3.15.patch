@@ -1,0 +1,21 @@
+diff -ur haspd-3.3_orig/aksparlnx/aksparpub.c haspd-3.3/aksparlnx/aksparpub.c
+--- haspd-3.3_orig/aksparlnx/aksparpub.c	2013-02-21 04:17:58.000000000 +0700
++++ haspd-3.3/aksparlnx/aksparpub.c	2014-06-23 12:27:33.000000000 +0700
+@@ -1034,9 +1034,17 @@
+     r = parport_claim(port->pdev);
+     if (r == -EAGAIN) {
+         if (*timeout)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+             *timeout = interruptible_sleep_on_timeout(&port->wait_q, *timeout);
++#else
++            *timeout = wait_event_interruptible(port->wait_q, *timeout);
++#endif
+         else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+             interruptible_sleep_on(&port->wait_q);
++#else
++            wait_event_interruptible(port->wait_q, !port->pdev->waiting);
++#endif
+         return 0;
+     }
+     return r;

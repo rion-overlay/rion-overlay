@@ -1,6 +1,12 @@
 # ChangeLog for sys-apps/hasp
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*hasp-3.3_p5-r1 (23 Jun 2014)
+
+  23 Jun 2014; Egor Y. Egorov <egor.y.egorov@gmail.com> -hasp-3.3_p5.ebuild,
+  +hasp-3.3_p5-r1.ebuild, +files/linux-3.15.patch:
+  Fix for build with linux-3.15
 
   12 Mar 2013; Egor Y. Egorov <egor.y.egorov@gmail.com> hasp-3.3_p5.ebuild,
   +files/remove-udev-rule-for-old-kernels.patch:
