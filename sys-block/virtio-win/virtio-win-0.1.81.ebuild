@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="VirtIO Windows (r) KVM guest drivers from RedHat"
 HOMEPAGE="http://alt.fedoraproject.org/pub/alt/virtio-win/latest/images/bin/"
-SRC_URI="http://alt.fedoraproject.org/pub/alt/virtio-win/latest/images/bin/virtio-win-0.1-52.iso"
+SRC_URI="http://alt.fedoraproject.org/pub/alt/virtio-win/latest/images/bin/virtio-win-0.1-81.iso"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
