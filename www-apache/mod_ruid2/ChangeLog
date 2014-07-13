@@ -1,6 +1,11 @@
 # ChangeLog for www-apache/mod_ruid2
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  13 Jul 2014; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  -mod_ruid2-0.9.1.ebuild, -mod_ruid2-0.9.4.ebuild, -mod_ruid2-0.9.5.ebuild,
+  -mod_ruid2-0.9.7.ebuild:
+  clean old mod_ruid
 
 *mod_ruid2-0.9.8 (30 Mar 2013)
 
