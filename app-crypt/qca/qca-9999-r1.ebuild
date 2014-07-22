@@ -43,7 +43,7 @@ src_configure()
 {
 	my_configure() {
 		local mycmakeargs=(
-			-DCMAKE_INSTALL_PREFIX="${MYPREFIX}"
+			-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 			"-DPKGCONFIG_INSTALL_PREFIX=${EPREFIX}/usr/$(get_libdir)/pkgconfig"
 			-DQC_CERTSTORE_PATH="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt
 			-DQCA_MAN_INSTALL_DIR="${EPREFIX}/usr/share/man"
