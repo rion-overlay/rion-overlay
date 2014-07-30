@@ -166,19 +166,13 @@ pkg_postinst() {
 		elog "/usr/share/doc/${PF}/html/guide.html, or the online version at"
 		elog "http://www.process-one.net/en/ejabberd/docs/guide_en/"
 
-		if ! use web ; then
-			ewarn
-			ewarn "The web USE flag is off, this has disabled the web admin interface."
-			ewarn
-		fi
-
 		elog
 		elog '===================================================================='
 		elog 'Quick Start Guide:'
-		elog '1) Add output of `hostname -f` to /etc/jabber/ejabberd.cfg line 91'
-		elog '   {hosts, ["localhost", "thehost"]}.'
-		elog '2) Add an admin user to /etc/jabber/ejabberd.cfg line 360'
-		elog '   {acl, admin, {user, "theadmin", "thehost"}}.'
+		elog '1) Add output of `hostname -f` to /etc/jabber/ejabberd.yml line 88'
+		elog '   hosts:'
+		elog '2) Add an admin user to host_config'
+		elog '   Example in ejabberd.yml:438'
 		elog '3) Start the server'
 		elog '   # /etc/init.d/ejabberd start (for openRC)'
 		elog '	 # systemctl start ejabberd (for Systemd)'
