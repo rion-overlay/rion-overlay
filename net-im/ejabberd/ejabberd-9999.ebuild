@@ -1,24 +1,36 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: pva Exp $
 
-EAPI=4
+EAPI=5
 
-inherit eutils multilib pam ssl-cert autotools git-2
+inherit eutils multilib pam ssl-cert systemd git-r3 subversion autotools
 
 DESCRIPTION="The Erlang Jabber Daemon"
-HOMEPAGE="http://www.ejabberd.im/"
-EGIT_REPO_URI="git://git.process-one.net/ejabberd/mainline.git"
+HOMEPAGE="http://www.ejabberd.im/ https://github.com/processone/ejabberd/"
+EGIT_REPO_URI="https://github.com/processone/ejabberd"
+#EGIT_BRANCH="2.1.x"
+
+SRC_URI="mod_statsdx? ( http://dev.gentoo.org/~radhermit/dist/${PN}-mod_statsdx-1118.patch.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-EJABBERD_MODULES="mod_muc mod_proxy65 mod_pubsub"
-IUSE="captcha debug ldap odbc pam +web zlib ${EJABBERD_MODULES}"
+EJABBERD_MODULES_ADDITIONAL="atom_pubsub ircd mod_admin_extra mod_archive mod_cron mod_log_chat mod_logsession mod_logxml mod_muc_admin mod_muc_log_http mod_multicast mod_openid mod_profile mod_register_web mod_rest mod_s2s_log mod_shcommands mod_webpresence"
+EJABBERD_MODULES="mod_statsdx"
 
-DEPEND="net-im/exmpp
-	>=net-im/jabber-base-0.01
-	>=dev-lang/erlang-12.2.5[ssl]
+REQUIRED_USE="postgres? ( odbc )
+	mysql? ( odbc )
+	mssql? ( odbc )
+	riak? ( odbc )"
+
+IUSE="captcha debug +doc json lager ldap md5 mssql mysql odbc pam postgres riak tools zlib ${EJABBERD_MODULES} ${EJABBERD_MODULES_ADDITIONAL}"
+
+DEPEND=">=net-im/jabber-base-0.01
+	>=dev-libs/expat-1.95
+	dev-libs/libyaml
+	dev-lang/erlang[ssl]
+	doc? ( dev-tex/hevea )
 	odbc? ( dev-db/unixODBC )
 	ldap? ( =net-nds/openldap-2* )
 	>=dev-libs/openssl-0.9.8e
@@ -27,20 +39,45 @@ DEPEND="net-im/exmpp
 #>=sys-apps/shadow-4.1.4.2-r3 - fixes bug in su that made ejabberdctl unworkable.
 RDEPEND="${DEPEND}
 	>=sys-apps/shadow-4.1.4.2-r3
-	 pam? ( virtual/pam )"
+	pam? ( virtual/pam )"
 
-# paths in net-im/jabber-base
-JABBER_ETC="${EPREFIX}/etc/jabber"
-#JABBER_RUN="/var/run/jabber"
-JABBER_SPOOL="${EPREFIX}/var/spool/jabber"
-JABBER_LOG="${EPREFIX}/var/log/jabber"
-JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
-RNOTES_VER="3.0.0"
+
+pkg_setup() {
+	# paths in net-im/jabber-base
+	JABBER_ETC="${EPREFIX}/etc/jabber"
+	JABBER_SPOOL="${EPREFIX}/var/spool/jabber"
+	JABBER_LOG="${EPREFIX}/var/log/jabber"
+
+	JABBER_DOC="${EPREFIX}/usr/share/doc/${PF}"
+	JABBER_LIB="${EPREFIX}/usr/$(get_libdir)/erlang/lib/"
+}
+
+src_unpack() {
+	default
+	git-r3_src_unpack
+	cd "${S}"
+	mkdir additional_docs
+	for MODULE in ${EJABBERD_MODULES_ADDITIONAL}; do
+	# FIXME they are no in https://github.com/processone/ejabberd-contrib
+	if use ${MODULE}; then
+		ESVN_REPO_URI="http://svn.process-one.net/ejabberd-modules/${MODULE}/trunk"
+		ESVN_PROJECT="ejabberd/${MODULE}"
+		subversion_fetch "${ESVN_REPO_URI}" additional/"${MODULE}"
+		cp additional/"${MODULE}"/src/*.?rl src
+		find additional/"${MODULE}" -type d ! -empty -name 'conf' -exec cp -r {} additional_docs/conf_"${MODULE}" \;
+		find additional/"${MODULE}" -type d ! -empty -name 'doc' -exec cp -r {} additional_docs/doc_"${MODULE}" \;
+		find additional/"${MODULE}" -type f -name 'README*' -exec cp {} additional_docs/README_"${MODULE}" \;
+	fi
+	done
+}
 
 src_prepare() {
-	git-2_src_prepare
-	S=${WORKDIR}/${P}/src
-	cd "${S}"
+	use md5 && epatch "${FILESDIR}/auth_md5.patch"
+	if use mod_statsdx; then
+		ewarn "mod_statsdx is not a part of upstream tarball but is a third-party module"
+		ewarn "taken from here: http://www.ejabberd.im/mod_stats2file"
+		EPATCH_OPTS="-p2" epatch "${WORKDIR}"/${PN}-mod_statsdx-1118.patch
+	fi
 
 	# don't install release notes (we'll do this manually)
 	sed '/install .* [.][.]\/doc\/[*][.]txt $(DOCDIR)/d' -i Makefile.in || die
@@ -50,54 +87,53 @@ src_prepare() {
 		-e "/^LOGDIR[[:space:]]*=/{s:@localstatedir@/log/ejabberd:${JABBER_LOG}:}" \
 		-e "/^SPOOLDIR[[:space:]]*=/{s:@localstatedir@/lib/ejabberd:${JABBER_SPOOL}:}" \
 			-i Makefile.in || die
-	sed -e "/EJABBERDDIR=/{s:ejabberd:${PF}:}" \
-		-e "s|\(ETCDIR=\)@SYSCONFDIR@.*|\1${JABBER_ETC}|" \
-		-e "s|\(LOGS_DIR=\)@LOCALSTATEDIR@.*|\1${JABBER_LOG}|" \
-		-e "s|\(SPOOLDIR=\)@LOCALSTATEDIR@.*|\1${JABBER_SPOOL}|" \
-		-e 's#EJID=`id -g $INSTALLUSER`#GIDS=`$IDCMD -G`#' \
-			-i ejabberdctl.template || die
-
-	# Set shell, so it'll work even in case jabber user have no shell
-	# This is gentoo specific I guess since other distributions may have
-	# ejabberd user with reall shell, while we share this user among different
-	# jabberd implementations.
-	sed '/^HOME/aSHELL=/bin/sh' -i ejabberdctl.template || die
-	sed '/^export HOME/aexport SHELL' -i ejabberdctl.template || die
+	#sed -e "/EJABBERDDIR=/{s:ejabberd:${PF}:}" \
+	#	-e "s|\(ETC_DIR=\)@SYSCONFDIR@.*|\1${JABBER_ETC}|" \
+	#	-e "s|\(LOGS_DIR=\)@LOCALSTATEDIR@.*|\1${JABBER_LOG}|" \
+	#	-e "s|\(SPOOL_DIR=\)@LOCALSTATEDIR@.*|\1${JABBER_SPOOL}|" \
+	#		-i ejabberdctl.template || die
 
 	#sed -e "s:/share/doc/ejabberd/:${JABBER_DOC}:" -i web/ejabberd_web_admin.erl
 
 	# fix up the ssl cert paths in ejabberd.cfg to use our cert
-	sed -e "s:/path/to/ssl.pem:/etc/ssl/ejabberd/server.pem:g" \
-		-i ejabberd.cfg.example || die "Failed sed ejabberd.cfg.example"
+	sed -e "s|## certfile: \"/path/to/ssl.pem\"|certfile: \"/etc/ssl/ejabberd/server.pem\"|g" \
+		-e "s|## s2s_certfile: \"/path/to/ssl.pem\"|s2s_certfile: \"/etc/ssl/ejabberd/server.pem\"|g" \
+		-i ejabberd.yml.example || die "Failed sed ejabberd.cfg.example"
 
 	# correct path to captcha script in default ejabberd.cfg
-	sed -e 's|\({captcha_cmd,[[:space:]]*"\).\+"}|\1/usr/'$(get_libdir)'/erlang/lib/'${P}'/priv/bin/captcha.sh"}|' \
-			-i ejabberd.cfg.example || die "Failed sed ejabberd.cfg.example"
-	eaclocal
-	eautoconf
+	sed -e 's|captcha_cmd:.*|captcha_cmd: "${JABBER_LIB}/'${PF}'/priv/bin/captcha.sh"|' \
+			-i ejabberd.yml.example || die "Failed sed ejabberd.cfg.example"
+
+	# eautoreconf # eautoreconf doesn't work a expected. temporary use autogen
+	./autogen.sh
 }
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--libdir="${EPREFIX}/usr/$(get_libdir)/erlang/lib/" \
-		$(use_enable ldap eldap) \
-		$(use_enable mod_muc) \
-		$(use_enable mod_proxy65) \
-		$(use_enable mod_pubsub) \
-		$(use_enable web) \
+		--docdir="${JABBER_DOC}/html" \
+		--libdir="${JABBER_LIB}" \
+		$(use_enable debug) \
+		$(use_enable json) \
+		$(use_enable lager) \
+		$(use_enable mssql) \
+		$(use_enable mysql) \
 		$(use_enable odbc) \
-		$(use_enable zlib ejabberd_zlib) \
 		$(use_enable pam) \
-		--enable-user=jabber
+		$(use_enable postgres pgsql) \
+		$(use_enable riak) \
+		$(use_enable tools) \
+		$(use_enable zlib) \
+		--enable-user=jabber \
+		--enable-erlang-version-check=nocheck
 }
 
 src_compile() {
-	emake $(use debug && echo debug=true ejabberd_debug=true)
+	emake
+	emake doc
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install
+	default
 
 	# Pam helper module permissions
 	# http://www.process-one.net/docs/ejabberd/guide_en.html
@@ -107,37 +143,49 @@ src_install() {
 		fperms 4750 "/usr/$(get_libdir)/erlang/lib/${PF}/priv/bin/epam"
 	fi
 
-	cd "${WORKDIR}/${P}/doc"
-	dodoc release_notes_*.txt
-
+	dodoc doc/release_notes_*.txt
+	dodoc sql/*.sql
+	dodoc -r additional_docs
 	#dodir /var/lib/ejabberd
-	newinitd "${FILESDIR}/${PN}-3.initd" ${PN}
-	newconfd "${FILESDIR}/${PN}-3.confd" ${PN}
+	newinitd "${FILESDIR}"/${PN}-3.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}-3.confd ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_dotmpfilesd "${FILESDIR}"/${PN}.tmpfiles.conf
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/${PN}.logrotate ${PN}
+}
+
+pkg_preinst() {
+	true
 }
 
 pkg_postinst() {
-	elog "For configuration instructions, please see"
-	elog "/usr/share/doc/${PF}/html/guide.html, or the online version at"
-	elog "http://www.process-one.net/en/ejabberd/docs/guide_en/"
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		elog "For configuration instructions, please see"
+		elog "/usr/share/doc/${PF}/html/guide.html, or the online version at"
+		elog "http://www.process-one.net/en/ejabberd/docs/guide_en/"
 
-	if ! use web ; then
-		ewarn
-		ewarn "The web USE flag is off, this has disabled the web admin interface."
-		ewarn
+		if ! use web ; then
+			ewarn
+			ewarn "The web USE flag is off, this has disabled the web admin interface."
+			ewarn
+		fi
+
+		elog
+		elog '===================================================================='
+		elog 'Quick Start Guide:'
+		elog '1) Add output of `hostname -f` to /etc/jabber/ejabberd.cfg line 91'
+		elog '   {hosts, ["localhost", "thehost"]}.'
+		elog '2) Add an admin user to /etc/jabber/ejabberd.cfg line 360'
+		elog '   {acl, admin, {user, "theadmin", "thehost"}}.'
+		elog '3) Start the server'
+		elog '   # /etc/init.d/ejabberd start (for openRC)'
+		elog '	 # systemctl start ejabberd (for Systemd)'
+		elog '4) Register the admin user'
+		elog '   # /usr/sbin/ejabberdctl register theadmin thehost thepassword'
+		elog '5) Log in with your favourite jabber client or using the web admin'
 	fi
-
-	elog
-	elog '===================================================================='
-	elog 'Quick Start Guide:'
-	elog '1) Add output of `hostname -f` to /etc/jabber/ejabberd.cfg line 91'
-	elog '   {hosts, ["localhost", "thehost"]}.'
-	elog '2) Add an admin user to /etc/jabber/ejabberd.cfg line 360'
-	elog '   {acl, admin, {user, "theadmin", "thehost"}}.'
-	elog '3) Start the server'
-	elog '   # /etc/init.d/ejabberd start'
-	elog '4) Register the admin user'
-	elog '   # /usr/sbin/ejabberdctl register theadmin thehost thepassword'
-	elog '5) Log in with your favourite jabber client or using the web admin'
 
 	# Upgrading from ejabberd-2.0.x:
 	if grep -E '^[^#]*EJABBERD_NODE=' "${EROOT}/etc/conf.d/ejabberd" >/dev/null 2>&1; then
