@@ -3,6 +3,7 @@
 # $Header: pva Exp $
 
 EAPI=5
+WANT_AUTOCONF="2.5"
 
 inherit eutils multilib pam ssl-cert systemd git-r3 subversion autotools
 
@@ -87,11 +88,11 @@ src_prepare() {
 		-e "/^LOGDIR[[:space:]]*=/{s:@localstatedir@/log/ejabberd:${JABBER_LOG}:}" \
 		-e "/^SPOOLDIR[[:space:]]*=/{s:@localstatedir@/lib/ejabberd:${JABBER_SPOOL}:}" \
 			-i Makefile.in || die
-	#sed -e "/EJABBERDDIR=/{s:ejabberd:${PF}:}" \
-	#	-e "s|\(ETC_DIR=\)@SYSCONFDIR@.*|\1${JABBER_ETC}|" \
-	#	-e "s|\(LOGS_DIR=\)@LOCALSTATEDIR@.*|\1${JABBER_LOG}|" \
-	#	-e "s|\(SPOOL_DIR=\)@LOCALSTATEDIR@.*|\1${JABBER_SPOOL}|" \
-	#		-i ejabberdctl.template || die
+	sed -e "/EJABBERDDIR=/{s:ejabberd:${PF}:}" \
+		-e "s|\(ETC_DIR=\){{sysconfdir}}.*|\1${JABBER_ETC}|" \
+		-e "s|\(LOGS_DIR=\){{localstatedir}}.*|\1${JABBER_LOG}|" \
+		-e "s|\(SPOOL_DIR=\){{localstatedir}}.*|\1${JABBER_SPOOL}|" \
+			-i ejabberdctl.template || die
 
 	#sed -e "s:/share/doc/ejabberd/:${JABBER_DOC}:" -i web/ejabberd_web_admin.erl
 
