@@ -92,6 +92,9 @@ src_prepare() {
 		-e "s|\(ETC_DIR=\){{sysconfdir}}.*|\1${JABBER_ETC}|" \
 		-e "s|\(LOGS_DIR=\){{localstatedir}}.*|\1${JABBER_LOG}|" \
 		-e "s|\(SPOOL_DIR=\){{localstatedir}}.*|\1${JABBER_SPOOL}|" \
+		-e 's|su $INSTALLUSER -c|su $INSTALLUSER -p -s /bin/sh -c|' \
+		-e "/^INSTALLUSER=/aexport HOME=${JABBER_SPOOL}" \
+		-e "s|INSTALLUSER_HOME=.*|INSTALLUSER_HOME=${JABBER_SPOOL}|" \
 			-i ejabberdctl.template || die
 
 	#sed -e "s:/share/doc/ejabberd/:${JABBER_DOC}:" -i web/ejabberd_web_admin.erl
