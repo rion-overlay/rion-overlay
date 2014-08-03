@@ -2,6 +2,9 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Aug 2014; eegorov <egor.y.egorov@gmail.com> supertux-9999.ebuild:
+  Depend on sdl2* now
+
   14 Jun 2014; eegorov <egor.y.egorov@gmail.com> supertux-9999.ebuild:
   Need in source tree building because used .git derictory
 
