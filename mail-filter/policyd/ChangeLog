@@ -1,0 +1,10 @@
+# ChangeLog for mail-filter/policyd
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
+# $Header: $
+
+*policyd-2.0.12 (09 Sep 2012)
+
+  09 Sep 2012; Andreis Vinogradovs <spamslepnoga@inbox.ru> +files/policyd.confd,
+  +files/policyd.rc, +metadata.xml, +policyd-2.0.12.ebuild:
+  policyd initial ebuild

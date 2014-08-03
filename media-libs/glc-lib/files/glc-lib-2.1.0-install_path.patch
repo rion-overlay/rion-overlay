@@ -1,0 +1,14 @@
+diff -Nur glc_lib_orig/GLC_lib.pro glc_lib/GLC_lib.pro
+--- glc_lib_orig/GLC_lib.pro	2011-03-07 13:50:58.000000000 +0600
++++ glc_lib/GLC_lib.pro	2011-04-29 10:01:05.000000000 +0700
+@@ -419,8 +419,8 @@
+ # Linux and macx install configuration
+ unix {
+     # Location of HEADERS and library
+-    LIB_DIR = /usr/local/lib
+-    INCLUDE_DIR = /usr/local/include
++    LIB_DIR = /usr/lib
++    INCLUDE_DIR = /usr/include
+     # Adds a -P to preserve link
+ 	QMAKE_COPY_FILE = $${QMAKE_COPY_FILE} -P
+ 	include.path = $${INCLUDE_DIR}/GLC_lib
