@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 inherit multilib toolchain-funcs eutils
 
 DESCRIPTION="Mail.Ru agent protocol for pidgin."
 HOMEPAGE="http://code.google.com/p/mrim-prpl/"
-SRC_URI="http://mrim-prpl.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://bitbucket.org/mrim-prpl-team/mrim-prpl/downloads/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,12 +21,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
 
-src_prepare() {
-	epatch "${FILESDIR}"/pidgin-mrim-fix-build.patch
-}
-
 src_configure() {
-	./configure --gtk || die
+	econf --gtk
 }
 
 src_compile() {
