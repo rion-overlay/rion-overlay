@@ -7,7 +7,7 @@ EAPI=5
 inherit multilib toolchain-funcs eutils
 
 DESCRIPTION="Mail.Ru agent protocol for pidgin."
-HOMEPAGE="http://code.google.com/p/mrim-prpl/"
+HOMEPAGE="https://bitbucket.org/mrim-prpl-team/mrim-prpl"
 SRC_URI="https://bitbucket.org/mrim-prpl-team/mrim-prpl/downloads/${P}.tar.xz"
 
 LICENSE="GPL-2"
