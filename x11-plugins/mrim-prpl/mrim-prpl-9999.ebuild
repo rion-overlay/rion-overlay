@@ -4,32 +4,24 @@
 
 EAPI=5
 
-AT_NOEAUTOMAKE=yes
-
-inherit multilib toolchain-funcs git-r3 autotools
+inherit cmake-utils git-r3
 
 DESCRIPTION="Mail.Ru agent protocol for pidgin."
-HOMEPAGE="http://code.google.com/p/mrim-prpl/"
+HOMEPAGE="https://bitbucket.org/mrim-prpl-team/mrim-prpl"
 EGIT_REPO_URI="https://bitbucket.org/mrim-prpl-team/mrim-prpl.git"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
 
-RDEPEND=">=net-im/pidgin-2.6"
+RDEPEND=">=net-im/pidgin-2.7[gtk]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
-	dev-libs/check
+	test? ( dev-libs/check )
 "
 
-# FIXME upstream build system is broken again: does not respect CC
-
-src_prepare() {
-	eautoreconf
-}
-
-src_install() {
-	emake LIBDIR=$(get_libdir) DESTDIR="${D}" install
+src_test() {
+	emake -C "${BUILD_DIR}" check
 }
