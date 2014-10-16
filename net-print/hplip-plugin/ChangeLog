@@ -2,6 +2,11 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*hplip-plugin-3.14.10 (16 Oct 2014)
+
+  16 Oct 2014; rion <rion4ik@gmail.com> +hplip-plugin-3.14.10.ebuild:
+  version bump
+
 *hplip-plugin-3.14.6 (24 Jul 2014)
 
   24 Jul 2014; rion <rion4ik@gmail.com> -hplip-plugin-3.14.3.ebuild,
