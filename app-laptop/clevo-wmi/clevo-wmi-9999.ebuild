@@ -30,3 +30,8 @@ pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_TARGETS="all"
 }
+
+src_prepare() {
+	sed -i -e "s|KDIR :=.*|KDIR := ${KERNEL_DIR}|" \
+	  Makefile || die "Failed to change Makefile"
+}
