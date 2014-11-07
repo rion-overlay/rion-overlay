@@ -1,6 +1,10 @@
 # ChangeLog for app-text/makedict
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  07 Nov 2014; rion <rion4ik@gmail.com> makedict-9999.ebuild,
+  +files/new_glib_logs.patch:
+  Fixed compatibility with newer versions of glib
 
 *makedict-9999 (09 Nov 2013)
 
