@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -23,3 +23,5 @@ DEPEND=">=dev-libs/glib-2.6.0
 	dev-libs/expat"
 RDEPEND="${DEPEND}
 	dev-lang/python"
+
+PATCHES=( "$FILESDIR/new_glib_logs.patch" )
