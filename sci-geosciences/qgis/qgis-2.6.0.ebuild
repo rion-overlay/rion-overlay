@@ -59,6 +59,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.7.0-avoid-deprecated-pyqtconfig.patch"
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
