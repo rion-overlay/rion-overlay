@@ -11,7 +11,7 @@ inherit multilib
 
 DESCRIPTION="Policy daemon for postfix and other MTAs"
 HOMEPAGE="http://policyd.sf.net/"
-SRC_URI="http://devlabs.linuxassist.net/attachments/download/223/${MY_PN}-2.0.12.tar.xz"
+SRC_URI="http://download.policyd.org/v2.0.14/cluebringer-v2.0.14.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 
