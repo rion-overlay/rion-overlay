@@ -5,15 +5,14 @@
 EAPI=5
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
-AUTOTOOLS_AUTORECONF=1
-WANT_AUTOMAKE=1.13
 
-USE_RUBY="ruby19"
+USE_RUBY="ruby20"
 RUBY_OPTIONAL=yes
-PYTHON_DEPEND="python? 2:2.6"
+PYTHON_DEPEND="python? 2:2.7"
 SUPPORT_PYTHON_ABIS=1
 
-inherit base autotools autotools-utils eutils perl-app  python
+
+inherit base autotools  autotools-utils eutils perl-app ruby-ng python
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
 HOMEPAGE="http://libguestfs.org"
@@ -33,6 +32,7 @@ RDEPEND="
 			 )
 	readline? ( sys-libs/readline )
 	perl? ( dev-perl/IO-stringy )
+	ruby? ( $(ruby_implementations_depend) )
 	"
 
 DEPEND="${RDEPEND}
@@ -43,8 +43,11 @@ DEPEND="${RDEPEND}
 	      )
 	"
 
+ruby_add_bdepend "ruby? ( dev-ruby/rake )"
+ruby_add_bdepend "ruby? ( virtual/ruby-rdoc )"
+
 DOCS=(README)
-#PATCHES=("${FILESDIR}"/"${PV}"/*.patch)
+S="${WORKDIR}/${P}"
 
 pkg_setup() {
 	if use python; then
@@ -57,6 +60,10 @@ pkg_setup() {
 
 src_unpack() {
 	default
+}
+
+src_prepare() {
+	base_src_prepare
 }
 
 src_configure() {
@@ -82,15 +89,16 @@ src_compile() {
 	autotools-utils_src_compile
 }
 
-src_test() {
-	if use perl;then
-		pushd perl
-		perl-app_src_install
-		popd
-	fi
-
-	autotools-utils_src_compile check
-}
+# Test binding's dont't wok properly in gentoo layout
+#src_test() {
+#	if use perl;then
+#		pushd perl
+#		perl-app_src_install
+#		popd
+#	fi
+#
+#	autotools-utils_src_compile check
+#}
 
 src_install() {
 	strip-linguas -i po
@@ -98,7 +106,7 @@ src_install() {
 	autotools-utils_src_install "LINGUAS=""${LINGUAS}"""
 
 	if use perl; then
-		fixlocalpod
+		perl_delete_localpod
 	fi
 	if use python; then
 		compile_and_install() {
