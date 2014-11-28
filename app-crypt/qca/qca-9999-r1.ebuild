@@ -44,10 +44,11 @@ src_configure()
 {
 	my_configure() {
 		local mycmakeargs=(
-			-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
-			"-DPKGCONFIG_INSTALL_PREFIX=${EPREFIX}/usr/$(get_libdir)/pkgconfig"
+			-DCMAKE_INSTALL_PREFIX=""
+			-DPKGCONFIG_INSTALL_PREFIX="${EPREFIX}"/usr/$(get_libdir)/pkgconfig
 			-DQC_CERTSTORE_PATH="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt
 			-DQCA_MAN_INSTALL_DIR="${EPREFIX}/usr/share/man"
+			-DQCA_INCLUDE_INSTALL_DIR="${EPREFIX}"/usr/include
 			-DBUILD_PLUGINS=none
 		)
 		[ "$QT" = qt4 ] && mycmakeargs+=("-DQT4_BUILD=1")
