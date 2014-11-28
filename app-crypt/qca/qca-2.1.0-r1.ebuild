@@ -4,15 +4,15 @@
 
 EAPI="5"
 
-inherit eutils multilib cmake-utils git-2
+inherit eutils multilib cmake-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="http://delta.affinix.com/qca/"
-EGIT_REPO_URI="git://anongit.kde.org/qca"
+SRC_URI="http://delta.affinix.com/download/qca/2.0/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="aqua botan debug doc examples gpg gcrypt logger nss pkcs11 +qt4 qt5 sasl softstore ssl test"
 RESTRICT="test"
 
