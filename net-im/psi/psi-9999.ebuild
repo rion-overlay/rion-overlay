@@ -13,7 +13,7 @@ PSI_LANGS_URI="${PSI_URI}/psi-translations.git"
 PSI_PLUS_LANGS_URI="${PSI_PLUS_URI}/psi-plus-l10n.git"
 EGIT_MIN_CLONE_TYPE="single"
 
-inherit eutils l10n multilib git-r3
+inherit eutils l10n multilib git-r3 qmake-utils
 
 DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
@@ -192,7 +192,8 @@ src_configure() {
 		--qtdir="${QTDIR}" \
 		${myconf} || die
 
-	#eqmake4
+	use qt4 && eqmake4 psi.pro
+	use qt5 && eqmake5 psi.pro
 }
 
 src_compile() {
