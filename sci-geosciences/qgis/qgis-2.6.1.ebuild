@@ -36,6 +36,7 @@ RDEPEND="
 	dev-qt/qtsvg:4
 	dev-qt/qtsql:4
 	dev-qt/qtwebkit:4
+	x11-libs/qscintilla
 	|| (
 		( x11-libs/qwt:6[svg] >=x11-libs/qwtpolar-1 )
 		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )

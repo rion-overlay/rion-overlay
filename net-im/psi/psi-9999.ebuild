@@ -4,7 +4,7 @@
 
 EAPI=5
 
-LANGS="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
+PLOCALES="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 
 PSI_URI="git://github.com/psi-im"
 PSI_PLUS_URI="git://github.com/psi-plus"
@@ -13,14 +13,14 @@ PSI_LANGS_URI="${PSI_URI}/psi-translations.git"
 PSI_PLUS_LANGS_URI="${PSI_PLUS_URI}/psi-plus-l10n.git"
 EGIT_MIN_CLONE_TYPE="single"
 
-inherit eutils qt4-r2 multilib git-r3
+inherit eutils l10n multilib git-r3 qmake-utils
 
 DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
 HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant extras jingle iconsets spell sql ssl xscreensaver
+IUSE="crypt dbus debug doc enchant extras jingle iconsets +qt4 qt5 spell sql ssl xscreensaver
 plugins whiteboarding webkit"
 
 REQUIRED_USE="
@@ -28,25 +28,40 @@ REQUIRED_USE="
 	plugins? ( extras )
 	sql? ( extras )
 	webkit? ( extras )
+	sql? ( qt4 )
+	^^ ( qt4 qt5 )
 "
 
 RDEPEND="
 	net-dns/libidn
-	>=dev-qt/qtgui-4.4:4
-	dbus? ( >=dev-qt/qtdbus-4.4:4 )
-	>=app-crypt/qca-2.0.2:2
 	|| ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 )
-	whiteboarding? ( dev-qt/qtsvg:4 )
 	spell? (
 		enchant? ( >=app-text/enchant-1.3.0 )
 		!enchant? ( app-text/aspell )
 	)
 	xscreensaver? ( x11-libs/libXScrnSaver )
-	extras? (
-		webkit? ( dev-qt/qtwebkit:4 )
-		sql? (
-			dev-qt/qtsql:4 
-			dev-libs/qjson 
+	qt4? (
+		dev-qt/qtgui:4
+		dbus? ( dev-qt/qtdbus:4 )
+		|| ( <app-crypt/qca-2.1:2 >=app-crypt/qca-2.1:2[qt4] )
+		whiteboarding? ( dev-qt/qtsvg:4 )
+		extras? (
+			webkit? ( dev-qt/qtwebkit:4 )
+			sql? (
+				dev-qt/qtsql:4 
+				dev-libs/qjson 
+			)
+		)
+	)
+	qt5? (
+		dev-qt/qtgui:5
+		dev-qt/qtxml:5
+		dev-qt/qtconcurrent:5
+		dbus? ( dev-qt/qtdbus:5 )
+		>=app-crypt/qca-2.1:2[qt5]
+		whiteboarding? ( dev-qt/qtsvg:5 )
+		extras? (
+			webkit? ( dev-qt/qtwebkit:5 )
 		)
 	)
 "
@@ -58,12 +73,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 PDEPEND="
-	crypt? ( || ( app-crypt/qca-gnupg:2 >=app-crypt/qca-2.1.0[gpg] ) )
+	crypt? ( || ( <app-crypt/qca-gnupg-2.1.0:2 >=app-crypt/qca-2.1.0[gpg] ) )
 	jingle? (
 		net-im/psimedia[extras?]
-		|| ( app-crypt/qca-ossl:2 >=app-crypt/qca-2.1.0[ssl] )
+		|| ( <app-crypt/qca-ossl-2.1:2 >=app-crypt/qca-2.1.0[ssl] )
 	)
-	ssl? ( || ( app-crypt/qca-ossl:2 >=app-crypt/qca-2.1.0[ssl] ) )
+	ssl? ( || ( <app-crypt/qca-ossl-2.1:2 >=app-crypt/qca-2.1.0[ssl] ) )
 "
 RESTRICT="test"
 
@@ -115,6 +130,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	if use qt5; then
+		sed -i -e 's/qca2/qca2-qt5/' qcm/qca.qcm || die "Failed to patch qca.qcm for qt5"
+		sed -i -e '/depend_prl/d' iris/iris.pri || die "Failed to patch iris/iris.pri for qt5"
+	fi
+	
 	if use extras; then
 		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die
 		if use iconsets; then
@@ -166,12 +186,16 @@ src_configure() {
 		use webkit && myconf+=" --enable-webkit"
 	fi
 
+	QTDIR="${EPREFIX}"/usr
+	use qt5 && QTDIR="${EPREFIX}"/usr/$(get_libdir)/qt5
+
 	./configure \
 		--prefix="${EPREFIX}"/usr \
-		--qtdir="${EPREFIX}"/usr \
+		--qtdir="${QTDIR}" \
 		${myconf} || die
 
-	eqmake4
+	use qt4 && eqmake4 psi.pro
+	use qt5 && eqmake5 psi.pro
 }
 
 src_compile() {
@@ -208,15 +232,14 @@ src_install() {
 	# install translations
 	cd "${WORKDIR}/psi-l10n"
 	insinto /usr/share/${MY_PN}
-	for x in ${LANGS}; do
-		if use linguas_${x}; then
-			if use extras; then
-				lrelease "translations/${PN}_${x}.ts" || die "lrelease ${x} failed"
-				doins "translations/${PN}_${x}.qm"
-			else
-				lrelease "${x}/${PN}_${x}.ts" || die "lrelease ${x} failed"
-				doins "${x}/${PN}_${x}.qm"
-			fi
+	install_locale() {
+		if use extras; then
+			lrelease "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
+			doins "translations/${PN}_${1}.qm"
+		else
+			lrelease "${x}/${PN}_${1}.ts" || die "lrelease ${1} failed"
+			doins "${x}/${PN}_${1}.qm"
 		fi
-	done
+	}
+	l10n_for_each_locale_do install_locale
 }
