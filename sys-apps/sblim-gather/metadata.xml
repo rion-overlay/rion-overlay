@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>andreis.vinogradovs@gmail.com</email>
+ </maintainer>
+
+<use>
+<flag name='base'> </flag>
+<flag name='libvirt'> </flag>
+<flag name='provider'> </flag>
+
+</use>
+</pkgmetadata>

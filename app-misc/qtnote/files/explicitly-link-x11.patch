@@ -1,0 +1,9 @@
+diff -ur QtNote-0.2.3.1.orig/3rdparty/qxt/qxt.pri QtNote-0.2.3.1/3rdparty/qxt/qxt.pri
+--- QtNote-0.2.3.1.orig/3rdparty/qxt/qxt.pri	2013-08-12 10:57:50.000000000 +0600
++++ QtNote-0.2.3.1/3rdparty/qxt/qxt.pri	2014-11-17 14:58:09.937569564 +0500
+@@ -11,3 +11,5 @@
+ 	$$PWD/qxtglobalshortcut_p.h
+ 
+ INCLUDEPATH += $$PWD
++
++LIBS *= -lX11

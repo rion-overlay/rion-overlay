@@ -1,0 +1,23 @@
+diff -ur phatch-0.2.7_orig/phatch/core/api.py phatch-0.2.7/phatch/core/api.py
+--- phatch-0.2.7_orig/phatch/core/api.py	2010-03-12 12:29:26.000000000 +0530
++++ phatch-0.2.7/phatch/core/api.py	2011-05-12 23:27:20.398002673 +0530
+@@ -774,11 +774,17 @@
+     #open image and check for errors
+     photo, result = get_photo(image_info, info_not_file, result)
+     if result['abort']:
++      if(photo is None):
++        return 'return'
++      else:
+         photo.close()
+         return 'return'
+     elif not photo or result['skip']:
+-        photo.close()
+-        return 'continue'
++        if(photo is None):
++           return 'continue'
++        else:
++           photo.close()
++           return 'continue'
+     info = photo.info
+     info.set('imageindex', image_index)
+     image = photo.get_layer().image

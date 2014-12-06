@@ -1,0 +1,10 @@
+*Sys-Virt-1.2.9 (18 Nov 2014)
+
+  18 Nov 2014; slepnoga +Sys-Virt-1.2.9.ebuild, -Sys-Virt-1.2.5.ebuild:
+  bump
+
+*Sys-Virt-1.2.5 (28 Jun 2014)
+
+  28 Jun 2014; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  +Sys-Virt-1.2.5.ebuild, +metadata.xml:
+  bump

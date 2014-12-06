@@ -1,0 +1,24 @@
+--- src/log.cpp	2014-11-08 01:23:27.777511084 +0500
++++ src/log.cpp	2014-11-08 01:25:11.447506724 +0500
+@@ -67,12 +67,3 @@
+ 	verbose_ = level;
+ 	g_log_set_default_handler(log, this);
+ }
+-
+-void g_info(const gchar *fmt, ...)
+-{
+-	va_list va;
+-
+-	va_start(va, fmt);
+-	g_logv(G_LOG_DOMAIN, G_LOG_LEVEL_INFO, fmt, va);
+-	va_end(va);
+-}
+--- src/log.hpp	2014-11-08 01:23:27.777511084 +0500
++++ src/log.hpp	2014-11-08 01:24:54.433507440 +0500
+@@ -19,6 +19,5 @@
+ 			gpointer user_data);
+ };
+ 
+-extern void g_info(const gchar *fmt, ...);
+ 
+ #endif//!_LOG_HPP_
