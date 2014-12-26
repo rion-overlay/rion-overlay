@@ -9,7 +9,9 @@ inherit gnustep-2 games
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
 FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
+BINRES_REV=f5aed27fefc32c24775b39fce25402b970b09b84
 SRC_URI="http://github.com/OoliteProject/oolite/archive/${PV}b.zip -> ${P}.zip
+	http://github.com/OoliteProject/oolite-binary-resources/archive/${BINRES_REV}.zip -> oolite-binary-resources-${PV}.zip
 	${FF_JS_URI}"
 
 LICENSE="GPL-2"
@@ -39,6 +41,7 @@ src_prepare() {
 	gnustep-base_src_prepare
 	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/mozilla/ || die
 	mv "${WORKDIR}/mozilla-2.0/nsprpub" "${S}"/deps/mozilla/ || die
+	mv "${WORKDIR}/oolite-binary-resources-${BINRES_REV}"/* "${S}"/Resources/Binary/
 	echo "${FF_JS_URI}" > "${S}"/deps/mozilla/current.url
 	sed -i -e 's/^\.PHONY: all$/.PHONY: .NOTPARALLEL all/' "${S}"/libjs.make || die
 	sed -i -e 's:.*STRIP.*:	true:' "${S}"/GNUmakefile.postamble
