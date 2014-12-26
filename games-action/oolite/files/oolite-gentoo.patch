@@ -20,3 +20,16 @@
  ifeq ($(GNUSTEP_HOST_OS),mingw32)
      ifeq ($(GNUSTEP_HOST_CPU),x86_64)
                  $(CP) $(CP_FLAGS) deps/Windows-deps/x86_64/DLLs/*.dll $(PROGDIR)
+--- GNUmakefile.orig	2014-12-27 01:47:00.718556710 +0500
++++ GNUmakefile	2014-12-27 02:01:34.797497722 +0500
+@@ -149,9 +149,7 @@
+     legacy_random.c \
+     strlcpy.c \
+     OOTCPStreamDecoder.c \
+-    OOPlanetData.c \
+-	ioapi.c \
+-	unzip.c
++    OOPlanetData.c
+ 
+ 
+ OOLITE_DEBUG_FILES = \
