@@ -9,8 +9,7 @@ inherit gnustep-2 games
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
 FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
-MY_P="${PN}-source-${PV}"
-SRC_URI="mirror://berlios/oolite-linux/${MY_P}.tar.bz2
+SRC_URI="http://github.com/OoliteProject/oolite/archive/${PV}b.zip -> ${P}.zip
 	${FF_JS_URI}"
 
 LICENSE="GPL-2"
@@ -27,7 +26,7 @@ RDEPEND="virtual/opengl
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${P}b"
 PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
 
 pkg_setup() {
@@ -38,10 +37,9 @@ pkg_setup() {
 src_prepare() {
 	base_src_prepare
 	gnustep-base_src_prepare
-	mkdir "${S}"/deps/Cross-platform-deps/mozilla || die
-	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/Cross-platform-deps/mozilla/ || die
-	mv "${WORKDIR}/mozilla-2.0/nsprpub" "${S}"/deps/Cross-platform-deps/mozilla/ || die
-	echo "${FF_JS_URI}" > "${S}"/deps/Cross-platform-deps/mozilla/current.url
+	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/mozilla/ || die
+	mv "${WORKDIR}/mozilla-2.0/nsprpub" "${S}"/deps/mozilla/ || die
+	echo "${FF_JS_URI}" > "${S}"/deps/mozilla/current.url
 	sed -i -e 's/^\.PHONY: all$/.PHONY: .NOTPARALLEL all/' "${S}"/libjs.make || die
 	sed -i -e 's:.*STRIP.*:	true:' "${S}"/GNUmakefile.postamble
 	sed -i -e '/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions' \
