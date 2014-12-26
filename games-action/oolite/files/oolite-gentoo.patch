@@ -18,16 +18,5 @@
 -	$(STRIP) $(PROGDIR)/$(DEST_BIN)
 -endif
  ifeq ($(GNUSTEP_HOST_OS),mingw32)
- 	$(CP) $(CP_FLAGS) deps/Windows-x86-deps/DLLs/*.dll $(PROGDIR)
- ifeq ($(debug),yes)
---- libjs.make.orig	2011-03-28 23:07:33.481037703 +0600
-+++ libjs.make	2011-03-28 23:07:57.238740691 +0600
-@@ -52,7 +52,7 @@
- 	cd $(LIBJS_BUILD_DIR) && ../configure $(LIBJS_CONFIG_FLAGS)
- 	touch $@
- 
--.PHONY: LIBJS_SRC
-+.NOTPARALLEL: LIBJS_SRC
- LIBJS_SRC:
- 	@echo
- 	@echo "Updating Javascript sources..."
+     ifeq ($(GNUSTEP_HOST_CPU),x86_64)
+                 $(CP) $(CP_FLAGS) deps/Windows-deps/x86_64/DLLs/*.dll $(PROGDIR)
