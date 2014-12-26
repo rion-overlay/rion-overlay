@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI="5"
 
 inherit gnustep-2 games
 
@@ -44,22 +44,25 @@ src_prepare() {
 	mv "${WORKDIR}/oolite-binary-resources-${BINRES_REV}"/* "${S}"/Resources/Binary/
 	echo "${FF_JS_URI}" > "${S}"/deps/mozilla/current.url
 	sed -i -e 's/^\.PHONY: all$/.PHONY: .NOTPARALLEL all/' "${S}"/libjs.make || die
-	sed -i -e 's:.*STRIP.*:	true:' "${S}"/GNUmakefile.postamble
-	sed -i -e '/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions' \
+	sed -i -e 's:.*STRIP.*:	true:' \
+		-e '/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions' \
+		-e '/ADDITIONAL_OBJC_LIBS *=/aADDITIONAL_OBJC_LIBS += -lminizip' \
+		-e 's|:src/Core/MiniZip||g' \
+		-e 's|-Isrc/Core/MiniZip|-I/usr/include/minizip|' \
 		"${S}"/GNUmakefile || die
 	sed "/void png_error/d" -i src/Core/Materials/OOPNGTextureLoader.m
 }
 
 src_compile() {
 	egnustep_env
-	emake -f Makefile $(use debug && echo debug || echo release) || die
+	emake -f Makefile $(use debug && echo debug || echo release)
 }
 
 src_install() {
 	#gnustep-base_src_install
 	install_root="$(gnustep-config --variable=GNUSTEP_LOCAL_APPS)"
 	insinto "${install_root}"
-	doins -r oolite.app || die "install failed"
+	doins -r oolite.app
 
 	echo "openapp oolite" > "${T}/oolite"
 	dogamesbin "${T}/oolite"
