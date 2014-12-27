@@ -23,7 +23,11 @@ RDEPEND="virtual/opengl
 		gnustep-base/gnustep-gui
 		media-libs/sdl-mixer
 		media-libs/sdl-image
-		app-accessibility/espeak"
+		app-accessibility/espeak
+		media-libs/libvorbis
+		dev-libs/nspr
+		media-libs/libpng
+		media-libs/openal"
 
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
