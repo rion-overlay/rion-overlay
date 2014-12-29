@@ -27,7 +27,8 @@ RDEPEND="virtual/opengl
 		media-libs/libvorbis
 		dev-libs/nspr
 		media-libs/libpng
-		media-libs/openal"
+		media-libs/openal
+		sys-libs/zlib[minizip]"
 
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
