@@ -36,6 +36,8 @@ fi
 
 inherit qt4-r2 ${SCM}
 
+REQUIRED_USE="^^ ( qt4 qt5 )"
+
 # general common
 
 HOMEPAGE="http://psi-dev.googlecode.com"
@@ -48,6 +50,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="+qt4 qt5"
+
 
 DEPEND=">=net-im/psi-9999[extras,plugins]"
 RDEPEND="${DEPEND}"
@@ -63,5 +67,6 @@ psiplus-plugin_src_prepare() {
 }
 
 psiplus-plugin_src_configure() {
-	eqmake4 "${MY_PN}".pro
+	use qt4 && eqmake4 "${MY_PN}".pro
+	use qt5 && eqmake5 "${MY_PN}".pro
 }
