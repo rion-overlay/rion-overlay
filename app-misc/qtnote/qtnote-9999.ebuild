@@ -19,5 +19,5 @@ DEPEND="dev-qt/qtgui"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	eqmake4 ${PN}.pro PREFIX="${EPREFIX}/usr"
+	eqmake4 ${PN}.pro PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
