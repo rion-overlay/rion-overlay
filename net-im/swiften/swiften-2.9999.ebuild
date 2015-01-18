@@ -53,6 +53,7 @@ src_prepare() {
 	# TODO CppUnit, Lua
 	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib || die
 	popd || die
+	#rm -rf Swiften/Examples || die
 	epatch "${FILESDIR}"/*.patch
 }
 
@@ -65,7 +66,6 @@ src_compile() {
 		allow_warnings=1
 		ccache=1
 		distcc=1
-		build_examples=0
 		$(use_scons debug)
 		openssl="${EPREFIX}/usr"
 		docbook_xsl="${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets"
