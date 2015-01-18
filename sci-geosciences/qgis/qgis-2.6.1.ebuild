@@ -43,7 +43,7 @@ RDEPEND="
 	)
 	grass? ( >=sci-geosciences/grass-6.4.0_rc6[python?] )
 	mapserver? ( dev-libs/fcgi )
-	postgres? ( virtual/postgresql )
+	postgres? ( dev-db/postgresql )
 	python? (
 		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
