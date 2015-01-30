@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
-inherit cmake-utils subversion
+inherit cmake-utils git-r3
 
 DESCRIPTION="Small and simple image viewer for Linux."
 HOMEPAGE="http://sourceforge.net/projects/simpleviewer/"
-ESVN_REPO_URI="https://simpleviewer.svn.sourceforge.net/svnroot/simpleviewer"
+EGIT_REPO_URI="https://bitbucket.org/andreyu/simple-viewer-gl"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,10 +28,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+CMAKE_USE_DIR="${S}/projects/linux"
+
 src_prepare() {
 	sed \
 		-e "/^ADD_DEFINITIONS/d" \
-		-i CMakeLists.txt || die
+		-i projects/linux/CMakeLists.txt || die
 }
 
 src_install() {
