@@ -88,7 +88,7 @@ EBUILDCONTENT
 # \$Header: \$
 
   `LANG=C date "+%d %b %Y"`; $USER <$USER@bots.ru> ChangeLog:
-  generate ChangeLog" > "net-im/psi-${pn}/Changelog"
+  generate ChangeLog" > "net-im/psi-${pn}/ChangeLog"
 
   ebuild "net-im/psi-${pn}/psi-${pn}-9999.ebuild" digest
   hg add "net-im/psi-${pn}"
