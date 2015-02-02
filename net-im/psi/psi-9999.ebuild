@@ -48,8 +48,8 @@ RDEPEND="
 		extras? (
 			webkit? ( dev-qt/qtwebkit:4 )
 			sql? (
-				dev-qt/qtsql:4 
-				dev-libs/qjson 
+				dev-qt/qtsql:4
+				dev-libs/qjson
 			)
 		)
 	)
@@ -76,9 +76,9 @@ PDEPEND="
 	crypt? ( || ( <app-crypt/qca-gnupg-2.1.0:2 >=app-crypt/qca-2.1.0[gpg] ) )
 	jingle? (
 		net-im/psimedia[extras?]
-		|| ( <app-crypt/qca-ossl-2.1:2 >=app-crypt/qca-2.1.0[ssl] )
+		|| ( <app-crypt/qca-ossl-2.1:2 <app-crypt/qca-2.1.0.3[ssl] >=app-crypt/qca-2.1.0.3[openssl] )
 	)
-	ssl? ( || ( <app-crypt/qca-ossl-2.1:2 >=app-crypt/qca-2.1.0[ssl] ) )
+	ssl? ( || ( <app-crypt/qca-ossl-2.1:2 <app-crypt/qca-2.1.0.3[ssl] >=app-crypt/qca-2.1.0.3[openssl] ) )
 "
 RESTRICT="test"
 
@@ -134,22 +134,22 @@ src_prepare() {
 		sed -i -e 's/qca2/qca2-qt5/' qcm/qca.qcm || die "Failed to patch qca.qcm for qt5"
 		sed -i -e '/depend_prl/d' iris/iris.pri || die "Failed to patch iris/iris.pri for qt5"
 	fi
-	
+
 	if use extras; then
 		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die
 		if use iconsets; then
 			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die
 		fi
-		
+
 		PATCHES_DIR="${WORKDIR}/psi-plus/patches"
 		EPATCH_SOURCE="${PATCHES_DIR}" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
 		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 2)"
-		
+
 		if use sql; then
 			epatch "${PATCHES_DIR}/dev/psi-new-history.patch" || die "patching with ${SQLPATCH} failed"
 		fi
-		
+
 		use webkit && {
 			echo "0.16.${PSI_PLUS_REVISION}-webkit (@@DATE@@)" > version
 		} || {
