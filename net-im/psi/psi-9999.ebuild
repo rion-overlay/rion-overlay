@@ -73,12 +73,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 PDEPEND="
-	crypt? ( || ( <app-crypt/qca-gnupg-2.1.0:2 >=app-crypt/qca-2.1.0[gpg] ) )
+	crypt? ( >=app-crypt/qca-2.1.0[gpg] )
 	jingle? (
 		net-im/psimedia[extras?]
-		|| ( <app-crypt/qca-ossl-2.1:2 <app-crypt/qca-2.1.0.3[ssl] >=app-crypt/qca-2.1.0.3[openssl] )
+		>=app-crypt/qca-2.1.0.3[openssl]
 	)
-	ssl? ( || ( <app-crypt/qca-ossl-2.1:2 <app-crypt/qca-2.1.0.3[ssl] >=app-crypt/qca-2.1.0.3[openssl] ) )
+	ssl? ( >=app-crypt/qca-2.1.0.3[openssl] )
 "
 RESTRICT="test"
 
