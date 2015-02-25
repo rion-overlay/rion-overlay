@@ -38,12 +38,12 @@ RDEPEND="
 	dev-qt/qtwebkit:4
 	x11-libs/qscintilla
 	|| (
-		( x11-libs/qwt:6[svg] >=x11-libs/qwtpolar-1 )
+		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) >=x11-libs/qwtpolar-1 )
 		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
 	)
 	grass? ( >=sci-geosciences/grass-6.4.0_rc6[python?] )
 	mapserver? ( dev-libs/fcgi )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	python? (
 		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
@@ -97,10 +97,17 @@ src_configure() {
 
 	if has_version '>=x11-libs/qwtpolar-1' &&  has_version 'x11-libs/qwt:5' ; then
 		elog "Both >=x11-libs/qwtpolar-1 and x11-libs/qwt:5 installed. Force build with qwt6"
-		mycmakeargs+=(
-			"-DQWT_INCLUDE_DIR=/usr/include/qwt6"
-			"-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6.so"
-		)
+		if has_version '>=x11-libs/qwt-6.1.2' ; then
+			mycmakeargs+=(
+				"-DQWT_INCLUDE_DIR=/usr/include/qwt6"
+				"-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt4.so"
+			)
+		else
+			mycmakeargs+=(
+				"-DQWT_INCLUDE_DIR=/usr/include/qwt6"
+				"-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6.so"
+			)
+		fi
 	fi
 
 	cmake-utils_src_configure
