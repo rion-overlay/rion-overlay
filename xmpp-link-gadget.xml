@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="link to support conference" /> 
+  <Content type="html">
+     <![CDATA[ 
+     <a href="xmpp:rion-overlay@conference.gentoo.ru?join">our jabber conference</a>
+     ]]>
+  </Content> 
+</Module>
