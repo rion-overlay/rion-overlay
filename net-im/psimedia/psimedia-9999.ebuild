@@ -22,6 +22,7 @@ COMMON_DEPEND="
 	media-libs/gst-plugins-good:0.10
 	>=dev-qt/qtgui-4.4:4
 	>=media-libs/speex-1.2_rc1
+	dev-libs/liboil
 "
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-speex:0.10
