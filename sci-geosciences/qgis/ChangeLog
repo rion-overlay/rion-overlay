@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Mar 2015; eegorov <egor.y.egorov@gmail.com> qgis-2.8.1.ebuild,
+  +files/qgis-2.8.1-fix-qwt-search.patch:
+  Fix build wit qwt6-qt4 library
+
 *qgis-2.8.1 (20 Mar 2015)
 
   20 Mar 2015; eegorov <egor.y.egorov@gmail.com> -qgis-2.8.0.ebuild,

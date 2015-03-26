@@ -60,6 +60,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-qwt-search.patch"
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
