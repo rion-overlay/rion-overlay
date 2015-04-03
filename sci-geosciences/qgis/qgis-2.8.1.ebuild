@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples grass gsl mapserver postgres python spatialite test"
+IUSE="examples grass gsl mapserver postgres python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -51,10 +51,9 @@ RDEPEND="
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		${PYTHON_DEPS}
 	)
-	spatialite? (
-		dev-db/sqlite:3
-		dev-db/spatialite
-	)"
+	dev-db/sqlite:3
+	dev-db/spatialite
+"
 
 DEPEND="${RDEPEND}
 	sys-devel/bison
@@ -77,23 +76,18 @@ src_configure() {
 		"-DWITH_INTERNAL_QWTPOLAR=OFF"
 		"-DPEDANTIC=OFF"
 		"-DWITH_APIDOC=OFF"
+		"-DWITH_SPATIALITE=ON"
+		"-DWITH_INTERNAL_SPATIALITE=OFF"
 		$(cmake-utils_use_with postgres POSTGRESQL)
 		$(cmake-utils_use_with grass GRASS)
 		$(cmake-utils_use_with mapserver MAPSERVER)
 		$(cmake-utils_use_with python BINDINGS)
 		$(cmake-utils_use python BINDINGS_GLOBAL_INSTALL)
-		$(cmake-utils_use_with spatialite SPATIALITE)
-		$(cmake-utils_use_with spatialite PYSPATIALITE)
+		$(cmake-utils_use_with python PYSPATIALITE)
 		$(cmake-utils_use_with gsl GSL)
 		$(cmake-utils_use_enable test TESTS)
 		$(usex grass "-DGRASS_PREFIX=/usr/" "")
 	)
-
-	if use spatialite ; then
-		mycmakeargs+=( "-DWITH_INTERNAL_SPATIALITE=OFF" )
-	else
-		mycmakeargs+=( "-DWITH_INTERNAL_SPATIALITE=ON" )
-	fi
 
 	if has_version '>=x11-libs/qwtpolar-1' &&  has_version 'x11-libs/qwt:5' ; then
 		elog "Both >=x11-libs/qwtpolar-1 and x11-libs/qwt:5 installed. Force build with qwt6"
