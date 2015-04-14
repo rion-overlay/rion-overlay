@@ -34,13 +34,7 @@ pkg_setup() {
 		CONFIG_CHECK="PARPORT PARPORT_PC"
 
 		linux-mod_pkg_setup
-		if kernel_is 3 ; then
-			BUILD_PARAMS="KERNSRC=${KERNEL_DIR}" BUILD_TARGETS="kernel26" || die
-		elif kernel_is 2 6 ; then
-			BUILD_PARAMS="KERNSRC=${KERNEL_DIR}" BUILD_TARGETS="kernel26" || die
-		elif kernel_is 2 4 ; then
-			BUILD_PARAMS="KERNSRC=${KERNEL_DIR}" BUILD_TARGETS="kernel24" || die
-		fi
+		BUILD_PARAMS="KERNSRC=${KERNEL_DIR}" BUILD_TARGETS="kernel3"
 	fi
 }
 
