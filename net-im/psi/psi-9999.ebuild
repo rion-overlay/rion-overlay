@@ -130,11 +130,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	if use qt5; then
-		sed -i -e 's/qca2/qca2-qt5/' qcm/qca.qcm || die "Failed to patch qca.qcm for qt5"
-		sed -i -e '/depend_prl/d' iris/iris.pri || die "Failed to patch iris/iris.pri for qt5"
-	fi
-
 	if use extras; then
 		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die
 		if use iconsets; then

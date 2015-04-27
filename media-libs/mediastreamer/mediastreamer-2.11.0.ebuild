@@ -39,7 +39,7 @@ RDEPEND="net-libs/libsrtp[static-libs]
 	speex? ( >=media-libs/speex-1.2_beta3 )
 	upnp? ( net-libs/libupnp )
 	video? (
-		libav? ( media-video/libav:0/10 )
+		libav? ( media-video/libav:0/11 )
 
 		opengl? ( media-libs/glew
 			virtual/opengl
