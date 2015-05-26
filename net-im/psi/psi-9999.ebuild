@@ -67,7 +67,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	extras? (
-		sys-devel/qconf
+		>=sys-devel/qconf-9999
 	)
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
