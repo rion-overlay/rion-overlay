@@ -184,6 +184,10 @@ src_configure() {
 	QTDIR="${EPREFIX}"/usr
 	use qt5 && QTDIR="${EPREFIX}"/usr/$(get_libdir)/qt5
 
+	elog ./configure --prefix="${EPREFIX}"/usr \
+			--qtdir="${QTDIR}" \
+			${myconf}
+
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--qtdir="${QTDIR}" \
