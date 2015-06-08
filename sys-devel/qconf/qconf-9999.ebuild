@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.0.0-r2.ebuild,v 1.8 2008/03/15 11:30:02 corsair Exp $
 
-EAPI="4"
+EAPI=5
 
-inherit multilib git-2
+inherit multilib git-r3
 
 DESCRIPTION="Qt ./configure generation util"
 HOMEPAGE="http://delta.affinix.com/qconf/"
@@ -16,27 +16,13 @@ KEYWORDS=""
 IUSE=""
 #RESTRICT="test strip"
 
-DEPEND="dev-qt/qtcore"
+DEPEND="dev-qt/qtcore:4"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	./configure \
 		--prefix="${EPREFIX}"/usr \
-		--qtdir="${EPREFIX}"/usr/$(get_libdir)/ || die "./configure failed"
-	"${EPREFIX}"/usr/bin/qmake \
-		QTDIR="${EPREFIX}"/usr/$(get_libdir) \
-			QMAKE="${EPREFIX}"/usr/bin/qmake \
-			QMAKE_CC="$(tc-getCC)" \
-			QMAKE_CXX="$(tc-getCXX)" \
-			QMAKE_LINK="$(tc-getCXX)" \
-			QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
-			QMAKE_CXXFLAGS_DEBUG="${CXXFLAGS}" \
-			QMAKE_LFLAGS_RELEASE="${LDFLAGS}" \
-			QMAKE_LFLAGS_DEBUG="${LDFLAGS}" \
-			QMAKE_LIBDIR_QT="${EPREFIX}"/usr/$(get_libdir)/qt4 \
-			QMAKE_LIBDIR_X11="${EPREFIX}"/usr/$(get_libdir) \
-			QMAKE_LIBDIR_OPENGL="${EPREFIX}"/usr/$(get_libdir) \
-			QMAKE_STRIP= || die "qmake failed"
+		--qtselect=4 || die "./configure failed"
 }
 
 src_install() {
