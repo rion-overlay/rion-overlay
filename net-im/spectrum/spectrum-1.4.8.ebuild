@@ -9,7 +9,7 @@ inherit cmake-utils
 DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
 
-SRC_URI="http://spectrum.im/attachments/download/43/spectrum-${PV}.tar.gz"
+SRC_URI="https://github.com/downloads/hanzz/libtransport/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
