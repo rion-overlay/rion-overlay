@@ -13,16 +13,23 @@ EGIT_REPO_URI="git://github.com/psi-plus/qconf.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="qt4 qt5"
 #RESTRICT="test strip"
 
-DEPEND="dev-qt/qtcore:4"
+DEPEND="
+	qt4? ( dev-qt/qtcore:4 )
+	qt5? ( dev-qt/qtcore:5 )
+"
 RDEPEND="${DEPEND}"
 
+REQUIRED_USE="^^ ( qt4 qt5 )"
+
 src_configure() {
+	use qt4 && QTVERSION=4
+	use qt5 && QTVERSION=5
 	./configure \
-		--prefix="${EPREFIX}"/usr \
-		--qtselect=4 || die "./configure failed"
+	--prefix="${EPREFIX}"/usr \
+	--qtselect="${QTVERSION}" || die "./configure failed"
 }
 
 src_install() {
