@@ -1,0 +1,10 @@
+# ChangeLog for net-libs/jdns
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*jdns-2.0.3_pre1 (03 Jul 2015)
+
+  03 Jul 2015; Rion <rion4ik@gmail.com> -jdns-2.0.2.ebuild,
+  +jdns-2.0.3_pre1.ebuild:
+  Better support of multiple Qt version on the system
+
