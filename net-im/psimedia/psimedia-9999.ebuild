@@ -2,25 +2,34 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="5"
 
-inherit qt4-r2 multilib eutils git-2
+PSI_PLUS_URI="git://github.com/psi-plus"
+EGIT_REPO_URI="${PSI_PLUS_URI}/psimedia.git"
+
+inherit qmake-utils multilib eutils git-2
 
 DESCRIPTION="Psi plugin for voice/video calls"
 HOMEPAGE="http://delta.affinix.com/psimedia/"
-EGIT_REPO_URI="git://github.com/psi-plus/psimedia.git"
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="demo extras"
+IUSE="demo extras qt4 qt5"
 
+REQUIRED_USE="
+	^^ ( qt4 qt5 )
+"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.20.0
 	media-libs/gstreamer:0.10
 	media-libs/gst-plugins-base:0.10
 	media-libs/gst-plugins-good:0.10
-	>=dev-qt/qtgui-4.4:4
+	qt4? (
+		>=dev-qt/qtgui-4.4:4
+	)
+	qt5? (
+		dev-qt/qtgui:5
+	)
 	>=media-libs/speex-1.2_rc1
 	dev-libs/liboil
 "
@@ -36,7 +45,9 @@ RDEPEND="${COMMON_DEPEND}
 	extras? ( >=net-im/psi-0.15_pre20110125[extras] )
 "
 DEPEND="${COMMON_DEPEND}
-	sys-devel/qconf
+	extras? (
+		sys-devel/qconf
+	)
 	virtual/pkgconfig
 "
 
@@ -47,14 +58,18 @@ src_prepare() {
 		sed -e '/^SUBDIRS[[:space:]]*+=[[:space:]]*demo[[:space:]]*$/d;' \
 			-i psimedia.pro || die
 	fi
+	qconf || die "Failed to create ./configure."
+	# qconf generated configure script...
 }
 
 src_configure() {
-	qconf
-	# qconf generated configure script...
-	./configure --no-separate-debug-info || die
+	use qt4 && QTVERSION=4
+	use qt5 && QTVERSION=5
+	./configure --no-separate-debug-info \
+		--qtselect="${QTVERSION}" || die "./configure failed"
 
-	eqmake4
+	use qt4 && eqmake4 psimedia.pro
+	use qt5 && eqmake5
 }
 
 src_install() {
