@@ -158,6 +158,10 @@ src_prepare() {
 }
 
 src_configure() {
+	qconf || die "Failed to create ./configure."
+	# qconf generated configure script...
+	use qt4 && QTVERSION=4
+	use qt5 && QTVERSION=5
 	# unable to use econf because of non-standard configure script
 	# disable growl as it is a MacOS X extension only
 	local myconf="
@@ -182,17 +186,13 @@ src_configure() {
 		use webkit && myconf+=" --enable-webkit"
 	fi
 
-	QTDIR="${EPREFIX}"/usr
-	use qt5 && QTDIR="${EPREFIX}"/usr/$(get_libdir)/qt5
-
 	elog ./configure --prefix="${EPREFIX}"/usr \
-			--qtdir="${QTDIR}" \
-			${myconf}
+		--qtselect="${QTVERSION}" \
+		${myconf}
 
-	./configure \
-		--prefix="${EPREFIX}"/usr \
-		--qtdir="${QTDIR}" \
-		${myconf} || die
+	./configure --prefix="${EPREFIX}"/usr \
+		--qtselect="${QTVERSION}" \
+		${myconf} || die "./configure failed"
 
 	use qt4 && eqmake4 psi.pro
 	use qt5 && eqmake5 psi.pro
