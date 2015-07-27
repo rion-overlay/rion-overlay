@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/Ri0n/QtNote"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+qt4 qt5"
+IUSE="+qt4 qt5 spell kde unity"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 DEPEND="
@@ -23,11 +23,15 @@ DEPEND="
 		   dev-qt/qtwidgets
 		   dev-qt/qtnetwork:5
 		   dev-qt/qtprintsupport:5
-	       dev-qt/qtsingleapplication[X,qt5] )"
+	       dev-qt/qtsingleapplication[X,qt5] )
+	spell? ( app-text/hunspell )"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	CONF=( PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" )
+	use spell || CONF+=( CONFIG+=nospellchecker )
+	use kde || CONF+=( CONFIG+=nokde )
+	use unity || CONF+=( CONFIG+=noubuntu )
 }
 
 src_configure() {
