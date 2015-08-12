@@ -58,6 +58,7 @@ RDEPEND="
 		dev-qt/qtxml:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtmultimedia:5
+		dev-qt/qtx11extras:5
 		dbus? ( dev-qt/qtdbus:5 )
 		>=app-crypt/qca-2.1:2[qt5]
 		whiteboarding? ( dev-qt/qtsvg:5 )
