@@ -10,7 +10,7 @@ DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
 FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
 BINRES_REV=f5aed27fefc32c24775b39fce25402b970b09b84
-SRC_URI="http://github.com/OoliteProject/oolite/archive/${PV}b.zip -> ${P}.zip
+SRC_URI="https://github.com/OoliteProject/oolite/archive/${PV}.tar.gz -> ${P}.tar.gz
 	http://github.com/OoliteProject/oolite-binary-resources/archive/${BINRES_REV}.zip -> oolite-binary-resources-${PV}.zip
 	${FF_JS_URI}"
 
@@ -33,7 +33,7 @@ RDEPEND="virtual/opengl
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
 
-S="${WORKDIR}/${P}b"
+S="${WORKDIR}/${P}"
 PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
 
 pkg_setup() {
