@@ -1,0 +1,22 @@
+commit 1e9a2ea9de93c7b7dc3c0ebf0fec4dd5259b86d3
+Author: Il'inykh Sergey <sergeyi@inango-sw.com>
+Date:   Wed Aug 19 12:29:16 2015 +0500
+
+    Do not install qjdns.pc if we do not build qjdns lib
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5d3b0b..65010f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -162,9 +162,9 @@ if(NOT WIN32)
+     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qjdns.pc.in
+                    ${CMAKE_CURRENT_BINARY_DIR}/qjdns${QT_MAJ}.pc
+                    @ONLY)
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qjdns${QT_MAJ}.pc
++            DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
+   endif(BUILD_QJDNS)
+-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qjdns${QT_MAJ}.pc
+-          DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
+ endif(NOT WIN32)
+ 
+ include_directories("include/jdns/")

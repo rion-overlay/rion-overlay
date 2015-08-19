@@ -12,6 +12,7 @@ HOMEPAGE="https://github.com/psi-im/jdns"
 #EGIT_COMMIT="ae2e7264e8458d64932590bdde2417605946cb8a"
 #EGIT_REPO_URI="https://github.com/psi-im/jdns.git"
 SRC_URI="https://github.com/psi-im/jdns/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+PATCHES="$FILESDIR/build_without_qt.patch"
 
 LICENSE="MIT"
 SLOT="0"
@@ -31,8 +32,10 @@ pkg_setup() {
 
 src_configure() {
 	if [[ -z "${MULTIBUILD_VARIANTS[@]}" ]]; then
-		local mycmakeargs=( -DBUILD_QJDNS=OFF
-			$(cmake-utils_use_build tools JDNS_TOOL) )
+		local mycmakeargs=(
+			-DBUILD_QJDNS=OFF
+			-DBUILD_JDNS_TOOL=OFF
+		)
 		cmake-utils_src_configure
 	else
 		myconfigure() {
