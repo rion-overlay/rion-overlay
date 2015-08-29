@@ -58,7 +58,7 @@ RDEPEND="${CDEPEND}
 	)
 	"
 
-PATCHES=( "${FILESDIR}/0.2.4-cmake.patch" )
+# PATCHES=( "${FILESDIR}/0.2.4-cmake.patch" )
 
 src_configure() {
 	mycmakeargs=(
