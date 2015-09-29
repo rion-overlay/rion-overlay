@@ -62,7 +62,7 @@ src_compile() {
 		ccflags="${CFLAGS}"
 		linkflags="${LDFLAGS}"
 		allow_warnings=1
-		ccache=1
+		ccache=0
 		distcc=1
 		$(use_scons debug)
 		openssl="${EPREFIX}/usr"
