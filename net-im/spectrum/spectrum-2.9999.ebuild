@@ -12,7 +12,9 @@ DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
 
 if [[ ${PV} == *9999* ]]; then
-  EGIT_REPO_URI="git://github.com/hanzz/libtransport.git"
+  #EGIT_REPO_URI="git://github.com/hanzz/libtransport.git"
+  EGIT_REPO_URI="git://github.com/vitalyster/libtransport.git"
+  EGIT_BRANCH="swiften3"
 else
   MY_PV="${PV/_/-}"
   SRC_URI="http://spectrum.im/attachments/download/57/${PN}-${MY_PV}.tar.gz"
@@ -35,7 +37,7 @@ RDEPEND="net-im/jabber-base
 	postgres? ( dev-libs/libpqxx )
 	sqlite? ( dev-db/sqlite:3 )
 	frotz? ( dev-libs/protobuf )
-	irc? ( <net-im/libcommuni-3 dev-libs/protobuf )
+	irc? ( net-im/libcommuni dev-libs/protobuf )
 	purple? ( >=net-im/pidgin-2.6.0 dev-libs/protobuf )
 	skype? ( dev-libs/dbus-glib x11-base/xorg-server[xvfb] dev-libs/protobuf )
 	libev? ( dev-libs/libev dev-libs/protobuf )"
