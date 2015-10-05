@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Oct 2015; eegorov <egor.y.egorov@gmail.com> qgis-2.8.1.ebuild,
+  qgis-2.10.1.ebuild:
+  Fix #201
+
   01 Sep 2015; eegorov <egor.y.egorov@gmail.com> qgis-2.10.1.ebuild:
   Fix #199
 
