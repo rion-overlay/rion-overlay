@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cim debug examples +eventing ipv6 java pam perl python plugins ruby ssl
+IUSE="+cim debug examples +eventing ipv6 java mono pam perl python plugins ruby ssl
 +server test"
 
 RDEPEND="
