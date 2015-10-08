@@ -28,16 +28,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-CMAKE_USE_DIR="${S}/projects/linux"
-
-src_prepare() {
-	sed \
-		-e "/^ADD_DEFINITIONS/d" \
-		-i projects/linux/CMakeLists.txt || die
-}
-
 src_install() {
-	dobin "${WORKDIR}"/sviewgl
+	dobin "${BUILD_DIR}"/sviewgl
 
 	dodoc config.example README
 }
