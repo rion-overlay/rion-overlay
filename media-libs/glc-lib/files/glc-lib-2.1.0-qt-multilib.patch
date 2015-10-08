@@ -1,0 +1,12 @@
+diff -ur glc_lib_orig/GLC_lib.pro glc_lib/GLC_lib.pro
+--- glc_lib_orig/GLC_lib.pro	2011-03-07 13:50:58.000000000 +0600
++++ glc_lib/GLC_lib.pro	2015-10-08 09:54:56.701366089 +0600
+@@ -7,7 +7,7 @@
+ CONFIG += exceptions \
+     release \
+     warn_on
+-TARGET = GLC_lib
++TARGET = GLC_lib-qt$$QT_MAJOR_VERSION
+ VERSION = 2.1.0
+ 
+ DEFINES += CREATE_GLC_LIB_DLL

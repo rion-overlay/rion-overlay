@@ -1,0 +1,75 @@
+diff -ur glc_lib_orig/geometry/glc_mesh.cpp glc_lib/geometry/glc_mesh.cpp
+--- glc_lib_orig/geometry/glc_mesh.cpp	2011-03-07 13:50:24.000000000 +0600
++++ glc_lib/geometry/glc_mesh.cpp	2015-10-08 09:52:09.154598536 +0600
+@@ -612,7 +612,7 @@
+ 	{
+ 		const int numberOfLod= m_MeshData.lodCount() - 1;
+ 		// Clamp value to number of load
+-		m_CurrentLod= qRound(static_cast<int>((static_cast<double>(value) / 100.0) * numberOfLod));
++		m_CurrentLod= static_cast<int>(qRound((static_cast<double>(value) / 100.0) * numberOfLod));
+ 	}
+ 	else
+ 	{
+diff -ur glc_lib_orig/glc_exception.cpp glc_lib/glc_exception.cpp
+--- glc_lib_orig/glc_exception.cpp	2011-03-07 13:50:24.000000000 +0600
++++ glc_lib/glc_exception.cpp	2015-10-08 09:50:36.781622125 +0600
+@@ -46,5 +46,5 @@
+ {
+ 	QString exceptionmsg("GLC_Exception : ");
+ 	exceptionmsg.append(m_ErrorDescription);
+-	return exceptionmsg.toAscii().data();
++	return exceptionmsg.toLatin1().data();
+ }
+diff -ur glc_lib_orig/glc_fileformatexception.cpp glc_lib/glc_fileformatexception.cpp
+--- glc_lib_orig/glc_fileformatexception.cpp	2011-03-07 13:50:24.000000000 +0600
++++ glc_lib/glc_fileformatexception.cpp	2015-10-08 09:50:36.785622167 +0600
+@@ -47,5 +47,5 @@
+ 	exceptionmsg.append(m_ErrorDescription);
+ 	exceptionmsg.append(" in file : ");
+ 	exceptionmsg.append(m_FileName);
+-	return exceptionmsg.toAscii().data();
++	return exceptionmsg.toLatin1().data();
+ }
+diff -ur glc_lib_orig/glc_openglexception.cpp glc_lib/glc_openglexception.cpp
+--- glc_lib_orig/glc_openglexception.cpp	2011-03-07 13:50:24.000000000 +0600
++++ glc_lib/glc_openglexception.cpp	2015-10-08 09:50:36.789622209 +0600
+@@ -74,5 +74,5 @@
+ 	QString exceptionmsg("GLC_OpenGlException : ");
+ 	exceptionmsg.append(m_ErrorDescription);
+ 	exceptionmsg.append(m_GlErrorDescription);
+-	return exceptionmsg.toAscii().data();
++	return exceptionmsg.toLatin1().data();
+ }
+diff -ur glc_lib_orig/io/glc_objmtlloader.cpp glc_lib/io/glc_objmtlloader.cpp
+--- glc_lib_orig/io/glc_objmtlloader.cpp	2011-03-07 13:50:24.000000000 +0600
++++ glc_lib/io/glc_objmtlloader.cpp	2015-10-08 09:50:36.816622495 +0600
+@@ -98,7 +98,7 @@
+ 	{
+ 		lineBuff= mtlStream.readLine();
+ 		//qDebug() << lineBuff;
+-		QTextStream streamLine(lineBuff.toAscii());
++		QTextStream streamLine(lineBuff.toLatin1());
+ 
+ 		if ((streamLine >> header).status() ==QTextStream::Ok)
+ 		{
+diff -ur glc_lib_orig/io/glc_worldto3dxml.cpp glc_lib/io/glc_worldto3dxml.cpp
+--- glc_lib_orig/io/glc_worldto3dxml.cpp	2011-03-07 13:50:24.000000000 +0600
++++ glc_lib/io/glc_worldto3dxml.cpp	2015-10-08 09:50:36.827622611 +0600
+@@ -1085,7 +1085,7 @@
+ 		success= m_pCurrentZipFile->open(QIODevice::WriteOnly, quazipNewInfo);
+ 		if (success)
+ 		{
+-			image.save(m_pCurrentZipFile, QFileInfo(fileName).suffix().toAscii().constData());
++			image.save(m_pCurrentZipFile, QFileInfo(fileName).suffix().toLatin1().constData());
+ 			m_pCurrentZipFile->close();
+ 			delete m_pCurrentZipFile;
+ 			m_pCurrentZipFile= NULL;
+@@ -1098,7 +1098,7 @@
+ 		success= m_pCurrentFile->open(QIODevice::WriteOnly);
+ 		if (success)
+ 		{
+-			image.save(m_pCurrentFile, QFileInfo(fileName).suffix().toAscii().constData());
++			image.save(m_pCurrentFile, QFileInfo(fileName).suffix().toLatin1().constData());
+ 			delete m_pCurrentFile;
+ 			m_pCurrentFile= NULL;
+ 		}
