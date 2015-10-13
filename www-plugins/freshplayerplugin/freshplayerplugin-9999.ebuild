@@ -78,5 +78,5 @@ src_configure() {
 src_install() {
 	dodoc ChangeLog data/freshwrapper.conf.example README.md
 	exeinto /usr/$(get_libdir)/nsbrowser/plugins
-	doexe "${BUILD_DIR}/libfreshwrapper-pepperflash.so"
+	doexe "${BUILD_DIR}/libfreshwrapper-flashplayer.so"
 }
