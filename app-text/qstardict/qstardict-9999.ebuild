@@ -6,7 +6,7 @@ EAPI="5"
 
 case $PV in *9999*) VCS_ECLASS="git-2" ;; *) VCS_ECLASS="" ;; esac
 
-inherit eutils qt4-r2 confutils ${VCS_ECLASS}
+inherit base eutils qmake-utils confutils ${VCS_ECLASS}
 
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
@@ -24,8 +24,9 @@ SLOT="0"
 PLUGINS="stardict swac web"
 IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
-IUSE="dbus nls ${IUSE_PLUGINS}"
-REQUIRED_USE="|| ( ${IUSE_PLUGINS} )"
+IUSE="dbus nls ${IUSE_PLUGINS} qt4 qt5"
+REQUIRED_USE="|| ( ${IUSE_PLUGINS} )
+	|| ( qt4 qt5 )"
 
 RDEPEND="dev-qt/qtgui:=
 	dbus? ( dev-qt/qtdbus:= )
@@ -50,5 +51,11 @@ src_configure() {
 		QMAKE_FLAGS+=(NO_TRANSLATIONS=1)
 	fi
 
-	eqmake4 "${PN}".pro "${QMAKE_FLAGS[@]}"
+	use qt4 && eqmake4 "${PN}".pro "${QMAKE_FLAGS[@]}"
+	use qt5 && eqmake5 "${PN}".pro "${QMAKE_FLAGS[@]}"
+}
+
+src_install() {
+	base_src_install INSTALL_ROOT="${D}" "$@"
+	einstalldocs
 }
