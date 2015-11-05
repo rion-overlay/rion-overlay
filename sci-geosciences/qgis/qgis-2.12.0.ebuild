@@ -55,6 +55,7 @@ RDEPEND="
 	)
 	dev-db/sqlite:3
 	dev-db/spatialite
+	app-crypt/qca:2[qt4,openssl]
 "
 
 DEPEND="${RDEPEND}
