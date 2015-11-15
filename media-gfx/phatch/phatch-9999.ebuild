@@ -3,22 +3,24 @@
 # $Header: Exp $
 
 EAPI=5
-PYTHON_COMPAT=( python{2_6,2_7} )
+PYTHON_COMPAT=( python2_7 )
 
-inherit base versionator distutils-r1 fdo-mime
+inherit base versionator distutils-r1 fdo-mime git-r3
 
 DESCRIPTION="Phatch is a simple to use cross-platform GUI Photo Batch Processor"
 HOMEPAGE="http://photobatch.stani.be/"
 
-SRC_URI="http://photobatch.stani.be/download/package/${P}.tar.gz"
+#SRC_URI="http://photobatch.stani.be/download/package/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/tibor95/phatch-python2.7.git"
+
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-python/wxpython
-	virtual/python-imaging"
+	dev-python/pillow"
 
 RDEPEND="${DEPEND}
 	sys-apps/mlocate"
@@ -28,7 +30,6 @@ S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_postinst()
 {
-	distutils_pkg_postinst
 	fdo-mime_mime_database_update
 	fdo-mime_desktop_database_update
 }
