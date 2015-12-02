@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI=3
+EAPI=5
 
-DESCRIPTION="An eselect module to manage /etc/X11/xorg.conf symlink."
-HOMEPAGE="http://code.google.com/p/krigstasks-samling/wiki/EselectXorgConf"
-SRC_URI="http://krigstasks-samling.googlecode.com/files/${P}.tar.bz2"
+DESCRIPTION="An eselect module to manage xorg.conf symlink(s)"
+HOMEPAGE="https://bitbucket.org/skrattaren/eselect-xorgconf"
+SRC_URI="https://bitbucket.org/skrattaren/${PN}/downloads/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,7 +20,8 @@ RDEPEND="${DEPEND}
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins xorg.conf.eselect || die
+	doins xorg.conf* || die
+	dodoc README.md
 }
 
 pkg_postinst() {
