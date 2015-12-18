@@ -43,7 +43,7 @@ RDEPEND="
 		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) >=x11-libs/qwtpolar-1 )
 		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
 	)
-	grass? ( >=sci-geosciences/grass-6.4.0_rc6[python?] )
+	grass? ( || ( sci-geosciences/grass:6[python?] >=sci-geosciences/grass-7.0.0 ) )
 	mapserver? ( dev-libs/fcgi )
 	postgres? ( dev-db/postgresql:* )
 	python? (
