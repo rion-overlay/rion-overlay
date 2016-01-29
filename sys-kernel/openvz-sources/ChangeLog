@@ -1,5 +1,5 @@
 # ChangeLog for sys-kernel/openvz-sources
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.237 2014/11/17 14:42:54 pva Exp $
 
 *openvz-sources-2.6.32.104.1 (05 Mar 2015)
