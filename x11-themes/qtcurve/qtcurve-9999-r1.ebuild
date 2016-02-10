@@ -4,12 +4,11 @@
 
 EAPI=5
 
-inherit kde4-base cmake-multilib
-
+inherit kde4-base
 KDE_AUTODEPS=false
 KDE_DEBUG=false
 KDE_HANDBOOK=false # needed for kde5.eclass, but misinterpreted by kde4-base.eclass
-inherit kde5
+inherit kde5 cmake-multilib
 
 DESCRIPTION="A set of widget styles for Qt and GTK2"
 HOMEPAGE="https://projects.kde.org/projects/playground/base/qtcurve"
@@ -76,10 +75,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	use kde && kde4-base_pkg_setup
-}
-
-src_configure() {
-	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

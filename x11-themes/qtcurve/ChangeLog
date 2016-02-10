@@ -3,6 +3,9 @@
 # $Id$
 
   10 Feb 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r1.ebuild:
+  Fix sequence of eclasses inheritance
+
+  10 Feb 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r1.ebuild:
   Fix deps if USE=kde is set
 
   10 Feb 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r1.ebuild:
