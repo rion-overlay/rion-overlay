@@ -5,12 +5,11 @@
 EAPI=5
 
 KDE_REQUIRED="optional"
-inherit cmake-utils kde4-base multilib multilib-minimal
-
 KDE_AUTODEPS=false
 KDE_DEBUG=false
 KDE_HANDBOOK=false # needed for kde5.eclass, but misinterpreted by kde4-base.eclass
-inherit kde5
+
+inherit kde5 kde4-base cmake-multilib
 
 DESCRIPTION="A set of widget styles for Qt and GTK2"
 HOMEPAGE="https://projects.kde.org/projects/playground/base/qtcurve"
@@ -67,20 +66,20 @@ DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
 [[ ${PV} == *9999* ]] || PATCHES=( "${DISTDIR}/${P}-old_config_file.patch" )
 
+pkg_pretend() {
+	if [[ "$(multilib_get_enabled_abis)" != "${DEFAULT_ABI}" ]]; then
+		use qt5 && elog "Qt5 is not (yet) multilib-aware, qtcurve will be built for Qt5 with native ABI only"
+		use kde && elog "KDE is not (yet) multilib-aware, qtcurve will be built for KDE with native ABI only"
+		use kf5 && elog "KF5 is not (yet) multilib-aware, qtcurve will be built for KF5 with native ABI only"
+	fi
+}
+
 pkg_setup() {
 	use kde && kde4-base_pkg_setup
 }
 
 src_configure() {
 	multilib-minimal_src_configure
-}
-
-src_compile() {
-	multilib-minimal_src_compile
-}
-
-src_install() {
-	multilib-minimal_src_install
 }
 
 multilib_src_configure() {
@@ -92,7 +91,6 @@ multilib_src_configure() {
 			$(cmake-utils_use windeco QTC_QT4_ENABLE_KWIN )
 			$(cmake-utils_use_enable qt5 QT5)
 			$(cmake-utils_use kf5 QTC_QT5_ENABLE_KDE )
-			$(cmake-utils_use nls QTC_INSTALL_PO )
 		)
 	else
 		mycmakeargs=(
@@ -100,7 +98,6 @@ multilib_src_configure() {
 			-DQTC_QT4_ENABLE_KWIN=OFF
 			-DQTC_QT5_ENABLE_KDE=OFF
 			-DENABLE_QT5=OFF
-			-DQTC_INSTALL_PO=OFF
 		)
 	fi
 
@@ -108,7 +105,8 @@ multilib_src_configure() {
 		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
 		$(cmake-utils_use_enable gtk GTK2)
 		$(cmake-utils_use_enable qt4 QT4)
-		$(cmake-utils_use X QTC_ENABLE_X11 )
+		$(cmake-utils_use X QTC_ENABLE_X11)
+		$(is_final_abi && cmake-utils_use nls QTC_INSTALL_PO || echo -DQTC_INSTALL_PO=OFF)
 	)
 	cmake-utils_src_configure
 }
