@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=DANBERR
-MODULE_VERSION=1.2.9
+MODULE_VERSION=1.3.0
 inherit perl-module
 
 DESCRIPTION="Sys::Virt provides an API for using the libvirt library from Perl"
