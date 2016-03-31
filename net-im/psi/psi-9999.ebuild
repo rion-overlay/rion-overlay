@@ -141,16 +141,18 @@ src_prepare() {
 		PATCHES_DIR="${WORKDIR}/psi-plus/patches"
 		EPATCH_SOURCE="${PATCHES_DIR}" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
 
+		PSI_REVISION="$(cd "${WORKDIR}/${P}" && git describe --tags|cut -d - -f 2)"
 		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 2)"
+		PSI_PLUS_TAG="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 1)"
 
 		if use sql; then
 			epatch "${PATCHES_DIR}/dev/psi-new-history.patch" || die "patching with ${SQLPATCH} failed"
 		fi
 
 		use webkit && {
-			echo "0.16.${PSI_PLUS_REVISION}-webkit (@@DATE@@)" > version
+			echo "${PSI_PLUS_TAG}.${PSI_PLUS_REVISION}.${PSI_REVISION}-webkit (@@DATE@@)" > version
 		} || {
-			echo "0.16.${PSI_PLUS_REVISION} (@@DATE@@)" > version
+			echo "${PSI_PLUS_TAG}.${PSI_PLUS_REVISION}.${PSI_REVISION} (@@DATE@@)" > version
 		}
 
 		qconf || die "Failed to create ./configure."
