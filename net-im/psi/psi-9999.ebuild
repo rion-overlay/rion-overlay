@@ -20,7 +20,7 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant extras jingle iconsets +qt4 qt5 spell sql ssl xscreensaver
+IUSE="crypt dbus debug doc enchant extras jingle iconsets +qt4 qt5 sm spell sql ssl xscreensaver
 plugins whiteboarding webkit"
 
 REQUIRED_USE="
@@ -145,9 +145,8 @@ src_prepare() {
 		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 2)"
 		PSI_PLUS_TAG="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 1)"
 
-		if use sql; then
-			epatch "${PATCHES_DIR}/dev/psi-new-history.patch" || die "patching with ${SQLPATCH} failed"
-		fi
+		use sql && epatch "${PATCHES_DIR}/dev/psi-new-history.patch"
+		use sm && epatch "${PATCHES_DIR}/dev/psi-stream-management.patch"
 
 		use webkit && {
 			echo "${PSI_PLUS_TAG}.${PSI_PLUS_REVISION}.${PSI_REVISION}-webkit (@@DATE@@)" > version
