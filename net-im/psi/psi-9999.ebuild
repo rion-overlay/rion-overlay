@@ -28,7 +28,6 @@ REQUIRED_USE="
 	plugins? ( extras )
 	sql? ( extras )
 	webkit? ( extras )
-	sql? ( qt4 )
 	^^ ( qt4 qt5 )
 "
 
@@ -45,8 +44,8 @@ RDEPEND="
 		dbus? ( dev-qt/qtdbus:4 )
 		|| ( <app-crypt/qca-2.1:2 >=app-crypt/qca-2.1:2[qt4] )
 		whiteboarding? ( dev-qt/qtsvg:4 )
+		webkit? ( dev-qt/qtwebkit:4 )
 		extras? (
-			webkit? ( dev-qt/qtwebkit:4 )
 			sql? (
 				dev-qt/qtsql:4
 				dev-libs/qjson
@@ -62,8 +61,9 @@ RDEPEND="
 		dbus? ( dev-qt/qtdbus:5 )
 		>=app-crypt/qca-2.1:2[qt5]
 		whiteboarding? ( dev-qt/qtsvg:5 )
+		webkit? ( dev-qt/qtwebkit:5 )
 		extras? (
-			webkit? ( dev-qt/qtwebkit:5 )
+			sql? ( dev-qt/qtsql:5 )
 		)
 	)
 "
