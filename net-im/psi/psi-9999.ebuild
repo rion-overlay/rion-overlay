@@ -20,10 +20,14 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="crypt dbus debug doc enchant extras jingle iconsets +qt4 qt5 sm spell sql ssl xscreensaver
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets +qt4 qt5 sm spell sql ssl xscreensaver
 plugins whiteboarding webkit"
 
 REQUIRED_USE="
+	^^ ( aspell enchant hunspell )
+	aspell? ( spell )
+	enchant? ( spell )
+	hunspell? ( spell )
 	iconsets? ( extras )
 	plugins? ( extras )
 	sql? ( extras )
@@ -36,7 +40,8 @@ RDEPEND="
 	|| ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 )
 	spell? (
 		enchant? ( >=app-text/enchant-1.3.0 )
-		!enchant? ( app-text/aspell )
+		hunspell? ( app-text/hunspell )
+		aspell? ( app-text/aspell )
 	)
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	qt4? (
@@ -168,15 +173,11 @@ src_configure() {
 	"
 	use dbus || myconf+=" --disable-qdbus"
 	use debug && myconf+=" --debug"
-	if use spell; then
-		if use enchant; then
-			myconf+=" --disable-aspell"
-		else
-			myconf+=" --disable-enchant"
-		fi
-	else
-		myconf+=" --disable-aspell --disable-enchant"
-	fi
+
+	for s in aspell enchant hunspell; do
+		use $s || myconf+=" --disable-$s"
+	done
+	
 	use whiteboarding && myconf+=" --enable-whiteboarding"
 	use xscreensaver || myconf+=" --disable-xss"
 	if use extras; then
