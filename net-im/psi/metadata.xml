@@ -16,7 +16,6 @@
 	<flag name='extras'>Enables extra non official patches</flag>
 	<flag name='iconsets'>Install additional iconsets, some of them has not clear licensing</flag>
 	<flag name='plugins'>Enable plugins support</flag>
-	<flag name='sm'>Enable stream management patch</flag>
 	<flag name='sql'>Enable psi-new-history extras patch</flag>
 	<flag name='webkit'>Enable chatlog rendering using webkit</flag>
 	<flag name='whiteboarding'>Enable experimental interactive SVG drawing</flag>
