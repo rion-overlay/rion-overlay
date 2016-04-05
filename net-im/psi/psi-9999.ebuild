@@ -24,7 +24,7 @@ IUSE="aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets +qt4 
 plugins whiteboarding webkit"
 
 REQUIRED_USE="
-	^^ ( aspell enchant hunspell )
+	spell? ( ^^ ( aspell enchant hunspell ) )
 	aspell? ( spell )
 	enchant? ( spell )
 	hunspell? ( spell )
