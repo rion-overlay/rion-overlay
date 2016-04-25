@@ -4,7 +4,8 @@
 
 EAPI=5
 
-PLOCALES="ar be bg br ca cs da de ee el eo es et fi fr hr hu it ja mk nl pl pt pt_BR ru se sk sl sr sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
+PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
+PLOCALE_BACKUP="en"
 
 PSI_URI="git://github.com/psi-im"
 PSI_PLUS_URI="git://github.com/psi-plus"
@@ -239,8 +240,13 @@ src_install() {
 			lrelease "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
 			doins "translations/${PN}_${1}.qm"
 		else
-			lrelease "${x}/${PN}_${1}.ts" || die "lrelease ${1} failed"
-			doins "${x}/${PN}_${1}.qm"
+			# PLOCALES are set from Psi+. So we don't want to fail here if no locale
+			if [ -f "${x}/${PN}_${1}.ts" ]; then
+				lrelease "${x}/${PN}_${1}.ts" || die "lrelease ${1} failed"
+				doins "${x}/${PN}_${1}.qm"
+			else
+				ewarn "Unfortunately locale \"${1}\" is supported for Psi+ only"
+			fi
 		fi
 	}
 	l10n_for_each_locale_do install_locale
