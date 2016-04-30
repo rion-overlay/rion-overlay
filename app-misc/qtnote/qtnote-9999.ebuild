@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 case "$PV" in 9999*) scm=git-r3; ;; *) scm=""; ;; esac
+
 inherit qmake-utils $scm
 
 DESCRIPTION="Qt note-taking application compatible with tomboy"
@@ -14,6 +15,7 @@ if [ -z "$scm" ]; then
 	S="${WORKDIR}/QtNote-${PV}"
 else
 	EGIT_REPO_URI="https://github.com/Ri0n/QtNote"
+	EGIT_BRANCH=stable
 fi
 
 LICENSE="GPL-3"
