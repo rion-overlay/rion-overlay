@@ -79,6 +79,7 @@ DEPEND="${RDEPEND}
 	)
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
+	qt5? ( dev-qt/linguist-tools )
 "
 PDEPEND="
 	crypt? ( >=app-crypt/qca-2.1.0[gpg] )
