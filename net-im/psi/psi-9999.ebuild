@@ -22,7 +22,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets +qt4 qt5 spell sql ssl xscreensaver
-plugins whiteboarding webkit"
++plugins whiteboarding webkit"
 
 REQUIRED_USE="
 	spell? ( ^^ ( aspell enchant hunspell ) )
@@ -181,10 +181,8 @@ src_configure() {
 	
 	use whiteboarding && myconf+=" --enable-whiteboarding"
 	use xscreensaver || myconf+=" --disable-xss"
-	if use extras; then
-		use plugins && myconf+=" --enable-plugins"
-		use webkit && myconf+=" --enable-webkit"
-	fi
+	use plugins || myconf+=" --disable-plugins"
+	use webkit && myconf+=" --enable-webkit"
 
 	QTDIR="${EPREFIX}"/usr
 	use qt5 && QTDIR="${EPREFIX}"/usr/$(get_libdir)/qt5
@@ -221,7 +219,7 @@ src_install() {
 	newdoc certs/README README.certs
 	dodoc README
 
-	if use extras && use plugins; then
+	if use plugins; then
 		insinto /usr/share/${MY_PN}/plugins
 		doins src/plugins/plugins.pri
 		doins src/plugins/psiplugin.pri
