@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="6"
 
-[[ ${PV} = *9999* ]] && VCS_ECLASS="git-2" || VCS_ECLASS=""
+[[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 
 inherit cmake-utils ${VCS_ECLASS}
 
@@ -29,7 +29,7 @@ IUSE_PLUGINS="frotz irc purple skype smstools"
 IUSE="debug doc libev log mysql postgres sqlite staticport symlinks test tools ${IUSE_PLUGINS}"
 
 RDEPEND="net-im/jabber-base
-	net-im/swiften
+	=net-im/swiften-3*
 	dev-libs/popt
 	dev-libs/openssl
 	log? ( dev-libs/log4cxx )
