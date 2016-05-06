@@ -219,16 +219,6 @@ src_install() {
 	newdoc certs/README README.certs
 	dodoc README
 
-	if use plugins; then
-		insinto /usr/share/${MY_PN}/plugins
-		doins src/plugins/plugins.pri
-		doins src/plugins/psiplugin.pri
-		doins -r src/plugins/include
-		sed -i -e "s:target.path.*:target.path = /usr/$(get_libdir)/${MY_PN}/plugins:" \
-			"${ED}"/usr/share/${MY_PN}/plugins/psiplugin.pri \
-			|| die "sed failed"
-	fi
-
 	use doc && dohtml -r doc/api
 
 	# install translations
