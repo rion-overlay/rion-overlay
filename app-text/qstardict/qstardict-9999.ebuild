@@ -4,9 +4,9 @@
 
 EAPI="6"
 
-case $PV in *9999*) VCS_ECLASS="git-2" ;; *) VCS_ECLASS="" ;; esac
+case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 
-inherit base eutils qmake-utils confutils ${VCS_ECLASS}
+inherit eutils qmake-utils confutils ${VCS_ECLASS}
 
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
@@ -67,6 +67,6 @@ src_configure() {
 }
 
 src_install() {
-	base_src_install INSTALL_ROOT="${D}" "$@"
+	emake install INSTALL_ROOT="${D}"
 	einstalldocs
 }
