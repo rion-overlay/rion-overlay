@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI="6"
 
 case $PV in *9999*) VCS_ECLASS="git-2" ;; *) VCS_ECLASS="" ;; esac
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://qstardict.ylsoftware.com/"
 LICENSE="GPL-2"
 if [ -n "${VCS_ECLASS}" ]; then
 	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/therussianphysicist/qstardict"
+	EGIT_REPO_URI="https://github.com/Ri0n/qstardict"
 else
 	KEYWORDS="amd64 ~ia64 x86"
 	SRC_URI="http://qstardict.ylsoftware.com/files/${P}.tar.bz2"
@@ -24,21 +24,32 @@ SLOT="0"
 PLUGINS="stardict swac web"
 IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
-IUSE="dbus nls ${IUSE_PLUGINS} qt4 qt5"
+IUSE="dbus kde nls ${IUSE_PLUGINS} qt4 qt5"
 REQUIRED_USE="|| ( ${IUSE_PLUGINS} )
 	|| ( qt4 qt5 )"
 
-RDEPEND="dev-qt/qtgui:=
+DEPEND="dev-qt/qtgui:=
 	dbus? ( dev-qt/qtdbus:= )
 	dev-libs/glib:2
-	plugin_swac? ( dev-qt/qtsql:= )"
-DEPEND="${RDEPEND}"
+	plugin_swac? ( dev-qt/qtsql:= )
+	qt4? ( 
+		kde? ( kde-base/kdelibs )
+	)
+	qt5? ( 
+		kde? (
+			kde-frameworks/kwindowsystem
+		)
+	)
+
+	"
+RDEPEND="${RDEPEND}"
 
 src_configure() {
 	local eplugins=()
 	for f in $PLUGINS; do
 		use "plugin_${f}" && eplugins+=("${f}")
 	done
+	use kde && eplugins+=("kdeintegration")
 
 	QMAKE_FLAGS=(
 		ENABLED_PLUGINS="${eplugins[@]}"

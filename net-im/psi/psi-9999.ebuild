@@ -189,10 +189,12 @@ src_configure() {
 
 	elog ./configure --prefix="${EPREFIX}"/usr \
 			--qtdir="${QTDIR}" \
+			--libdir=="${EPREFIX}"/usr/$(get_libdir) \
 			${myconf}
 
 	./configure \
 		--prefix="${EPREFIX}"/usr \
+		--libdir=="${EPREFIX}"/usr/$(get_libdir) \
 		--qtdir="${QTDIR}" \
 		${myconf} || die
 

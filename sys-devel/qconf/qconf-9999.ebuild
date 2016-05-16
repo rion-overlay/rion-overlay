@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.0.0-r2.ebuild,v 1.8 2008/03/15 11:30:02 corsair Exp $
 
-EAPI=5
+EAPI=6
 
 inherit multilib git-r3
 
@@ -18,7 +18,10 @@ IUSE="qt4 qt5"
 
 DEPEND="
 	qt4? ( dev-qt/qtcore:4 )
-	qt5? ( dev-qt/qtcore:5 )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtxml:5
+	)
 "
 RDEPEND="${DEPEND}"
 

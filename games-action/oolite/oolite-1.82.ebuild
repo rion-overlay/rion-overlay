@@ -34,7 +34,8 @@ DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
 
 S="${WORKDIR}/${P}"
-PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
+PATCHES=( "${FILESDIR}/${PN}-gentoo.patch"
+	"${FILESDIR}/infinite-force-double.patch" )
 
 pkg_setup() {
 	games_pkg_setup

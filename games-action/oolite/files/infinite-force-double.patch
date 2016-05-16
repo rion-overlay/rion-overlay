@@ -1,0 +1,11 @@
+--- src/Core/Scripting/OOJSPlayerShip.m.org	2015-05-24 17:54:45.000000000 +0500
++++ src/Core/Scripting/OOJSPlayerShip.m	2016-05-14 21:06:59.145770947 +0500
+@@ -1496,7 +1496,7 @@
+ 
+ 	if (!isCargo)
+ 	{
+-		if (argc > offset+5 && JS_ValueToECMAUint32(context, OOJS_ARGV[offset + 5], &uValue) && isfinite(uValue))
++		if (argc > offset+5 && JS_ValueToECMAUint32(context, OOJS_ARGV[offset + 5], &uValue) && isfinite((double)uValue))
+ 		{
+ 			*risk = uValue;
+ 		}
