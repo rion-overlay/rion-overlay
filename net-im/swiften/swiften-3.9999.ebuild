@@ -65,7 +65,8 @@ src_compile() {
 	scons_vars=(
 		cc="$(tc-getCC)"
 		cxx="$(tc-getCXX)"
-		ccflags="${CFLAGS}"
+		ccflags="${CFLAGS} -std=c++11"
+		cxxflags="${CXXFLAGS} -std=c++11"
 		linkflags="${LDFLAGS}"
 		allow_warnings=1
 		ccache=0
