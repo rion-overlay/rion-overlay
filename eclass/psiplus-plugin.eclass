@@ -8,7 +8,7 @@
 # @BLURB: This eclass provides functions for build all plugin to net-im/psi
 # package
 # @DESCRIPTION:
-# This eclass provides functions build all plugin tonet-im/psi
+# This eclass provides functions build all plugin to net-im/psi
 # Original Author: Rion <rion4ik@gmail.com>
 # Purpose:
 
@@ -27,14 +27,13 @@ MY_PN="${PN#psi-}plugin"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-2"
+	SCM="git-r3"
 	PLUGIN_DIR="${PLUGIN_DIR:-generic}"
 	EGIT_REPO_URI="git://github.com/psi-plus/plugins.git"
-	EGIT_PROJECT="psi-plus/plugins"
-	EGIT_SOURCEDIR="${WORKDIR}/plugins"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/plugins"
 fi
 
-inherit qt4-r2 ${SCM}
+inherit qmake-utils ${SCM}
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
@@ -57,16 +56,27 @@ DEPEND=">=net-im/psi-9999[extras,plugins]"
 RDEPEND="${DEPEND}"
 
 # Eclass exported functions
-EXPORT_FUNCTIONS src_prepare src_configure
+EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_install
+
+psiplus-plugin_src_unpack() {
+	if [ -n "$SCM" ]; then
+		git-r3_src_unpack
+	else
+		default
+	fi
+}
 
 psiplus-plugin_src_prepare() {
-	qt4-r2_src_prepare
-
+	default
 	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi-plus/plugins/psiplugin.pri#' \
-		-i "${MY_PN}".pro || die
+               -i "${MY_PN}".pro || die
 }
 
 psiplus-plugin_src_configure() {
 	use qt4 && eqmake4 "${MY_PN}".pro
 	use qt5 && eqmake5 "${MY_PN}".pro
+}
+
+psiplus-plugin_src_install() {
+	emake install INSTALL_ROOT="${D}"
 }

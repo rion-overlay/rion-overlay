@@ -168,35 +168,32 @@ src_prepare() {
 src_configure() {
 	# unable to use econf because of non-standard configure script
 	# disable growl as it is a MacOS X extension only
-	local myconf="
-		--disable-growl
+
+	CONF=(
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--prefix="${EPREFIX}"/usr
 		--no-separate-debug-info
-	"
-	use dbus || myconf+=" --disable-qdbus"
-	use debug && myconf+=" --debug"
+		--disable-growl
+	)
+
+	use qt4 && CONF+=(--qtdir="$(qt4_get_bindir)/..")
+	use qt5 && CONF+=(--qtdir="$(qt5_get_bindir)/..")
+
+
+	use dbus || CONF+=("--disable-qdbus")
+	use debug && CONF+=("--debug")
 
 	for s in aspell enchant hunspell; do
-		use $s || myconf+=" --disable-$s"
+		use $s || CONF+=("--disable-$s")
 	done
 	
-	use whiteboarding && myconf+=" --enable-whiteboarding"
-	use xscreensaver || myconf+=" --disable-xss"
-	use plugins || myconf+=" --disable-plugins"
-	use webkit && myconf+=" --enable-webkit"
+	use whiteboarding && CONF+=("--enable-whiteboarding")
+	use xscreensaver || CONF+=("--disable-xss")
+	use plugins || CONF+=("--disable-plugins")
+	use webkit && CONF+=("--enable-webkit")
 
-	QTDIR="${EPREFIX}"/usr
-	use qt5 && QTDIR="${EPREFIX}"/usr/$(get_libdir)/qt5
-
-	elog ./configure --prefix="${EPREFIX}"/usr \
-			--qtdir="${QTDIR}" \
-			--libdir=="${EPREFIX}"/usr/$(get_libdir) \
-			${myconf}
-
-	./configure \
-		--prefix="${EPREFIX}"/usr \
-		--libdir=="${EPREFIX}"/usr/$(get_libdir) \
-		--qtdir="${QTDIR}" \
-		${myconf} || die
+	elog ./configure "${CONF[@]}"
+	./configure "${CONF[@]}"
 
 	use qt4 && eqmake4 psi.pro
 	use qt5 && eqmake5 psi.pro
