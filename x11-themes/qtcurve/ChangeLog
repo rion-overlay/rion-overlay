@@ -2,6 +2,9 @@
 # Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
+  27 May 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r1.ebuild:
+  Migrate to EAPI=6
+
   10 Feb 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r1.ebuild:
   Fix sequence of eclasses inheritance
 
