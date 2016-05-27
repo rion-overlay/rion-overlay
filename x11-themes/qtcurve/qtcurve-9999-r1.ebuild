@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
+KDE_REQUIRED="optional"
 inherit kde4-base
 KDE_AUTODEPS=false
 KDE_DEBUG=false
@@ -82,10 +83,10 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		mycmakeargs=(
-			$(cmake-utils_use kde QTC_QT4_ENABLE_KDE )
-			$(cmake-utils_use windeco QTC_QT4_ENABLE_KWIN )
-			$(cmake-utils_use_enable qt5 QT5)
-			$(cmake-utils_use kf5 QTC_QT5_ENABLE_KDE )
+			-DQTC_QT4_ENABLE_KDE=$(usex kde)
+			-DQTC_QT4_ENABLE_KWIN=$(usex windeco)
+			-DENABLE_QT5=$(usex qt5)
+			-QTC_QT5_ENABLE_KDE=$(usex kf5)
 		)
 	else
 		mycmakeargs=(
@@ -98,10 +99,10 @@ multilib_src_configure() {
 
 	mycmakeargs+=(
 		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
-		$(cmake-utils_use_enable gtk GTK2)
-		$(cmake-utils_use_enable qt4 QT4)
-		$(cmake-utils_use X QTC_ENABLE_X11)
-		$(is_final_abi && cmake-utils_use nls QTC_INSTALL_PO || echo -DQTC_INSTALL_PO=OFF)
+		-DENABLE_GTK2=$(usex gtk)
+		-DENABLE_QT4=$(usex qt4)
+		-DQTC_ENABLE_X11=$(usex X)
+		$(is_final_abi && usex nls && echo -DQTC_INSTALL_PO=ON || echo -DQTC_INSTALL_PO=OFF)
 	)
 	cmake-utils_src_configure
 }
