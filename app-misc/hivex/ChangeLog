@@ -1,0 +1,9 @@
+# ChangeLog for app-misc/hivex
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*hivex-1.3.13 (11 Jun 2016)
+
+  11 Jun 2016; Andreis Vinogradovs <andreis.vinogradovs@gmail.com>
+  +hivex-1.3.13.ebuild, +metadata.xml:
+  app-misc/hivex: bump
