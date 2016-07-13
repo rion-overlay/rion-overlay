@@ -1,0 +1,12 @@
+# ChangeLog for sys-libs/rts_bpp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  02 Mar 2013; rion <rion4ik@gmail.com> rts_bpp-1.1.ebuild:
+  kernel 3.8 compatibility fixes
+
+*rts_bpp-1.1 (06 Oct 2012)
+
+  06 Oct 2012; rion <rion4ik@gmail.com> +rts_bpp-1.1.ebuild, +metadata.xml:
+  initial version
+
