@@ -1,28 +1,8 @@
---- GNUmakefile.postamble.orig	2011-03-26 22:43:40.561323731 +0500
-+++ GNUmakefile.postamble	2011-03-26 22:44:51.512436717 +0500
-@@ -5,9 +5,6 @@
- #
- CP_FLAGS                         = -rf
- 
--ifeq ($(debug),yes)
--    EXT                          =.dbg
--endif
-                                  
- ifeq ($(findstring -gnu,$(GNUSTEP_HOST_OS)),-gnu)
-     CP_FLAGS                     += -u
-@@ -39,9 +36,6 @@
- endif
- 	$(CP) $(CP_FLAGS) src/Cocoa/Info-Oolite.plist $(PROGDIR)/Resources/Info-gnustep.plist
- 	$(CP) $(CP_FLAGS) $(GNUSTEP_OBJ_DIR_NAME)/$(SRC_BIN) $(PROGDIR)/$(DEST_BIN)
--ifeq ($(debug),no)
--	$(STRIP) $(PROGDIR)/$(DEST_BIN)
--endif
- ifeq ($(GNUSTEP_HOST_OS),mingw32)
-     ifeq ($(GNUSTEP_HOST_CPU),x86_64)
-                 $(CP) $(CP_FLAGS) deps/Windows-deps/x86_64/DLLs/*.dll $(PROGDIR)
---- GNUmakefile.orig	2014-12-27 01:47:00.718556710 +0500
-+++ GNUmakefile	2014-12-27 02:01:34.797497722 +0500
-@@ -149,9 +149,7 @@
+diff --git a/GNUmakefile b/GNUmakefile
+index 95b4b28..4a700ea 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -153,9 +153,7 @@ oolite_C_FILES = \
      legacy_random.c \
      strlcpy.c \
      OOTCPStreamDecoder.c \
@@ -33,3 +13,31 @@
  
  
  OOLITE_DEBUG_FILES = \
+diff --git a/GNUmakefile.postamble b/GNUmakefile.postamble
+index 5d97459..f09ca5b 100644
+--- a/GNUmakefile.postamble
++++ b/GNUmakefile.postamble
+@@ -4,10 +4,6 @@
+ # to live (Contents/Resources)
+ #
+ CP_FLAGS                         = -rf
+-
+-ifeq ($(debug),yes)
+-    EXT                          =.dbg
+-endif
+                                  
+ ifeq ($(findstring -gnu,$(GNUSTEP_HOST_OS)),-gnu)
+     CP_FLAGS                     += -u
+diff --git a/Makefile b/Makefile
+index 5d93c57..8af1d91 100644
+--- a/Makefile
++++ b/Makefile
+@@ -65,7 +65,7 @@ debug: $(DEPS_DBG)
+ 
+ .PHONY: release
+ release: $(DEPS)
+-	$(MAKE) -f GNUmakefile debug=no strip=yes
++	$(MAKE) -f GNUmakefile debug=no strip=no
+ 	mkdir -p AddOns && rm -rf AddOns/Basic-debug.oxp && cp -rf DebugOXP/Debug.oxp AddOns/Basic-debug.oxp
+ 
+ .PHONY: release-deployment
