@@ -12,7 +12,6 @@ HOMEPAGE="https://github.com/psi-im/jdns"
 #EGIT_COMMIT="ae2e7264e8458d64932590bdde2417605946cb8a"
 #EGIT_REPO_URI="https://github.com/psi-im/jdns.git"
 SRC_URI="https://github.com/psi-im/jdns/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-PATCHES="$FILESDIR/build_without_qt.patch"
 
 LICENSE="MIT"
 SLOT="0"
