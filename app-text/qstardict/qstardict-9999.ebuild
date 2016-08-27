@@ -13,17 +13,17 @@ HOMEPAGE="http://qstardict.ylsoftware.com/"
 LICENSE="GPL-2"
 if [ -n "${VCS_ECLASS}" ]; then
 	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/Ri0n/qstardict"
+	EGIT_REPO_URI="https://github.com/qstardict/qstardict"
 else
 	KEYWORDS="amd64 ~ia64 x86"
-	SRC_URI="https://github.com/a-rodin/qstardict/archive/${P}.zip"
+	SRC_URI="https://github.com/qstardict/qstardict/archive/${P}.zip"
 fi
 SLOT="0"
 
 PLUGINS="stardict swac web"
 IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
-IUSE="dbus kde nls ${IUSE_PLUGINS} qt4 qt5"
+IUSE="dbus debug kde nls ${IUSE_PLUGINS} qt4 qt5"
 REQUIRED_USE="|| ( ${IUSE_PLUGINS} )
 	|| ( qt4 qt5 )"
 
