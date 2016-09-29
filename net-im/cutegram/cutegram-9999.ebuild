@@ -21,6 +21,7 @@ DEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtdeclarative:5[localstorage]
+	dev-qt/qtpositioning:5[qml]
 	net-misc/aseman-qt-tools
 "
 RDEPEND="${DEPEND}"
