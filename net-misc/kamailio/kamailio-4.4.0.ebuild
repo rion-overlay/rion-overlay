@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=6
+
+inherit eutils flag-o-matic toolchain-funcs user
 
 IUSE="ipv6 mysql radius postgres jabber ssl odbc"
 
@@ -19,7 +21,7 @@ RDEPEND=">=sys-devel/bison-1.35
 	ssl? ( dev-libs/openssl )
 	mysql? ( >=dev-db/mysql-3.23.52 )
 	radius? ( >=net-dialup/radiusclient-ng-0.5.0 )
-	postgres? ( dev-db/libpq )
+	postgres? ( dev-db/postgresql )
 	jabber? ( dev-libs/expat )
 	odbc? ( dev-db/unixODBC )"
 
@@ -27,14 +29,7 @@ DEPEND="${RDEPEND}"
 
 #S=${WORKDIR}/${P}-tls
 
-src_unpack() {
-	# unpack ser source
-	unpack ${A}
-	cd ${S}
-
-	use ipv6 || \
-		sed -i -e "s/-DUSE_IPV6//g" Makefile.defs
-
+pkg_setup() {
 	use ssl && \
 		sed -i -e "s:^#\(TLS=1\).*:\1:" Makefile
 
@@ -53,33 +48,36 @@ src_unpack() {
 	do
 		EXCMODULES="${EXCMODULES/$i/}"
 	done;
+
+	MAKE_CONF=(
+		PREFIX="${EPREFIX}/usr"
+		DESTDIR="${D}"
+		CC="$(tc-getCC)"
+		CPU_TYPE="$(get-flag march)"
+		mode="release"
+		include_modules="${KAMODULES}"
+		cfg_target="${EPREFIX}/etc/${PN}/"
+		cfg_prefix="${ED}"
+	)
+}
+
+src_unpack() {
+	# unpack ser source
+	unpack ${A}
+	cd ${S}
+
+	use ipv6 || \
+		sed -i -e "s/-DUSE_IPV6//g" Makefile.defs
+
 }
 
 src_compile() {
-	use amd64 && append-flag "-fPIC"
-	emake \
-		CC="$(tc-getCC)" \
-		CPU_TYPE="$(get-flag march)" \
-		mode="release" \
-		prefix="/usr" \
-		include_modules="${KAMODULES}" \
-		cfg-prefix="" \
-		cfg-target="/etc/${PN}/" \
-		all || die
+	use amd64 && append-flags "-fPIC"
+	emake "${MAKE_CONF[@]}" all
 }
 
 src_install () {
-	emake \
-		BASEDIR="${D}" \
-		mode="release" \
-		prefix="/usr" \
-		include_modules="${KAMODULES}" \
-		cfg-prefix="${D}" \
-		cfg-dir="/etc/${PN}/" \
-		cfg-target="/etc/${PN}/" \
-		doc-dir="share/doc/${P}/" \
-		install || die
-
+	emake "${MAKE_CONF[@]}" install
 	newinitd ${FILESDIR}/${PN}.rc6 ${PN}
 	newconfd ${FILESDIR}/${PN}.confd ${PN}
 }

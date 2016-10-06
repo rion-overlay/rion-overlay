@@ -9,7 +9,6 @@ SPECTRUMRUN=EPREFIX/var/run/spectrum2
 
 depend() {
         need net
-        use jabber-server
 }
 
 start() {
