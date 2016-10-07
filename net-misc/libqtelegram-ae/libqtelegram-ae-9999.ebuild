@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit qmake-utils git-r3
 
@@ -28,15 +28,16 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_prepare(){
+src_prepare() {
 	sed -i 's/\/$$LIB_PATH//g' ./libqtelegram-ae.pro
-	QT_SELECT=5 ./init || die
+	default
 }
 
-src_configure(){
+src_configure() {
+	QT_SELECT=5 ./init
 	eqmake5 PREFIX="${EPREFIX}/usr" CONFIG+=typeobjects
 }
 
-src_install(){
+src_install() {
 	emake INSTALL_ROOT="${D}" install
 }
