@@ -8,7 +8,7 @@ inherit qmake-utils git-r3
 
 DESCRIPTION="A different telegram client from Aseman team forked from Sigram by Sialan Labs. "
 HOMEPAGE="http://aseman.co/en/products/cutegram/"
-EGIT_REPO_URI="https://github.com/eegorov/Cutegram.git"
+EGIT_REPO_URI="https://github.com/Aseman-Land/Cutegram.git"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"

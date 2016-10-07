@@ -8,7 +8,7 @@ inherit qmake-utils git-r3
 
 DESCRIPTION="A fork of libqtelegram by Aseman Team"
 HOMEPAGE="https://github.com/Aseman-Land/libqtelegram-aseman-edition"
-EGIT_REPO_URI="https://github.com/eegorov/libqtelegram-aseman-edition.git"
+EGIT_REPO_URI="https://github.com/Aseman-Land/libqtelegram-aseman-edition.git"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"
