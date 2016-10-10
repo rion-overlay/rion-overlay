@@ -2,6 +2,12 @@
 # Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
+*qtcurve-9999-r0 (10 Oct 2016)
+
+  10 Oct 2016; eegorov <egor.y.egorov@gmail.com> +qtcurve-9999-r0.ebuild,
+  +files/qtcurve-remove-filedialog-hooks.patch:
+  Add temporary ebuild to avoid https://bugs.kde.org/show_bug.cgi?id=368672
+
   27 May 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r1.ebuild:
   Migrate to EAPI=6
 
