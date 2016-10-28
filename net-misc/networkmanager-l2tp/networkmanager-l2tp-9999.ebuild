@@ -19,7 +19,7 @@ EGIT_REPO_URI="https://github.com/nm-l2tp/network-manager-l2tp"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome"
+IUSE="gnome static-libs"
 
 RDEPEND="
 	>=net-misc/networkmanager-1.0[ppp]
@@ -42,19 +42,19 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	mkdir -p m4
-	intltoolize --copy --force --automake
+	intltoolize --copy --force --automake 
 	eautoreconf
 }
 
 src_configure() {
-	ECONF="--with-pppd-plugin-dir=/usr/lib/pppd/2.4.7
-		$(use_with gnome)"
+	ECONF="--with-pppd-plugin-dir=${EPREFIX}/usr/$(get_libdir)/pppd/2.4.7
+		$(use_with gnome)
+		$(use_enable static-libs static)"
 
 	econf ${ECONF}
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-
-	dodoc AUTHORS ChangeLog NEWS README.md || die "dodoc failed"
+	emake DESTDIR="${ED}" install
+	dodoc AUTHORS ChangeLog NEWS README.md
 }

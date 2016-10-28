@@ -82,12 +82,12 @@ DEPEND="${RDEPEND}
 	qt5? ( dev-qt/linguist-tools )
 "
 PDEPEND="
-	crypt? ( >=app-crypt/qca-2.1.0[gpg] )
+	crypt? ( app-crypt/qca[gpg] )
 	jingle? (
 		net-im/psimedia[extras?]
-		>=app-crypt/qca-2.1.0.3[openssl]
+		app-crypt/qca[ssl]
 	)
-	ssl? ( >=app-crypt/qca-2.1.0.3[openssl] )
+	ssl? ( app-crypt/qca[ssl] )
 "
 RESTRICT="test"
 
@@ -98,7 +98,7 @@ pkg_setup() {
 		echo
 		ewarn "You're about to build heavily patched version of Psi called Psi+."
 		ewarn "It has really nice features but still is under heavy development."
-		ewarn "Take a look at homepage for more info: http://code.google.com/p/psi-dev"
+		ewarn "Take a look at homepage for more info: http://psi-plus.com/"
 		echo
 
 		if use iconsets; then
