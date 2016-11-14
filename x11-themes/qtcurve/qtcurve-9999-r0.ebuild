@@ -80,6 +80,10 @@ pkg_pretend() {
 
 pkg_setup() {
 	use kde && kde4-base_pkg_setup
+	# bug #498776
+	if ! version_is_at_least 4.7 $(gcc-version) ; then
+		append-cxxflags -Doverride=
+	fi
 }
 
 multilib_src_configure() {

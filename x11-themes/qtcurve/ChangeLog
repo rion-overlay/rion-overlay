@@ -2,6 +2,10 @@
 # Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
+  14 Nov 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r0.ebuild,
+  qtcurve-9999-r1.ebuild:
+  Backport changes from main tree to solve #498776
+
 *qtcurve-9999-r0 (10 Oct 2016)
 
   10 Oct 2016; eegorov <egor.y.egorov@gmail.com> +qtcurve-9999-r0.ebuild,
