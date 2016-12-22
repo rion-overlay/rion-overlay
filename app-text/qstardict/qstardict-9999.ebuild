@@ -13,10 +13,11 @@ HOMEPAGE="http://qstardict.ylsoftware.com/"
 LICENSE="GPL-2"
 if [ -n "${VCS_ECLASS}" ]; then
 	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/qstardict/qstardict"
+	EGIT_REPO_URI="https://github.com/a-rodin/qstardict"
 else
+	S="${WORKDIR}/${PN}-${P}"
 	KEYWORDS="amd64 ~ia64 x86"
-	SRC_URI="https://github.com/qstardict/qstardict/archive/${P}.zip"
+	SRC_URI="https://github.com/a-rodin/qstardict/archive/${P}.zip"
 fi
 SLOT="0"
 
@@ -44,11 +45,15 @@ DEPEND="dev-qt/qtgui:=
 RDEPEND="${RDEPEND}"
 
 src_configure() {
+	eplugin() {
+		[ -f plugins/${1}/${1}.pro ] && eplugins+=("${1}")
+	}
+	
 	local eplugins=()
+	use kde && eplugin kdeintegration
 	for f in $PLUGINS; do
-		use "plugin_${f}" && eplugins+=("${f}")
+		use "plugin_${f}" && eplugin $f
 	done
-	use kde && eplugins+=("kdeintegration")
 
 	QMAKE_FLAGS=(
 		ENABLED_PLUGINS="${eplugins[@]}"
