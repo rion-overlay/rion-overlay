@@ -221,16 +221,17 @@ src_install() {
 	use doc && dohtml -r doc/api
 
 	# install translations
+	local mylrelease="$(qt$(usex qt5 5 4)_get_bindir)"/lrelease
 	cd "${WORKDIR}/psi-l10n"
 	insinto /usr/share/${MY_PN}
 	install_locale() {
 		if use extras; then
-			lrelease "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
+			"${mylrelease}" "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
 			doins "translations/${PN}_${1}.qm"
 		else
 			# PLOCALES are set from Psi+. So we don't want to fail here if no locale
 			if [ -f "${x}/${PN}_${1}.ts" ]; then
-				lrelease "${x}/${PN}_${1}.ts" || die "lrelease ${1} failed"
+				"${mylrelease}" "${x}/${PN}_${1}.ts" || die "lrelease ${1} failed"
 				doins "${x}/${PN}_${1}.qm"
 			else
 				ewarn "Unfortunately locale \"${1}\" is supported for Psi+ only"
