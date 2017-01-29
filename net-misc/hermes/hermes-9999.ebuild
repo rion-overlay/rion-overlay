@@ -2,14 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
-
-PYTHON_DEPEND="2"
-RESTRICT_PYTHON_ABIS="3.*"
-SUPPORT_PYTHON_ABIS="1"
+EAPI=5
+PYTHON_COMPAT=( python2_7 )
 PYTHON_MODNAME="hermes"
 
-inherit distutils git-2 ssl-cert user
+inherit distutils git-r3 ssl-cert user
 
 DESCRIPTION="The great messenger of the gods"
 HOMEPAGE="https://github.com/Ri0n/Hermes"
@@ -32,15 +29,16 @@ RDEPEND="${DEPEND}
 	dev-python/inotifyx"
 
 pkg_setup() {
-	enewgroup ${PN} || die
-	enewuser ${PN} -1 -1 /dev/null ${PN} || die
+	python_pkg_setup
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 /dev/null ${PN}
 }
 
 src_install() {
 	distutils_src_install
-	newinitd "${FILESDIR}/init" ${PN} || die
-	keepdir /var/lib/${PN} || die
-	fowners ${PN}:${PN} /var/lib/${PN} || die
+	newinitd "${FILESDIR}/init" ${PN}
+	keepdir /var/lib/${PN}
+	fowners ${PN}:${PN} /var/lib/${PN}
 	fperms 2744 /var/lib/${PN}
 }
 

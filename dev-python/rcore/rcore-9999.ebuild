@@ -2,13 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+EAPI=5
+PYTHON_COMPAT=( python2_7 )
 PYTHON_MODNAME="rcore"
 
-inherit distutils git-2
+inherit distutils git-r3
 
 DESCRIPTION="Just an core for all rion's projects"
 HOMEPAGE="http://dev.brocompany.com/"
