@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
+EAPI=6
 
 DESCRIPTION="The flag icon filenames follow the ISO 3166-1 alpha-2 country codes."
 HOMEPAGE="http://www.famfamfam.com/lab/icons/flags/"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header:  $
 
-EAPI="2"
+EAPI=6
 
 DESCRIPTION="HTB class tree viewer of alexpro (Alexey Prokopchuk)"
 HOMEPAGE="http://gentoo.homelan.lg.ua/distrib"

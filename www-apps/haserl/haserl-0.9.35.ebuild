@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=6
 
 inherit eutils
 
@@ -19,11 +19,8 @@ RDEPEND="lua? ( dev-lang/lua )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+DOCS=( AUTHORS ChangeLog README THANKS TODO )
+
 src_configure() {
 	econf $(use_with lua)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc AUTHORS ChangeLog README THANKS TODO
 }
