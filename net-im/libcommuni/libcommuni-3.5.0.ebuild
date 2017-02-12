@@ -17,7 +17,7 @@ IUSE="icu test"
 
 RDEPEND="dev-qt/qtcore
 	icu? ( dev-libs/icu )
-	!icu? ( dev-libs/uchardet )"
+	!icu? ( app-i18n/uchardet )"
 
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest )"
