@@ -1,21 +1,111 @@
-# Copyright 1999-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
-# This file contains descriptions of local USE flags, and the ebuilds which
-# contain them.
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
 
-app-dicts/qstardict:plugin_stardict - Enables support for stardict dictionaries
-app-dicts/qstardict:plugin_web - Enables support for varios WEB dictionaries
-net-im/psi:onewindow - Make roster and chat windows in one
-net-im/psi:powersave - Disablessome internal timers which eats CPU
-sys-power/kpowersave:icons - Enable support for beauty icons for each 10% of charge
-www-client/leechcraft:lyrics - Build client for lyricwiki.org site
-www-client/leechcraft:history - Build history keeper
-www-client/leechcraft:mediaplayer - Build Leechcraft Media Previewer
-www-client/leechcraft:networkmonitor -  Build monitor for HTTP requests
-www-client/leechcraft:opensearch - Build client for OpenSearch-aware websites
-www-client/leechcraft:torrent - Build BitTorrent client based on rb_libtorrent
-net-libs/rb_libtorrent:log - Enable log
-net-libs/rb_libtorrent:resolvecountries - Enable capability for resolving countries
-net-libs/rb_libtorrent:verbose - Enable verbose log
-net-misc/remmina-plugins:nx - Build NX Compression plugin
+app-admin/openwbem:association-traversal - 
+app-admin/openwbem:cmpi - 
+app-admin/openwbem:digest - 
+app-admin/openwbem:valgrind - 
+app-misc/a4tool:battery - Enable battery level notifications using x11-libs/libnotify
+app-text/myrulib:links - Include links to the online collections
+app-text/myrulib:reader - Enable internal Cool Reader engine
+app-text/qstardict:plugin_stardict - build stardict plugin
+app-text/qstardict:plugin_swac - 
+app-text/qstardict:plugin_web - build web plugin
+dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
+dev-db/spatialite:proj - Add the sci-libs/proj library for reprojection features
+dev-db/spatialite:xls - Add the dev-libs/freexl library for xls import support
+dev-python/rcore:sql - Install required dependencies to work database
+dev-vcs/mercurial:bugzilla - Support bugzilla integration.
+dev-vcs/mercurial:gpg - Support signing with GnuPG.
+dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
+mail-filter/milter-greylist:bind - Use net-dns/bind-tools resolver instead glibc resolver
+mail-filter/milter-greylist:dnsrbl - Add dnsrbl blacklist support
+mail-filter/milter-greylist:ldap - Build witch openldap support
+mail-filter/milter-greylist:p0f - Add support for OS type detection's. Usenet-analyzer/p0f
+mail-filter/milter-greylist:postfix - Add support for mail-mta/postfix MTA
+mail-filter/milter-greylist:sendmail - Add support for mail-mta/sendmail MTA
+mail-filter/milter-greylist:spamassassin - Add spamassasin plugin
+mail-filter/milter-greylist:spf - Add Sender Policy Framework support
+mail-filter/policyd:webinterface - 
+media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
+media-libs/mediastreamer:filters - Enable compilation of filters
+media-libs/mediastreamer:g726 - Support g726 codec
+media-libs/mediastreamer:g729 - Use g726 codec plugin
+media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
+media-libs/mediastreamer:ntp-timestamp - Turn on NTP timestamping on received packet
+media-libs/mediastreamer:opus - Enable opus codec support
+media-libs/mediastreamer:ortp - Enable usage of net-libs/ortp
+media-libs/mediastreamer:pcap - Enable usage of net-libs/libpcap
+media-libs/mediastreamer:silk - Use silk (skype protocol) codec plugin
+media-libs/mediastreamer:video - Enable video support
+media-sound/qomp:lastfmplugin - Last.FM plugin
+media-sound/qomp:mprisplugin - MPRIS plugin
+media-sound/qomp:myzukaruplugin - myzuka.ru plugin
+media-sound/qomp:notificationsplugin - notifications plugin
+media-sound/qomp:prostopleerplugin - Prosto Pleer plugin
+media-sound/qomp:tunetofileplugin - Tune To File plugin
+media-sound/qomp:urlplugin - URL Plugin
+media-sound/qomp:yandexmusicplugin - Yandex.Music plugin
+net-dialup/xl2tpd:dnsretry - Patch for host lookup retries, activated by redial feature
+net-dialup/xl2tpd:kernel - Enable kernel interface for PPPoL2TP
+net-im/psi:enchant - Use enchant spell engine instead of aspell
+net-im/psi:extras - Enables extra non official patches
+net-im/psi:iconsets - Install additional iconsets, some of them has not clear licensing
+net-im/psi:plugins - Enable plugins support
+net-im/psi:sql - Enable psi-new-history extras patch
+net-im/psi:webkit - Enable chatlog rendering using webkit
+net-im/psi:whiteboarding - Enable experimental interactive SVG drawing
+net-im/psi-plugins-meta:attention - Enable plugin for making attention (XEP-0224)
+net-im/psi-plugins-meta:autoreply - Enable autoreply plugin.
+net-im/psi-plugins-meta:birthdayreminder - Enable plugin to remind contact's birthdays
+net-im/psi-plugins-meta:captchaforms - Enable plugin to show MUC's captcha
+net-im/psi-plugins-meta:chess - Enable plugin to play chess with your friends
+net-im/psi-plugins-meta:cleaner - Enable profile cleaner plugin.
+net-im/psi-plugins-meta:conferencelogger - Enable plugin which saves logs of conferences
+net-im/psi-plugins-meta:contentdownloader - Enable plugin for downloading extras
+net-im/psi-plugins-meta:extendedmenu - 
+net-im/psi-plugins-meta:extendedoptions - Enable plugin for UI for some hidden options
+net-im/psi-plugins-meta:gmailservice - Enable Gmail Service plugin for psi
+net-im/psi-plugins-meta:historykeeper - Enable plugin to keep certain contacts history clean
+net-im/psi-plugins-meta:icqdie - Enable "ICQDie!!" plugin.
+net-im/psi-plugins-meta:image - Enable plugin for sending in-band images
+net-im/psi-plugins-meta:juick - Enable plugin for juick.com service
+net-im/psi-plugins-meta:otr - 
+net-im/psi-plugins-meta:pepchangenotify - 
+net-im/psi-plugins-meta:psto - s
+net-im/psi-plugins-meta:qipxstatuses - Enable QIP xStatus reader plugin
+net-im/psi-plugins-meta:screenshot - Enable plugin to quickly make screenshots
+net-im/psi-plugins-meta:skins - Enable skins plugin.
+net-im/psi-plugins-meta:stopspam - Enable plugin for spam blocking
+net-im/psi-plugins-meta:storagenotes - Enable plugin for Jabber notes protocol extension
+net-im/psi-plugins-meta:translate - Enable Translate plugin
+net-im/psi-plugins-meta:videostatus - Enable plugin for settings some status during video watching
+net-im/psi-plugins-meta:watcher - Emanable plugin for sending in-band images
+net-im/psi-skins:themes - Pull in themes via net-im/psi-skins-themes
+net-im/psimedia:demo - Build simple test application for the PsiMedia system
+net-im/psimedia:extras - Enables extra non official patches
+net-im/spectrum:staticport - Install spectrum tools
+net-im/spectrum:symlinks - Make symlinks for configuration files of all protocols to one file
+net-im/spectrum:tools - Install spectrum tools
+net-libs/ortp:ntp-timestamp - Turn on NTP timestamping on received packet
+net-libs/ortp:srtp - Add support for Secure RTP
+net-libs/ortp:zrtp - Add support for ZRTP key negotiation
+sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
+sci-geosciences/qgis:mapserver - Determines whether mapserver should be built
+sys-apps/hasp:demo - Install demo binaries
+sys-apps/hasp:lpt - Install kernel module for LPT-keys
+sys-apps/hasp:net_hasp - Install binaries for use HASP-keys on network
+sys-apps/hasp:wine - Install winehasp binary and init-script
+sys-apps/openwsman:cim - 
+sys-apps/openwsman:eventing - 
+sys-apps/openwsman:plugins - 
+sys-apps/openwsman:server - 
+sys-apps/sblim-gather:base - 
+sys-apps/sblim-gather:libvirt - 
+sys-apps/sblim-gather:provider - 
+www-apps/ctpp2:md5 - 
+x11-themes/elementary-icon-theme:monochrome - Monochrome addon for opaque light panels
+x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
+x11-themes/qtcurve:kf5 - Enable KDE Frameworks 5 support
+x11-themes/qtcurve:windeco - Enable window decoration for KWin
