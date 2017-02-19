@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
-PYTHON_MODNAME="rcore"
 
-inherit distutils git-r3
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Just an core for all rion's projects"
 HOMEPAGE="http://dev.brocompany.com/"
@@ -18,7 +17,7 @@ KEYWORDS=""
 IUSE="sql"
 
 RDEPEND="${DEPEND}
-	>=dev-python/twisted-core-8.2.0[crypt]
-	>=dev-python/twisted-web-8.2.0
+	dev-python/twisted-core[crypt]
+	dev-python/twisted-web
 	dev-python/inotifyx
 	sql? ( dev-python/sqlalchemy )"

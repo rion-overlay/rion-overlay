@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
-PYTHON_MODNAME="hermes"
 
-inherit distutils git-r3 ssl-cert user
+inherit distutils-r1 git-r3 ssl-cert user
 
 DESCRIPTION="The great messenger of the gods"
 HOMEPAGE="https://github.com/Ri0n/Hermes"
@@ -22,20 +21,19 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-lang/python[sqlite]
 	dev-python/ply
-	ssl? ( >=dev-python/twisted-core-8.2.0[crypt] )
-	>=dev-python/twisted-words-8.2.0
-	>=dev-python/twisted-names-8.2.0
-	>=dev-python/twisted-web-8.2.0
+	ssl? ( dev-python/twisted-core[crypt] )
+	dev-python/twisted-words
+	dev-python/twisted-names
+	dev-python/twisted-web
 	dev-python/inotifyx"
 
 pkg_setup() {
-	python_pkg_setup
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /dev/null ${PN}
 }
 
 src_install() {
-	distutils_src_install
+	distutils-r1_src_install
 	newinitd "${FILESDIR}/init" ${PN}
 	keepdir /var/lib/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN}
@@ -43,8 +41,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	distutils_pkg_postinst
-
 	# Do not install server.{key,pem) SSL certificates if they already exist
 	if use ssl && [[ ! -f "${ROOT}"/etc/ssl/${PN}/server.key \
 			&& ! -f "${ROOT}"/etc/ssl/${PN}/server.crt ]] ; then

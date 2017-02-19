@@ -2,13 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=6
 
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.* *-jython"
+PYTHON_COMPAT=( python2_7 )
 
-inherit distutils mercurial
+inherit distutils-r1 mercurial
 
 DESCRIPTION="reStructuredText documents to epub files convertor"
 HOMEPAGE="https://bitbucket.org/wierob/rst2epub/"
@@ -22,7 +20,3 @@ IUSE=""
 
 DEPEND=">=dev-python/docutils-0.6"
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	distutils_src_prepare
-}

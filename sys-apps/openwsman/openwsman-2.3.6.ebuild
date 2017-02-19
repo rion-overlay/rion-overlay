@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
-PYTHON_DEPEND="python? 2:2.7"
-RESTRICT_PYTHON_ABIS="3.* *-jython"
+PYTHON_COMPAT=( python2_7 )
 
-inherit python cmake-utils ssl-cert java-pkg-2 java-utils-2
+inherit python-r1 cmake-utils ssl-cert java-pkg-2 java-utils-2
 
 DESCRIPTION="Opensource Implementation of WS-Management Client"
-HOMEPAGE="http://sourceforge.net/projects/openwsman"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/Openwsman"
+SRC_URI="https://github.com/Openwsman/openwsman/archive/v2.6.3.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -36,13 +35,6 @@ DEPEND="
 	"
 
 # LIBC != glibc build fail - add block
-pkg_setup() {
-	if use python; then
-		python_set_active_version 2
-		python_pkg_setup
-	fi
-}
-
 src_prepare(){
 	#Ruby gem builder does not like Unicode
 	sed -e 's/Kämpf/Kaempf/' -i bindings/ruby/openwsman.gemspec.in
