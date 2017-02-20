@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit gnome2-utils xdg cmake-utils git-r3
 
 DESCRIPTION="Quick(Qt) Online Music Player - one player for different online music hostings"
 HOMEPAGE="http://sourceforge.net/projects/qomp/"
@@ -51,4 +51,14 @@ pkg_setup() {
 		use "${p}" && plugins="${plugins};${p}"
 	done
 	MYCMAKEARGS="-DBUILD_PLUGINS=${plugins}"
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }
