@@ -101,7 +101,7 @@ ALL_PLUGINS="$(grep psi-plugin -lr net-im/ --include '*ebuild' | cut -d '/' -f -
   echo "net-im/psi::rion **"
   echo "net-im/psimedia::rion **"
   echo "net-im/qconf::rion **"
-  echo "$ALL_PLUGINS" | awk '{print $1.":rion **"}'
+  echo "$ALL_PLUGINS" | awk '{print $1."::rion **"}'
 ) > Documentation/package.keywords/psi/psi.keywords
 (
   echo "net-im/psi[plugins]"
