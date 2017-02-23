@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-# @ECLASS: psiplus-plugin.eclass
+# @ECLASS: psi-plugin.eclass
 # @MAINTAINER:
 # Rion <rion4ik@gmail.com>
 # @BLURB: This eclass provides functions for build all plugin to net-im/psi
 # package
 # @DESCRIPTION:
 # This eclass provides functions build all plugin to net-im/psi
-# Original Author: Rion <rion4ik@gmail.com>
+# Original Author: Sergey Ilinykh <rion4ik@gmail.com>
 # Purpose:
 
 ###
@@ -58,7 +58,7 @@ RDEPEND="${DEPEND}"
 # Eclass exported functions
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_install
 
-psiplus-plugin_src_unpack() {
+psi-plugin_src_unpack() {
 	if [ -n "$SCM" ]; then
 		git-r3_src_unpack
 	else
@@ -66,17 +66,17 @@ psiplus-plugin_src_unpack() {
 	fi
 }
 
-psiplus-plugin_src_prepare() {
+psi-plugin_src_prepare() {
 	default
 	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi-plus/plugins/psiplugin.pri#' \
                -i "${MY_PN}".pro || die
 }
 
-psiplus-plugin_src_configure() {
+psi-plugin_src_configure() {
 	use qt4 && eqmake4 "${MY_PN}".pro
 	use qt5 && eqmake5 "${MY_PN}".pro
 }
 
-psiplus-plugin_src_install() {
+psi-plugin_src_install() {
 	emake install INSTALL_ROOT="${D}"
 }

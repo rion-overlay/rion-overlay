@@ -5,7 +5,7 @@
 EAPI="6"
 
 PLUGIN_DIR="dev"
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="Psi plugin for psto.net service"
 

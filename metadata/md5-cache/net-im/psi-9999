@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup unpack
+DEPEND=net-dns/libidn || ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 ) spell? ( enchant? ( >=app-text/enchant-1.3.0 ) hunspell? ( app-text/hunspell ) aspell? ( app-text/aspell ) ) xscreensaver? ( x11-libs/libXScrnSaver ) qt4? ( dev-qt/qtgui:4 dbus? ( dev-qt/qtdbus:4 ) || ( <app-crypt/qca-2.1:2 >=app-crypt/qca-2.1:2[qt4] ) whiteboarding? ( dev-qt/qtsvg:4 ) webkit? ( dev-qt/qtwebkit:4 ) extras? ( sql? ( dev-qt/qtsql:4 dev-libs/qjson ) ) ) qt5? ( dev-qt/qtgui:5 dev-qt/qtxml:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5 dev-qt/qtx11extras:5 dbus? ( dev-qt/qtdbus:5 ) >=app-crypt/qca-2.1:2[qt5] whiteboarding? ( dev-qt/qtsvg:5 ) webkit? ( dev-qt/qtwebkit:5 ) extras? ( sql? ( dev-qt/qtsql:5 ) ) ) extras? ( >=sys-devel/qconf-1.6_pre1 ) doc? ( app-doc/doxygen ) virtual/pkgconfig qt5? ( dev-qt/linguist-tools ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Qt4 Jabber client, with Licq-like interface
+EAPI=5
+HOMEPAGE=http://psi-im.org/
+IUSE=aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets +qt4 qt5 spell sql ssl xscreensaver +plugins whiteboarding webkit linguas_be linguas_bg linguas_ca linguas_cs linguas_de linguas_en linguas_eo linguas_es linguas_et linguas_fa linguas_fi linguas_fr linguas_he linguas_hu linguas_it linguas_ja linguas_kk linguas_mk linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ru linguas_sk linguas_sl linguas_sr@latin linguas_sv linguas_sw linguas_uk linguas_ur_PK linguas_vi linguas_zh_CN linguas_zh_TW
+LICENSE=GPL-2
+PDEPEND=crypt? ( app-crypt/qca[gpg] ) jingle? ( net-im/psimedia[extras?] app-crypt/qca[ssl] ) ssl? ( app-crypt/qca[ssl] )
+RDEPEND=net-dns/libidn || ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 ) spell? ( enchant? ( >=app-text/enchant-1.3.0 ) hunspell? ( app-text/hunspell ) aspell? ( app-text/aspell ) ) xscreensaver? ( x11-libs/libXScrnSaver ) qt4? ( dev-qt/qtgui:4 dbus? ( dev-qt/qtdbus:4 ) || ( <app-crypt/qca-2.1:2 >=app-crypt/qca-2.1:2[qt4] ) whiteboarding? ( dev-qt/qtsvg:4 ) webkit? ( dev-qt/qtwebkit:4 ) extras? ( sql? ( dev-qt/qtsql:4 dev-libs/qjson ) ) ) qt5? ( dev-qt/qtgui:5 dev-qt/qtxml:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5 dev-qt/qtx11extras:5 dbus? ( dev-qt/qtdbus:5 ) >=app-crypt/qca-2.1:2[qt5] whiteboarding? ( dev-qt/qtsvg:5 ) webkit? ( dev-qt/qtwebkit:5 ) extras? ( sql? ( dev-qt/qtsql:5 ) ) )
+REQUIRED_USE=spell? ( ^^ ( aspell enchant hunspell ) ) aspell? ( spell ) enchant? ( spell ) hunspell? ( spell ) iconsets? ( extras ) plugins? ( extras ) sql? ( extras ) webkit? ( extras ) ^^ ( qt4 qt5 )
+RESTRICT=test
+SLOT=0
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	git-r3	6efc2d7de07a77bf72c7207b48d0e123	l10n	e26ea0642846685782f1813642e7ff0f	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=34142d998083e81e48fb5618d98a91a8

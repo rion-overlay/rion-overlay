@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="OTR Plugin for Psi"
 HOMEPAGE="http://public.tfh-berlin.de/~s30935/"

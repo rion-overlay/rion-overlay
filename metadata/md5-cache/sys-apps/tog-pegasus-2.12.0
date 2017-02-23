@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=dev-libs/icu net-libs/openslp dev-libs/openssl >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=OpenPegasus WBEM Services for Linux
+EAPI=2
+HOMEPAGE=http://www.openpegasus.org
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-libs/icu net-libs/openslp dev-libs/openssl
+SLOT=0
+SRC_URI=mirror://fedora-dev/linux/development/rawhide/source/SRPMS/t/tog-pegasus-2.12.0-5.fc19.src.rpm
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=82d65f8930135244cb439b4057a66015

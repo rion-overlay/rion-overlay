@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="Psi plugin to show PEP change notifications"
 

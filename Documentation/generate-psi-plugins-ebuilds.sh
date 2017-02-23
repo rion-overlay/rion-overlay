@@ -8,7 +8,7 @@ die() {
 [ ! -d "net-im" ] && die "Please start this script in the overlay root"
 
 list_plugins() {
-  wget -O- https://github.com/psi-plus/plugins/tree/master/$1 2>/dev/null | grep -oE '>\w+plugin<' | while read -r v; do echo ${v:1:-7}; done
+  wget -O- https://github.com/psi-im/plugins/tree/master/$1 2>/dev/null | grep -oE '>\w+plugin<' | while read -r v; do echo ${v:1:-7}; done
 }
 
 PLUGINS_GENERIC=`list_plugins generic`
@@ -71,10 +71,10 @@ METACONTENT
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
-EAPI="4"
+EAPI=6
 
 ${dirvar}
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="${desc}"
 
@@ -91,13 +91,23 @@ EBUILDCONTENT
   generate ChangeLog" > "net-im/psi-${pn}/ChangeLog"
 
   ebuild "net-im/psi-${pn}/psi-${pn}-9999.ebuild" digest
-  hg add "net-im/psi-${pn}"
+  git add "net-im/psi-${pn}"
 
 done
 
 ####### Add new ebuild to package.keywords and set #######
-echo "net-im/psi-${pn}::rion **" >> Documentation/package.keywords/psi/psi.keywords
-echo "net-im/psi-${pn}" >> sets/psiplus
+ALL_PLUGINS="$(grep psi-plugin -lr net-im/ --include '*ebuild' | cut -d '/' -f -2)"
+(
+  echo "net-im/psi::rion **"
+  echo "net-im/psimedia::rion **"
+  echo "net-im/qconf::rion **"
+  echo "$ALL_PLUGINS" | awk '{print $1.":rion **"}'
+) > Documentation/package.keywords/psi/psi.keywords
+(
+  echo "net-im/psi[plugins]"
+  echo "net-im/psimedia[extras]"
+  echo "$ALL_PLUGINS"
+) > sets/psiplus
 ##########################################################
 
 echo

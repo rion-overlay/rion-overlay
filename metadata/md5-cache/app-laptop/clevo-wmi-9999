@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare pretend setup unpack
+DEPEND=virtual/linux-sources sys-kernel/linux-headers >=dev-vcs/git-1.8.2.1 kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=WMI driver for Clevo laptops
+EAPI=5
+HOMEPAGE=http://forum.notebookreview.com/linux-compatibility-software/708796-clevo-p150em-p170em-sager-np9150-9170-backlit-keyboard-driver-beta-testers-needed.html
+IUSE=kernel_linux
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	git-r3	6efc2d7de07a77bf72c7207b48d0e123	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	linux-mod	0ccff2c1a7d70cf1678059b64bcf9183	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=5a461533f53ad53483b853f154a9d949

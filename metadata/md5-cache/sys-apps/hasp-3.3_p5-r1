@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) virtual/pkgconfig
+DESCRIPTION=Hardware Against Software Piracy for access to parallel and usb keys
+EAPI=4
+HOMEPAGE=http://www.etersoft.ru
+IUSE=net_hasp wine usb lpt demo kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=Etersoft
+RDEPEND=kernel_linux? ( virtual/modutils )
+REQUIRED_USE=lpt? ( kernel_linux )
+SLOT=0
+SRC_URI=http://ftp.etersoft.ru/pub/Etersoft/HASP/3.3/sources/Gentoo/2009/haspd-3.3-eter5gentoo.src.rpm
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	linux-mod	0ccff2c1a7d70cf1678059b64bcf9183	multilib	165fc17c38d1b11dac2008280dab6e80	rpm	3e120fdd74b358f9fb42b825a6558f61	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b891a29b868e3b1a429d6eabe38e75bd

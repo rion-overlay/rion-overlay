@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="Psi skins plugin."
 
@@ -14,7 +14,7 @@ IUSE="+themes"
 RDEPEND="themes? ( !net-im/psi-skins-themes )"
 
 src_unpack() {
-	psiplus-plugin_src_unpack
+	psi-plugin_src_unpack
 
 	if use themes; then
 		EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/resources" \
@@ -24,7 +24,7 @@ src_unpack() {
 }
 
 src_install() {
-	psiplus-plugin_src_install
+	psi-plugin_src_install
 
 	if use themes; then
 		cd "${WORKDIR}/resources" || die

@@ -5,7 +5,7 @@
 EAPI="6"
 
 PLUGIN_DIR="generic"
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="Psi+ GnuPG plugin"
 

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=The flag icon filenames follow the ISO 3166-1 alpha-2 country codes.
+EAPI=6
+HOMEPAGE=http://www.famfamfam.com/lab/icons/flags/
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://www.famfamfam.com/lab/icons/flags/famfamfam_flag_icons.zip
+_md5_=190b4ec92c0304d8f764822cf42568fe

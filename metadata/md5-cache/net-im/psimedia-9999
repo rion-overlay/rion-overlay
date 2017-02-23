@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-libs/glib-2.20.0 media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 qt4? ( >=dev-qt/qtcore-4.4:4 >=dev-qt/qtgui-4.4:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets ) >=media-libs/speex-1.2_rc1 dev-libs/liboil sys-devel/make >=dev-util/cmake-3.6.3 dev-vcs/git
+DESCRIPTION=Psi plugin for voice/video calls
+EAPI=5
+HOMEPAGE=http://delta.affinix.com/psimedia/
+IUSE=debug demo extras qt4 qt5
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.20.0 media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 qt4? ( >=dev-qt/qtcore-4.4:4 >=dev-qt/qtgui-4.4:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets ) >=media-libs/speex-1.2_rc1 dev-libs/liboil media-plugins/gst-plugins-speex:0.10 media-plugins/gst-plugins-vorbis:0.10 media-plugins/gst-plugins-theora:0.10 media-plugins/gst-plugins-alsa:0.10 media-plugins/gst-plugins-ogg:0.10 media-plugins/gst-plugins-v4l2:0.10 media-plugins/gst-plugins-jpeg:0.10 !<net-im/psi-0.13_rc1 extras? ( >=net-im/psi-0.15_pre20110125[extras] )
+REQUIRED_USE=^^ ( qt4 qt5 )
+SLOT=0
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8af5bc31b321721558a8fc81ec1ecf5b

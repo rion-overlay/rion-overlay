@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=>=dev-vcs/git-1.8.2.1 >=net-im/psi-9999[extras,plugins]
+DESCRIPTION=Psi plugin to enumarate messages added to chat
+EAPI=6
+HOMEPAGE=https://github.com/psi-im/
+IUSE=+qt4 qt5
+LICENSE=GPL-2
+RDEPEND=>=net-im/psi-9999[extras,plugins]
+REQUIRED_USE=^^ ( qt4 qt5 )
+SLOT=0
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	psi-plugin	9253c379d91bda90ae89a247fa0901f0	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=3dc94cc519212bac5930eaa48c079ab4

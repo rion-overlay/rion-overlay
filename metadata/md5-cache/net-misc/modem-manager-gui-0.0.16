@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=x11-libs/gtk+-3.4.0 x11-libs/libnotify
+DESCRIPTION=GUI for Modem Manager daemon.
+EAPI=5
+HOMEPAGE=http://linuxonly.ru/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=x11-libs/gtk+-3.4.0 x11-libs/libnotify
+SLOT=0
+SRC_URI=http://download.tuxfamily.org/gsf/source/modem-manager-gui-0.0.16.tar.gz
+_md5_=5c148266f56855b13f594e300cfe8722

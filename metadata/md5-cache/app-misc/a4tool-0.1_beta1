@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND=virtual/libusb:1 battery? ( x11-libs/libnotify )
+DESCRIPTION=Tools for control your smart mouse. A4Tech G10-700F, and other Oscar mouse's
+EAPI=6
+HOMEPAGE=https://github.com/Marisa-Chan/init-gmouse
+IUSE=battery
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:1 battery? ( x11-libs/libnotify ) virtual/udev
+SLOT=0
+SRC_URI=https://github.com/BondarenkoArtur/init-gmouse/archive/cf30b50ccc5d52ada56b5b2a1343fdf63ee2424b.zip
+_eclasses_=user	e10ccb95af96d45f86016fa982a949bb
+_md5_=e2d43e46c1b6eea2105303c3aa649290

@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="Gmail notify plugin for psi"
 

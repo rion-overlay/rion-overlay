@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Common Information Model (CIM) Schema
+EAPI=4
+HOMEPAGE=http://www.dmtf.org/
+IUSE=doc
+KEYWORDS=~amd64
+LICENSE=DMTF
+SLOT=2.32.0
+SRC_URI=http://dmtf.org/sites/default/files/cim/cim_schema_v2320/cim_schema_2.32.0Experimental-MOFs.zip doc? ( http://dmtf.org/sites/default/files/cim/cim_schema_v2320/cim_schema_2.32.0Experimental-Doc.zip )
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=80eccfcd5384c3be70f9794a961059a2

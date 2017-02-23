@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit psiplus-plugin
+inherit psi-plugin
 
 DESCRIPTION="Psi plugin for making attention (XEP-0224)"
 

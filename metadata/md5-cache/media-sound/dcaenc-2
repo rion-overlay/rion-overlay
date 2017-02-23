@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=alsa? ( media-libs/alsa-lib ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Encoder for the DTS Coherent Acoustics audio format
+EAPI=4
+HOMEPAGE=http://aepatrakov.narod.ru/dcaenc/
+IUSE=alsa
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=alsa? ( media-libs/alsa-lib )
+SLOT=0
+SRC_URI=http://aepatrakov.narod.ru/dcaenc/dcaenc-2.tar.gz
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=002740b206c61165cfabb7cbfb3c4aaa

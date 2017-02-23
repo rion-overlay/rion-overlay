@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=avahi? ( net-dns/avahi ) >=dev-libs/boost-1.42 >=dev-libs/openssl-0.9.8g >=net-dns/libidn-1.10 >=x11-libs/libXScrnSaver-1.2 >=dev-qt/qtgui-4.5:4 >=dev-qt/qtwebkit-4.5:4 dev-libs/libxml2 >=dev-libs/expat-2.0.1 sys-libs/zlib doc? ( >=app-text/docbook-xsl-stylesheets-1.75 >=app-text/docbook-xml-dtd-4.5 dev-libs/libxslt ) >=dev-util/scons-1.2
+DESCRIPTION=Qt4 jabber (xmpp) client
+EAPI=4
+HOMEPAGE=http://swift.im/
+IUSE=avahi debug doc examples test linguas_ca linguas_de linguas_es linguas_fr linguas_hu linguas_nl linguas_pl linguas_ru linguas_se linguas_sk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=avahi? ( net-dns/avahi ) >=dev-libs/boost-1.42 >=dev-libs/openssl-0.9.8g >=net-dns/libidn-1.10 >=x11-libs/libXScrnSaver-1.2 >=dev-qt/qtgui-4.5:4 >=dev-qt/qtwebkit-4.5:4 dev-libs/libxml2 >=dev-libs/expat-2.0.1 sys-libs/zlib
+SLOT=0
+SRC_URI=http://swift.im/downloads/releases/swift-1.0/swift-1.0.tar.gz
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	scons-utils	d42c1726f481bb5812cc2ce1f236db1d	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=600009db6d316a63d841a1a487c95059

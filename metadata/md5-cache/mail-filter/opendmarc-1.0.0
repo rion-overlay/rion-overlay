@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=|| ( mail-mta/sendmail mail-filter/libmilter ) net-dns/libidn mysql? ( dev-db/opendbx[mysql=] )
+DESCRIPTION=Open source DMARC implementation
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/opendmarc/
+IUSE=mysql
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=|| ( mail-mta/sendmail mail-filter/libmilter ) net-dns/libidn mysql? ( dev-db/opendbx[mysql=] ) sys-process/psmisc
+SLOT=0
+SRC_URI=mirror://sourceforge/project/opendmarc/opendmarc-1.0.0.tar.gz
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	708f85bc1bf00876604e223fb56e062a	libtool	84763589a795fb127b537cac01e5359f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	e10ccb95af96d45f86016fa982a949bb
+_md5_=545c9c46e415289c71c0167436ac1246

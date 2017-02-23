@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=net-im/pidgin-2.7[gtk] virtual/pkgconfig sys-devel/gettext test? ( dev-libs/check ) sys-devel/make >=dev-util/cmake-3.6.3 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Mail.Ru agent protocol for pidgin.
+EAPI=5
+HOMEPAGE=https://bitbucket.org/mrim-prpl-team/mrim-prpl
+IUSE=test
+LICENSE=GPL-2+
+RDEPEND=>=net-im/pidgin-2.7[gtk]
+SLOT=0
+_eclasses_=cmake-utils	014267c4475c1a625ecec5b16e0db1e6	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	eb9be4b678c4e71f3f530a767df31912	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=55833e457734ed3755945dad2fafbf53

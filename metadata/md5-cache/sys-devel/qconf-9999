@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=qt4? ( dev-qt/qtcore:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtxml:5 ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Qt ./configure generation util
+EAPI=6
+HOMEPAGE=http://delta.affinix.com/qconf/
+IUSE=qt4 qt5
+LICENSE=GPL-2
+RDEPEND=qt4? ( dev-qt/qtcore:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtxml:5 )
+REQUIRED_USE=^^ ( qt4 qt5 )
+SLOT=0
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=1945db91cfc13605c586d2f8799a0c1b

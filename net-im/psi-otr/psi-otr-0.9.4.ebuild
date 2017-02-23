@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit psiplus-plugin
+inherit psi-plugin
 
 MY_PN="otrplugin"
 S="${WORKDIR}/${MY_PN}"
@@ -22,7 +22,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	psiplus-plugin_src_prepare
+	psi-plugin_src_prepare
 	sed -i -e "s@tidy/tidy\\.h@tidy.h@" -e "s@tidy/buffio\\.h@buffio.h@" \
 		./src/HtmlTidy.hpp
 }

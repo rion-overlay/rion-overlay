@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=lua? ( dev-lang/lua ) virtual/pkgconfig
+DESCRIPTION=HTML And Shell Embedded Report Language
+EAPI=6
+HOMEPAGE=http://haserl.sourceforge.net/
+IUSE=lua
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=lua? ( dev-lang/lua )
+SLOT=0
+SRC_URI=mirror://sourceforge/haserl/haserl-0.9.35.tar.gz
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=f273fa1dc20d3b93777cbf5cb82af7d4
