@@ -29,7 +29,7 @@ SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
 	PLUGIN_DIR="${PLUGIN_DIR:-generic}"
-	EGIT_REPO_URI="git://github.com/psi-plus/plugins.git"
+	EGIT_REPO_URI="git://github.com/psi-im/plugins.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/plugins"
 fi
 
@@ -39,7 +39,7 @@ REQUIRED_USE="^^ ( qt4 qt5 )"
 
 # general common
 
-HOMEPAGE="http://psi-dev.googlecode.com"
+HOMEPAGE="https://github.com/psi-im/"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	S="${WORKDIR}/plugins/${PLUGIN_DIR}/${MY_PN}"
