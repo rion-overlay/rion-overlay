@@ -10,9 +10,9 @@ PYTHON_REQ_USE="sqlite"
 inherit eutils python-single-r1
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
-HOMEPAGE="http://ichi2.net/anki/"
-ANKI_MPV_REV=0e736b6c0f34de080794a48bb12486d0a97560b3
-SRC_URI="http://ankisrs.net/download/mirror/${P}.tgz
+HOMEPAGE="https://apps.ankiweb.net"
+ANKI_MPV_REV=d52ad7ec9aa3c806b13fa6e90fe56fa233d355c6
+SRC_URI="https://apps.ankiweb.net/downloads/current/${P}-source.tgz -> ${P}.tgz
 	mpv? ( https://github.com/tsudoko/anki-mpv/archive/${ANKI_MPV_REV}.zip )"
 
 LICENSE="GPL-3"

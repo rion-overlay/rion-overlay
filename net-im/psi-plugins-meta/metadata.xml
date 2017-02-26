@@ -1,41 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>no-herd</herd>
-	<maintainer>
-		<email>nikoli@lavabit.com</email>
-		<name>Nikoli</name>
-	</maintainer>
-	<longdescription lang="en">Meta package for Psi plugins.
-	Just set USE flag corresponding to needed for you plugins
-	and emerge this package
-	</longdescription>
-<use>
-	<flag name='attention'>Enable plugin for making attention (XEP-0224)</flag>
-	<flag name='autoreply'>Enable autoreply plugin.</flag>
-	<flag name='birthdayreminder'>Enable plugin to remind contact's birthdays</flag>
-	<flag name='captchaforms'>Enable plugin to show MUC's captcha</flag>
-	<flag name='chess'>Enable plugin to play chess with your friends</flag>
-	<flag name='cleaner'>Enable profile cleaner plugin.</flag>
-	<flag name='conferencelogger'>Enable plugin which saves logs of conferences</flag>
-	<flag name='contentdownloader'>Enable plugin for downloading extras</flag>
-	<flag name='extendedoptions'>Enable plugin for UI for some hidden options</flag>
-	<flag name='gmailservice'>Enable Gmail Service plugin for psi</flag>
-	<flag name='historykeeper'>Enable plugin to keep certain contacts history clean</flag>
-	<flag name='icqdie'>Enable "ICQDie!!" plugin.</flag>
-	<flag name='image'>Enable plugin for sending in-band images</flag>
-	<flag name='juick'>Enable plugin for juick.com service</flag>
-	<flag name='qipxstatuses'>Enable QIP xStatus reader plugin</flag>
-	<flag name='screenshot'>Enable plugin to quickly make screenshots</flag>
-	<flag name='skins'>Enable skins plugin.</flag>
-	<flag name='stopspam'>Enable plugin for spam blocking</flag>
-	<flag name='storagenotes'>Enable plugin for Jabber notes protocol extension</flag>
-	<flag name='translate'>Enable Translate plugin</flag>
-	<flag name='videostatus'>Enable plugin for settings some status during video watching</flag>
-	<flag name='watcher'>Emanable plugin for sending in-band images</flag>
-	 <flag name='otr'></flag>
-	      <flag name='psto'>s</flag>
-	<flag name='pepchangenotify'></flag>
-    <flag name='extendedmenu'></flag>
-</use>
+  <maintainer>
+    <email>rion4ik@gmail.com</email>
+    <name>Sergey Ilinykh</name>
+  </maintainer>
+  <longdescription lang="en">Meta package for Psi plugins.
+    Just set USE flag corresponding to needed for you plugins
+    and emerge this package
+  </longdescription>
+  <use>
+    <flag name="attention">Enable Psi plugin for making attention (XEP-0224)</flag>
+    <flag name="autoreply">Enable Psi plugin to gnerate automatic replies.</flag>
+    <flag name="birthdayreminder">Enable Psi plugin to remind contact's birthdays</flag>
+    <flag name="captchaforms">Enable Psi plugin to show MUC's captcha</flag>
+    <flag name="chess">Enable Psi plugin to play chess with your friends</flag>
+    <flag name="cleaner">Enable Psi plugin for profile cleaning for specified contacts.</flag>
+    <flag name="clientswitcher">Enable Psi plugin for client version masking</flag>
+    <flag name="conferencelogger">Enable Psi plugin which saves logs of conferences</flag>
+    <flag name="contentdownloader">Enable Psi plugin for downloading extras</flag>
+    <flag name="enummessages">Enable Psi plugin to enumarate messages added to chat</flag>
+    <flag name="extendedmenu">Enable Psi plugin which adds special submenu to contacts</flag>
+    <flag name="extendedoptions">Enable Psi plugin for UI for some hidden options</flag>
+    <flag name="gmailservice">Enable Psi plugin for Gmail notification</flag>
+    <flag name="gnome3support">Enable Psi plugin for Gnome 3 support</flag>
+    <flag name="gnupg">Enable Psi plugin for GnuPG message encryption</flag>
+    <flag name="gomokugame">Enable Psi plugin for Gomoku game</flag>
+    <flag name="historykeeper">Enable Psi plugin to keep certain contacts history clean</flag>
+    <flag name="httpupload">Enable Psi plugin to suppor http uploade feature as per XEP-0363</flag>
+    <flag name="icqdie">Enable Psi plugin generating weird replies to icq transport contacts.</flag>
+    <flag name="image">Enable Psi plugin for sending in-band images</flag>
+    <flag name="imagepreview">Enable Psi plugin to preview images in chat log</flag>
+    <flag name="jabberdisk">Enable Psi plugin for file sharing via jabber disk</flag>
+    <flag name="juick">Enable Psi plugin for juick.com service</flag>
+    <flag name="messagefilter">Enable Psi plugin to filter out messages by various conditions</flag>
+    <flag name="otr">Enable Psi plugin for OTR message ecnryption</flag>
+    <flag name="pepchangenotify">Enable Psi plugin to show PEP change notifications</flag>
+    <flag name="psto">Enable Psi plugin for psto.net service</flag>
+    <flag name="qipxstatuses">Enable Psi plugin for QIP xStatus to xmpp user moods translation</flag>
+    <flag name="screenshot">Enable Psi plugin to quickly make screenshots</flag>
+    <flag name="skins">Enable Psi plugin for skins support.</flag>
+    <flag name="stopspam">Enable Psi plugin for spam blocking</flag>
+    <flag name="storagenotes">Enable Psi plugin for Jabber notes protocol extension</flag>
+    <flag name="translate">Enable Psi plugin to fix incorrect input</flag>
+    <flag name="videostatus">Enable Psi plugin for settings some status during video watching</flag>
+    <flag name="watcher">Enable Psi plugin for watching on contacts</flag>
+  </use>
 </pkgmetadata>

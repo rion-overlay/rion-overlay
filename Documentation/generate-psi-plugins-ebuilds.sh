@@ -67,7 +67,7 @@ METACONTENT
   dirvar=""
   [ "$arch" != "generic" ] && dirvar="PLUGIN_DIR=\"${arch}\""
   echo "$(cat <<EBUILDCONTENT
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-$(date +%Y) Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
@@ -84,7 +84,7 @@ EBUILDCONTENT
 )" >> "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
 
   echo "# ChangeLog for net-im/psi-${pn}
-# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-$(date +%Y) Gentoo Foundation; Distributed under the GPL v2
 # \$Header: \$
 
   `LANG=C date "+%d %b %Y"`; $USER <$USER@bots.ru> ChangeLog:
@@ -96,7 +96,7 @@ EBUILDCONTENT
 done
 
 ####### Add new ebuild to package.keywords and set #######
-ALL_PLUGINS="$(grep psi-plugin -lr net-im/ --include '*ebuild' | cut -d '/' -f -2)"
+ALL_PLUGINS="$(grep psi-plugin -lr net-im/ --include '*ebuild' | cut -d '/' -f -2 | sort -u)"
 (
   echo "net-im/psi::rion **"
   echo "net-im/psimedia::rion **"
@@ -109,6 +109,59 @@ ALL_PLUGINS="$(grep psi-plugin -lr net-im/ --include '*ebuild' | cut -d '/' -f -
   echo "$ALL_PLUGINS"
 ) > sets/psiplus
 ##########################################################
+
+plugin_names=""
+plugin_flags=""
+for atom in $ALL_PLUGINS; do
+  ebuild=$(ls $atom/*ebuild | head -n1)
+  desc=$( . $ebuild 2>/dev/null; echo $DESCRIPTION; )
+  plugin="$(echo "$atom" | cut -d '-' -f 3)"
+  plugin_flags="$plugin_flags
+    <flag name=\"${plugin}\">Enable ${desc}</flag>"
+  plugin_names="$plugin_names $plugin"
+done
+
+  echo "$(cat <<EBUILDCONTENT
+# Copyright 1999-$(date +%Y) Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# \$Header: \$
+
+EAPI=6
+
+DESCRIPTION="Meta package for net-im/psi plugins"
+HOMEPAGE="https://github.com/psi-im"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS=""
+
+IUSE="$(echo $plugin_names)"
+
+RDEPEND=""
+
+for plugin in \${IUSE}; do
+  RDEPEND+=" \${plugin}? ( >=net-im/psi-\${plugin}-\${PV} )"
+done
+EBUILDCONTENT
+)" > "net-im/psi-plugins-meta/psi-plugins-meta-9999.ebuild"
+
+  echo "$(cat <<METACONTENT
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>rion4ik@gmail.com</email>
+    <name>Sergey Ilinykh</name>
+  </maintainer>
+  <longdescription lang="en">Meta package for Psi plugins.
+    Just set USE flag corresponding to needed for you plugins
+    and emerge this package
+  </longdescription>
+  <use>${plugin_flags}
+  </use>
+</pkgmetadata>
+METACONTENT
+)" > "net-im/psi-plugins-meta/metadata.xml"
 
 echo
 echo "New ebuilds are ready for commit! :-)"

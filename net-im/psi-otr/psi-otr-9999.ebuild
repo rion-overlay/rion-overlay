@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="OTR Plugin for Psi"
+DESCRIPTION="Psi plugin for OTR message ecnryption"
 HOMEPAGE="http://public.tfh-berlin.de/~s30935/"
 
 KEYWORDS=""

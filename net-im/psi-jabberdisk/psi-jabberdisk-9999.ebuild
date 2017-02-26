@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Psi+ plugin for file sharing via jabber disk"
+DESCRIPTION="Psi plugin for file sharing via jabber disk"
 
 KEYWORDS=""
 IUSE=""

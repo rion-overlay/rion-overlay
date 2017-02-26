@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Psi skins plugin."
+DESCRIPTION="Psi plugin for skins support."
 
 KEYWORDS=""
 IUSE="+themes"

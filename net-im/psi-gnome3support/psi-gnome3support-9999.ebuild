@@ -7,7 +7,7 @@ EAPI="6"
 PLUGIN_DIR="unix"
 inherit psi-plugin
 
-DESCRIPTION="Psi+ Gnome 3 support plugin"
+DESCRIPTION="Psi plugin for Gnome 3 support"
 
 KEYWORDS=""
 IUSE=""

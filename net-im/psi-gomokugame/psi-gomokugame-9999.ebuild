@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Gomoku game for Psi+"
+DESCRIPTION="Psi plugin for Gomoku game"
 
 KEYWORDS=""
 IUSE=""

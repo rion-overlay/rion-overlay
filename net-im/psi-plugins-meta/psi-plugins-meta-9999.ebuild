@@ -2,21 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI=6
 
 DESCRIPTION="Meta package for net-im/psi plugins"
-HOMEPAGE="http://psi-dev.googlecode.com"
+HOMEPAGE="https://github.com/psi-im"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-# echo $(eix --only-names net-im/psi- | cut -d '-' -f 3) | fold -w 80 -s
-IUSE="attention autoreply birthdayreminder captchaforms chess cleaner clientswitcher conferencelogger contentdownloader extendedmenu extendedoptions gmailservice gnome3support gnupg gomokugame historykeeper icqdie image jabberdisk juick otr pepchangenotify plugins psto qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher yandexnarod"
+
+IUSE="attention autoreply birthdayreminder captchaforms chess cleaner clientswitcher conferencelogger contentdownloader enummessages extendedmenu extendedoptions gmailservice gnome3support gnupg gomokugame historykeeper httpupload icqdie image imagepreview jabberdisk juick messagefilter otr pepchangenotify psto qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher"
 
 RDEPEND=""
 
-for plugin in ${IUSE/otr}; do
-	RDEPEND+=" ${plugin}? ( >=net-im/psi-${plugin}-${PV} )"
+for plugin in ${IUSE}; do
+  RDEPEND+=" ${plugin}? ( >=net-im/psi-${plugin}-${PV} )"
 done
-
-RDEPEND+=" otr? ( net-im/psi-otr )"

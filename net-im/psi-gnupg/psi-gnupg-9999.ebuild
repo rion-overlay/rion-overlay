@@ -7,7 +7,7 @@ EAPI="6"
 PLUGIN_DIR="generic"
 inherit psi-plugin
 
-DESCRIPTION="Psi+ GnuPG plugin"
+DESCRIPTION="Psi plugin for GnuPG message encryption"
 
 KEYWORDS=""
 IUSE=""

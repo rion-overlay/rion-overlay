@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Translate plugin for psi"
+DESCRIPTION="Psi plugin to fix incorrect input"
 
 KEYWORDS=""
 IUSE=""

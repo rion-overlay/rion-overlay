@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Psi+'s \"ICQDie!!\" plugin."
+DESCRIPTION="Psi plugin generating weird replies to icq transport contacts."
 
 KEYWORDS=""
 IUSE=""

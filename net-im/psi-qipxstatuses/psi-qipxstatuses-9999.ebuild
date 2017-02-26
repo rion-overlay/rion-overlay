@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="QIP xStatus reader Psi plugin"
+DESCRIPTION="Psi plugin for QIP xStatus to xmpp user moods translation"
 
 KEYWORDS=""
 IUSE=""

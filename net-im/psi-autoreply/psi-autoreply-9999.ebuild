@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Psi autoreply plugin."
+DESCRIPTION="Psi plugin to gnerate automatic replies."
 
 KEYWORDS=""
 IUSE=""

@@ -18,13 +18,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="mysql postgres sqlite +webinterface"
 
-DEPEND="dev-perl/net-server
+DEPEND="dev-perl/Net-Server
 	dev-perl/Net-CIDR
 	dev-perl/Config-IniFiles
 	dev-perl/Cache-FastMmap
 	dev-perl/Mail-SPF
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql-base )
+	postgres? ( dev-db/postgresql )
 	sqlite? ( dev-db/sqlite )
 	webinterface? ( dev-lang/php[pdo]
 					virtual/httpd-php )

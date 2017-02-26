@@ -20,12 +20,14 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+qt4 qt5 spell kde unity"
-REQUIRED_USE="^^ ( qt4 qt5 )"
+REQUIRED_USE="
+	^^ ( qt4 qt5 )
+	kde ( qt5 )
+"
 
 DEPEND="
 	qt4? ( dev-qt/qtgui:4
 	       dev-qt/qtsingleapplication[X,qt4]
-		   kde? ( kde-base/kdelibs )
 		   )
 	qt5? ( dev-qt/qtgui:5
 		   dev-qt/qtwidgets

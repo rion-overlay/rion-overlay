@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Psi+ plugin which adds special submenu to contacts"
+DESCRIPTION="Psi plugin which adds special submenu to contacts"
 
 KEYWORDS=""
 IUSE=""

@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Psi profile cleaner plugin."
+DESCRIPTION="Psi plugin for profile cleaning for specified contacts."
 
 KEYWORDS=""
 IUSE=""

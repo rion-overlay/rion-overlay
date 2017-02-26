@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Gmail notify plugin for psi"
+DESCRIPTION="Psi plugin for Gmail notification"
 
 KEYWORDS=""
 IUSE=""

@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit psi-plugin
 
-DESCRIPTION="Psi+ plugin for client version masking"
+DESCRIPTION="Psi plugin for client version masking"
 
 KEYWORDS=""
 IUSE=""

@@ -8,7 +8,7 @@ inherit psi-plugin
 
 MY_PN="otrplugin"
 S="${WORKDIR}/${MY_PN}"
-DESCRIPTION="OTR Plugin for Psi"
+DESCRIPTION="Psi plugin for OTR message ecnryption"
 HOMEPAGE="http://public.tfh-berlin.de/~s30935/"
 SRC_URI="http://psi-dev.googlecode.com/files/${MY_PN}-${PV}-src.tar.gz"
 

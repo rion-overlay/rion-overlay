@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="6"
+EAPI=6
 
 inherit git-r3 linux-mod
 
@@ -17,12 +17,8 @@ IUSE=""
 MODULE_NAMES="rts_bpp(char:)"
 BUILD_TARGETS=" "
 
-pkg_setup() {
-	linux-mod_pkg_setup
-}
-
 src_prepare() {
 	default
-	sed -i -e "s/\$(shell uname -r)/$KV_FULL/g" \
+	sed -i -e "s/\$(shell uname -r)/${KV_FULL}/g" \
 		"${S}"/Makefile || die "sed makefile"
 }

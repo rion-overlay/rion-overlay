@@ -26,21 +26,16 @@ IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
 IUSE="dbus debug kde nls ${IUSE_PLUGINS} qt4 qt5"
 REQUIRED_USE="|| ( ${IUSE_PLUGINS} )
-	|| ( qt4 qt5 )"
+	|| ( qt4 qt5 )
+	kde ( qt5 )"
 
 DEPEND="dev-qt/qtgui:=
 	dbus? ( dev-qt/qtdbus:= )
 	dev-libs/glib:2
 	plugin_swac? ( dev-qt/qtsql:= )
-	qt4? ( 
-		kde? ( kde-base/kdelibs )
+	kde? (
+		kde-frameworks/kwindowsystem
 	)
-	qt5? ( 
-		kde? (
-			kde-frameworks/kwindowsystem
-		)
-	)
-
 	"
 RDEPEND="${RDEPEND}"
 
