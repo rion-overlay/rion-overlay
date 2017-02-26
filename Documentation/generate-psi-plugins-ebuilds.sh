@@ -50,14 +50,13 @@ for pn in $NEW_PLUGINS; do
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-im</herd>
-	<maintainer>
-		<email>rion4ik@gmail.com</email>
-		<name>rion</name>
-	</maintainer>
-	<longdescription lang="en">
-	${longdesc}
-	</longdescription>
+  <maintainer type="person">
+    <email>rion4ik@gmail.com</email>
+    <name>rion</name>
+  </maintainer>
+  <longdescription lang="en">
+    ${longdesc}
+  </longdescription>
 </pkgmetadata>
 METACONTENT
 )" > "net-im/psi-${pn}/metadata.xml"
@@ -149,7 +148,7 @@ EBUILDCONTENT
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>rion4ik@gmail.com</email>
     <name>Sergey Ilinykh</name>
   </maintainer>

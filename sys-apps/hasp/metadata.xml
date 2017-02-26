@@ -22,7 +22,7 @@ Copyright 1985-2008 Aladdin Knowledge Systems http://www.aladdin.com
 Copyright 2006-2007 Eutron SPA http://www.smartkey.eutron.com
 Copyright 2006-2006 SafeNet Sentinel http://www.safenet-inc.com
 </longdescription>
-	<maintainer>
+	<maintainer type="person">
 		<email>egor.y.egorov@gmail.com</email>
 	</maintainer>
 	<use>

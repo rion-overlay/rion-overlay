@@ -5,7 +5,7 @@
 GUI for Modem Manager daemon, capable to read and send SMS,
 send USSD requests, display modem informaion.
 </longdescription>
-<maintainer>
+<maintainer type="person">
 	<email>egor.y.egorov@gmail.com</email>
 </maintainer>
 </pkgmetadata>

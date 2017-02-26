@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: Exp $
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit base versionator distutils-r1 fdo-mime git-r3
+inherit versionator distutils-r1 fdo-mime git-r3
 
 DESCRIPTION="Phatch is a simple to use cross-platform GUI Photo Batch Processor"
 HOMEPAGE="http://photobatch.stani.be/"
@@ -25,7 +25,7 @@ DEPEND="dev-python/wxpython
 RDEPEND="${DEPEND}
 	sys-apps/mlocate"
 
-PATCHES=( "${FILESDIR}"/*.patch )
+PATCHES=( "${FILESDIR}"/crash_fix.patch )
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_postinst()

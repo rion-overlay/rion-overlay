@@ -5,7 +5,6 @@
 EAPI=6
 
 KDE_REQUIRED="optional"
-inherit kde4-base
 KDE_AUTODEPS=false
 KDE_DEBUG=false
 KDE_HANDBOOK=false # needed for kde5.eclass, but misinterpreted by kde4-base.eclass
@@ -27,11 +26,9 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+X gtk kde kf5 nls +qt4 qt5 windeco"
+IUSE="+X gtk kf5 nls +qt4 qt5 windeco"
 REQUIRED_USE="gtk? ( X )
-	kde? ( qt4 X )
 	kf5? ( qt5 )
-	windeco? ( kde )
 	|| ( gtk qt4 qt5 )"
 
 RDEPEND="X? ( x11-libs/libxcb[${MULTILIB_USEDEP}]
@@ -47,8 +44,6 @@ RDEPEND="X? ( x11-libs/libxcb[${MULTILIB_USEDEP}]
 		dev-qt/qtwidgets:5
 		X? ( dev-qt/qtdbus:5
 			dev-qt/qtx11extras:5 ) )
-	kde? ( $(add_kdebase_dep systemsettings)
-		windeco? ( $(add_kdebase_dep kwin) ) )
 	kf5? ( $(add_frameworks_dep extra-cmake-modules)
 		$(add_frameworks_dep karchive)
 		$(add_frameworks_dep kconfig)
@@ -73,13 +68,11 @@ PATCHES+=(
 pkg_pretend() {
 	if [[ "$(multilib_get_enabled_abis)" != "${DEFAULT_ABI}" ]]; then
 		use qt5 && elog "Qt5 is not (yet) multilib-aware, qtcurve will be built for Qt5 with native ABI only"
-		use kde && elog "KDE is not (yet) multilib-aware, qtcurve will be built for KDE with native ABI only"
 		use kf5 && elog "KF5 is not (yet) multilib-aware, qtcurve will be built for KF5 with native ABI only"
 	fi
 }
 
 pkg_setup() {
-	use kde && kde4-base_pkg_setup
 	# bug #498776
 	if ! version_is_at_least 4.7 $(gcc-version) ; then
 		append-cxxflags -Doverride=
@@ -91,8 +84,8 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		mycmakeargs=(
-			-DQTC_QT4_ENABLE_KDE=$(usex kde)
-			-DQTC_QT4_ENABLE_KWIN=$(usex windeco)
+			-DQTC_QT4_ENABLE_KDE=OFF
+			-DQTC_QT4_ENABLE_KWIN=OFF
 			-DENABLE_QT5=$(usex qt5)
 			-QTC_QT5_ENABLE_KDE=$(usex kf5)
 		)

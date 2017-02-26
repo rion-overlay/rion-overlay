@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.5.ebuild,v 1.1 2013/01/04 03:52:55 idl0r Exp $
 
-EAPI="5"
+EAPI=6
 CMAKE_MIN_VERSION="2.8"
 
 EGIT_REPO_URI="git://git.naquadah.org/awesome.git"
 
-inherit git-2 cmake-utils eutils
+inherit git-r3 cmake-utils eutils
 
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="http://awesome.naquadah.org/"
@@ -21,7 +21,7 @@ IUSE="dbus doc elibc_FreeBSD gnome"
 COMMON_DEPEND=">=dev-lang/lua-5.1
 	>=dev-libs/libxdg-basedir-1
 	x11-libs/cairo[xcb]
-	|| ( <x11-libs/libX11-1.3.99.901[xcb] >=x11-libs/libX11-1.3.99.901 )
+	x11-libs/libX11
 	>=x11-libs/libxcb-1.6
 	>=x11-libs/startup-notification-0.10_p20110426
 	>=x11-libs/xcb-util-0.3.8

@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 EHG_REPO_URI="https://bitbucket.org/ratnik/dump_viewer"
 
-inherit qt4-r2
+inherit qmake-utils
 [[ ${PV} == *9999* ]] && inherit mercurial
 
 DESCRIPTION="Viewer for DB dumps of torrent trackers"
@@ -24,7 +24,6 @@ RDEPEND+="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtwebkit:4
-	kde-base/kdelibs:4
 "
 DEPEND="${RDEPEND}"
 
@@ -32,4 +31,8 @@ DOCS=( README )
 
 src_configure() {
 	eqmake4 PREFIX="${EPREFIX}/usr"
+}
+
+src_install() {
+	emake install INSTALL_ROOT="${D}"
 }

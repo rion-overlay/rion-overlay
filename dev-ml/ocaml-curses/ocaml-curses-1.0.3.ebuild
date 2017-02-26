@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /cvs/zport/dev-ml/ocamlp3l/ocamlp3l-2.03.ebuild,v 1.1 2007/03/06 13:13:02 zechs Exp $
 
-EAPI=5
+EAPI=6
 
 inherit eutils autotools findlib
 
@@ -10,7 +10,7 @@ DESCRIPTION="OCaml Curses is a project to provide curses / ncurses  bindings for
 HOMEPAGE="http://www.nongnu.org/ocaml-tmk/"
 SRC_URI="http://download.savannah.nongnu.org/releases/ocaml-tmk/${P}.tar.gz"
 
-LICENSE="LGPL"
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -20,7 +20,6 @@ DEPEND=">=dev-lang/ocaml-3.12
 
 src_prepare() {
 	eautoreconf
-
 }
 
 src_install() {

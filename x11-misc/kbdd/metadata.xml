@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>sterkrig@myopera.com</email>
- <description>Very simple layout switcher</description>
+  <name>Nikolaj Sjujskij</name>
 </maintainer>
+<longdescription>Very simple layout switcher</longdescription>
 </pkgmetadata>

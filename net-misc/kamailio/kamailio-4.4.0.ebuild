@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils flag-o-matic toolchain-funcs user
 
-IUSE="ipv6 mysql radius postgres jabber ssl odbc"
+IUSE="ipv6 mysql radius postgres xmpp ssl odbc"
 
 DESCRIPTION="An Open SIP Express Router"
 HOMEPAGE="http://www.kamailio.org/"
@@ -22,7 +22,7 @@ RDEPEND=">=sys-devel/bison-1.35
 	mysql? ( >=dev-db/mysql-3.23.52 )
 	radius? ( >=net-dialup/radiusclient-ng-0.5.0 )
 	postgres? ( dev-db/postgresql )
-	jabber? ( dev-libs/expat )
+	xmpp? ( dev-libs/expat )
 	odbc? ( dev-db/unixODBC )"
 
 DEPEND="${RDEPEND}"
@@ -37,7 +37,7 @@ pkg_setup() {
 
 	use radius && KAMODULES="${KAMODULES} auth_radius group_radius uri_radius avp_radius"
 
-	use jabber && KAMODULES="${KAMODULES} jabber xmpp pua_xmpp"
+	use xmpp && KAMODULES="${KAMODULES} jabber xmpp pua_xmpp"
 
 	use postgres && KAMODULES="${KAMODULES} db_postgres postgres"
 

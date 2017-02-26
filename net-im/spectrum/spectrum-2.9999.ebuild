@@ -25,7 +25,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
-IUSE_PLUGINS="frotz irc purple skype smstools"
+IUSE_PLUGINS="frotz irc purple skype"
 IUSE="debug doc libev log mysql postgres sqlite staticport symlinks test tools ${IUSE_PLUGINS}"
 
 RDEPEND="net-im/jabber-base

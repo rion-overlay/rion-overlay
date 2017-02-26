@@ -22,7 +22,7 @@ RDEPEND="
 	cim? ( dev-libs/sblim-sfcc )
 	ssl? ( dev-libs/openssl )
 	pam? ( virtual/pam )
-	ruby? ( <dev-lang/ruby-2 )
+	ruby? ( dev-lang/ruby )
 	perl? ( dev-lang/perl )
 	java? ( virtual/jdk )
 	plugins? ( dev-lang/swig )
