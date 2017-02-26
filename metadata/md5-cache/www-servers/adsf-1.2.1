@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( ruby_targets_ruby23? ( >=dev-ruby/rack-1.0.0[ruby_targets_ruby23] ) ruby_targets_ruby24? ( >=dev-ruby/rack-1.0.0[ruby_targets_ruby24] ) ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) test? ( ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) )
+DESCRIPTION=A Dead Simple Fileserver is a static file server that you can launch instantly in a directory.
+EAPI=5
+HOMEPAGE=https://github.com/ddfreyne/adsf
+IUSE=test elibc_FreeBSD ruby_targets_ruby23 ruby_targets_ruby24 test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby23? ( >=dev-ruby/rack-1.0.0[ruby_targets_ruby23] ) ruby_targets_ruby24? ( >=dev-ruby/rack-1.0.0[ruby_targets_ruby24] ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] )
+REQUIRED_USE=|| ( ruby_targets_ruby23 ruby_targets_ruby24 )
+SLOT=0
+SRC_URI=mirror://rubygems/adsf-1.2.1.gem
+_eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	java-utils-2	b31a7fe19a47c6a2d901f6de949e5209	multilib	165fc17c38d1b11dac2008280dab6e80	ruby-fakegem	2b249022d4895a29827658b7d630c461	ruby-ng	70882a6b5354712e3ef87632e3d99f75	ruby-utils	382c3a262907e1219a21618dfd1a01a0	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9eb7abb37535f2220b94c08784cb26f4
