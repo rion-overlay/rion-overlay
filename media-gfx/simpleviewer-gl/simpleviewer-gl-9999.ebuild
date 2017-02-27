@@ -7,7 +7,7 @@ EAPI=6
 inherit cmake-utils git-r3
 
 DESCRIPTION="Small and simple image viewer for Linux."
-HOMEPAGE="http://sourceforge.net/projects/simpleviewer/"
+HOMEPAGE="http://www.ugolnik.info/?p=1302"
 EGIT_REPO_URI="https://bitbucket.org/andreyu/simple-viewer-gl"
 
 LICENSE="GPL-2"
@@ -16,11 +16,14 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	dev-libs/libconfig
-	media-libs/freeglut
+	sys-libs/zlib
+	media-libs/glfw
 	media-libs/freetype:2
 	media-libs/giflib
 	media-libs/imlib2
+	media-libs/libwebp
+	media-libs/libexif
+	media-libs/lcms
 	virtual/jpeg:0
 	media-libs/libpng:0
 	media-libs/tiff:0
