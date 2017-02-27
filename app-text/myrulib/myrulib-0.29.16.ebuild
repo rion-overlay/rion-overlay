@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 WX_GTK_VER="2.8"
 
 inherit eutils wxwidgets
@@ -26,7 +26,7 @@ RDEPEND="
 	reader? (
 		media-libs/freetype:2
 		media-libs/libpng:=
-		virtual/jpeg
+		virtual/jpeg:0
 		sys-libs/zlib
 	)
 "
@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	default
 	# for sure
 	rm -rf \
 		3rdparty/bzip2 \

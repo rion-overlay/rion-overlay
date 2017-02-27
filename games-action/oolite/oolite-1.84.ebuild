@@ -26,7 +26,7 @@ RDEPEND="virtual/opengl
 		app-accessibility/espeak
 		media-libs/libvorbis
 		dev-libs/nspr
-		media-libs/libpng
+		media-libs/libpng:0
 		media-libs/openal
 		sys-libs/zlib[minizip]"
 

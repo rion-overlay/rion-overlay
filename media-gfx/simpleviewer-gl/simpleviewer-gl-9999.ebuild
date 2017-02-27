@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils git-r3
 
@@ -21,9 +21,9 @@ DEPEND="
 	media-libs/freetype:2
 	media-libs/giflib
 	media-libs/imlib2
-	virtual/jpeg
-	media-libs/libpng
-	media-libs/tiff
+	virtual/jpeg:0
+	media-libs/libpng:0
+	media-libs/tiff:0
 	virtual/opengl
 "
 RDEPEND="${DEPEND}"
@@ -31,5 +31,5 @@ RDEPEND="${DEPEND}"
 src_install() {
 	dobin "${BUILD_DIR}"/sviewgl
 
-	dodoc config.example README
+	dodoc config.example README.md
 }
