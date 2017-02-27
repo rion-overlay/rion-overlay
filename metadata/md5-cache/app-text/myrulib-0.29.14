@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure prepare
-DEPEND=x11-libs/wxGTK:2.8[X] dev-libs/libxml2 dev-db/sqlite:3[fts3(+),icu?] app-arch/bzip2 icu? ( dev-libs/icu:= ) reader? ( media-libs/freetype:2 media-libs/libpng:= virtual/jpeg sys-libs/zlib ) virtual/pkgconfig
+DEPEND=x11-libs/wxGTK:2.8[X] dev-libs/libxml2 dev-db/sqlite:3[fts3(+),icu?] app-arch/bzip2 icu? ( dev-libs/icu:= ) reader? ( media-libs/freetype:2 media-libs/libpng:= virtual/jpeg:0 sys-libs/zlib ) virtual/pkgconfig
 DESCRIPTION=E-book collection manager
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.lintest.ru/wiki/MyRuLib
 IUSE=+icu +links reader syslog
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=x11-libs/wxGTK:2.8[X] dev-libs/libxml2 dev-db/sqlite:3[fts3(+),icu?] app-arch/bzip2 icu? ( dev-libs/icu:= ) reader? ( media-libs/freetype:2 media-libs/libpng:= virtual/jpeg sys-libs/zlib )
+RDEPEND=x11-libs/wxGTK:2.8[X] dev-libs/libxml2 dev-db/sqlite:3[fts3(+),icu?] app-arch/bzip2 icu? ( dev-libs/icu:= ) reader? ( media-libs/freetype:2 media-libs/libpng:= virtual/jpeg:0 sys-libs/zlib )
 SLOT=0
 SRC_URI=http://launchpad.net/myrulib/trunk/0.29.14/+download/myrulib-0.29.14.tar.bz2
 _eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
-_md5_=38e9eec2b0d9f68b6b6992034c2f3f7c
+_md5_=26b57e851a3f77186060fd2451062d0d

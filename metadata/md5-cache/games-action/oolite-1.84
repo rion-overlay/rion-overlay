@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-DEPEND=virtual/opengl gnustep-base/gnustep-gui media-libs/sdl-mixer media-libs/sdl-image app-accessibility/espeak media-libs/libvorbis dev-libs/nspr media-libs/libpng media-libs/openal sys-libs/zlib[minizip] gnustep-base/gnustep-make[-libobjc2] >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+DEPEND=virtual/opengl gnustep-base/gnustep-gui media-libs/sdl-mixer media-libs/sdl-image app-accessibility/espeak media-libs/libvorbis dev-libs/nspr media-libs/libpng:0 media-libs/openal sys-libs/zlib[minizip] gnustep-base/gnustep-make[-libobjc2] >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
 DESCRIPTION=Elite space trading & warfare remake
 EAPI=5
 HOMEPAGE=http://oolite.org/
 IUSE=debug debug doc
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=virtual/opengl gnustep-base/gnustep-gui media-libs/sdl-mixer media-libs/sdl-image app-accessibility/espeak media-libs/libvorbis dev-libs/nspr media-libs/libpng media-libs/openal sys-libs/zlib[minizip] >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 ) games-misc/games-envd
+RDEPEND=virtual/opengl gnustep-base/gnustep-gui media-libs/sdl-mixer media-libs/sdl-image app-accessibility/espeak media-libs/libvorbis dev-libs/nspr media-libs/libpng:0 media-libs/openal sys-libs/zlib[minizip] >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 ) games-misc/games-envd
 SLOT=0
 SRC_URI=https://github.com/OoliteProject/oolite/archive/1.84.tar.gz -> oolite-1.84.tar.gz http://github.com/OoliteProject/oolite-binary-resources/archive/f5aed27fefc32c24775b39fce25402b970b09b84.zip -> oolite-binary-resources-1.84.zip http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	708f85bc1bf00876604e223fb56e062a	flag-o-matic	35067884fbff37bc0c8e7421c5315558	games	2cf0d67d765e6358b435ccda30c13ad8	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	63e3d261394d84127e82e8de711e85a8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	e10ccb95af96d45f86016fa982a949bb
-_md5_=6d87079c7d9dd23545537afd7ded8d9f
+_md5_=b9736df9159a7900fb4b444d4a1e5f98
