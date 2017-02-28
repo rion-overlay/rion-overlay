@@ -32,7 +32,7 @@ RDEPEND="net-libs/libsrtp[static-libs]
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
 	gsm? ( media-sound/gsm )
 	opus? ( media-libs/opus )
-	ortp? ( >=net-libs/ortp-0.24.0[ipv6?] )
+	ortp? ( >=net-libs/ortp-0.27 )
 	pcap? ( sys-libs/libcap )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.21 )
@@ -55,7 +55,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	opengl? ( dev-util/xxdi )
-	test? ( >=dev-util/cunit-2.1_p2[ncurses] )
+	test? ( >=dev-util/cunit-2.1_p3[ncurses] )
 	X? ( x11-proto/videoproto )"
 
 PDEPEND="amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
@@ -96,9 +96,8 @@ src_prepare() {
 		-e 's:linux/videodev.h ::' \
 		configure.ac || die
 
-	epatch "${FILESDIR}/${P}-v4l-automagic.patch" \
+	epatch \
 		"${FILESDIR}/${P}-underlinking.patch" \
-		"${FILESDIR}/${P}-tests.patch" \
 		"${FILESDIR}/${P}-xxd.patch"
 
 	eautoreconf

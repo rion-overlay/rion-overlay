@@ -12,13 +12,10 @@ SRC_URI="mirror://nongnu/linphone/${PN}/sources/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/9"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="debug doc examples ipv6 libressl minimal ntp-timestamp ssl srtp"
+IUSE="debug doc examples minimal ntp-timestamp"
 
 RDEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= ) )
-	srtp? ( net-libs/libsrtp:0= )
+	net-libs/bctoolbox
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -42,22 +39,13 @@ src_configure() {
 		--disable-mode64bit
 		# strict adds -Werror, do not want it
 		--disable-strict
-		# they seriously failed to understand AC_ARG_ENABLE...
-		--disable-tests_enabled
 		--enable-fast-install
 		--enable-libtool-lock
-		# this is fine as long as we do not link to polarssl
-		--enable-broken-srtp
-		# zrtp removed from the tree
-		--disable-zrtp
 
 		$(use_enable debug)
-		$(use_enable ipv6)
 		$(use_enable minimal perf)
 		$(use_enable ntp-timestamp)
-		$(use_enable ssl ssl-hmac)
 
-		--with-srtp=$(usex srtp "${EPREFIX}"/usr none)
 		$(use doc || echo ac_cv_path_DOXYGEN=false)
 	)
 
