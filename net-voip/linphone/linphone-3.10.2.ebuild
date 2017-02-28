@@ -61,7 +61,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-nls.patch
+	epatch "${FILESDIR}"/${P}-nls.patch \
+		"${FILESDIR}"/${P}-no-cam-crash-fix.patch
 
 	# variable causes "command not found" warning and is not
 	# needed anyway
