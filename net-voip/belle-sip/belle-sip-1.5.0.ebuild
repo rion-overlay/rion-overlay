@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=6
 
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
 
-IUSE="debug examples test +tls tunnel +zlib"
+IUSE="debug examples test +tls -tunnel +zlib"
 REQUIRED_USE=""
 
 DEPEND="${RDEPEND}

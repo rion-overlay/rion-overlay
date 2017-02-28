@@ -139,6 +139,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	if use extras; then
 		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die
 		if use iconsets; then
@@ -162,7 +163,6 @@ src_prepare() {
 
 		qconf || die "Failed to create ./configure."
 	fi
-	epatch_user
 }
 
 src_configure() {
