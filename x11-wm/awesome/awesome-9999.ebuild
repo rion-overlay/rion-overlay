@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.5.ebuild,v 1.1 2013/01/04 03:52:55 idl0r Exp $
 
 EAPI=6
 CMAKE_MIN_VERSION="2.8"

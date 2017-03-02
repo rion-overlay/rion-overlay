@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -28,7 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	 dev-python/send2trash
 	 recording? ( media-sound/lame
 				  >=dev-python/pyaudio-0.2.4 )
-	 sound? ( 
+	 sound? (
 	 	mpv? ( media-libs/pympv )
 	 	!mpv? ( media-video/mplayer )
 	 )

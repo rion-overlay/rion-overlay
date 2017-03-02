@@ -8,7 +8,7 @@
 </maintainer>
  <use>
 	 <flag name='spf'>Add Sender Policy Framework support </flag>
-	 <flag name='dnsrbl'>Add dnsrbl blacklist support </flag>
+	 <!-- flag name='dnsrbl'>Add dnsrbl blacklist support </flag -->
 	 <flag name='bind'>Use <pkg>net-dns/bind-tools</pkg> resolver instead glibc
 	 resolver</flag>
 	 <flag name='p0f'>Add support for OS type detection's.
