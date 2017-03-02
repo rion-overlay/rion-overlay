@@ -3,7 +3,6 @@
 
 EAPI=6
 
-
 inherit psi-plugin
 
 DESCRIPTION="Psi plugin to enumarate messages added to chat"

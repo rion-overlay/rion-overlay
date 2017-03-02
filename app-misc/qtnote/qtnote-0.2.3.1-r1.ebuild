@@ -24,7 +24,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	eqmake4 ${PN}.pro PREFIX=${EPREFIX}/usr
+	eqmake4 ${PN}.pro PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {

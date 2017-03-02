@@ -64,7 +64,8 @@ METACONTENT
   arch=generic
   for pu in $PLUGINS_UNIX; do [ "$pu" = "${pn}plugin" ] && arch=unix; done
   dirvar=""
-  [ "$arch" != "generic" ] && dirvar="PLUGIN_DIR=\"${arch}\""
+  [ "$arch" != "generic" ] && dirvar="PLUGIN_DIR=\"${arch}\"
+"
   echo "$(cat <<EBUILDCONTENT
 # Copyright 1999-$(date +%Y) Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
@@ -72,8 +73,7 @@ METACONTENT
 
 EAPI=6
 
-${dirvar}
-inherit psi-plugin
+${dirvar}inherit psi-plugin
 
 DESCRIPTION="${desc}"
 

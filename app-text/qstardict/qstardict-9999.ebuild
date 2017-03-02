@@ -5,7 +5,7 @@ EAPI="6"
 
 case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 
-inherit eutils qmake-utils confutils ${VCS_ECLASS}
+inherit eutils qmake-utils ${VCS_ECLASS}
 
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
@@ -42,7 +42,7 @@ src_configure() {
 	eplugin() {
 		[ -f plugins/${1}/${1}.pro ] && eplugins+=("${1}")
 	}
-	
+
 	local eplugins=()
 	use kde && eplugin kdeintegration
 	for f in $PLUGINS; do

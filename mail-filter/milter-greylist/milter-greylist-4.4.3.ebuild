@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit base eutils user flag-o-matic autotools
+inherit eutils user flag-o-matic autotools
 
 DESCRIPTION="Milter-greylist is a stand-alone milter that implements the greylist filtering method"
 HOMEPAGE="http://hcpnet.free.fr/milter-greylist"

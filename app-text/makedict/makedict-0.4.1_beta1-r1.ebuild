@@ -23,4 +23,3 @@ DEPEND=">=dev-libs/glib-2.6.0
 	dev-libs/expat"
 RDEPEND="${DEPEND}
 	dev-lang/python"
-

@@ -35,7 +35,7 @@ DEPEND="
 	       dev-qt/qtsingleapplication[X,qt5]
 		   kde? (
 		   		kde-frameworks/kglobalaccel
-		   		kde-frameworks/kwindowsystem 
+		   		kde-frameworks/kwindowsystem
 				kde-frameworks/knotifications )
 			)
 	spell? ( app-text/hunspell )"
