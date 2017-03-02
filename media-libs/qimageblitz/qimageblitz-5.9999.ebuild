@@ -25,7 +25,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc.patch"
 )
 
-
 src_configure() {
 	local mycmakeargs=(
 		-DHAVE_ALTIVEC=$(usex altivec)

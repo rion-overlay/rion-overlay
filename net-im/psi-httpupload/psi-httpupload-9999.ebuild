@@ -3,7 +3,6 @@
 
 EAPI=6
 
-
 inherit psi-plugin
 
 DESCRIPTION="Psi plugin to suppor http uploade feature as per XEP-0363"

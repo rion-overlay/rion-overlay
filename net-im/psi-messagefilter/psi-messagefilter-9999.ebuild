@@ -3,7 +3,6 @@
 
 EAPI=6
 
-
 inherit psi-plugin
 
 DESCRIPTION="Psi plugin to filter out messages by various conditions"

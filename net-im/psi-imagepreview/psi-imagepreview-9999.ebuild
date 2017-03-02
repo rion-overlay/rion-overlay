@@ -3,7 +3,6 @@
 
 EAPI=6
 
-
 inherit psi-plugin
 
 DESCRIPTION="Psi plugin to preview images in chat log"

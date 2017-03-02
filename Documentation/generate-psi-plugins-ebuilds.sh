@@ -139,7 +139,7 @@ IUSE="$(echo $plugin_names)"
 RDEPEND=""
 
 for plugin in \${IUSE}; do
-  RDEPEND+=" \${plugin}? ( >=net-im/psi-\${plugin}-\${PV} )"
+ RDEPEND+=" \${plugin}? ( >=net-im/psi-\${plugin}-\${PV} )"
 done
 EBUILDCONTENT
 )" > "net-im/psi-plugins-meta/psi-plugins-meta-9999.ebuild"

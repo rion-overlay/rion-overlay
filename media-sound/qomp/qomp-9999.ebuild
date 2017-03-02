@@ -35,7 +35,7 @@ DEPEND="
 	dev-qt/qtdbus:5
 	dev-qt/qtxml:5
 	dev-qt/qtx11extras:5
-	dev-libs/openssl
+	dev-libs/openssl:0
 	media-libs/taglib
 	>=media-libs/libcue-1.4.0
 "

@@ -11,13 +11,13 @@ DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
 
 if [[ ${PV} == *9999* ]]; then
-  EGIT_REPO_URI="git://github.com/hanzz/libtransport.git"
-  #EGIT_REPO_URI="git://github.com/vitalyster/libtransport.git"
-  #EGIT_BRANCH="swiften3"
+	EGIT_REPO_URI="git://github.com/hanzz/libtransport.git"
+	#EGIT_REPO_URI="git://github.com/vitalyster/libtransport.git"
+	#EGIT_BRANCH="swiften3"
 else
-  MY_PV="${PV/_/-}"
-  SRC_URI="http://spectrum.im/attachments/download/57/${PN}-${MY_PV}.tar.gz"
-  S="${WORKDIR}/${PN}-${MY_PV}"
+	MY_PV="${PV/_/-}"
+	SRC_URI="http://spectrum.im/attachments/download/57/${PN}-${MY_PV}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="GPL-2"

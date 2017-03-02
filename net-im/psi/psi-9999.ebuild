@@ -178,14 +178,13 @@ src_configure() {
 	use qt4 && CONF+=(--qtdir="$(qt4_get_bindir)/..")
 	use qt5 && CONF+=(--qtdir="$(qt5_get_bindir)/..")
 
-
 	use dbus || CONF+=("--disable-qdbus")
 	use debug && CONF+=("--debug")
 
 	for s in aspell enchant hunspell; do
 		use $s || CONF+=("--disable-$s")
 	done
-	
+
 	use whiteboarding && CONF+=("--enable-whiteboarding")
 	use xscreensaver || CONF+=("--disable-xss")
 	use plugins || CONF+=("--disable-plugins")

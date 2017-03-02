@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 IUSE="+srv ssl"
 
 DEPEND=">=net-libs/libosip-5.0.0:=
-	ssl? ( dev-libs/openssl )"
+	ssl? ( dev-libs/openssl:0 )"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}

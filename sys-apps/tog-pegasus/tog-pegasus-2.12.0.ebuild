@@ -127,5 +127,4 @@ export  PEGASUS_PLATFORM=LINUX_X86_64_GNU
 
 	emake -f Makefile.Release stage PEGASUS_STAGING_DIR=${D}
 
-
 }
