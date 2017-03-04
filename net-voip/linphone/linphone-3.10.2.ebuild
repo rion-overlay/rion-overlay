@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils multilib pax-utils versionator
 
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # TODO: run-time test for ipv6: does it need mediastreamer[ipv6]?
-IUSE="assistant doc gsm-nonstandard gtk ipv6 libnotify ncurses nls sqlite ssl tools upnp video"
+IUSE="assistant doc gsm-nonstandard gtk ipv6 ldap libnotify ncurses nls sqlite tools upnp video"
 
 RDEPEND="
 	>=media-libs/mediastreamer-2.14.0[upnp?,video?]
@@ -30,14 +30,17 @@ RDEPEND="
 		libnotify? ( x11-libs/libnotify )
 	)
 	gsm-nonstandard? ( >=media-libs/mediastreamer-2.9.0[gsm] )
+	ldap? (
+		dev-libs/cyrus-sasl
+		net-nds/openldap
+	)
 	ncurses? (
 		sys-libs/readline:0
 		sys-libs/ncurses
 	)
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( dev-libs/openssl:0 )
 	tools? ( dev-libs/libxml2 )
-	upnp? ( net-libs/libupnp )
+	upnp? ( net-libs/libupnp:0 )
 	video? ( >=media-libs/mediastreamer-2.9.0[v4l] )
 "
 DEPEND="${RDEPEND}
@@ -60,6 +63,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	epatch "${FILESDIR}"/${P}-nls.patch \
 		"${FILESDIR}"/${P}-no-cam-crash-fix.patch
 
@@ -82,8 +86,10 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable doc manual)
+		$(use_enable doc doxygen)
 		$(use_enable nls)
 		--disable-static
+		$(use_enable ldap)
 		$(use_enable ncurses console_ui)
 		$(use_enable tools)
 		$(use_enable upnp)
@@ -92,7 +98,6 @@ src_configure() {
 		$(use_enable ipv6)
 		--disable-truespeech
 		$(use_enable gsm-nonstandard nonstandard-gsm)
-		$(use_enable ssl)
 		--disable-speex
 		# seems not used, TODO: ask in ml
 		$(use_enable video)
@@ -102,7 +107,7 @@ src_configure() {
 		--disable-strict
 		# don't bundle libs
 		--enable-external-mediastreamer
-		$(use_enable sqlite msg-storage)
+		$(use_enable sqlite sqlite-storage)
 		--enable-external-ortp
 	)
 

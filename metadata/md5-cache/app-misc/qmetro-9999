@@ -1,11 +1,12 @@
-DEFINED_PHASES=compile configure install preinst prepare unpack
-DEPEND=dev-qt/qtgui:4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
-DESCRIPTION=Vector metro (subway) map for calculating route and getting information about transport nodes.
-EAPI=4
+DEFINED_PHASES=install prepare unpack
+DEPEND=qt4? ( dev-qt/qtgui:4 ) qt4? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) app-arch/unzip >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Metro/subway map and route computation software.
+EAPI=6
 HOMEPAGE=http://sourceforge.net/projects/qmetro/
-IUSE=debug
+IUSE=qt4 qt5
 LICENSE=GPL-2
-RDEPEND=dev-qt/qtgui:4
+RDEPEND=qt4? ( dev-qt/qtgui:4 ) qt4? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=^^ ( qt4 qt5 )
 SLOT=0
-_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	qt4-r2	b7985a3197fbc3a22d059f19904e735b	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	53b75b4a49cf3e61530a523804045432
-_md5_=8e639426111caf565fca2ec330c2b43f
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	git-r3	08c5be5f8bdc203ed54d5ff5fef3c34d	multilib	0236be304ee52e7f179ed2f337075515	qmake-utils	ea78a9056543346cdc8cbbd07f16c6fb	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_md5_=a18553784f9544e7edca0349099f6e5f

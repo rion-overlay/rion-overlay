@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEFINED_PHASES=install postinst prepare setup
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=A mail statistics RRDtool frontend for Postfix
-EAPI=5
+EAPI=6
 HOMEPAGE=http://mailgraph.schweikert.ch/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/File-Tail >=net-analyzer/rrdtool-1.2.2[perl]
 SLOT=1.14
 SRC_URI=http://mailgraph.schweikert.ch//pub/mailgraph-1.14.tar.gz
-_eclasses_=base	df2aa567b3f0595aae0d0923889f7631	eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=17d76bcdbe64cd89d7100d81fcd2697b
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
+_md5_=45abdc7eb0b4e57c4e7b747161b17bda

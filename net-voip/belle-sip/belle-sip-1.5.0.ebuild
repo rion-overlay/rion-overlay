@@ -18,6 +18,7 @@ IUSE="debug examples test +tls -tunnel +zlib"
 REQUIRED_USE=""
 
 DEPEND="${RDEPEND}
+	dev-java/antlr:3
 	dev-libs/antlr-c
 	dev-util/intltool
 	sys-devel/libtool
@@ -26,6 +27,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
+	sed -i -e 's,-Werror,,' configure.ac || die
 	eautoreconf
 }
 
