@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 cmake-utils ssl-cert java-pkg-2 java-utils-2
+inherit python-r1 cmake-utils ssl-cert java-pkg-opt-2
 
 DESCRIPTION="Opensource Implementation of WS-Management Client"
 HOMEPAGE="https://github.com/Openwsman"
@@ -14,47 +14,69 @@ SRC_URI="https://github.com/Openwsman/openwsman/archive/v2.6.3.tar.gz -> ${P}.ta
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cim debug examples +eventing ipv6 java mono pam perl python plugins ruby ssl
-+server test"
 
+BINDINGS_USE="java perl python ruby"
+IUSE="+cim debug examples +eventing ipv6 pam +plugins ssl +server test ${BINDINGS_USE}"
+REQUIRED_USE="
+	java? ( plugins )
+	perl? ( plugins )
+	python? ( plugins )
+	ruby? ( plugins )
+"
+
+JAVA_PKG_NV_DEPEND="virtual/jdk:1.8"
 RDEPEND="
 	cim? ( dev-libs/sblim-sfcc )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0 )
 	pam? ( virtual/pam )
 	ruby? ( dev-lang/ruby )
 	perl? ( dev-lang/perl )
-	java? ( virtual/jdk )
-	plugins? ( dev-lang/swig )
+	java? ( ${JAVA_PKG_NV_DEPEND} )
+	python? ( dev-lang/python )
 	net-misc/curl[idn]
 	dev-libs/libxml2[icu]
 	"
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cunit )
+	java? ( dev-lang/swig:0 )
+	perl? ( dev-lang/swig:0 )
+	python? ( dev-lang/swig:0 )
+	ruby? ( dev-lang/swig:0 )
 	"
 
 # LIBC != glibc build fail - add block
 src_prepare(){
 	#Ruby gem builder does not like Unicode
 	sed -e 's/Kämpf/Kaempf/' -i bindings/ruby/openwsman.gemspec.in
+	default
 }
 
 src_configure() {
+	local bindings=NO
+	for f in $BINDINGS_USE; do
+		use $f && bindings=YES
+	done
 	local mycmakeargs=(
 		-DPACKAGE_ARCHITECTURE=${ARCH}
-		$(cmake-utils_use_build cim LIBCIM)
-		$(cmake-utils_use_build examples)
-		$(cmake-utils_use_build python)
-		$(cmake-utils_use_build ruby)
-		$(cmake-utils_use_build perl)
-		$(cmake-utils_use_build java)
-		$(cmake-utils_use_build mono CSHARP)
-		$(cmake-utils_use_disable plugins)
-		$(cmake-utils_use_disable server)
-		$(cmake-utils_use_enable eventing)
-		$(cmake-utils_use_enable ipv6)
-		$(cmake-utils_use_use pam)
+		-DBUILD_BINDINGS=${bindings}
+		-DBUILD_CUNIT_TESTS=$(usex test)
+		-DBUILD_EXAMPLES=$(usex examples)
+		-DBUILD_JAVA=$(usex java)
+		-DBUILD_LIBCIM=$(usex cim)
+		-DBUILD_PERL=$(usex perl)
+		-DBUILD_PYTHON=$(usex python)
+		-DBUILD_RUBY=$(usex ruby)
+		-DBUILD_SWIG_PLUGIN=${bindings}
+		-DBUILD_TESTS=$(usex test)
+		-DDISABLE_PLUGINS="$(usex plugins)
+		-DDISABLE_SERVER="$(usex server)
+		-DENABLE_EVENTING_SUPPORT="$(usex eventing)
+		-DWSMAN_DEBUG_VERBOSE="$(usex debug)
+		-DENABLE_IPV6="$(usex ipv6)
+		-DUSE_PAM="$(usex pam)
 	)
+	use ruby && mycmakeargs+=( -DBUILD_RUBY_GEM=YES )
 	cmake-utils_src_configure
 }
 

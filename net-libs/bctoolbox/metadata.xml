@@ -7,7 +7,5 @@
 		<name>Sergey Ilinykh</name>
 	</maintainer>
 <use>
-  <flag name="mbedtls">enable embedtls for encryption</flag>
-  <flag name="polarssl">enable polarssl for encryption</flag>
 </use>
 </pkgmetadata>

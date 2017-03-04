@@ -15,5 +15,5 @@ IUSE="attention autoreply birthdayreminder captchaforms chess cleaner clientswit
 RDEPEND=""
 
 for plugin in ${IUSE}; do
- RDEPEND+=" ${plugin}? ( >=net-im/psi-${plugin}-${PV} )"
+	RDEPEND+=" ${plugin}? ( >=net-im/psi-${plugin}-${PV} )"
 done

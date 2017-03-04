@@ -40,7 +40,7 @@ src_install() {
 	insinto /usr/$(get_libdir)/policyd-2.0
 	#insopts -o root -g nobody -m 0750
 	doins -r cbp/*
-	
+
 	insinto /etc/
 	nonfatal doins cluebringer.conf
 

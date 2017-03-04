@@ -7,7 +7,7 @@ case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 
 inherit qmake-utils ${VCS_ECLASS}
 
-DESCRIPTION="Vector metro (subway) map for calculating route and getting information about transport nodes."
+DESCRIPTION="Metro/subway map and route computation software."
 HOMEPAGE="http://sourceforge.net/projects/qmetro/"
 
 if [ -n "${VCS_ECLASS}" ]; then
@@ -52,8 +52,8 @@ src_prepare() {
 	sed -i -e 's,DATADIR = /tmp/$$APPNAME,DATADIR = /usr/share/$$APPNAME,' \
 		rc/platform/nix.pri || die
 
-	use qt4 && eqmake4 DATADIR=${EPREFIX}/usr/share/qmetro
-	use qt5 && eqmake5 DATADIR=${EPREFIX}/usr/share/qmetro
+	use qt4 && eqmake4
+	use qt5 && eqmake5
 }
 
 src_install() {

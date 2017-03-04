@@ -30,7 +30,7 @@ IUSE="debug doc libev log mysql postgres sqlite staticport symlinks test tools $
 RDEPEND="net-im/jabber-base
 	=net-im/swiften-3*
 	dev-libs/popt
-	dev-libs/openssl
+	dev-libs/openssl:0
 	log? ( dev-libs/log4cxx )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-libs/libpqxx )

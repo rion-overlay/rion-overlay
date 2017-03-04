@@ -1,15 +1,15 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit eutils autotools-utils flag-o-matic user
+inherit eutils flag-o-matic user
 
 DESCRIPTION="Small Footprint CIM Broker (sfcb)"
 HOMEPAGE="http://www.sblim.org/"
-SRC_URI="mirror://sourceforge/project/sblim/${PN}/1.3%20branch%20(maintenance)/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/project/sblim/${PN}/1.4%20branch%20(current)/${P}.tar.bz2"
 
 LICENSE="EPL-1.0"
 SLOT="0"
@@ -43,7 +43,7 @@ src_configure() {
 		--enable-uds
 		--enable-ipv6
 		)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

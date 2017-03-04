@@ -1,8 +1,8 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils user base
+EAPI=6
+inherit eutils user
 
 DESCRIPTION="A mail statistics RRDtool frontend for Postfix"
 HOMEPAGE="http://mailgraph.schweikert.ch/"
@@ -35,7 +35,7 @@ src_prepare() {
 		-e "s|\(my \$rrd_virus = '\).*'|\1/var/lib/mailgraph/mailgraph_virus.rrd'|" \
 		mailgraph.cgi || die "sed mailgraph.cgi failed"
 
-		base_src_prepare
+		default
 }
 
 src_install() {

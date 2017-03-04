@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit base findlib eutils
+inherit findlib eutils
 
 DESCRIPTION="Ocaml libvirt binding's"
 HOMEPAGE="http://www.libvirt.org/"
@@ -18,12 +18,13 @@ DEPEND="app-emulation/libvirt
 	dev-ml/ocaml-gettext"
 
 RDEPEND="${DEPEND}"
+DOCS=( ChangeLog README )
 
 src_compile() {
-	base_src_compile
+	default
 
 	if use doc; then
-		emake doc || die
+		emake doc
 	fi
 }
 
@@ -51,7 +52,7 @@ src_install() {
 
 #	dobin mlvirsh/mlvirsh
 
-	dodoc ChangeLog README
+	einstalldocs
 
 	insinto /usr/share/"${PN}"
 	doins -r examples

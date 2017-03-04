@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils
 
@@ -26,7 +26,7 @@ REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
 	v4l? ( video )
 	opengl? ( video )"
 
-RDEPEND="net-libs/libsrtp[static-libs]
+RDEPEND="net-libs/libsrtp:0
 	alsa? ( media-libs/alsa-lib )
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
 	gsm? ( media-sound/gsm )
@@ -34,13 +34,13 @@ RDEPEND="net-libs/libsrtp[static-libs]
 	ortp? ( >=net-libs/ortp-0.27 )
 	pcap? ( sys-libs/libcap )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.21 )
-	speex? ( >=media-libs/speex-1.2_beta3 )
-	upnp? ( net-libs/libupnp )
+	pulseaudio? ( media-sound/pulseaudio )
+	speex? ( media-libs/speex media-libs/speexdsp )
+	upnp? ( net-libs/libupnp:* )
 	video? (
 		libav? ( media-video/libav:0/11 )
 
-		opengl? ( media-libs/glew
+		opengl? ( media-libs/glew:0
 			virtual/opengl
 			x11-libs/libX11 )
 		v4l? ( media-libs/libv4l
@@ -64,6 +64,8 @@ PDEPEND="amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
 	silk? ( !bindist? ( media-plugins/mediastreamer-silk ) )"
 
 src_prepare() {
+	eapply_user
+
 	# variable causes "command not found" warning and is not
 	# needed anyway
 	sed -i \
@@ -93,6 +95,11 @@ src_prepare() {
 	# linux/videodev.h dropped in 2.6.38
 	sed -i \
 		-e 's:linux/videodev.h ::' \
+		configure.ac || die
+
+	# break check for conflicts with polarssl (emdedtls is used instead anyway)
+	sed -i \
+		-e 's:sha1_update:sha1_update_XXX:' \
 		configure.ac || die
 
 	epatch \
