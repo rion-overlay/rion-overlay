@@ -1,0 +1,135 @@
+--- a/src/Core/Scripting/OOJSEngineTimeManagement.m
++++ b/src/Core/Scripting/OOJSEngineTimeManagement.m
+@@ -236,7 +236,7 @@ static JSBool OperationCallback(JSContext *context)
+ 	return NO;
+ }
+ 
+-
++#ifndef EXTERNAL_MOZJS
+ static JSBool ContextCallback(JSContext *context, uintN contextOp)
+ {
+ 	if (contextOp == JSCONTEXT_NEW)
+@@ -249,6 +249,7 @@ static JSBool ContextCallback(JSContext *context, uintN contextOp)
+ 	}
+ 	return YES;
+ }
++#endif
+ 
+ 
+ void OOJSTimeManagementInit(OOJavaScriptEngine *engine, JSRuntime *runtime)
+@@ -257,7 +258,11 @@ void OOJSTimeManagementInit(OOJavaScriptEngine *engine, JSRuntime *runtime)
+ 							 toTarget:engine
+ 						   withObject:nil];
+ 	
++#ifdef EXTERNAL_MOZJS
++# warning "JS_SetFunctionCallback does not work wit external mojs. See https://bugzilla.mozilla.org/show_bug.cgi?id=1103269"
++#else
+ 	JS_SetContextCallback(runtime, ContextCallback);
++#endif
+ }
+ 
+ 
+diff --git a/src/Core/Scripting/OOJSScript.m b/src/Core/Scripting/OOJSScript.m
+index 5d4801b..e27ddba 100644
+--- a/src/Core/Scripting/OOJSScript.m
++++ b/src/Core/Scripting/OOJSScript.m
+@@ -47,6 +46,12 @@ MA 02110-1301, USA.
+ #import "OOCacheManager.h"
+ #endif
+ 
++#ifdef EXTERNAL_MOZJS
++# define JS_XDRScript JS_XDRScriptObject
++typedef JSObject JSScriptType;
++#else
++typedef JSScript JSScriptType;
++#endif
+ 
+ typedef struct RunningStack RunningStack;
+ struct RunningStack
+@@ -62,11 +67,11 @@ static RunningStack		*sRunningStack = NULL;
+ 
+ static void AddStackToArrayReversed(NSMutableArray *array, RunningStack *stack);
+ 
+-static JSScript *LoadScriptWithName(JSContext *context, NSString *path, JSObject *object, JSObject **outScriptObject, NSString **outErrorMessage);
++static JSScriptType *LoadScriptWithName(JSContext *context, NSString *path, JSObject *object, JSObject **outScriptObject, NSString **outErrorMessage);
+ 
+ #if OO_CACHE_JS_SCRIPTS
+-static NSData *CompiledScriptData(JSContext *context, JSScript *script);
+-static JSScript *ScriptWithCompiledData(JSContext *context, NSData *data);
++static NSData *CompiledScriptData(JSContext *context, JSScriptType *script);
++static JSScriptType *ScriptWithCompiledData(JSContext *context, NSData *data);
+ #endif
+ 
+ static NSString *StrippedName(NSString *string);
+@@ -119,7 +124,7 @@ static JSFunctionSpec sScriptMethods[] =
+ {
+ 	JSContext				*context = NULL;
+ 	NSString				*problem = nil;		// Acts as error flag.
+-	JSScript				*script = NULL;
++	JSScriptType				*script = NULL;
+ 	JSObject				*scriptObject = NULL;
+ 	jsval					returnValue = JSVAL_VOID;
+ 	NSEnumerator			*keyEnum = nil;
+@@ -231,9 +236,10 @@ static JSFunctionSpec sScriptMethods[] =
+ 				problem = @"could not run script";
+ 			}
+ 			OOJSStopTimeLimiter();
+-			
++#ifndef EXTERNAL_MOZJS			
+ 			// We don't need the script any more - the event handlers hang around as long as the JS object exists.
+ 			JS_DestroyScript(context, script);
++#endif
+ 		}
+ 		
+ 		JS_RemoveObjectRoot(context, &scriptObject);
+@@ -695,14 +701,14 @@ static void AddStackToArrayReversed(NSMutableArray *array, RunningStack *stack)
+ }
+ 
+ 
+-static JSScript *LoadScriptWithName(JSContext *context, NSString *path, JSObject *object, JSObject **outScriptObject, NSString **outErrorMessage)
++static JSScriptType *LoadScriptWithName(JSContext *context, NSString *path, JSObject *object, JSObject **outScriptObject, NSString **outErrorMessage)
+ {
+ #if OO_CACHE_JS_SCRIPTS
+ 	OOCacheManager				*cache = nil;
+ #endif
+ 	NSString					*fileContents = nil;
+ 	NSData						*data = nil;
+-	JSScript					*script = NULL;
++	JSScriptType					*script = NULL;
+ 	
+ 	NSCParameterAssert(outScriptObject != NULL && outErrorMessage != NULL);
+ 	*outErrorMessage = nil;
+@@ -745,7 +751,11 @@ static JSScript *LoadScriptWithName(JSContext *context, NSString *path, JSObject
+ 		else
+ 		{
+ 			script = JS_CompileUCScript(context, object, [data bytes], [data length] / sizeof(unichar), [path UTF8String], 1);
++#ifdef EXTERNAL_MOZJS
++			if (script != NULL)  *outScriptObject = script;
++#else
+ 			if (script != NULL)  *outScriptObject = JS_NewScriptObject(context, script);
++#endif
+ 			else  *outErrorMessage = @"compilation failed";
+ 		}
+ 		
+@@ -764,7 +774,7 @@ static JSScript *LoadScriptWithName(JSContext *context, NSString *path, JSObject
+ 
+ 
+ #if OO_CACHE_JS_SCRIPTS
+-static NSData *CompiledScriptData(JSContext *context, JSScript *script)
++static NSData *CompiledScriptData(JSContext *context, JSScriptType *script)
+ {
+ 	JSXDRState					*xdr = NULL;
+ 	NSData						*result = nil;
+@@ -789,10 +799,10 @@ static NSData *CompiledScriptData(JSContext *context, JSScript *script)
+ }
+ 
+ 
+-static JSScript *ScriptWithCompiledData(JSContext *context, NSData *data)
++static JSScriptType *ScriptWithCompiledData(JSContext *context, NSData *data)
+ {
+ 	JSXDRState					*xdr = NULL;
+-	JSScript					*result = NULL;
++	JSScriptType					*result = NULL;
+ 	
+ 	if (data == nil)  return NULL;
+ 	

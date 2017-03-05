@@ -8,10 +8,16 @@ inherit gnustep-2
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
 FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
-BINRES_REV=f5aed27fefc32c24775b39fce25402b970b09b84
-SRC_URI="https://github.com/OoliteProject/oolite/archive/${PV}.tar.gz -> ${P}.tar.gz
-	http://github.com/OoliteProject/oolite-binary-resources/archive/${BINRES_REV}.zip -> oolite-binary-resources-${PV}.zip
-	${FF_JS_URI}"
+BINRES_REV=1d78e8aa776bc3ac8611dd26c11c709548729239
+OOLITE_REV=15eb90fd792fffb4c6edbb3bbea5c1b75da2979b
+SDLDEL_REV=dd17796b2ee1257bea04aeffaec660f6c75eadf2
+SRC_URI="https://github.com/OoliteProject/oolite/archive/${OOLITE_REV}.tar.gz -> ${P}.tar.gz
+	https://github.com/OoliteProject/oolite-binary-resources/archive/${BINRES_REV}.tar.gz -> oolite-binary-resources-${PV}.tar.gz
+	https://github.com/OoliteProject/oolite-sdl-dependencies/archive/${SDLDEL_REV}.tar.gz -> oolite-sdl-dependencies-${PV}.tar.gz
+"
+S="${WORKDIR}/${PN}-${OOLITE_REV}"
+OOLITE_VER_GITREV=6897 # git rev-list --count HEAD # depends on OOLITE_REV
+
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,33 +33,33 @@ RDEPEND="virtual/opengl
 		dev-libs/nspr
 		media-libs/libpng:0
 		media-libs/openal
+		dev-lang/spidermonkey:0
 		sys-libs/zlib[minizip]"
 
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
 
-PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" )
+PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" "${FILESDIR}/external-mozjs.patch" )
 
 src_prepare() {
 	gnustep-base_src_prepare
-	mv "${WORKDIR}/mozilla-2.0/js" "${S}"/deps/mozilla/ || die
-	mv "${WORKDIR}/mozilla-2.0/nsprpub" "${S}"/deps/mozilla/ || die
 	mv "${WORKDIR}/oolite-binary-resources-${BINRES_REV}"/* "${S}"/Resources/Binary/
-	echo "${FF_JS_URI}" > "${S}"/deps/mozilla/current.url
-	sed -i -e 's/^\.PHONY: all$/.PHONY: .NOTPARALLEL all/' "${S}"/libjs.make || die
+	mv "${WORKDIR}/oolite-sdl-dependencies-${SDLDEL_REV}"/* "${S}"/deps/Cross-platform-deps/
 	sed -i -e 's:.*STRIP.*:	true:' \
-		-e '/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions' \
+		-e "/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions $(pkg-config --cflags mozjs185) -DEXTERNAL_MOZJS" \
 		-e '/ADDITIONAL_OBJC_LIBS *=/aADDITIONAL_OBJC_LIBS += -lminizip' \
 		-e 's|:src/Core/MiniZip||g' \
 		-e 's|-Isrc/Core/MiniZip|-I/usr/include/minizip|' \
+		-e 's|LIBJS = js_static|LIBJS = mozjs185|' \
 		"${S}"/GNUmakefile || die
 	sed "/void png_error/d" -i src/Core/Materials/OOPNGTextureLoader.m
+	rm -rf src/Core/MiniZip/
 }
 
 src_compile() {
 	egnustep_env
 	# explicit Makefile because there are many and Makefile is choosen by default
-	emake -f Makefile $(use debug && echo debug || echo release)
+	emake -f Makefile $(use debug && echo debug || echo release) DEPS= VER_GITHASH=${OOLITE_REV:0:7} VER_GITREV=${OOLITE_VER_GITREV}
 }
 
 src_install() {
