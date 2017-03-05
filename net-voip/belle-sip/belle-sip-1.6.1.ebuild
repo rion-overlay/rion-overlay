@@ -7,7 +7,7 @@ inherit autotools eutils flag-o-matic
 
 DESCRIPTION="C object oriented SIP Stack."
 HOMEPAGE="http://www.linphone.org/technical-corner/belle-sip/overview"
-SRC_URI="mirror://nongnu/linphone/${PN}/${P}.tar.gz"
+SRC_URI="http://www.linphone.org/releases/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

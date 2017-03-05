@@ -12,6 +12,7 @@
 		</flag>
 		<flag name="sqlite">Turn on compilation of message storage</flag>
 		<flag name="tools">Compile tools</flag>
+		<flag name="vcard">Enable retrieving personal contact information</flag>
 		<flag name="video">Enable video support (display/capture)</flag>
 	</use>
 </pkgmetadata>

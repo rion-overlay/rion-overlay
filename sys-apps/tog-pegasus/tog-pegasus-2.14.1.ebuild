@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="
 	dev-libs/icu
 	net-libs/openslp
-	dev-libs/openssl
+	dev-libs/openssl:0
 	"
 RDEPEND="${DEPEND}"
 

@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 IUSE=""
 
 DEPEND="net-libs/bctoolbox
-	net-libs/belr"
+	dev-libs/belr"
 RDEPEND="${DEPEND}"
 
 src_prepare() {

@@ -1,0 +1,10 @@
+# ChangeLog for net-voip/linphone
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# $Id$
+
+  05 Mar 2017; Sergey Ilinykh <rion4ik@gmail.com> -linphone-3.10.2.ebuild,
+  +linphone-3.11.1.ebuild, -files/linphone-3.10.2-nls.patch,
+  -files/linphone-3.10.2-no-cam-crash-fix.patch, +files/linphone-nls.patch,
+  +files/linphone-no-cam-crash-fix.patch, metadata.xml:
+  version bump
+

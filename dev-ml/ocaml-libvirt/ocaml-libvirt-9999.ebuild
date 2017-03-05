@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit base findlib eutils git-r3 autotools
+inherit findlib eutils git-r3 autotools
 
 DESCRIPTION="Ocaml libvirt binding's"
 HOMEPAGE="http://www.libvirt.org/"
@@ -24,13 +24,14 @@ src_compile() {
 	base_src_compile
 
 	if use doc; then
-		emake doc || die
+		emake doc
 	fi
 }
 
 src_prepare() {
+	default
 	eautoreconf
-	}
+}
 
 isrc_install() {
 	findlib_src_install

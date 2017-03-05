@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Mediastreaming library for telephony application"
 HOMEPAGE="http://www.linphone.org/"
-SRC_URI="mirror://nongnu/linphone/${PN}/${P}.tar.gz"
+SRC_URI="http://www.linphone.org/releases/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/3"
@@ -31,7 +31,7 @@ RDEPEND="net-libs/libsrtp:0
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
 	gsm? ( media-sound/gsm )
 	opus? ( media-libs/opus )
-	ortp? ( >=net-libs/ortp-0.27 )
+	ortp? ( >=net-libs/ortp-1 )
 	pcap? ( sys-libs/libcap )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -103,8 +103,8 @@ src_prepare() {
 		configure.ac || die
 
 	epatch \
-		"${FILESDIR}/${P}-underlinking.patch" \
-		"${FILESDIR}/${P}-xxd.patch"
+		"${FILESDIR}/${PN}-underlinking.patch" \
+		"${FILESDIR}/${PN}-xxd.patch"
 
 	eautoreconf
 }

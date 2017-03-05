@@ -1,0 +1,8 @@
+# ChangeLog for net-libs/bctoolbox
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# $Id$
+
+  05 Mar 2017; Sergey Ilinykh <rion4ik@gmail.com> -bctoolbox-0.2.0.ebuild,
+  +bctoolbox-0.5.1.ebuild:
+  version bump
+

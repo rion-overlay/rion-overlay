@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit eutils autotools
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="http://www.linphone.org/"
-SRC_URI="mirror://nongnu/linphone/${PN}/sources/${P}.tar.gz"
+SRC_URI="http://www.linphone.org/releases/sources/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/9"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples minimal ntp-timestamp"
 
 RDEPEND="
-	net-libs/bctoolbox
+	>=net-libs/bctoolbox-0.5
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -25,9 +25,10 @@ src_prepare() {
 	default
 	# ${P} is added after ${docdir}
 	if use doc; then
-		sed -i -e 's/$(docdir)\/$(PACKAGE)-$(VERSION)/$(docdir)/' Makefile.in \
-			|| die "patching Makefile.in failed"
+		sed -i -e 's/$(docdir)\/$(PACKAGE)-$(VERSION)/$(docdir)/' Makefile.am \
+			|| die "patching Makefile.am failed"
 	fi
+	eautoreconf
 }
 
 src_configure() {
