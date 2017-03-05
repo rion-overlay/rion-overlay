@@ -5,7 +5,7 @@ EAPI=5
 
 inherit mercurial
 
-DESCRIPTION="Simple script that controls whether (and with what vigor) ksm should search for duplicated pages"
+DESCRIPTION="Simple script to tune whether and with what vigor ksm searches for dup pages"
 HOMEPAGE="https://gitorious.org/ksm-control-scripts"
 EHG_REPO_URI="https://andreis.vinogradovs@code.google.com/p/slepnoga.ksmtuned"
 

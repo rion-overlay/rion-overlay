@@ -11,7 +11,7 @@ DISTUTILS_OPTIONAL="true"
 
 inherit autotools-utils distutils-r1
 
-DESCRIPTION="Small set of C++ classes for performing various geographic and geodesic conversions"
+DESCRIPTION="C++ classes for performing various geographic and geodesic conversions"
 HOMEPAGE="http://geographiclib.sourceforge.net/"
 MY_P="GeographicLib-${PV}"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P/_p/-pl}.tar.gz"

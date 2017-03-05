@@ -18,7 +18,6 @@ SRC_URI="https://github.com/OoliteProject/oolite/archive/${OOLITE_REV}.tar.gz ->
 S="${WORKDIR}/${PN}-${OOLITE_REV}"
 OOLITE_VER_GITREV=6897 # git rev-list --count HEAD # depends on OOLITE_REV
 
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

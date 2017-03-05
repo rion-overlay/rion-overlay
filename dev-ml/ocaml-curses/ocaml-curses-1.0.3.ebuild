@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils autotools findlib
 
-DESCRIPTION="OCaml Curses is a project to provide curses / ncurses  bindings for the Objective Caml  language."
+DESCRIPTION="Curses / ncurses  bindings for the Objective Caml  language."
 HOMEPAGE="http://www.nongnu.org/ocaml-tmk/"
 SRC_URI="http://download.savannah.nongnu.org/releases/ocaml-tmk/${P}.tar.gz"
 

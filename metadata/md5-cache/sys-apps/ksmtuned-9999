@@ -1,9 +1,9 @@
 DEFINED_PHASES=install unpack
 DEPEND=dev-vcs/mercurial
-DESCRIPTION=Simple script that controls whether (and with what vigor) ksm should search for duplicated pages
+DESCRIPTION=Simple script to tune whether and with what vigor ksm searches for dup pages
 EAPI=5
 HOMEPAGE=https://gitorious.org/ksm-control-scripts
 LICENSE=GPL-2
 SLOT=0
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	mercurial	4d80fb11f07e24cf9827196e4f45fd18	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
-_md5_=664a17ec04010d1ce80e15c43665db70
+_md5_=63f04fab7b2b29f6fe0fc29836180f1e

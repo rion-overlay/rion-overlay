@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 cmake-utils ssl-cert java-pkg-opt-2
+inherit python-single-r1 cmake-utils ssl-cert java-pkg-opt-2
 
 DESCRIPTION="Opensource Implementation of WS-Management Client"
 HOMEPAGE="https://github.com/Openwsman"
@@ -32,7 +32,7 @@ RDEPEND="
 	ruby? ( dev-lang/ruby )
 	perl? ( dev-lang/perl )
 	java? ( ${JAVA_PKG_NV_DEPEND} )
-	python? ( dev-lang/python )
+	python? ( ${PYTHON_DEPS} )
 	net-misc/curl[idn]
 	dev-libs/libxml2[icu]
 	"

@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=sys-devel/flex sys-devel/bison virtual/pkgconfig dev-libs/openssl net-mail/mailbase sendmail? ( !!mail-filter/libmilter ) <sys-libs/db-5.0.0 p0f? ( net-analyzer/p0f ) bind? ( net-dns/bind[ipv6?] ) ldap? ( net-nds/openldap[ipv6?] ) curl? ( net-misc/curl[ipv6?] ) geoip? ( dev-libs/geoip ) spf? ( mail-filter/libspf2 ) postfix? ( mail-filter/libmilter[ipv6?] ) spamassassin? ( mail-filter/spamassassin ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=Milter-greylist is a stand-alone milter that implements the greylist filtering method
+DESCRIPTION=Stand-alone milter that implements the greylist filtering method
 EAPI=4
 HOMEPAGE=http://hcpnet.free.fr/milter-greylist
 IUSE=ipv6 bind ldap geoip spf p0f spamassassin sendmail postfix curl
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( sendmail? ( || ( !postfix ) ( sendmail ) ) postfix? ( || ( !se
 SLOT=0
 SRC_URI=ftp://ftp.espci.fr/pub/milter-greylist/milter-greylist-4.4.3.tgz
 _eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	libtool	48b1b9f6194d2842456514d1184ca72e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432	user	e4b567c44272a719fabf53f0f885d3f7
-_md5_=079be3b7870a7cbb375e5e72c938bca4
+_md5_=2440ce5510fcbca76c8948162de37142
