@@ -13,13 +13,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # TODO: run-time test for ipv6: does it need mediastreamer[ipv6]?
-IUSE="assistant doc gsm-nonstandard gtk ipv6 ldap libnotify ncurses nls sqlite tools upnp video"
+IUSE="assistant doc gsm-nonstandard gtk ipv6 ldap libnotify ncurses nls sqlite tools upnp vcard video zlib"
 
 RDEPEND="
 	>=media-libs/mediastreamer-2.14.0[upnp?,video?]
-	>=net-libs/libexosip-5.0.0
-	>=net-libs/libosip-5.0.0
 	>=net-libs/ortp-0.24.0
+	net-libs/bctoolbox
 	net-voip/belle-sip
 	virtual/udev
 	gtk? (
@@ -29,7 +28,7 @@ RDEPEND="
 		assistant? ( >=net-libs/libsoup-2.26 )
 		libnotify? ( x11-libs/libnotify )
 	)
-	gsm-nonstandard? ( >=media-libs/mediastreamer-2.9.0[gsm] )
+	gsm-nonstandard? ( >=media-libs/mediastreamer-2.14.0[gsm] )
 	ldap? (
 		dev-libs/cyrus-sasl
 		net-nds/openldap
@@ -41,7 +40,9 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	tools? ( dev-libs/libxml2 )
 	upnp? ( net-libs/libupnp:0 )
-	video? ( >=media-libs/mediastreamer-2.9.0[v4l] )
+	vcard? ( net-voip/belcard )
+	video? ( >=media-libs/mediastreamer-2.14.0[v4l] )
+	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -109,6 +110,8 @@ src_configure() {
 		--enable-external-mediastreamer
 		$(use_enable sqlite sqlite-storage)
 		--enable-external-ortp
+		$(use_enable vcard)
+		$(use_enable zlib)
 	)
 
 	econf "${myeconfargs[@]}"
