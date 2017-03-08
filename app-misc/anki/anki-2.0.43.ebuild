@@ -21,21 +21,25 @@ IUSE="latex +mpv +recording +sound"
 REQUIRED_USE="mpv? ( sound )"
 
 RDEPEND="${PYTHON_DEPS}
-	 dev-python/PyQt4[X,svg,webkit]
-	 >=dev-python/httplib2-0.7.4
-	 dev-python/beautifulsoup:python-2
-	 dev-python/send2trash
-	 recording? ( media-sound/lame
-				  >=dev-python/pyaudio-0.2.4 )
-	 sound? (
-	 	mpv? ( media-libs/pympv )
-	 	!mpv? ( media-video/mplayer )
-	 )
-	 latex? ( app-text/texlive
-			  app-text/dvipng )"
+	dev-python/PyQt4[X,svg,webkit]
+	>=dev-python/httplib2-0.7.4
+	dev-python/beautifulsoup:python-2
+	dev-python/send2trash
+	recording? (
+		media-sound/lame
+		>=dev-python/pyaudio-0.2.4
+	)
+	sound? (
+		mpv? ( media-libs/pympv )
+		!mpv? ( media-video/mplayer )
+	)
+	latex? (
+		app-text/texlive
+		app-text/dvipng
+	)"
 DEPEND=""
 
-pkg_setup(){
+pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
@@ -47,11 +51,11 @@ src_prepare() {
 
 # Nothing to configure or compile
 src_configure() {
-	true;
+	true
 }
 
 src_compile() {
-	true;
+	true
 }
 
 src_install() {
