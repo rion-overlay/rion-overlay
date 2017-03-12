@@ -20,10 +20,8 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-lang/python[sqlite]
 	dev-python/ply
-	ssl? ( dev-python/twisted-core[crypt] )
-	dev-python/twisted-words
-	dev-python/twisted-names
-	dev-python/twisted-web
+	dev-python/twisted
+	ssl? ( dev-python/twisted[crypt] )
 	dev-python/inotifyx"
 
 pkg_setup() {

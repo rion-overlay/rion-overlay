@@ -19,7 +19,11 @@ RDEPEND="dev-lang/perl
 	>=net-analyzer/rrdtool-1.2.2[perl]"
 DEPEND=">=sys-apps/sed-4"
 
-PATCHES=( "${FILESDIR}"/*_postscreen.patch )
+PATCHES=(
+	"${FILESDIR}"/mailgraph.cgi_postscreen.patch
+	"${FILESDIR}"/mailgraph.pl_postscreen.patch
+)
+
 pkg_setup() {
 	# add user and group for mailgraph daemon
 	# also add mgraph to the group adm so it's able to

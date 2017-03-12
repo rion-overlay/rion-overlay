@@ -28,7 +28,9 @@ RDEPEND="${DEPEND}
 	app-misc/cim-schema
 	"
 
-PATCHES=( "${FILESDIR}"/*.patch )
+PATCHES=(
+	"${FILESDIR}"/sblim-sfcb-1.3.9-sfcbrepos-schema-location.patch
+)
 
 spkg_setup() {
 	enewgroup sfcb

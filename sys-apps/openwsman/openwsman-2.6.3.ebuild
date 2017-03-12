@@ -29,7 +29,7 @@ RDEPEND="
 	cim? ( dev-libs/sblim-sfcc )
 	ssl? ( dev-libs/openssl:0 )
 	pam? ( virtual/pam )
-	ruby? ( dev-lang/ruby )
+	ruby? ( dev-lang/ruby:= )
 	perl? ( dev-lang/perl )
 	java? ( ${JAVA_PKG_NV_DEPEND} )
 	python? ( ${PYTHON_DEPS} )

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/opengl gnustep-base/gnustep-gui media-libs/sdl-mixer media-libs/sdl-image app-accessibility/espeak media-libs/libvorbis dev-libs/nspr media-libs/libpng:0 media-libs/openal sys-libs/zlib[minizip] >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
 SLOT=0
 SRC_URI=https://github.com/OoliteProject/oolite/archive/1.84.tar.gz -> oolite-1.84.tar.gz http://github.com/OoliteProject/oolite-binary-resources/archive/f5aed27fefc32c24775b39fce25402b970b09b84.zip -> oolite-binary-resources-1.84.zip http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	979af9133d4de419fa98992355b07ca4	gnustep-2	08755606aae625944316a7bd6d8228f5	gnustep-base	935cef28cb1dbb8c28e04710473453fb	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	gnustep-2	08755606aae625944316a7bd6d8228f5	gnustep-base	935cef28cb1dbb8c28e04710473453fb	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=51d538c661fc81523d59e089592d4513

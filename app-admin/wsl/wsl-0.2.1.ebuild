@@ -23,7 +23,7 @@ DEPEND="
 	"
 
 RDEPEND="${DEPEND}"
-PATCHES=( "${FILESDIR}"/*.patch )
+PATCHES=( "${FILESDIR}"/MYPATH.patch "${FILESDIR}"/sensible-editor.patch )
 
 src_install() {
 	insinto /usr/share/${PN}

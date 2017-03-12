@@ -7,5 +7,5 @@ IUSE=avahi debug doc examples test linguas_ca linguas_de linguas_es linguas_fr l
 LICENSE=GPL-3
 RDEPEND=avahi? ( net-dns/avahi ) >=dev-libs/boost-1.42 >=dev-libs/openssl-0.9.8g >=net-dns/libidn-1.10 >=x11-libs/libXScrnSaver-1.2 >=dev-qt/qtgui-4.5:4 >=dev-qt/qtwebkit-4.5:4 dev-libs/libxml2 >=dev-libs/expat-2.0.1 sys-libs/zlib
 SLOT=0
-_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	53b75b4a49cf3e61530a523804045432
+_eclasses_=git-2	195a672bfaf52d868442171c9469bbb6	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	scons-utils	fcace052aef60e6b0eb3023c26aa585a	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
 _md5_=631086234e349cb4604d7e1301ff827b

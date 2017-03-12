@@ -19,7 +19,12 @@ DEPEND="iconv? ( virtual/libiconv )
 
 RDEPEND="${DEPEND}"
 
-PATCHES=("${FILESDIR}"/*.patch)
+PATCHES=(
+	"${FILESDIR}"/fix_includes.patch
+	"${FILESDIR}"/fix_man_location.patch
+	"${FILESDIR}"/gcc4.7_getcwd.patch
+)
+
 src_configure() {
 	mycmakeargs=(
 		-DENABLE_OPTIMIZATION=ON
