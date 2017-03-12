@@ -19,7 +19,7 @@ IUSE="+srv ssl"
 
 DEPEND=">=net-libs/libosip-5.0.0:=
 	ssl? ( dev-libs/openssl:0 )
-	!net-libs/libeXosip"
+	!!net-libs/libeXosip"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
