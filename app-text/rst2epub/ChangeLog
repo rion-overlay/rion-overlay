@@ -2,6 +2,10 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Mar 2017; Nikolaj Sjujskij <sterkrig@myopera.com> -Manifest,
+  rst2epub-20120114.ebuild:
+  app-text/rst2epub: user EHG_REVISION for non-live version
+
 *rst2epub-99999999 (02 Mar 2012)
 
   02 Mar 2012; Nikolaj Sjujskij <sterkrig@myopera.com>
@@ -24,4 +28,3 @@
 
   25 Dec 2011; Nikolaj Sjujskij <sterkrig@myopera.com> +rst2epub-9999.ebuild:
   Initial hg-version
-
