@@ -6,4 +6,8 @@
 		<name>rion</name>
 	</maintainer>
 	<longdescription>Communi, formerly known as LibIrcClient-Qt, is a cross-platform IRC client library written with Qt 4. IRC (Internet Relay Chat protocol) is a simple text-based communication protocol.</longdescription>
+	<use>
+		<flag name='qml'>Build QML/QtQuick bindings and imports</flag>
+		<flag name="uchardet">Enabled charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
+	</use>
 </pkgmetadata>
