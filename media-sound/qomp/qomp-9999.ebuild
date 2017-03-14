@@ -12,7 +12,6 @@ if [ -n "${VCS_ECLASS}" ]; then
 	EGIT_REPO_URI="https://github.com/qomp/qomp.git"
 	EGIT_MIN_CLONE_TYPE="single"
 else
-	S="${WORKDIR}/${PN}-${P}"
 	KEYWORDS="amd64 x86"
 	SRC_URI="https://sourceforge.net/projects/qomp/files/${PV}/${PN}_${PV}_src.tar.gz"
 fi
