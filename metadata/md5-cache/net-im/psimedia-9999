@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-libs/glib-2.20.0 media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 qt4? ( >=dev-qt/qtcore-4.4:4 >=dev-qt/qtgui-4.4:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets ) >=media-libs/speex-1.2_rc1 dev-libs/liboil sys-devel/make >=dev-util/cmake-3.6.3 dev-vcs/git
+DEPEND=>=dev-libs/glib-2.20.0 media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 qt4? ( >=dev-qt/qtcore-4.4:4 >=dev-qt/qtgui-4.4:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets ) >=media-libs/speex-1.2_rc1 dev-libs/liboil sys-devel/make >=dev-util/cmake-3.7.2 dev-vcs/git
 DESCRIPTION=Psi plugin for voice/video calls
 EAPI=5
 HOMEPAGE=http://delta.affinix.com/psimedia/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.20.0 media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 qt4? ( >=dev-qt/qtcore-4.4:4 >=dev-qt/qtgui-4.4:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets ) >=media-libs/speex-1.2_rc1 dev-libs/liboil media-plugins/gst-plugins-speex:0.10 media-plugins/gst-plugins-vorbis:0.10 media-plugins/gst-plugins-theora:0.10 media-plugins/gst-plugins-alsa:0.10 media-plugins/gst-plugins-ogg:0.10 media-plugins/gst-plugins-v4l2:0.10 media-plugins/gst-plugins-jpeg:0.10 !<net-im/psi-0.13_rc1 extras? ( >=net-im/psi-0.15_pre20110125[extras] )
 REQUIRED_USE=^^ ( qt4 qt5 )
 SLOT=0
-_eclasses_=cmake-utils	dd1d263f83f0791bd433b134f40db39b	eutils	3c847a0129fed780bd709b98e426f89c	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-2	195a672bfaf52d868442171c9469bbb6	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	git-2	195a672bfaf52d868442171c9469bbb6	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=22041a646151cb4e8ead65edecefba86

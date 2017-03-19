@@ -24,7 +24,7 @@ RDEPEND="
 	net-dialup/ppp
 	net-dialup/xl2tpd
 	>=dev-libs/glib-2.32
-	net-misc/libreswan
+	net-vpn/libreswan
 	gnome? (
 		x11-libs/gtk+:3
 		gnome-base/libgnome-keyring

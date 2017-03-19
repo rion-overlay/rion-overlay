@@ -8,5 +8,5 @@ KEYWORDS=~amd64
 LICENSE=DMTF
 SLOT=2.34.0
 SRC_URI=http://dmtf.org/sites/default/files/cim/cim_schema_v2340/cim_schema_2.34.0Experimental-MOFs.zip doc? ( http://dmtf.org/sites/default/files/cim/cim_schema_v2340/cim_schema_2.34.0Experimental-Doc.zip )
-_eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=2afa35281603b59d265e1fa9c31567ac
