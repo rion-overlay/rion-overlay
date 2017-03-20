@@ -23,7 +23,7 @@ KEYWORDS=""
 IUSE="+qt4 qt5 spell kde unity"
 REQUIRED_USE="
 	^^ ( qt4 qt5 )
-	kde ( qt5 )
+	kde? ( qt5 )
 "
 
 DEPEND="

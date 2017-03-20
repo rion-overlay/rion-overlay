@@ -26,7 +26,7 @@ for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
 IUSE="dbus debug kde nls ${IUSE_PLUGINS} qt4 qt5"
 REQUIRED_USE="|| ( ${IUSE_PLUGINS} )
 	|| ( qt4 qt5 )
-	kde ( qt5 )"
+	kde? ( qt5 )"
 
 DEPEND="dev-qt/qtgui:=
 	dbus? ( dev-qt/qtdbus:= )
