@@ -41,6 +41,7 @@ DEPEND="
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
+		dev-qt/linguist-tools:5
 		dbus? ( dev-qt/qtdbus:5 )
 		plugin_swac? ( dev-qt/qtsql:5 )
 	)
