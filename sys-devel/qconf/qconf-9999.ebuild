@@ -3,37 +3,55 @@
 
 EAPI=6
 
-inherit multilib git-r3
+case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 
-DESCRIPTION="Qt ./configure generation util"
-HOMEPAGE="http://delta.affinix.com/qconf/"
-EGIT_REPO_URI="git://github.com/psi-plus/qconf.git"
+inherit qmake-utils ${VCS_ECLASS}
+
+DESCRIPTION="./configure like generator for qmake-based projects"
+HOMEPAGE="https://github.com/psi-plus/qconf"
+
+if [ -n "${VCS_ECLASS}" ]; then
+	KEYWORDS=""
+	EGIT_REPO_URI="https://github.com/psi-plus/qconf.git"
+else
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+	SRC_URI="http://psi-im.org/files/qconf/${P}.tar.xz"
+fi
+
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="qt4 qt5"
-#RESTRICT="test strip"
+IUSE="qt4 +qt5"
 
-DEPEND="
+# There is no one to one match to autotools-based configure
+QA_CONFIGURE_OPTIONS=".*"
+
+RDEPEND="
 	qt4? ( dev-qt/qtcore:4 )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtxml:5
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 src_configure() {
 	use qt4 && QTVERSION=4
 	use qt5 && QTVERSION=5
-	./configure \
-	--prefix="${EPREFIX}"/usr \
-	--qtselect="${QTVERSION}" || die "./configure failed"
+	econf \
+		--qtselect="${QTVERSION}" \
+		--extraconf=QMAKE_STRIP= \
+		--verbose || die
+
+	# just to set all the Gentoo toolchain flags
+	eqmake${QTVERSION}
 }
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
+	einstalldocs
+	insinto /usr/share/doc/${PF}
+	doins -r examples
 }
