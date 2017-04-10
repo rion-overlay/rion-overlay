@@ -54,6 +54,11 @@ RDEPEND="
 	media-plugins/gst-plugins-soup:1.0
 "
 
+src_prepare() {
+	sed -i '/find_program(CCACHE/d' CMakeLists.txt
+	cmake-utils_src_prepare
+}
+
 pkg_setup() {
 	local plugins="filesystemplugin"
 	for p in ${QOMP_PLUGINS}; do
