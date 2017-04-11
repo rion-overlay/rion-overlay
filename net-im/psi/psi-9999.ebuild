@@ -29,9 +29,7 @@ REQUIRED_USE="
 	enchant? ( spell )
 	hunspell? ( spell )
 	iconsets? ( extras )
-	plugins? ( extras )
 	sql? ( extras )
-	webkit? ( extras )
 	^^ ( qt4 qt5 )
 "
 
