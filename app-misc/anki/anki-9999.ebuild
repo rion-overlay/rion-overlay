@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 inherit eutils python-single-r1 git-r3
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
-HOMEPAGE="http://ichi2.net/anki/"
+HOMEPAGE="https://apps.ankiweb.net/"
 EGIT_REPO_URI="https://github.com/dae/anki.git"
 
 LICENSE="GPL-3"
