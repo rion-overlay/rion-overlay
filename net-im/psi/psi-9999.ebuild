@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets +qt4 qt5 spell sql ssl xscreensaver
-+plugins whiteboarding webkit"
++plugins whiteboarding webengine webkit"
 
 REQUIRED_USE="
 	spell? ( ^^ ( aspell enchant hunspell ) )
@@ -30,6 +30,7 @@ REQUIRED_USE="
 	hunspell? ( spell )
 	iconsets? ( extras )
 	sql? ( extras )
+	webengine? ( webkit )
 	^^ ( qt4 qt5 )
 "
 
@@ -64,7 +65,10 @@ RDEPEND="
 		dbus? ( dev-qt/qtdbus:5 )
 		app-crypt/qca:2[qt5]
 		whiteboarding? ( dev-qt/qtsvg:5 )
-		webkit? ( dev-qt/qtwebkit:5 )
+		webkit? (
+			webengine? ( >=dev-qt/qtwebengine-5.7:5 )
+			!webengine? ( dev-qt/qtwebkit:5 )
+		)
 		extras? (
 			sql? ( dev-qt/qtsql:5 )
 		)
@@ -186,7 +190,11 @@ src_configure() {
 	use whiteboarding && CONF+=("--enable-whiteboarding")
 	use xscreensaver || CONF+=("--disable-xss")
 	use plugins || CONF+=("--disable-plugins")
-	use webkit && CONF+=("--enable-webkit")
+	if use webkit; then
+		CONF+=("--enable-webkit")
+		use webengine && CONF+=("--with-webkit=qtwebengine")
+		use webengine || CONF+=("--with-webkit=qwebkit")
+	fi
 
 	elog ./configure "${CONF[@]}"
 	./configure "${CONF[@]}"
