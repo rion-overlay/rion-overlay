@@ -2,6 +2,10 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 May 2017; eegorov <egor.y.egorov@gmail.com> -hasp-3.3_p5-r1.ebuild,
+  +hasp-3.3_p5-r2.ebuild, +files/linux-4.11.patch:
+  Fix build failure on linux-4.11
+
   14 Apr 2015; eegorov <egor.y.egorov@gmail.com> hasp-3.3_p5-r1.ebuild:
   Fix build with kernel-4.0
 

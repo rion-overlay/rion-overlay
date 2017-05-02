@@ -45,6 +45,7 @@ src_unpack() {
 src_prepare() {
 	epatch "${FILESDIR}/remove-udev-rule-for-old-kernels.patch"
 	epatch "${FILESDIR}/linux-3.15.patch"
+	epatch "${FILESDIR}/linux-4.11.patch"
 }
 
 src_compile() {
