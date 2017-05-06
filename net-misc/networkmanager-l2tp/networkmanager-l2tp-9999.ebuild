@@ -42,6 +42,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--localstatedir=/var
 		$(use_with gnome)
 		$(use_enable static-libs static)
 	)
