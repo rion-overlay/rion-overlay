@@ -41,7 +41,6 @@ src_prepare() {
 }
 
 src_configure() {
-	export runstatedir="${EPREFIX}/run/NetworkManager"
 	local myeconfargs=(
 		$(use_with gnome)
 		$(use_enable static-libs static)
