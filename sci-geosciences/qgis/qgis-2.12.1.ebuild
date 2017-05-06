@@ -39,7 +39,7 @@ RDEPEND="
 	dev-qt/designer:4
 	x11-libs/qscintilla
 	|| (
-		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) x11-libs/qwtpolar )
+		( x11-libs/qwt:6[svg,qt4] x11-libs/qwtpolar )
 		( x11-libs/qwt:5[svg] )
 	)
 	grass? ( sci-geosciences/grass )

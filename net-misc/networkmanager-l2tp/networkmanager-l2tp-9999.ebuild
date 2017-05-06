@@ -8,7 +8,7 @@ AT_M4DIR="m4"
 inherit eutils gnome.org git-r3 autotools
 
 DESCRIPTION="NetworkManager L2TP plugin"
-HOMEPAGE="http://www.gnome.org/projects/NetworkManager/"
+HOMEPAGE="https://github.com/nm-l2tp/network-manager-l2tp"
 SRC_URI=""
 
 EGIT_REPO_URI="https://github.com/nm-l2tp/network-manager-l2tp"
@@ -41,8 +41,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export runstatedir="${EPREFIX}/run/NetworkManager"
 	local myeconfargs=(
-		--with-pppd-plugin-dir="${EPREFIX}/usr/$(get_libdir)/pppd/2.4.7"
 		$(use_with gnome)
 		$(use_enable static-libs static)
 	)

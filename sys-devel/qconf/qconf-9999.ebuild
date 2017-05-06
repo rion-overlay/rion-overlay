@@ -18,7 +18,6 @@ else
 	SRC_URI="http://psi-im.org/files/qconf/${P}.tar.xz"
 fi
 
-
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="qt4 +qt5"
