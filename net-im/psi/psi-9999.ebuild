@@ -149,18 +149,12 @@ src_prepare() {
 
 		PATCHES_DIR="${WORKDIR}/psi-plus/patches"
 		EPATCH_SOURCE="${PATCHES_DIR}" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
-
-		PSI_REVISION="$(cd "${WORKDIR}/${P}" && git describe --tags|cut -d - -f 2)"
-		PSI_PLUS_REVISION="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 2)"
-		PSI_PLUS_TAG="$(cd "${WORKDIR}/psi-plus" && git describe --tags|cut -d - -f 1)"
-
 		use sql && epatch "${PATCHES_DIR}/dev/psi-new-history.patch"
 
-		use webkit && {
-			echo "${PSI_PLUS_TAG}.${PSI_PLUS_REVISION}.${PSI_REVISION}-webkit (@@DATE@@)" > version
-		} || {
-			echo "${PSI_PLUS_TAG}.${PSI_PLUS_REVISION}.${PSI_REVISION} (@@DATE@@)" > version
-		}
+		vergen="${WORKDIR}/psi-plus/admin/psi-plus-nightly-version"
+		NIGHTLY_VER=$(use webkit && "${vergen}" ./ --webkit || "${vergen}" ./)
+		elog "Prepared version: ${NIGHTLY_VER}"
+		echo "${NIGHTLY_VER}" > version
 
 		qconf || die "Failed to create ./configure."
 	fi
@@ -193,7 +187,7 @@ src_configure() {
 	if use webkit; then
 		CONF+=("--enable-webkit")
 		use webengine && CONF+=("--with-webkit=qtwebengine")
-		use webengine || CONF+=("--with-webkit=qwebkit")
+		use webengine || CONF+=("--with-webkit=qtwebkit")
 	fi
 
 	elog ./configure "${CONF[@]}"
