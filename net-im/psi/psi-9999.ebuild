@@ -152,7 +152,8 @@ src_prepare() {
 		use sql && epatch "${PATCHES_DIR}/dev/psi-new-history.patch"
 
 		vergen="${WORKDIR}/psi-plus/admin/psi-plus-nightly-version"
-		NIGHTLY_VER=$(use webkit && "${vergen}" ./ --webkit || "${vergen}" ./)
+		features="$(use webkit && { use webengine && echo '--webengine' || echo '--webkit'; }) $(use sql && echo '--sql')"
+		NIGHTLY_VER=$("${vergen}" ./ $features)
 		elog "Prepared version: ${NIGHTLY_VER}"
 		echo "${NIGHTLY_VER}" > version
 
