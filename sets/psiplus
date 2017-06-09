@@ -2,7 +2,6 @@ net-im/psi[plugins]
 net-im/psimedia[extras]
 net-im/psi-pepchangenotify
 net-im/psi-screenshot
-net-im/psi-gnome3support
 net-im/psi-clientswitcher
 net-im/psi-autoreply
 net-im/psi-cleaner
@@ -13,11 +12,9 @@ net-im/psi-birthdayreminder
 net-im/psi-gomokugame
 net-im/psi-attention
 net-im/psi-extendedoptions
-net-im/psi-captchaforms
 net-im/psi-translate
 net-im/psi-videostatus
 net-im/psi-jabberdisk
-net-im/psi-gmailservice
 net-im/psi-chess
 net-im/psi-gnupg
 net-im/psi-messagefilter

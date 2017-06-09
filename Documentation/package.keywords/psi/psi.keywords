@@ -3,7 +3,6 @@ net-im/psimedia::rion **
 net-im/qconf::rion **
 net-im/psi-pepchangenotify::rion **
 net-im/psi-screenshot::rion **
-net-im/psi-gnome3support::rion **
 net-im/psi-clientswitcher::rion **
 net-im/psi-autoreply::rion **
 net-im/psi-cleaner::rion **
@@ -14,11 +13,9 @@ net-im/psi-birthdayreminder::rion **
 net-im/psi-gomokugame::rion **
 net-im/psi-attention::rion **
 net-im/psi-extendedoptions::rion **
-net-im/psi-captchaforms::rion **
 net-im/psi-translate::rion **
 net-im/psi-videostatus::rion **
 net-im/psi-jabberdisk::rion **
-net-im/psi-gmailservice::rion **
 net-im/psi-chess::rion **
 net-im/psi-gnupg::rion **
 net-im/psi-messagefilter::rion **
