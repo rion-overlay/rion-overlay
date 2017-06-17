@@ -28,7 +28,7 @@ IUSE_PLUGINS="frotz irc purple skype"
 IUSE="debug doc libev log mysql postgres sqlite staticport symlinks test tools ${IUSE_PLUGINS}"
 
 RDEPEND="net-im/jabber-base
-	=net-im/swiften-3*
+	net-im/swiften
 	dev-libs/popt
 	dev-libs/openssl:0
 	log? ( dev-libs/log4cxx )

@@ -3,7 +3,6 @@
 
 EAPI="6"
 
-WANT_CMAKE="always"
 inherit cmake-utils
 
 DESCRIPTION="OpenAL Soft Configurator"
