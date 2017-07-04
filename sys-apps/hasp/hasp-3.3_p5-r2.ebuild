@@ -46,6 +46,7 @@ src_prepare() {
 	epatch "${FILESDIR}/remove-udev-rule-for-old-kernels.patch"
 	epatch "${FILESDIR}/linux-3.15.patch"
 	epatch "${FILESDIR}/linux-4.11.patch"
+	epatch "${FILESDIR}/linux-4.12.patch"
 }
 
 src_compile() {

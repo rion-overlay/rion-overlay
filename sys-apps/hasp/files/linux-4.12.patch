@@ -1,0 +1,13 @@
+diff -ur haspd-3.3_orig/aksparlnx/aksparpub.c haspd-3.3/aksparlnx/aksparpub.c
+--- haspd-3.3_orig/aksparlnx/aksparpub.c	2017-07-04 11:06:58.546013323 +0600
++++ haspd-3.3/aksparlnx/aksparpub.c	2017-07-04 11:08:52.022670817 +0600
+@@ -57,6 +57,9 @@
+ #else
+ #include <linux/sched.h>
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0)
++#include <linux/uaccess.h>
++#endif
+ #include <linux/vmalloc.h>
+ #include <linux/delay.h>
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < 0x2060E
