@@ -2,6 +2,10 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
+  07 Jul 2017; eegorov <egor.y.egorov@gmail.com> -qtcurve-9999-r0.ebuild,
+  -files/qtcurve-remove-filedialog-hooks.patch:
+  Removed old ebuild need for workaround
+
   14 Nov 2016; eegorov <egor.y.egorov@gmail.com> qtcurve-9999-r0.ebuild,
   qtcurve-9999-r1.ebuild:
   Backport changes from main tree to solve #498776
