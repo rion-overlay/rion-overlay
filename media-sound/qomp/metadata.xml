@@ -14,5 +14,6 @@
 		<flag name="lastfmplugin">Last.FM plugin</flag>
 		<flag name="tunetofileplugin">Tune To File plugin</flag>
 		<flag name="mprisplugin">MPRIS plugin</flag>
+		<flag name="cuteradioplugin">cuteRadio plugin</flag>
 	</use>
 </pkgmetadata>
