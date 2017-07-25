@@ -20,7 +20,7 @@ HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets +qt4 qt5 spell sql ssl xscreensaver
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets spell sql ssl xscreensaver
 +plugins whiteboarding webengine webkit"
 
 REQUIRED_USE="
@@ -31,7 +31,6 @@ REQUIRED_USE="
 	iconsets? ( extras )
 	sql? ( extras )
 	webengine? ( webkit )
-	^^ ( qt4 qt5 )
 "
 
 RDEPEND="
@@ -43,35 +42,20 @@ RDEPEND="
 		aspell? ( app-text/aspell )
 	)
 	xscreensaver? ( x11-libs/libXScrnSaver )
-	qt4? (
-		dev-qt/qtgui:4
-		dbus? ( dev-qt/qtdbus:4 )
-		app-crypt/qca:2[qt4]
-		whiteboarding? ( dev-qt/qtsvg:4 )
-		webkit? ( dev-qt/qtwebkit:4 )
-		extras? (
-			sql? (
-				dev-qt/qtsql:4
-				dev-libs/qjson
-			)
-		)
+	dev-qt/qtgui:5
+	dev-qt/qtxml:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtx11extras:5
+	dbus? ( dev-qt/qtdbus:5 )
+	app-crypt/qca:2[qt5]
+	whiteboarding? ( dev-qt/qtsvg:5 )
+	webkit? (
+		webengine? ( >=dev-qt/qtwebengine-5.7:5 )
+		!webengine? ( dev-qt/qtwebkit:5 )
 	)
-	qt5? (
-		dev-qt/qtgui:5
-		dev-qt/qtxml:5
-		dev-qt/qtconcurrent:5
-		dev-qt/qtmultimedia:5
-		dev-qt/qtx11extras:5
-		dbus? ( dev-qt/qtdbus:5 )
-		app-crypt/qca:2[qt5]
-		whiteboarding? ( dev-qt/qtsvg:5 )
-		webkit? (
-			webengine? ( >=dev-qt/qtwebengine-5.7:5 )
-			!webengine? ( dev-qt/qtwebkit:5 )
-		)
-		extras? (
-			sql? ( dev-qt/qtsql:5 )
-		)
+	extras? (
+		sql? ( dev-qt/qtsql:5 )
 	)
 "
 DEPEND="${RDEPEND}
@@ -80,7 +64,7 @@ DEPEND="${RDEPEND}
 	)
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
-	qt5? ( dev-qt/linguist-tools )
+	dev-qt/linguist-tools
 "
 PDEPEND="
 	crypt? ( app-crypt/qca[gpg] )
@@ -97,8 +81,8 @@ pkg_setup() {
 	if use extras; then
 		MY_PN=psi-plus
 		echo
-		ewarn "You're about to build heavily patched version of Psi called Psi+."
-		ewarn "It has really nice features but still is under heavy development."
+		ewarn "You're about to build patched version of Psi called Psi+."
+		ewarn "It has new nice features not yet included to Psi."
 		ewarn "Take a look at homepage for more info: http://psi-plus.com/"
 		echo
 
@@ -172,8 +156,7 @@ src_configure() {
 		--disable-growl
 	)
 
-	use qt4 && CONF+=(--qtdir="$(qt4_get_bindir)/..")
-	use qt5 && CONF+=(--qtdir="$(qt5_get_bindir)/..")
+	CONF+=(--qtdir="$(qt5_get_bindir)/..")
 
 	use dbus || CONF+=("--disable-qdbus")
 	use debug && CONF+=("--debug")
@@ -194,8 +177,7 @@ src_configure() {
 	elog ./configure "${CONF[@]}"
 	./configure "${CONF[@]}"
 
-	use qt4 && eqmake4 psi.pro
-	use qt5 && eqmake5 psi.pro
+	eqmake5 psi.pro
 }
 
 src_compile() {
@@ -220,7 +202,7 @@ src_install() {
 	use doc && dohtml -r doc/api
 
 	# install translations
-	local mylrelease="$(qt$(usex qt5 5 4)_get_bindir)"/lrelease
+	local mylrelease="$(qt5_get_bindir)"/lrelease
 	cd "${WORKDIR}/psi-l10n"
 	insinto /usr/share/${MY_PN}
 	install_locale() {

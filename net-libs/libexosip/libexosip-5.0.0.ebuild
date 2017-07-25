@@ -10,7 +10,7 @@ MY_PV=${PV}
 MY_P=${PN}2-${MY_PV}
 DESCRIPTION="Simple API for SIP protocol for multimedia session establishement"
 HOMEPAGE="https://savannah.nongnu.org/projects/exosip/"
-SRC_URI="http://download.savannah.nongnu.org/releases/exosip/${MY_P}.tar.gz"
+SRC_URI="mirror://nongnu/exosip/${MY_P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0/$(get_version_component_range 1-2)"

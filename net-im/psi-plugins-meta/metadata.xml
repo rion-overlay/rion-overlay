@@ -13,7 +13,6 @@
     <flag name="attention">Enable Psi plugin for making attention (XEP-0224)</flag>
     <flag name="autoreply">Enable Psi plugin to gnerate automatic replies.</flag>
     <flag name="birthdayreminder">Enable Psi plugin to remind contact's birthdays</flag>
-    <flag name="captchaforms">Enable Psi plugin to show MUC's captcha</flag>
     <flag name="chess">Enable Psi plugin to play chess with your friends</flag>
     <flag name="cleaner">Enable Psi plugin for profile cleaning for specified contacts.</flag>
     <flag name="clientswitcher">Enable Psi plugin for client version masking</flag>
@@ -22,8 +21,6 @@
     <flag name="enummessages">Enable Psi plugin to enumarate messages added to chat</flag>
     <flag name="extendedmenu">Enable Psi plugin which adds special submenu to contacts</flag>
     <flag name="extendedoptions">Enable Psi plugin for UI for some hidden options</flag>
-    <flag name="gmailservice">Enable Psi plugin for Gmail notification</flag>
-    <flag name="gnome3support">Enable Psi plugin for Gnome 3 support</flag>
     <flag name="gnupg">Enable Psi plugin for GnuPG message encryption</flag>
     <flag name="gomokugame">Enable Psi plugin for Gomoku game</flag>
     <flag name="historykeeper">Enable Psi plugin to keep certain contacts history clean</flag>

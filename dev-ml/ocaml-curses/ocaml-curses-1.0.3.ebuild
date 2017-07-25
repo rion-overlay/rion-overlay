@@ -7,7 +7,7 @@ inherit eutils autotools findlib
 
 DESCRIPTION="Curses / ncurses  bindings for the Objective Caml  language."
 HOMEPAGE="http://www.nongnu.org/ocaml-tmk/"
-SRC_URI="http://download.savannah.nongnu.org/releases/ocaml-tmk/${P}.tar.gz"
+SRC_URI="mirror://nongnu/ocaml-tmk/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
