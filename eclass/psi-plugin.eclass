@@ -16,8 +16,6 @@
 # variable declarations
 ###
 
-
-
 MY_PN="${PN#psi-}plugin"
 
 ###
@@ -31,11 +29,12 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	PLUGIN_DIR="${PLUGIN_DIR:-generic}"
 	EGIT_REPO_URI="git://github.com/psi-im/plugins.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/plugins"
+elif [ "${PV%%.*}" = 1 ] ; then
+	REQUIRED_USE="^^ ( qt4 qt5 )"
+	IUSE="+qt4 qt5"
 fi
 
 inherit qmake-utils ${SCM}
-
-REQUIRED_USE="^^ ( qt4 qt5 )"
 
 # general common
 
@@ -49,7 +48,6 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+qt4 qt5"
 
 
 DEPEND=">=net-im/psi-9999[extras,plugins]"
@@ -73,8 +71,12 @@ psi-plugin_src_prepare() {
 }
 
 psi-plugin_src_configure() {
-	use qt4 && eqmake4 "${MY_PN}".pro
-	use qt5 && eqmake5 "${MY_PN}".pro
+	if [ "${PV%%.*}" = 1 ] ; then
+		use qt4 && eqmake4 "${MY_PN}".pro
+		use qt5 && eqmake5 "${MY_PN}".pro
+	else
+		eqmake5 "${MY_PN}".pro
+	fi
 }
 
 psi-plugin_src_install() {
