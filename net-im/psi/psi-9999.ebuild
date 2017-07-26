@@ -70,7 +70,7 @@ PDEPEND="
 	crypt? ( app-crypt/qca[gpg] )
 	jingle? (
 		net-im/psimedia[extras?]
-		app-crypt/qca[ssl]
+		app-crypt/qca:2[ssl]
 	)
 	ssl? ( app-crypt/qca[ssl] )
 "
@@ -126,9 +126,9 @@ src_unpack() {
 src_prepare() {
 	default
 	if use extras; then
-		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die
+		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
 		if use iconsets; then
-			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die
+			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die	"failed to copy additional iconsets"
 		fi
 
 		PATCHES_DIR="${WORKDIR}/psi-plus/patches"
@@ -150,13 +150,12 @@ src_configure() {
 	# disable growl as it is a MacOS X extension only
 
 	CONF=(
+		--qtdir="$(qt5_get_bindir)/.."
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--prefix="${EPREFIX}"/usr
 		--no-separate-debug-info
 		--disable-growl
 	)
-
-	CONF+=(--qtdir="$(qt5_get_bindir)/..")
 
 	use dbus || CONF+=("--disable-qdbus")
 	use debug && CONF+=("--debug")
