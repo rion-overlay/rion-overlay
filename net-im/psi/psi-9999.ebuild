@@ -178,7 +178,7 @@ src_install() {
 	newdoc certs/README README.certs
 	dodoc README
 
-	local HTML_DOCS=( doc/api )
+	use doc && HTML_DOCS=( doc/api/. )
 	einstalldocs
 
 	# install translations
