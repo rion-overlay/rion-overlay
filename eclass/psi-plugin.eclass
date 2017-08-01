@@ -50,7 +50,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 
-DEPEND=">=net-im/psi-9999[extras,plugins]"
+DEPEND=">=net-im/psi-9999"
 RDEPEND="${DEPEND}"
 
 # Eclass exported functions

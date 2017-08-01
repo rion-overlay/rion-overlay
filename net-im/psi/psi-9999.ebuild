@@ -6,65 +6,61 @@ EAPI=6
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-PSI_URI="git://github.com/psi-im"
-PSI_PLUS_URI="git://github.com/psi-plus"
-EGIT_REPO_URI="${PSI_URI}/psi.git"
-PSI_LANGS_URI="${PSI_URI}/psi-translations.git"
+inherit l10n git-r3 qmake-utils
+
+DESCRIPTION="Qt XMPP client"
+HOMEPAGE="http://psi-im.org/"
+
+PSI_URI="https://github.com/psi-im"
+PSI_PLUS_URI="https://github.com/psi-plus"
+EGIT_REPO_URI="${PSI_URI}/${PN}.git"
+PSI_LANGS_URI="${PSI_URI}/psi-l10n.git"
 PSI_PLUS_LANGS_URI="${PSI_PLUS_URI}/psi-plus-l10n.git"
 EGIT_MIN_CLONE_TYPE="single"
-
-inherit eutils l10n multilib git-r3 qmake-utils
-
-DESCRIPTION="Qt4 Jabber client, with Licq-like interface"
-HOMEPAGE="http://psi-im.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell jingle iconsets spell sql ssl xscreensaver
-+plugins whiteboarding webengine webkit"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets jingle sql ssl xscreensaver
+whiteboarding webengine webkit"
+
+# qconf generates not quite compatible configure scripts
+QA_CONFIGURE_OPTIONS=".*"
 
 REQUIRED_USE="
-	spell? ( ^^ ( aspell enchant hunspell ) )
-	aspell? ( spell )
-	enchant? ( spell )
-	hunspell? ( spell )
+	?? ( aspell enchant hunspell )
 	iconsets? ( extras )
 	sql? ( extras )
-	webengine? ( webkit )
+	webengine? ( !webkit )
 "
 
 RDEPEND="
-	net-dns/libidn
-	sys-libs/zlib[minizip]
-	spell? (
-		enchant? ( >=app-text/enchant-1.3.0 )
-		hunspell? ( app-text/hunspell )
-		aspell? ( app-text/aspell )
-	)
-	xscreensaver? ( x11-libs/libXScrnSaver )
+	app-crypt/qca:2[qt5]
 	dev-qt/qtgui:5
 	dev-qt/qtxml:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtx11extras:5
+	net-dns/libidn
+	sys-libs/zlib[minizip]
+	aspell? ( app-text/aspell )
 	dbus? ( dev-qt/qtdbus:5 )
-	app-crypt/qca:2[qt5]
-	whiteboarding? ( dev-qt/qtsvg:5 )
-	webkit? (
-		webengine? ( >=dev-qt/qtwebengine-5.7:5 )
-		!webengine? ( dev-qt/qtwebkit:5 )
-	)
+	enchant? ( >=app-text/enchant-1.3.0 )
 	extras? (
 		sql? ( dev-qt/qtsql:5 )
 	)
+	hunspell? ( app-text/hunspell:= )
+	webengine? ( >=dev-qt/qtwebengine-5.7:5[widgets] )
+	webkit? ( dev-qt/qtwebkit:5 )
+	whiteboarding? ( dev-qt/qtsvg:5 )
+	xscreensaver? ( x11-libs/libXScrnSaver )
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 	extras? (
 		>=sys-devel/qconf-2.3
 	)
-	doc? ( app-doc/doxygen )
-	virtual/pkgconfig
-	dev-qt/linguist-tools
 "
 PDEPEND="
 	crypt? ( app-crypt/qca[gpg] )
@@ -72,9 +68,9 @@ PDEPEND="
 		net-im/psimedia[extras?]
 		app-crypt/qca:2[ssl]
 	)
-	ssl? ( app-crypt/qca[ssl] )
+	ssl? ( app-crypt/qca:2[ssl] )
 "
-RESTRICT="test"
+RESTRICT="test iconsets? ( bindist )"
 
 pkg_setup() {
 	MY_PN=psi
@@ -100,11 +96,7 @@ src_unpack() {
 
 	# fetch translations
 	unset EGIT_BRANCH EGIT_COMMIT
-	if use extras; then
-		EGIT_REPO_URI="${PSI_PLUS_LANGS_URI}"
-	else
-		EGIT_REPO_URI="${PSI_LANGS_URI}"
-	fi
+	EGIT_REPO_URI=$(usex extras "${PSI_PLUS_LANGS_URI}" "${PSI_LANGS_URI}")
 	EGIT_CHECKOUT_DIR="${WORKDIR}/psi-l10n"
 	git-r3_src_unpack
 
@@ -128,95 +120,69 @@ src_prepare() {
 	if use extras; then
 		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
 		if use iconsets; then
-			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die	"failed to copy additional iconsets"
+			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die "failed to copy additional iconsets"
 		fi
 
-		PATCHES_DIR="${WORKDIR}/psi-plus/patches"
-		EPATCH_SOURCE="${PATCHES_DIR}" EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch
-		use sql && epatch "${PATCHES_DIR}/dev/psi-new-history.patch"
+		eapply "${WORKDIR}/psi-plus/patches"/*.diff
+		use sql && eapply "${PATCHES_DIR}/dev/psi-new-history.patch"
 
 		vergen="${WORKDIR}/psi-plus/admin/psi-plus-nightly-version"
-		features="$(use webkit && { use webengine && echo '--webengine' || echo '--webkit'; }) $(use sql && echo '--sql')"
+		features="$(use webkit && echo '--webkit') $(use webengine && echo '--webengine') $(use sql && echo '--sql')"
 		NIGHTLY_VER=$("${vergen}" ./ $features)
 		elog "Prepared version: ${NIGHTLY_VER}"
-		echo "${NIGHTLY_VER}" > version
+		echo "${NIGHTLY_VER}" > version || die "Failed to write version file"
 
 		qconf || die "Failed to create ./configure."
 	fi
 }
 
 src_configure() {
-	# unable to use econf because of non-standard configure script
-	# disable growl as it is a MacOS X extension only
 
 	CONF=(
-		--qtdir="$(qt5_get_bindir)/.."
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--prefix="${EPREFIX}"/usr
 		--no-separate-debug-info
-		--disable-growl
+		--qtdir="$(qt5_get_bindir)/.."
+		$(use_enable aspell)
+		$(use_enable dbus qdbus)
+		$(use_enable enchant)
+		$(use_enable hunspell)
+		$(use_enable xscreensaver xss)
+		$(use_enable whiteboarding)
 	)
 
-	use dbus || CONF+=("--disable-qdbus")
 	use debug && CONF+=("--debug")
+	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
+	use webkit && CONF+=("--enable-webkit" "--with-webkit=qwebkit")
 
-	for s in aspell enchant hunspell; do
-		use $s || CONF+=("--disable-$s")
-	done
-
-	use whiteboarding && CONF+=("--enable-whiteboarding")
-	use xscreensaver || CONF+=("--disable-xss")
-	use plugins || CONF+=("--disable-plugins")
-	if use webkit; then
-		CONF+=("--enable-webkit")
-		use webengine && CONF+=("--with-webkit=qtwebengine")
-		use webengine || CONF+=("--with-webkit=qtwebkit")
-	fi
-
-	elog ./configure "${CONF[@]}"
-	./configure "${CONF[@]}"
+	econf "${CONF[@]}"
 
 	eqmake5 psi.pro
 }
 
 src_compile() {
 	emake
-
-	if use doc; then
-		cd doc
-		make api_public || die "make api_public failed"
-	fi
+	use doc && emake -C doc api_public
 }
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 
 	# this way the docs will be installed in the standard gentoo dir
-	rm -f "${ED}"/usr/share/${MY_PN}/{COPYING,README}
+	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README} || die "Installed file set seems to be changed by upstream"
 	newdoc iconsets/roster/README README.roster
 	newdoc iconsets/system/README README.system
 	newdoc certs/README README.certs
 	dodoc README
 
-	use doc && dohtml -r doc/api
+	local HTML_DOCS=( doc/api )
+	einstalldocs
 
 	# install translations
 	local mylrelease="$(qt5_get_bindir)"/lrelease
-	cd "${WORKDIR}/psi-l10n"
+	cd "${WORKDIR}/psi-l10n" || die
 	insinto /usr/share/${MY_PN}
 	install_locale() {
-		if use extras; then
-			"${mylrelease}" "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
-			doins "translations/${PN}_${1}.qm"
-		else
-			# PLOCALES are set from Psi+. So we don't want to fail here if no locale
-			if [ -f "${x}/${PN}_${1}.ts" ]; then
-				"${mylrelease}" "${x}/${PN}_${1}.ts" || die "lrelease ${1} failed"
-				doins "${x}/${PN}_${1}.qm"
-			else
-				ewarn "Unfortunately locale \"${1}\" is supported for Psi+ only"
-			fi
-		fi
+		"${mylrelease}" "translations/${PN}_${1}.ts" || die "lrelease ${1} failed"
+		doins "translations/${PN}_${1}.qm"
 	}
 	l10n_for_each_locale_do install_locale
 }

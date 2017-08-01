@@ -12,7 +12,6 @@
 		<flag name='extras'>Enable Psi+ patcheset</flag>
 		<flag name='hunspell'>Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
 		<flag name='iconsets'>Install additional iconsets, some of them has not clear licensing</flag>
-		<flag name='plugins'>Enable plugins support</flag>
 		<flag name='sql'>Enable psi-new-history extras patch</flag>
 		<flag name='webengine'>Use <pkg>dev-qt/qtwebengine</pkg> instead of <pkg>dev-qt/qtwebkit</pkg></flag>
 		<flag name='webkit'>Enable themed, html-based chatlogs</flag>
