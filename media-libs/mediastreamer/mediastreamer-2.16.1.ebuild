@@ -59,7 +59,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-proto/videoproto )"
 
 PDEPEND="amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
-	g729? ( !bindist? ( media-plugins/mediastreamer-bcg729 ) )
+	g729? ( !bindist? ( media-libs/bcg729 ) )
 	ilbc? ( media-plugins/mediastreamer-ilbc )
 	video? ( x264? ( media-plugins/mediastreamer-x264 ) )
 	silk? ( !bindist? ( media-plugins/mediastreamer-silk ) )"
@@ -127,6 +127,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable filters)
 		$(use_enable g726 spandsp)
+		$(use_enable g729)
 		$(use_enable gsm)
 		$(use_enable ntp-timestamp)
 		$(use_enable opengl glx)
