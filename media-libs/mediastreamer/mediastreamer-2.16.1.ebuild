@@ -26,17 +26,18 @@ REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
 	v4l? ( video )
 	opengl? ( video )"
 
-RDEPEND="net-libs/libsrtp:0
+RDEPEND=">=net-libs/bctoolbox-0.6.0
+	net-libs/libsrtp:0
 	alsa? ( media-libs/alsa-lib )
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
 	gsm? ( media-sound/gsm )
 	opus? ( media-libs/opus )
-	ortp? ( >=net-libs/ortp-1 )
+	ortp? ( >=net-libs/ortp-1.0.2 )
 	pcap? ( sys-libs/libcap )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	speex? ( media-libs/speex media-libs/speexdsp )
-	upnp? ( net-libs/libupnp:* )
+	upnp? ( net-libs/libupnp:0 )
 	video? (
 		libav? ( media-video/libav:0/11 )
 
@@ -105,7 +106,8 @@ src_prepare() {
 
 	epatch \
 		"${FILESDIR}/${PN}-underlinking.patch" \
-		"${FILESDIR}/${PN}-xxd.patch"
+		"${FILESDIR}/${PN}-xxd.patch" \
+		"${FILESDIR}/${PN}-gitversion.patch"
 
 	eautoreconf
 }

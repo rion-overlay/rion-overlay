@@ -18,10 +18,10 @@ REQUIRED_USE="assistant? ( gtk )
 	libnotify? ( gtk )"
 
 RDEPEND="
-	>=media-libs/mediastreamer-2.15.0[upnp?,video?]
+	>=media-libs/mediastreamer-2.16.0[upnp?,video?]
 	>=net-libs/ortp-0.24.0
 	net-libs/bctoolbox
-	>=net-voip/belle-sip-1.6
+	>=net-voip/belle-sip-1.6.3
 	virtual/udev
 	gtk? (
 		dev-libs/glib:2
@@ -42,7 +42,7 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	tools? ( dev-libs/libxml2 )
 	upnp? ( net-libs/libupnp:0 )
-	vcard? ( net-voip/belcard )
+	vcard? ( >=net-voip/belcard-1.0.2 )
 	video? ( >=media-libs/mediastreamer-2.15.0[v4l] )
 	zlib? ( sys-libs/zlib )
 	zrtp? ( media-libs/bzrtp )
@@ -98,7 +98,7 @@ src_configure() {
 		$(use_enable upnp)
 		$(use_enable gtk gtk_ui)
 		$(use_enable libnotify notify)
-		--enable-lime
+		$(use_enable zrtp lime)
 		$(use_enable ipv6)
 		--disable-truespeech
 		$(use_enable gsm-nonstandard nonstandard-gsm)
