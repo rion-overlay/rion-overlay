@@ -83,6 +83,9 @@ src_prepare() {
 		-e "s:found_polarssl=no:found_polarssl=yes:" \
 		configure.ac || die "patching configure.ac failed"
 
+	# another workaround for upstream bug
+	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > ${S}/coreapi/gitversion.h
+
 	eautoreconf
 }
 
