@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit cmake-utils
 
 DESCRIPTION="Mediastreaming library for telephony application"
 HOMEPAGE="http://www.linphone.org/"
@@ -15,9 +15,9 @@ KEYWORDS="~amd64 ~x86"
 # Many cameras will not work or will crash an application if mediastreamer2 is
 # not built with v4l2 support (taken from configure.ac)
 # TODO: run-time test for ipv6: does it really need ortp[ipv6] ?
-IUSE="+alsa amr bindist coreaudio debug doc examples +filters g726 g729 gsm ilbc
-	ipv6 libav ntp-timestamp opengl opus +ortp oss pcap portaudio pulseaudio sdl
-	silk +speex static-libs test theora upnp v4l video vpx x264 X"
+IUSE="+alsa amr bindist bv16 coreaudio debug doc examples +filters g726 g729 gsm ilbc
+	ipv6 jpeg libav mkv ntp-timestamp opengl opus +ortp oss pcap portaudio pulseaudio sdl
+	silk +speex static-libs test theora tools upnp v4l video vpx x264 X"
 
 REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
 	video? ( || ( opengl sdl X ) )
@@ -27,6 +27,7 @@ REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
 	opengl? ( video )"
 
 RDEPEND=">=net-libs/bctoolbox-0.6.0
+	media-libs/bzrtp
 	net-libs/libsrtp:0
 	alsa? ( media-libs/alsa-lib )
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
@@ -107,62 +108,43 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}/${PN}-underlinking.patch" \
 		"${FILESDIR}/${PN}-xxd.patch" \
-		"${FILESDIR}/${PN}-gitversion.patch"
+		"${FILESDIR}/${PN}-gitversion.patch" \
+		"${FILESDIR}/${PN}-gitversion2.patch" # second one because of cmake
 
-	eautoreconf
+	cmake-utils_src_prepare
 }
 
 src_configure() {
-	local myeconfargs=(
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
-		--datadir="${EPREFIX}"/usr/share/${PN}
-		# arts is deprecated
-		--disable-artsc
-		# don't want -Werror
-		--disable-strict
-		--disable-libv4l1
-		# don't use bundled libs
-		--enable-external-ortp
-		$(use_enable alsa)
-		$(use_enable pulseaudio)
-		$(use_enable coreaudio macsnd)
-		$(use_enable debug)
-		$(use_enable filters)
-		$(use_enable g726 spandsp)
-		$(use_enable g729)
-		$(use_enable gsm)
-		$(use_enable ntp-timestamp)
-		$(use_enable opengl glx)
-		$(use_enable opus)
-		$(use_enable ortp)
-		$(use_enable oss)
-		$(use_enable pcap)
-		$(use_enable portaudio)
-		$(use_enable speex)
-		$(use_enable static-libs static)
-		$(use_enable theora)
-		$(use_enable upnp)
-		$(use_enable video)
-		$(use_enable vpx vp8)
-		$(use_enable v4l)
-		$(use_enable v4l libv4l2)
-		$(use_enable sdl)
-		$(use_enable X x11)
-		$(use_enable X xv)
-
-		$(use doc || echo ac_cv_path_DOXYGEN=false)
+	local mycmakeargs=(
+		-DENABLE_SHARED=ON
+		-DENABLE_STATIC=$(usex static-libs)
+		-DENABLE_DEBUG_LOGS=$(usex debug)
+		-DENABLE_DOC=$(usex doc)
+		-DENABLE_NON_FREE_CODECS=ON
+		-DENABLE_PCAP=$(usex pcap)
+		-DENABLE_STRICT=OFF
+		-DENABLE_TOOLS=$(usex tools)
+		-DENABLE_UNIT_TESTS=$(usex test)
+		-DENABLE_SRTP=ON
+		-DENABLE_SOUND=ON
+		-DENABLE_G726=$(usex g726)
+		-DENABLE_GSM=$(usex gsm)
+		-DENABLE_BV16=$(usex bv16)
+		-DENABLE_OPUS=$(usex opus)
+		-DENABLE_SPEEX_CODEC=$(usex speex)
+		-DENABLE_SPEEX_DSP=$(usex speex)
+		-DENABLE_G729=$(usex g729)
+		-DENABLE_G729B_CNG=$(usex g729)
+		-DENABLE_VIDEO=$(usex video)
+		-DENABLE_MKV=$(usex mkv)
+		-DENABLE_JPEG=$(usex jpeg)
 	)
 
-	# Mac OS X Audio Queue is an audio recording facility, available on
-	# 10.5 (Leopard, Darwin9) and onward
-	if use coreaudio && [[ ${CHOST} == *-darwin* && ${CHOST##*-darwin} -ge 9 ]]
-	then
-		myeconfargs+=( --enable-macaqsnd )
-	else
-		myeconfargs+=( --disable-macaqsnd )
-	fi
+	# Other options
+	#	-DENABLE_FIXED_POINT=$(usex point)
+	#	-DENABLE_RELATIVE_PREFIX=$(usex prefix)
 
-	econf "${myeconfargs[@]}"
+	cmake-utils_src_configure
 }
 
 src_test() {
@@ -172,8 +154,7 @@ src_test() {
 }
 
 src_install() {
-	default
-	prune_libtool_files
+	cmake-utils_src_install
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples

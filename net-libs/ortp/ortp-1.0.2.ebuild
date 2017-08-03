@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils autotools
+inherit cmake-utils
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="http://www.linphone.org/"
@@ -11,7 +11,7 @@ SRC_URI="http://www.linphone.org/releases/sources/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/9"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc examples minimal ntp-timestamp"
+IUSE="debug doc examples ntp-timestamp"
 
 RDEPEND="
 	>=net-libs/bctoolbox-0.6
@@ -23,44 +23,23 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P}-0"
 
-src_prepare() {
-	default
-	# ${P} is added after ${docdir}
-	if use doc; then
-		sed -i -e 's/$(docdir)\/$(PACKAGE)-$(VERSION)/$(docdir)/' Makefile.am \
-			|| die "patching Makefile.am failed"
-	fi
-	eautoreconf
-}
-
 src_configure() {
-	local myeconfargs=(
-		# memcheck is for HP-UX only
-		--disable-memcheck
-		# mode64bit adds +DA2.0W +DS2.0 CFLAGS wich are needed for HP-UX
-		--disable-mode64bit
-		# strict adds -Werror, do not want it
-		--disable-strict
-		--enable-fast-install
-		--enable-libtool-lock
-
-		$(use_enable debug)
-		$(use_enable minimal perf)
-		$(use_enable ntp-timestamp)
-
-		$(use doc || echo ac_cv_path_DOXYGEN=false)
+	local mycmakeargs=(
+		-DENABLE_SHARED=ON
+		-DENABLE_STATIC=OFF
+		-DENABLE_DOC=$(usex doc)
+		-DENABLE_NTP_TIMESTAMP=$(usex ntp-timestamp)
+		-DENABLE_PERF=OFF
+		-DENABLE_STRICT=OFF
+		-DENABLE_TESTS=OFF
+		-DENABLE_DEBUG_LOGS=$(usex debug)
 	)
-
-	econf "${myeconfargs[@]}"
+	
+	cmake-utils_src_configure
 }
 
 src_install() {
-	emake DESTDIR="${D}" pkgdocdir="${EPREFIX}"/usr/share/doc/${PF} \
-		install
-
-	einstalldocs
-
-	prune_libtool_files
+	cmake-utils_src_install
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples

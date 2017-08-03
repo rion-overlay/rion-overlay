@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit cmake-utils
 
 DESCRIPTION="Belledonne Communications' language recognition library"
 HOMEPAGE="https://savannah.nongnu.org/projects/linphone/"
@@ -18,8 +18,3 @@ DEPEND="net-libs/bctoolbox"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}-0"
-
-src_prepare() {
-	default
-	eautoreconf
-}

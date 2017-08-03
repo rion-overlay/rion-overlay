@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit cmake-utils
 
 DESCRIPTION="Utilities library used by Belledonne Communications softwares"
 HOMEPAGE="https://savannah.nongnu.org/projects/linphone/"
@@ -14,11 +14,6 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
 
-DEPEND="dev-util/bcunit
+DEPEND=">=dev-util/bcunit-3.0.2
 	net-libs/mbedtls"
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	default
-	eautoreconf
-}

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit cmake-utils
 
 DESCRIPTION="C object oriented SIP Stack."
 HOMEPAGE="http://www.linphone.org/technical-corner/belle-sip/overview"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
 
-IUSE="debug examples test +tls -tunnel +zlib"
+IUSE="examples test -tunnel"
 REQUIRED_USE=""
 
 DEPEND="${RDEPEND}
@@ -27,22 +27,19 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P}-0"
 
-src_prepare() {
-	default
-	sed -i -e 's,-Werror,,' configure.ac || die
-	eautoreconf
-}
-
 src_configure() {
-	local myeconfargs=(
-		$(use_enable debug)
-		$(use_enable tls)
-		$(use_enable tunnel)
-		$(use_enable test tests)
-		$(use_enable zlib)
+	local mycmakeargs=(
+		-DENABLE_SHARED=ON
+		-DENABLE_STATIC=OFF
+		-DENABLE_STRICT=OFF
+		-DENABLE_TUNNEL=$(usex tunnel)
+		-DENABLE_TESTS=$(usex test)
 	)
 
-	econf "${myeconfargs[@]}"
+	# other options
+	#	-DENABLE_RTP_MAP_ALWAYS_IN_SDP=$(usex sdp)
+
+	cmake-utils_src_configure
 }
 
 src_test() {
@@ -52,8 +49,7 @@ src_test() {
 }
 
 src_install() {
-	default
-	prune_libtool_files
+	cmake-utils_src_install
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
