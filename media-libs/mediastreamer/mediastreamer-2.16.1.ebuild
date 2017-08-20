@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 # not built with v4l2 support (taken from configure.ac)
 # TODO: run-time test for ipv6: does it really need ortp[ipv6] ?
 IUSE="+alsa amr bindist bv16 coreaudio debug doc examples +filters g726 g729 gsm ilbc
-	ipv6 jpeg libav mkv ntp-timestamp opengl opus +ortp oss pcap portaudio pulseaudio sdl
+	ipv6 jpeg libav matroska ntp-timestamp opengl opus +ortp oss pcap portaudio pulseaudio sdl
 	silk +speex static-libs test theora tools upnp v4l video vpx x264 X"
 
 REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
@@ -32,6 +32,7 @@ RDEPEND=">=net-libs/bctoolbox-0.6.0
 	alsa? ( media-libs/alsa-lib )
 	g726? ( >=media-libs/spandsp-0.0.6_pre1 )
 	gsm? ( media-sound/gsm )
+	matroska? ( >=media-libs/bcmatroska2-0.23 )
 	opus? ( media-libs/opus )
 	ortp? ( >=net-libs/ortp-1.0.2 )
 	pcap? ( sys-libs/libcap )
@@ -51,6 +52,7 @@ RDEPEND=">=net-libs/bctoolbox-0.6.0
 		sdl? ( media-libs/libsdl[video,X] )
 		X? ( x11-libs/libX11
 			x11-libs/libXv ) )"
+
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	app-editors/vim-core
@@ -136,7 +138,7 @@ src_configure() {
 		-DENABLE_G729=$(usex g729)
 		-DENABLE_G729B_CNG=$(usex g729)
 		-DENABLE_VIDEO=$(usex video)
-		-DENABLE_MKV=$(usex mkv)
+		-DENABLE_MKV=$(usex matroska)
 		-DENABLE_JPEG=$(usex jpeg)
 	)
 

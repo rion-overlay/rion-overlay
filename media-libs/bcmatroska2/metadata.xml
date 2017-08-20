@@ -5,7 +5,4 @@
 		<email>rion4ik@gmail.com</email>
 		<name>Sergey Ilinykh</name>
 	</maintainer>
-	<use>
-		<flag name='tunnel'>Enable proprietary tunnel (wtf?)</flag>
-	</use>
 </pkgmetadata>

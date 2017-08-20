@@ -34,7 +34,7 @@ src_configure() {
 		-DENABLE_TESTS=OFF
 		-DENABLE_DEBUG_LOGS=$(usex debug)
 	)
-	
+
 	cmake-utils_src_configure
 }
 

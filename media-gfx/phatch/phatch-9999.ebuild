@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit versionator distutils-r1 fdo-mime git-r3
+inherit versionator distutils-r1 xdg-utils git-r3
 
 DESCRIPTION="Phatch is a simple to use cross-platform GUI Photo Batch Processor"
 HOMEPAGE="http://photobatch.stani.be/"
@@ -28,11 +28,11 @@ S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_postinst()
 {
-	fdo-mime_mime_database_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

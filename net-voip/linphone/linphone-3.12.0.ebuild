@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # TODO: run-time test for ipv6: does it need mediastreamer[ipv6]?
-IUSE="assistant -doc gsm-nonstandard gtk ipv6 ldap libnotify -ncurses nls +sqlite tools tunnel upnp vcard video zlib zrtp"
+IUSE="assistant -doc gsm-nonstandard gtk ipv6 ldap libnotify -ncurses nls +sqlite tools upnp vcard video zlib"
 # w/o sqlite it most likely will crash
 REQUIRED_USE="assistant? ( gtk )
 	libnotify? ( gtk )"
@@ -24,6 +24,7 @@ RDEPEND="
 	net-libs/bctoolbox
 	>=net-voip/belle-sip-1.6.3
 	virtual/udev
+	media-libs/bzrtp
 	gtk? (
 		dev-libs/glib:2
 		>=gnome-base/libglade-2.4.0:2.0
@@ -46,7 +47,6 @@ RDEPEND="
 	vcard? ( >=net-voip/belcard-1.0.2 )
 	video? ( >=media-libs/mediastreamer-2.15.0[v4l] )
 	zlib? ( sys-libs/zlib )
-	zrtp? ( media-libs/bzrtp )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -73,8 +73,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-no-cam-crash-fix.patch
 
 	# another workaround for upstream bug
-	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > ${S}/coreapi/gitversion.h
-	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > ${S}/coreapi/liblinphone_gitversion.h
+	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > "${S}"/coreapi/gitversion.h
+	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > "${S}"/coreapi/liblinphone_gitversion.h
 
 	cmake-utils_src_prepare
 }
@@ -101,7 +101,6 @@ src_configure() {
 		-DENABLE_ROOTCA_DOWNLOAD=ON
 		-DENABLE_CXX_WRAPPER=OFF
 		-DENABLE_CSHARP_WRAPPER=OFF
-		-DENABLE_TUNNEL=$(usex tunnel)
 	)
 
 	# cxx wrapper is broken in 3.12.0
@@ -111,6 +110,7 @@ src_configure() {
 	#	-DENABLE_DATE=$(usex date)
 	#	-DENABLE_DAEMON=$(usex daemon)
 	#	-DENABLE_RELATIVE_PREFIX=$(usex prefix)
+	#	-DENABLE_TUNNEL=$(usex tunnel)
 
 	cmake-utils_src_configure
 }
