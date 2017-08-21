@@ -1,12 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit git-2 autotools
+inherit git-r3 autotools
 
 DESCRIPTION="Very simple layout switcher"
-HOMEPAGE="http://github.com/qnikst/kbdd"
+HOMEPAGE="https://github.com/qnikst/kbdd"
 SRC_URI=""
 
 EGIT_REPO_URI="git://github.com/qnikst/kbdd.git

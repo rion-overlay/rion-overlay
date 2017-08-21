@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Quick(Qt) Online Music Player - one player for different online music hostings"
-HOMEPAGE="http://sourceforge.net/projects/qomp/"
+HOMEPAGE="https://sourceforge.net/projects/qomp/"
 SLOT="0"
 LICENSE="GPL-3"
 

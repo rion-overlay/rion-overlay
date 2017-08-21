@@ -8,7 +8,7 @@ case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 inherit qmake-utils ${VCS_ECLASS}
 
 DESCRIPTION="Metro/subway map and route computation software."
-HOMEPAGE="http://sourceforge.net/projects/qmetro/"
+HOMEPAGE="https://sourceforge.net/projects/qmetro/"
 
 if [ -n "${VCS_ECLASS}" ]; then
 	KEYWORDS=""

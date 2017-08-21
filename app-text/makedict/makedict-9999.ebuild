@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_6,2_7} )
 inherit cmake-utils python-single-r1 git-r3
 
 DESCRIPTION="Dictionary converter"
-HOMEPAGE="http://sourceforge.net/projects/xdxf/"
+HOMEPAGE="https://sourceforge.net/projects/xdxf/"
 
 EGIT_REPO_URI="https://github.com/soshial/xdxf_makedict"
 

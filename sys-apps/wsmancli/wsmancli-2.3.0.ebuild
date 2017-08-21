@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Opensource Implementation of WS-Management - Command line utility"
 HOMEPAGE="http://sourceforge.net/projects/openwsman/"
@@ -23,11 +23,17 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	test? ( dev-util/cunit )
 	"
+
+src_prepare() {
+	eautoreconf
+	eapply_user
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_with test)
 		$(use_with examples)
 		)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 # TODO patch vconfigure option to work exmaples=yes
