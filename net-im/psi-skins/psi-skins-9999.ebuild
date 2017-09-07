@@ -18,7 +18,7 @@ src_unpack() {
 	if use themes; then
 		EGIT_DIR="${EGIT_STORE_DIR}/psi-plus/resources" \
 		EGIT_CHECKOUT_DIR="${WORKDIR}/resources" \
-		EGIT_REPO_URI="git://github.com/psi-plus/resources.git" git-r3_src_unpack
+		EGIT_REPO_URI="https://github.com/psi-plus/resources.git" git-r3_src_unpack
 	fi
 }
 

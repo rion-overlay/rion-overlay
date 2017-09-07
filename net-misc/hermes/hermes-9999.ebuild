@@ -9,7 +9,7 @@ inherit distutils-r1 git-r3 ssl-cert user
 DESCRIPTION="The great messenger of the gods"
 HOMEPAGE="https://github.com/Ri0n/Hermes"
 
-EGIT_REPO_URI="git://github.com/Ri0n/Hermes.git"
+EGIT_REPO_URI="https://github.com/Ri0n/Hermes.git"
 
 LICENSE="GPL-3"
 SLOT="0"

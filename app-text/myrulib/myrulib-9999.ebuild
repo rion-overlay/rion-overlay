@@ -8,7 +8,7 @@ inherit eutils wxwidgets git-r3
 
 DESCRIPTION="E-book collection manager"
 HOMEPAGE="http://www.lintest.ru/wiki/MyRuLib"
-EGIT_REPO_URI="git://github.com/lintest/myrulib"
+EGIT_REPO_URI="https://github.com/lintest/myrulib"
 
 LICENSE="GPL-3"
 SLOT="0"

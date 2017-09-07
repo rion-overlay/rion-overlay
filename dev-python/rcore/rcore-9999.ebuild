@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Just an core for all rion's projects"
 HOMEPAGE="http://dev.brocompany.com/"
-EGIT_REPO_URI="git://github.com/Ri0n/rcore.git"
+EGIT_REPO_URI="https://github.com/Ri0n/rcore.git"
 
 LICENSE="GPL-3"
 SLOT="0"

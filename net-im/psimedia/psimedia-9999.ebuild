@@ -7,7 +7,7 @@ inherit cmake-utils multilib eutils git-r3
 
 DESCRIPTION="Psi plugin for voice/video calls"
 HOMEPAGE="http://delta.affinix.com/psimedia/"
-EGIT_REPO_URI="git://github.com/psi-plus/psimedia.git"
+EGIT_REPO_URI="https://github.com/psi-plus/psimedia.git"
 
 LICENSE="GPL-2"
 SLOT="0"

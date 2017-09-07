@@ -7,7 +7,7 @@ inherit cmake-utils git-r3
 
 DESCRIPTION="Qt4 torrent passkey changer"
 HOMEPAGE="http://panter-dsd.github.com/PasskeyChanger"
-EGIT_REPO_URI="git://github.com/panter-dsd/PasskeyChanger.git"
+EGIT_REPO_URI="https://github.com/panter-dsd/PasskeyChanger.git"
 
 LICENSE="GPL-3"
 SLOT="0"

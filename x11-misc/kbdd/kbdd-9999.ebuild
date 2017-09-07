@@ -9,8 +9,7 @@ DESCRIPTION="Very simple layout switcher"
 HOMEPAGE="https://github.com/qnikst/kbdd"
 SRC_URI=""
 
-EGIT_REPO_URI="git://github.com/qnikst/kbdd.git
-			https://github.com/qnikst/kbdd.git"
+EGIT_REPO_URI="https://github.com/qnikst/kbdd.git"
 
 LICENSE="GPL-2"
 SLOT="0"
