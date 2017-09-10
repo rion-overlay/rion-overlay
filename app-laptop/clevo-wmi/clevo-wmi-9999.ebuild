@@ -7,7 +7,7 @@ inherit git-r3 linux-mod
 
 DESCRIPTION="WMI driver for Clevo laptops"
 HOMEPAGE="http://forum.notebookreview.com/linux-compatibility-software/708796-clevo-p150em-p170em-sager-np9150-9170-backlit-keyboard-driver-beta-testers-needed.html"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,11 @@
+app-admin/openwbem
+dev-libs/sblim-cmpi-devel
+dev-libs/sblim-indication_helper
+dev-libs/sblim-sfcCommon
+dev-libs/sblim-sfcc
+sci-libs/geographiclib
+sys-apps/sblim-cmpi-base
+sys-apps/sblim-cmpi-fsvol
+sys-apps/sblim-gather
+dev-libs/sblim-cmpi-devel
+app-admin/sblim-sfcb

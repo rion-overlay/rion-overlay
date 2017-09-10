@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools-utils
 
 DESCRIPTION="SBLIM CMPI Provider Development Support"
-HOMEPAGE="http://sourceforge.net/projects/sblim/"
+HOMEPAGE="https://sourceforge.net/projects/sblim/"
 SRC_URI="mirror://sourceforge/project/sblim/development%20pkgs/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="EPL-1.0"

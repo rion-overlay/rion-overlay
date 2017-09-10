@@ -11,7 +11,7 @@ DESCRIPTION="Psi plugin for OTR message ecnryption"
 HOMEPAGE="http://public.tfh-berlin.de/~s30935/"
 SRC_URI="http://psi-dev.googlecode.com/files/${MY_PN}-${PV}-src.tar.gz"
 
-KEYWORDS="" # TODO set keywords after psi release
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="

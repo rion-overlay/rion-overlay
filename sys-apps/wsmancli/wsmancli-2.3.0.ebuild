@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Opensource Implementation of WS-Management - Command line utility"
-HOMEPAGE="http://sourceforge.net/projects/openwsman/"
+HOMEPAGE="https://sourceforge.net/projects/openwsman/"
 SRC_URI="mirror://sourceforge/project/openwsman/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
