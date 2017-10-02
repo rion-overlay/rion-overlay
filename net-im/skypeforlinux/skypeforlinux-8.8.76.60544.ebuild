@@ -9,7 +9,7 @@ inherit pax-utils rpm multilib-build xdg-utils
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
 HOMEPAGE="https://www.skype.com/"
-SRC_URI="https://repo.skype.com/latest/skypeforlinux-64-insider.rpm -> ${P}.rpm"
+SRC_URI="https://repo.skype.com/latest/skypeforlinux-64-insider.rpm -> ${PN}_x64-${PV}.rpm"
 
 LICENSE="Skype-TOS no-source-code"
 SLOT="0"
