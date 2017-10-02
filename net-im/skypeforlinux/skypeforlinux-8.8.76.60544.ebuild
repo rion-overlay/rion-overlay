@@ -65,7 +65,7 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /opt/skypeforlinux/locales
+	insinto /opt/${PN}/locales
 	doins usr/share/skypeforlinux/locales/*.pak
 
 	insinto /opt/skypeforlinux
@@ -93,7 +93,7 @@ src_install() {
 
 	local res
 	for res in 16 32 256 512; do
-		newicon -s ${res} usr/share/icons/hicolor/${res}x${res}/apps/skypeforlinux.png skypeforlinux.png
+		newicon -s ${res} usr/share/icons/hicolor/${res}x${res}/apps/${PN}.png ${PN}.png
 	done
 
 	domenu usr/share/applications/skypeforlinux.desktop
