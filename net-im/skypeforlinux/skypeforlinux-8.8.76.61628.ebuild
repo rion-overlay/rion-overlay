@@ -5,11 +5,11 @@ EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit pax-utils rpm multilib-build xdg-utils
+inherit pax-utils rpm multilib-build xdg-utils gnome2-utils
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
 HOMEPAGE="https://www.skype.com/"
-SRC_URI="https://repo.skype.com/latest/skypeforlinux-64-insider.rpm -> ${PN}_x64-${PV}.rpm"
+SRC_URI="https://repo.skype.com/latest/${PN}-64-insider.rpm -> ${PN}_x64-${PV}.rpm"
 
 LICENSE="Skype-TOS no-source-code"
 SLOT="0"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="pax_kernel"
 
 S="${WORKDIR}"
-QA_PREBUILT=opt/skypeforlinux/skypeforlinux
+QA_PREBUILT=opt/${PN}/${PN}
 RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="dev-libs/atk[${MULTILIB_USEDEP}]
@@ -57,49 +57,49 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EPREFIX}/opt/skypeforlinux/skypeforlinux!" \
-		-i usr/bin/skypeforlinux || die
-	sed -e "s!^Exec=.*!Exec=${EPREFIX}/opt/bin/skypeforlinux!" \
+	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EPREFIX}/opt/${PN}/${PN}!" \
+		-i usr/bin/${PN} || die
+	sed -e "s!^Exec=.*!Exec=${EPREFIX}/opt/bin/${PN}!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
-		-i usr/share/applications/skypeforlinux.desktop || die
+		-i usr/share/applications/${PN}.desktop || die
 }
 
 src_install() {
-	insinto /opt/skypeforlinux/locales
-	doins usr/share/skypeforlinux/locales/*.pak
+	insinto /opt/${PN}/locales
+	doins usr/share/${PN}/locales/*.pak
 
-	insinto /opt/skypeforlinux
-	doins -r usr/share/skypeforlinux/resources
+	insinto /opt/${PN}
+	doins -r usr/share/${PN}/resources
 
-	insinto /opt/skypeforlinux/resources
-	doins usr/share/skypeforlinux/resources/*.asar
+	insinto /opt/${PN}/resources
+	doins usr/share/${PN}/resources/*.asar
 
-	insinto /opt/skypeforlinux
-	doins usr/share/skypeforlinux/*.pak
-	doins usr/share/skypeforlinux/*.bin
-	doins usr/share/skypeforlinux/*.dat
-	doins usr/share/skypeforlinux/*.html
-	doins usr/share/skypeforlinux/version
-	exeinto /opt/skypeforlinux
-	doexe usr/share/skypeforlinux/*.so
-	doexe usr/share/skypeforlinux/skypeforlinux
+	insinto /opt/${PN}
+	doins usr/share/${PN}/*.pak
+	doins usr/share/${PN}/*.bin
+	doins usr/share/${PN}/*.dat
+	doins usr/share/${PN}/*.html
+	doins usr/share/${PN}/version
+	exeinto /opt/${PN}
+	doexe usr/share/${PN}/*.so
+	doexe usr/share/${PN}/${PN}
 
 	into /opt
-	dobin usr/bin/skypeforlinux
+	dobin usr/bin/${PN}
 
-	dodoc -r usr/share/doc/skypeforlinux/.
+	dodoc -r usr/share/doc/${PN}/.
 
-	doicon usr/share/pixmaps/skypeforlinux.png
+	doicon usr/share/pixmaps/${PN}.png
 
 	local res
 	for res in 16 32 256 512; do
-		newicon -s ${res} usr/share/icons/hicolor/${res}x${res}/apps/skypeforlinux.png skypeforlinux.png
+		newicon -s ${res} usr/share/icons/hicolor/${res}x${res}/apps/${PN}.png ${PN}.png
 	done
 
-	domenu usr/share/applications/skypeforlinux.desktop
+	domenu usr/share/applications/${PN}.desktop
 
 	if use pax_kernel; then
-		pax-mark -Cm "${ED%/}"/opt/skypeforlinux/skypeforlinux
+		pax-mark -Cm "${ED%/}"/opt/${PN}/${PN}
 		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
@@ -109,11 +109,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
