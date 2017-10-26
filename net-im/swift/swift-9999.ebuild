@@ -1,17 +1,19 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 SCONS_MIN_VERSION="1.2"
-LANGS=" ca de es fr hu nl pl ru se sk"
+LANGS=" ca cs de es fr gl he hu nl pl ru se sk sv"
 
-[[ ${PV} = *9999* ]] && VCS_ECLASS="git-2" || VCS_ECLASS=""
+[[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 
 inherit scons-utils toolchain-funcs ${VCS_ECLASS}
 
-DESCRIPTION="Qt4 jabber (xmpp) client"
+DESCRIPTION="Qt5 jabber (xmpp) client"
 HOMEPAGE="http://swift.im/"
 if [[ ${PV} == *9999* ]]; then
+	branch="${PV/9999/}"
+	[ -n "${branch}" ] && EGIT_BRANCH="swift-${branch}x"
 	EGIT_REPO_URI="git://swift.im/${PN}"
 else
 	SRC_URI="http://swift.im/downloads/releases/${P}/${P}.tar.gz"
@@ -33,8 +35,9 @@ RDEPEND="
 	>=dev-libs/openssl-0.9.8g
 	>=net-dns/libidn-1.10
 	>=x11-libs/libXScrnSaver-1.2
-	>=dev-qt/qtgui-4.5:4
-	>=dev-qt/qtwebkit-4.5:4
+	dev-qt/qtgui:5
+	dev-qt/qtwebkit:5
+	dev-qt/qtwidgets:5
 	dev-libs/libxml2
 	>=dev-libs/expat-2.0.1
 	sys-libs/zlib
@@ -48,11 +51,6 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	mkdir "${WORKDIR}/qt4" || die
-	for d in include lib share; do
-		ln -s "${EPREFIX}/usr/${d}/qt4" "${WORKDIR}/qt4/${d}" || die
-	done
-
 	pushd 3rdParty || die
 	# TODO CppUnit, Lua
 	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib || die
@@ -63,6 +61,8 @@ src_prepare() {
 			rm -f Swift/Translations/swift_${x}.ts || die
 		fi
 	done
+
+	eapply_user
 }
 
 src_compile() {
@@ -72,10 +72,10 @@ src_compile() {
 		ccflags="${CFLAGS}"
 		linkflags="${LDFLAGS}"
 		allow_warnings=1
-		ccache=1
+		ccache=no
 		distcc=1
-		$(use_scons debug)
-		qt="${WORKDIR}/qt4"
+		qt5=1
+		debug=$(usex debug)
 		openssl="${EPREFIX}/usr"
 		docbook_xsl="${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets"
 		docbook_xml="${EPREFIX}/usr/share/sgml/docbook/xml-dtd-4.5"
