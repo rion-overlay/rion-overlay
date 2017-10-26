@@ -7,7 +7,7 @@ LANGS=" ca cs de es fr gl he hu nl pl ru se sk sv"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 
-inherit scons-utils toolchain-funcs ${VCS_ECLASS}
+inherit scons-utils toolchain-funcs gnome2-utils ${VCS_ECLASS}
 
 DESCRIPTION="Qt5 jabber (xmpp) client"
 HOMEPAGE="http://swift.im/"
@@ -26,14 +26,13 @@ if [[ ${PV} != *9999* ]]; then
 else
 	KEYWORDS=""
 fi
-IUSE="avahi debug doc test"
+IUSE="avahi debug hunspell icu test"
 IUSE+="${LANGS// / linguas_}"
 
 RDEPEND="
 	avahi? ( net-dns/avahi )
 	>=dev-libs/boost-1.42
 	>=dev-libs/openssl-0.9.8g
-	>=net-dns/libidn-1.10
 	>=x11-libs/libXScrnSaver-1.2
 	dev-qt/qtgui:5
 	dev-qt/qtwebkit:5
@@ -41,20 +40,16 @@ RDEPEND="
 	dev-libs/libxml2
 	>=dev-libs/expat-2.0.1
 	sys-libs/zlib
+	icu? ( dev-libs/icu:= )
+	!icu? ( net-dns/libidn )
 "
-DEPEND="${RDEPEND}
-	doc? (
-		>=app-text/docbook-xsl-stylesheets-1.75
-		>=app-text/docbook-xml-dtd-4.5
-		dev-libs/libxslt
-	)
-"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
-	#rm -rf Swiften || die
+	sed -i -e 's,if env\["SCONS_STAGE"\] == "build",if False,' Swiften/SConscript
 	pushd 3rdParty || die
 	# TODO CppUnit, Lua
-	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib || die
+	rm -rf Boost CAres DocBook Expat LCov Ldns LibMiniUPnPc LibIDN LibNATPMP OpenSSL SCons SQLite Unbound ZLib || die
 	popd || die
 
 	for x in ${LANGS}; do
@@ -75,11 +70,11 @@ src_compile() {
 		allow_warnings=1
 		ccache=no
 		distcc=1
+		hunspell_enable=$(usex hunspell)
+		icu=$(usex icu)
 		qt5=1
 		debug=$(usex debug 1 0)
 		openssl="${EPREFIX}/usr"
-		docbook_xsl="${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets"
-		docbook_xml="${EPREFIX}/usr/share/sgml/docbook/xml-dtd-4.5"
 		Swift
 	)
 	use avahi && scons_vars+=( Slimber )
@@ -99,3 +94,15 @@ src_install() {
 		newbin Slimber/CLI/slimber slimber-cli
 	fi
 }
+
+pkg_postinst()
+{
+	gnome2_icon_cache_update
+	#xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	#xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
