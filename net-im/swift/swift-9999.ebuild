@@ -26,7 +26,7 @@ if [[ ${PV} != *9999* ]]; then
 else
 	KEYWORDS=""
 fi
-IUSE="avahi debug doc examples test"
+IUSE="avahi debug doc test"
 IUSE+="${LANGS// / linguas_}"
 
 RDEPEND="
@@ -51,6 +51,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	#rm -rf Swiften || die
 	pushd 3rdParty || die
 	# TODO CppUnit, Lua
 	rm -rf Boost CAres DocBook Expat LCov LibIDN OpenSSL SCons SQLite ZLib || die
@@ -75,22 +76,13 @@ src_compile() {
 		ccache=no
 		distcc=1
 		qt5=1
-		debug=$(usex debug)
+		debug=$(usex debug 1 0)
 		openssl="${EPREFIX}/usr"
 		docbook_xsl="${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets"
 		docbook_xml="${EPREFIX}/usr/share/sgml/docbook/xml-dtd-4.5"
 		Swift
 	)
 	use avahi && scons_vars+=( Slimber )
-	use examples && scons_vars+=(
-			Documentation/SwiftenDevelopersGuide/Examples
-			Limber
-			Sluift
-			Swiften/Config
-			Swiften/Examples
-			Swiften/QA
-			SwifTools
-			)
 
 	escons "${scons_vars[@]}"
 }
@@ -106,28 +98,4 @@ src_install() {
 		newbin Slimber/Qt/slimber slimber-qt
 		newbin Slimber/CLI/slimber slimber-cli
 	fi
-
-	if use examples; then
-		for i in EchoBot{1,2,3,4,5,6} EchoComponent; do
-			newbin "Documentation/SwiftenDevelopersGuide/Examples/EchoBot/${i}" "${PN}-${i}"
-		done
-
-		dobin Limber/limber
-		dobin Sluift/sluift
-		dobin Swiften/Config/swiften-config
-
-		for i in BenchTool ConnectivityTest LinkLocalTool ParserTester SendFile SendMessage; do
-			newbin "Swiften/Examples/${i}/${i}" "${PN}-${i}"
-		done
-		newbin Swiften/Examples/SendFile/ReceiveFile "${PN}-ReceiveFile"
-		use avahi && dobin Swiften/Examples/LinkLocalTool/LinkLocalTool
-
-		for i in ClientTest NetworkTest StorageTest TLSTest; do
-			newbin "Swiften/QA/${i}/${i}" "${PN}-${i}"
-		done
-
-		newbin SwifTools/Idle/IdleQuerierTest/IdleQuerierTest ${PN}-IdleQuerierTest
-	fi
-
-	use doc && dohtml "Documentation/SwiftenDevelopersGuide/Swiften Developers Guide.html"
 }
