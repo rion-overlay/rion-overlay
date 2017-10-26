@@ -8,7 +8,6 @@ PYTHON_REQ_USE="sqlite"
 
 inherit eutils python-single-r1 xdg-utils
 
-
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
 HOMEPAGE="https://apps.ankiweb.net"
 MY_P=${P/_/}

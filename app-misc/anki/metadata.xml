@@ -21,8 +21,5 @@
         <flag name="sound">
             Enable support for adding sound to cards
         </flag>
-        <flag name="mpv">
-            Play audio via mpv instead of mplayer
-        </flag>
     </use>
 </pkgmetadata>

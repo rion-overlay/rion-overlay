@@ -1,9 +1,0 @@
-# ChangeLog for dev-libs/sblim-cmpi-devel
-# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
-# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
-# $Header: $
-
-*sblim-cmpi-devel-2.0.3 (04 Jan 2013)
-
-  04 Jan 2013;  <slep@gentoo.org> +metadata.xml, +sblim-cmpi-devel-2.0.3.ebuild:
-  initial commit

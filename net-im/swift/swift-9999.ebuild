@@ -32,7 +32,7 @@ IUSE+="${LANGS// / linguas_}"
 RDEPEND="
 	avahi? ( net-dns/avahi )
 	>=dev-libs/boost-1.42
-	>=dev-libs/openssl-0.9.8g
+	dev-libs/openssl:0
 	>=x11-libs/libXScrnSaver-1.2
 	dev-qt/qtgui:5
 	dev-qt/qtwebkit:5
@@ -105,4 +105,3 @@ pkg_postrm() {
 	#xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
-
