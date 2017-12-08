@@ -24,11 +24,11 @@ DEPEND="dev-libs/glib
 			)"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/qnikst-kbdd"
-
 src_prepare() {
+	eapply_user
 	eautoreconf
 }
+
 src_configure() {
 	econf $(use_enable dbus) $(use_enable debug) || die "econf failed"
 }

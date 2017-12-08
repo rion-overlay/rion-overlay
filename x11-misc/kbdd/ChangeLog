@@ -2,6 +2,9 @@
 # Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Dec 2017; Nikolaj Šujskij <skrattaren@yandex.ru> kbdd-9999.ebuild:
+  x11-misc/kbdd: fix EGIT_REPO_URI and EAPI usage
+
   25 Jan 2013; Nikolaj Sjujskij <sterkrig@myopera.com> kbdd-9999.ebuild:
   x11-misc/kbdd: define both git:// and https:// EGIT_SRC_URIs
 
