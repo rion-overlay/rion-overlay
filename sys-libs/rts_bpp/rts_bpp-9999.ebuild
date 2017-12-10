@@ -13,11 +13,10 @@ LICENSE="GPL-2"
 KEYWORDS=""
 IUSE=""
 
-MODULE_NAMES="rts_bpp(char:)"
+MODULE_NAMES="rts_bpp(kernel/drivers/scsi:)"
 BUILD_TARGETS=" "
 
-src_prepare() {
-	default
-	sed -i -e "s/\$(shell uname -r)/${KV_FULL}/g" \
-		"${S}"/Makefile || die "sed makefile"
+pkg_setup() {
+	linux-mod_pkg_setup
+	BUILD_PARAMS="MOD_DIR=/lib/modules/${KV_FULL}"
 }
