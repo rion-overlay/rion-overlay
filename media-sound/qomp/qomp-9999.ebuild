@@ -30,14 +30,8 @@ QOMP_PLUGINS="
 	lastfmplugin
 	tunetofileplugin
 	mprisplugin
-"
-if [ -n "${VCS_ECLASS}" ]; then
-	QOMP_PLUGINS="
-	${QOMP_PLUGINS}
 	cuteradioplugin
 "
-fi
-
 IUSE="${QOMP_PLUGINS}"
 
 DEPEND="
