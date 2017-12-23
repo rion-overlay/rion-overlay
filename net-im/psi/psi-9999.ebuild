@@ -65,7 +65,7 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	extras? ( >=sys-devel/qconf-2.3 )
+	extras? ( >=sys-devel/qconf-2.4 )
 "
 PDEPEND="
 	crypt? ( app-crypt/qca[gpg] )
@@ -192,8 +192,7 @@ src_install() {
 	l10n_for_each_locale_do install_locale
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
