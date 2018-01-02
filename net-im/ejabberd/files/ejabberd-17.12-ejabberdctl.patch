@@ -10,18 +10,10 @@ instead it defaults to /dev/null on Gentoo.
 ---
 
 diff --git a/ejabberdctl.template b/ejabberdctl.template
-index 75e3d20..5e7fbdb 100755
+index 571b90b..71336c0 100755
 --- a/ejabberdctl.template
 +++ b/ejabberdctl.template
-@@ -15,6 +15,7 @@ ERL="{{erl}}"
- IEX="{{bindir}}/iex"
- EPMD="{{epmd}}"
- INSTALLUSER="{{installuser}}"
-+SHELL=/bin/sh
- 
- # check the proper system user is used
- case $(id -un) in
-@@ -81,6 +82,7 @@ fi
+@@ -82,6 +82,7 @@ fi
  ERL_LIBS={{libdir}}
  ERL_CRASH_DUMP="$LOGS_DIR"/erl_crash_$(date "+%Y%m%d-%H%M%S").dump
  ERL_INETRC="$ETC_DIR"/inetrc
@@ -29,19 +21,18 @@ index 75e3d20..5e7fbdb 100755
  
  # define ejabberd parameters
  EJABBERD_OPTS="$EJABBERD_OPTS\
-@@ -104,12 +106,14 @@ export ERL_MAX_ETS_TABLES
+@@ -105,12 +106,13 @@ export ERL_MAX_ETS_TABLES
  export CONTRIB_MODULES_PATH
  export CONTRIB_MODULES_CONF_DIR
  export ERL_LIBS
 +export HOME
-+export SHELL
  
  # run command either directly or via su $INSTALLUSER
  exec_cmd()
  {
      case $EXEC_CMD in
--        as_install_user) su -c '"$0" "$@"' "$INSTALLUSER" -- "$@" ;;
-+        as_install_user) su -p -c '"$0" "$@"' "$INSTALLUSER" -- "$@" ;;
+-        as_install_user) su -s /bin/sh -c '"$0" "$@"' "$INSTALLUSER" -- "$@" ;;
++        as_install_user) su -p -s /bin/sh -c '"$0" "$@"' "$INSTALLUSER" -- "$@" ;;
          as_current_user) "$@" ;;
      esac
  }

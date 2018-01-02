@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,16 +9,16 @@ inherit eutils autotools pam rebar ssl-cert systemd
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="http://www.ejabberd.im/ https://github.com/processone/ejabberd/"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
-	-> ${P}.tar.gz"
+#SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://www.process-one.net/downloads/${PN}/${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
-IUSE="captcha debug full-xml hipe ldap mssql mysql nls odbc pam postgres redis
-	riak roster-gw sqlite zlib"
+IUSE="captcha debug full-xml graphics hipe ldap mssql mysql nls odbc pam postgres redis
+	riak roster-gw sip sqlite stun zlib"
 
 RESTRICT="test"
 
@@ -29,7 +29,6 @@ RESTRICT="test"
 # TODO: )
 CDEPEND="
 	>=dev-erlang/cache_tab-1.0.12
-	>=dev-erlang/esip-1.0.11
 	>=dev-erlang/fast_tls-1.0.11
 	>=dev-erlang/fast_xml-1.1.21
 	>=dev-erlang/fast_yaml-1.0.9
@@ -39,10 +38,10 @@ CDEPEND="
 	>=dev-erlang/p1_oauth2-0.6.1
 	>=dev-erlang/p1_utils-1.0.10
 	>=dev-erlang/stringprep-1.0.8
-	>=dev-erlang/stun-1.0.10
-	>=dev-erlang/xmpp-1.1.16
+	>=dev-erlang/xmpp-1.1.17
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
 	>=net-im/jabber-base-0.01
+	graphics? ( >=dev-erlang/eimp-1.0.2 )
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( >=dev-erlang/p1_mysql-1.0.2 )
 	nls? ( >=dev-erlang/iconv-1.0.4 )
@@ -54,7 +53,9 @@ CDEPEND="
 		>=dev-erlang/hamcrest-0.1.0_p20150103
 		>=dev-erlang/riakc-2.4.1
 	)
+	sip? ( >=dev-erlang/esip-1.0.18 )
 	sqlite? ( >=dev-erlang/sqlite3-1.1.5 )
+	stun? ( >=dev-erlang/stun-1.0.17 )
 	zlib? ( >=dev-erlang/ezlib-1.0.2 )"
 DEPEND="${CDEPEND}
 	>=sys-apps/gawk-4.1"
@@ -230,16 +231,17 @@ src_prepare() {
 
 	sed -e "s|\(AC_INIT(ejabberd, \)m4_esyscmd([^)]*)|\1[$PV]|" \
 		-i configure.ac || die "Failed to write correct version to configure"
-	eautoreconf
+	# eautoreconf # required in case of download from github
 }
 
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--enable-user=jabber \
-		--disable-system_deps \
+		--disable-system-deps \
 		$(use_enable debug) \
 		$(use_enable full-xml) \
+		$(use_enable graphics) \
 		$(use_enable hipe) \
 		$(use_enable mssql) \
 		$(use_enable mysql) \
@@ -251,7 +253,12 @@ src_configure() {
 		$(use_enable riak) \
 		$(use_enable roster-gw roster-gateway-workaround) \
 		$(use_enable sqlite) \
+		$(use_enable sip) \
+		$(use_enable stun) \
 		$(use_enable zlib)
+
+	# more options to support
+	# --enable-elixir
 }
 
 src_compile() {

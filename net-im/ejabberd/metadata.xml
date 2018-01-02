@@ -17,6 +17,7 @@
 		<flag name="captcha">Support for CAPTCHA Forms (XEP-158) on registration</flag>
 		<flag name="full-xml">Use XML features in XMPP stream (ex: CDATA),
 			requires XML compliant clients</flag>
+		<flag name="graphics">Enable graphics manipulation (avatars,captcha)</flag>
 		<flag name="hipe">Compile natively with HiPE, not recommended</flag>
 		<flag name="mssql">Enable Microsoft SQL Server support (via ODBC) for
 			data storage</flag>
@@ -29,6 +30,8 @@
 			data store</flag>
 		<flag name="roster-gw">Turn on workaround for processing gateway subscriptions</flag>
 		<flag name="sqlite">Enable SQLite database support</flag>
+		<flag name="sip">Enable SIP support</flag>
+		<flag name="stun">Enable STUN/TURN support</flag>
 		<flag name="zlib">Enable Stream Compression (XEP-0138) using zlib</flag>
 		<!-- TODO Add later: flag name="tools">Build development tools</flag -->
 	</use>

@@ -1,5 +1,5 @@
 # ChangeLog for net-libs/ortp
-# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/net-libs/ortp/ChangeLog,v 1.87 2015/02/25 10:31:24 pacho Exp $
 
   05 Mar 2017; Sergey Ilinykh <rion4ik@gmail.com> -ortp-0.27.0.ebuild,
