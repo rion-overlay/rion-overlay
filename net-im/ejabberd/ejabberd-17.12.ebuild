@@ -32,6 +32,7 @@ CDEPEND="
 	>=dev-erlang/fast_tls-1.0.11
 	>=dev-erlang/fast_xml-1.1.21
 	>=dev-erlang/fast_yaml-1.0.9
+	>=dev-erlang/fs-2.12.0
 	>=dev-erlang/jiffy-0.14.8
 	>=dev-erlang/lager-3.2.1
 	>=dev-erlang/luerl-0.2
