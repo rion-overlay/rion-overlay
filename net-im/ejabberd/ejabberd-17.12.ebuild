@@ -29,7 +29,7 @@ RESTRICT="test"
 # TODO: )
 CDEPEND="
 	>=dev-erlang/cache_tab-1.0.12
-	>=dev-erlang/fast_tls-1.0.11
+	>=dev-erlang/fast_tls-1.0.18
 	>=dev-erlang/fast_xml-1.1.21
 	>=dev-erlang/fast_yaml-1.0.9
 	>=dev-erlang/fs-2.12.0
