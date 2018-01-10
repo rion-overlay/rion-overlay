@@ -5,7 +5,7 @@ EAPI=6
 
 case "$PV" in 9999*) scm=git-r3; ;; *) scm=""; ;; esac
 
-inherit qmake-utils $scm
+inherit qmake-utils gnome2-utils $scm
 
 DESCRIPTION="Qt note-taking application compatible with tomboy"
 HOMEPAGE="http://ri0n.github.io/QtNote/"
@@ -59,4 +59,12 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
