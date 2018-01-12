@@ -15,8 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="sys-fs/inotify-tools
-	>=dev-lang/erlang-17.1"
+RDEPEND=">=dev-erlang/fast_xml-1.1.21
+	>=dev-lang/erlang-17.1
+	sys-fs/inotify-tools"
 DEPEND="${RDEPEND}"
 
 DOCS=( README.md LICENSE )
