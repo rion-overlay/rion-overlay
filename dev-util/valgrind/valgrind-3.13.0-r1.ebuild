@@ -6,12 +6,17 @@ inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
 HOMEPAGE="http://www.valgrind.org"
-SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="mpi"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="git://sourceware.org/git/${PN}.git/"
+	inherit git-r3
+else
+	SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+fi
 
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
@@ -26,8 +31,8 @@ src_prepare() {
 	# Respect CFLAGS, LDFLAGS
 	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 
-	# Changing Makefile.all.am to disable SSP
-	eapply "${FILESDIR}"/${PN}-3.7.0-fno-stack-protector.patch
+	# Fix test failures on glibc-2.26
+	eapply "${FILESDIR}"/${P}-test-fixes.patch
 
 	# backported from upstream
 	eapply "${FILESDIR}"/${P}-xml-socket.patch
@@ -50,10 +55,15 @@ src_configure() {
 	#                       while compiling insn_sse.c in none/tests/x86
 	# -fstack-protector     more undefined references to __guard and __stack_smash_handler
 	#                       because valgrind doesn't link to glibc (bug #114347)
+	# -fstack-protector-all    Fails same way as -fstack-protector/-fstack-protector-strong.
+	#                          Note: -fstack-protector-explicit is a no-op for Valgrind, no need to strip it
+	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
 	# -ggdb3                segmentation fault on startup
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
+	filter-flags -fstack-protector-all
+	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
 	replace-flags -ggdb3 -ggdb2
 
@@ -75,6 +85,13 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+
+	if [[ ${PV} == "9999" ]]; then
+		# Otherwise FAQ.txt won't exist:
+		emake -C docs FAQ.txt
+		mv docs/FAQ.txt . || die "Couldn't move FAQ.txt"
+	fi
+
 	dodoc AUTHORS FAQ.txt NEWS README*
 
 	pax-mark m "${ED}"/usr/$(get_libdir)/valgrind/*-*-linux

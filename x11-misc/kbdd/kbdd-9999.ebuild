@@ -16,12 +16,13 @@ SLOT="0"
 KEYWORDS=""
 IUSE="dbus debug"
 
-DEPEND="dev-libs/glib
-		x11-libs/libX11
-		dbus? (
-			sys-apps/dbus
-			>=dev-libs/dbus-glib-0.86
-			)"
+DEPEND="dev-libs/glib:2=
+	x11-libs/libX11:0=
+	dbus? (
+		sys-apps/dbus:0=
+		>=dev-libs/dbus-glib-0.86:0=
+	)
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
