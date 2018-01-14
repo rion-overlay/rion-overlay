@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit qmake-utils git-r3 gome2-utils
+inherit qmake-utils git-r3 gnome2-utils
 
 DESCRIPTION="Powerful UML 2 modelling tool. BoUML fork"
 HOMEPAGE="https://github.com/DoUML/douml"
