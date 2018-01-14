@@ -5,8 +5,4 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
-	<use>
-		<flag name="kf5">Enable KDE Frameworks 5 support</flag>
-		<flag name="windeco">Enable window decoration for KWin</flag>
-	</use>
 </pkgmetadata>
