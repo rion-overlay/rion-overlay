@@ -33,4 +33,6 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e "s|KDIR :=.*|KDIR := ${KERNEL_DIR}|" \
 	  Makefile || die "Failed to change Makefile"
+	sed -i -e 's|args.m.instance = 1;|args.m.instance = 0;|' \
+	  clevo_wmi.c || die "Failed to change clevo_wmi.c"
 }
