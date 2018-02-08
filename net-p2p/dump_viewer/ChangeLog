@@ -1,9 +1,0 @@
-# ChangeLog for net-p2p/dump_viewer
-# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
-# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
-# $Header: $
-
-*dump_viewer-9999 (29 Sep 2013)
-
-  29 Sep 2013; Nikoli <nikoli@gmx.us> +dump_viewer-9999.ebuild, +metadata.xml:
-  dump_viewer: initial ebuild
