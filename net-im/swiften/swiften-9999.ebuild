@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
+
 SCONS_MIN_VERSION="1.2"
-LANGS=" ca cs de es fr gl he hu nl pl ru se sk sv"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 
-inherit eutils scons-utils toolchain-funcs ${VCS_ECLASS}
+inherit scons-utils toolchain-funcs ${VCS_ECLASS}
 
 DESCRIPTION="Just a perfect C++ XMPP library"
 HOMEPAGE="http://swift.im/"
@@ -31,7 +31,6 @@ else
 	KEYWORDS=""
 fi
 IUSE="avahi debug doc examples test"
-IUSE+="${LANGS// / linguas_}"
 PATCHES=( ${FILESDIR}/swiften-libdir-9999.patch )
 
 RDEPEND="

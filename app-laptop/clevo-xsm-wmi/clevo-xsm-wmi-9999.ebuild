@@ -15,8 +15,8 @@ KEYWORDS=""
 IUSE="systemd"
 
 DEPEND="
-    sys-kernel/linux-headers
-    virtual/linux-sources
+	sys-kernel/linux-headers
+	virtual/linux-sources
 "
 RDEPEND=""
 
@@ -36,14 +36,14 @@ src_prepare() {
 }
 
 src_compile() {
-    BUILD_PARAMS="KDIR=${KV_OUT_DIR}"
-    linux-mod_src_compile
+	BUILD_PARAMS="KDIR=${KV_OUT_DIR}"
+	linux-mod_src_compile
 }
 
 src_install() {
-    linux-mod_src_install
-    if use systemd; then
-        mkdir ${D}/etc/modules-load.d || die
-        echo "${PN}" > ${D}/etc/modules-load.d/${PN}.conf
-    fi
+	linux-mod_src_install
+	if use systemd; then
+		mkdir "${D}"/etc/modules-load.d || die
+		echo "${PN}" > "${D}"/etc/modules-load.d/${PN}.conf
+	fi
 }

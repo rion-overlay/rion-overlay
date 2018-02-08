@@ -15,17 +15,17 @@ KEYWORDS=""
 IUSE="systemd"
 
 DEPEND="
-    app-laptop/clevo-xsm-wmi
-    dev-qt/qtwidgets
+	app-laptop/clevo-xsm-wmi
+	dev-qt/qtwidgets
 "
 RDEPEND=""
 
 S="${WORKDIR}/${P}/utility"
 
 src_configure() {
-    eqmake5 clevo-xsm-wmi.pro
+	eqmake5 clevo-xsm-wmi.pro
 }
 
 src_install() {
-    dobin clevo-xsm-wmi
+	dobin clevo-xsm-wmi
 }

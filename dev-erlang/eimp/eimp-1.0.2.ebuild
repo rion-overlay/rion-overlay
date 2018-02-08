@@ -20,4 +20,3 @@ RDEPEND="media-libs/gd[png,jpeg,webp]
 DEPEND="${RDEPEND}"
 
 DOCS=( README.md LICENSE.txt )
-

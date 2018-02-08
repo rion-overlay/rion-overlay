@@ -5,7 +5,7 @@ EAPI=6
 
 SSL_CERT_MANDATORY=1
 
-inherit eutils autotools pam rebar ssl-cert systemd
+inherit eutils pam rebar ssl-cert systemd
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="http://www.ejabberd.im/ https://github.com/processone/ejabberd/"
@@ -14,7 +14,7 @@ SRC_URI="https://www.process-one.net/downloads/${PN}/${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
 IUSE="captcha debug full-xml graphics hipe ldap mssql mysql nls odbc pam postgres redis

@@ -36,7 +36,6 @@ src_prepare() {
 
 	# backported from upstream
 	eapply "${FILESDIR}"/${P}-xml-socket.patch
-	
 
 	# Allow users to test their own patches
 	eapply_user

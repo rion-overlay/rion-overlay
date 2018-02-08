@@ -8,7 +8,7 @@ inherit eutils wxwidgets git-r3
 
 DESCRIPTION="E-book collection manager"
 HOMEPAGE="http://www.lintest.ru/wiki/MyRuLib"
-EGIT_REPO_URI="https://github.com/lintest/myrulib"
+EGIT_REPO_URI="https://github.com/vitlav/myrulib"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -19,7 +19,7 @@ RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	dev-libs/libxml2
 	dev-db/sqlite:3[fts3(+),icu?]
-	dev-db/wxsqlite3:${WX_GTK_VER}
+	dev-db/wxsqlite3
 	app-arch/bzip2
 	icu? ( dev-libs/icu:= )
 	reader? (

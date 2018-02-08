@@ -26,7 +26,7 @@ DEPEND="
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtpositioning:5
 	dev-qt/qtsensors:5
-	dev-libs/qtkeychain[qt5]
+	dev-libs/qtkeychain
 "
 RDEPEND="${DEPEND}"
 

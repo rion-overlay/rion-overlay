@@ -3,11 +3,12 @@
 
 EAPI=6
 SCONS_MIN_VERSION="1.2"
-LANGS=" ca cs de es fr gl he hu nl pl ru se sk sv"
+PLOCALES="ca cs de en es fr gl he hu nl pl ru sk sv"
+PLOCALE_BACKUP="en"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 
-inherit scons-utils toolchain-funcs gnome2-utils ${VCS_ECLASS}
+inherit l10n scons-utils toolchain-funcs gnome2-utils ${VCS_ECLASS}
 
 DESCRIPTION="Qt5 jabber (xmpp) client"
 HOMEPAGE="http://swift.im/"
@@ -27,7 +28,6 @@ else
 	KEYWORDS=""
 fi
 IUSE="avahi debug hunspell icu test"
-IUSE+="${LANGS// / linguas_}"
 
 RDEPEND="
 	avahi? ( net-dns/avahi )
@@ -52,11 +52,7 @@ src_prepare() {
 	rm -rf Boost CAres DocBook Expat LCov Ldns LibMiniUPnPc LibIDN LibNATPMP OpenSSL SCons SQLite Unbound ZLib || die
 	popd || die
 
-	for x in ${LANGS}; do
-		if use !linguas_${x}; then
-			rm -f Swift/Translations/swift_${x}.ts || die
-		fi
-	done
+	l10n_for_each_disabled_locale_do rm -f
 
 	eapply_user
 }

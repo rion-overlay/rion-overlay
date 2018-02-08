@@ -19,7 +19,7 @@ RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	dev-libs/libxml2
 	dev-db/sqlite:3[fts3(+),icu?]
-	dev-db/wxsqlite3:${WX_GTK_VER}
+	dev-db/wxsqlite3
 	app-arch/bzip2
 	icu? ( dev-libs/icu:= )
 	reader? (

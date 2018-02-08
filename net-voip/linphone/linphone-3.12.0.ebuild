@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+PLOCALES="ar cs de es fi fr he hu it ja lt nb-NO nl pl pt-BR ru sr sv tr zh-CN zh-TW"
 
-inherit eutils multilib pax-utils versionator cmake-utils
+inherit l10n multilib pax-utils versionator cmake-utils
 
 DESCRIPTION="Video softphone based on the SIP protocol"
 HOMEPAGE="http://www.linphone.org/"
@@ -54,27 +55,26 @@ DEPEND="${RDEPEND}
 	nls? ( dev-util/intltool )
 "
 
-IUSE_LINGUAS=" fr it de he ja es pl cs nl sr sv pt_BR hu ru zh_CN"
-IUSE="${IUSE}${IUSE_LINGUAS// / linguas_}"
-
 pkg_setup() {
 	if ! use gtk && ! use ncurses ; then
 		ewarn "gtk and ncurses are disabled."
 		ewarn "At least one of these use flags are needed to get a front-end."
 		ewarn "Only liblinphone is going to be installed."
 	fi
-
-	strip-linguas ${IUSE_LINGUAS}
+	l10n_find_plocales_changes po "" .po
 }
 
 src_prepare() {
 	default
-	epatch "${FILESDIR}"/${PN}-nls.patch \
+	eapply "${FILESDIR}"/${PN}-nls.patch \
 		"${FILESDIR}"/${PN}-no-cam-crash-fix.patch
 
 	# another workaround for upstream bug
 	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > "${S}"/coreapi/gitversion.h
 	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > "${S}"/coreapi/liblinphone_gitversion.h
+
+	rm_locale() { rm -f ${1/-/_}; }
+	l10n_for_each_disabled_locale_do rm_locale
 
 	cmake-utils_src_prepare
 }
