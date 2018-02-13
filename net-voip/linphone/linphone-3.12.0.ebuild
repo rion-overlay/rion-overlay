@@ -61,7 +61,6 @@ pkg_setup() {
 		ewarn "At least one of these use flags are needed to get a front-end."
 		ewarn "Only liblinphone is going to be installed."
 	fi
-	l10n_find_plocales_changes po "" .po
 }
 
 src_prepare() {
@@ -73,6 +72,7 @@ src_prepare() {
 	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > "${S}"/coreapi/gitversion.h
 	printf "#define LIBLINPHONE_GIT_VERSION \"${PV}\"\n" > "${S}"/coreapi/liblinphone_gitversion.h
 
+	l10n_find_plocales_changes po "" .po
 	rm_locale() { rm -f ${1/-/_}; }
 	l10n_for_each_disabled_locale_do rm_locale
 
