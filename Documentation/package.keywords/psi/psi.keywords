@@ -34,3 +34,4 @@ net-im/psi-httpupload::rion **
 net-im/psi-otr::rion **
 net-im/psi-otr::rion **
 net-im/psi-qipxstatuses::rion **
+net-im/psi-omemo::rion **
