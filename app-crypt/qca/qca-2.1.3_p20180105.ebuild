@@ -8,7 +8,7 @@ inherit cmake-utils multibuild qmake-utils
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="https://userbase.kde.org/QCA"
 COMMIT=d58e20ee652038dc4ec4fe4765dc3639ed735526
-SRC_URI="https://github.com/KDE/qca/archive/${COMMIT}.tar.gz"
+SRC_URI="https://github.com/KDE/qca/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
