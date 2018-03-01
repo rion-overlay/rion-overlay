@@ -34,7 +34,10 @@ DEPEND="
 		   dev-qt/qtwidgets
 		   dev-qt/qtnetwork:5
 		   dev-qt/qtprintsupport:5
-	       dev-qt/qtsingleapplication[X,qt5]
+	       || (
+		        dev-qt/qtsingleapplication[X,qt5]
+				>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
+		   )
 		   kde? (
 		   		kde-frameworks/kglobalaccel
 		   		kde-frameworks/kwindowsystem
