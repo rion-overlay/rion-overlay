@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets jingle sql ssl webengine webkit whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets jingle sql ssl webengine webkit webp whiteboarding xscreensaver"
 
 # qconf generates not quite compatible configure scripts
 QA_CONFIGURE_OPTIONS=".*"
@@ -74,6 +74,7 @@ PDEPEND="
 		app-crypt/qca:2[ssl]
 	)
 	ssl? ( app-crypt/qca:2[ssl] )
+	webp? ( dev-qt/qtimageformats )
 "
 
 RESTRICT="test iconsets? ( bindist )"
