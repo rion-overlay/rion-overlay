@@ -29,35 +29,36 @@ RESTRICT="test"
 # TODO: )
 CDEPEND="
 	>=dev-erlang/cache_tab-1.0.12
-	>=dev-erlang/fast_tls-1.0.18
-	>=dev-erlang/fast_xml-1.1.21
-	>=dev-erlang/fast_yaml-1.0.9
-	>=dev-erlang/fs-2.12.0
+	>=dev-erlang/fast_tls-1.0.20
+	>=dev-erlang/fast_xml-1.1.28
+	>=dev-erlang/fast_yaml-1.0.12
+	>=dev-erlang/fs-4.1
 	>=dev-erlang/jiffy-0.14.8
-	>=dev-erlang/lager-3.2.1
+	>=dev-erlang/jose-1.8.4
+	>=dev-erlang/lager-3.4.2
 	>=dev-erlang/luerl-0.2
-	>=dev-erlang/p1_oauth2-0.6.1
+	>=dev-erlang/p1_oauth2-0.6.2
 	>=dev-erlang/p1_utils-1.0.10
-	>=dev-erlang/stringprep-1.0.8
+	>=dev-erlang/stringprep-1.0.10
 	>=dev-erlang/xmpp-1.1.17
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
 	>=net-im/jabber-base-0.01
 	graphics? ( >=dev-erlang/eimp-1.0.2 )
 	ldap? ( =net-nds/openldap-2* )
-	mysql? ( >=dev-erlang/p1_mysql-1.0.2 )
-	nls? ( >=dev-erlang/iconv-1.0.4 )
+	mysql? ( >=dev-erlang/p1_mysql-1.0.4 )
+	nls? ( >=dev-erlang/iconv-1.0.6 )
 	odbc? ( dev-db/unixODBC )
-	pam? ( >=dev-erlang/epam-1.0.2 )
-	postgres? ( >=dev-erlang/p1_pgsql-1.1.2 )
+	pam? ( >=dev-erlang/epam-1.0.3 )
+	postgres? ( >=dev-erlang/p1_pgsql-1.1.4 )
 	redis? ( >=dev-erlang/eredis-1.0.8 )
 	riak? (
 		>=dev-erlang/hamcrest-0.1.0_p20150103
-		>=dev-erlang/riakc-2.4.1
+		>=dev-erlang/riakc-2.5.3
 	)
-	sip? ( >=dev-erlang/esip-1.0.18 )
+	sip? ( >=dev-erlang/esip-1.0.21 )
 	sqlite? ( >=dev-erlang/sqlite3-1.1.5 )
-	stun? ( >=dev-erlang/stun-1.0.17 )
-	zlib? ( >=dev-erlang/ezlib-1.0.2 )"
+	stun? ( >=dev-erlang/stun-1.0.20 )
+	zlib? ( >=dev-erlang/ezlib-1.0.3 )"
 DEPEND="${CDEPEND}
 	>=sys-apps/gawk-4.1"
 RDEPEND="${CDEPEND}
@@ -259,7 +260,7 @@ src_configure() {
 		$(use_enable zlib)
 
 	# more options to support
-	# --enable-elixir
+	# --enable-elixir requires https://github.com/elixir-lang/elixir
 }
 
 src_compile() {

@@ -56,6 +56,7 @@ RDEPEND="
 	webengine? (
 		>=dev-qt/qtwebchannel-5.7:5
 		>=dev-qt/qtwebengine-5.7:5[widgets]
+		net-libs/http-parser
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
