@@ -174,11 +174,11 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 
 	# this way the docs will be installed in the standard gentoo dir
-	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README} || die "Installed file set seems to be changed by upstream"
+	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README.html} || die "Installed file set seems to be changed by upstream"
 	newdoc iconsets/roster/README README.roster
 	newdoc iconsets/system/README README.system
 	newdoc certs/README README.certs
-	dodoc README
+	dodoc README.html
 
 	use doc && HTML_DOCS=( doc/api/. )
 	einstalldocs
