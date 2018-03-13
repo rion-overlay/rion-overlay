@@ -3,63 +3,51 @@
 
 EAPI=6
 
-inherit cmake-utils multilib eutils git-r3
+inherit qmake-utils multilib eutils git-r3
 
 DESCRIPTION="Psi plugin for voice/video calls"
 HOMEPAGE="http://delta.affinix.com/psimedia/"
 EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
+EGIT_BRANCH="gstreamer-1.0"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug demo extras qt4 qt5"
-
-REQUIRED_USE="^^ ( qt4 qt5 )"
+IUSE="debug demo extras qt5"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.20.0
-	media-libs/gstreamer:0.10
-	media-libs/gst-plugins-base:0.10
-	media-libs/gst-plugins-good:0.10
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		)
+	dev-libs/glib
+	media-libs/gstreamer:1.0
+	media-libs/gst-plugins-base:1.0
+	media-libs/gst-plugins-good:1.0
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
-	>=media-libs/speex-1.2_rc1
-	dev-libs/liboil
 "
 RDEPEND="${COMMON_DEPEND}
-	media-plugins/gst-plugins-speex:0.10
-	media-plugins/gst-plugins-vorbis:0.10
-	media-plugins/gst-plugins-theora:0.10
-	media-plugins/gst-plugins-alsa:0.10
-	media-plugins/gst-plugins-ogg:0.10
-	media-plugins/gst-plugins-v4l2:0.10
-	media-plugins/gst-plugins-jpeg:0.10
+	media-plugins/gst-plugins-opus:1.0
+	media-plugins/gst-plugins-v4l2:1.0
+	media-plugins/gst-plugins-jpeg:1.0
 	net-im/psi
 "
 DEPEND="${COMMON_DEPEND}
+	sys-devel/qconf
 "
 
 src_configure() {
-	if use debug; then
-		CMAKE_BUILD_TYPE="Debug"
-	fi
+	qconf
+	./configure --prefix=${EPREFIX}/usr --qtselect=5
+}
+
+src_install() {
 	if use extras; then
 		pname="psi-plus"
 	else
 		pname="psi"
 	fi
-	INSTPATH=/usr/$(get_libdir)/${pname}/plugins
-	local mycmakeargs=(
-		-DQT4_BUILD="$(usex qt4)"
-		-DDEMO="$(usex demo)"
-		$(echo -DLIB_INSTALL_DIR=${INSTPATH})
-	)
-	cmake-utils_src_configure
+
+	insinto ${EPREFIX}/usr/$(get_libdir)/${pname}/plugins
+	doins gstprovider/libgstprovider.so
 }
