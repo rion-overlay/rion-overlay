@@ -8,7 +8,7 @@ inherit qmake-utils multilib eutils git-r3
 DESCRIPTION="Psi plugin for voice/video calls"
 HOMEPAGE="http://delta.affinix.com/psimedia/"
 EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
-EGIT_BRANCH="gstreamer-1.0"
+#EGIT_BRANCH="gstreamer-1.0"
 
 LICENSE="GPL-2"
 SLOT="0"
