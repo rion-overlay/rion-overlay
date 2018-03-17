@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n git-r3 qmake-utils gnome2-utils
+inherit l10n git-r3 qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="http://psi-im.org/"
@@ -22,9 +22,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets jingle sql ssl webengine webkit webp whiteboarding xscreensaver"
 
-# qconf generates not quite compatible configure scripts
-QA_CONFIGURE_OPTIONS=".*"
-
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
 	iconsets? ( extras )
@@ -33,7 +30,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	app-crypt/qca:2[qt5]
+	app-crypt/qca:2[qt5(+)]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -146,6 +143,8 @@ src_prepare() {
 
 src_configure() {
 	CONF=(
+		--prefix="${EPREFIX}"/usr
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--no-separate-debug-info
 		--qtdir="$(qt5_get_bindir)/.."
 		$(use_enable aspell)
@@ -160,7 +159,10 @@ src_configure() {
 	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
 	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
 
-	econf "${CONF[@]}"
+	# This may generate warnings if passed option already matches with default.
+	# Just ignore them. It's how qconf-based configure works and will be fixed in
+	# future qconf versions.
+	./configure "${CONF[@]}" || die "configure failed"
 
 	eqmake5 psi.pro
 }
@@ -200,6 +202,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
