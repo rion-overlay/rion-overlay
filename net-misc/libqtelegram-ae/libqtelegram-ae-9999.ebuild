@@ -34,7 +34,7 @@ src_prepare() {
 
 src_configure() {
 	QT_SELECT=5 ./init
-	eqmake5 PREFIX="${EPREFIX}/usr" CONFIG+=typeobjects INSTALL_LIBS_PREFIX="${EPREFIX}/usr/$(get_libdir)"
+	eqmake5 PREFIX="${EPREFIX}/usr" CONFIG+=typeobjects INSTALL_LIBS_PREFIX="${EPREFIX}/usr/$(get_libdir)" QMAKE_CFLAGS_ISYSTEM= libqtelegram-ae.pro
 }
 
 src_install() {

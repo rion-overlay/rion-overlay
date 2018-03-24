@@ -26,7 +26,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure(){
-	eqmake5 PREFIX="${EPREFIX}/usr"
+	eqmake5 PREFIX="${EPREFIX}/usr" CONFIG+=binaryMode
 }
 
 src_install(){

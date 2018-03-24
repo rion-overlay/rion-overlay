@@ -38,7 +38,7 @@ src_unpack(){
 }
 
 src_configure(){
-	eqmake5 QT+=widgets QT+=multimedia QT+=dbus QT+=sensors QT+=positioning ../asemantools.pro
+	eqmake5 QT+=widgets QT+=multimedia QT+=dbus QT+=sensors QT+=positioning QMAKE_CFLAGS_ISYSTEM= ../asemantools.pro
 }
 
 src_install(){

@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 PREFIX="${EPREFIX}/usr"
+	eqmake5 PREFIX="${EPREFIX}/usr" QMAKE_CFLAGS_ISYSTEM=
 }
 
 src_install() {
