@@ -38,7 +38,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	qconf
-	./configure --prefix=${EPREFIX}/usr --qtselect=5
+	./configure --prefix="${EPREFIX}/usr" --qtselect=5
 }
 
 src_install() {
@@ -48,6 +48,6 @@ src_install() {
 		pname="psi"
 	fi
 
-	insinto ${EPREFIX}/usr/$(get_libdir)/${pname}/plugins
+	insinto "${EPREFIX}/usr/$(get_libdir)/${pname}/plugins"
 	doins gstprovider/libgstprovider.so
 }

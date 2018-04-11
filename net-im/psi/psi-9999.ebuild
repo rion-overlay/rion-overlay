@@ -36,6 +36,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
@@ -46,9 +47,6 @@ RDEPEND="
 	aspell? ( app-text/aspell )
 	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( >=app-text/enchant-1.3.0 )
-	extras? (
-		sql? ( dev-qt/qtsql:5 )
-	)
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
 		>=dev-qt/qtwebchannel-5.7:5
