@@ -20,6 +20,9 @@ S="${WORKDIR}"
 QA_PREBUILT="*"
 RESTRICT="mirror bindist strip" #299368
 
+# Dependency checker
+# find /opt/skypeforlinux/ -type f | while read -r f; do file $f | grep -i elf &>/dev/null && readelf -a $f | grep NEEDED; done | cut -d '[' -f 2 | sort -u | cut -d ']' -f 1 | grep -vE 'libgcc_s\.so\.1|libstdc\+\+\.so\.6' | while read l; do [ -f "/opt/skypeforlinux/$l" ] && continue;  [ -f "/lib/$l" ] && fl="/lib/$l" || fl="/usr/lib64/$l"; p=$(qfile $fl); [ -n "$p" ] && echo $l $p || echo "NOT FOUND $l" >&2; done | cut -d ' ' -f 2 | sort -u
+
 RDEPEND="
 	app-crypt/libsecret[${MULTILIB_USEDEP}]
 	dev-libs/atk[${MULTILIB_USEDEP}]
