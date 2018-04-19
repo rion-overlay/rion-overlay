@@ -5,20 +5,20 @@ EAPI=6
 
 inherit rebar
 
-DESCRIPTION="TLS/SSL native driver for Erlang and Elixir"
-HOMEPAGE="https://github.com/processone/fast_tls"
+DESCRIPTION="Fast Expat based Erlang XML parsing library"
+HOMEPAGE="https://github.com/processone/fast_xml"
 SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
-IUSE="libressl"
+IUSE="test"
 
-DEPEND=">=dev-erlang/p1_utils-1.0.10
+RDEPEND=">=dev-erlang/p1_utils-1.0.11
 	>=dev-lang/erlang-17.1
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
-RDEPEND="${DEPEND}"
+	dev-libs/expat"
+DEPEND="${RDEPEND}
+	test? ( >=dev-lang/elixir-1.1 )"
 
 DOCS=( CHANGELOG.md  README.md )

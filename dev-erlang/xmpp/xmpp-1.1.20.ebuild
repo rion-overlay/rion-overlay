@@ -15,8 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ppc ~sparc x86"
 IUSE="test"
 
-RDEPEND=">=dev-erlang/fast_xml-1.1.28
-	>=dev-erlang/stringprep-1.0.10
+RDEPEND=">=dev-erlang/fast_xml-1.1.29
+	>=dev-erlang/p1_utils-1.0.11
+	>=dev-erlang/stringprep-1.0.11
 	>=dev-lang/erlang-17.1
 	!=dev-lang/erlang-20.1"
 DEPEND="${RDEPEND}"

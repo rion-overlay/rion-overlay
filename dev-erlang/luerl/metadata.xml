@@ -6,6 +6,6 @@
 		<name>Amadeusz Żołnowski</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">processone/xmpp</remote-id>
+		<remote-id type="github">rvirding/luerl</remote-id>
 	</upstream>
 </pkgmetadata>
