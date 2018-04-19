@@ -14,9 +14,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 
-DEPEND=">=dev-erlang/fast_tls-1.0.11
-	>=dev-erlang/stun-1.0.10
-	>=dev-erlang/p1_utils-1.0.7
+DEPEND=">=dev-erlang/fast_tls-1.0.21
+	>=dev-erlang/stun-1.0.21
+	>=dev-erlang/p1_utils-1.0.11
 	>=dev-lang/erlang-17.1"
 RDEPEND="${DEPEND}"
 
