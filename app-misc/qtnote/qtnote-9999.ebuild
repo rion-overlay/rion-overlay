@@ -12,37 +12,27 @@ HOMEPAGE="http://ri0n.github.io/QtNote/"
 if [ -z "$scm" ]; then
 	SRC_URI="https://github.com/Ri0n/QtNote/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/QtNote-${PV}"
+	KEYWORDS="amd64 x86"
 else
 	EGIT_REPO_URI="https://github.com/Ri0n/QtNote"
 	EGIT_BRANCH=stable
+	KEYWORDS=""
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="+qt4 qt5 spell kde unity"
-REQUIRED_USE="
-	^^ ( qt4 qt5 )
-	kde? ( qt5 )
-"
+IUSE="spell kde unity"
 
 DEPEND="
-	qt4? ( dev-qt/qtgui:4
-	       dev-qt/qtsingleapplication[X,qt4]
-		   )
-	qt5? ( dev-qt/qtgui:5
-		   dev-qt/qtwidgets
-		   dev-qt/qtnetwork:5
-		   dev-qt/qtprintsupport:5
-	       || (
-		        dev-qt/qtsingleapplication[X,qt5]
-				>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
-		   )
-		   kde? (
-		   		kde-frameworks/kglobalaccel
-		   		kde-frameworks/kwindowsystem
-				kde-frameworks/knotifications )
-			)
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsingleapplication[X]
+	kde? (
+		kde-frameworks/kglobalaccel
+		kde-frameworks/kwindowsystem
+		kde-frameworks/knotifications )
 	spell? ( app-text/hunspell )"
 RDEPEND="${DEPEND}"
 
@@ -54,8 +44,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	use qt4 && eqmake4 ${PN}.pro ${CONF[@]}
-	use qt5 && eqmake5 ${PN}.pro ${CONF[@]}
+	eqmake5 ${PN}.pro ${CONF[@]}
 
 }
 
