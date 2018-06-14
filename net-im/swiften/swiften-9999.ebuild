@@ -31,7 +31,6 @@ else
 	KEYWORDS=""
 fi
 IUSE="avahi debug doc examples test"
-PATCHES=( ${FILESDIR}/swiften-libdir-9999.patch )
 
 RDEPEND="
 	avahi? ( net-dns/avahi )
@@ -95,7 +94,7 @@ src_test() {
 
 src_install() {
 	escons "${scons_vars[@]}" SWIFTEN_INSTALLDIR="${ED}/usr" \
-		SWIFTEN_LIBDIR="${ED}/usr/$(get_libdir)" "${ED}/usr"
+		SWIFTEN_LIBDIR="$(get_libdir)" "${ED}/usr"
 
 	use doc && dohtml "Documentation/SwiftenDevelopersGuide/Swiften Developers Guide.html"
 
