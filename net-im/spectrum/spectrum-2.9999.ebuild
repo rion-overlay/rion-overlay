@@ -5,7 +5,7 @@ EAPI="6"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 
-inherit cmake-utils ${VCS_ECLASS}
+inherit cmake-utils systemd ${VCS_ECLASS}
 
 DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
@@ -80,9 +80,10 @@ src_install() {
 
 	cat "${FILESDIR}"/spectrum2.initd | sed "s:EPREFIX:${EPREFIX}:" > \
 		"${WORKDIR}/initd"
-	newinitd "${WORKDIR}/initd" spectrum
+	newinitd "${WORKDIR}/initd" spectrum2
 	keepdir "${EPREFIX}"/var/lib/spectrum2
 	keepdir "${EPREFIX}"/var/log/spectrum2
+	systemd_dounit packaging/debian/debian/spectrum2.service
 }
 
 pkg_postinst() {
