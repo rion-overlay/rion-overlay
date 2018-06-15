@@ -5,7 +5,7 @@ EAPI="6"
 
 [[ ${PV} = *9999* ]] && VCS_ECLASS="git-r3" || VCS_ECLASS=""
 
-inherit cmake-utils ${VCS_ECLASS}
+inherit cmake-utils systemd ${VCS_ECLASS}
 
 DESCRIPTION="Spectrum is an XMPP transport/gateway"
 HOMEPAGE="http://spectrum.im"
@@ -29,6 +29,7 @@ IUSE="debug doc libev log mysql postgres sqlite staticport symlinks test tools $
 
 RDEPEND="net-im/jabber-base
 	net-im/swiften
+	dev-libs/jsoncpp
 	dev-libs/popt
 	dev-libs/openssl:0
 	log? ( dev-libs/log4cxx )
@@ -36,7 +37,7 @@ RDEPEND="net-im/jabber-base
 	postgres? ( dev-libs/libpqxx )
 	sqlite? ( dev-db/sqlite:3 )
 	frotz? ( dev-libs/protobuf )
-	irc? ( net-im/libcommuni[qt4] dev-libs/protobuf )
+	irc? ( net-im/libcommuni dev-libs/protobuf )
 	purple? ( >=net-im/pidgin-2.6.0 dev-libs/protobuf )
 	skype? ( dev-libs/dbus-glib x11-base/xorg-server[xvfb] dev-libs/protobuf )
 	libev? ( dev-libs/libev dev-libs/protobuf )"
@@ -79,9 +80,10 @@ src_install() {
 
 	cat "${FILESDIR}"/spectrum2.initd | sed "s:EPREFIX:${EPREFIX}:" > \
 		"${WORKDIR}/initd"
-	newinitd "${WORKDIR}/initd" spectrum
+	newinitd "${WORKDIR}/initd" spectrum2
 	keepdir "${EPREFIX}"/var/lib/spectrum2
 	keepdir "${EPREFIX}"/var/log/spectrum2
+	systemd_dounit packaging/debian/debian/spectrum2.service
 }
 
 pkg_postinst() {
