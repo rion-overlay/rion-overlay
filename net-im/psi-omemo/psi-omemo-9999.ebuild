@@ -3,7 +3,6 @@
 
 EAPI="6"
 
-PLUGIN_DIR="dev"
 inherit psi-plugin
 
 DESCRIPTION="Psi plugin for OMEMO"
