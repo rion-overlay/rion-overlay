@@ -5,12 +5,12 @@ EAPI=6
 
 inherit linux-info udev vcs-snapshot
 
-EXTRA_PV=00.99
-MY_P=uld_v${PV}_${EXTRA_PV}
+EXTRA_PV=01.17
+MY_P=uld_V${PV}_${EXTRA_PV}
 
 DESCRIPTION="Samsung Unified Linux Driver for printers and MFDs"
 HOMEPAGE="http://www.samsung.com"
-SRC_URI="http://ftp.hp.com/pub/softlib/software13/printers/SS/SL-M2070/${MY_P}.tar.gz"
+SRC_URI="https://ftp.hp.com/pub/softlib/software13/printers/SS/SL-M4580FX/${MY_P}.tar.gz"
 
 LICENSE="Samsung-EULA"
 SLOT="0"
