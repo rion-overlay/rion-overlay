@@ -101,6 +101,8 @@ src_install() {
 		dosym libsane-smfp.so.1.0.1 /usr/$(get_libdir)/sane/libsane-smfp.so.1
 
 		udev_newrules "${FILESDIR}/${PV}-libsane-smfp.rules" 40-libsane-smfp.rules
+		insinto /etc/sane.d/dll.d
+		echo smfp > "${ED}"/etc/sane.d/dll.d/samsung.conf
 	fi
 
 	# Network support.
