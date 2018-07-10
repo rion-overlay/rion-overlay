@@ -111,14 +111,3 @@ src_install() {
 		doexe ${MY_ARCH}/smfpnetdiscovery
 	fi
 }
-
-pkg_postinst() {
-	if use scanner && ! has_version ${CATEGORY}/${PN}[scanner]; then
-		elog "You need to manually add 'smfp' backend to /etc/sane.d/dll.conf:"
-		elog "# echo smfp >> /etc/sane.d/dll.conf"
-	fi
-	if use network && ! has_version ${CATEGORY}/${PN}[network]; then
-		elog "If you are behind a firewall, you need to allow SNMP UDP packets"
-		elog "with source port 161 and destination port 22161."
-	fi
-}
