@@ -59,8 +59,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	opengl? ( dev-util/xxdi )
-	test? ( >=dev-util/cunit-2.1_p3[ncurses] )
-	X? ( x11-proto/videoproto )"
+	test? ( >=dev-util/cunit-2.1_p3[ncurses] )"
 
 PDEPEND="amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
 	g729? ( !bindist? ( media-libs/bcg729 ) )
