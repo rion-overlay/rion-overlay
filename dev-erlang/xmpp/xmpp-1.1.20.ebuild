@@ -18,8 +18,7 @@ IUSE="test"
 RDEPEND=">=dev-erlang/fast_xml-1.1.29
 	>=dev-erlang/p1_utils-1.0.11
 	>=dev-erlang/stringprep-1.0.11
-	>=dev-lang/erlang-17.1
-	!=dev-lang/erlang-20.1"
+	dev-lang/erlang"
 DEPEND="${RDEPEND}"
 
 DOCS=( CHANGELOG.md )

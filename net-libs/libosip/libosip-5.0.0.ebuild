@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils autotools versionator
+inherit eutils autotools
 
 MY_PV=${PV%.?}-${PV##*.}
 MY_PV=${PV}
@@ -14,7 +14,7 @@ HOMEPAGE="https://www.gnu.org/software/osip/"
 SRC_URI="https://fossies.org/linux/privat/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
-SLOT="2/$(get_version_component_range 1-2)"
+SLOT="2/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 

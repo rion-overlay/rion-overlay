@@ -40,7 +40,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	net-dns/libidn
+	net-dns/libidn:0
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb

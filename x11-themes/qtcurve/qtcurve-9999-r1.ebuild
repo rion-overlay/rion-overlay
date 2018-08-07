@@ -14,20 +14,14 @@ KEYWORDS=""
 
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="+X gtk plasma nls +qt4 qt5 test"
+IUSE="+X gtk plasma nls qt5 test"
 
 REQUIRED_USE="gtk? ( X )
-	|| ( gtk qt4 qt5 )
+	|| ( gtk qt5 )
 	plasma? ( qt5 )
 "
 COMMON_DEPEND="
 	gtk? ( x11-libs/gtk+:2[${MULTILIB_USEDEP}] )
-	qt4? (
-		dev-qt/qtcore:4[${MULTILIB_USEDEP}]
-		dev-qt/qtdbus:4[${MULTILIB_USEDEP}]
-		dev-qt/qtgui:4[${MULTILIB_USEDEP}]
-		dev-qt/qtsvg:4[${MULTILIB_USEDEP}]
-	)
 	qt5? (
 		$(add_qt_dep qtdbus)
 		$(add_qt_dep qtgui)
@@ -103,7 +97,7 @@ multilib_src_configure() {
 		-DQTC_QT4_ENABLE_KWIN=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
 		-DENABLE_GTK2=$(usex gtk)
-		-DENABLE_QT4=$(usex qt4)
+		-DENABLE_QT4=OFF
 		-DENABLE_TEST="$(usex test)"
 		-DQTC_ENABLE_X11=$(usex X)
 		$(is_final_abi && usex nls && echo -DQTC_INSTALL_PO=ON || echo -DQTC_INSTALL_PO=OFF)

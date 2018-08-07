@@ -36,7 +36,7 @@ RDEPEND="
 	avahi? ( net-dns/avahi )
 	>=dev-libs/boost-1.42
 	dev-libs/openssl:0
-	>=net-dns/libidn-1.10
+	net-dns/libidn:0
 	dev-libs/libxml2
 	>=dev-libs/expat-2.0.1
 	sys-libs/zlib

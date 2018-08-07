@@ -4,7 +4,7 @@
 EAPI=6
 PLOCALES="ar cs de es fi fr he hu it ja lt nb-NO nl pl pt-BR ru sr sv tr zh-CN zh-TW"
 
-inherit l10n multilib pax-utils versionator cmake-utils
+inherit l10n multilib pax-utils cmake-utils
 
 DESCRIPTION="Video softphone based on the SIP protocol"
 HOMEPAGE="http://www.linphone.org/"

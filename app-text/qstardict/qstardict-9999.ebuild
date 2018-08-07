@@ -23,28 +23,19 @@ SLOT="0"
 PLUGINS="stardict swac web"
 IUSE_PLUGINS=""
 for p in $PLUGINS; do IUSE_PLUGINS="${IUSE_PLUGINS} plugin_${p}"; done;
-IUSE="dbus debug kde nls ${IUSE_PLUGINS} qt4 qt5"
-REQUIRED_USE="|| ( ${IUSE_PLUGINS} )
-	^^ ( qt4 qt5 )
-	kde? ( qt5 )"
+IUSE="dbus debug kde nls ${IUSE_PLUGINS}"
+REQUIRED_USE="|| ( ${IUSE_PLUGINS} )"
 
 DEPEND="
 	dev-libs/glib:2
-	qt4? (
-		dev-qt/qtgui:4
-		dbus? ( dev-qt/qtdbus:4 )
-		plugin_swac? ( dev-qt/qtsql:4 )
-	)
-	qt5? (
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-		dev-qt/linguist-tools:5
-		dbus? ( dev-qt/qtdbus:5 )
-		plugin_swac? ( dev-qt/qtsql:5 )
-	)
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+	dev-qt/linguist-tools:5
+	dbus? ( dev-qt/qtdbus:5 )
+	plugin_swac? ( dev-qt/qtsql:5 )
 	kde? (
 		kde-frameworks/kwindowsystem
 	)
@@ -73,8 +64,7 @@ src_configure() {
 		QMAKE_FLAGS+=(NO_TRANSLATIONS=1)
 	fi
 
-	use qt4 && eqmake4 "${PN}".pro "${QMAKE_FLAGS[@]}"
-	use qt5 && eqmake5 "${PN}".pro "${QMAKE_FLAGS[@]}"
+	eqmake5 "${PN}".pro "${QMAKE_FLAGS[@]}"
 }
 
 src_install() {
