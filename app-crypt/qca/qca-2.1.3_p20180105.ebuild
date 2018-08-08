@@ -59,8 +59,8 @@ qca_plugin_use() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DQCA_FEATURE_INSTALL_DIR="${EPREFIX}$(${MULTIBUILD_VARIANT}_get_mkspecsdir)/features"
-		-DQCA_PLUGINS_INSTALL_DIR="${EPREFIX}$(${MULTIBUILD_VARIANT}_get_plugindir)"
+		-DQCA_FEATURE_INSTALL_DIR="${EPREFIX}$(qt5_get_mkspecsdir)/features"
+		-DQCA_PLUGINS_INSTALL_DIR="${EPREFIX}$(qt5_get_plugindir)"
 		$(qca_plugin_use botan)
 		$(qca_plugin_use gcrypt)
 		$(qca_plugin_use gpg gnupg)
