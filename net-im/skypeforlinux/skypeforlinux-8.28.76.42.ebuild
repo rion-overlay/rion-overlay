@@ -5,7 +5,7 @@ EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit eutils gnome2-utils pax-utils rpm multilib-build xdg-utils
+inherit desktop gnome2-utils pax-utils rpm multilib-build xdg-utils
 
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
@@ -65,7 +65,7 @@ src_prepare() {
 	default
 	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EPREFIX}/opt/${PN}/${PN}!" \
 		-i usr/bin/${PN} || die
-	sed -e "s!^Exec=.*!Exec=${EPREFIX}/opt/bin/${PN}!" \
+	sed -e "s!^Exec=/usr/!Exec=${EPREFIX}/opt/!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
 		-e "/^OnlyShowIn=/d" \
 		-i usr/share/applications/${PN}.desktop || die
