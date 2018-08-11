@@ -41,7 +41,7 @@ RDEPEND="
 	>=dev-libs/expat-2.0.1
 	sys-libs/zlib
 	icu? ( dev-libs/icu:= )
-	!icu? ( net-dns/libidn )
+	!icu? ( net-dns/libidn:0 )
 "
 DEPEND="${RDEPEND}"
 

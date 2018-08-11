@@ -20,13 +20,10 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="qt4 qt5"
-
-REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND="
-	qt4? ( dev-qt/qtgui:4 )
-	qt4? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 "
 DEPEND="${RDEPEND}
 	app-arch/unzip
@@ -52,8 +49,7 @@ src_prepare() {
 	sed -i -e 's,DATADIR = /tmp/$$APPNAME,DATADIR = /usr/share/$$APPNAME,' \
 		rc/platform/nix.pri || die
 
-	use qt4 && eqmake4
-	use qt5 && eqmake5
+	eqmake5
 }
 
 src_install() {

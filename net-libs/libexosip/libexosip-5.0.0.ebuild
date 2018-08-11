@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils versionator
+inherit eutils
 
 MY_PV=${PV%.?}-${PV##*.}
 MY_PV=${PV}
@@ -13,7 +13,7 @@ HOMEPAGE="https://savannah.nongnu.org/projects/exosip/"
 SRC_URI="mirror://nongnu/exosip/${MY_P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
-SLOT="0/$(get_version_component_range 1-2)"
+SLOT="0/$(ver_cut 1-2)"
 LICENSE="GPL-2"
 IUSE="+srv ssl"
 

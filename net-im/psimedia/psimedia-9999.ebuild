@@ -48,6 +48,6 @@ src_install() {
 		pname="psi"
 	fi
 
-	insinto "${EPREFIX}/usr/$(get_libdir)/${pname}/plugins"
+	insinto "/usr/$(get_libdir)/${pname}/plugins"
 	doins gstprovider/libgstprovider.so
 }
