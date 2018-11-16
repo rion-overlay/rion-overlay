@@ -9,7 +9,7 @@ PLOCALE_BACKUP="en"
 inherit l10n git-r3 qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
-HOMEPAGE="http://psi-im.org/"
+HOMEPAGE="https://psi-im.org"
 
 PSI_URI="https://github.com/psi-im"
 PSI_PLUS_URI="https://github.com/psi-plus"
@@ -49,8 +49,8 @@ RDEPEND="
 	enchant? ( >=app-text/enchant-1.3.0 )
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
-		>=dev-qt/qtwebchannel-5.7:5
-		>=dev-qt/qtwebengine-5.7:5[widgets]
+		dev-qt/qtwebchannel:5
+		dev-qt/qtwebengine:5[widgets]
 		net-libs/http-parser
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
