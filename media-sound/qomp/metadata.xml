@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="urlplugin">URL Plugin</flag>
-		<flag name="prostopleerplugin">Prosto Pleer plugin</flag>
+		<flag name="poiskmplugin">poiskm.me plugin</flag>
 		<flag name="myzukaruplugin">myzuka.ru plugin</flag>
 		<flag name="notificationsplugin">notifications plugin</flag>
 		<flag name="yandexmusicplugin">Yandex.Music plugin</flag>

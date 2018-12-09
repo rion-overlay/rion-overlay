@@ -23,11 +23,11 @@ LICENSE="GPL-3"
 
 QOMP_PLUGINS="
 	urlplugin
-	prostopleerplugin
 	myzukaruplugin
 	notificationsplugin
 	yandexmusicplugin
 	lastfmplugin
+	poiskmplugin
 	tunetofileplugin
 	mprisplugin
 	cuteradioplugin
