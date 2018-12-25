@@ -20,12 +20,11 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets jingle sql ssl webengine webkit webp whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets jingle ssl webengine webkit webp whiteboarding xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
 	iconsets? ( extras )
-	sql? ( extras )
 	webengine? ( !webkit )
 "
 
@@ -36,7 +35,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
@@ -127,10 +126,9 @@ src_prepare() {
 		fi
 
 		eapply "${WORKDIR}/psi-plus/patches"/*.diff
-		use sql && eapply "${WORKDIR}/psi-plus/patches/dev/psi-new-history.patch"
 
 		vergen="${WORKDIR}/psi-plus/admin/psi-plus-nightly-version"
-		features="$(use webkit && echo '--webkit') $(use webengine && echo '--webengine') $(use sql && echo '--sql')"
+		features="$(use webkit && echo '--webkit') $(use webengine && echo '--webengine')"
 		NIGHTLY_VER=$("${vergen}" ./ $features)
 		elog "Prepared version: ${NIGHTLY_VER}"
 		echo "${NIGHTLY_VER}" > version || die "Failed to write version file"
