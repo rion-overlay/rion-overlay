@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets jingle ssl webengine webkit webp whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring jingle ssl webengine webkit webp whiteboarding xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -47,6 +47,7 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( >=app-text/enchant-1.3.0 )
 	hunspell? ( app-text/hunspell:= )
+	keyring? ( dev-libs/qtkeychain )
 	webengine? (
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]
@@ -147,6 +148,7 @@ src_configure() {
 		$(use_enable dbus qdbus)
 		$(use_enable enchant)
 		$(use_enable hunspell)
+		$(use_enable keyring keychain)
 		$(use_enable xscreensaver xss)
 		$(use_enable whiteboarding)
 	)
