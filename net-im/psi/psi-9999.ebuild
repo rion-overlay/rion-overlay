@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n git-r3 qmake-utils gnome2-utils xdg-utils
+inherit l10n git-r3 qmake-utils xdg-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -195,11 +195,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
