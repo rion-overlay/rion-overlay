@@ -10,7 +10,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="attention autoreply birthdayreminder chess cleaner clientswitcher conferencelogger contentdownloader enummessages extendedmenu extendedoptions gnupg gomokugame historykeeper httpupload icqdie image imagepreview jabberdisk juick messagefilter otr pepchangenotify psto qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher"
+IUSE="attention autoreply birthdayreminder chess cleaner clientswitcher conferencelogger contentdownloader enummessages extendedmenu extendedoptions gnupg gomokugame historykeeper icqdie image imagepreview jabberdisk juick messagefilter omemo otr pepchangenotify qipxstatuses screenshot skins stopspam storagenotes translate videostatus watcher"
 
 RDEPEND=""
 
