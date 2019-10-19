@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_AUTODEPS=false
 inherit kde5 cmake-multilib git-r3
@@ -66,13 +66,6 @@ pkg_pretend() {
 	if [[ "$(multilib_get_enabled_abis)" != "${DEFAULT_ABI}" ]]; then
 		use qt5 && elog "Qt5 is not (yet) multilib-aware, qtcurve will be built for Qt5 with native ABI only"
 		use plasma && elog "KF5 is not (yet) multilib-aware, qtcurve will be built for KF5 with native ABI only"
-	fi
-}
-
-pkg_setup() {
-	# bug #498776
-	if ! version_is_at_least 4.7 $(gcc-version) ; then
-		append-cxxflags -Doverride=
 	fi
 }
 
