@@ -121,7 +121,6 @@ src_unpack() {
 src_prepare() {
 	default
 	if use extras; then
-		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
 		if use iconsets; then
 			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die "failed to copy additional iconsets"
 		fi
@@ -153,6 +152,7 @@ src_configure() {
 		$(use_enable whiteboarding)
 	)
 
+	use extras && CONF+=("--psiplus")
 	use debug && CONF+=("--debug")
 	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
 	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
