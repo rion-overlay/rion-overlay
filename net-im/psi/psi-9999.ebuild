@@ -152,6 +152,7 @@ src_configure() {
 		$(use_enable whiteboarding)
 	)
 
+	use extras && CONF+=("--psiplus")
 	use debug && CONF+=("--debug")
 	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
 	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
