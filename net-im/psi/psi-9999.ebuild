@@ -121,7 +121,6 @@ src_unpack() {
 src_prepare() {
 	default
 	if use extras; then
-		cp -a "${WORKDIR}/psi-plus/iconsets" "${S}" || die "failed to copy iconsets"
 		if use iconsets; then
 			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die "failed to copy additional iconsets"
 		fi
