@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit eutils rpm linux-info linux-mod systemd
 
 DESCRIPTION="Hardware Against Software Piracy for access to parallel and usb keys"
 HOMEPAGE="http://www.etersoft.ru"
-SRC_URI="http://ftp.etersoft.ru/pub/Etersoft/HASP/3.3/sources/Gentoo/2009/haspd-3.3-eter5gentoo.src.rpm"
+SRC_URI="http://ftp.etersoft.ru/pub/Etersoft/HASP/3.3/sources/haspd-3.3-alt10.src.rpm"
 
 LICENSE="Etersoft"
 SLOT="0"
@@ -27,6 +27,13 @@ usr/sbin/hasplm usr/sbin/hasplmd usr/sbin/nethaspdemo"
 
 S="${WORKDIR}/haspd-3.3"
 
+PATCHES=(
+	"${FILESDIR}/remove-udev-rule-for-old-kernels.patch"
+	"${FILESDIR}/linux-3.15.patch"
+	"${FILESDIR}/linux-4.11.patch"
+	"${FILESDIR}/linux-4.12.patch"
+)
+
 pkg_setup() {
 	if use lpt ; then
 		MODULE_NAMES="${MODNAME}(${MODNAME}:${S}/${MODNAME})"
@@ -40,13 +47,6 @@ pkg_setup() {
 src_unpack() {
 	rpm_unpack
 	unpack ./haspd-3.3.tar
-}
-
-src_prepare() {
-	epatch "${FILESDIR}/remove-udev-rule-for-old-kernels.patch"
-	epatch "${FILESDIR}/linux-3.15.patch"
-	epatch "${FILESDIR}/linux-4.11.patch"
-	epatch "${FILESDIR}/linux-4.12.patch"
 }
 
 src_compile() {
