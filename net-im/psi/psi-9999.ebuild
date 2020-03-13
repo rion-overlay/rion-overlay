@@ -125,7 +125,8 @@ src_prepare() {
 			cp -a "${WORKDIR}/resources/iconsets" "${S}" || die "failed to copy additional iconsets"
 		fi
 
-		eapply "${WORKDIR}/psi-plus/patches"/*.diff
+		patches=$(find "${WORKDIR}/psi-plus/patches" -maxdepth 1 -name '*.diff')
+		[ -n "$patches" ] && eapply "${WORKDIR}/psi-plus/patches"/*.diff
 
 		vergen="${WORKDIR}/psi-plus/admin/psi-plus-nightly-version"
 		features="$(use webkit && echo '--webkit') $(use webengine && echo '--webengine')"
