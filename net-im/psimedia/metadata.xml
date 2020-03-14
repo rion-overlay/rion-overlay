@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nikoli@lavabit.com</email>
-		<name>Nikoli</name>
+		<email>rion4ik@gmail.com</email>
+		<name>Sergey Ilinykh</name>
 	</maintainer>
 	<use>
 		<flag name='demo'>Build simple test application for the PsiMedia system</flag>
