@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake-utils multilib eutils git-r3
+inherit cmake multilib eutils git-r3
 
-DESCRIPTION="Psi plugin for voice/video calls"
+DESCRIPTION="Psi/Psi+ plugin for voice/video calls"
 HOMEPAGE="https://psi-im.org/"
 
 EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug extras"
+IUSE="extras"
 
 BDEPEND="sys-devel/qconf"
 DEPEND="
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-jpeg:1.0
 	media-plugins/gst-plugins-opus:1.0
 	media-plugins/gst-plugins-v4l2:1.0
-	net-im/psi[extras?]
+	~net-im/psi-${PV}[extras?]
 "
 
 src_configure() {
@@ -37,5 +37,5 @@ src_configure() {
 		-DUSE_PSI=$(usex extras 0 1)
 		-DBUILD_DEMO=0
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
