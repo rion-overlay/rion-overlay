@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
+IUSE="aspell crypt debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -47,6 +47,7 @@ DEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	net-dns/libidn:0
+	net-libs/http-parser
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
