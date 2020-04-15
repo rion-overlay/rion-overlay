@@ -19,7 +19,8 @@ BDEPEND=""
 S="${WORKDIR}/c-client-sdk-${PV}"
 
 src_install() {
-	doheader ldapi.h uthash.h
+	insinto /usr/include/ldclient
+	doins ldapi.h uthash.h
 	use static-libs && dolib.a libldclientapi.a
 	dolib.so libldclientapiplus.so
 	dolib.so libldclientapi.so
