@@ -31,12 +31,15 @@ src_install() {
 	doexe nvidia
 	exeinto /usr/bin
 	doexe nvidia-sleep.sh
+	echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" > nvidia-pm.conf
+	insinto /etc/modprobe.d/
+	doins nvidia-pm.conf
 
 	ewarn "To enable nvidia sleep services execute next commands:"
 	ewarn "    systemctl enable nvidia-suspend.service"
 	ewarn "    systemctl enable nvidia-hibernate.service"
 	ewarn "    systemctl enable nvidia-resume.service"
-	ewarn "Also it's neccesary to add NVreg_PreserveVideoMemoryAllocations=1"
-	ewarn "to options line in /etc/modprobe.d/nvidia.conf and then reboot"
+	ewarn "Note nvidia kernel module reload (or reboot) is required"
+	ewarn "to accept new driver options."
 	ewarn "More details at /usr/share/doc/nvidia-drivers-${PV}/html/powermanagement.html"
 }
