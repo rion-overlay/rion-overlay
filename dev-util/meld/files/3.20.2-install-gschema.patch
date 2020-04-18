@@ -1,0 +1,14 @@
+diff --git a/setup.py b/setup.py
+index 2bf2f49..839376c 100755
+--- a/setup.py
++++ b/setup.py
+@@ -63,6 +63,9 @@ setup(
+         ('share/meld/ui',
+          glob.glob("data/ui/*.ui") + glob.glob("data/ui/*.xml")
+          ),
++        ('share/glib-2.0/schemas',
++         ['data/org.gnome.meld.gschema.xml']
++         ),
+     ],
+     cmdclass={
+         "build_i18n": meld.build_helpers.build_i18n,
