@@ -29,8 +29,6 @@ src_install() {
 	doins *.service
 	exeinto /lib/systemd/system-sleep
 	doexe nvidia
-	exeinto /usr/bin
-	doexe nvidia-sleep.sh
 	echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" > nvidia-pm.conf
 	insinto /etc/modprobe.d/
 	doins nvidia-pm.conf
