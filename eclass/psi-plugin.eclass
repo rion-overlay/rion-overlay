@@ -63,7 +63,9 @@ psi-plugin_src_unpack() {
 
 psi-plugin_src_prepare() {
 	default
-	sed -e 's#\.\./\.\./psiplugin.pri#/usr/share/psi-plus/plugins/psiplugin.pri#' \
+	local rp=/usr/share/psi-plus/plugins/psiplugin.pri
+	[ -f $rp ] || local rp=/usr/share/psi/plugins/psiplugin.pri
+	sed -e "s#\.\./\.\./psiplugin.pri#$rp#" \
                -i "${MY_PN}".pro || die
 }
 
