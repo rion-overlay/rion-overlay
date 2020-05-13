@@ -67,11 +67,11 @@ METACONTENT
   [ "$arch" != "generic" ] && dirvar="PLUGIN_DIR=\"${arch}\"
 "
   echo "$(cat <<EBUILDCONTENT
-# Copyright 1999-$(date +%Y) Gentoo Foundation
+# Copyright 1999-$(date +%Y) Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
-EAPI=6
+EAPI=7
 
 ${dirvar}inherit psi-plugin
 
@@ -81,13 +81,6 @@ KEYWORDS=""
 IUSE=""
 EBUILDCONTENT
 )" >> "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
-
-  echo "# ChangeLog for net-im/psi-${pn}
-# Copyright 1999-$(date +%Y) Gentoo Foundation; Distributed under the GPL v2
-# \$Header: \$
-
-  `LANG=C date "+%d %b %Y"`; $USER <$USER@bots.ru> ChangeLog:
-  generate ChangeLog" > "net-im/psi-${pn}/ChangeLog"
 
   ebuild "net-im/psi-${pn}/psi-${pn}-9999.ebuild" digest
   git add "net-im/psi-${pn}"
@@ -101,10 +94,10 @@ ALL_PLUGINS="$(grep psi-plugin -lr net-im/ --include '*ebuild' | cut -d '/' -f -
   echo "net-im/psimedia::rion **"
   echo "net-im/qconf::rion **"
   echo "$ALL_PLUGINS" | awk '{print $1."::rion **"}'
-) > Documentation/package.keywords/psi/psi.keywords
+) > Documentation/package.keywords/psi/psi.accept_keywords
 (
-  echo "net-im/psi[plugins]"
-  echo "net-im/psimedia[extras]"
+  echo "net-im/psi"
+  echo "net-im/psimedia"
   echo "$ALL_PLUGINS"
 ) > sets/psiplus
 ##########################################################
@@ -121,11 +114,11 @@ for atom in $ALL_PLUGINS; do
 done
 
   echo "$(cat <<EBUILDCONTENT
-# Copyright 1999-$(date +%Y) Gentoo Foundation
+# Copyright 1999-$(date +%Y) Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Meta package for net-im/psi plugins"
 HOMEPAGE="https://github.com/psi-im"
