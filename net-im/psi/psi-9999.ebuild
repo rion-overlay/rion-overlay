@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
+IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -64,7 +64,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-qt/qtimageformats
-	crypt? ( app-crypt/qca[gpg] )
 "
 
 RESTRICT="test iconsets? ( bindist )"
@@ -73,9 +72,9 @@ pkg_setup() {
 	MY_PN=psi
 	if use extras; then
 		MY_PN=psi-plus
-		ewarn "You're about to build patched version of Psi called Psi+."
-		ewarn "It has new nice features not yet included to Psi."
-		ewarn "Take a look at homepage for more info: http://psi-plus.com/"
+		einfo "You're about to build a branded version of Psi called Psi+."
+		einfo "Psi+ patches were fully merged to Psi."
+		einfo "The only difference is the name and some artwork."
 
 		if use iconsets; then
 			ewarn
@@ -159,9 +158,4 @@ src_install() {
 		doins "translations/${PN}_${1}.qm"
 	}
 	l10n_for_each_locale_do install_locale
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	einfo "For GPG support make sure app-crypt/qca is compiled with gpg USE flag."
 }
