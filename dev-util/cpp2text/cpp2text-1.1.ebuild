@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
-DESCRIPTION="Stupid bidirection cpp to text converter"
+DESCRIPTION="String representation converter (text, cpp, json)"
 HOMEPAGE="https://github.com/Ri0n/cpp2text"
-SRC_URI="https://github.com/Ri0n/cpp2text/archive/1.0.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ri0n/cpp2text/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
