@@ -14,3 +14,4 @@ RDEPEND="
 	media-libs/webrtc-audio-processing[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "$FILESDIR/shared-gstbadaudio-dep-${PV}.patch" )

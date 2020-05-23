@@ -1,0 +1,22 @@
+diff --git a/ext/webrtcdsp/Makefile.in b/ext/webrtcdsp/Makefile.in
+index fa1ac66..19e5951 100644
+--- a/ext/webrtcdsp/Makefile.in
++++ b/ext/webrtcdsp/Makefile.in
+@@ -162,7 +162,7 @@ am__uninstall_files_from_dir = { \
+ am__installdirs = "$(DESTDIR)$(plugindir)"
+ LTLIBRARIES = $(plugin_LTLIBRARIES)
+ am__DEPENDENCIES_1 =
+-libgstwebrtcdsp_la_DEPENDENCIES = $(top_builddir)/gst-libs/gst/audio/libgstbadaudio-$(GST_API_VERSION).la \
++libgstwebrtcdsp_la_DEPENDENCIES = \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+ am_libgstwebrtcdsp_la_OBJECTS = libgstwebrtcdsp_la-gstwebrtcdsp.lo \
+@@ -752,7 +752,7 @@ libgstwebrtcdsp_la_CXXFLAGS = \
+ 
+ libgstwebrtcdsp_la_LIBADD = \
+ 	-lgstaudio-$(GST_API_VERSION) \
+-	$(top_builddir)/gst-libs/gst/audio/libgstbadaudio-$(GST_API_VERSION).la \
++	-lgstbadaudio-$(GST_API_VERSION) \
+ 	$(GST_LIBS) $(GST_BASE_LIBS) \
+ 	$(GST_PLUGINS_BASE_LIBS) \
+ 	$(WEBRTCDSP_LIBS)
