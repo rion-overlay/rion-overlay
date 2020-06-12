@@ -6,8 +6,8 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="C object oriented SIP Stack."
-HOMEPAGE="http://www.linphone.org/technical-corner/belle-sip/overview"
-SRC_URI="http://www.linphone.org/releases/sources/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.linphone.org/technical-corner/belle-sip"
+SRC_URI="https://gitlab.linphone.org/BC/public/belle-sip/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -18,15 +18,14 @@ IUSE="examples test -tunnel"
 REQUIRED_USE=""
 
 DEPEND="${RDEPEND}
-	net-libs/bctoolbox
-	dev-java/antlr:3
+	>=net-libs/bctoolbox-4.3.1
+	dev-java/antlr:3.5
 	dev-libs/antlr-c
 	dev-util/intltool
 	sys-devel/libtool
 	virtual/pkgconfig
-	test? ( >=dev-util/cunit-2.1_p3[ncurses] )"
+	test? ( dev-util/cunit[ncurses] )"
 
-S="${WORKDIR}/${P}-0"
 
 src_configure() {
 	local mycmakeargs=(

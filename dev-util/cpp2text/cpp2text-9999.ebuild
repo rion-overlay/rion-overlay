@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit qmake-utils
+inherit qmake-utils git-r3
 
 DESCRIPTION="String representation converter (text, cpp, json)"
 HOMEPAGE="https://github.com/Ri0n/cpp2text"
-SRC_URI="https://github.com/Ri0n/cpp2text/archive/${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/Ri0n/cpp2text"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-qt/qtgui:5"
