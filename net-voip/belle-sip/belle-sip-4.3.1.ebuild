@@ -18,7 +18,7 @@ IUSE="examples test -tunnel"
 REQUIRED_USE=""
 
 DEPEND="${RDEPEND}
-	>=net-libs/bctoolbox-4.3.1
+	net-libs/bctoolbox:4
 	dev-java/antlr:3.5
 	dev-libs/antlr-c
 	dev-util/intltool

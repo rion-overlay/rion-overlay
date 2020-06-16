@@ -1,27 +1,25 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit cmake-utils
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
-HOMEPAGE="http://www.linphone.org/"
-SRC_URI="http://www.linphone.org/releases/sources/${PN}/${P}.tar.gz"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/ortp"
+SRC_URI="https://gitlab.linphone.org/BC/public/ortp/-/archive/${PV}/${P}.tar.bz2"
 
-LICENSE="LGPL-2.1"
-SLOT="0/9"
+LICENSE="GPL-3"
+SLOT="4"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples ntp-timestamp"
 
 RDEPEND="
-	>=net-libs/bctoolbox-0.6
+	net-libs/bctoolbox:4
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${P}-0"
 
 src_configure() {
 	local mycmakeargs=(
