@@ -44,7 +44,6 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	net-dns/libidn:0
 	net-libs/http-parser:=
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
