@@ -31,7 +31,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/plugins"
 fi
 
-inherit qmake-utils ${SCM}
+inherit cmake-utils ${SCM}
 
 # general common
 
@@ -51,7 +51,7 @@ DEPEND="net-im/psi"
 RDEPEND="${DEPEND}"
 
 # Eclass exported functions
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_install
+EXPORT_FUNCTIONS src_unpack
 
 psi-plugin_src_unpack() {
 	if [ -n "$SCM" ]; then
@@ -59,20 +59,4 @@ psi-plugin_src_unpack() {
 	else
 		default
 	fi
-}
-
-psi-plugin_src_prepare() {
-	default
-	local rp=/usr/share/psi-plus/plugins/psiplugin.pri
-	[ -f $rp ] || local rp=/usr/share/psi/plugins/psiplugin.pri
-	sed -e "s#\.\./\.\./psiplugin.pri#$rp#" \
-               -i "${MY_PN}".pro || die
-}
-
-psi-plugin_src_configure() {
-	eqmake5 "${MY_PN}".pro
-}
-
-psi-plugin_src_install() {
-	emake install INSTALL_ROOT="${D}"
 }
