@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend () {
+	need net localmount
+	after hasplmd
+}
+
+start() {
+	ebegin "Starting HASP HL"
+	start-stop-daemon --start --quiet --exec /usr/sbin/hasplm -- ${HASPLM_ARGS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping HASP HL"
+	start-stop-daemon --stop --quiet --retry 10 --exec /usr/sbin/hasplm
+	eend $?
+}
