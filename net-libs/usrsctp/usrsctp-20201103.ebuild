@@ -7,17 +7,14 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="A cross-platform userland SCTP stack"
 HOMEPAGE="https://github.com/sctplab/usrsctp"
-USRSCTP_VERSION="f4925bd5ebb2db38263eef0ec816bf393293cf9c"
+USRSCTP_VERSION="a3e76b281ff5e3469e1c216d47533a73b3b03fab"
 SRC_URI="https://github.com/sctplab/usrsctp/archive/${USRSCTP_VERSION}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
+DOCS=( LICENSE.md Manual.md README.md )
 
 S="${WORKDIR}/${PN}-${USRSCTP_VERSION}"
 
@@ -25,11 +22,7 @@ src_configure() {
 	local mycmakeargs=(
 		-Dsctp_werror=0
 		-Dsctp_build_programs=0
+		-Dsctp_build_shared_lib=1
 	)
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-	use static-libs || rm "${ED}"/usr/lib*/*.a
 }
