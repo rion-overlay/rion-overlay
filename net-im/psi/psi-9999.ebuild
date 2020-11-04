@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
+IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring webengine xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -45,6 +45,7 @@ DEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	net-libs/http-parser:=
+	net-libs/usrsctp
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
@@ -58,7 +59,6 @@ DEPEND="
 		dev-qt/qtwebengine:5[widgets]
 		net-libs/http-parser
 	)
-	webkit? ( dev-qt/qtwebkit:5 )
 "
 RDEPEND="${DEPEND}
 	dev-qt/qtimageformats
@@ -110,10 +110,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local chattype=basic
-	use webengine && chattype=webengine
-	use webkit && chattype=webkit
-
 	local mycmakeargs=(
 		-DPRODUCTION=OFF
 		-DUSE_ASPELL=$(usex aspell)
@@ -122,7 +118,7 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DINSTALL_PLUGINS_SDK=1
 		-DUSE_KEYCHAIN=$(usex keyring)
-		-DCHAT_TYPE=$chattype
+		-DCHAT_TYPE=$(usex webengine webengine basic)
 		-DUSE_XSS=$(usex xscreensaver)
 		-DPSI_PLUS=$(usex extras)
 	)
