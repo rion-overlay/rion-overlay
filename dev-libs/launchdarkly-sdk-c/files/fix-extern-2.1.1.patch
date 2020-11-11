@@ -1,0 +1,13 @@
+diff --git a/src/ldinternal.h b/src/ldinternal.h
+index f216a92..43cca5d 100755
+--- a/src/ldinternal.h
++++ b/src/ldinternal.h
+@@ -51,7 +51,7 @@ void LDi_onstreameventput(struct LDClient *client, const char *data);
+ void LDi_onstreameventpatch(struct LDClient *client, const char *data);
+ void LDi_onstreameventdelete(struct LDClient *client, const char *data);
+ 
+-void (*LDi_statuscallback)(int);
++extern void (*LDi_statuscallback)(int);
+ 
+ void LDi_millisleep(int ms);
+ /* must be called exactly once before rng is used */
