@@ -1,1 +1,1 @@
-qtnote-9999.ebuild
+qtnote-3.1.0.ebuild

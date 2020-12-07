@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 case "$PV" in 9999*) scm=git-r3; ;; *) scm=""; ;; esac
 
-inherit qmake-utils gnome2-utils $scm
+inherit cmake $scm xdg
 
 DESCRIPTION="Qt note-taking application compatible with tomboy"
 HOMEPAGE="http://ri0n.github.io/QtNote/"
@@ -15,7 +15,7 @@ if [ -z "$scm" ]; then
 	KEYWORDS="amd64 x86"
 else
 	EGIT_REPO_URI="https://github.com/Ri0n/QtNote"
-	EGIT_BRANCH=stable
+	EGIT_BRANCH=master
 	KEYWORDS=""
 fi
 
@@ -36,27 +36,20 @@ DEPEND="
 	spell? ( app-text/hunspell )"
 RDEPEND="${DEPEND}"
 
-pkg_setup() {
-	CONF=( PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" )
-	use spell || CONF+=( CONFIG+=nospellchecker )
-	use kde || CONF+=( CONFIG+=nokde )
-	use unity || CONF+=( CONFIG+=noubuntu )
+qtnote_plugin_enable() {
+    echo -DQTNOTE_PLUGIN_ENABLE_${2:-$1}=$(usex "$1")
+}
+
+src_prepare() {
+	[ -z "$scm" ] || git-r3_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
-	eqmake5 ${PN}.pro ${CONF[@]}
-
-}
-
-src_install() {
-	emake INSTALL_ROOT="${D}" install
-	einstalldocs
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	local mycmakeargs=(
+		$(qtnote_plugin_enable spell spellchecker)
+		$(qtnote_plugin_enable kde kdeintegration)
+		$(qtnote_plugin_enable unity ubuntu)
+	)
+	cmake_src_configure
 }
