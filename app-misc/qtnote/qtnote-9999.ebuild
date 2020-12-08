@@ -37,11 +37,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 qtnote_plugin_enable() {
-    echo -DQTNOTE_PLUGIN_ENABLE_${2:-$1}=$(usex "$1")
+	echo -DQTNOTE_PLUGIN_ENABLE_${2:-$1}=$(usex "$1")
 }
 
 src_prepare() {
-	[ -z "$scm" ] || git-r3_src_prepare
+	xdg_src_prepare
 	cmake_src_prepare
 }
 
