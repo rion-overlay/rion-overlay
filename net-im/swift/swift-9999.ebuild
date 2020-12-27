@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 SCONS_MIN_VERSION="1.2"
 PLOCALES="ca cs de en es fr gl he hu nl pl ru sk sv"
 PLOCALE_BACKUP="en"

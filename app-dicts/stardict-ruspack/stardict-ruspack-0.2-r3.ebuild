@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 DESCRIPTION="Collection of dicts for stardict."
 HOMEPAGE="http://web.archive.org/web/20131111152446/http://gnome.msiu.ru/stardict.php"
