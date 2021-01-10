@@ -61,7 +61,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	dev-qt/qtimageformats
+	dev-qt/qtimageformats:5
 "
 
 RESTRICT="test iconsets? ( bindist )"
