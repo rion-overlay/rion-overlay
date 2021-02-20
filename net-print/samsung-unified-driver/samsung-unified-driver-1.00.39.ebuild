@@ -78,7 +78,7 @@ src_install() {
 		dodir /usr/share/cups/model/samsung
 		insinto /usr/share/cups/model/samsung
 		doins noarch/share/ppd/*.ppd
-		gzip -9 "${ED}"usr/share/cups/model/samsung/*.ppd || die
+		gzip -9 "${ED}"/usr/share/cups/model/samsung/*.ppd || die
 
 		dodir /usr/share/cups/profiles/samsung
 		insinto /usr/share/cups/profiles/samsung
