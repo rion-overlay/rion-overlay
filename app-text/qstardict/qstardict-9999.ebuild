@@ -15,7 +15,7 @@ if [ -n "${VCS_ECLASS}" ]; then
 	EGIT_REPO_URI="https://github.com/a-rodin/qstardict"
 else
 	S="${WORKDIR}/${PN}-${P}"
-	KEYWORDS="amd64 ~ia64 x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://github.com/a-rodin/qstardict/archive/${P}.zip"
 fi
 SLOT="0"

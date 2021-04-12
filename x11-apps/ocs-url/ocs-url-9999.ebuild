@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,6 @@ else
 	S="${WORKDIR}/${PN}-release-${PV}"
 fi
 
-RESTRICT="network-sandbox"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
@@ -31,14 +30,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-
 src_unpack() {
-    git-r3_src_unpack
+	git-r3_src_unpack
 
-    unset EGIT_BRANCH EGIT_COMMIT
-    EGIT_REPO_URI=https://github.com/akiraohgaki/qtil.git
-    EGIT_CHECKOUT_DIR="${S}/lib/qtil"
-    git-r3_src_unpack
+	unset EGIT_BRANCH EGIT_COMMIT
+	EGIT_REPO_URI=https://github.com/akiraohgaki/qtil.git
+	EGIT_CHECKOUT_DIR="${S}/lib/qtil"
+	git-r3_src_unpack
 }
 
 src_prepare(){
@@ -62,4 +60,3 @@ pkg_postinst(){
 	elog "Just click on \"Install\", and then open the ocs://"
 	elog "url provided by every package."
 }
-

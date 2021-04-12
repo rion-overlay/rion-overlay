@@ -19,14 +19,6 @@ dev-python/rcore:sql - Install required dependencies to work database
 dev-vcs/mercurial:bugzilla - Support bugzilla integration.
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
 dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
-mail-filter/milter-greylist:bind - Use net-dns/bind-tools resolver instead glibc resolver
-mail-filter/milter-greylist:dnsrbl - Add dnsrbl blacklist support
-mail-filter/milter-greylist:ldap - Build witch openldap support
-mail-filter/milter-greylist:p0f - Add support for OS type detection's. Usenet-analyzer/p0f
-mail-filter/milter-greylist:postfix - Add support for mail-mta/postfix MTA
-mail-filter/milter-greylist:sendmail - Add support for mail-mta/sendmail MTA
-mail-filter/milter-greylist:spamassassin - Add spamassasin plugin
-mail-filter/milter-greylist:spf - Add Sender Policy Framework support
 mail-filter/policyd:webinterface - 
 media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
 media-libs/mediastreamer:filters - Enable compilation of filters

@@ -35,7 +35,6 @@ dev-util/douml 9999: Powerful UML 2 modelling tool. BoUML fork
 dev-util/gmanedit2 9999: Gnome Manual Pages Editor
 dev-vcs/mercurial 2.8.9999: Scalable distributed SCM
 games-action/oolite 1.84: Elite space trading & warfare remake
-mail-filter/milter-greylist 4.3.9 4.4.1 4.4.2 4.4.3: Milter-greylist is a stand-alone milter that implements the greylist filtering method
 mail-filter/opendmarc 1.0.0 1.0.0-r1: Open source DMARC implementation
 mail-filter/policyd 2.0.12 2.0.14: Policy daemon for postfix and other MTAs
 media-gfx/glc-player 2.3.0: Open Source 3D viewer used to view 3d models
@@ -109,7 +108,6 @@ sci-geosciences/qgis 2.10.1 2.12.1: User friendly Geographic Information System
 sci-libs/geographiclib 1.31 1.32: Small set of C++ classes for performing various geographic and geodesic conversions
 sys-apps/hasp 3.3_p5-r1: Hardware Against Software Piracy for access to parallel and usb keys
 sys-apps/ksmtuned 9999: Simple script that controls whether (and with what vigor) ksm should search for duplicated pages
-sys-apps/linux-ftools 0_p20120419: Linux command line tools for fallocate, fincore, fadvise
 sys-apps/openwsman 2.3.6: Opensource Implementation of WS-Management Client
 sys-apps/sblim-cmpi-base 1.6.2: SBLIM Base Providers
 sys-apps/sblim-cmpi-fsvol 1.5.1: SBLIM fsvol instrumentation

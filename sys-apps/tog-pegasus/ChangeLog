@@ -1,9 +1,0 @@
-# ChangeLog for sys-apps/tog-pegasus
-# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
-# ChangeLog: rion overlay ;http://code.google.com/p/rion-overlay/ 
-# $Header: $
-
-*tog-pegasus-2.12.0 (09 Mar 2013)
-
-  09 Mar 2013;  <slep@gentoo.org> +metadata.xml, +tog-pegasus-2.12.0.ebuild:
-  add WS-MAN level

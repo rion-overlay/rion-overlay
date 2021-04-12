@@ -1,6 +1,5 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="7"
 inherit unpacker xdg
@@ -10,7 +9,7 @@ HOMEPAGE="http://www.viber.com"
 SRC_URI="
 	amd64? ( http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb -> ${P}.deb )
 "
-
+LICENSE="Viber-EULA"
 IUSE=""
 SLOT="0"
 KEYWORDS="amd64"

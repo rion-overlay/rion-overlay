@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit git-r3 qmake-utils xdg
+inherit git-r3 cmake xdg
 
 DESCRIPTION="Powerful yet simple to use screenshot software for GNU/Linux"
 HOMEPAGE="https://flameshot.js.org"
@@ -22,9 +22,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_configure() {
-	export INSTALL_ROOT="${D}"
-	eqmake5 CONFIG+=packaging
-
+src_prepare() {
+	xdg_src_prepare
+	cmake_src_prepare
 	elog "Read https://github.com/lupoDharkael/flameshot#global for runtime configuration"
 }

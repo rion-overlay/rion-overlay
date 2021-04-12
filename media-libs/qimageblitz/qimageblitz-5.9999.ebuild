@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="Graphical effect and filter library by KDE"
 HOMEPAGE="https://websvn.kde.org/trunk/kdesupport/qimageblitz/"
@@ -34,5 +34,5 @@ src_configure() {
 		-DHAVE_SSE2=$(usex cpu_flags_x86_sse2)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 
-inherit gnome2-utils xdg cmake-utils ${VCS_ECLASS}
+inherit gnome2-utils xdg cmake ${VCS_ECLASS}
 
 if [ -n "${VCS_ECLASS}" ]; then
 	KEYWORDS=""
@@ -61,14 +61,4 @@ pkg_setup() {
 		use "${p}" && plugins="${plugins};${p}"
 	done
 	MYCMAKEARGS="-DBUILD_PLUGINS=${plugins}"
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_pkg_postrm
 }
