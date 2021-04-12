@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,7 @@ QA_PREBUILT="usr/sbin/aksusbd usr/sbin/haspdemo usr/sbin/winehasp
 usr/sbin/hasplm usr/sbin/hasplmd usr/sbin/nethaspdemo"
 
 S="${WORKDIR}/haspd-3.3"
+MODULE_NAMES="${MODNAME}(${MODNAME}:${S}/${MODNAME})"
 
 PATCHES=(
 	"${FILESDIR}/remove-udev-rule-for-old-kernels.patch"
@@ -36,9 +37,7 @@ PATCHES=(
 
 pkg_setup() {
 	if use lpt ; then
-		MODULE_NAMES="${MODNAME}(${MODNAME}:${S}/${MODNAME})"
 		CONFIG_CHECK="PARPORT PARPORT_PC"
-
 		linux-mod_pkg_setup
 		BUILD_PARAMS="KERNSRC=${KERNEL_DIR}" BUILD_TARGETS="kernel3"
 	fi
