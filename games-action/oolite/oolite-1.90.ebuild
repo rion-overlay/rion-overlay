@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit gnustep-2
+inherit gnustep-2 desktop
 
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.org/"
 FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
-BINRES_REV=1d78e8aa776bc3ac8611dd26c11c709548729239
-OOLITE_REV=15eb90fd792fffb4c6edbb3bbea5c1b75da2979b
+BINRES_REV=1fe395fe185611b2de54b027cda6c29f15a9f3a0
+OOLITE_REV=1.90
 SDLDEL_REV=dd17796b2ee1257bea04aeffaec660f6c75eadf2
 SRC_URI="https://github.com/OoliteProject/oolite/archive/${OOLITE_REV}.tar.gz -> ${P}.tar.gz
 	https://github.com/OoliteProject/oolite-binary-resources/archive/${BINRES_REV}.tar.gz -> oolite-binary-resources-${PV}.tar.gz
@@ -38,7 +38,7 @@ RDEPEND="virtual/opengl
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
 
-PATCHES=( "${FILESDIR}/${PN}-gentoo.patch" "${FILESDIR}/external-mozjs.patch" )
+PATCHES=( "${FILESDIR}/${P}-gentoo.patch" "${FILESDIR}/external-mozjs.patch" )
 
 src_prepare() {
 	gnustep-base_src_prepare
@@ -49,7 +49,7 @@ src_prepare() {
 		-e '/ADDITIONAL_OBJC_LIBS *=/aADDITIONAL_OBJC_LIBS += -lminizip' \
 		-e 's|:src/Core/MiniZip||g' \
 		-e 's|-Isrc/Core/MiniZip|-I/usr/include/minizip|' \
-		-e 's|LIBJS = js_static|LIBJS = mozjs185|' \
+		-e 's|LIBJS *= js_static|LIBJS = mozjs185|' \
 		"${S}"/GNUmakefile || die
 	sed "/void png_error/d" -i src/Core/Materials/OOPNGTextureLoader.m
 	rm -rf src/Core/MiniZip/
@@ -68,7 +68,8 @@ src_install() {
 	insinto "${install_root}"
 	doins -r oolite.app
 
-	echo "openapp oolite" > "${T}/oolite"
+	echo '#!/bin/sh' > "${T}/oolite"
+	echo "exec openapp oolite" >> "${T}/oolite"
 	dobin "${T}/oolite"
 	fperms a+rx "${install_root}/oolite.app/oolite"
 	doicon installers/FreeDesktop/oolite-icon.png
