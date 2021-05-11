@@ -33,7 +33,6 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 DEPEND="
-	app-crypt/qca:2[ssl]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -121,6 +120,8 @@ src_configure() {
 		-DCHAT_TYPE=$(usex webengine webengine basic)
 		-DUSE_XSS=$(usex xscreensaver)
 		-DPSI_PLUS=$(usex extras)
+		-DVERBOSE_PROGRAM_NAME=ON
+		-DBUNDLED_QCA=ON
 	)
 	cmake_src_configure
 }
