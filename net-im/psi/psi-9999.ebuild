@@ -87,6 +87,11 @@ pkg_setup() {
 src_unpack() {
 	git-r3_src_unpack
 
+	unset EGIT_BRANCH EGIT_COMMIT
+	EGIT_CHECKOUT_DIR="${S}/iris/3rdparty/qca" \
+	EGIT_REPO_URI="${PSI_URI}/qca.git" \
+	git-r3_src_unpack
+
 	# fetch translations
 	unset EGIT_BRANCH EGIT_COMMIT
 	EGIT_REPO_URI=$(usex extras "${PSI_PLUS_LANGS_URI}" "${PSI_LANGS_URI}")
