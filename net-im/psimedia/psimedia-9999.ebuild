@@ -29,9 +29,9 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-jpeg:1.0
 	media-plugins/gst-plugins-opus:1.0
 	media-plugins/gst-plugins-v4l2:1.0
+	media-plugins/gst-plugins-webrtcdsp:1.0
 	psi? ( ~net-im/psi-${PV}[extras?] )
 "
-# and optional media-plugins/gst-plugins-webrtcdsp:1.0 for echo cancellation
 
 src_configure() {
 	local mycmakeargs=(
