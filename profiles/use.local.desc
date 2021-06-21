@@ -2,101 +2,125 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
-app-admin/openwbem:association-traversal - 
-app-admin/openwbem:cmpi - 
-app-admin/openwbem:digest - 
-app-admin/openwbem:valgrind - 
-app-misc/a4tool:battery - Enable battery level notifications using x11-libs/libnotify
-app-text/myrulib:links - Include links to the online collections
-app-text/myrulib:reader - Enable internal Cool Reader engine
+app-crypt/qca:botan - Enable botan plugin
+app-crypt/qca:gcrypt - Enable gcrypt plugin
+app-crypt/qca:gpg - Enable GnuPG plugin
+app-crypt/qca:logger - Enable logger plugin
+app-crypt/qca:nss - Enable NSS plugin
+app-crypt/qca:pkcs11 - Enable PKCS#11 plugin
+app-crypt/qca:sasl - Enable SASL plugin
+app-crypt/qca:softstore - Enable softstore plugin
+app-misc/qtnote:unity - Enable Unity/Ubuntu plugin
 app-text/qstardict:plugin_stardict - build stardict plugin
 app-text/qstardict:plugin_swac - 
 app-text/qstardict:plugin_web - build web plugin
-dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
-dev-db/spatialite:proj - Add the sci-libs/proj library for reprojection features
-dev-db/spatialite:xls - Add the dev-libs/freexl library for xls import support
-dev-python/rcore:sql - Install required dependencies to work database
-dev-vcs/mercurial:bugzilla - Support bugzilla integration.
-dev-vcs/mercurial:gpg - Support signing with GnuPG.
-dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
-media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
-media-libs/mediastreamer:filters - Enable compilation of filters
-media-libs/mediastreamer:g726 - Support g726 codec
-media-libs/mediastreamer:g729 - Use g726 codec plugin
-media-libs/mediastreamer:ilbc - Use of iLBC (RFC3951) codec plugin
-media-libs/mediastreamer:ntp-timestamp - Turn on NTP timestamping on received packet
-media-libs/mediastreamer:opus - Enable opus codec support
-media-libs/mediastreamer:ortp - Enable usage of net-libs/ortp
-media-libs/mediastreamer:pcap - Enable usage of net-libs/libpcap
-media-libs/mediastreamer:silk - Use silk (skype protocol) codec plugin
-media-libs/mediastreamer:video - Enable video support
+media-sound/qomp:cuteradioplugin - cuteRadio plugin
 media-sound/qomp:lastfmplugin - Last.FM plugin
 media-sound/qomp:mprisplugin - MPRIS plugin
 media-sound/qomp:myzukaruplugin - myzuka.ru plugin
 media-sound/qomp:notificationsplugin - notifications plugin
-media-sound/qomp:prostopleerplugin - Prosto Pleer plugin
+media-sound/qomp:poiskmplugin - poiskm.me plugin
 media-sound/qomp:tunetofileplugin - Tune To File plugin
 media-sound/qomp:urlplugin - URL Plugin
 media-sound/qomp:yandexmusicplugin - Yandex.Music plugin
-net-dialup/xl2tpd:dnsretry - Patch for host lookup retries, activated by redial feature
-net-dialup/xl2tpd:kernel - Enable kernel interface for PPPoL2TP
-net-im/psi:enchant - Use enchant spell engine instead of aspell
-net-im/psi:extras - Enables extra non official patches
-net-im/psi:iconsets - Install additional iconsets, some of them has not clear licensing
-net-im/psi:plugins - Enable plugins support
-net-im/psi:sql - Enable psi-new-history extras patch
-net-im/psi:webkit - Enable chatlog rendering using webkit
-net-im/psi:whiteboarding - Enable experimental interactive SVG drawing
-net-im/psi-plugins-meta:attention - Enable plugin for making attention (XEP-0224)
-net-im/psi-plugins-meta:autoreply - Enable autoreply plugin.
-net-im/psi-plugins-meta:birthdayreminder - Enable plugin to remind contact's birthdays
-net-im/psi-plugins-meta:captchaforms - Enable plugin to show MUC's captcha
-net-im/psi-plugins-meta:chess - Enable plugin to play chess with your friends
-net-im/psi-plugins-meta:cleaner - Enable profile cleaner plugin.
-net-im/psi-plugins-meta:conferencelogger - Enable plugin which saves logs of conferences
-net-im/psi-plugins-meta:contentdownloader - Enable plugin for downloading extras
-net-im/psi-plugins-meta:extendedmenu - 
-net-im/psi-plugins-meta:extendedoptions - Enable plugin for UI for some hidden options
-net-im/psi-plugins-meta:gmailservice - Enable Gmail Service plugin for psi
-net-im/psi-plugins-meta:historykeeper - Enable plugin to keep certain contacts history clean
-net-im/psi-plugins-meta:icqdie - Enable "ICQDie!!" plugin.
-net-im/psi-plugins-meta:image - Enable plugin for sending in-band images
-net-im/psi-plugins-meta:juick - Enable plugin for juick.com service
-net-im/psi-plugins-meta:otr - 
-net-im/psi-plugins-meta:pepchangenotify - 
-net-im/psi-plugins-meta:psto - s
-net-im/psi-plugins-meta:qipxstatuses - Enable QIP xStatus reader plugin
-net-im/psi-plugins-meta:screenshot - Enable plugin to quickly make screenshots
-net-im/psi-plugins-meta:skins - Enable skins plugin.
-net-im/psi-plugins-meta:stopspam - Enable plugin for spam blocking
-net-im/psi-plugins-meta:storagenotes - Enable plugin for Jabber notes protocol extension
-net-im/psi-plugins-meta:translate - Enable Translate plugin
-net-im/psi-plugins-meta:videostatus - Enable plugin for settings some status during video watching
-net-im/psi-plugins-meta:watcher - Emanable plugin for sending in-band images
+media-video/vlc:X - Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface
+media-video/vlc:aom - Enable AV1 encoding/decoding support using media-libs/libaom
+media-video/vlc:archive - Enable support for libarchive stream extractor
+media-video/vlc:aribsub - Enable support for decoding ARIB STD-B24 subtitles
+media-video/vlc:bluray - Enable libbluray for Blu-ray disc support
+media-video/vlc:chromaprint - Enable libchromaprint for Chromaprint based audio fingerprinter support
+media-video/vlc:chromecast - Enable experimental support for Google Chromecast
+media-video/vlc:dav1d - Enable support for media-libs/dav1d AV1 decoder
+media-video/vlc:dc1394 - Enable IIDC cameras support
+media-video/vlc:directx - Enable Win32 DirectX, D3D11va and DxVA2 support
+media-video/vlc:dvbpsi - Enable support for Mpeg-TS files (.ts, .m2ts, .mts) via media-libs/libdvbpsi
+media-video/vlc:encode - Enable streaming-output support and videolan manager to control multiple streams from within one instance
+media-video/vlc:faad - Enable AAC audio decoding library support via media-libs/faad2
+media-video/vlc:fdk - Enable the Fraunhofer AAC codec library
+media-video/vlc:fluidsynth - Enable Fluidsynth MIDI software synthesis (with external sound fonts)
+media-video/vlc:gcrypt - Enable cryptography support via libgcrypt
+media-video/vlc:gme - Enable support for media-libs/game-music-emu for playing various video game music formats
+media-video/vlc:gstreamer - Enable GStreamer based decoding support (currently supports only video decoding)
+media-video/vlc:kate - Adds support for Ogg Kate subtitles via libkate
+media-video/vlc:kms - Enable kernel mode setting video output plugin via x11-libs/libdrm
+media-video/vlc:libplacebo - Enable support for GPU accelerated video rendering with media-libs/libplacebo
+media-video/vlc:libtar - Uses libtar instead of the built-in tar reader for reading custom skins
+media-video/vlc:libtiger - Enable Ogg Kate subtitles rendering using libtiger
+media-video/vlc:linsys - Enable support for Linux Linear Systems Ltd. SDI and HD-SDI input cards
+media-video/vlc:live - Enable live555 streaming media support (client support for rtsp)
+media-video/vlc:loudness - Enable loudness normalisation according to the EBU R128 standard using media-libs/libebur128
+media-video/vlc:lua - Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things
+media-video/vlc:macosx-notifications - Enable Mac OS X notifications module (formerly growl)
+media-video/vlc:matroska - Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)
+media-video/vlc:mpeg - Add libmpeg2 support for mpeg-1 and mpeg-2 video streams
+media-video/vlc:nfs - Enable support for nfs protocol via net-fs/libnfs
+media-video/vlc:omxil - Enable OpenMAX Integration Layer codec module
+media-video/vlc:optimisememory - Enable optimisation for memory rather than performance
+media-video/vlc:projectm - Enable the projectM visualization plugin
+media-video/vlc:run-as-root - Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!
+media-video/vlc:sdl-image - Enable sdl image video decoder (depends on sdl)
+media-video/vlc:sftp - Enable libssh2 to support SFTP file transfer
+media-video/vlc:shout - Enable libshout output
+media-video/vlc:sid - Adds support for playing C64 SID files through media-libs/libsidplay:2
+media-video/vlc:skins - Enable support for the skins2 interface
+media-video/vlc:soxr - Enable SoX Resampler support via media-libs/soxr
+media-video/vlc:srt - Enable support for Secure Reliable Transport (SRT) via net-libs/srt
+media-video/vlc:tremor - Enable tremor, a fixed-point version of the Ogg Vorbis decoder
+media-video/vlc:twolame - Enable twolame support (MPEG Audio Layer 2 encoder)
+media-video/vlc:upnp - Enable support for the Intel SDK stack based UPnP discovery module instead of CyberLink
+media-video/vlc:vpx - Enable the decoder(s) from the WebM VP8 / VP9 Codec SDK
+media-video/vlc:x265 - Support X265 Encoder
+media-video/vlc:zeroconf - Enable support for zero-configuration networking via avahi
+media-video/vlc:zvbi - Enable support for teletext subtitles via the zvbi library
+net-im/psi:aspell - Enable spellchecking using app-text/aspell
+net-im/psi:enchant - Enable spellchecking using app-text/enchant
+net-im/psi:extras - Enable Psi+ patchset
+net-im/psi:hunspell - Enable spellchecking using app-text/hunspell
+net-im/psi:iconsets - Install additional iconsets, some of them have no clear licensing
+net-im/psi:keyring - Enable storing password in system keyring manager
+net-im/psi:webengine - Enable themed, html-based chatlogs using dev-qt/qtwebengine
+net-im/psi:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
+net-im/psi-plugins-meta:attention - Enable Psi plugin for making attention (XEP-0224)
+net-im/psi-plugins-meta:autoreply - Enable Psi plugin to gnerate automatic replies.
+net-im/psi-plugins-meta:birthdayreminder - Enable Psi plugin to remind contact's birthdays
+net-im/psi-plugins-meta:chess - Enable Psi plugin to play chess with your friends
+net-im/psi-plugins-meta:cleaner - Enable Psi plugin for profile cleaning for specified contacts.
+net-im/psi-plugins-meta:clientswitcher - Enable Psi plugin for client version masking
+net-im/psi-plugins-meta:conferencelogger - Enable Psi plugin which saves logs of conferences
+net-im/psi-plugins-meta:contentdownloader - Enable Psi plugin for downloading extras
+net-im/psi-plugins-meta:enummessages - Enable Psi plugin to enumarate messages added to chat
+net-im/psi-plugins-meta:extendedmenu - Enable Psi plugin which adds special submenu to contacts
+net-im/psi-plugins-meta:extendedoptions - Enable Psi plugin for UI for some hidden options
+net-im/psi-plugins-meta:gnupg - Enable Psi plugin for GnuPG message encryption
+net-im/psi-plugins-meta:gomokugame - Enable Psi plugin for Gomoku game
+net-im/psi-plugins-meta:historykeeper - Enable Psi plugin to keep certain contacts history clean
+net-im/psi-plugins-meta:icqdie - Enable Psi plugin generating weird replies to icq transport contacts.
+net-im/psi-plugins-meta:image - Enable Psi plugin for sending in-band images
+net-im/psi-plugins-meta:imagepreview - Enable Psi plugin to preview images in chat log
+net-im/psi-plugins-meta:jabberdisk - Enable Psi plugin for file sharing via jabber disk
+net-im/psi-plugins-meta:juick - Enable Psi plugin for juick.com service
+net-im/psi-plugins-meta:messagefilter - Enable Psi plugin to filter out messages by various conditions
+net-im/psi-plugins-meta:omemo - Enable Psi plugin for OMEMO
+net-im/psi-plugins-meta:openpgp - Enable Psi plugin to manager OpenPGP keys and settings
+net-im/psi-plugins-meta:otr - Enable Psi plugin for OTR message ecnryption
+net-im/psi-plugins-meta:pepchangenotify - Enable Psi plugin to show PEP change notifications
+net-im/psi-plugins-meta:qipxstatuses - Enable Psi plugin for QIP xStatus to xmpp user moods translation
+net-im/psi-plugins-meta:screenshot - Enable Psi plugin to quickly make screenshots
+net-im/psi-plugins-meta:skins - Enable Psi plugin for skins support.
+net-im/psi-plugins-meta:stopspam - Enable Psi plugin for spam blocking
+net-im/psi-plugins-meta:storagenotes - Enable Psi plugin for Jabber notes protocol extension
+net-im/psi-plugins-meta:translate - Enable Psi plugin to fix incorrect input
+net-im/psi-plugins-meta:videostatus - Enable Psi plugin for settings some status during video watching
+net-im/psi-plugins-meta:watcher - Enable Psi plugin for watching on contacts
 net-im/psi-skins:themes - Pull in themes via net-im/psi-skins-themes
-net-im/psimedia:demo - Build simple test application for the PsiMedia system
-net-im/psimedia:extras - Enables extra non official patches
-net-im/spectrum:staticport - Install spectrum tools
-net-im/spectrum:symlinks - Make symlinks for configuration files of all protocols to one file
-net-im/spectrum:tools - Install spectrum tools
-net-libs/ortp:ntp-timestamp - Turn on NTP timestamping on received packet
-net-libs/ortp:srtp - Add support for Secure RTP
-net-libs/ortp:zrtp - Add support for ZRTP key negotiation
-sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
-sci-geosciences/qgis:mapserver - Determines whether mapserver should be built
+net-im/psimedia:demo - Build demo application and its version of the plugin
+net-im/psimedia:extras - Enable Psi+ mode (required when built for Psi+)
+net-im/psimedia:psi - Build a plugin for net-im/psi
+net-libs/jdns:tools - Enable jdns test tools
+net-libs/srt:encryption - Enable encryption of the SRT stream
+net-print/samsung-unified-driver:network - Enable network printing support
 sys-apps/hasp:demo - Install demo binaries
 sys-apps/hasp:lpt - Install kernel module for LPT-keys
 sys-apps/hasp:net_hasp - Install binaries for use HASP-keys on network
 sys-apps/hasp:wine - Install winehasp binary and init-script
-sys-apps/openwsman:cim - 
-sys-apps/openwsman:eventing - 
-sys-apps/openwsman:plugins - 
-sys-apps/openwsman:server - 
-sys-apps/sblim-gather:base - 
-sys-apps/sblim-gather:libvirt - 
-sys-apps/sblim-gather:provider - 
-www-apps/ctpp2:md5 - 
-x11-themes/elementary-icon-theme:monochrome - Monochrome addon for opaque light panels
-x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
-x11-themes/qtcurve:kf5 - Enable KDE Frameworks 5 support
-x11-themes/qtcurve:windeco - Enable window decoration for KWin
+www-servers/civetweb:server - Build standalone server
