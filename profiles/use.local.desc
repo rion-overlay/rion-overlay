@@ -19,7 +19,6 @@ dev-python/rcore:sql - Install required dependencies to work database
 dev-vcs/mercurial:bugzilla - Support bugzilla integration.
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
 dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
-mail-filter/policyd:webinterface - 
 media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
 media-libs/mediastreamer:filters - Enable compilation of filters
 media-libs/mediastreamer:g726 - Support g726 codec
