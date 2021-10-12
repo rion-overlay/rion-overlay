@@ -12,7 +12,7 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	app-text/tidy-html5
+	app-text/htmltidy
 	net-libs/libotr
 "
 RDEPEND="${DEPEND}"
