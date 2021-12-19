@@ -7,6 +7,7 @@ inherit unpacker xdg
 
 DESCRIPTION="markdown editor"
 HOMEPAGE="https://typora.io"
+# new versions are at https://typora.io/releases/all
 SRC_URI="https://typora.io/linux/typora_${PV}_amd64.deb"
 
 LICENSE="EULA"
@@ -21,6 +22,13 @@ RDEPEND="
 BDEPEND=""
 
 S="${WORKDIR}/usr"
+
+QA_PREBUILT="/usr/share/typora/*"
+
+src_prepare() {
+	eapply_user
+	mv share/doc/typora share/doc/typora-${PV}
+}
 
 src_install() {
 	insinto /usr
