@@ -31,7 +31,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/plugins"
 fi
 
-inherit cmake-utils ${SCM}
+inherit cmake ${SCM}
 
 # general common
 
