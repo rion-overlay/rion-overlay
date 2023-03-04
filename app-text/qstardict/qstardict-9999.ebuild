@@ -5,7 +5,7 @@ EAPI=8
 
 case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 
-inherit eutils qmake-utils ${VCS_ECLASS}
+inherit qmake-utils ${VCS_ECLASS}
 
 DESCRIPTION="QStarDict is a StarDict clone written with using Qt"
 HOMEPAGE="http://qstardict.ylsoftware.com/"
@@ -43,8 +43,9 @@ DEPEND="
 RDEPEND="${RDEPEND}"
 
 src_configure() {
+	local eplugins
 	eplugin() {
-		[ -f plugins/${1}/${1}.pro ] && eplugins+=("${1}")
+		[ -f plugins/${1}/${1}.pro ] && eplugins+="$eplugins ${1}"
 	}
 
 	local eplugins=()
@@ -54,7 +55,7 @@ src_configure() {
 	done
 
 	QMAKE_FLAGS=(
-		ENABLED_PLUGINS="${eplugins[@]}"
+		ENABLED_PLUGINS="$(echo $eplugins)"
 		LIB_DIR="${EPREFIX}/usr/$(get_libdir)/${PN}"
 	)
 	if ! use dbus; then

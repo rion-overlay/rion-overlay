@@ -71,7 +71,7 @@ METACONTENT
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
-EAPI=7
+EAPI=8
 
 ${dirvar}inherit psi-plugin
 
@@ -118,7 +118,7 @@ done
 # Distributed under the terms of the GNU General Public License v2
 # \$Header: \$
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Meta package for net-im/psi plugins"
 HOMEPAGE="https://github.com/psi-im"
