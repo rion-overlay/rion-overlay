@@ -1,13 +1,11 @@
 app-crypt/qca 9999: Qt Cryptographic Architecture (QCA)
 app-dicts/stardict-ruspack 0.2-r3: Collection of dicts for stardict.
-app-editors/typora 0.9.98: markdown editor
+app-editors/typora 1.0.3: markdown editor
 app-misc/ddccontrol-db 20170716: DDCControl monitor database
 app-misc/qmetro 0.7.1 9999: Metro/subway map and route computation software.
 app-misc/qtnote 3.0.5 3.1.0 9999: Qt note-taking application compatible with tomboy
 app-text/qstardict 1.2 9999: QStarDict is a StarDict clone written with using Qt
 dev-libs/launchdarkly-sdk-c 1.7.6 2.3.0: LaunchDarkly Client-side SDK for C/C++
-dev-ml/ocaml-curses 1.0.3: Curses / ncurses bindings for the Objective Caml language.
-dev-ml/ocaml-libvirt 0.6.1.4 9999: Ocaml libvirt binding's
 dev-util/cpp2text 1.1 9999: String representation converter (text, cpp, json)
 dev-util/douml 9999: Powerful UML 2 modelling tool. BoUML fork
 games-action/oolite 1.90: Elite space trading & warfare remake
@@ -16,7 +14,7 @@ media-gfx/simpleviewer-gl 9999: Small and simple image viewer for Linux.
 media-libs/qimageblitz 5.9999: Graphical effect and filter library by KDE
 media-plugins/gst-plugins-webrtcdsp 1.16.3: Audio Filter using WebRTC Audio Processing library plugin for GStreamer
 media-sound/qomp 1.4 9999: Quick(Qt) Online Music Player - one player for different online music hostings
-media-video/vlc 9999: Media player and framework with support for most multimedia files and streaming
+net-im/bluejeans 2.24.0: Online meetings, video conferencing, and screen sharing for teams of any size
 net-im/cutegram 9999: A different telegram client from Aseman team forked from Sigram by Sialan Labs.
 net-im/psi 9999: Qt XMPP client
 net-im/psi-attention 9999: Psi plugin for making attention (XEP-0224)
@@ -30,10 +28,8 @@ net-im/psi-contentdownloader 9999: Psi plugin for downloading extras
 net-im/psi-enummessages 9999: Psi plugin to enumarate messages added to chat
 net-im/psi-extendedmenu 9999: Psi plugin which adds special submenu to contacts
 net-im/psi-extendedoptions 9999: Psi plugin for UI for some hidden options
-net-im/psi-gnupg 9999: Psi plugin for GnuPG message encryption
 net-im/psi-gomokugame 9999: Psi plugin for Gomoku game
 net-im/psi-historykeeper 9999: Psi plugin to keep certain contacts history clean
-net-im/psi-icqdie 9999: Psi plugin generating weird replies to icq transport contacts.
 net-im/psi-image 9999: Psi plugin for sending in-band images
 net-im/psi-imagepreview 9999: Psi plugin to preview images in chat log
 net-im/psi-jabberdisk 9999: Psi plugin for file sharing via jabber disk
@@ -46,24 +42,21 @@ net-im/psi-pepchangenotify 9999: Psi plugin to show PEP change notifications
 net-im/psi-plugins-meta 9999: Meta package for net-im/psi plugins
 net-im/psi-qipxstatuses 9999: Psi plugin for QIP xStatus to xmpp user moods translation
 net-im/psi-screenshot 9999: Psi plugin to quickly make screenshots
-net-im/psi-skins 9999: Psi plugin for skins support.
 net-im/psi-stopspam 9999: Psi plugin for spam blocking
 net-im/psi-storagenotes 9999: Psi plugin for Jabber notes protocol extension
 net-im/psi-translate 9999: Psi plugin to fix incorrect input
 net-im/psi-videostatus 9999: Psi plugin for settings some status during video watching
 net-im/psi-watcher 9999: Psi plugin for watching on contacts
 net-im/psimedia 9999: Psi/Psi+ plugin for voice/video calls
-net-im/viber 13.3.1.22: Free calls, text and picture sharing with anyone, anywhere!
+net-im/viber 18.2.0.2: Free calls, text and picture sharing with anyone, anywhere!
 net-libs/jdns 2.0.4: JDNS is a simple DNS implementation library
 net-libs/srt 1.4.3: Secure Reliable Transport (SRT) library and tools
 net-misc/TelegramQML 9999: Telegram API tools for QtQML and Qml
 net-misc/aseman-qt-tools 9999: Set of tools from Aseman-Land
 net-misc/libqtelegram-ae 9999: A fork of libqtelegram by Aseman Team
 net-print/samsung-unified-driver 1.00.39: Samsung Unified Linux Driver for printers and MFDs
-sys-apps/hasp 3.3_p5-r4: Hardware Against Software Piracy for access to parallel and usb keys
 sys-devel/qconf 9999: ./configure like generator for qmake-based projects
 sys-libs/rts_bpp 9999: Driver for realtek 5289/8411 card readers
-www-apps/haserl 0.9.36: HTML And Shell Embedded Report Language
 www-servers/civetweb 1.12: Embedded C/C++ web server
 x11-apps/ocs-url 9999: A program enabling web-installation of items via OpenCollaborationServices
 x11-misc/kbdd 9999: Very simple layout switcher
