@@ -35,7 +35,7 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	dolib.so "${WORKDIR}/${P}_build"/libldclientapicpp.a
+	dolib.so "${WORKDIR}/c-client-sdk-${PV}_build"/libldclientapicpp.a
 	insinto /usr/include
 	doins -r cpp/include/launchdarkly
 }
