@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rion4ik@gmail.com</email>
+		<name>Sergei Ilinykh</name>
+	</maintainer>
+	<upstream>
+        <remote-id type="github">SergiusTheBest/plog</remote-id>
+    </upstream>
+</pkgmetadata>
