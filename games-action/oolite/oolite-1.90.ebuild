@@ -6,7 +6,7 @@ EAPI=8
 inherit gnustep-2 desktop
 
 DESCRIPTION="Elite space trading & warfare remake"
-HOMEPAGE="http://oolite.org/"
+HOMEPAGE="http://oolite.space/"
 FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
 BINRES_REV=1fe395fe185611b2de54b027cda6c29f15a9f3a0
 OOLITE_REV=1.90
