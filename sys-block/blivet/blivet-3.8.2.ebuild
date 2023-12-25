@@ -29,6 +29,7 @@ DEPEND="
 	dev-libs/libbytesize[python]
 	dev-python/pyudev
 	sys-fs/lvm2[dbus]
+	sys-fs/multipath-tools
 "
 RDEPEND="
 	${DEPEND}
