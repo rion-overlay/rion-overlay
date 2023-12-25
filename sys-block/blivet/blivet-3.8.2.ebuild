@@ -25,7 +25,7 @@ KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 DEPEND="
 	>=sys-block/parted-3.4
-	sys-libs/libblockdev[introspection]
+	sys-libs/libblockdev[introspection,escrow]
 	dev-libs/libbytesize[python]
 	dev-python/pyudev
 	sys-fs/lvm2[dbus]
