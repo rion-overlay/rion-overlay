@@ -55,7 +55,7 @@ net-misc/TelegramQML 9999: Telegram API tools for QtQML and Qml
 net-misc/aseman-qt-tools 9999: Set of tools from Aseman-Land
 net-misc/libqtelegram-ae 9999: A fork of libqtelegram by Aseman Team
 net-print/samsung-unified-driver 1.00.39: Samsung Unified Linux Driver for printers and MFDs
-sys-devel/qconf 9999: ./configure like generator for qmake-based projects
+dev-build/qconf 9999: ./configure like generator for qmake-based projects
 sys-libs/rts_bpp 9999: Driver for realtek 5289/8411 card readers
 www-servers/civetweb 1.12: Embedded C/C++ web server
 x11-apps/ocs-url 9999: A program enabling web-installation of items via OpenCollaborationServices

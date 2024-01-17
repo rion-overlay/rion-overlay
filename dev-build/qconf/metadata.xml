@@ -11,6 +11,6 @@
 	</maintainer>
 	<longdescription>Configuration tool for Qt-based projects</longdescription>
 	<upstream>
-		<remote-id type="github">psi-plus/qconf</remote-id>
+		<remote-id type="github">psi-im/qconf</remote-id>
 	</upstream>
 </pkgmetadata>

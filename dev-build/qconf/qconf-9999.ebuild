@@ -8,11 +8,11 @@ case $PV in *9999*) VCS_ECLASS="git-r3" ;; *) VCS_ECLASS="" ;; esac
 inherit qmake-utils ${VCS_ECLASS}
 
 DESCRIPTION="./configure like generator for qmake-based projects"
-HOMEPAGE="https://github.com/psi-plus/qconf"
+HOMEPAGE="https://github.com/psi-im/qconf"
 
 if [ -n "${VCS_ECLASS}" ]; then
 	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/psi-plus/qconf.git"
+	EGIT_REPO_URI="https://github.com/psi-im/qconf.git"
 else
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 	SRC_URI="http://psi-im.org/files/qconf/${P}.tar.xz"
