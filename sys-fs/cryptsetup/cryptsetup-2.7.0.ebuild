@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info tmpfiles
+inherit autotools linux-info tmpfiles
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup"
@@ -79,6 +79,7 @@ src_prepare() {
 	default
 
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
+	eautoreconf
 }
 
 src_configure() {
