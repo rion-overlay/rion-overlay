@@ -10,7 +10,7 @@ index 2e2f7d9e7aad33736157b124b5d098b0a54e6b2e..af81870434d0e92e4e4ebc69f8eada6e
 -	if test "x$enable_internal_argon2" = "xyes" -o "x$enable_libargon" = "xyes"; then
 +if test $use_internal_argon2 = 0 || ( test "x$enable_internal_argon2" = "xno" && test "x$enable_libargon2" != "xyes" ); then
 +	if test "x$enable_internal_argon2" = "xyes" || test "x$enable_libargon2" = "xyes"; then
- 		AC_MSG_NOTICE([Argon2 in $with_crypto_backend lib is used; internal Argon2 options are ignored.])
+ 		AC_MSG_WARN([Argon2 in $with_crypto_backend lib is used; internal Argon2 options are ignored.])
  	fi
  	enable_internal_argon2=no
 @@ -535,6 +535,7 @@ elif test "x$enable_libargon2" = "xyes" ; then
