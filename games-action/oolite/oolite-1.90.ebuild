@@ -75,7 +75,7 @@ src_compile() {
 src_install() {
 	#gnustep-base_src_install
 	egnustep_env
-	install_root="$(gnustep-config --variable=GNUSTEP_LOCAL_APPS)"
+	install_root="$(gnustep-config --variable=GNUSTEP_SYSTEM_APPS)"
 	insinto "${install_root}"
 	doins -r oolite.app
 
