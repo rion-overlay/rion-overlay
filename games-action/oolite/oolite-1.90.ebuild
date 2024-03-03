@@ -7,13 +7,14 @@ inherit gnustep-2 desktop
 
 DESCRIPTION="Elite space trading & warfare remake"
 HOMEPAGE="http://oolite.space/"
-FF_JS_URI="http://jens.ayton.se/oolite/deps/firefox-4.0.source.js-only.tbz"
 BINRES_REV=1fe395fe185611b2de54b027cda6c29f15a9f3a0
 OOLITE_REV=1.90
 SDLDEL_REV=dd17796b2ee1257bea04aeffaec660f6c75eadf2
+SM_REV=c463e95ea5d1d780301e7f3792783771381125f0
 SRC_URI="https://github.com/OoliteProject/oolite/archive/${OOLITE_REV}.tar.gz -> ${P}.tar.gz
 	https://github.com/OoliteProject/oolite-binary-resources/archive/${BINRES_REV}.tar.gz -> oolite-binary-resources-${PV}.tar.gz
 	https://github.com/OoliteProject/oolite-sdl-dependencies/archive/${SDLDEL_REV}.tar.gz -> oolite-sdl-dependencies-${PV}.tar.gz
+	https://github.com/OoliteProject/spidermonkey-ff4/archive/${SM_REV}.tar.gz -> oolite-spidermonkey-${PV}.tar.gz
 "
 S="${WORKDIR}/${PN}-${OOLITE_REV}"
 OOLITE_VER_GITREV=6897 # git rev-list --count HEAD # depends on OOLITE_REV
@@ -27,29 +28,28 @@ RDEPEND="virtual/opengl
 		gnustep-base/gnustep-gui
 		media-libs/sdl-mixer
 		media-libs/sdl-image
-		app-accessibility/espeak
+		app-accessibility/espeak-ng
 		media-libs/libvorbis
 		dev-libs/nspr
 		media-libs/libpng:0
 		media-libs/openal
-		dev-lang/spidermonkey:0
 		sys-libs/zlib[minizip]"
 
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
 
-PATCHES=( "${FILESDIR}/${P}-gentoo.patch" "${FILESDIR}/external-mozjs.patch" )
+PATCHES=( "${FILESDIR}/${P}-gentoo.patch" )
 
 src_prepare() {
 	gnustep-base_src_prepare
 	mv "${WORKDIR}/oolite-binary-resources-${BINRES_REV}"/* "${S}"/Resources/Binary/
 	mv "${WORKDIR}/oolite-sdl-dependencies-${SDLDEL_REV}"/* "${S}"/deps/Cross-platform-deps/
 	sed -i -e 's:.*STRIP.*:	true:' \
-		-e "/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions $(pkg-config --cflags mozjs185) -DEXTERNAL_MOZJS" \
+		-e "/ADDITIONAL_OBJCFLAGS *=/aADDITIONAL_OBJCFLAGS += -fobjc-exceptions" \
 		-e '/ADDITIONAL_OBJC_LIBS *=/aADDITIONAL_OBJC_LIBS += -lminizip' \
 		-e 's|:src/Core/MiniZip||g' \
 		-e 's|-Isrc/Core/MiniZip|-I/usr/include/minizip|' \
-		-e 's|LIBJS *= js_static|LIBJS = mozjs185|' \
+		-e 's|lespeak|lespeak-ng|' \
 		"${S}"/GNUmakefile || die
 	sed "/void png_error/d" -i src/Core/Materials/OOPNGTextureLoader.m
 	rm -rf src/Core/MiniZip/
@@ -57,8 +57,19 @@ src_prepare() {
 
 src_compile() {
 	egnustep_env
-	# explicit Makefile because there are many and Makefile is choosen by default
-	emake -f Makefile $(use debug && echo debug || echo release) DEPS= VER_GITHASH=${OOLITE_REV:0:7} VER_GITREV=${OOLITE_VER_GITREV}
+	local SM_SRC="${WORKDIR}/spidermonkey-ff4-${SM_REV}/js/src"
+	local LIBJS_DIR="${SM_SRC}/build"
+	emake -f libjs.make \
+		debug=$(usex debug yes no) \
+		LIBJS_BUILD_DIR="${LIBJS_DIR}"
+	# explicit Makefile because there are many and "Makefile" is not choosen by default
+	emake -f Makefile \
+		$(use debug && echo debug || echo release) \
+		DEPS= \
+		VER_GITHASH=${OOLITE_REV:0:7} \
+		VER_GITREV=${OOLITE_VER_GITREV} \
+		LIBJS_DIR="${LIBJS_DIR}" \
+		LIBJS_INC_DIR="${LIBJS_DIR}/dist/include"
 }
 
 src_install() {
