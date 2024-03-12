@@ -17,7 +17,8 @@ KEYWORDS="amd64"
 QA_PREBUILT="*"
 
 RESTRICT="mirror bindist strip"
-RDEPEND="dev-libs/icu
+RDEPEND="app-arch/snappy
+	dev-libs/icu
 	media-libs/gst-plugins-base
 	media-libs/gst-plugins-good
 	media-libs/gst-plugins-ugly
