@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PLOCALES="be bg ca cs de el en eo es et fa fi fr he hu it ja kk mk nl pl pt_BR pt ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit git-r3 cmake plocale qmake-utils xdg
+inherit git-r3 cmake plocale xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -19,8 +19,8 @@ PSI_PLUS_LANGS_URI="${PSI_PLUS_URI}/psi-plus-l10n.git"
 EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2 iconsets? ( all-rights-reserved )"
 SLOT="0"
-KEYWORDS=""
-IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring webengine xscreensaver"
+#KEYWORDS=""
+IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring qt6 webengine X"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -28,40 +28,56 @@ REQUIRED_USE="
 "
 
 BDEPEND="
-	dev-qt/linguist-tools:5
+	!qt6? ( dev-qt/linguist-tools:5 )
+	qt6? ( dev-qt/qttools:6[linguist] )
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 DEPEND="
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
 	net-libs/http-parser:=
 	net-libs/usrsctp
 	sys-libs/zlib[minizip]
-	x11-libs/libX11
-	x11-libs/libxcb
 	aspell? ( app-text/aspell )
-	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( app-text/enchant:2 )
 	hunspell? ( app-text/hunspell:= )
-	keyring? ( dev-libs/qtkeychain:= )
-	webengine? (
-		dev-qt/qtwebchannel:5
-		dev-qt/qtwebengine:5[widgets]
-		net-libs/http-parser
+	!qt6? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtmultimedia:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtsql:5[sqlite]
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
+		dev-qt/qtxml:5
+		dbus? ( dev-qt/qtdbus:5 )
+		keyring? ( dev-libs/qtkeychain:=[qt5] )
+		webengine? (
+			dev-qt/qtwebchannel:5
+			dev-qt/qtwebengine:5[widgets]
+		)
 	)
-	xscreensaver? ( x11-libs/libXScrnSaver )
+	qt6? (
+		>=dev-qt/qtbase-6.6:6[concurrent,dbus?,gui,icu,network,sqlite,widgets,X?,xml]
+		>=dev-qt/qtsvg-6.6:6
+		>=dev-qt/qtimageformats-6.6:6
+		keyring? ( dev-libs/qtkeychain:=[qt6] )
+		webengine? (
+			>=dev-qt/qtwebchannel-6.6:6
+			>=dev-qt/qtwebengine-6.6:6[widgets]
+		)
+
+	)
+	X? (
+		x11-libs/libX11
+		x11-libs/libxcb
+		x11-libs/libXScrnSaver
+	)
 "
 RDEPEND="${DEPEND}
-	dev-qt/qtimageformats:5
+	!qt6? ( dev-qt/qtimageformats:5 )
+	qt6? ( dev-qt/qtimageformats:6 )
 "
 
 RESTRICT="test iconsets? ( bindist )"
@@ -124,10 +140,12 @@ src_configure() {
 		-DINSTALL_PLUGINS_SDK=1
 		-DUSE_KEYCHAIN=$(usex keyring)
 		-DCHAT_TYPE=$(usex webengine webengine basic)
-		-DUSE_XSS=$(usex xscreensaver)
+		-DUSE_XSS=$(usex X)
+		-DUSE_X11=$(usex X)
 		-DPSI_PLUS=$(usex extras)
 		-DVERBOSE_PROGRAM_NAME=ON
-		-DBUNDLED_QCA=ON
+		-DIRIS_BUNDLED_QCA=ON
+		-DQT_DEFAULT_MAJOR_VERSION=$(usex qt6 6 5)
 	)
 	cmake_src_configure
 }
@@ -151,7 +169,8 @@ src_install() {
 	einstalldocs
 
 	# install translations
-	local mylrelease="$(qt5_get_bindir)"/lrelease
+	local qtbin=${EPREFIX}/usr/$(get_libdir)/qt$(usex qt6 6 5)/bin
+	local mylrelease="$qtbin"/lrelease
 	cd "${WORKDIR}/psi-l10n" || die
 	insinto /usr/share/${MY_PN}
 	install_locale() {

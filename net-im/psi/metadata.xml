@@ -19,7 +19,6 @@
 		<flag name="hunspell">Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
 		<flag name="iconsets">Install additional iconsets, some of them have no clear licensing</flag>
 		<flag name="webengine">Enable themed, html-based chatlogs using <pkg>dev-qt/qtwebengine</pkg></flag>
-		<flag name="xscreensaver">Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">psi-im/psi</remote-id>
