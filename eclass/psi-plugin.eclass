@@ -46,12 +46,12 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-
-DEPEND="net-im/psi"
+IUSE="qt6 ${IUSE}"
+DEPEND="net-im/psi[qt6?]"
 RDEPEND="${DEPEND}"
 
 # Eclass exported functions
-EXPORT_FUNCTIONS src_unpack
+EXPORT_FUNCTIONS src_unpack src_configure
 
 psi-plugin_src_unpack() {
 	if [ -n "$SCM" ]; then
@@ -59,4 +59,11 @@ psi-plugin_src_unpack() {
 	else
 		default
 	fi
+}
+
+psi-plugin_src_configure() {
+	local mycmakeargs=(
+		-DQT_DEFAULT_MAJOR_VERSION=$(usex qt6 6 5)
+	)
+	cmake_src_configure
 }
