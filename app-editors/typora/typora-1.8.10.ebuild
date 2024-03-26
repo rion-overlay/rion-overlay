@@ -1,11 +1,11 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit unpacker xdg
 
-DESCRIPTION="markdown editor"
+DESCRIPTION="markdown editor/reader"
 HOMEPAGE="https://typora.io"
 # new versions are at https://typora.io/releases/all
 SRC_URI="https://typora.io/linux/typora_${PV}_amd64.deb"
@@ -14,10 +14,16 @@ LICENSE="EULA"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+RESTRICT="bindist mirror"
 
 DEPEND=""
 RDEPEND="
-	x11-libs/libXScrnSaver
+	dev-libs/expat
+	dev-libs/nspr
+	media-libs/alsa-lib
+	net-print/cups
+	sys-apps/dbus
+	x11-libs/cairo[X,glib]
 	${DEPEND}"
 BDEPEND=""
 
