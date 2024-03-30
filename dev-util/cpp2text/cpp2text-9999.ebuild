@@ -11,8 +11,6 @@ EGIT_REPO_URI="https://github.com/Ri0n/cpp2text"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 DEPEND="dev-qt/qtgui:5"
 RDEPEND="${DEPEND}"

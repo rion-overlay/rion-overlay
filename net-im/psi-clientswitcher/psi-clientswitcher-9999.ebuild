@@ -7,5 +7,3 @@ inherit psi-plugin
 
 DESCRIPTION="Psi plugin for client version masking"
 
-KEYWORDS=""
-IUSE=""

@@ -12,8 +12,6 @@ EGIT_BRANCH=development
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 DEPEND="
 	sys-libs/zlib
@@ -24,7 +22,7 @@ DEPEND="
 	media-libs/libwebp
 	media-libs/libexif
 	media-libs/lcms
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo
 	media-libs/libpng:0
 	media-libs/tiff:0
 	virtual/opengl

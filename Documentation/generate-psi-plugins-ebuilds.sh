@@ -77,8 +77,6 @@ ${dirvar}inherit psi-plugin
 
 DESCRIPTION="${desc}"
 
-KEYWORDS=""
-IUSE=""
 EBUILDCONTENT
 )" >> "net-im/psi-${pn}/psi-${pn}-9999.ebuild"
 

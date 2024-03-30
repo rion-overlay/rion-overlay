@@ -13,10 +13,7 @@ SRC_URI="https://typora.io/linux/typora_${PV}_amd64.deb"
 LICENSE="EULA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
-RESTRICT="bindist mirror"
 
-DEPEND=""
 RDEPEND="
 	dev-libs/expat
 	dev-libs/nspr
@@ -25,10 +22,10 @@ RDEPEND="
 	sys-apps/dbus
 	x11-libs/cairo[X,glib]
 	${DEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}/usr"
 
+RESTRICT="bindist mirror"
 QA_PREBUILT="/usr/share/typora/*"
 
 src_prepare() {

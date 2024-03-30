@@ -10,13 +10,11 @@ SRC_URI="
 	amd64? ( http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb -> ${P}.deb )
 "
 LICENSE="Viber-EULA"
-IUSE=""
 SLOT="0"
 KEYWORDS="amd64"
 
 QA_PREBUILT="*"
 
-RESTRICT="mirror bindist strip"
 RDEPEND="app-arch/snappy
 	dev-libs/icu
 	media-libs/gst-plugins-base
@@ -28,6 +26,7 @@ RDEPEND="app-arch/snappy
 	x11-libs/libXScrnSaver"
 
 S="${WORKDIR}"
+RESTRICT="mirror bindist strip"
 
 src_unpack() {
 	unpack_deb ${A}
