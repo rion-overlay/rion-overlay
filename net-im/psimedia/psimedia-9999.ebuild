@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+#KEYWORDS=""
 IUSE="demo extras +psi"
 REQUIRED_USE="extras? ( psi )"
 
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-jpeg:1.0
 	media-plugins/gst-plugins-opus:1.0
 	media-plugins/gst-plugins-v4l2:1.0
-	media-plugins/gst-plugins-webrtcdsp:1.0
+	media-plugins/gst-plugins-webrtc:1.0
 	psi? ( ~net-im/psi-${PV}[extras?] )
 "
 
