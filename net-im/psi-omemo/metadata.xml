@@ -6,6 +6,7 @@
 		<name>Sergey Ilinykh</name>
 	</maintainer>
 	<longdescription lang="en">
-This Psi plugin for OMEMO message encryption
-</longdescription>
+		Provides support for end-to-end encryption for Psi instant messenger.
+		Also used for encrypted downloads and encrypted file transfer.
+	</longdescription>
 </pkgmetadata>
