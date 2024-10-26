@@ -17,6 +17,7 @@ SRC_URI="https://github.com/OoliteProject/oolite/archive/${OOLITE_REV}.tar.gz ->
 	https://github.com/OoliteProject/spidermonkey-ff4/archive/${SM_REV}.tar.gz -> oolite-spidermonkey-${PV}.tar.gz
 "
 S="${WORKDIR}/${PN}-${OOLITE_REV}"
+SPIDERMONKEY_SRC="${WORKDIR}/spidermonkey-ff4-${SM_REV}/js/src"
 OOLITE_VER_GITREV=6897 # git rev-list --count HEAD # depends on OOLITE_REV
 
 LICENSE="GPL-2"
@@ -53,12 +54,12 @@ src_prepare() {
 		"${S}"/GNUmakefile || die
 	sed "/void png_error/d" -i src/Core/Materials/OOPNGTextureLoader.m
 	rm -rf src/Core/MiniZip/
+	eapply -d $SPIDERMONKEY_SRC -- "${FILESDIR}/${PN}-recent-compiler-compat.patch"
 }
 
 src_compile() {
 	egnustep_env
-	local SM_SRC="${WORKDIR}/spidermonkey-ff4-${SM_REV}/js/src"
-	local LIBJS_DIR="${SM_SRC}/build"
+	local LIBJS_DIR="${SPIDERMONKEY_SRC}/build"
 	emake -f libjs.make \
 		debug=$(usex debug yes no) \
 		LIBJS_BUILD_DIR="${LIBJS_DIR}"
