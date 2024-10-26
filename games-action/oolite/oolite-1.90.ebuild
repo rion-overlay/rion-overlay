@@ -39,7 +39,7 @@ RDEPEND="virtual/opengl
 DEPEND="${RDEPEND}
 		gnustep-base/gnustep-make[-libobjc2]"
 
-PATCHES=( "${FILESDIR}/${P}-gentoo.patch" )
+PATCHES=( "${FILESDIR}/${P}-gentoo.patch"  "${FILESDIR}/ignore-callback-incompat.patch" )
 
 src_prepare() {
 	gnustep-base_src_prepare
