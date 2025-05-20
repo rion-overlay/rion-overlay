@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="spell kde qt6 unity"
 
 DEPEND="
-	qt6? (
+	!qt6? (
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtnetwork:5
@@ -35,7 +35,7 @@ DEPEND="
 			kde-frameworks/kwindowsystem:5
 			kde-frameworks/knotifications:5 )
 	)
-	!qt6? (
+	qt6? (
 		dev-qt/qtbase:6[gui,widgets,network]
 		kde? (
 			kde-frameworks/kglobalaccel:6
