@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	SRC_URI=""
 	KEYWORDS=""
-	EGIT_REPO_URI="https://git.opendesktop.org/dfn2/${PN}.git"
+	EGIT_REPO_URI="https://www.opencode.net/dfn2/${PN}.git"
 else
 	SRC_URI="https://git.opendesktop.org/akiraohgaki/${PN}/-/archive/release-${PV}/${PN}-release-${PV}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
