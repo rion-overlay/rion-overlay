@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="spell kde qt6 gnome"
+IUSE="cinnamon spell kde qt6 gnome xmpp"
 
 DEPEND="
 	!qt6? (
@@ -46,7 +46,8 @@ DEPEND="
 			kde-frameworks/kwindowsystem:6
 			kde-frameworks/knotifications:6 )
 	)
-	spell? ( app-text/hunspell )"
+	spell? ( app-text/hunspell )
+	xmpp? ( net-libs/qxmpp )"
 RDEPEND="${DEPEND}"
 
 qtnote_plugin_enable() {
@@ -63,6 +64,7 @@ src_configure() {
 		$(qtnote_plugin_enable spell spellchecker)
 		$(qtnote_plugin_enable kde kdeintegration)
 		$(qtnote_plugin_enable gnome)
+		$(qtnote_plugin_enable xmpp xmpppubsub)
 		-DQT_DEFAULT_MAJOR_VERSION=$(usex qt6 6 5)
 	)
 	cmake_src_configure

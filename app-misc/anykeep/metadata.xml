@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rion4ik@gmail.com</email>
+		<name>Sergey Ilinykh</name>
+		<description>qnote developer</description>
+	</maintainer>
+	<longdescription>A cross-platform extendable note-taking application written in clean Qt. Capable of rich text formating including embeded images/audio, remote encrypted storages and synchronization</longdescription>
+	<use>
+		<flag name="cinnamon">
+			Enable Cinnamon-integration plugin
+		</flag>
+		<flag name="gnome">
+			Enable Gnome-integration plugin
+		</flag>
+		<flag name="kde">
+			Enable KDE-integration plugin
+		</flag>
+		<flag name="xmpp">
+			Enable XMPP-storage plugin
+		</flag>
+	</use>
+</pkgmetadata>
