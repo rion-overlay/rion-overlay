@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2 iconsets? ( all-rights-reserved )"
 SLOT="0"
 #KEYWORDS=""
-IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring qt6 webengine X"
+IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring webengine X"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -28,8 +28,7 @@ REQUIRED_USE="
 "
 
 BDEPEND="
-	!qt6? ( dev-qt/linguist-tools:5 )
-	qt6? ( dev-qt/qttools:6[linguist] )
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "
@@ -40,34 +39,14 @@ DEPEND="
 	aspell? ( app-text/aspell )
 	enchant? ( app-text/enchant:2 )
 	hunspell? ( app-text/hunspell:= )
-	!qt6? (
-		dev-qt/qtconcurrent:5
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtsql:5[sqlite]
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
-		dev-qt/qtxml:5
-		dbus? ( dev-qt/qtdbus:5 )
-		keyring? ( dev-libs/qtkeychain:=[qt5] )
-		webengine? (
-			dev-qt/qtwebchannel:5
-			dev-qt/qtwebengine:5[widgets]
-		)
-	)
-	qt6? (
-		>=dev-qt/qtbase-6.6:6[concurrent,dbus?,gui,icu,network,sqlite,widgets,X?,xml]
-		>=dev-qt/qtsvg-6.6:6
-		>=dev-qt/qtimageformats-6.6:6
-		keyring? ( dev-libs/qtkeychain:=[qt6] )
-		webengine? (
-			>=dev-qt/qtwebchannel-6.6:6
-			>=dev-qt/qtwebengine-6.6:6[widgets]
-		)
-
+	dev-qt/qtbase:6[concurrent,dbus?,gui,icu,network,sqlite,widgets,X?,xml]
+	dev-qt/qtmultimedia:6
+	dev-qt/qtsvg:6
+	dev-qt/qtimageformats:6
+	keyring? ( dev-libs/qtkeychain )
+	webengine? (
+		dev-qt/qtwebchannel:6
+		dev-qt/qtwebengine:6[widgets]
 	)
 	X? (
 		x11-libs/libX11
@@ -76,8 +55,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	!qt6? ( dev-qt/qtimageformats:5 )
-	qt6? ( dev-qt/qtimageformats:6 )
+	dev-qt/qtimageformats:6
 "
 
 RESTRICT="test iconsets? ( bindist )"
@@ -145,7 +123,7 @@ src_configure() {
 		-DPSI_PLUS=$(usex extras)
 		-DVERBOSE_PROGRAM_NAME=ON
 		-DIRIS_BUNDLED_QCA=ON
-		-DQT_DEFAULT_MAJOR_VERSION=$(usex qt6 6 5)
+		-DQT_DEFAULT_MAJOR_VERSION=6
 	)
 	cmake_src_configure
 }
@@ -169,7 +147,7 @@ src_install() {
 	einstalldocs
 
 	# install translations
-	local qtbin=${EPREFIX}/usr/$(get_libdir)/qt$(usex qt6 6 5)/bin
+	local qtbin=${EPREFIX}/usr/$(get_libdir)/qt6/bin
 	local mylrelease="$qtbin"/lrelease
 	cd "${WORKDIR}/psi-l10n" || die
 	insinto /usr/share/${MY_PN}
