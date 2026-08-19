@@ -70,7 +70,7 @@ src_compile() {
 }
 
 src_test() {
-	local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib"
+	local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib/qca3-qt6"
 	cmake_src_test
 }
 
