@@ -1,27 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake git-r3 qmake-utils
+inherit cmake git-r3 out-of-source-utils qt-utils
 
-DESCRIPTION="Qt Cryptographic Architecture (QCA)"
+DESCRIPTION="Qt Cryptographic Architecture (QCA), Psi fork"
 HOMEPAGE="https://github.com/psi-im/qca"
 EGIT_REPO_URI="https://github.com/psi-im/qca.git"
 
 LICENSE="LGPL-2.1"
-SLOT="2"
+SLOT="3"
 KEYWORDS=""
 IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl test"
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	doc? ( app-text/doxygen )
-"
 RDEPEND="
-	dev-qt/qtcore:5
-	botan? ( dev-libs/botan:= )
+	dev-qt/qt5compat:6
+	dev-qt/qtbase:6
+	botan? ( dev-libs/botan:3= )
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
 	nss? ( dev-libs/nss )
@@ -30,14 +28,23 @@ RDEPEND="
 		dev-libs/pkcs11-helper
 	)
 	sasl? ( dev-libs/cyrus-sasl:2 )
-	ssl? ( >=dev-libs/openssl-1.1:0= )
+	ssl? ( >=dev-libs/openssl-1.1:= )
 "
 DEPEND="${RDEPEND}
-	test? (
-		dev-qt/qtnetwork:5
-		dev-qt/qttest:5
+	test? ( dev-qt/qtbase:6[network] )
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? (
+		app-text/doxygen[dot]
+		virtual/latex-base
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-disable-pgp-test.patch"
+	"${FILESDIR}/${PN}-qca3-parallel-install.patch"
+)
 
 qca_plugin_use() {
 	echo -DWITH_${2:-$1}_PLUGIN=$(usex "$1")
@@ -45,8 +52,11 @@ qca_plugin_use() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DQCA_FEATURE_INSTALL_DIR="${EPREFIX}$(qt5_get_mkspecsdir)/features"
-		-DQCA_PLUGINS_INSTALL_DIR="${EPREFIX}$(qt5_get_plugindir)"
+		-DBUILD_WITH_QT6=ON
+		-DBUILD_SHARED_LIBS=ON
+		-DQCA_SUFFIX=qt6
+		-DQCA_FEATURE_INSTALL_DIR="${EPREFIX}$(qt_get_mkspecsdir 6)/features"
+		-DQCA_PLUGINS_INSTALL_DIR="${EPREFIX}$(qt_get_plugindir 6)/qca3-qt6"
 		$(qca_plugin_use botan)
 		$(qca_plugin_use gcrypt)
 		$(qca_plugin_use gpg gnupg)
@@ -61,8 +71,13 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_compile() {
+	cmake_src_compile
+	use doc && cmake_build doc
+}
+
 src_test() {
-	local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib/qca"
+	local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib/qca3-qt6"
 	cmake_src_test
 }
 
@@ -70,10 +85,7 @@ src_install() {
 	cmake_src_install
 
 	if use doc; then
-		pushd "${BUILD_DIR}" >/dev/null || die
-		doxygen Doxyfile || die
-		dodoc -r apidocs/html
-		popd >/dev/null || die
+		run_in_build_dir dodoc -r apidocs/html
 	fi
 
 	if use examples; then
