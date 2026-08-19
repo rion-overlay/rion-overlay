@@ -1,0 +1,75 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f1cf4c0..3333333 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -207,9 +207,9 @@ if(IRIS_ENABLE_INSTALL)
+     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/iris.pc
+         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+     )
+ 
+-    #install(DIRECTORY include/iris
+-    #    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xmpp
+-    #    FILES_MATCHING PATTERN "*.h"
+-    #)
++    install(DIRECTORY include/iris
++        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/xmpp
++        FILES_MATCHING PATTERN "*.h"
++    )
+ endif()
+diff --git a/IrisConfig.cmake.in b/IrisConfig.cmake.in
+index 4673116..4444444 100644
+--- a/IrisConfig.cmake.in
++++ b/IrisConfig.cmake.in
+@@ -13,9 +13,12 @@ set(Iris_LIBRARY_DIR "${rootDir}/@LIB_INSTALL_DIR_REL@")
+ set(Iris_LIB_SONAME iris)
+ 
+ if(NOT TARGET Qca::Qca)
+-    find_package(Qca QUIET)
++    find_package(Qca3-qt6 CONFIG QUIET)
+ 
+     if(NOT TARGET Qca::Qca)
++        find_package(Qca QUIET)
++    endif()
++    if(NOT TARGET Qca::Qca)
+         if("@QCA_CORE_LIB_REL@" STREQUAL "" AND "@QCA_OSSL_LIB_REL@" STREQUAL "")
+-            find_dependency(Qca REQUIRED)
++            find_dependency(Qca3-qt6 CONFIG REQUIRED)
+         else()
+             set(_qca_core_path "${rootDir}/@QCA_CORE_LIB_REL@")
+             set(_qca_ossl_path "${rootDir}/@QCA_OSSL_LIB_REL@")
+@@ -43,26 +46,6 @@ if(NOT TARGET Qca::Qca)
+     endif()
+ endif()
+ 
+-if(NOT TARGET SctpLab::UsrSCTP)
+-    find_package(UsrSCTP QUIET)
+-    if(NOT TARGET SctpLab::UsrSCTP)
+-        if("@USRSCTP_LIB_REL@" STREQUAL "")
+-            find_dependency(SctpLab::UsrSCTP REQUIRED)
+-        else()
+-            set(_usrsctp_path "${rootDir}/@USRSCTP_LIB_REL@")
+-            set(_usrsctp_include_dir "${rootDir}/@USRSCTP_INCLUDE_REL@")
+-            add_library(SctpLab::UsrSCTP STATIC IMPORTED GLOBAL)
+-            set_target_properties(SctpLab::UsrSCTP PROPERTIES
+-                IMPORTED_LOCATION "${_usrsctp_path}"
+-                INTERFACE_INCLUDE_DIRECTORIES "${_usrsctp_include_dir}"
+-            )
+-        endif()
+-    endif()
+-endif()
+-
+ if(NOT TARGET iris)
+     include(${currentDir}/IrisTargets.cmake)
+ endif()
+diff --git a/src/xmpp/CMakeLists.txt b/src/xmpp/CMakeLists.txt
+index 03bf75e..5555555 100644
+--- a/src/xmpp/CMakeLists.txt
++++ b/src/xmpp/CMakeLists.txt
+@@ -241,7 +241,7 @@ target_link_libraries(iris
+         $<BUILD_INTERFACE:irisnet>
+         ZLIB::ZLIB
+     PUBLIC
+-        $<BUILD_INTERFACE:Qca::Qca>
++        Qca::Qca
+         Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::Xml
+ )
