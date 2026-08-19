@@ -1,0 +1,54 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c003db5..1111111 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.16)
+ 
+ project(qca)
+ 
+-set(QCA_LIB_MAJOR_VERSION "2")
++set(QCA_LIB_MAJOR_VERSION "3")
+ set(QCA_LIB_MINOR_VERSION "3")
+ set(QCA_LIB_PATCH_VERSION "11")
+@@ -82,17 +82,17 @@ endif()
+ 
+ set(QCA_SUFFIX "${QCA_SUFFIX}" CACHE STRING "QCA common suffix")
+ if(QCA_SUFFIX)
+-  set(QCA_LIB_NAME qca-${QCA_SUFFIX})
+-  set(QCA_TOOL_NAME qcatool-${QCA_SUFFIX})
+-  set(MOZCERTS_NAME mozcerts-${QCA_SUFFIX})
+-  set(QCA_PC_NAME qca2-${QCA_SUFFIX}.pc)
+-  set(QCA_CONFIG_NAME_BASE "Qca-${QCA_SUFFIX}")
++  set(QCA_LIB_NAME qca${QCA_LIB_MAJOR_VERSION}-${QCA_SUFFIX})
++  set(QCA_TOOL_NAME qcatool${QCA_LIB_MAJOR_VERSION}-${QCA_SUFFIX})
++  set(MOZCERTS_NAME mozcerts${QCA_LIB_MAJOR_VERSION}-${QCA_SUFFIX})
++  set(QCA_PC_NAME qca${QCA_LIB_MAJOR_VERSION}-${QCA_SUFFIX}.pc)
++  set(QCA_CONFIG_NAME_BASE "Qca${QCA_LIB_MAJOR_VERSION}-${QCA_SUFFIX}")
+ else()
+-  set(QCA_LIB_NAME qca)
+-  set(QCA_TOOL_NAME qcatool)
+-  set(MOZCERTS_NAME mozcerts)
+-  set(QCA_PC_NAME qca2.pc)
+-  set(QCA_CONFIG_NAME_BASE "Qca")
++  set(QCA_LIB_NAME qca${QCA_LIB_MAJOR_VERSION})
++  set(QCA_TOOL_NAME qcatool${QCA_LIB_MAJOR_VERSION})
++  set(MOZCERTS_NAME mozcerts${QCA_LIB_MAJOR_VERSION})
++  set(QCA_PC_NAME qca${QCA_LIB_MAJOR_VERSION}.pc)
++  set(QCA_CONFIG_NAME_BASE "Qca${QCA_LIB_MAJOR_VERSION}")
+ endif()
+ 
+ set(QCA_LIB_VERSION_STRING "${QCA_LIB_MAJOR_VERSION}.${QCA_LIB_MINOR_VERSION}.${QCA_LIB_PATCH_VERSION}")
+diff --git a/QcaConfig.cmake.in b/QcaConfig.cmake.in
+index 5874c2c..2222222 100644
+--- a/QcaConfig.cmake.in
++++ b/QcaConfig.cmake.in
+@@ -5,4 +5,9 @@ if(NOT TARGET @QCA_LIB_NAME@)
+   include("${CMAKE_CURRENT_LIST_DIR}/@QCA_CONFIG_NAME_BASE@Targets.cmake")
+ endif()
+ 
++if(NOT TARGET Qca::Qca)
++  add_library(Qca::Qca INTERFACE IMPORTED)
++  set_property(TARGET Qca::Qca PROPERTY INTERFACE_LINK_LIBRARIES @QCA_LIB_NAME@)
++endif()
++
+ set(Qca_LIBRARY @QCA_LIB_NAME@)
