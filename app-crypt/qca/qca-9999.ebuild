@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake git-r3 out-of-source-utils qt-utils
+inherit cmake git-r3 out-of-source-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA), Psi fork"
 HOMEPAGE="https://github.com/psi-im/qca"
@@ -41,11 +41,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-disable-pgp-test.patch"
-	"${FILESDIR}/${PN}-qca3-parallel-install.patch"
-)
-
 qca_plugin_use() {
 	echo -DWITH_${2:-$1}_PLUGIN=$(usex "$1")
 }
@@ -55,8 +50,6 @@ src_configure() {
 		-DBUILD_WITH_QT6=ON
 		-DBUILD_SHARED_LIBS=ON
 		-DQCA_SUFFIX=qt6
-		-DQCA_FEATURE_INSTALL_DIR="${EPREFIX}$(qt_get_mkspecsdir 6)/features"
-		-DQCA_PLUGINS_INSTALL_DIR="${EPREFIX}$(qt_get_plugindir 6)/qca3-qt6"
 		$(qca_plugin_use botan)
 		$(qca_plugin_use gcrypt)
 		$(qca_plugin_use gpg gnupg)
@@ -77,7 +70,7 @@ src_compile() {
 }
 
 src_test() {
-	local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib/qca3-qt6"
+	local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib"
 	cmake_src_test
 }
 
