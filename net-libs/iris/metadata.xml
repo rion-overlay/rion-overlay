@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">psi-im/iris</remote-id>
+	</upstream>
+	<use>
+		<flag name="omemo">Enable XEP-0384 OMEMO support using system libomemo-c</flag>
+		<flag name="sctp">Enable SCTP over ICE Jingle transport and WebRTC data channels</flag>
+	</use>
+</pkgmetadata>

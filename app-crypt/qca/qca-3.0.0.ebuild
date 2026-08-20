@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit cmake git-r3 out-of-source-utils
+inherit cmake out-of-source-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA), Psi fork"
 HOMEPAGE="https://github.com/psi-im/qca"
-EGIT_REPO_URI="https://github.com/psi-im/qca.git"
+SRC_URI="https://github.com/psi-im/qca/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="3"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl test"
 
 RESTRICT="!test? ( test )"
