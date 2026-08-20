@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake git-r3 multilib
+inherit cmake git-r3
 
 DESCRIPTION="XMPP network library used by Psi and AnyKeep"
 HOMEPAGE="https://github.com/psi-im/iris"
@@ -26,17 +26,15 @@ BDEPEND="
 	omemo? ( virtual/pkgconfig )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-system-qca3.patch" )
-
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=ON
 		-DUSE_QT6=ON
 		-DQT_DEFAULT_MAJOR_VERSION=6
 		-DIRIS_ENABLE_INSTALL=ON
 		-DIRIS_BUILD_TOOLS=OFF
 		-DIRIS_BUNDLED_QCA=OFF
-		-DQca_INCLUDE_DIR="${EPREFIX}/usr/include/Qca3-qt6/QtCrypto"
-		-DQca_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libqca3-qt6.so"
+		-DIRIS_SYSTEM_QCA=3
 		-DIRIS_ENABLE_OMEMO=$(usex omemo)
 		-DIRIS_BUNDLED_OMEMO_C=OFF
 		-DIRIS_ENABLE_JINGLE_SCTP=$(usex sctp)
