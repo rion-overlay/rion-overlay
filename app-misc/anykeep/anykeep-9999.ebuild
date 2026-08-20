@@ -37,9 +37,7 @@ DEPEND="
 		kde-frameworks/kwindowsystem:6
 		kde-frameworks/knotifications:6 )
 	spell? ( app-text/hunspell )
-	xmpp? (
-		dev-libs/qcoro
-		net-libs/qxmpp )"
+	xmpp? ( net-libs/iris )"
 RDEPEND="${DEPEND}"
 
 qtnote_plugin_enable() {
@@ -67,6 +65,7 @@ src_configure() {
 		$(qtnote_plugin_enable gnome)
 		$(qtnote_plugin_enable xmpp xmpppubsub)
 		-DANYKEEP_QSOURCEHIGHLITE_SOURCE_DIR="${S}/qsourcehighlite"
+		-DANYKEEP_XMPP_BACKEND=IRIS
 	)
 	cmake_src_configure
 }
