@@ -17,7 +17,7 @@ IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-qt/qtbase:6
+	dev-qt/qtbase:6=
 	botan? ( dev-libs/botan:3= )
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
@@ -48,6 +48,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WITH_QT6=ON
 		-DBUILD_SHARED_LIBS=ON
+		-DCMAKE_CXX_VISIBILITY_PRESET=hidden
+		-DCMAKE_VISIBILITY_INLINES_HIDDEN=ON
 		-DQCA_SUFFIX=qt6
 		$(qca_plugin_use botan)
 		$(qca_plugin_use gcrypt)
