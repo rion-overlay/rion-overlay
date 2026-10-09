@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="XMPP network library used by Psi and AnyKeep"
 HOMEPAGE="https://github.com/psi-im/iris"
-SRC_URI="https://github.com/psi-im/iris/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/psi-im/iris/archive/refs/tags/v${PV}/${P}.tar.gz"
 S="${WORKDIR}/iris-${PV}"
 
 LICENSE="LGPL-2.1"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="+omemo +sctp"
 
 RDEPEND="
-	app-crypt/qca:3[ssl]
+	>=app-crypt/qca-3.0.11:3[ssl]
 	dev-qt/qtbase:6[gui,network,xml]
 	sys-libs/zlib
 	omemo? ( >=net-libs/libomemo-c-0.5.1 )

@@ -34,7 +34,7 @@ BDEPEND="
 "
 DEPEND="
 	net-libs/http-parser:=
-	net-libs/usrsctp
+	>=net-libs/iris-1.1.2
 	sys-libs/zlib[minizip]
 	aspell? ( app-text/aspell )
 	enchant? ( app-text/enchant:2 )
@@ -82,11 +82,6 @@ pkg_setup() {
 src_unpack() {
 	git-r3_src_unpack
 
-	unset EGIT_BRANCH EGIT_COMMIT
-	EGIT_CHECKOUT_DIR="${S}/iris/3rdparty/qca" \
-	EGIT_REPO_URI="${PSI_URI}/qca.git" \
-	git-r3_src_unpack
-
 	# fetch translations
 	unset EGIT_BRANCH EGIT_COMMIT
 	EGIT_REPO_URI=$(usex extras "${PSI_PLUS_LANGS_URI}" "${PSI_LANGS_URI}")
@@ -122,7 +117,7 @@ src_configure() {
 		-DUSE_X11=$(usex X)
 		-DPSI_PLUS=$(usex extras)
 		-DVERBOSE_PROGRAM_NAME=ON
-		-DIRIS_BUNDLED_QCA=ON
+		-DBUNDLED_IRIS=OFF
 		-DQT_DEFAULT_MAJOR_VERSION=6
 	)
 	cmake_src_configure

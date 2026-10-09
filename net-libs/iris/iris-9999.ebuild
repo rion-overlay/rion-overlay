@@ -15,7 +15,7 @@ KEYWORDS=""
 IUSE="+omemo +sctp"
 
 RDEPEND="
-	app-crypt/qca:3[ssl]
+	>=app-crypt/qca-3.0.10:3[ssl]
 	dev-qt/qtbase:6[gui,network,xml]
 	sys-libs/zlib
 	omemo? ( >=net-libs/libomemo-c-0.5.1 )
