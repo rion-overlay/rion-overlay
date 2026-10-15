@@ -34,7 +34,7 @@ BDEPEND="
 "
 DEPEND="
 	net-libs/http-parser:=
-	>=net-libs/iris-1.1.2
+	>=net-libs/iris-1.3
 	sys-libs/zlib[minizip]
 	aspell? ( app-text/aspell )
 	enchant? ( app-text/enchant:2 )

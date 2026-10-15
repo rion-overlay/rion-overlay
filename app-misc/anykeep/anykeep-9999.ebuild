@@ -37,7 +37,7 @@ DEPEND="
 		kde-frameworks/kwindowsystem:6
 		kde-frameworks/knotifications:6 )
 	spell? ( app-text/hunspell )
-	xmpp? ( >=net-libs/iris-1.1.2 )"
+	xmpp? ( >=net-libs/iris-1.3 )"
 RDEPEND="${DEPEND}"
 
 qtnote_plugin_enable() {
