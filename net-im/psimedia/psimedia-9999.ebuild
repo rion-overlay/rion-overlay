@@ -13,8 +13,7 @@ EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
 LICENSE="GPL-2"
 SLOT="0"
 #KEYWORDS=""
-IUSE="demo extras +psi"
-REQUIRED_USE="extras? ( psi )"
+IUSE="demo +psi"
 
 DEPEND="
 	dev-libs/glib
@@ -30,12 +29,12 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-v4l2:1.0
 	media-plugins/gst-plugins-vpx:1.0
 	media-plugins/gst-plugins-webrtc:1.0
-	psi? ( ~net-im/psi-${PV}[extras?] )
+	psi? ( net-im/psi )
 "
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_PSI=$(usex extras)
+		-DUSE_PSI=ON
 		-DBUILD_DEMO=$(usex demo)
 		-DBUILD_PSIPLUGIN=$(usex psi)
 		-DQT_DEFAULT_MAJOR_VERSION=6
