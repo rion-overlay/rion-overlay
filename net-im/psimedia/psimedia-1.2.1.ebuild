@@ -1,0 +1,54 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DESCRIPTION="Psi/Psi+ plugin for voice/video calls"
+HOMEPAGE="https://psi-im.org/"
+
+case "$PV" in 9999*) scm=git-r3; ;; *) scm=""; ;; esac
+
+inherit cmake $scm
+
+if [ -z "$scm" ]; then
+    SRC_URI="https://github.com/psi-im/psimedia/archive/${PV}.tar.gz -> ${P}.tar.gz"
+    S="${WORKDIR}/AnyKeep-${PV}"
+    KEYWORDS="amd64 x86"
+else
+    EGIT_REPO_URI="https://github.com/psi-im/psimedia.git"
+    EGIT_BRANCH=master
+    KEYWORDS=""
+fi
+
+
+LICENSE="GPL-2"
+SLOT="0"
+IUSE="demo extras +psi"
+REQUIRED_USE="extras? ( psi )"
+
+DEPEND="
+	dev-libs/glib
+	dev-qt/qtbase[gui,widgets]
+	media-libs/gstreamer:1.0
+	media-libs/gst-plugins-base:1.0
+	media-libs/gst-plugins-good:1.0
+	net-libs/libsrtp
+"
+RDEPEND="${DEPEND}
+	media-plugins/gst-plugins-jpeg:1.0
+	media-plugins/gst-plugins-opus:1.0
+	media-plugins/gst-plugins-v4l2:1.0
+	media-plugins/gst-plugins-vpx:1.0
+	media-plugins/gst-plugins-webrtc:1.0
+	psi? ( ~net-im/psi-${PV}[extras?] )
+"
+
+src_configure() {
+	local mycmakeargs=(
+		-DUSE_PSI=$(usex extras)
+		-DBUILD_DEMO=$(usex demo)
+		-DBUILD_PSIPLUGIN=$(usex psi)
+		-DQT_DEFAULT_MAJOR_VERSION=6
+	)
+	cmake_src_configure
+}
