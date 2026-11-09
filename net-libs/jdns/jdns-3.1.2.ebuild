@@ -15,17 +15,16 @@ SRC_URI="https://github.com/psi-im/jdns/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="tools qt5"
-REQUIRED_EUSE="tools? ( qt5 )"
+IUSE="tools qt6"
 
-DEPEND="
-qt5? ( dev-qt/qtnetwork:5 )
-"
+DEPEND="qt6? ( dev-qt/qtbase:6[network] )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	local mycmakeargs=( $(cmake-utils_use_build qt5 QJDNS)
-		$(cmake-utils_use_build tools JDNS_TOOL) )
+	local mycmakeargs=(
+	    $(cmake-utils_use_build qt6 QJDNS)
+		$(cmake-utils_use_build tools JDNS_TOOL)
+	)
 
 	cmake_src_configure
 }

@@ -45,12 +45,16 @@ qtnote_plugin_enable() {
 }
 
 src_unpack() {
-	git-r3_src_unpack
+	if [ -n "$scm" ]; then 
+		git-r3_src_unpack
 
-	unset EGIT_BRANCH EGIT_COMMIT
-	EGIT_CHECKOUT_DIR="${S}/qsourcehighlite" \
-	EGIT_REPO_URI="https://github.com/Waqar144/QSourceHighlite.git" \
-	git-r3_src_unpack
+		unset EGIT_BRANCH EGIT_COMMIT
+		EGIT_CHECKOUT_DIR="${S}/qsourcehighlite" \
+		EGIT_REPO_URI="https://github.com/Waqar144/QSourceHighlite.git" \
+		git-r3_src_unpack
+	else
+		default
+	fi
 }
 
 src_prepare() {
