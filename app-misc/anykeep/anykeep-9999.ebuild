@@ -40,17 +40,12 @@ DEPEND="
 	xmpp? ( >=net-libs/iris-1.3 )"
 RDEPEND="${DEPEND}"
 
-qtnote_plugin_enable() {
-	echo -DQTNOTE_PLUGIN_ENABLE_${2:-$1}=$(usex "$1")
+anykeep_plugin_enable() {
+	echo -DANYKEEP_PLUGIN_ENABLE_${2:-$1}=$(usex "$1" ON OFF)
 }
 
 src_unpack() {
-	if [ -n "$scm" ]; then 
-		git-r3_src_unpack
-
-		unset EGIT_BRANCH EGIT_COMMIT
-		EGIT_CHECKOUT_DIR="${S}/qsourcehighlite" \
-		EGIT_REPO_URI="https://github.com/Waqar144/QSourceHighlite.git" \
+	if [ -n "$scm" ]; then
 		git-r3_src_unpack
 	else
 		default
@@ -64,11 +59,11 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(qtnote_plugin_enable spell spellchecker)
-		$(qtnote_plugin_enable kde kdeintegration)
-		$(qtnote_plugin_enable gnome)
-		$(qtnote_plugin_enable xmpp xmpppubsub)
-		-DANYKEEP_QSOURCEHIGHLITE_SOURCE_DIR="${S}/qsourcehighlite"
+		$(anykeep_plugin_enable spell spellchecker)
+		$(anykeep_plugin_enable kde kdeintegration)
+		$(anykeep_plugin_enable gnome)
+		$(anykeep_plugin_enable xmpp xmpppubsub)
+		$(anykeep_plugin_enable cinnamon)
 		-DANYKEEP_XMPP_BACKEND=IRIS
 	)
 	cmake_src_configure

@@ -1,1 +1,78 @@
-anykeep-9999.ebuild
+# Copyright 1999-2024 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PLOCALES="da en es_ES fr it nl_NL ru uk vi zh_TW"
+PLOCALE_BACKUP="en"
+
+case "$PV" in 9999*) scm=git-r3; ;; *) scm=""; ;; esac
+
+inherit cmake plocale $scm # xdg
+
+DESCRIPTION="Extendable note-taking app with rich text and synchronization"
+HOMEPAGE="https://anykeep.net"
+if [ -z "$scm" ]; then
+	SRC_URI="https://github.com/Ri0n/AnyKeep/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/AnyKeep-${PV}"
+	KEYWORDS="amd64 x86"
+else
+	EGIT_REPO_URI="https://github.com/Ri0n/AnyKeep"
+	EGIT_BRANCH=master
+	KEYWORDS=""
+fi
+
+LICENSE="GPL-3"
+SLOT="0"
+IUSE="cinnamon spell kde gnome xmpp"
+
+DEPEND="
+	!app-misc/qtnote
+	>=app-crypt/qca-3.0.10
+	dev-libs/qtkeychain
+	dev-qt/qtbase:6[gui,widgets,network]
+	kde? (
+		kde-frameworks/extra-cmake-modules
+		kde-frameworks/kglobalaccel:6
+		kde-frameworks/kwindowsystem:6
+		kde-frameworks/knotifications:6 )
+	spell? ( app-text/hunspell )
+	xmpp? ( >=net-libs/iris-1.3 )"
+RDEPEND="${DEPEND}"
+
+anykeep_plugin_enable() {
+	echo -DANYKEEP_PLUGIN_ENABLE_${2:-$1}=$(usex "$1" ON OFF)
+}
+
+src_unpack() {
+	if [ -n "$scm" ]; then
+		git-r3_src_unpack
+	else
+		default
+	fi
+}
+
+src_prepare() {
+	#xdg_src_prepare
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		$(anykeep_plugin_enable spell spellchecker)
+		$(anykeep_plugin_enable kde kdeintegration)
+		$(anykeep_plugin_enable gnome)
+		$(anykeep_plugin_enable xmpp xmpppubsub)
+		$(anykeep_plugin_enable cinnamon)
+		-DANYKEEP_XMPP_BACKEND=IRIS
+	)
+	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+	remove_locale() {
+		rm -f ${ED}/usr/share/${PN}/${PN}_$1.qm
+	}
+	plocale_for_each_disabled_locale remove_locale
+}
