@@ -39,12 +39,12 @@ RDEPEND="${DEPEND}
 	calls? (
 		media-libs/gst-plugins-good:1.0
 		media-plugins/gst-plugins-dtls:1.0
+		media-plugins/gst-plugins-libnice:1.0
 		media-plugins/gst-plugins-opus:1.0
 		media-plugins/gst-plugins-pulse:1.0
 		media-plugins/gst-plugins-sctp:1.0
 		media-plugins/gst-plugins-srtp:1.0
 		media-plugins/gst-plugins-webrtc:1.0
-		net-libs/libnice
 	)
 "
 
