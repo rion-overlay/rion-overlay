@@ -13,7 +13,7 @@ inherit cmake plocale $scm # xdg
 DESCRIPTION="Extendable note-taking app with rich text and synchronization"
 HOMEPAGE="https://anykeep.net"
 if [ -z "$scm" ]; then
-	SRC_URI="https://github.com/Ri0n/AnyKeep/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Ri0n/AnyKeep/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/AnyKeep-${PV}"
 	KEYWORDS="amd64 x86"
 else
