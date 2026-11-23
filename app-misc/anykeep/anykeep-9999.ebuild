@@ -28,7 +28,7 @@ IUSE="cinnamon spell kde gnome xmpp"
 
 DEPEND="
 	!app-misc/qtnote
-	>=app-crypt/qca-3.2.0
+	>=app-crypt/qca-3.2.0:3[ssl]
 	dev-libs/qtkeychain
 	dev-qt/qtbase:6[gui,widgets,network]
 	kde? (
@@ -37,11 +37,14 @@ DEPEND="
 		kde-frameworks/kwindowsystem:6
 		kde-frameworks/knotifications:6 )
 	spell? ( app-text/hunspell )
-	xmpp? ( >=net-libs/iris-1.6.4 )"
+	xmpp? (
+		app-crypt/qca:3[sasl]
+		>=net-libs/iris-1.6.4
+	)"
 RDEPEND="${DEPEND}"
 
-qtnote_plugin_enable() {
-	echo -DQTNOTE_PLUGIN_ENABLE_${2:-$1}=$(usex "$1")
+anykeep_plugin_enable() {
+	echo -DANYKEEP_PLUGIN_ENABLE_${2:-$1}=$(usex "$1" ON OFF)
 }
 
 src_unpack() {
@@ -64,10 +67,14 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(qtnote_plugin_enable spell spellchecker)
-		$(qtnote_plugin_enable kde kdeintegration)
-		$(qtnote_plugin_enable gnome)
-		$(qtnote_plugin_enable xmpp xmpppubsub)
+		$(anykeep_plugin_enable spell spellchecker)
+		$(anykeep_plugin_enable kde kdeintegration)
+		$(anykeep_plugin_enable gnome)
+		$(anykeep_plugin_enable cinnamon)
+		$(anykeep_plugin_enable xmpp xmpppubsub)
+		-DCMAKE_REQUIRE_FIND_PACKAGE_Qca3-qt6=ON
+		-DANYKEEP_BUILD_BUNDLED_QCA=OFF
+		-DANYKEEP_BUILD_BUNDLED_IRIS=OFF
 		-DANYKEEP_QSOURCEHIGHLITE_SOURCE_DIR="${S}/qsourcehighlite"
 		-DANYKEEP_XMPP_BACKEND=IRIS
 	)
