@@ -1,0 +1,33 @@
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -279,6 +279,8 @@ endif()
+ add_anykeep_test(pluginmetadata_test pluginmetadata_test.cpp)
+ 
+ add_anykeep_test(cryptoproviders_test cryptoproviders_test.cpp)
++# This test includes QCA headers directly; anykeep deliberately links QCA privately.
++target_link_libraries(cryptoproviders_test PRIVATE ${ANYKEEP_QCA_TARGET})
+ set_tests_properties(cryptoproviders_test PROPERTIES LABELS "storage;xmpp")
+ if(TARGET Iris::Iris)
+   target_link_libraries(cryptoproviders_test PRIVATE Iris::Iris Qt6::Network)
+diff --git a/tests/cryptoproviders_test.cpp b/tests/cryptoproviders_test.cpp
+--- a/tests/cryptoproviders_test.cpp
++++ b/tests/cryptoproviders_test.cpp
+@@ -38,6 +38,9 @@ private slots:
+ 
+     void saslStartsScram()
+     {
++#ifndef ANYKEEP_TEST_IRIS_JDNS
++        QSKIP("SASL is only required when the Iris XMPP backend is enabled");
++#else
+         QFETCH(QString, provider);
+         QVERIFY(QCA::isSupported("sasl", provider));
+         QCA::SASL client(nullptr, provider);
+@@ -52,6 +55,7 @@ private slots:
+         QCOMPARE(client.mechanism(), QStringLiteral("SCRAM-SHA-256"));
+         QVERIFY(started.first().at(0).toBool());
+         QVERIFY(started.first().at(1).toByteArray().startsWith("n,,n=user,r="));
++#endif
+     }
+ 
+     void irisHasJdns()
