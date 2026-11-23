@@ -43,6 +43,11 @@ DEPEND="
 	)"
 RDEPEND="${DEPEND}"
 
+# The released 4.0.30 sources predate AnyKeep's crypto test QCA include/link fix.
+if [[ ${PV} == 4.0.30 ]]; then
+	PATCHES=( "${FILESDIR}/${P}-qca-crypto-test.patch" )
+fi
+
 anykeep_plugin_enable() {
 	echo -DANYKEEP_PLUGIN_ENABLE_${2:-$1}=$(usex "$1" ON OFF)
 }
