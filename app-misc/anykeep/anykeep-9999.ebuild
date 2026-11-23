@@ -52,19 +52,6 @@ anykeep_plugin_enable() {
 	echo -DANYKEEP_PLUGIN_ENABLE_${2:-$1}=$(usex "$1" ON OFF)
 }
 
-src_unpack() {
-	if [ -n "$scm" ]; then 
-		git-r3_src_unpack
-
-		unset EGIT_BRANCH EGIT_COMMIT
-		EGIT_CHECKOUT_DIR="${S}/qsourcehighlite" \
-		EGIT_REPO_URI="https://github.com/Waqar144/QSourceHighlite.git" \
-		git-r3_src_unpack
-	else
-		default
-	fi
-}
-
 src_prepare() {
 	#xdg_src_prepare
 	cmake_src_prepare
@@ -80,7 +67,6 @@ src_configure() {
 		-DCMAKE_REQUIRE_FIND_PACKAGE_Qca3-qt6=ON
 		-DANYKEEP_BUILD_BUNDLED_QCA=OFF
 		-DANYKEEP_BUILD_BUNDLED_IRIS=OFF
-		-DANYKEEP_QSOURCEHIGHLITE_SOURCE_DIR="${S}/qsourcehighlite"
 		-DANYKEEP_XMPP_BACKEND=IRIS
 	)
 	cmake_src_configure
