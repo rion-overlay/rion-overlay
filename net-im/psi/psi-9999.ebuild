@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2 iconsets? ( all-rights-reserved )"
 SLOT="0"
 #KEYWORDS=""
-IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring webengine X"
+IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring X"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -44,10 +44,6 @@ DEPEND="
 	dev-qt/qtsvg:6
 	dev-qt/qtimageformats:6
 	keyring? ( dev-libs/qtkeychain )
-	webengine? (
-		dev-qt/qtwebchannel:6
-		dev-qt/qtwebengine:6[widgets]
-	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libxcb
@@ -112,7 +108,6 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DINSTALL_PLUGINS_SDK=1
 		-DUSE_KEYCHAIN=$(usex keyring)
-		-DCHAT_TYPE=$(usex webengine webengine basic)
 		-DUSE_XSS=$(usex X)
 		-DUSE_X11=$(usex X)
 		-DPSI_PLUS=$(usex extras)

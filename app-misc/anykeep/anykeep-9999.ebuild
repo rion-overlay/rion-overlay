@@ -28,7 +28,7 @@ IUSE="cinnamon spell kde gnome xmpp"
 
 DEPEND="
 	!app-misc/qtnote
-	>=app-crypt/qca-3.0.10
+	>=app-crypt/qca-3.2.0
 	dev-libs/qtkeychain
 	dev-qt/qtbase:6[gui,widgets,network]
 	kde? (
@@ -37,7 +37,7 @@ DEPEND="
 		kde-frameworks/kwindowsystem:6
 		kde-frameworks/knotifications:6 )
 	spell? ( app-text/hunspell )
-	xmpp? ( >=net-libs/iris-1.3 )"
+	xmpp? ( >=net-libs/iris-1.6.4 )"
 RDEPEND="${DEPEND}"
 
 qtnote_plugin_enable() {
